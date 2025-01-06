@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-agent2
+  labels:
+    app: zabbix-agent2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zabbix-agent2
+  template:
+    metadata:
+      labels:
+        app: zabbix-agent2
+    spec:
+      containers:
+      - name: zabbix-agent2
+        image: zabbix/zabbix-agent2:latest
+        ports:
+        - containerPort: 10050
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+        env:
+        - name: ZBX_SERVER_HOST
+          value: "zabbix-zabbix-server"
+        - name: ZBX_SERVER_PORT
+          value: "10051"
+        - name: ZBX_HOSTNAME
+          value: "zabbix-agent"

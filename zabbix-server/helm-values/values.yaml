@@ -1,29 +1,29 @@
 zabbixImageTag: alpine-7.0.6
 
 zabbixProxy:
-    enabled: false
+  enabled: false
 
 postgresql:
-    enabled: false
+  enabled: false
 postgresAccess:
-    # Désactive l'utilisation des secrets Kubernetes
-    useUnifiedSecret: false
-    # Supprime toute référence à un secret
-    unifiedSecretName: ""
-    unifiedSecretAutoCreate: false
-    host: resif-pgpreprod.u-ga.fr
-    port: "5432"
-    user: oculus
-    password: ENC[AES256_GCM,data:Frv/zNx9wTBPSi4cvTb92iGCaNg=,iv:t3lrKghquiyZhqdLAzYQhG8KpSBsOY0Z3jWc7RPPtoc=,tag:Apcmj2R9wq5Ew/gP53qaBA==,type:str]
-    database: oculus_zabbix
+  # Désactive l'utilisation des secrets Kubernetes
+  useUnifiedSecret: false
+  # Supprime toute référence à un secret
+  unifiedSecretName: ""
+  unifiedSecretAutoCreate: false
+  host: resif-pgpreprod.u-ga.fr
+  port: "5432"
+  user: oculus
+  password: ENC[AES256_GCM,data:Frv/zNx9wTBPSi4cvTb92iGCaNg=,iv:t3lrKghquiyZhqdLAzYQhG8KpSBsOY0Z3jWc7RPPtoc=,tag:Apcmj2R9wq5Ew/gP53qaBA==,type:str]
+  database: oculus_zabbix
 
 zabbixServer:
-    enabled: true
-    zabbixServerHA:
-        enable: false
-    service:
-        type: ClusterIP
-        port: 10051
+  enabled: true
+  zabbixServerHA:
+    enable: false
+  service:
+    type: ClusterIP
+    port: 10051
 
 # zabbixAgent:
 #     enabled: true
@@ -40,51 +40,51 @@ zabbixServer:
 #         port: 10050
 
 zabbixWeb:
-    enabled: true
-    ZBX_SERVER_HOST: zabbix-zabbix-server
-    ZBX_SERVER_PORT: 10051
-    service:
-        type: ClusterIP
-        port: 8888
+  enabled: true
+  ZBX_SERVER_HOST: zabbix-server
+  ZBX_SERVER_PORT: 10051
+  service:
+    type: ClusterIP
+    port: 8888
 
 ingress:
-    enabled: true
-    annotations: {}
-    extraLabels: {}
-    hosts:
-      # Remplacez par votre domaine
-      - host: zabbix.local
-        paths:
-          - path: /
-            pathType: Prefix
-    tls: []
-    ingressClassName: nginx
-    pathType: Prefix
+  enabled: true
+  annotations: {}
+  extraLabels: {}
+  hosts:
+  # Remplacez par votre domaine
+  - host: zabbix.local
+    paths:
+    - path: /
+      pathType: Prefix
+  tls: []
+  ingressClassName: nginx
+  pathType: Prefix
 
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age: []
-    lastmodified: "2024-12-19T11:33:00Z"
-    mac: ENC[AES256_GCM,data:/QB76WqnILod8cUH/392Tnr1YNasb/PVTM5mG455xP7y9q5d4K0Z37VkfuVogs+rs/MTi03+omwy34f8mePnZ0iye/UOR8urKsAIWOTTaztax6eUo2JsjGrsnB+Q8U65X/tm1gBPShgAhQycdlXuuG59zVSDw6AX91T7tQjMiC8=,iv:I4lUyJ62c2zsnk3qsKsJVDVpaPUCAbOc9XeFiS3YoI0=,tag:lkyc0ty+f7ulxESzYUhOSA==,type:str]
-    pgp:
-      - created_at: "2024-12-19T11:30:19Z"
-        enc: |-
-            -----BEGIN PGP MESSAGE-----
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age: []
+  lastmodified: "2024-12-19T11:33:00Z"
+  mac: ENC[AES256_GCM,data:/QB76WqnILod8cUH/392Tnr1YNasb/PVTM5mG455xP7y9q5d4K0Z37VkfuVogs+rs/MTi03+omwy34f8mePnZ0iye/UOR8urKsAIWOTTaztax6eUo2JsjGrsnB+Q8U65X/tm1gBPShgAhQycdlXuuG59zVSDw6AX91T7tQjMiC8=,iv:I4lUyJ62c2zsnk3qsKsJVDVpaPUCAbOc9XeFiS3YoI0=,tag:lkyc0ty+f7ulxESzYUhOSA==,type:str]
+  pgp:
+  - created_at: "2024-12-19T11:30:19Z"
+    enc: |-
+      -----BEGIN PGP MESSAGE-----
 
-            hQEMA23uPS/3Y9M2AQf9Fs4bnnORbL/ER4kJqYO5b6uc4/8biGf2OOCyDv/Sd8tn
-            bEnV37+FSsJgf8mMTy5cSTNky8m4pwxaRlSTP7RyDGW3rAkCzzqSYQv3ozQq50xh
-            muiWimij4UmBzOgjdYy0EpTAheH3aWJ6faqtJN1IWjyHjLFRKGdsuHpWkF7menwJ
-            urf98PvZiziaafDXQtBmsLqgLqp7lWp65jePfTrPnk3MC7BEbTcmIe3N6LS7Oy7n
-            Q8PsY77ytRAN0hR50pRaq7xRAh9d0A6VCnWjWzoR2lFEH0cdC30O+VVsNyQ2x/qK
-            Pw3n1Qo1QYk4u5asN6CKc80jFUQdLN1vVojakSqDjtJeAbe+/mf+tbu7QTbIhSFR
-            1GI039VpjVjhFrGH5r+782n/jgwJq1ifcOij9eQMa5M0tYNXw6xwksWG3768WUXk
-            lhFnP/vnwRbostvYbRDtL+zCA2nOHtKHVqd7JrTfeQ==
-            =FPIo
-            -----END PGP MESSAGE-----
-        fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
-    encrypted_regex: (password)
-    mac_only_encrypted: true
-    version: 3.9.2
+      hQEMA23uPS/3Y9M2AQf9Fs4bnnORbL/ER4kJqYO5b6uc4/8biGf2OOCyDv/Sd8tn
+      bEnV37+FSsJgf8mMTy5cSTNky8m4pwxaRlSTP7RyDGW3rAkCzzqSYQv3ozQq50xh
+      muiWimij4UmBzOgjdYy0EpTAheH3aWJ6faqtJN1IWjyHjLFRKGdsuHpWkF7menwJ
+      urf98PvZiziaafDXQtBmsLqgLqp7lWp65jePfTrPnk3MC7BEbTcmIe3N6LS7Oy7n
+      Q8PsY77ytRAN0hR50pRaq7xRAh9d0A6VCnWjWzoR2lFEH0cdC30O+VVsNyQ2x/qK
+      Pw3n1Qo1QYk4u5asN6CKc80jFUQdLN1vVojakSqDjtJeAbe+/mf+tbu7QTbIhSFR
+      1GI039VpjVjhFrGH5r+782n/jgwJq1ifcOij9eQMa5M0tYNXw6xwksWG3768WUXk
+      lhFnP/vnwRbostvYbRDtL+zCA2nOHtKHVqd7JrTfeQ==
+      =FPIo
+      -----END PGP MESSAGE-----
+    fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
+  encrypted_regex: (password)
+  mac_only_encrypted: true
+  version: 3.9.2
