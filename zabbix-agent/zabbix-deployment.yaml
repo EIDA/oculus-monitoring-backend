@@ -28,7 +28,7 @@ spec:
             cpu: "250m"
         env:
         - name: ZBX_SERVER_HOST
-          value: "zabbix-zabbix-server"
+          value: "oculus-zabbix-zabbix-server"
         - name: ZBX_SERVER_PORT
           value: "10051"
         - name: ZBX_HOSTNAME
