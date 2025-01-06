@@ -39,3 +39,6 @@
     kubectl port-forward service/oculus-zabbix-zabbix-web 8888:80 -n eida-monitoring
     ```
 - [localhost:8888](http://localhost:8888)
+- Default credentials:
+    - Username: Admin
+    - Password: zabbix
