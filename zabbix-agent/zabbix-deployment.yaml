@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zabbix-agent2
+  name: oculus-test-zabbix-agent2
   labels:
     app: zabbix-agent2
 spec:
@@ -32,4 +32,6 @@ spec:
         - name: ZBX_SERVER_PORT
           value: "10051"
         - name: ZBX_HOSTNAME
-          value: "zabbix-agent"
+          value: "oculus-test-zabbix-agent"
+
+# Créer un service 
