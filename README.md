@@ -31,7 +31,7 @@
     --dependency-update \
     --create-namespace \
     --version $ZABBIX_CHART_VERSION \
-    -f {PWD}values.yaml -n eida-monitoring --debug
+    -f values.yaml -n eida-monitoring --debug
     ```
 ## Accessing the Zabbix Application
 - Port forwad
