@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: oculus-test-zabbix-agent2
+  name: oculus-zabbix-agent-testing
   labels:
-    app: zabbix-agent2
+    app: zabbix-agent-testing
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: zabbix-agent2
+      app: zabbix-agent-testing
   template:
     metadata:
       labels:
-        app: zabbix-agent2
+        app: zabbix-agent-testing
     spec:
       containers:
       - name: zabbix-agent2
@@ -20,18 +20,33 @@ spec:
         ports:
         - containerPort: 10050
         resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
           requests:
             memory: "256Mi"
             cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
         env:
         - name: ZBX_SERVER_HOST
-          value: "oculus-zabbix-zabbix-server"
+          value: oculus-zabbix-zabbix-server
         - name: ZBX_SERVER_PORT
           value: "10051"
         - name: ZBX_HOSTNAME
-          value: "oculus-test-zabbix-agent"
-
-# Créer un service 
+          value: oculus-zabbix-agent-testing
+        - name: ZBX_DEBUGLEVEL
+          value: "4"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oculus-zabbix-agent-testing
+  labels:
+    app: zabbix-agent-testing
+spec:
+  type: ClusterIP
+  selector:
+    app: zabbix-agent-testing
+  ports:
+  - protocol: TCP
+    port: 10050
+    targetPort: 10050
