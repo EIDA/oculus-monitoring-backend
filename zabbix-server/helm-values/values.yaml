@@ -6,10 +6,8 @@ zabbixProxy:
 postgresql:
   enabled: false
 postgresAccess:
-  # Désactive l'utilisation des secrets Kubernetes
-  useUnifiedSecret: false
-  # Supprime toute référence à un secret
-  unifiedSecretName: ""
+  useUnifiedSecret: false # Désactive l'utilisation des secrets Kubernetes
+  unifiedSecretName: "" # Supprime les référence à un secret
   unifiedSecretAutoCreate: false
   host: resif-pgpreprod.u-ga.fr
   port: "5432"

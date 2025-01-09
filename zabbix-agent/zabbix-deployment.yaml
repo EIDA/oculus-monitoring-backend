@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -50,3 +51,8 @@ spec:
   - protocol: TCP
     port: 10050
     targetPort: 10050
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oculus-zabbix-agent-testing
