@@ -15,6 +15,10 @@ spec:
       labels:
         app: zabbix-agent-testing
     spec:
+      volumes:
+      - name: config
+        configMap:
+          name: oculus-zabbix-agent-eida-endpoint
       containers:
       - name: zabbix-agent2
         image: zabbix/zabbix-agent2:latest
@@ -29,13 +33,19 @@ spec:
             cpu: "500m"
         env:
         - name: ZBX_SERVER_HOST
-          value: oculus-zabbix-zabbix-server
+          value: oculus-zabbix-zabbix-server, 0.0.0.0/0
         - name: ZBX_SERVER_PORT
           value: "10051"
         - name: ZBX_HOSTNAME
           value: oculus-zabbix-agent-testing
         - name: ZBX_DEBUGLEVEL
           value: "4"
+        - name: EIDA_WS_ENDPOINT
+          value: ws.resif.fr
+        volumeMounts:
+        - name: config
+          mountPath: /etc/zabbix/zabbix_agentd.d/eida_userparameter.conf
+          subPath: eida_userparameter.conf
 ---
 apiVersion: v1
 kind: Service
@@ -55,6 +65,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: oculus-zabbix-agent-testing
-  labels:
-    app: zabbix-agent-testing
+  name: oculus-zabbix-agent-eida-endpoint
+data:
+  eida_userparameter.conf: |
+    UserParameter=eida.lld,echo "[{\"{#EIDA_WS_ENDPOINT}\":\"$EIDA_WS_ENDPOINT\"}]"
