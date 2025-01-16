@@ -1,0 +1,10 @@
+{
+  "data": [
+    {
+      "{#EIDA_WS_ENDPOINT_RESIF}": "ws.resif.fr"
+    },
+    {
+      "{#EIDA_WS_ENDPOINT_ICGC}": "ws.icgc.cat"
+    }
+  ]
+}

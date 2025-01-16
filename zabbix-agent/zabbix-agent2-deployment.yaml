@@ -41,7 +41,7 @@ spec:
         - name: ZBX_DEBUGLEVEL
           value: "4"
         - name: EIDA_WS_ENDPOINT
-          value: ws.resif.fr
+          value: ws.icgc.cat
         volumeMounts:
         - name: config
           mountPath: /etc/zabbix/zabbix_agentd.d/eida_userparameter.conf
