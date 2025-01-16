@@ -1,5 +1,5 @@
 {
-  "data": [
+  "WS_ENDPOINT": [
     {
       "{#EIDA_WS_ENDPOINT_RESIF}": "ws.resif.fr"
     },

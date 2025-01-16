@@ -65,7 +65,20 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: oculus-zabbix-agent2-eida-endpoint
+  name: oculus-zabbix-agent2-eida-lld-endpoint
 data:
-  eida_userparameter.conf: |
-    UserParameter=eida.lld,echo "[{\"{#EIDA_WS_ENDPOINT}\":\"$EIDA_WS_ENDPOINT\"}]"
+  monitoring-lld.json: |
+    {
+      "WS_ENDPOINT": [
+        {
+          "{#EIDA_WS_ENDPOINT_RESIF}": "ws.resif.fr"
+        },
+        {
+          "{#EIDA_WS_ENDPOINT_ICGC}": "ws.icgc.cat"
+        }
+      ]
+    }
+
+# data:
+#   eida_userparameter.conf: |
+#     UserParameter=eida.lld,echo "[{\"{#EIDA_WS_ENDPOINT}\":\"$EIDA_WS_ENDPOINT\"}]"
