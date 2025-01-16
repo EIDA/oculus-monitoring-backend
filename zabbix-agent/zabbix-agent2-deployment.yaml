@@ -40,7 +40,7 @@ spec:
           value: oculus-zabbix-agent2-testing
         - name: ZBX_DEBUGLEVEL
           value: "4"
-        - name: EIDA_WS_ENDPOINT
+        - name: EIDA_WS_ENDPOINT_ICGC
           value: ws.icgc.cat
         volumeMounts:
         - name: config
