@@ -72,8 +72,7 @@ data:
     [
       {
         "{#EIDA_WS_ENDPOINT}": "ws.icgc.cat",
-        "{#EIDA_NODE}": "ICGC",
-        
+        "{#EIDA_NODE}": "ICGC"
       }
     ]
   eida_userparameter.conf: |

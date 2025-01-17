@@ -71,8 +71,8 @@ data:
   monitoring_lld.json: |
     [
       {
-        "$EIDA_WS_ENDPOINT": "ws.resif.fr",
-        "{#EIDA_NODE}: "RESIF",
+        "{#EIDA_WS_ENDPOINT}": "ws.resif.fr",
+        "{#EIDA_NODE}": "RESIF" 
       }
     ]
   eida_userparameter.conf: |
