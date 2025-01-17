@@ -1,4 +1,4 @@
-#  Deploying Oculus Zabbix on Kubernetes Using Helm
+#  Deploying Oculus Zabbix on Kubernetes using Helm
 ## Prerequisites
 - Kubernetes cluster (version 1.20 or later) configured and running
 - ```kubectl``` installed and configured
