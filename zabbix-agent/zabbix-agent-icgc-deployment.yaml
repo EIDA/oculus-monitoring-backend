@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: oculus-zabbix-agent-testing
+  name: oculus-zabbix-agent-icgc
   labels:
-    app: zabbix-agent-testing
+    app: zabbix-agent-icgc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: zabbix-agent-testing
+      app: zabbix-agent-icgc
   template:
     metadata:
       labels:
-        app: zabbix-agent-testing
+        app: zabbix-agent-icgc
     spec:
       volumes:
       - name: config
         configMap:
-          name: oculus-zabbix-agent-eida-endpoint
+          name: oculus-zabbix-agent-icgc
       containers:
       - name: zabbix-agent2
         image: zabbix/zabbix-agent2:latest
@@ -37,26 +37,27 @@ spec:
         - name: ZBX_SERVER_PORT
           value: "10051"
         - name: ZBX_HOSTNAME
-          value: oculus-zabbix-agent-testing
+          value: oculus-zabbix-agent-icgc
         - name: ZBX_DEBUGLEVEL
           value: "4"
-        - name: EIDA_WS_ENDPOINT
-          value: ws.resif.fr
         volumeMounts:
         - name: config
           mountPath: /etc/zabbix/zabbix_agentd.d/eida_userparameter.conf
           subPath: eida_userparameter.conf
+        - name: config
+          mountPath: /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
+          subPath: monitoring_lld.json
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: oculus-zabbix-agent-testing
+  name: oculus-zabbix-agent-icgc
   labels:
-    app: zabbix-agent-testing
+    app: zabbix-agent-icgc
 spec:
   type: ClusterIP
   selector:
-    app: zabbix-agent-testing
+    app: zabbix-agent-icgc
   ports:
   - protocol: TCP
     port: 10050
@@ -65,7 +66,19 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: oculus-zabbix-agent-eida-endpoint
+  name: oculus-zabbix-agent-icgc
 data:
+  monitoring_lld.json: |
+    [
+      {
+        "{#EIDA_WS_ENDPOINT}": "ws.icgc.cat",
+        "{#EIDA_NODE}": "ICGC",
+        
+      }
+    ]
   eida_userparameter.conf: |
-    UserParameter=eida.lld,echo "[{\"{#EIDA_WS_ENDPOINT}\":\"$EIDA_WS_ENDPOINT\"}]"
+    UserParameter=eida.lld,cat /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
+
+# data:
+#   eida_userparameter.conf: |<
+#     UserParameter=eida.lld,echo "[{\"{#EIDA_WS_ENDPOINT}\":\"$EIDA_WS_ENDPOINT\"}]"

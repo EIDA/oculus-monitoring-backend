@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: oculus-zabbix-agent2-testing
+  name: oculus-zabbix-agent-resif
   labels:
-    app: zabbix-agent2-testing
+    app: zabbix-agent-resif
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: zabbix-agent2-testing
+      app: zabbix-agent-resif
   template:
     metadata:
       labels:
-        app: zabbix-agent2-testing
+        app: zabbix-agent-resif
     spec:
       volumes:
       - name: config
         configMap:
-          name: oculus-zabbix-agent2-eida-endpoint
+          name: oculus-zabbix-agent-eida-endpoint
       containers:
       - name: zabbix-agent2
         image: zabbix/zabbix-agent2:latest
@@ -37,26 +37,27 @@ spec:
         - name: ZBX_SERVER_PORT
           value: "10051"
         - name: ZBX_HOSTNAME
-          value: oculus-zabbix-agent2-testing
+          value: oculus-zabbix-agent-resif
         - name: ZBX_DEBUGLEVEL
           value: "4"
-        - name: EIDA_WS_ENDPOINT_ICGC
-          value: ws.icgc.cat
         volumeMounts:
         - name: config
           mountPath: /etc/zabbix/zabbix_agentd.d/eida_userparameter.conf
           subPath: eida_userparameter.conf
+        - name: config
+          mountPath: /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
+          subPath: monitoring_lld.json
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: oculus-zabbix-agent2-testing
+  name: oculus-zabbix-agent-resif
   labels:
-    app: zabbix-agent2-testing
+    app: zabbix-agent-resif
 spec:
   type: ClusterIP
   selector:
-    app: zabbix-agent2-testing
+    app: zabbix-agent-resif
   ports:
   - protocol: TCP
     port: 10050
@@ -65,20 +66,16 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: oculus-zabbix-agent2-eida-lld-endpoint
+  name: oculus-zabbix-agent-resif
 data:
-  monitoring-lld.json: |
-    {
-      "WS_ENDPOINT": [
-        {
-          "{#EIDA_WS_ENDPOINT_RESIF}": "ws.resif.fr"
-        },
-        {
-          "{#EIDA_WS_ENDPOINT_ICGC}": "ws.icgc.cat"
-        }
-      ]
-    }
+  monitoring_lld.json: |
+    [
+      {
+        "$EIDA_WS_ENDPOINT": "ws.resif.fr",
+        "{#EIDA_NODE}: "RESIF",
+      }
+    ]
+  eida_userparameter.conf: |
+    UserParameter=eida.lld,cat /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
 
-# data:
-#   eida_userparameter.conf: |
-#     UserParameter=eida.lld,echo "[{\"{#EIDA_WS_ENDPOINT}\":\"$EIDA_WS_ENDPOINT\"}]"
+#~  UserParameter=eida.lld,echo "[{\"{#EIDA_WS_ENDPOINT}\":\"$EIDA_WS_ENDPOINT\"}]"
