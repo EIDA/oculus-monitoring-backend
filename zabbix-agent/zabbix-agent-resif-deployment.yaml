@@ -18,7 +18,7 @@ spec:
       volumes:
       - name: config
         configMap:
-          name: oculus-zabbix-agent-eida-resif
+          name: oculus-zabbix-agent-resif
       containers:
       - name: zabbix-agent2
         image: zabbix/zabbix-agent2:latest
