@@ -1,0 +1,84 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oculus-zabbix-agent-test
+  labels:
+    app: zabbix-agent-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zabbix-agent-test
+  template:
+    metadata:
+      labels:
+        app: zabbix-agent-test
+    spec:
+      volumes:
+      - name: config
+        configMap:
+          name: oculus-zabbix-agent-test
+      containers:
+      - name: zabbix-agent2
+        image: zabbix/zabbix-agent2:latest
+        ports:
+        - containerPort: 10050
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        env:
+        - name: ZBX_SERVER_HOST
+          value: oculus-zabbix-zabbix-server, 0.0.0.0/0
+        - name: ZBX_SERVER_PORT
+          value: "10051"
+        - name: ZBX_HOSTNAME
+          value: oculus-zabbix-agent-test
+        - name: ZBX_DEBUGLEVEL
+          value: "4"
+        volumeMounts:
+        - name: config
+          mountPath: /etc/zabbix/zabbix_agentd.d/eida_userparameter.conf
+          subPath: eida_userparameter.conf
+        - name: config
+          mountPath: /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
+          subPath: monitoring_lld.json
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oculus-zabbix-agent-test
+  labels:
+    app: zabbix-agent-test
+spec:
+  type: ClusterIP
+  selector:
+    app: zabbix-agent-test
+  ports:
+  - protocol: TCP
+    port: 10050
+    targetPort: 10050
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oculus-zabbix-agent-test
+data:
+  monitoring_lld.json: |
+    [
+      {
+        "{#EIDA_WS_ENDPOINT}": "ws.test.fr",
+        "{#EIDA_NODE}": "TEST",
+        "{#EIDA_NETWORK}": "FR",
+        "{#EIDA_STATION}": "CREF",
+        "{#EIDA_CHANNEL}": "HNZ"
+      }
+    ]
+  eida_userparameter.conf: |
+    UserParameter=eida.lld,cat /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
+
+#~  UserParameter=eida.lld,echo "[{\"{#EIDA_WS_ENDPOINT}\":\"$EIDA_WS_ENDPOINT\"}]"
