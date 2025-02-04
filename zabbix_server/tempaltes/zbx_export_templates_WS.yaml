@@ -14,10 +14,10 @@ zabbix_export:
           name: EIDA_ENDPOINT
           key: eida.lld
           delay: 1h
+          status: DISABLED
       httptests:
         - uuid: 32b3e3d018b2423c899d92878cbe3567
           name: availability
-          delay: 1h
           steps:
             - name: 'get documentation'
               url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/availability/1/'
@@ -47,7 +47,6 @@ zabbix_export:
               value: fdsn
         - uuid: dfcb1e93f5c9489598c189e82f523833
           name: dataselect
-          delay: 5m
           steps:
             - name: 'dataselect accessible'
               url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/dataselect/1/'
@@ -79,7 +78,6 @@ zabbix_export:
               value: fdsn
         - uuid: 482c8b39cf3b4aca8dc9b7859373c210
           name: 'eida routing'
-          delay: 30m
           steps:
             - name: 'orfeus EIDA_WS_ENDPOINT, one permanent network'
               url: 'http://{$EIDA_WS_ENDPOINT}/eidaws/routing/1/query'
@@ -163,6 +161,7 @@ zabbix_export:
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
           delay: 5m
+          status: DISABLED
           steps:
             - name: documentation
               url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/station/1/'
@@ -237,8 +236,6 @@ zabbix_export:
               value: resifws
         - uuid: a5d4964d6ad84e44829dbb8dddef25cc
           name: wfcatalog
-          delay: 1h
-          status: DISABLED
           steps:
             - name: 'large query'
               url: 'https://{$EIDA_WS_ENDPOINT}/eidaws/wfcatalog/1/query'

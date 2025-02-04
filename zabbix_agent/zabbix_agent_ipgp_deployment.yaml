@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: oculus-zabbix-agent-resif
+  name: oculus-zabbix-agent-ipgp
   labels:
-    app: zabbix-agent-resif
+    app: zabbix-agent-ipgp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: zabbix-agent-resif
+      app: zabbix-agent-ipgp
   template:
     metadata:
       labels:
-        app: zabbix-agent-resif
+        app: zabbix-agent-ipgp
     spec:
       volumes:
       - name: config
         configMap:
-          name: oculus-zabbix-agent-resif
+          name: oculus-zabbix-agent-ipgp
       containers:
       - name: zabbix-agent2
         image: zabbix/zabbix-agent2:latest
@@ -37,7 +37,7 @@ spec:
         - name: ZBX_SERVER_PORT
           value: "10051"
         - name: ZBX_HOSTNAME
-          value: oculus-zabbix-agent-resif
+          value: oculus-zabbix-agent-ipgp
         - name: ZBX_DEBUGLEVEL
           value: "4"
         volumeMounts:
@@ -51,13 +51,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: oculus-zabbix-agent-resif
+  name: oculus-zabbix-agent-ipgp
   labels:
-    app: zabbix-agent-resif
+    app: zabbix-agent-ipgp
 spec:
   type: ClusterIP
   selector:
-    app: zabbix-agent-resif
+    app: zabbix-agent-ipgp
   ports:
   - protocol: TCP
     port: 10050
@@ -66,15 +66,15 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: oculus-zabbix-agent-resif
+  name: oculus-zabbix-agent-ipgp
 data:
   monitoring_lld.json: |
     [
       {
-        "{#EIDA_WS_ENDPOINT}": "ws.resif.fr",
-        "{#EIDA_NODE}": "RESIF",
-        "{#EIDA_NETWORK}": "FR",
-        "{#EIDA_STATION}": "CREF",
+        "{#EIDA_WS_ENDPOINT}": "ws.ipgp.fr",
+        "{#EIDA_NODE}": "IPGP",
+        "{#EIDA_NETWORK}": "GL",
+        "{#EIDA_STATION}": "F8J",
         "{#EIDA_CHANNEL}": "HNZ"
       }
     ]

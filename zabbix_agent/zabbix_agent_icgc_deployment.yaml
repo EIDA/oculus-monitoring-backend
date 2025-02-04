@@ -77,7 +77,3 @@ data:
     ]
   eida_userparameter.conf: |
     UserParameter=eida.lld,cat /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
-
-# data:
-#   eida_userparameter.conf: |<
-#     UserParameter=eida.lld,echo "[{\"{#EIDA_WS_ENDPOINT}\":\"$EIDA_WS_ENDPOINT\"}]"

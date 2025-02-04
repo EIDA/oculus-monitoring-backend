@@ -1,0 +1,33 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 44950db14d8549c2a022ab3d5ba3ff96
+      name: Templates/EIDA
+  host_groups:
+    - uuid: 538a19975c7a43cf8a349b953d587723
+      name: 'EIDA testing'
+  templates:
+    - uuid: 74f0d2bd954841d39f19a0c7d06549ee
+      template: 'Template discovery'
+      name: 'Template discovery'
+      description: 'Template for discovery agent/host'
+      groups:
+        - name: Templates/EIDA
+      discovery_rules:
+        - uuid: 73a97a466ed542a98a67e3e2c61af74a
+          name: EIDA_ENDPOINT
+          key: eida.lld
+          delay: 1h
+          host_prototypes:
+            - uuid: 357b595cf81e44a8a70842dbd8887fdd
+              host: '{#EIDA_WS_ENDPOINT}'
+              name: '{#EIDA_NODE}'
+              group_links:
+                - group:
+                    name: 'EIDA testing'
+              templates:
+                - name: 'Template webservices'
+              macros:
+                - macro: '{$EIDA_WS_ENDPOINT}'
+                  value: '{#EIDA_WS_ENDPOINT}'
+                  description: 'EIDA nodes address'

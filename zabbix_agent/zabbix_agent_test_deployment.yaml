@@ -72,10 +72,7 @@ data:
     [
       {
         "{#EIDA_WS_ENDPOINT}": "ws.test.fr",
-        "{#EIDA_NODE}": "TEST",
-        "{#EIDA_NETWORK}": "FR",
-        "{#EIDA_STATION}": "CREF",
-        "{#EIDA_CHANNEL}": "HNZ"
+        "{#EIDA_NODE}": "TEST"
       }
     ]
   eida_userparameter.conf: |
