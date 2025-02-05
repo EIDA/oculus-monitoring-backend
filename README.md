@@ -49,3 +49,9 @@
 - Default credentials:
     - Username: Admin
     - Password: zabbix
+
+## Launch nodes
+```sh
+cd zabbix_agent
+kubectl apply -f zabbix_agent_{name}_deployment.yaml
+```
