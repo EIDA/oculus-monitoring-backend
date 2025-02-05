@@ -13,7 +13,7 @@
     ```
 2. Go to .yaml location
     ```sh
-    cd zabbix-server/helm-values
+    cd zabbix_server/helm_values
     ```
 3. Add the Helm epository
     ```sh
