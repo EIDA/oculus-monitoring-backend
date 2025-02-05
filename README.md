@@ -25,7 +25,14 @@
     ```sh
     kubectl create namespace eida-monitoring
     ```
-5. Install the Zabbix Helm Chart
+5. Create databse postgresql
+    ```sql
+    CREATE DATABASE oculus_zabbix
+    CREATE USER oculus WITH PASSWORD '{password}'
+    GRANT CONNECT ON DATABASE oculus_zabbix TO oculus 
+    ```
+     
+6. Install the Zabbix Helm Chart
     ```sh
     helm upgrade --install oculus-zabbix zabbix-community/zabbix \
     --dependency-update \
