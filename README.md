@@ -19,7 +19,7 @@
     ```sh
     helm repo add zabbix-community https://zabbix-community.github.io/helm-zabbix
     helm repo update
-    export ZABBIX_CHART_VERSION='6.1.1'
+    export ZABBIX_CHART_VERSION='7.0.3'
     ```
 4. Create a Namespace for Zabbix
     ```sh
