@@ -1,0 +1,12 @@
+---
+# https://ws.icgc.cat/fdsnws/dataselect/1/query?network=CA&station=CORG&location=--&channel=HHZ&starttime=2017-06-06T00:00:00&endtime=2017-06-06T00:10:00&nodata=404
+eidaNode:
+  name: ICGC
+  endpoint: ws.icgc.cat
+  serviceParameters:
+    net: CA
+    sta: CORG
+    loc: --
+    cha: HHZ
+    start: 2017-06-06T00:00:00
+    end: 2017-06-06T00:00:10
