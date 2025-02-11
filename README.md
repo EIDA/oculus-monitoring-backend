@@ -72,3 +72,7 @@ eidaNode:
 Then deploy (or update) the agent using helm:
 
      helm upgrade -i epos-france occulus-zbx-agent -f oculus-zbx-agent-deployments/epos-france.yaml 
+
+## Deploy all agents
+
+     for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent -f $f; done

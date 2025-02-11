@@ -1,0 +1,11 @@
+---
+eidaNode:
+  name: ODC
+  endpoint: www.orfeus-eu.org
+  serviceParameters:
+    net: NL
+    sta: BHAR
+    loc: --
+    cha: HGZ
+    start: 2017-06-04T00:00:00
+    end: 2017-06-04T00:00:05
