@@ -1,0 +1,166 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 44950db14d8549c2a022ab3d5ba3ff96
+      name: Templates/EIDA
+  templates:
+    - uuid: b192614a2cbc490eb3ca047e9eb36328
+      template: 'Template webservices'
+      name: 'Template webservices'
+      groups:
+        - name: Templates/EIDA
+      httptests:
+        - uuid: 32b3e3d018b2423c899d92878cbe3567
+          name: availability
+          steps:
+            - name: 'get documentation'
+              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/availability/1/'
+              follow_redirects: 'NO'
+              retrieve_mode: HEADERS
+              status_codes: '200'
+            - name: 'simple request'
+              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/availability/1/query'
+              query_fields:
+                - name: net
+                  value: '{$EIDA_NETWORK}'
+                - name: sta
+                  value: '{$EIDA_STATION}'
+                - name: loc
+                  value: '{$EIDA_LOCATION}'
+                - name: cha
+                  value: '{$EIDA_CHANNEL}'
+                - name: start
+                  value: '{$EIDA_STARTTIME}'
+                - name: end
+                  value: '{$EIDA_ENDTIME}'
+              retrieve_mode: HEADERS
+              status_codes: '200'
+            - name: application.wadl
+              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/availability/1/application.wadl'
+              follow_redirects: 'NO'
+              required: wadl.dev.java.net
+              status_codes: '200'
+          tags:
+            - tag: Application
+              value: fdsn
+        - uuid: dfcb1e93f5c9489598c189e82f523833
+          name: dataselect
+          steps:
+            - name: 'dataselect accessible'
+              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/dataselect/1/'
+              status_codes: '200'
+            - name: 'dataselect short request'
+              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/dataselect/1/query'
+              query_fields:
+                - name: net
+                  value: '{$EIDA_NETWORK}'
+                - name: sta
+                  value: '{$EIDA_STATION}'
+                - name: cha
+                  value: '{$EIDA_CHANNEL}'
+                - name: start
+                  value: '{$EIDA_STARTTIME}'
+                - name: end
+                  value: '{$EIDA_ENDTIME}'
+                - name: nodata
+                  value: '404'
+              timeout: 60s
+              status_codes: '200'
+            - name: application.wadl
+              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/dataselect/1/application.wadl'
+              follow_redirects: 'NO'
+              required: wadl.dev.java.net
+              status_codes: '200'
+          tags:
+            - tag: Application
+              value: fdsn
+        - uuid: 482c8b39cf3b4aca8dc9b7859373c210
+          name: 'present in central eida routing'
+          delay: 60m
+          steps:
+            - name: 'EIDA Routing infomation'
+              url: 'https://www.orfeus-eu.org/eidaws/routing/1/query'
+              query_fields:
+                - name: service
+                  value: station
+                - name: network
+                  value: '{$EIDA_NETWORK}'
+              required: '{$EIDA_WS_ENDPOINT}'
+              status_codes: '200'
+          tags:
+            - tag: Application
+              value: routing
+        - uuid: d3a4a789f3ee42ec8418b6e5044c8804
+          name: 'routing information published at node'
+          delay: 15m
+          steps:
+            - name: 'eida routing XML file'
+              url: 'https://{$EIDA_WS_ENDPOINT}/routing/eida_routing.xml'
+              follow_redirects: 'NO'
+              required: 'ns0:route networkCode="{$EIDA_NETWORK}"'
+              status_codes: '200'
+          tags:
+            - tag: Application
+              value: eidaws
+        - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
+          name: station
+          delay: 5m
+          steps:
+            - name: documentation
+              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/station/1/'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: 'short request'
+              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/station/1/query'
+              query_fields:
+                - name: net
+                  value: '{$EIDA_NETWORK}'
+                - name: sta
+                  value: '{$EIDA_STATION}'
+                - name: loc
+                  value: '{$EIDA_LOCATION}'
+                - name: cha
+                  value: '{$EIDA_CHANNEL}'
+                - name: level
+                  value: response
+              timeout: 30s
+              status_codes: '200'
+            - name: application.wadl
+              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/station/1/application.wadl'
+              follow_redirects: 'NO'
+              required: wadl.dev.java.net
+              status_codes: '200'
+          tags:
+            - tag: Application
+              value: fdsn
+        - uuid: a5d4964d6ad84e44829dbb8dddef25cc
+          name: wfcatalog
+          steps:
+            - name: 'get documentation'
+              url: 'https://{$EIDA_WS_ENDPOINT}/eidaws/wfcatalog/1/'
+              follow_redirects: 'NO'
+              retrieve_mode: HEADERS
+              status_codes: '200'
+            - name: 'simple query'
+              url: 'https://{$EIDA_WS_ENDPOINT}/eidaws/wfcatalog/1/query'
+              query_fields:
+                - name: net
+                  value: '{$EIDA_NETWORK}'
+                - name: sta
+                  value: '{$EIDA_STATION}'
+                - name: loc
+                  value: '{$EIDA_LOCATION}'
+                - name: cha
+                  value: '{$EIDA_CHANNEL}'
+                - name: start
+                  value: '{$EIDA_STARTTIME}'
+                - name: end
+                  value: '{$EIDA_ENDTIME}'
+              status_codes: '200'
+          tags:
+            - tag: Application
+              value: eidaws
+      macros:
+        - macro: '{$EIDA_WS_ENDPOINT}'
+          value: '{#EIDA_WS_ENDPOINT}'
+          description: 'EIDA node endpoint'

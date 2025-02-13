@@ -76,3 +76,25 @@ Then deploy (or update) the agent using helm:
 ## Deploy all agents
 
      for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent -f $f; done
+
+
+# Zabbix configuration
+## Import templates
+Go to "Data collection > Templates"
+- Select "Import" in the top right corner and select the files "zbx_export_templates.yaml" (OR "zbx_export_templates_discovery.xml" and "zbx_export_web_templates.yaml" ) location : ```zabbix_server/templates```
+- Rules: all checked 
+- Click on "Import"
+
+## Autoregistration
+Go to "Alerts > Actions > Autoregistration actions" and create a new action with the following parameters:
+- Action:
+  - Name: EIDA nodes autoregistration
+  - Enabled: checked
+- Operations:
+  - Add host
+  - Add to host groups: Discovered hosts
+  - Link templates: Template discovery
+  - Link templates: Linux by Zabbix agent
+  - Ennable hosts
+- Click "Add"
+
