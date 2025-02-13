@@ -1,12 +1,12 @@
 ---
-#  	net=GR&start=2017-07-01T00:01:00&end=2017-07-01T00:02:00&channel=HH*&station=ASSE,BFO,MOX
 eidaNode:
   name: BGS
   endpoint: eida.bgs.ac.uk
+  routingFile: routing.xml
   serviceParameters:
     net: GB
     sta: TARL
-    loc: 00
+    loc: "00"
     cha: HHZ
     start: 2024-11-30T00:01:00
     end: 2024-11-30T00:01:10

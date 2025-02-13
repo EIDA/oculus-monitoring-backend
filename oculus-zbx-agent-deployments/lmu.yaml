@@ -2,6 +2,7 @@
 eidaNode:
   name: LMU
   endpoint: erde.geophysik.uni-muenchen.de
+  routingFile: routing.xml
   serviceParameters:
     net: BW
     sta: FFB1

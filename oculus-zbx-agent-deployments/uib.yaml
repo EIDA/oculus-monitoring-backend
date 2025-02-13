@@ -2,11 +2,11 @@
 eidaNode:
   name: UIB
   endpoint: eida.geo.uib.no
-  # /fdsnws/dataselect/1/query?network=NS&station=B*&starttime=2019-01-15T00:01:00&endtime=2019-01-15T00:02:00
+  routingFile: routing.xml
   serviceParameters:
     net: NS
     sta: BER
-    loc: 00
+    loc: "00"
     cha: HHZ
     start: 2019-01-15T00:01:50
     end: 2019-01-15T00:02:00
