@@ -55,3 +55,21 @@
 cd zabbix_agent
 kubectl apply -f zabbix_agent_{name}_deployment.yaml
 ```
+
+
+# Zabbix configuration
+## Import templates
+[TODO]
+
+## Autoregistration
+Go to "Alerte > Actions > Autoregistration actions" and create a new action with the following parameters:
+- Action:
+  - Name: EIDA nodes autoregistration
+  - Enabled: [x]
+- Operations :
+  - Add host
+  - Add to host groups: Discovered hosts
+  - Link templates: Template discovery
+  - Link templates: Linux by Zabbix agent
+  - Link templates: Website certificate by zabbix agent 2
+  - Ennable host
