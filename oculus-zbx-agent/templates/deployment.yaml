@@ -73,6 +73,9 @@ spec:
             - name: config
               mountPath: /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
               subPath: monitoring_lld.json
+            - name: config
+              mountPath: /etc/zabbix/zabbix_agentd.d/hostinterface.conf
+              subPath: hostinterface.conf
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
