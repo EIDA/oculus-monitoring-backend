@@ -19,7 +19,6 @@
     ```sh
     helm repo add zabbix-community https://zabbix-community.github.io/helm-zabbix
     helm repo update
-    export ZABBIX_CHART_VERSION='7.0.3'
     ```
 4. Create a Namespace for Zabbix
     ```sh
@@ -27,13 +26,13 @@
     ```
 5. Create databse postgresql
     ```sql
-    CREATE DATABASE oculus_zabbix
-    CREATE USER oculus WITH PASSWORD '{password}'
-    GRANT CONNECT ON DATABASE oculus_zabbix TO oculus 
+    CREATE USER oculus WITH PASSWORD '{password}';
+    CREATE DATABASE oculus_zabbix OWNER oculus;
     ```
      
 6. Install the Zabbix Helm Chart
     ```sh
+    export ZABBIX_CHART_VERSION='7.0.3'
     helm upgrade --install oculus-zabbix zabbix-community/zabbix \
     --dependency-update \
     --create-namespace \
@@ -50,22 +49,44 @@
     - Username: Admin
     - Password: zabbix
 
-## Launch nodes
-```sh
-cd zabbix_agent
-kubectl apply -f zabbix_agent_{name}_deployment.yaml
+## Deploy an agent
+
+Create a configuration file for each agent in `oculus-zbx-agent-deployments` (for instant `epos-france.yaml`).
+
+Set the content according to this template:
+
+``` yaml
+---
+eidaNode:
+  name: MyNodeName    # Will be used as identifier for the agent
+  endpoint: ws.resif.fr  # The endpoint to test
+  serviceParameters:   # Set default test parameters for each services
+    net: FR
+    sta: CIEL
+    loc: 00
+    cha: HHZ
+    start: 2025-02-01T00:00:00
+    end: 2025-02-01T00:00:05
 ```
+
+Then deploy (or update) the agent using helm:
+
+     helm upgrade -i epos-france occulus-zbx-agent -f oculus-zbx-agent-deployments/epos-france.yaml 
+
+## Deploy all agents
+
+     for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent -f $f; done
 
 
 # Zabbix configuration
 ## Import templates
-Go to "Data collectiion > Templates"
+Go to "Data collection > Templates"
 - Select "Import" in the top right corner and select the files "zbx_export_templates.yaml" (OR "zbx_export_templates_discovery.xml" and "zbx_export_web_templates.yaml" ) location : ```zabbix_server/templates```
 - Rules: all checked 
 - Click on "Import"
 
 ## Autoregistration
-Go to "Alerte > Actions > Autoregistration actions" and create a new action with the following parameters:
+Go to "Alerts > Actions > Autoregistration actions" and create a new action with the following parameters:
 - Action:
   - Name: EIDA nodes autoregistration
   - Enabled: checked
@@ -76,3 +97,4 @@ Go to "Alerte > Actions > Autoregistration actions" and create a new action with
   - Link templates: Linux by Zabbix agent
   - Ennable hosts
 - Click "Add"
+
