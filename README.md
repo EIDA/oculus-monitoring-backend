@@ -59,17 +59,21 @@ kubectl apply -f zabbix_agent_{name}_deployment.yaml
 
 # Zabbix configuration
 ## Import templates
-[TODO]
+Go to "Data collectiion > Templates"
+- Select "Import" in the top right corner and select the files "zbx_export_templates.yaml" (OR "zbx_export_templates_discovery.xml" and "zbx_export_web_templates.yaml" ) location : ```zabbix_server/templates```
+- Rules: all checked 
+- Click on "Import"
 
 ## Autoregistration
 Go to "Alerte > Actions > Autoregistration actions" and create a new action with the following parameters:
 - Action:
   - Name: EIDA nodes autoregistration
-  - Enabled: [x]
-- Operations :
+  - Enabled: checked
+- Operations:
   - Add host
   - Add to host groups: Discovered hosts
   - Link templates: Template discovery
   - Link templates: Linux by Zabbix agent
   - Link templates: Website certificate by zabbix agent 2
-  - Ennable host
+  - Ennable hosts
+- Click "Add"
