@@ -26,6 +26,7 @@ zabbix_export:
                     name: 'EIDA nodes'
               templates:
                 - name: 'Template webservices'
+                - name: 'Website certificate by Zabbix agent 2'
               macros:
                 - macro: '{$CERT.EXPIRY.WARN}'
                   value: '14'

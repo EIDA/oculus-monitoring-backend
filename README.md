@@ -74,6 +74,5 @@ Go to "Alerte > Actions > Autoregistration actions" and create a new action with
   - Add to host groups: Discovered hosts
   - Link templates: Template discovery
   - Link templates: Linux by Zabbix agent
-  - Link templates: Website certificate by zabbix agent 2
   - Ennable hosts
 - Click "Add"
