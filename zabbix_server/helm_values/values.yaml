@@ -1,20 +1,19 @@
 zabbixImageTag: alpine-7.0.6
-
 zabbixProxy:
   enabled: false
-
 postgresql:
   enabled: false
 postgresAccess:
-  useUnifiedSecret: false # Désactive l'utilisation des secrets Kubernetes
-  unifiedSecretName: "" # Supprime les référence à un secret
+  # Désactive l'utilisation des secrets Kubernetes
+  useUnifiedSecret: false
+  # Supprime les référence à un secret
+  unifiedSecretName: ""
   unifiedSecretAutoCreate: false
   host: resif-pgpreprod.u-ga.fr
   port: "5432"
   user: oculus
-  password: ENC[AES256_GCM,data:Frv/zNx9wTBPSi4cvTb92iGCaNg=,iv:t3lrKghquiyZhqdLAzYQhG8KpSBsOY0Z3jWc7RPPtoc=,tag:Apcmj2R9wq5Ew/gP53qaBA==,type:str]
+  password: ENC[AES256_GCM,data:DY1m0yZrqbH/p3he8MXySwGM5TM=,iv:UtDOuoLOHEI7+1JazP9IMj1Wfi6a2fNSn3iWlHcdfe8=,tag:4+oOhZcyZ7oKRckGG1puTw==,type:str]
   database: oculus_zabbix
-
 zabbixServer:
   enabled: true
   zabbixServerHA:
@@ -22,7 +21,6 @@ zabbixServer:
   service:
     type: ClusterIP
     port: 10051
-
 zabbixWeb:
   enabled: true
   ZBX_SERVER_HOST: zabbix-server
@@ -30,44 +28,39 @@ zabbixWeb:
   service:
     type: ClusterIP
     port: 8888
-
 ingress:
   enabled: true
-  annotations: {}
-  extraLabels: {}
   hosts:
-  - host: zabbix.local
-    paths:
-    - path: /
-      pathType: Prefix
-  tls: []
+    - host: eida-oculus.resif.fr
+      paths:
+        - path: /
+          pathType: Prefix
   ingressClassName: nginx
   pathType: Prefix
-
 sops:
   kms: []
   gcp_kms: []
   azure_kv: []
   hc_vault: []
   age: []
-  lastmodified: "2024-12-19T11:33:00Z"
-  mac: ENC[AES256_GCM,data:/QB76WqnILod8cUH/392Tnr1YNasb/PVTM5mG455xP7y9q5d4K0Z37VkfuVogs+rs/MTi03+omwy34f8mePnZ0iye/UOR8urKsAIWOTTaztax6eUo2JsjGrsnB+Q8U65X/tm1gBPShgAhQycdlXuuG59zVSDw6AX91T7tQjMiC8=,iv:I4lUyJ62c2zsnk3qsKsJVDVpaPUCAbOc9XeFiS3YoI0=,tag:lkyc0ty+f7ulxESzYUhOSA==,type:str]
+  lastmodified: "2025-02-14T10:57:10Z"
+  mac: ENC[AES256_GCM,data:jG7OpoSJelnPs9eHzXMJJJ6er45wm1gVnHBDvptFK/w0ZPNB7FIHNqqhl0/y9KKLmvAuhdP1zARn6fsjZ4MbPXNP3r5KNROtobuqy8cyRqfdS/e/byVF5xTdbWomwXkl+mTsxjt8cte8VXQYUvAe2tpM27+VyvubGwU2VoVC9uE=,iv:lrK+uj3KXLDp38asEBkMXFU71rRylhzCWb6/oBVg8L8=,tag:2PCoa7KVQ2+cJ2SZvV3d9A==,type:str]
   pgp:
-  - created_at: "2024-12-19T11:30:19Z"
-    enc: |-
-      -----BEGIN PGP MESSAGE-----
+    - created_at: "2025-02-14T10:57:10Z"
+      enc: |-
+        -----BEGIN PGP MESSAGE-----
 
-      hQEMA23uPS/3Y9M2AQf9Fs4bnnORbL/ER4kJqYO5b6uc4/8biGf2OOCyDv/Sd8tn
-      bEnV37+FSsJgf8mMTy5cSTNky8m4pwxaRlSTP7RyDGW3rAkCzzqSYQv3ozQq50xh
-      muiWimij4UmBzOgjdYy0EpTAheH3aWJ6faqtJN1IWjyHjLFRKGdsuHpWkF7menwJ
-      urf98PvZiziaafDXQtBmsLqgLqp7lWp65jePfTrPnk3MC7BEbTcmIe3N6LS7Oy7n
-      Q8PsY77ytRAN0hR50pRaq7xRAh9d0A6VCnWjWzoR2lFEH0cdC30O+VVsNyQ2x/qK
-      Pw3n1Qo1QYk4u5asN6CKc80jFUQdLN1vVojakSqDjtJeAbe+/mf+tbu7QTbIhSFR
-      1GI039VpjVjhFrGH5r+782n/jgwJq1ifcOij9eQMa5M0tYNXw6xwksWG3768WUXk
-      lhFnP/vnwRbostvYbRDtL+zCA2nOHtKHVqd7JrTfeQ==
-      =FPIo
-      -----END PGP MESSAGE-----
-    fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
+        hQEMA23uPS/3Y9M2AQgAzB1X9f9N2YSwP1BvkWG6795v6PZMD+N1ZzhHGamBT2Tw
+        HEBHe9Y/L2wDluNX524iePhrlGSVuidWxGh6kPlyWfRcSs4VLlyTbdo5AIqY6iSd
+        yEGQcF5eg6G46pLDE93y6ul9f3Ki+Ph1kaJ9SADMm1haE/R5Z0BizyipFymUuToK
+        HXcyDK0f6a6PPWwFZ6iY9nBaHEfEt+C+No1cJaYmJlq3/koiHnJ7lx5L4Mmi7N1M
+        eCrX9l0nfMNAuM8oQ62/gYN/tNqk9G1CG0R3LajNAw9ysWH2D0xiABWvCAUv81VU
+        6wdHkEOrpzDbhlecOsQ2BwfyPSwZM2lbIWmWuajxn9JeAXOMgxc8wxOH4uSnRToy
+        yioGUTROHhdTxjV72zFK61bbL9G5KjcGq4HwXzAGLKm0/5pUJP6tHWCBHLb9oZjs
+        QAUGrZx3DP/UYmwzX+AF8M8cMAuVHUX+AI2nXkrQvg==
+        =kwwW
+        -----END PGP MESSAGE-----
+      fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
   encrypted_regex: (password)
   mac_only_encrypted: true
-  version: 3.9.2
+  version: 3.9.1
