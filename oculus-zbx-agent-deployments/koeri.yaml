@@ -2,7 +2,7 @@
 eidaNode:
   name: KOERI
   endpoint: eida.koeri.boun.edu.tr
-  routingFile: routing.xml
+  routingFile: routing/routing.xml
   serviceParameters: # Set default test parameters for each services
     net: KO
     sta: KMAH

@@ -2,7 +2,7 @@
 eidaNode:
   name: ICGC
   endpoint: ws.icgc.cat
-  routingFile: routing.xml
+  routingFile: eidaws/routing/routing.xml
   serviceParameters:
     net: CA
     sta: CORG

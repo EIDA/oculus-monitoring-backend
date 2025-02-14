@@ -2,7 +2,7 @@
 eidaNode:
   name: BGR
   endpoint: eida.bgr.de
-  routingFile: routing.xml
+  routingFile: eidaws/routing/routing.xml
   serviceParameters:
     net: GR
     sta: ASSE

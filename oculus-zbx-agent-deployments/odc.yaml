@@ -2,7 +2,7 @@
 eidaNode:
   name: ODC
   endpoint: www.orfeus-eu.org
-  routingFile: routing.xml
+  routingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
   serviceParameters:
     net: NL
     sta: BHAR

@@ -2,7 +2,7 @@
 eidaNode:
   name: INGV
   endpoint: webservices.ingv.it
-  routingFile: routing.xml
+  routingFile: eidaws/routing/1/routing.xml
   serviceParameters:
     net: BA
     sta: PZUN

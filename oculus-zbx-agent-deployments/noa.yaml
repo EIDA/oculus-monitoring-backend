@@ -2,7 +2,7 @@
 eidaNode:
   name: NOA
   endpoint: eida.gein.noa.gr
-  routingFile: routing.xml
+  routingFile: routing/routing.xml
   serviceParameters:
     net: HL
     sta: ANAF

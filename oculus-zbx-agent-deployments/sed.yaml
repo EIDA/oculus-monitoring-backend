@@ -2,7 +2,7 @@
 eidaNode:
   name: SED
   endpoint: eida.ethz.ch
-  routingFile: routing.xml
+  routingFile: eidaws/routing/routing.xml
   serviceParameters:
     net: CH
     sta: MUO

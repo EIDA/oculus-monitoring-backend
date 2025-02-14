@@ -2,7 +2,7 @@
 eidaNode:
   name: UIB
   endpoint: eida.geo.uib.no
-  routingFile: routing.xml
+  routingFile: eidaws/routing.xml
   serviceParameters:
     net: NS
     sta: BER

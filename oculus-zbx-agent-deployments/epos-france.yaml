@@ -2,7 +2,7 @@
 eidaNode:
   name: Epos-France
   endpoint: ws.resif.fr
-  routingFile: routing/eida_routing.xml
+  routingFile: routing/eida/routing.xml
   serviceParameters:
     net: FR
     sta: CIEL

@@ -2,7 +2,7 @@
 eidaNode:
   name: NIEP
   endpoint: eida-sc3.infp.ro
-  routingFile: routing.xml
+  routingFile: routing/1/routing.xml
   serviceParameters:
     net: RO
     sta: PLOR1

@@ -2,7 +2,7 @@
 eidaNode:
   name: GFZ
   endpoint: geofon.gfz.de
-  routingFile: routing.xml
+  routingFile: "eidaws/routing/1/query?service=dataselect&network=GE"
   serviceParameters:
     net: GE
     sta: KBS
