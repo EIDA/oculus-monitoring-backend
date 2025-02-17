@@ -2,21 +2,73 @@
 ## Webservices
 ### Availability
 
-`Not classified`
+`Not classified` :
 
-`Information`
+`Information` : response code 204
 
-`Warning`
+`Warning` : 
 
-`Average`
+`Average` : 
 
-`High`
+`High` : service is down or not responding since 15min
 
-`Disaster`
+`Disaster` : service is down or not responding since 1 hours
 
 ### Dataselect
 
-### Other
+`Not classified` :
+
+`Information` :
+
+`Warning` : 
+
+`Average` : 
+
+`High` : 
+
+`Disaster` : 
+
+### EIDA routing
+
+`Not classified` :
+
+`Information` :
+
+`Warning` : 
+
+`Average` : 
+
+`High` : 
+
+`Disaster` : 
+
+### station
+
+`Not classified` :
+
+`Information` :
+
+`Warning` : 
+
+`Average` : 
+
+`High` : 
+
+`Disaster` : 
+
+### wfcatalog
+
+`Not classified` :
+
+`Information` :
+
+`Warning` : 
+
+`Average` : 
+
+`High` : 
+
+`Disaster` : 
 
 ## Certificats
 
@@ -27,4 +79,4 @@
 `High` : SSL certificate is invalid
 
 
-## Other?
+## Other TODO
