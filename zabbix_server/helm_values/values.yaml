@@ -23,7 +23,7 @@ zabbixServer:
     port: 10051
 zabbixWeb:
   enabled: true
-  ZBX_SERVER_HOST: zabbix-server
+  ZBX_SERVER_HOST: zbx-server
   ZBX_SERVER_PORT: 10051
   service:
     type: ClusterIP
@@ -31,10 +31,10 @@ zabbixWeb:
 ingress:
   enabled: true
   hosts:
-    - host: eida-oculus.resif.fr
-      paths:
-        - path: /
-          pathType: Prefix
+  - host: eida-oculus.resif.fr
+    paths:
+    - path: /
+      pathType: Prefix
   ingressClassName: nginx
   pathType: Prefix
 sops:
@@ -46,21 +46,21 @@ sops:
   lastmodified: "2025-02-14T10:57:10Z"
   mac: ENC[AES256_GCM,data:jG7OpoSJelnPs9eHzXMJJJ6er45wm1gVnHBDvptFK/w0ZPNB7FIHNqqhl0/y9KKLmvAuhdP1zARn6fsjZ4MbPXNP3r5KNROtobuqy8cyRqfdS/e/byVF5xTdbWomwXkl+mTsxjt8cte8VXQYUvAe2tpM27+VyvubGwU2VoVC9uE=,iv:lrK+uj3KXLDp38asEBkMXFU71rRylhzCWb6/oBVg8L8=,tag:2PCoa7KVQ2+cJ2SZvV3d9A==,type:str]
   pgp:
-    - created_at: "2025-02-14T10:57:10Z"
-      enc: |-
-        -----BEGIN PGP MESSAGE-----
+  - created_at: "2025-02-14T10:57:10Z"
+    enc: |-
+      -----BEGIN PGP MESSAGE-----
 
-        hQEMA23uPS/3Y9M2AQgAzB1X9f9N2YSwP1BvkWG6795v6PZMD+N1ZzhHGamBT2Tw
-        HEBHe9Y/L2wDluNX524iePhrlGSVuidWxGh6kPlyWfRcSs4VLlyTbdo5AIqY6iSd
-        yEGQcF5eg6G46pLDE93y6ul9f3Ki+Ph1kaJ9SADMm1haE/R5Z0BizyipFymUuToK
-        HXcyDK0f6a6PPWwFZ6iY9nBaHEfEt+C+No1cJaYmJlq3/koiHnJ7lx5L4Mmi7N1M
-        eCrX9l0nfMNAuM8oQ62/gYN/tNqk9G1CG0R3LajNAw9ysWH2D0xiABWvCAUv81VU
-        6wdHkEOrpzDbhlecOsQ2BwfyPSwZM2lbIWmWuajxn9JeAXOMgxc8wxOH4uSnRToy
-        yioGUTROHhdTxjV72zFK61bbL9G5KjcGq4HwXzAGLKm0/5pUJP6tHWCBHLb9oZjs
-        QAUGrZx3DP/UYmwzX+AF8M8cMAuVHUX+AI2nXkrQvg==
-        =kwwW
-        -----END PGP MESSAGE-----
-      fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
+      hQEMA23uPS/3Y9M2AQgAzB1X9f9N2YSwP1BvkWG6795v6PZMD+N1ZzhHGamBT2Tw
+      HEBHe9Y/L2wDluNX524iePhrlGSVuidWxGh6kPlyWfRcSs4VLlyTbdo5AIqY6iSd
+      yEGQcF5eg6G46pLDE93y6ul9f3Ki+Ph1kaJ9SADMm1haE/R5Z0BizyipFymUuToK
+      HXcyDK0f6a6PPWwFZ6iY9nBaHEfEt+C+No1cJaYmJlq3/koiHnJ7lx5L4Mmi7N1M
+      eCrX9l0nfMNAuM8oQ62/gYN/tNqk9G1CG0R3LajNAw9ysWH2D0xiABWvCAUv81VU
+      6wdHkEOrpzDbhlecOsQ2BwfyPSwZM2lbIWmWuajxn9JeAXOMgxc8wxOH4uSnRToy
+      yioGUTROHhdTxjV72zFK61bbL9G5KjcGq4HwXzAGLKm0/5pUJP6tHWCBHLb9oZjs
+      QAUGrZx3DP/UYmwzX+AF8M8cMAuVHUX+AI2nXkrQvg==
+      =kwwW
+      -----END PGP MESSAGE-----
+    fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
   encrypted_regex: (password)
   mac_only_encrypted: true
   version: 3.9.1
