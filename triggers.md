@@ -1,2 +1,2 @@
-#  Descriptions et explications des triggers Zabbix
+#  Zabbix triggers description
 
