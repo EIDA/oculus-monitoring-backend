@@ -4,7 +4,7 @@
 
 `Not classified` :
 
-`Information` : response code 204
+`Information` : response code http 204, redirection
 
 `Warning` : 
 
@@ -16,7 +16,7 @@
 
 ### Dataselect
 
-`Not classified` :
+`Not classified` : http code 204, redirection
 
 `Information` :
 
@@ -32,9 +32,9 @@
 
 `Not classified` :
 
-`Information` :
+`Information` : response code http 204, redirection
 
-`Warning` : 
+`Warning` : not present in query
 
 `Average` : 
 
@@ -46,7 +46,7 @@
 
 `Not classified` :
 
-`Information` :
+`Information` : response code http 204, redirection
 
 `Warning` : 
 
@@ -60,7 +60,7 @@
 
 `Not classified` :
 
-`Information` :
+`Information` : response code http 204, redirection
 
 `Warning` : 
 
