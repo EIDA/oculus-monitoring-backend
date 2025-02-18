@@ -74,9 +74,13 @@
 
 `Information` : Fingerprint has changed
 
-`Warning` : SSL certificate expires soon (1 day)
+`Warning` : SSL certificate expires in 1 day
+
+`Average` : SSL certificate expires in 2 week
 
 `High` : SSL certificate is invalid
+
+`Disaster` : SSL certificate has expired
 
 
 ## Other TODO
