@@ -1,3 +1,13 @@
+# Oculus Monitoring
+
+For the EIDA Technical Committee and EIDA Management Board that need to improve there services quality, Oculus is a central monitoring and alerting system that tests all the services at EIDA nodes. Unlike the previous situation where the moniitoring was very scattered and uneven, OCULUS will provide a global view of the services status and indicators for keeping track of service quality evolution.
+
+## How to monitor a new thing
+
+So you woud like to monitor something related to EIDA federation ?
+
+Please create a new issue using the template "New Monitoring".
+
 #  Deploying Oculus Zabbix on Kubernetes using Helm
 ## Prerequisites
 - Kubernetes cluster (version 1.20 or later) configured and running
