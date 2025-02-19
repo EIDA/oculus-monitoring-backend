@@ -4,9 +4,25 @@
 
 `Not classified` :
 
-`Information` : response code http 204, redirection
+`Warning` : 
+
+`Average` : response http code 204, no content
+
+`Average` : 
+
+`High` : service is down or not responding since 15min
+
+`High` : content not found "content-type: application/mxl" on https://{#EIDA_WS_ENDPOINT}/fdsnws/availability/1/application.wadl
+
+`Disaster` : service is down or not responding since 1 hours
+
+### Dataselect
+
+`Not classified` :
 
 `Warning` : 
+
+`Average` : response http code 204, no content
 
 `Average` : 
 
@@ -14,61 +30,63 @@
 
 `Disaster` : service is down or not responding since 1 hours
 
-### Dataselect
-
-`Not classified` : http code 204, redirection
-
-`Information` :
-
-`Warning` : 
-
-`Average` : 
-
-`High` : 
-
-`Disaster` : 
-
-### EIDA routing
+### Present in central eida routing
 
 `Not classified` :
 
-`Information` : response code http 204, redirection
-
 `Warning` : not present in query
+
+<font color="red">`test`</font>
+
+`Average` : response http code 204, no content
 
 `Average` : 
 
 `High` : 
 
 `Disaster` : 
+
+### Routing information published at node
+
+`Not classified` :
+
+`Information` :
+
+`Warning` :
+
+`Average` : route network {#EIDA_NETWORK} not found on https://{#EIDA_WS_ENDPOINT}/fdsnws/routing/1/query?service=dataselect&network={#EIDA_NETWORK}
+
+`High` :
+
+`Disaster` :
 
 ### station
 
 `Not classified` :
 
-`Information` : response code http 204, redirection
-
 `Warning` : 
 
 `Average` : 
 
-`High` : 
+`Average` : response http code 204, no content
 
-`Disaster` : 
+`High` : service is down or not responding since 15min
+
+`Disaster` : service is down or not responding since 1 hours
 
 ### wfcatalog
 
 `Not classified` :
 
-`Information` : response code http 204, redirection
-
 `Warning` : 
+
+`Average` : response http code 204, no content
 
 `Average` : 
 
-`High` : 
+`High` : service is down or not responding since 15min
 
-`Disaster` : 
+`Disaster` : service is down or not responding since 1 hours
 
 ## Certificats
 
