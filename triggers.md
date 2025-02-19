@@ -36,8 +36,6 @@
 
 `Warning` : not present in query
 
-<font color="red">`test`</font>
-
 `Average` : response http code 204, no content
 
 `Average` : 
