@@ -1,0 +1,6 @@
+# creation rules are evaluated sequentially, the first match wins
+creation_rules:
+  - path_regex: secrets\.yaml$
+    pgp: "C83ECA1E0B9D719C7FA2470F18E4F5A58801E669"
+    encrypted_regex: "^(data|stringData|secrets)$"
+    mac_only_encrypted: true
