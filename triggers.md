@@ -8,7 +8,9 @@
 
 `Average` : response http code 204, no content
 
-`Average` : 
+`Average` : response http code 403, forbidden
+
+`Average` : response http code 404, not found
 
 `High` : service is down or not responding since 15min
 
@@ -24,7 +26,9 @@
 
 `Average` : response http code 204, no content
 
-`Average` : 
+`Average` : response http code 403, forbidden
+
+`Average` : response http code 404, not found
 
 `High` : service is down or not responding since 15min
 
@@ -38,7 +42,9 @@
 
 `Average` : response http code 204, no content
 
-`Average` : 
+`Average` : response http code 403, forbidden
+
+`Average` : response http code 404, not found
 
 `High` : 
 
@@ -64,9 +70,11 @@
 
 `Warning` : 
 
-`Average` : 
-
 `Average` : response http code 204, no content
+
+`Average` : response http code 403, forbidden
+
+`Average` : response http code 404, not found
 
 `High` : service is down or not responding since 15min
 
@@ -80,7 +88,9 @@
 
 `Average` : response http code 204, no content
 
-`Average` : 
+`Average` : response http code 403, forbidden
+
+`Average` : response http code 404, not found
 
 `High` : service is down or not responding since 15min
 
