@@ -6,7 +6,7 @@
 
 `Warning` : 
 
-`Average` : response http code 204, no content
+`Average` : response http code 204, no content, require http code 200
 
 `Average` : response http code 403, forbidden
 
@@ -24,7 +24,7 @@
 
 `Warning` : 
 
-`Average` : response http code 204, no content
+`Average` : response http code 204, no content, require http code 200
 
 `Average` : response http code 403, forbidden
 
@@ -40,7 +40,7 @@
 
 `Warning` : not present in query
 
-`Average` : response http code 204, no content
+`Average` : response http code 204, no content, require http code 200
 
 `Average` : response http code 403, forbidden
 
@@ -70,7 +70,7 @@
 
 `Warning` : 
 
-`Average` : response http code 204, no content
+`Average` : response http code 204, no content, require http code 200
 
 `Average` : response http code 403, forbidden
 
@@ -86,7 +86,7 @@
 
 `Warning` : 
 
-`Average` : response http code 204, no content
+`Average` : response http code 204, no content, require http code 200
 
 `Average` : response http code 403, forbidden
 
