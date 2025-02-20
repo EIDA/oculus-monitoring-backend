@@ -34,7 +34,7 @@ Please create a new issue using the template "New Monitoring".
     ```sh
     kubectl create namespace eida-monitoring
     ```
-5. Create databse postgresql
+5. Create database postgresql
     ```sql
     CREATE USER oculus WITH PASSWORD '{password}';
     CREATE DATABASE oculus_zabbix OWNER oculus;
@@ -49,8 +49,8 @@ Please create a new issue using the template "New Monitoring".
     --version $ZABBIX_CHART_VERSION \
     -f values.yaml -n eida-monitoring --debug
     ```
-## Accessing the Zabbix Application
-- Port forwad
+## Accessing the Zabbix Application (for development)
+- Port forward
     ```sh
     kubectl port-forward service/oculus-zabbix-zabbix-web 8888:80 -n eida-monitoring
     ```
