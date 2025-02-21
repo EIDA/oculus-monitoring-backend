@@ -6,17 +6,17 @@
 
 `Warning` : 
 
-`Average` : response http code 204, no content, require http code 200
+`Average` : response http code **204** (no content), require http code **200** (OK)
 
-`Average` : response http code 403, forbidden
+`Average` : response http code **403** (forbidden)
 
-`Average` : response http code 404, not found
+`Average` : response http code **404** (not found)
 
-`High` : service is down or not responding since 15min
+`High` : service is **down** or **not responding** since **15 min**
 
-`High` : content not found "content-type: application/mxl" on https://{#EIDA_WS_ENDPOINT}/fdsnws/availability/1/application.wadl
+`High` : content **not found** "content-type: application/mxl" on **https://{#EIDA_WS_ENDPOINT}/fdsnws/availability/1/application.wadl**
 
-`Disaster` : service is down or not responding since 1 hours
+`Disaster` : service is **down** or **not responding** since **1 hour**
 
 ### Dataselect
 
@@ -24,15 +24,15 @@
 
 `Warning` : 
 
-`Average` : response http code 204, no content, require http code 200
+`Average` : response http code **204** (no content), require http code **200** (OK)
 
-`Average` : response http code 403, forbidden
+`Average` : response http code **403** (forbidden)
 
-`Average` : response http code 404, not found
+`Average` : response http code **404** (not found)
 
-`High` : service is down or not responding since 15min
+`High` : service is **down** or **not responding** since **15 min**
 
-`Disaster` : service is down or not responding since 1 hours
+`Disaster` : service is **down** or **not responding** since **1 hour**
 
 ### Present in central eida routing
 
@@ -40,11 +40,11 @@
 
 `Warning` : not present in query
 
-`Average` : response http code 204, no content, require http code 200
+`Average` : response http code **204** (no content), require http code **200** (OK)
 
-`Average` : response http code 403, forbidden
+`Average` : response http code **403** (forbidden)
 
-`Average` : response http code 404, not found
+`Average` : response http code **404** (not found)
 
 `High` : 
 
@@ -58,7 +58,7 @@
 
 `Warning` :
 
-`Average` : route network {#EIDA_NETWORK} not found on https://{#EIDA_WS_ENDPOINT}/fdsnws/routing/1/query?service=dataselect&network={#EIDA_NETWORK}
+`Average` : route network **{#EIDA_NETWORK}** **not found** on **https://{#EIDA_WS_ENDPOINT}/fdsnws/routing/1/query?service=dataselect&network={#EIDA_NETWORK}**
 
 `High` :
 
@@ -70,15 +70,15 @@
 
 `Warning` : 
 
-`Average` : response http code 204, no content, require http code 200
+`Average` : response http code **204** (no content), require http code **200** (OK)
 
-`Average` : response http code 403, forbidden
+`Average` : response http code **403** (forbidden)
 
-`Average` : response http code 404, not found
+`Average` : response http code **404** (not found)
 
-`High` : service is down or not responding since 15min
+`High` : service is **down** or **not responding** since **15 min**
 
-`Disaster` : service is down or not responding since 1 hours
+`Disaster` : service is **down** or **not responding** since **1 hour**
 
 ### wfcatalog
 
@@ -86,27 +86,27 @@
 
 `Warning` : 
 
-`Average` : response http code 204, no content, require http code 200
+`Average` : response http code **204** (no content), require http code **200** (OK)
 
-`Average` : response http code 403, forbidden
+`Average` : response http code **403** (forbidden)
 
-`Average` : response http code 404, not found
+`Average` : response http code **404** (not found)
 
-`High` : service is down or not responding since 15min
+`High` : service is **down** or **not responding** since **15 min**
 
-`Disaster` : service is down or not responding since 1 hours
+`Disaster` : service is **down** or **not responding** since **1 hour**
 
 ## Certificats
 
-`Information` : Fingerprint has changed
+`Information` : Fingerprint has **changed**
 
-`Warning` : SSL certificate expires in 1 day
+`Warning` : SSL certificate expires in **1 day**
 
-`Average` : SSL certificate expires in 2 week
+`Average` : SSL certificate expires in **2 week**
 
-`High` : SSL certificate is invalid
+`High` : SSL certificate is **invalid**
 
-`Disaster` : SSL certificate has expired
+`Disaster` : SSL certificate has **expired**
 
 
 ## Other TODO
