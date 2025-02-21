@@ -1,12 +1,18 @@
 #  Zabbix triggers description
+
+Zabbix have 6 levels of severity :
+- Not classified
+- Information
+- Warning
+- Average
+- High
+- Disaster
+
+# Zabbix  triggers definition
 ## Webservices
 ### Availability
 
-`Not classified` :
-
-`Warning` : 
-
-`Average` : response http code **204** (no content), require http code **200** (OK)
+`Average` : response http code **204** (no content), require http code **200** (OK) | 
 
 `Average` : response http code **403** (forbidden)
 
@@ -20,10 +26,6 @@
 
 ### Dataselect
 
-`Not classified` :
-
-`Warning` : 
-
 `Average` : response http code **204** (no content), require http code **200** (OK)
 
 `Average` : response http code **403** (forbidden)
@@ -36,8 +38,6 @@
 
 ### Present in central eida routing
 
-`Not classified` :
-
 `Warning` : not present in query
 
 `Average` : response http code **204** (no content), require http code **200** (OK)
@@ -46,29 +46,11 @@
 
 `Average` : response http code **404** (not found)
 
-`High` : 
-
-`Disaster` : 
-
 ### Routing information published at node
-
-`Not classified` :
-
-`Information` :
-
-`Warning` :
 
 `Average` : route network **{#EIDA_NETWORK}** **not found** on **https://{#EIDA_WS_ENDPOINT}/fdsnws/routing/1/query?service=dataselect&network={#EIDA_NETWORK}**
 
-`High` :
-
-`Disaster` :
-
 ### station
-
-`Not classified` :
-
-`Warning` : 
 
 `Average` : response http code **204** (no content), require http code **200** (OK)
 
@@ -81,10 +63,6 @@
 `Disaster` : service is **down** or **not responding** since **1 hour**
 
 ### wfcatalog
-
-`Not classified` :
-
-`Warning` : 
 
 `Average` : response http code **204** (no content), require http code **200** (OK)
 
