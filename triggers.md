@@ -9,10 +9,10 @@
 
 # Zabbix  triggers definition
 ## Webservices
-### Availability, Dataselect, station, wfcatalog
+### Availability, Dataselect, Station, WFCatalog
 ### | Step 1 : get documentation
 
-`Average` : response http code **204** (no content), require http code **200** (OK) | 
+`Average` : response http code **204** (no content), require http code **200** (OK) 
 
 `Average` : response http code **403** (forbidden)
 
@@ -24,7 +24,7 @@
 
 ### | Step 2 : simple request
 
-`Average` : response http code **204** (no content), require http code **200** (OK) | 
+`Average` : response http code **204** (no content), require http code **200** (OK)
 
 `Average` : response http code **403** (forbidden)
 
