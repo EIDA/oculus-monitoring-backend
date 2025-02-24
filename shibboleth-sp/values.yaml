@@ -19,28 +19,29 @@ config:
   # Le niveau et format de log du serveur apache
   # avec un exemple de format permettant de logguer les attributs venant de la fédé
   RENATER_SP_HTTPD_LOG_LEVEL: "info ssl:warn"
-  RENATER_SP_HTTPD_LOG_FORMAT: '%h \"%{Shib-Identity-Provider}i\" \"%{eppn}i\" \"%{primary-affiliation}i\" \"%{supannEtablissement}i\" %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"'
+  # RENATER_SP_HTTPD_LOG_FORMAT: |
+  #  %h \"%{Shib-Identity-Provider}i\" \"%{eppn}i\" \"%{primary-affiliation}i\" \"%{supannEtablissement}i\" %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"
   # permet de forcer apache à fermer les connexion pour pouvoir rafraîchir
   # la resolution de nom des proxypass car dans un context docker, les ip des
   # conteneurs peuvent changer
   # voir aussi https://httpd.apache.org/docs/2.4/mod/mod_proxy.html#proxypass
-  RENATER_SP_HTTPD_PROXYPASS_DISABLEREUSE: 'on'
+  RENATER_SP_HTTPD_PROXYPASS_DISABLEREUSE: "on"
   # Les correspondances entre les chemins dans l'URL et les URL des serveurs backend proxifiés.
   # il est possible de créer 10 couples ..._PUBLIC_PATH_* / ..._PUBLIC_PROXY_TO_*
   # et 10 couples ..._PROTECTED_PATH_* / ..._PROTECTED_PROXY_TO_*
   # Il est obligatoire de positionner au moins un couple PUBLIC et un couple PROTECTED
   RENATER_SP_HTTPD_PUBLIC_PATH_0: "/"
   RENATER_SP_HTTPD_PUBLIC_PROXY_TO_0: "http://backend-example-home:8080/"
-  RENATER_SP_HTTPD_PUBLIC_PATH_1: "/api/"
-  RENATER_SP_HTTPD_PUBLIC_PROXY_TO_1: "http://backend-example-api:8080/api/v1/"
-  RENATER_SP_HTTPD_PUBLIC_PATH_2: '^/([0-9]{8}[0-9X]{1})\.xml'
-  RENATER_SP_HTTPD_PUBLIC_PROXY_TO_2: "http://backend-example-api:8080/api/v1/export/$1/xml"
-  RENATER_SP_HTTPD_PROTECTED_PATH_0: "/my-protected-url/"
-  RENATER_SP_HTTPD_PROTECTED_PROXY_TO_0: "http://backend-example-protected:8080/my-protected-url/"
-  RENATER_SP_HTTPD_PROTECTED_PATH_1: "/my-protected-url2/"
-  RENATER_SP_HTTPD_PROTECTED_PROXY_TO_1: "http://backend-example-protected2:8080/my-protected-url2/"
-  RENATER_SP_HTTPD_PROTECTED_REQUIRE_1_0: "Require shib-attr Shib-Identity-Provider https://test-idp.federation.renater.fr/idp/shibboleth"
-  RENATER_SP_HTTPD_PROTECTED_REQUIRE_1_1: "Require shib-attr eppn etudiant2@test-renater.fr"
+  # RENATER_SP_HTTPD_PUBLIC_PATH_1: "/api/"
+  # RENATER_SP_HTTPD_PUBLIC_PROXY_TO_1: "http://backend-example-api:8080/api/v1/"
+  # RENATER_SP_HTTPD_PUBLIC_PATH_2: '^/([0-9]{8}[0-9X]{1})\.xml'
+  # RENATER_SP_HTTPD_PUBLIC_PROXY_TO_2: "http://backend-example-api:8080/api/v1/export/$1/xml"
+  # RENATER_SP_HTTPD_PROTECTED_PATH_0: "/my-protected-url/"
+  # RENATER_SP_HTTPD_PROTECTED_PROXY_TO_0: "http://backend-example-protected:8080/my-protected-url/"
+  # RENATER_SP_HTTPD_PROTECTED_PATH_1: "/my-protected-url2/"
+  # RENATER_SP_HTTPD_PROTECTED_PROXY_TO_1: "http://backend-example-protected2:8080/my-protected-url2/"
+  # RENATER_SP_HTTPD_PROTECTED_REQUIRE_1_0: "Require shib-attr Shib-Identity-Provider https://test-idp.federation.renater.fr/idp/shibboleth"
+  # RENATER_SP_HTTPD_PROTECTED_REQUIRE_1_1: "Require shib-attr eppn etudiant2@test-renater.fr"
 
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
@@ -78,10 +79,12 @@ podAnnotations: {}
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 podLabels: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -100,11 +103,12 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: federation-sp.resif.fr
+    - host: sp.resif.fr
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -113,7 +117,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -128,12 +133,14 @@ resources: {}
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
   httpGet:
-    path: /
+    path: /Shibboleth.sso/Metadata
     port: 443
+    scheme: HTTPS
 readinessProbe:
   httpGet:
-    path: /
+    path: /Shibboleth.sso/Metadata
     port: 443
+    scheme: HTTPS
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:

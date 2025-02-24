@@ -3,8 +3,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   labels:
-    app: wsdataselect
-    context: {{ .Values.context }}
+    {{- include "shibboleth-sp.labels" . | nindent 8 }}
+    {{- with .Values.podLabels }}
+    {{- toYaml . | nindent 8 }}
+    {{- end }}
   name: {{ include "shibboleth-sp.fullname" . }}
 data:
   {{- range $key, $val := .Values.config }}

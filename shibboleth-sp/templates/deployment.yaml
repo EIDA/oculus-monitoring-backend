@@ -15,7 +15,7 @@ spec:
     metadata:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
-        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/secrets.yaml") . | sha256sum }}
       labels:
         {{- include "shibboleth-sp.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
@@ -32,15 +32,14 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        - name: config
-          configMap:
-            name: {{ include "shibboleth-sp.fullname" . }}
-        - name: secret
+        - name: secrets
           secret:
             secretName: {{ include "shibboleth-sp.fullname" . }}
             items:
-              key: SERVER_KEY
-              path: {{ .Values.config.RENATER_SP_CERTIFICATE_KEY }}
+              - key: SERVER_KEY
+                path: "server.key" # {{ .Values.config.RENATER_SP_CERTIFICATE_KEY }}
+              - key: SERVER_CRT
+                path: "server.crt" # {{ .Values.config.RENATER_SP_CERTIFICATE_KEY }}
 
       containers:
         - name: {{ .Chart.Name }}
@@ -67,16 +66,10 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           volumeMounts:
-            - name: config
-              mountPath: /etc/shibboleth/{{ .Values.config.RENATER_SP_CERTIFICATE_CRT }}
-              subPath: SERVER_CRT
             - name: secrets
-              mountPath: /etc/shibboleth/{{ .Values.config.RENATER_SP_CERTIFICATE_KEY }}
-              subPath: SERVER_KEY
+              mountPath: "/etc/shibboleth/ssl"
           envFrom:
             - configMapRef:
-                name: {{ include "shibboleth-sp.fullname" . }}
-            - secretRef:
                 name: {{ include "shibboleth-sp.fullname" . }}
       {{- with .Values.volumes }}
       volumes:
