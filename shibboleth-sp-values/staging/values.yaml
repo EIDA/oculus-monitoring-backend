@@ -1,0 +1,18 @@
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+  hosts:
+    - host: sp-staging.resif.fr
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+
+config:
+  RENATER_SP_TEST_OR_PROD: TEST
+  RENATER_SP_ENTITY_ID: "https://sp-staging.resif.fr"
+  RENATER_SP_HTTPD_SERVER_NAME: "https://sp-staging.resif.fr"
+  RENATER_SP_HTTPD_PUBLIC_PATH_0: "/eida-oculus/"
+  RENATER_SP_HTTPD_PUBLIC_PROXY_TO_0: "http://ws-staging.resif.fr/eida-oculus"
+
+  # RENATER_SP_HTTPD_PROTECTED_REQUIRE_0_0: "Require shib-attr Shib-Identity-Provider https://test-idp.federation.renater.fr/idp/shibboleth"

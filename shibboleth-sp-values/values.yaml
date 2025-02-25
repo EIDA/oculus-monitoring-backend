@@ -1,9 +1,0 @@
-ingress:
-  enabled: true
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-  hosts:
-    - host: sp.resif.fr
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
