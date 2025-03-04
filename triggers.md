@@ -12,11 +12,11 @@
 ### Availability, Dataselect, Station, WFCatalog
 ### | Step 1 : get documentation
 
-`Average` : response http code **204** (no content), require http code **200** (OK) 
+`Average` : response http code **204** *(no content)*, require http code **200** (OK)* 
 
-`Average` : response http code **403** (forbidden)
+`Average` : response http code **403** *(forbidden)*
 
-`Average` : response http code **404** (not found)
+`Average` : response http code **404** *(not found)*
 
 `High` : service is **down** or **not responding** since **15 min**
 
@@ -24,11 +24,11 @@
 
 ### | Step 2 : simple request
 
-`Average` : response http code **204** (no content), require http code **200** (OK)
+`Average` : response http code **204** *(no content)*, require http code **200** (OK)*
 
-`Average` : response http code **403** (forbidden)
+`Average` : response http code **403** *(forbidden)*
 
-`Average` : response http code **404** (not found)
+`Average` : response http code **404** *(not found)*
 
 ### | Step 3 : application.wadl
 
@@ -39,15 +39,15 @@
 
 `Warning` : not present in query
 
-`Average` : response http code **204** (no content), require http code **200** (OK)
+`Average` : response http code **204** *(no content)*, require http code **200** *(OK)*
 
-`Average` : response http code **403** (forbidden)
+`Average` : response http code **403** *(forbidden)*
 
-`Average` : response http code **404** (not found)
+`Average` : response http code **404** *(not found)*
 
 ### Routing information published at node
 #### | Step 1 : EIDA routing XML file
-`Average` : route network **{#EIDA_NETWORK}** **not found** on **https://{#EIDA_WS_ENDPOINT}/fdsnws/routing/1/query?service=dataselect&network={#EIDA_NETWORK}**
+`Average` : route network **{#EIDA_NETWORK}** *(not found)* on **https://{#EIDA_WS_ENDPOINT}/fdsnws/routing/1/query?service=dataselect&network={#EIDA_NETWORK}**
 
 ## Certificats
 
