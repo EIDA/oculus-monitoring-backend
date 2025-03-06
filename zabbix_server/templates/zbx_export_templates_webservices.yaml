@@ -38,13 +38,15 @@ zabbix_export:
             - name: application.wadl
               url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/availability/1/application.wadl'
               follow_redirects: 'NO'
-              required: wadl.dev.java.net
+              retrieve_mode: HEADERS
+              required: 'content-type: application/xml'
               status_codes: '200'
           tags:
             - tag: Application
               value: fdsn
         - uuid: dfcb1e93f5c9489598c189e82f523833
           name: dataselect
+          delay: 15m
           steps:
             - name: 'dataselect accessible'
               url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/dataselect/1/'
@@ -95,7 +97,7 @@ zabbix_export:
           delay: 15m
           steps:
             - name: 'eida routing XML file'
-              url: 'https://{$EIDA_WS_ENDPOINT}/routing/eida_routing.xml'
+              url: 'https://{$EIDA_WS_ENDPOINT}/{$EIDA_ROUTING_FILE}'
               follow_redirects: 'NO'
               required: 'ns0:route networkCode="{$EIDA_NETWORK}"'
               status_codes: '200'
@@ -104,9 +106,9 @@ zabbix_export:
               value: eidaws
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
-          delay: 5m
+          delay: 15m
           steps:
-            - name: documentation
+            - name: 'get documentation'
               url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/station/1/'
               follow_redirects: 'NO'
               status_codes: '200'
@@ -135,6 +137,7 @@ zabbix_export:
               value: fdsn
         - uuid: a5d4964d6ad84e44829dbb8dddef25cc
           name: wfcatalog
+          delay: 15m
           steps:
             - name: 'get documentation'
               url: 'https://{$EIDA_WS_ENDPOINT}/eidaws/wfcatalog/1/'
@@ -164,3 +167,191 @@ zabbix_export:
         - macro: '{$EIDA_WS_ENDPOINT}'
           value: '{#EIDA_WS_ENDPOINT}'
           description: 'EIDA node endpoint'
+  triggers:
+    - uuid: 9ac0a5b01d6b4cbbb58d89eaac70a86b
+      expression: |
+        last(/Template webservices/web.test.fail[availability])<>0
+        and last(/Template webservices/web.test.error[availability])<>0
+      name: 'Availability all steps'
+      event_name: 'Availability step {ITEM.VALUE} fail, message : {ITEM.VALUE2}'
+      priority: AVERAGE
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: availability
+    - uuid: 38db52fec79a4b4b99562e5bc2881639
+      expression: 'last(/Template webservices/web.test.rspcode[availability,get documentation])<>200'
+      name: 'Availability  step 1 (get documentation) | http code'
+      event_name: 'Availability  step 1 (get documentation) | http code {ITEM.VALUE}'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: availability
+    - uuid: d2fada5f99ca4f55980fb2b9682b0d73
+      expression: 'last(/Template webservices/web.test.rspcode[availability,simple request])<>200'
+      name: 'Availability  step 2 (simple request) | http code'
+      event_name: 'Availability  step 2 (simple request) | http code {ITEM.VALUE}'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: availability
+    - uuid: 1351cbaf9e05426caef3b38deef3f793
+      expression: 'last(/Template webservices/web.test.rspcode[availability,application.wadl])<>200'
+      name: 'Availability step 3 (application.wadl) | http code'
+      event_name: 'Availability step 3 (application.wadl) | http code {ITEM.VALUE}'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: availability
+    - uuid: 0848f9b91db2476a8f9b4394d895b944
+      expression: 'last(/Template webservices/web.test.fail[dataselect])<>0 and last(/Template webservices/web.test.error[dataselect])<>0'
+      name: 'Dataselect all steps'
+      event_name: 'Dataselect step {ITEM.VALUE} fail, message : {ITEM.VALUE2}'
+      priority: AVERAGE
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: dataselect
+    - uuid: a02ec30dd3fe48c5bb3ff34b80b22be4
+      expression: 'last(/Template webservices/web.test.rspcode[dataselect,dataselect accessible])<>200'
+      name: 'Dataselect step 1 (dataselect accessible) | http code'
+      event_name: 'Dataselect step 1 (dataselect accessible) | http code {ITEM.VALUE}'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: dataselect
+    - uuid: 9e35951c0ac145a7983940ae661576af
+      expression: 'last(/Template webservices/web.test.rspcode[dataselect,dataselect short request])<>200'
+      name: 'Dataselect step 2 (short request) | http code'
+      event_name: 'Dataselect step 2 (short request) | http code {ITEM.VALUE}'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: dataselect
+    - uuid: 4f634a677db84eb2bc117fbbb35807cc
+      expression: 'last(/Template webservices/web.test.time[dataselect,application.wadl,resp])<>200'
+      name: 'Dataselect step 3 (appliation.wadl) | http code'
+      event_name: 'Dataselect step 3 (appliation.wadl) | http code {ITEM.VALUE]'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: dataselect
+    - uuid: d1da3fc8a92f4288bb0e533bfefdd3de
+      expression: 'last(/Template webservices/web.test.fail[present in central eida routing])<>0 and last(/Template webservices/web.test.error[present in central eida routing])<>0'
+      name: 'EIDA routing all steps'
+      event_name: 'EIDA routing step {ITEM.VALUE} fail, message : {ITEM.VALUE2}'
+      priority: AVERAGE
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: eida-routing
+    - uuid: 539d93ac906a4f98b2dc485082499140
+      expression: 'last(/Template webservices/web.test.rspcode[present in central eida routing,EIDA Routing infomation])<>200'
+      name: 'EIDA routing | http code'
+      event_name: 'EIDA routing | http code {ITEM.VALUE}'
+      status: DISABLED
+      priority: AVERAGE
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: eida-routing
+    - uuid: ae1352b7f0644200b65fca44b93f9b44
+      expression: 'last(/Template webservices/web.test.fail[routing information published at node])<>0 and last(/Template webservices/web.test.error[routing information published at node])<>0'
+      name: 'Routing information all steps'
+      event_name: 'Routing information step {ITEM.VALUE} fail, message : {ITEM.VALUE2}'
+      priority: AVERAGE
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: routing-information
+    - uuid: 6059c62be99648db9f615735e0e4d9db
+      expression: 'last(/Template webservices/web.test.rspcode[routing information published at node,eida routing XML file])<>200'
+      name: 'Routing Information | http code'
+      event_name: 'Routing Information | http code {ITEM.VALUE}'
+      status: DISABLED
+      priority: AVERAGE
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: routing-information
+    - uuid: f048e2a4d53b46acbfebb77e7d4beb45
+      expression: 'last(/Template webservices/web.test.fail[station])<>0 and last(/Template webservices/web.test.error[station])<>0'
+      name: 'Station all steps'
+      event_name: 'Station step {ITEM.VALUE} fail, message : {ITEM.VALUE2}'
+      priority: AVERAGE
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: station
+    - uuid: a040b238af3c4f149d8373484f6018aa
+      expression: 'last(/Template webservices/web.test.rspcode[station,get documentation])<>200'
+      name: 'Station step 1 (get documentation) | http code'
+      event_name: 'Station step 1 (get documentation) | http code {ITEM.VALUE}'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: station
+    - uuid: a4ea0fc286f94ed8a45c3933b14c1845
+      expression: 'last(/Template webservices/web.test.rspcode[station,short request])<>200'
+      name: 'Station step 2 (short request) | http code'
+      event_name: 'Station step 2 (short request) | http code'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: station
+    - uuid: 8e27c469b65d48ba8683921ce65b7963
+      expression: 'last(/Template webservices/web.test.time[station,application.wadl,resp])<>200'
+      name: 'Station step 3 (application.wadl) | http code'
+      event_name: 'Station step 3 (application.wadl) | http code {ITEM.VALUE}'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: station
+    - uuid: c129ba9cfde84b88836d45cf2ec265ce
+      expression: 'last(/Template webservices/web.test.fail[wfcatalog])<>0 and last(/Template webservices/web.test.error[wfcatalog])<>0'
+      name: 'WFCatalog all steps'
+      event_name: 'WFCatalog step {ITEM.VALUE} fail, message : {ITEM.VALUE2}'
+      priority: AVERAGE
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: station
+    - uuid: a17d1f60b154433e937599a5e0e27093
+      expression: 'last(/Template webservices/web.test.rspcode[wfcatalog,get documentation])<>200'
+      name: 'Wfcatalog step 1 (get documentation) | http code'
+      event_name: 'Wfcatalog step 1 (get documentation) | http code {ITEM.VALUE}'
+      status: DISABLED
+      description: 'response http code {ITEM.VALUE}, require http code 200 (OK)'
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: wfcatalog
+    - uuid: b71d632b20064e56b84f323568c4706e
+      expression: 'last(/Template webservices/web.test.rspcode[wfcatalog,simple query])<>200'
+      name: 'Wfcatalog step 2 (simple query) | http code'
+      event_name: 'Wfcatalog step 2 (simple query) | http code  {ITEM.VALUE}'
+      status: DISABLED
+      manual_close: 'YES'
+      tags:
+        - tag: webservice
+          value: wfcatalog

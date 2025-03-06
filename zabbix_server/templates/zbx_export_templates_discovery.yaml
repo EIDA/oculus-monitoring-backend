@@ -24,6 +24,8 @@ zabbix_export:
               group_links:
                 - group:
                     name: 'EIDA nodes'
+              group_prototypes:
+                - name: '{#EIDA_NODE}'
               templates:
                 - name: 'Template webservices'
                 - name: 'Website certificate by Zabbix agent 2'
