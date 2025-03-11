@@ -3,10 +3,13 @@ eidaNode:
   name: KOERI
   endpoint: eida.koeri.boun.edu.tr
   routingFile: routing/routing.xml
-  serviceParameters: # Set default test parameters for each services
+  serviceParameters:
+    # Set default test parameters for each services
     net: KO
     sta: KMAH
     loc: --
     cha: HHZ
     start: 2025-01-01T00:00:00
     end: 2025-01-01T00:00:05
+    lat: 41.060674
+    lon: 29.063158
