@@ -9,6 +9,9 @@ ingress:
           pathType: ImplementationSpecific
 
 config:
-  RENATER_SP_HTTPD_PUBLIC_PATH_0: "/eida-oculus/"
-  RENATER_SP_HTTPD_PUBLIC_PROXY_TO_0: "http://eida-oculus.resif.fr/"
+  RENATER_SP_ENTITY_ID: "https://sp.resif.fr"
+  RENATER_SP_HTTPD_PUBLIC_PATH_0: "/public"
+  RENATER_SP_HTTPD_PUBLIC_PROXY_TO_0: "http://ws.resif.fr"
+  RENATER_SP_HTTPD_PROTECTED_PATH_0: "/eida-oculus"
+  RENATER_SP_HTTPD_PROTECTED_PROXY_TO_0: "http://eida-oculus.resif.fr"
   # RENATER_SP_HTTPD_PROTECTED_REQUIRE_0_0: "Require shib-attr Shib-Identity-Provider https://test-idp.federation.renater.fr/idp/shibboleth"
