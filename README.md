@@ -81,7 +81,11 @@ eidaNode:
 
 Then deploy (or update) the agent using helm:
 
+
+⚠️ If you want delete host, deleted the host FIRST in the Discovery template, and only then in the Webservice template ⚠️
+
      helm upgrade -i epos-france oculus-zbx-agent -f oculus-zbx-agent-deployments/epos-france.yaml 
+
 
 ## Deploy all agents
 
