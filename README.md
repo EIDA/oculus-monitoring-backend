@@ -81,7 +81,7 @@ eidaNode:
 
 Then deploy (or update) the agent using helm:
 
-     helm upgrade -i epos-france occulus-zbx-agent -f oculus-zbx-agent-deployments/epos-france.yaml 
+     helm upgrade -i epos-france oculus-zbx-agent -f oculus-zbx-agent-deployments/epos-france.yaml 
 
 ## Deploy all agents
 
