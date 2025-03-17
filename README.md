@@ -43,11 +43,9 @@ Please create a new issue using the template "New Monitoring".
 6. Install the Zabbix Helm Chart
     ```sh
     export ZABBIX_CHART_VERSION='7.0.3'
-    helm upgrade --install oculus-zabbix zabbix-community/zabbix \
-    --dependency-update \
-    --create-namespace \
+    helm secrets upgrade --install oculus-zabbix zabbix-community/zabbix \
     --version $ZABBIX_CHART_VERSION \
-    -f values.yaml -n eida-monitoring --debug
+    -f zabbix_server/helm-values/production.yaml
     ```
 ## Accessing the Zabbix Application
 - Port forwad
