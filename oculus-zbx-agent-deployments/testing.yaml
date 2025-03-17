@@ -1,11 +1,11 @@
 ---
 eidaNode:
-  name: ICGC
-  endpoint: ws.icgc.cat
+  name: TESTING
+  endpoint: ws.test.fr
   routingFile: eidaws/routing/routing.xml
   serviceParameters:
-    net: CA
-    sta: CORG
+    net: TT
+    sta: TEST
     loc: --
     cha: HHZ
     start: 2017-06-06T00:00:00
