@@ -1,14 +1,121 @@
 ---
-eidaNode:
-  name: TESTING
-  endpoint: ws.test.fr
-  routingFile: eidaws/routing/routing.xml
-  serviceParameters:
-    net: TT
-    sta: TEST
-    loc: --
-    cha: HHZ
-    start: 2017-06-06T00:00:00
-    end: 2017-06-06T00:00:10
-    lat: 41.369884
-    lon: 2.155952
+node: LMU
+endpoint: erde.geophysik.uni-muenchen.de
+routingFile: eidaws/routing/routing.xml
+onlineCheck:
+  net: BW
+  sta: FFB1
+  loc: ""
+  cha: HHZ
+  start: 2017-05-20T00:00:00
+  end: 2017-05-20T00:00:05
+perfCheck:
+  dataselect:
+    9streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-20T00:01:00
+    54streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-20T00:01:00
+    320streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-20T00:01:00
+    1stream20days:
+      net: BW
+      sta: "FFB1"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-01T00:00:00
+      end: 2017-05-21T00:00:00
+  wfcatalog:
+    9streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-20T00:01:00
+    54streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-20T00:01:00
+    320streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-20T00:01:00
+    1stream20days:
+      net: BW
+      sta: "FFB1"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-01T00:00:00
+      end: 2017-05-21T00:00:00
+  availability:
+    9streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-21T00:00:00
+    54streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-21T00:00:00
+    320streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-21T00:00:00
+    1stream20days:
+      net: BW
+      sta: "FFB1"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-01T00:00:00
+      end: 2017-05-21T00:00:00
+  station:
+    9streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-20T00:01:00
+    54streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: HHZ
+      start: 2017-05-20T00:00:00
+      end: 2017-05-20T00:01:00
+    320streams:
+      net: BW
+      sta: "FFB?"
+      loc: ""
+      cha: "HH?"
+      start: 2017-05-20T00:00:00
+      end: 2017-05-20T00:01:00
