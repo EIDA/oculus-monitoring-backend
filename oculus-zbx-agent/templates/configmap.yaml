@@ -16,9 +16,9 @@ data:
         "{#EIDA_LOCATION}": "{{ .Values.eidaNode.serviceParameters.loc }}",
         "{#EIDA_CHANNEL}": "{{ .Values.eidaNode.serviceParameters.cha }}",
         "{#EIDA_STARTTIME}": "{{ .Values.eidaNode.serviceParameters.start }}",
-        "{#EIDA_ENDTIME}": "{{ .Values.eidaNode.serviceParameters.end }}"
-        "{EIDA_LATITUDE}": "{{ .Values.eidaNode.serviceParameters.lat }}"
-        "{EIDA_LONGITUDE}": "{{ .Values.eidaNode.serviceParameters.lon }}"
+        "{#EIDA_ENDTIME}": "{{ .Values.eidaNode.serviceParameters.end }}",
+        "{#EIDA_LATITUDE}": "{{ .Values.eidaNode.serviceParameters.lat }}",
+        "{#EIDA_LONGITUDE}": "{{ .Values.eidaNode.serviceParameters.lon }}"
       }
     ]
   eida_userparameter.conf: |
