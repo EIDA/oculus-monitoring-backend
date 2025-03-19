@@ -23,7 +23,7 @@ def flatten_yaml(data, parent_key='EIDA', sep='_'):
             items.append((new_key, value))
     return dict(items)
 
-def generate_lld_json(yaml_file, json_file):
+def generate_lld(yaml_file, json_file):
     """
     Generates an LLD JSON file from a YAML file structure
     
@@ -47,10 +47,10 @@ def generate_lld_json(yaml_file, json_file):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python generate_lld_json.py <input_yaml_file> <output_json_file>")
+        print("Usage: python generate_lld.py <input_yaml_file> <output_json_file>")
         sys.exit(1)
     
     input_yaml_file = sys.argv[1]
     output_json_file = sys.argv[2]
     
-    generate_lld_json(input_yaml_file, output_json_file)
+    generate_lld(input_yaml_file, output_json_file)
