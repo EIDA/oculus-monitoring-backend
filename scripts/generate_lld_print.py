@@ -25,10 +25,10 @@ def flatten_yaml(data, parent_key='EIDA', sep='_'):
 
 def generate_lld_json(yaml_file):
     """
-    Generates an LLD JSON output from a YAML file structure and prints it to the console.
+    Generates an LLD JSON output from a YAML file structure and prints it to the console
     
     Args:
-        yaml_file (str): The path to the input YAML file.
+        yaml_file (str): The path to the input YAML file
     """
     # Load the YAML file
     with open(yaml_file, 'r') as yf:
@@ -51,3 +51,4 @@ if __name__ == "__main__":
     input_yaml_file = sys.argv[1]
     
     generate_lld_json(input_yaml_file)
+
