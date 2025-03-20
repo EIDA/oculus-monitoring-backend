@@ -77,8 +77,6 @@ spec:
               mountPath: /etc/zabbix/zabbix_agentd.d/hostinterface.conf
               subPath: hostinterface.conf
             - name: config
-              mountPath: /etc/zabbix/zabbix_agentd.d/generate_lld.py
-              subPath: generate_lld.py
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
