@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "oculus-zbx-agent.fullname" . }}-pre-upgrade
+  labels:
+    {{- include "oculus-zbx-agent.labels" . | nindent 4 }}
+spec:
+  template:
+    spec:
+      containers:
+        - name: generate-lld
+          image: python:3.9-slim
+          command: ["sh", "-c"]
+          args:
+            - |
+              python3 /scripts/generate-lld-print.py > /output/lld-test.json
+          volumeMounts:
+            - name: script-volume
+              mountPath: /scripts
+            - name: output-volume
+              mountPath: /output
+      restartPolicy: Never
+      volumes:
+        - name: script-volume
+          configMap:
+            name: generate-lld-script
+        - name: output-volume
+          emptyDir: {}
+  backoffLimit: 1
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: generate-lld-script
+data:
+  generate_lld_print.py: |0
+    # Add the content of your generate_lld_print.py script here
+    import json
+    print(json.dumps({"example": "output"}))
+    
