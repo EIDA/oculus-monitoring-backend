@@ -1,0 +1,11 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "oculus-zbx-agent.fullname" . }}-pre-upgrade
+  labels:
+    {{- include "oculus-zbx-agent.labels" . | nindent 4 }}
+spec:
+  template:
+    metadata:
+      name: {{ include "oculus-zbx-agent.fullname" .}}-pre-upgrade
+      
