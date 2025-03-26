@@ -8,7 +8,7 @@ def flatten_yaml(data, parent_key='EIDA', sep='_'):
     
     Args:
         data (dict) : The dictionary to flatten
-        parent_key (str)) : The base key to prefix
+        parent_key (str) : The base key to prefix
         sep (str) : The separator between keys
     
     Returns:
@@ -38,7 +38,7 @@ def generate_lld_json(yaml_file):
     flattened_data = flatten_yaml(data)
     
     # Create the LLD data with the desired format
-    lld_data = {f"{{#{key}}}": "{{ .Values.eidaNode.serviceParameters." + key.lower().replace('eida_', '') + " }}" for key in flattened_data.keys()}
+    lld_data = {f"{{#{key}}}": "{{ .Values." + key.lower().replace('eida_', '') + " }}" for key in flattened_data.keys()}
     
     # Print the LLD data as JSON to the console
     print(json.dumps([lld_data], indent=4))
@@ -51,4 +51,3 @@ if __name__ == "__main__":
     input_yaml_file = sys.argv[1]
     
     generate_lld_json(input_yaml_file)
-
