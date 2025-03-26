@@ -2,33 +2,33 @@ import yaml
 import json
 import sys
 
-def flatten_yaml(data, parent_key='EIDA', sep='_'):
+def flatten_yaml(data, parent_key='', sep='_'):
     """
-    Recursively flatens a nested dictionary, prefixing keys with 'EIDA_' and convertingg them to uprrcase
+    Recursively flattens a nested dictionayr, prefixing keys with a parent key and convetring them to uppercase
     
-    Args:
-        data (dict) : The dictionary to flatten
+    Args :
+        data (dict): The dictionary to flatten
         parent_key (str) : The base key to prefix
-        sep (str) : The separator between keys
+        sep (str): The separator between keys
     
     Returns:
-        dict : A flattened dictionary with prefixed keys
+        dict: A flattened dictionary with prefixe keys
     """
     items = []
     for key, value in data.items():
-        new_key = f"{parent_key}{sep}{key}".upper()
+        new_key = f"{parent_key}{sep}{key}".upper() if parent_key else key.upper()
         if isinstance(value, dict):
             items.extend(flatten_yaml(value, new_key, sep=sep).items())
         else:
             items.append((new_key, value))
     return dict(items)
 
-def generate_lld_json(yaml_file):
+def generate_lld(yaml_file):
     """
-    Generates an LLD JSON output from a YAML file structure and prints it to the console
+    Generates a LLD JSON output from a YAML file struture and prints it to the console
     
     Args:
-        yaml_file (str): The path to the input YAML file
+        yaml_file (str): The path to the input YAML fille
     """
     # Load the YAML file
     with open(yaml_file, 'r') as yf:
@@ -38,16 +38,16 @@ def generate_lld_json(yaml_file):
     flattened_data = flatten_yaml(data)
     
     # Create the LLD data with the desired format
-    lld_data = {f"{{#{key}}}": "{{ .Values." + key.lower().replace('eida_', '') + " }}" for key in flattened_data.keys()}
+    lld_data = {f"{{#{key}}}": f"{{{{ .Values.{value} }}}}" for key, value in flattened_data.items()}
     
     # Print the LLD data as JSON to the console
     print(json.dumps([lld_data], indent=4))
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python generate_lld_json.py <input_yaml_file>")
+        print("Usage: python generate_lld_print.py <input_yaml_file>")
         sys.exit(1)
     
     input_yaml_file = sys.argv[1]
     
-    generate_lld_json(input_yaml_file)
+    generate_lld(input_yaml_file)

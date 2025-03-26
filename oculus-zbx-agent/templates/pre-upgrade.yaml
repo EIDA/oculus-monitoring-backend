@@ -13,7 +13,7 @@ spec:
           command: ["sh", "-c"]
           args:
             - |
-              python3 /scripts/generate-lld-print.py > /output/lld-test.json
+              python3 /scripts/generate_lld_print.py > /output/lld_test.json
           volumeMounts:
             - name: script-volume
               mountPath: /scripts
