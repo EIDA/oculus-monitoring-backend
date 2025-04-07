@@ -5,22 +5,8 @@ metadata:
   labels:
     {{- include "oculus-zbx-agent.labels" . | nindent 4 }}
 data:
-  monitoring_lld.json: |
-    [
-      {
-        "{#EIDA_WS_ENDPOINT}": "{{ .Values.eidaNode.endpoint}}",
-        "{#EIDA_ROUTING_FILE}": "{{ .Values.eidaNode.routingFile}}",
-        "{#EIDA_NODE}": "{{ .Values.eidaNode.name }}",
-        "{#EIDA_NETWORK}": "{{ .Values.eidaNode.serviceParameters.net }}",
-        "{#EIDA_STATION}": "{{ .Values.eidaNode.serviceParameters.sta }}",
-        "{#EIDA_LOCATION}": "{{ .Values.eidaNode.serviceParameters.loc }}",
-        "{#EIDA_CHANNEL}": "{{ .Values.eidaNode.serviceParameters.cha }}",
-        "{#EIDA_STARTTIME}": "{{ .Values.eidaNode.serviceParameters.start }}",
-        "{#EIDA_ENDTIME}": "{{ .Values.eidaNode.serviceParameters.end }}",
-        "{#EIDA_LATITUDE}": "{{ .Values.eidaNode.serviceParameters.lat }}",
-        "{#EIDA_LONGITUDE}": "{{ .Values.eidaNode.serviceParameters.lon }}"
-      }
-    ]
+  zbx_lld: |
+{{ .Values.zbx_lld | nindent 6 }}
   eida_userparameter.conf: |
     UserParameter=eida.lld,cat /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
   hostinterface.conf: |
