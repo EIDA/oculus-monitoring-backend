@@ -76,7 +76,6 @@ spec:
             - name: config
               mountPath: /etc/zabbix/zabbix_agentd.d/hostinterface.conf
               subPath: hostinterface.conf
-            - name: config
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}

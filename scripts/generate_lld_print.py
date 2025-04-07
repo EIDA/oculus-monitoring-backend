@@ -25,7 +25,7 @@ def flatten_yaml(data, parent_key='', sep='_'):
 
 def generate_lld(yaml_file):
     """
-    Generates a LLD JSON output from a YAML file struture and prints it to the console
+    Generates a LLD JSON output from a YAML file struture and print in  the console
     
     Args:
         yaml_file (str): The path to the input YAML fille
@@ -38,7 +38,7 @@ def generate_lld(yaml_file):
     flattened_data = flatten_yaml(data)
     
     # Create the LLD data with the desired format
-    lld_data = {f"{{#{key}}}": f"{{{{ .Values.{value} }}}}" for key, value in flattened_data.items()}
+    lld_data = {f"{{#{key}}}": f"{value}" for key, value in flattened_data.items()}
     
     # Print the LLD data as JSON to the console
     print(json.dumps([lld_data], indent=4))
