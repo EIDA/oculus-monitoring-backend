@@ -30,21 +30,29 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        - name: config
+        - name: zbx_lld_init
           configMap:
             name: {{ include "oculus-zbx-agent.fullname" . }}
+            items:
+              - key: zbx_lld
+                path: node.yaml
+        - name: zbx_lld_output
+          emptyDir: {}
+
       initContainers:
         - name: {{- include "oculus-zbx-agent.fullname"}}-pre-upgrade
           image: python:3.12-slim
           command: ['sh', '-c']
           args:
             - |
-              python3 /scripts/generate_lld_print.py {{ .Values.inputYaml }} > /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
+              python3 /scripts/generate_lld_print.py {{ .Values.inputYaml }} > /output/monitoring_lld.json
           volumeMounts:
-            - name: config
-              mountPath: /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
-              subPath: monitoring_lld.json
-              
+            - name: zbx_lld_init
+              mountPath: /config/node.yaml
+              subPath: node.yaml
+            - name: zbx_lld_output
+              mountPath: /output
+
       containers:
         - name: {{ .Chart.Name }}
           {{- with .Values.securityContext }}
@@ -83,11 +91,11 @@ spec:
               mountPath: /etc/zabbix/zabbix_agentd.d/eida_userparameter.conf
               subPath: eida_userparameter.conf
             - name: config
-              mountPath: /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
-              subPath: monitoring_lld.json
-            - name: config
               mountPath: /etc/zabbix/zabbix_agentd.d/hostinterface.conf
               subPath: hostinterface.conf
+            - name: config_lld
+              mountPath: /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
+              subPath: monitoring_lld.json
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
