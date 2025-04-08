@@ -5,8 +5,8 @@ metadata:
   labels:
     {{- include "oculus-zbx-agent.labels" . | nindent 4 }}
 data:
-  zbx_lld: |
-{{ .Values.zbx_lld | nindent 6 }}
+  zbx_lld: |-
+{{ .Values.zbx_lld | nindent 4 }}
   eida_userparameter.conf: |
     UserParameter=eida.lld,cat /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
   hostinterface.conf: |
