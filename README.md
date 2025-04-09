@@ -39,7 +39,7 @@ Please create a new issue using the template "New Monitoring".
     CREATE USER oculus WITH PASSWORD '{password}';
     CREATE DATABASE oculus_zabbix OWNER oculus;
     ```
-     
+
 6. Install the Zabbix Helm Chart
     ```sh
     export ZABBIX_CHART_VERSION='7.0.3'
@@ -68,7 +68,7 @@ Set the content according to this template:
 ``` yaml
 ---
 eidaNode:
-  name: MyNodeName    # Will be used as identifier for the agent
+name: MyNodeName    # Will be used as identifier for the agent
   endpoint: ws.resif.fr  # The endpoint to test
   serviceParameters:   # Set default test parameters for each services
     net: FR
@@ -84,12 +84,12 @@ Then deploy (or update) the agent using helm:
 
 ⚠️ If you want delete host, deleted the host FIRST in the Discovery template, and only then in the Webservice template ⚠️
 
-     helm upgrade -i epos-france oculus-zbx-agent -set-file zbx_lld=oculus-zbx-agent-deployments/epos-france.yaml 
+    helm upgrade -i epos-france oculus-zbx-agent --set-file zbx_lld=oculus-zbx-agent-deployments/epos-france.yaml 
 
 
 ## Deploy all agents
 
-     for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent --set-file zbx_lld=$f; done
+    for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent --set-file zbx_lld=$f; done
 
 
 # Zabbix configuration
