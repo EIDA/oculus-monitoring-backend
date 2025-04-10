@@ -34,12 +34,12 @@ Please create a new issue using the template "New Monitoring".
     ```sh
     kubectl create namespace eida-monitoring
     ```
-5. Create database postgresql
+5. Create DataBase postgresql
     ```sql
     CREATE USER oculus WITH PASSWORD '{password}';
     CREATE DATABASE oculus_zabbix OWNER oculus;
     ```
-6. Connection to the database
+6. Connection to the DataBase
 
       We recommend to use ```pgcli```
 
