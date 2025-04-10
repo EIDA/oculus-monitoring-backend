@@ -39,8 +39,20 @@ Please create a new issue using the template "New Monitoring".
     CREATE USER oculus WITH PASSWORD '{password}';
     CREATE DATABASE oculus_zabbix OWNER oculus;
     ```
+6. Connection to the database
 
-6. Install the Zabbix Helm Chart
+      We recommend to use ```pgcli```
+
+      Usage :
+    ```
+    pgcli postgres://{user}@{netloc}/{dbname}
+    ```
+    Example:
+
+    ```
+    pgcli postgres://oculus@bdd-resif.fr/oculus_zabbix
+    ```
+7. Install the Zabbix Helm Chart
     ```sh
     export ZABBIX_CHART_VERSION='7.0.3'
     helm upgrade --install oculus-zabbix zabbix-community/zabbix \
