@@ -12,4 +12,6 @@ data:
   hostinterface.conf: |
     # When a host is discovered, this parameter is used for DNS as default interface
     HostInterface={{ include "oculus-zbx-agent.fullname" . }}
+  generate_lld.py: |-
+    {{- $.Files.Get "scripts/generate_lld.py" | nindent 4 }}
 

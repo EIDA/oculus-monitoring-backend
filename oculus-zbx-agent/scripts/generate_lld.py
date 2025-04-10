@@ -1,3 +1,10 @@
+#! /bin/env -S uv run
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml",
+# ]
+# ///
 import yaml
 import json
 import sys
@@ -45,7 +52,7 @@ def generate_lld(yaml_file):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python generate_lld_print.py <input_yaml_file>")
+        print("Usage: python generate_lld.py <input_yaml_file>")
         sys.exit(1)
     
     input_yaml_file = sys.argv[1]
