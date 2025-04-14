@@ -1,14 +1,26 @@
 ---
-eidaNode:
-  name: BGS
-  endpoint: eida.bgs.ac.uk
-  routingFile: routing.xml
-  serviceParameters:
-    net: GB
-    sta: TARL
-    loc: "00"
-    cha: HHZ
-    start: 2024-11-30T00:01:00
-    end: 2024-11-30T00:01:10
-    lat: 52.879665
-    lon: -1.0778
+node: BGS
+endpoint: eida.bgs.ac.uk
+routing.xml: routing.xml
+onlineCheck:
+  net: GB
+  sta: TARL
+  loc: "00"
+  cha: HHZ
+  start: 2024-11-30T00:01:00
+  end: 2024-11-30T00:01:10
+
+# ---
+# eidaNode:
+#   name: BGS
+#   endpoint: eida.bgs.ac.uk
+#   routingFile: routing.xml
+#   serviceParameters:
+#     net: GB
+#     sta: TARL
+#     loc: "00"
+#     cha: HHZ
+#     start: 2024-11-30T00:01:00
+#     end: 2024-11-30T00:01:10
+#     lat: 52.879665
+#     lon: -1.0778

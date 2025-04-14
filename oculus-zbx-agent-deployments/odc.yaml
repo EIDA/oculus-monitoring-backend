@@ -1,14 +1,26 @@
 ---
-eidaNode:
-  name: ODC
-  endpoint: www.orfeus-eu.org
-  routingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
-  serviceParameters:
-    net: NL
-    sta: BHAR
-    loc: --
-    cha: HGZ
-    start: 2017-06-04T00:00:00
-    end: 2017-06-04T00:00:05
-    lat: 36.143497
-    lon: -86.803227
+node: ODC
+endpoint: www.orfeus-eu.org
+routingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
+onlineCheck:
+  net: NL
+  sta: BHAR
+  loc: --
+  cha: HGZ
+  start: 2017-06-04T00:00:00
+  end: 2017-06-04T00:00:05
+
+# ---
+# eidaNode:
+#   name: ODC
+#   endpoint: www.orfeus-eu.org
+#   routingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
+#   serviceParameters:
+#     net: NL
+#     sta: BHAR
+#     loc: --
+#     cha: HGZ
+#     start: 2017-06-04T00:00:00
+#     end: 2017-06-04T00:00:05
+#     lat: 36.143497
+#     lon: -86.803227
