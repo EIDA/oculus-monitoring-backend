@@ -48,7 +48,7 @@ def generate_lld(yaml_file):
     lld_data = {f"{{#{key}}}": f"{value}" for key, value in flattened_data.items()}
     
     # Print the LLD data as JSON to the console
-    print(json.dumps([lld_data], indent=4))
+    print(json.dumps([lld_data], indent=2))
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
