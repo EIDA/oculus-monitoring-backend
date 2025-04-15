@@ -9,18 +9,3 @@ onlineCheck:
   cha: HHZ
   start: 2017-05-20T00:00:00
   end: 2017-05-20T00:00:05
-
-# ---
-# eidaNode:
-#   name: NIEP
-#   endpoint: eida-sc3.infp.ro
-#   routingFile: routing/1/routing.xml
-#   serviceParameters:
-#     net: RO
-#     sta: PLOR1
-#     loc: "00"
-#     cha: HHZ
-#     start: 2017-05-20T00:00:00
-#     end: 2017-05-20T00:00:05
-#     lat: 44.347968
-#     lon: 26.028246

@@ -11,18 +11,3 @@ onlineCheck:
   end: 2025-01-23T00:01:10
   lat: 52.382771
   lon: 13.064120
-
-# ---
-# eidaNode:
-#   name: GFZ
-#   endpoint: geofon.gfz.de
-#   routingFile: "eidaws/routing/1/query?service=dataselect&network=GE"
-#   serviceParameters:
-#     net: GE
-#     sta: KBS
-#     loc: "00"
-#     cha: HHZ
-#     start: 2025-01-23T00:01:00
-#     end: 2025-01-23T00:01:10
-#     lat: 52.382771
-#     lon: 13.064120

@@ -9,18 +9,3 @@ onlineCheck:
   cha: HHZ
   start: 2013-07-04T00:01:00
   end: 2013-07-04T00:01:10
-
-# ---
-# eidaNode:
-#   name: SED
-#   endpoint: eida.ethz.ch
-#   routingFile: eidaws/routing/routing.xml
-#   serviceParameters:
-#     net: CH
-#     sta: MUO
-#     loc: --
-#     cha: HHZ
-#     start: 2013-07-04T00:01:00
-#     end: 2013-07-04T00:01:10
-#     lat: 47.376481
-#     lon: 8.547944
