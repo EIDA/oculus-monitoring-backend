@@ -14,12 +14,12 @@ def flatten_yaml(data, parent_key='', sep='_'):
     Recursively flattens a nested dictionayr, prefixing keys with a parent key and convetring them to uppercase
     
     Args :
-        data (dict): The dictionary to flatten
+        data (dict ) : The dictionary to flatten
         parent_key (str) : The base key to prefix
-        sep (str): The separator between keys
+        sep (str) : The separator between keys
     
     Returns:
-        dict: A flattened dictionary with prefixe keys
+        dict : A flattened dictionary with prefixe keys
     """
     items = []
     for key, value in data.items():
