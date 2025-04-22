@@ -15,7 +15,7 @@ def query_to_yaml(query):
     # Convert lists to single values if they contain only one item
     query_params = {key: value[0] if len(value) == 1 else value for key, value in query_params.items()}
     
-    # Map old keys to new keys
+    # Map shortname
     key_mapping = {
         "network": "net",
         "station": "sta",
