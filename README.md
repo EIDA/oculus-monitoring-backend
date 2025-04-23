@@ -17,59 +17,65 @@ Please create a new issue using the template "New Monitoring".
 - Sufficient resources in the cluster to run Zabbix components
 
 ## Installation Steps
-1. Clone this repository
-    ```sh
-    git clone https://github.com/EIDA/oculus-monitoring-backend
-    ```
-2. Go to .yaml location
-    ```sh
-    cd zabbix_server/helm_values
-    ```
-3. Add the Helm epository
-    ```sh
-    helm repo add zabbix-community https://zabbix-community.github.io/helm-zabbix
-    helm repo update
-    ```
-4. Create a Namespace for Zabbix
-    ```sh
-    kubectl create namespace eida-monitoring
-    ```
-5. Create DataBase postgresql
-    ```sql
-    CREATE USER oculus WITH PASSWORD '{password}';
-    CREATE DATABASE oculus_zabbix OWNER oculus;
-    ```
-6. Connection to the DataBase
+### 1. Clone this repository
+  ```sh
+  git clone https://github.com/EIDA/oculus-monitoring-backend
+  ```
+### 2. Go to .yaml location
+  ```sh
+  cd zabbix_server/helm_values
+  ```
+### 3. Add the Helm epository
+  ```sh
+  helm repo add zabbix-community https://zabbix-community.github.io/helm-zabbix
+  helm repo update
+  ```
+### 4. Create a Namespace for Zabbix
+  ```sh
+  kubectl create namespace eida-monitoring
+  ```
+### 5. Create DataBase postgresql
+  ```sql
+  CREATE USER oculus WITH PASSWORD '{password}';
+  CREATE DATABASE oculus_zabbix OWNER oculus;
+  ```
+### 6. Connection to the DataBase
 
-      We recommend to use ```pgcli```
+  We recommend to use ```pgcli```
 
-      Usage :
-    ```
-    pgcli postgres://{user}@{netloc}/{dbname}
-    ```
-    Example:
+  Usage :
+  ```
+  pgcli postgres://{user}@{netloc}/{dbname}
+  ```
+  Example:
 
-    ```
-    pgcli postgres://oculus@bdd-resif.fr/oculus_zabbix
-    ```
-7. Install the Zabbix Helm Chart
-    ```sh
-    export ZABBIX_CHART_VERSION='7.0.3'
-    helm upgrade --install oculus-zabbix zabbix-community/zabbix \
-    --dependency-update \
-    --create-namespace \
-    --version $ZABBIX_CHART_VERSION \
-    -f values.yaml -n eida-monitoring --debug
-    ```
+  ```
+  pgcli postgres://oculus@bdd-resif.fr/oculus_zabbix
+  ```
+### 7. Install the Zabbix Helm Chart
+
+  Check version of Helm Chart :
+  ```sh
+  helm search repo zabbix-community/zabbix -l
+  ```
+  Apply Helm Chart
+  ```sh
+  export ZABBIX_CHART_VERSION='{latest}'
+  helm upgrade --install oculus-zabbix zabbix-community/zabbix \
+  --dependency-update \
+  --create-namespace \
+  --version $ZABBIX_CHART_VERSION \
+  -f values.yaml -n eida-monitoring --debug
+  ```
 ## Accessing the Zabbix Application (for development)
 - Port forward
-    ```sh
-    kubectl port-forward service/oculus-zabbix-zabbix-web 8888:80 -n eida-monitoring
-    ```
+  ```sh
+  kubectl port-forward service/oculus-zabbix-zabbix-web 8888:80 -n eida-monitoring
+  ```
 - [localhost:8888](http://localhost:8888)
 - Default credentials:
-    - Username: Admin
-    - Password: zabbix
+  - Username: Admin
+  - Password: zabbix
 
 ## Deploy an agent
 
