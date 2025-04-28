@@ -13,7 +13,9 @@ Please create a new issue using the template "New Monitoring".
 - Kubernetes cluster (version 1.20 or later) configured and running
 - ```kubectl``` installed and configured
 - ```git``` installed and configured
-- Helm CLI (version 3 or later) installed
+- Helm CLI (version 3 or later) installed https://helm.sh/docs/intro/install
+- Plugin Helm secret https://github.com/jkroepke/helm-secrets
+- Sops core https://github.com/getsops/sops
 - Sufficient resources in the cluster to run Zabbix components
 
 ## Installation Steps
@@ -25,7 +27,7 @@ Please create a new issue using the template "New Monitoring".
   ```sh
   cd zabbix_server/helm_values
   ```
-### 3. Add the Helm epository
+### 3. Add the Helm repository
   ```sh
   helm repo add zabbix-community https://zabbix-community.github.io/helm-zabbix
   helm repo update
@@ -52,18 +54,21 @@ Please create a new issue using the template "New Monitoring".
   ```
   pgcli postgres://oculus@bdd-resif.fr/oculus_zabbix
   ```
-### 7. Install the Zabbix Helm Chart
+### 7. Encrypt password
 
-  Check version of Helm Chart :
   ```sh
-  helm search repo zabbix-community/zabbix -l
+  cd oculus-monitoring-backend/zabbix_server/helm_values
+  sops encrypt values.yaml
   ```
+  /!\ TODO
+
+### 8. Install the Zabbix Helm Chart
+
   Apply Helm Chart
   ```sh
-  export ZABBIX_CHART_VERSION='{latest}'
-  helm upgrade --install oculus-zabbix zabbix-community/zabbix \
+  export ZABBIX_CHART_VERSION='7.0.6'
+  helm secrets upgrade --install oculus-zabbix zabbix-community/zabbix \
   --dependency-update \
-  --create-namespace \
   --version $ZABBIX_CHART_VERSION \
   -f values.yaml -n eida-monitoring --debug
   ```
@@ -83,18 +88,20 @@ Create a configuration file for each agent in `oculus-zbx-agent-deployments` (fo
 
 Set the content according to this template:
 
+Complet template example [here](oculus-zbx-agent/scripts/example_lld.yaml) 
+
 ``` yaml
 ---
-eidaNode:
-name: MyNodeName    # Will be used as identifier for the agent
-  endpoint: ws.resif.fr  # The endpoint to test
-  serviceParameters:   # Set default test parameters for each services
-    net: FR
-    sta: CIEL
-    loc: 00
-    cha: HHZ
-    start: 2025-02-01T00:00:00
-    end: 2025-02-01T00:00:05
+node: Epos-France    # Will be used as identifier for the agent
+endpoint: ws.resif.fr  # The endpoint to test
+routingFile: routing/eida_routing.xml
+onlineCheck: # Set default test parameters for each services
+  net: FR
+  sta: CIEL
+  loc: "00"
+  cha: HHZ
+  start: 2025-02-01T00:00:00
+  end: 2025-02-01T00:00:05
 ```
 
 Then deploy (or update) the agent using helm:
@@ -126,8 +133,8 @@ Go to "Alerts > Actions > Autoregistration actions" and create a new action with
 - Operations:
   - Add host
   - Add to host groups: Discovered hosts
-  - Link templates: Template discovery
-  - Link templates: Linux by Zabbix agent
+  - Link templates: Template discovery (Templates/EIDA)
+  - Link templates: Linux by Zabbix agent (Templates/Operating Systems)
   - Ennable hosts
 - Click "Add"
 
