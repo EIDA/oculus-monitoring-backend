@@ -15,29 +15,29 @@ zabbix_export:
           delay: 15m
           steps:
             - name: 'get documentation'
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/availability/1/'
+              url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
               status_codes: '200'
             - name: 'simple request'
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/availability/1/query'
+              url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
               query_fields:
                 - name: net
-                  value: '{$EIDA_NETWORK}'
+                  value: '{$ONLINECHECK_NET}}'
                 - name: sta
-                  value: '{$EIDA_STATION}'
+                  value: '{$ONLINECHECK_STA}'
                 - name: loc
-                  value: '{$EIDA_LOCATION}'
+                  value: '{$ONLINECHECK_LOC}'
                 - name: cha
-                  value: '{$EIDA_CHANNEL}'
+                  value: '{$ONLINECHECK_CHA}'
                 - name: start
-                  value: '{$EIDA_STARTTIME}'
+                  value: '{$ONLINECHECK_START}'
                 - name: end
-                  value: '{$EIDA_ENDTIME}'
+                  value: '{$ONLINECHECK_END}'
               retrieve_mode: HEADERS
               status_codes: '200'
             - name: application.wadl
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/availability/1/application.wadl'
+              url: 'https://{$ENDPOINT}/fdsnws/availability/1/application.wadl'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
               required: 'content-type: application/xml'
@@ -50,27 +50,27 @@ zabbix_export:
           delay: 15m
           steps:
             - name: 'dataselect accessible'
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/dataselect/1/'
+              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/'
               status_codes: '200'
             - name: 'dataselect short request'
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/dataselect/1/query'
+              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
               query_fields:
                 - name: net
-                  value: '{$EIDA_NETWORK}'
+                  value: '{$ONLINECHECK_NET}'
                 - name: sta
-                  value: '{$EIDA_STATION}'
+                  value: '{$ONLINECHECK_STA}'
                 - name: cha
-                  value: '{$EIDA_CHANNEL}'
+                  value: '{$ONLINECHECK_CHA}'
                 - name: start
-                  value: '{$EIDA_STARTTIME}'
+                  value: '{$ONLINECHECK_START}'
                 - name: end
-                  value: '{$EIDA_ENDTIME}'
+                  value: '{$ONLINECHECK_END}'
                 - name: nodata
                   value: '404'
               timeout: 60s
               status_codes: '200'
             - name: application.wadl
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/dataselect/1/application.wadl'
+              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/application.wadl'
               follow_redirects: 'NO'
               required: wadl.dev.java.net
               status_codes: '200'
@@ -87,8 +87,8 @@ zabbix_export:
                 - name: service
                   value: station
                 - name: network
-                  value: '{$EIDA_NETWORK}'
-              required: '{$EIDA_WS_ENDPOINT}'
+                  value: '{$ONLINECHECK_NET}'
+              required: '{$ENDPOINT}'
               status_codes: '200'
           tags:
             - tag: Application
@@ -98,9 +98,9 @@ zabbix_export:
           delay: 15m
           steps:
             - name: 'eida routing XML file'
-              url: 'https://{$EIDA_WS_ENDPOINT}/{$EIDA_ROUTING_FILE}'
+              url: 'https://{$ENDPOINT}/{$ROUTINGFILE}'
               follow_redirects: 'NO'
-              required: 'ns0:route networkCode="{$EIDA_NETWORK}"'
+              required: 'ns0:route networkCode="{$ONLINECHECK_NET}"'
               status_codes: '200'
           tags:
             - tag: Application
@@ -110,20 +110,20 @@ zabbix_export:
           delay: 15m
           steps:
             - name: 'get documentation'
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/station/1/'
+              url: 'https://{$ENDPOINT}/fdsnws/station/1/'
               follow_redirects: 'NO'
               status_codes: '200'
             - name: 'short request'
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/station/1/query'
+              url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
               query_fields:
                 - name: net
-                  value: '{$EIDA_NETWORK}'
+                  value: '{$ONLINECHECK_NET}'
                 - name: sta
-                  value: '{$EIDA_STATION}'
+                  value: '{$ONLINECHECK_STA}'
                 - name: loc
-                  value: '{$EIDA_LOCATION}'
+                  value: '{$ONLINECHECK_LOC}'
                 - name: cha
-                  value: '{$EIDA_CHANNEL}'
+                  value: '{$ONLINECHECK_CHA}'
                 - name: level
                   value: response
               timeout: 30s
@@ -141,25 +141,25 @@ zabbix_export:
           delay: 15m
           steps:
             - name: 'get documentation'
-              url: 'https://{$EIDA_WS_ENDPOINT}/eidaws/wfcatalog/1/'
+              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
               status_codes: '200'
             - name: 'simple query'
-              url: 'https://{$EIDA_WS_ENDPOINT}/eidaws/wfcatalog/1/query'
+              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
               query_fields:
                 - name: net
-                  value: '{$EIDA_NETWORK}'
+                  value: '{$ONLINECHECK_NET}'
                 - name: sta
-                  value: '{$EIDA_STATION}'
+                  value: '{$ONLINECHECK_STA}'
                 - name: loc
-                  value: '{$EIDA_LOCATION}'
+                  value: '{$ONLINECHECK_LOC}'
                 - name: cha
-                  value: '{$EIDA_CHANNEL}'
+                  value: '{$ONLINECHECK_CHA}'
                 - name: start
-                  value: '{$EIDA_STARTTIME}'
+                  value: '{$ONLINECHECK_START}'
                 - name: end
-                  value: '{$EIDA_ENDTIME}'
+                  value: '{$ONLINECHECK_END}'
               status_codes: '200'
           tags:
             - tag: Application
