@@ -129,7 +129,7 @@ zabbix_export:
               timeout: 30s
               status_codes: '200'
             - name: application.wadl
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/station/1/application.wadl'
+              url: 'https://{$ENDPOINT}/fdsnws/station/1/application.wadl'
               follow_redirects: 'NO'
               required: wadl.dev.java.net
               status_codes: '200'

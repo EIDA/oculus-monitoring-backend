@@ -14,28 +14,28 @@ perfCheck:
     9streams:
       net: RO
       sta: PLOR1,PLOR2,PLOR3
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2017-05-20T00:01:00'
       end: '2017-05-20T00:02:00'
     54streams:
       net: RO,BS
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE
       start: '2017-05-20T00:01:00'
       end: '2017-05-20T00:02:00'
     320streams:
       net: RO,BS
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHN,HHZ,HNE,HNN,HNZ
       start: '2013-05-22T00:01:00'
       end: '2013-05-22T00:02:00'
     1stream20days:
       net: RO
       sta: GZR
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-04T00:00:00'
       end: '2012-06-06T00:00:00'
@@ -43,21 +43,21 @@ perfCheck:
     9streams:
       net: RO
       sta: PLOR1,PLOR2,PLOR3
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2017-05-20T00:01:00'
       end: '2017-05-20T00:02:00'
     54streams:
       net: RO,BS
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE
       start: '2017-05-20T00:01:00'
       end: '2017-05-20T00:02:00'
     320streams:
       net: RO,BS
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHN,HHZ,HNE,HNN,HNZ
       start: '2013-05-22T00:01:00'
       end: '2013-05-22T00:02:00'
@@ -72,28 +72,28 @@ perfCheck:
     9streams:
       net: RO
       sta: PLOR1,PLOR2,PLOR3
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2017-05-20T00:01:00'
       end: '2017-05-20T23:59:00'
     54streams:
       net: RO,BS
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE
       start: '2017-05-20T00:01:00'
       end: '2017-05-20T23:59:00'
     320streams:
       net: RO,BS
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHN,HHZ,HNE,HNN,HNZ
       start: '2013-05-22T00:01:00'
       end: '2013-05-22T23:59:00'
     1stream20days:
       net: RO
       sta: GZR
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-04T00:00:00'
       end: '2012-06-06T00:00:00'
@@ -101,20 +101,20 @@ perfCheck:
     9streams:
       net: RO
       sta: PLOR1,PLOR2,PLOR3
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2017-05-22T23:01:00'
       end: '2017-05-22T23:02:00'
     54streams:
       net: RO,BS
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE
       start: '2017-05-20T00:01:00'
       end: '2017-05-20T00:02:00'
     320streams:
       net: RO,BS
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHN,HHZ,HNE,HNN,HNZ
       start: '2013-05-22T23:01:00'

@@ -14,28 +14,28 @@ perfCheck:
     9streams:
       net: CH
       sta: MUO,LLS,DAVOX
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2013-07-04T00:01:00'
       end: '2013-07-04T00:02:00'
     54streams:
       net: CH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HH2,HH3,HG2,HG3
       start: '2017-07-05T00:01:00'
       end: '2017-07-05T00:02:00'
     320streams:
       net: CH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HGE,HGN,HGZ,HHE,HHZ
       start: '2013-07-06T00:01:00'
       end: '2013-07-06T00:02:00'
     1stream20days:
       net: CH
       sta: LLS
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-08T00:00:00'
       end: '2012-06-28T00:00:00'
@@ -43,28 +43,28 @@ perfCheck:
     9streams:
       net: CH
       sta: MUO,LLS,DAVOX
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2013-07-04T00:01:00'
       end: '2013-07-04T00:02:00'
     54streams:
       net: CH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HH2,HH3,HG2,HG3
       start: '2017-07-05T00:01:00'
       end: '2017-07-05T00:02:00'
     320streams:
       net: CH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HGE,HGN,HGZ,HHE,HHZ
       start: '2013-07-06T00:01:00'
       end: '2013-07-06T00:02:00'
     1stream20days:
       net: CH
       sta: LLS
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-08T00:00:00'
       end: '2012-06-28T00:00:00'
@@ -72,28 +72,28 @@ perfCheck:
     9streams:
       net: CH
       sta: MUO,LLS,DAVOX
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2013-07-04T00:01:00'
       end: '2013-07-04T23:59:00'
     54streams:
       net: CH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HH2,HH3,HG2,HG3
       start: '2017-07-05T00:01:00'
       end: '2017-07-05T23:59:00'
     320streams:
       net: CH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HGE,HGN,HGZ,HHE,HHZ
       start: '2013-07-06T00:01:00'
       end: '2013-07-06T23:59:00'
     1stream20days:
       net: CH
       sta: LLS
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-08T00:00:00'
       end: '2012-06-28T00:00:00'
@@ -101,21 +101,21 @@ perfCheck:
     9streams:
       net: CH
       sta: MUO,LLS,DAVOX
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2013-07-04T23:01:00'
       end: '2013-07-04T23:02:00'
     54streams:
       net: CH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HH2,HH3,HG2,HG3
       start: '2017-07-05T23:01:00'
       end: '2017-07-05T23:02:00'
     320streams:
       net: CH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HGE,HGN,HGZ,HHE,HHZ
       start: '2013-07-06T23:01:00'
       end: '2013-07-06T23:02:00'

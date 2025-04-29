@@ -333,6 +333,266 @@ zabbix_export:
                 - macro: '{$ROUTINGFILE}'
                   value: '{#ROUTINGFILE}'
                   description: 'Node routing file location'
+    - uuid: d5f772753ba54fe89d1f9f8c69b05c11
+      template: 'Template performance checks'
+      name: 'Template performance checks'
+      groups:
+        - name: Templates/EIDA
+      httptests:
+        - uuid: fdf418ac33cf4374bd854cfef45d8604
+          name: 'PC availability'
+          steps:
+            - name: '9 streams'
+              url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_AVAILABILITY_9STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_AVAILABILITY_9STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_AVAILABILITY_9STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_AVAILABILITY_9STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_AVAILABILITY_9STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_AVAILABILITY_9STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '54 streams'
+              url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_AVAILABILITY_54STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_AVAILABILITY_54STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_AVAILABILITY_54STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_AVAILABILITY_54STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_AVAILABILITY_54STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_AVAILABILITY_54STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '320 streams'
+              url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_AVAILABILITY_320STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_AVAILABILITY_320STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_AVAILABILITY_320STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_AVAILABILITY_320STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_AVAILABILITY_320STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_AVAILABILITY_320STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '1 stream 20 days'
+              url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_END}'
+                - name: location
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+        - uuid: c42e22b93ab74d2e9a8b4e1291d073d6
+          name: 'PC dataselect'
+          steps:
+            - name: '9 streams'
+              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
+              query_fields:
+                - name: network
+                  value: '{$PERFCHECK_DATASELECT_9STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_DATASELECT_9STREAMS_STA}'
+                - name: channel
+                  value: '{$PERFCHECK_DATASELECT_9STREAMS_CHA}'
+                - name: starttime
+                  value: '{$PERFCHECK_DATASELECT_9STREAMS_START}'
+                - name: endtime
+                  value: '{$PERFCHECK_DATASELECT_9STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_DATASELECT_9STREAMS_LOC}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '54 streams'
+              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_DATASELECT_54STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_DATASELECT_54STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_DATASELECT_54STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_DATASELECT_54STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_DATASELECT_54STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_DATASELECT_54STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '320 streams'
+              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_DATASELECT_320STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_DATASELECT_320STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_DATASELECT_320STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_DATASELECT_320STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_DATASELECT_320STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_DATASELECT_320STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '1 stream 20 days'
+              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_END}'
+                - name: location
+                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+        - uuid: 46869c73a2a742b5907a2b42ea7dab08
+          name: 'PC station'
+          steps:
+            - name: '9 streams'
+              url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_STATION_9STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_STATION_9STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_STATION_9STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_STATION_9STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_STATION_9STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_STATION_9STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '54 streams'
+              url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_STATION_54STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_STATION_54STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_STATION_54STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_STATION_54STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_STATION_54STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_STATION_54STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '320 streams'
+              url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_STATION_320STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_STATION_320STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_STATION_320STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_STATION_320STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_STATION_320STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_STATION_320STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+        - uuid: 4f175da47a63486b98f440cc295aacb4
+          name: 'PC wfcatalog'
+          steps:
+            - name: '9 streams'
+              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '54 streams'
+              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_WFCATALOG_54STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_WFCATALOG_54STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_WFCATALOG_54STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_WFCATALOG_54STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_WFCATALOG_54STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_WFCATALOG_54STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '320 streams'
+              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_WFCATALOG_320STREAMS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_WFCATALOG_320STREAMS_END}'
+                - name: location
+                  value: '{$PERFCHECK_WFCATALOG_320STREAMS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_WFCATALOG_320STREAMS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_WFCATALOG_320STREAMS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_WFCATALOG_320STREAMS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+            - name: '1 stream 20 days'
+              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
+              query_fields:
+                - name: channel
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_CHA}'
+                - name: endtime
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_END}'
+                - name: location
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_LOC}'
+                - name: network
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_NET}'
+                - name: station
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_STA}'
+                - name: starttime
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_START}'
+              follow_redirects: 'NO'
+              status_codes: '200'
     - uuid: e6a64ad945ab48928e1f6bd6279bfd39
       template: 'Template user permissions'
       name: 'Template user permissions'
@@ -463,7 +723,7 @@ zabbix_export:
               timeout: 30s
               status_codes: '200'
             - name: application.wadl
-              url: 'https://{$EIDA_WS_ENDPOINT}/fdsnws/station/1/application.wadl'
+              url: 'https://{$ENDPOINT}/fdsnws/station/1/application.wadl'
               follow_redirects: 'NO'
               required: wadl.dev.java.net
               status_codes: '200'

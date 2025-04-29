@@ -14,28 +14,28 @@ perfCheck:
     9streams:
       net: GR
       sta: ASSE,BFO,MOX
-      loc: ''
+      loc: '*'
       cha: HH*
       start: '2017-07-01T00:01:00'
       end: '2017-07-01T00:02:00'
     54streams:
       net: SX,TH,GR
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHZ
       start: '2011-01-03T00:01:00'
       end: '2011-01-03T00:02:00'
     320streams:
       net: SX,TH,GR
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HH*,EH*
       start: '2016-07-06T00:01:00'
       end: '2016-07-06T00:02:00'
     1stream20days:
       net: GR
       sta: BFO
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-04T00:00:00'
       end: '2012-06-06T00:00:00'
@@ -43,21 +43,21 @@ perfCheck:
     9streams:
       net: GR
       sta: ASSE,BFO,MOX
-      loc: ''
+      loc: '*'
       cha: HH*
       start: '2017-07-01T00:01:00'
       end: '2017-07-01T00:02:00'
     54streams:
       net: SX,TH,GR
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHZ
       start: '2011-01-03T00:01:00'
       end: '2011-01-03T00:02:00'
     320streams:
       net: SX,TH,GR
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HH*,EH*
       start: '2016-07-06T00:01:00'
       end: '2016-07-06T00:02:00'
@@ -72,28 +72,28 @@ perfCheck:
     9streams:
       net: GR
       sta: ASSE,BFO,MOX
-      loc: ''
+      loc: '*'
       cha: HH*
       start: '2017-07-01T00:01:00'
       end: '2017-07-01T23:59:00'
     54streams:
       net: SX,TH,GR
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHZ
       start: '2011-01-03T00:01:00'
       end: '2011-01-03T23:59:00'
     320streams:
       net: SX,TH,GR
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HH*,EH*
       start: '2016-07-06T00:01:00'
       end: '2016-07-06T23:59:00'
     1stream20days:
       net: GR
       sta: BFO
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-04T00:00:00'
       end: '2012-06-24T00:00:00'
@@ -101,21 +101,21 @@ perfCheck:
     9streams:
       net: GR
       sta: ASSE,BFO,MOX
-      loc: ''
+      loc: '*'
       cha: HH*
       start: '2017-07-01T00:01:00'
       end: '2017-07-01T00:02:00'
     54streams:
       net: GR,SX,TH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHZ
       start: '2011-01-05T23:01:00'
       end: '2011-01-05T23:02:00'
     320streams:
       net: GR,SX,TH
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HH*,EH*
       start: '2016-07-06T23:01:00'
       end: '2016-07-06T23:02:00'

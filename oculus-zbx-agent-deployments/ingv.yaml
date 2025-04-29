@@ -5,7 +5,7 @@ routingFile: eidaws/routing/1/routing.xml
 onlineCheck:
   net: BA
   sta: PZUN
-  loc: ''
+  loc: '*'
   cha: HHZ
   start: 2018-06-02T00:01:00
   end: 2018-06-02T00:01:10
@@ -13,109 +13,109 @@ perfCheck:
   dataselect:
     9streams:
       net: AC,BA,OX,X0
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2017-08-04T00:01:00'
       end: '2017-08-04T00:02:00'
     54streams:
       net: MN,NI
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2008-08-05T00:01:00'
       end: '2008-08-05T00:02:00'
     320streams:
       net: IV
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2009-03-06T00:01:00'
       end: '2009-03-06T00:02:00'
     1stream20days:
       net: IV
       sta: AMUR
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-08T00:00:00'
       end: '2012-06-28T00:00:00'
   wfcatalog:
     9streams:
       net: AC,BA,OX,X0
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2017-08-04T00:01:00'
       end: '2017-08-04T00:02:00'
     54streams:
       net: MN,NI
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2008-08-05T00:01:00'
       end: '2008-08-05T00:02:00'
     320streams:
       net: IV
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2009-03-06T00:01:00'
       end: '2009-03-06T00:02:00'
     1stream20days:
       net: IV
       sta: AMUR
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-08T00:00:00'
       end: '2012-06-28T00:00:00'
   availability:
     9streams:
       net: AC,BA,OX,X0
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2017-08-04T00:01:00'
       end: '2017-08-04T23:59:00'
     54streams:
       net: MN,NI
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2008-08-05T00:01:00'
       end: '2008-08-05T23:59:00'
     320streams:
       net: IV
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2009-03-06T00:01:00'
       end: '2009-03-06T23:59:00'
     1stream20days:
       net: IV
       sta: AMUR
-      loc: ''
+      loc: '*'
       cha: HH?
       start: '2012-06-08T00:00:00'
       end: '2012-06-28T00:00:00'
   station:
     9streams:
       net: AC,BA,OX,X0
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2017-08-04T23:01:00'
       end: '2017-08-04T23:02:00'
     54streams:
       net: MN,NI
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2008-08-05T23:01:00'
       end: '2008-08-05T23:02:00'
     320streams:
       net: IV
-      sta: ''
-      loc: ''
+      sta: '*'
+      loc: '*'
       cha: HHE,HHZ
       start: '2009-03-06T23:01:00'
       end: '2009-03-06T23:02:00'
