@@ -1,14 +1,121 @@
 ---
-eidaNode:
-  name: NOA
-  endpoint: eida.gein.noa.gr
-  routingFile: routing/routing.xml
-  serviceParameters:
-    net: HL
-    sta: ANAF
-    loc: --
-    cha: HHZ
-    start: 2025-02-10T00:00:00
-    end: 2025-02-10T00:00:05
-    lat: 37.972681
-    lon: 23.720015
+node: NOA
+endpoint: eida.gein.noa.gr
+routingFile: routing/routing.xml
+onlineCheck:
+  net: HL
+  sta: ANAF
+  loc: --
+  cha: HHZ
+  start: 2025-02-01T00:00:00
+  end: 2025-02-01T00:00:05
+perfCheck:
+  dataselect:
+    9streams:
+      net: EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HHE,HHZ
+      start: '2009-03-04T00:01:00'
+      end: '2009-03-04T00:02:00'
+    54streams:
+      net: EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HHE
+      start: '2012-03-04T00:01:00'
+      end: '2012-03-04T00:02:00'
+    320streams:
+      net: CQ,EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HH?,HNE
+      start: '2016-11-06T00:01:00'
+      end: '2016-11-06T00:02:00'
+    1stream20days:
+      net: HL
+      sta: IDI
+      loc: '*'
+      cha: HH?
+      start: '2012-06-04T00:00:00'
+      end: '2012-06-06T00:00:00'
+  wfcatalog:
+    9streams:
+      net: EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HHE,HHZ
+      start: '2009-03-04T00:01:00'
+      end: '2009-03-04T00:02:00'
+    54streams:
+      net: EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HHE
+      start: '2012-03-04T00:01:00'
+      end: '2012-03-04T00:02:00'
+    320streams:
+      net: CQ,EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HH?,HNE
+      start: '2016-11-06T00:01:00'
+      end: '2016-11-06T00:02:00'
+    1stream20days:
+      net: HL
+      sta: IDI
+      loc: --
+      cha: HH?
+      start: '2012-06-04T00:00:00'
+      end: '2012-06-06T00:00:00'
+  availability:
+    9streams:
+      net: EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HHE,HHZ
+      start: '2009-03-04T00:01:00'
+      end: '2009-03-04T23:59:00'
+    54streams:
+      net: EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HHE
+      start: '2012-03-04T00:01:00'
+      end: '2012-03-04T23:59:00'
+    320streams:
+      net: CQ,EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HH?,HNE
+      start: '2016-11-06T00:01:00'
+      end: '2016-11-06T23:59:00'
+    1stream20days:
+      net: HL
+      sta: IDI
+      loc: '*'
+      cha: HH?
+      start: '2012-06-04T00:00:00'
+      end: '2012-06-06T00:00:00'
+  station:
+    9streams:
+      net: EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HHE,HHZ
+      start: '2009-03-02T23:01:00'
+      end: '2009-03-02T23:02:00'
+    54streams:
+      net: '*'
+      sta: '*'
+      loc: '*'
+      cha: HHE
+      start: '2012-03-04T00:01:00'
+      end: '2012-03-04T00:02:00'
+    320streams:
+      net: CQ,EG,HA,HC,HL,HP,HT,LE
+      sta: '*'
+      loc: '*'
+      cha: HH?, HNE
+      start: '2016-11-04T23:01:00'
+      end: '2016-11-04T23:02:00'

@@ -30,9 +30,40 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
+        - name: zbx-lld-init
+          configMap:
+            name: {{ include "oculus-zbx-agent.fullname" . }}
+            items:
+              - key: zbx_lld
+                path: node.yaml
+              - key: generate_lld.py
+                path: generate_lld.py
+                mode: 448
+        - name: zbx-lld-output
+          emptyDir: {}
         - name: config
           configMap:
             name: {{ include "oculus-zbx-agent.fullname" . }}
+            items:
+              - key: eida_userparameter.conf
+                path: eida_userparameter.conf
+              - key: hostinterface.conf
+                path: hostinterface.conf
+      initContainers:
+        - name: {{ include "oculus-zbx-agent.fullname" . }}-pre-upgrade
+          image: ghcr.io/astral-sh/uv:debian
+          command: ['sh', '-c']
+          args:
+            - /scripts/generate_lld.py /config/node.yaml > /output/monitoring_lld.json
+          volumeMounts:
+            - name: zbx-lld-init
+              mountPath: /config/node.yaml
+              subPath: node.yaml
+            - name: zbx-lld-output
+              mountPath: /output
+            - name: zbx-lld-init
+              mountPath: /scripts/generate_lld.py
+              subPath: generate_lld.py
       containers:
         - name: {{ .Chart.Name }}
           {{- with .Values.securityContext }}
@@ -71,15 +102,11 @@ spec:
               mountPath: /etc/zabbix/zabbix_agentd.d/eida_userparameter.conf
               subPath: eida_userparameter.conf
             - name: config
-              mountPath: /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
-              subPath: monitoring_lld.json
-            - name: config
               mountPath: /etc/zabbix/zabbix_agentd.d/hostinterface.conf
               subPath: hostinterface.conf
-      {{- with .Values.volumes }}
-      volumes:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+            - name: zbx-lld-output
+              mountPath: /etc/zabbix/zabbix_agentd.d/monitoring_lld.json
+              subPath: monitoring_lld.json
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

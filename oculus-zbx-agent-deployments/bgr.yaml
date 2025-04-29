@@ -1,14 +1,121 @@
 ---
-eidaNode:
-  name: BGR
-  endpoint: eida.bgr.de
-  routingFile: eidaws/routing/routing.xml
-  serviceParameters:
-    net: GR
-    sta: ASSE
-    loc: "00"
-    cha: HHZ
-    start: 2017-07-01T00:01:00
-    end: 2017-07-01T00:01:10
-    lat: 52.519350
-    lon: 13.183932
+node: BGR
+endpoint: eida.bgr.de
+routingFile: eidaws/routing/routing.xml
+onlineCheck:
+  net: GR
+  sta: ASSE
+  loc: "00"
+  cha: HHZ
+  start: 2017-07-01T00:01:00
+  end: 2017-07-01T00:01:10
+perfCheck:
+  dataselect:
+    9streams:
+      net: GR
+      sta: ASSE,BFO,MOX
+      loc: '*'
+      cha: HH*
+      start: '2017-07-01T00:01:00'
+      end: '2017-07-01T00:02:00'
+    54streams:
+      net: SX,TH,GR
+      sta: '*'
+      loc: '*'
+      cha: HHZ
+      start: '2011-01-03T00:01:00'
+      end: '2011-01-03T00:02:00'
+    320streams:
+      net: SX,TH,GR
+      sta: '*'
+      loc: '*'
+      cha: HH*,EH*
+      start: '2016-07-06T00:01:00'
+      end: '2016-07-06T00:02:00'
+    1stream20days:
+      net: GR
+      sta: BFO
+      loc: '*'
+      cha: HH?
+      start: '2012-06-04T00:00:00'
+      end: '2012-06-06T00:00:00'
+  wfcatalog:
+    9streams:
+      net: GR
+      sta: ASSE,BFO,MOX
+      loc: '*'
+      cha: HH*
+      start: '2017-07-01T00:01:00'
+      end: '2017-07-01T00:02:00'
+    54streams:
+      net: SX,TH,GR
+      sta: '*'
+      loc: '*'
+      cha: HHZ
+      start: '2011-01-03T00:01:00'
+      end: '2011-01-03T00:02:00'
+    320streams:
+      net: SX,TH,GR
+      sta: '*'
+      loc: '*'
+      cha: HH*,EH*
+      start: '2016-07-06T00:01:00'
+      end: '2016-07-06T00:02:00'
+    1stream20days:
+      net: GR
+      sta: BFO
+      loc: --
+      cha: HH?
+      start: '2012-06-04T00:00:00'
+      end: '2012-06-06T00:00:00'
+  availability:
+    9streams:
+      net: GR
+      sta: ASSE,BFO,MOX
+      loc: '*'
+      cha: HH*
+      start: '2017-07-01T00:01:00'
+      end: '2017-07-01T23:59:00'
+    54streams:
+      net: SX,TH,GR
+      sta: '*'
+      loc: '*'
+      cha: HHZ
+      start: '2011-01-03T00:01:00'
+      end: '2011-01-03T23:59:00'
+    320streams:
+      net: SX,TH,GR
+      sta: '*'
+      loc: '*'
+      cha: HH*,EH*
+      start: '2016-07-06T00:01:00'
+      end: '2016-07-06T23:59:00'
+    1stream20days:
+      net: GR
+      sta: BFO
+      loc: '*'
+      cha: HH?
+      start: '2012-06-04T00:00:00'
+      end: '2012-06-24T00:00:00'
+  station:
+    9streams:
+      net: GR
+      sta: ASSE,BFO,MOX
+      loc: '*'
+      cha: HH*
+      start: '2017-07-01T00:01:00'
+      end: '2017-07-01T00:02:00'
+    54streams:
+      net: GR,SX,TH
+      sta: '*'
+      loc: '*'
+      cha: HHZ
+      start: '2011-01-05T23:01:00'
+      end: '2011-01-05T23:02:00'
+    320streams:
+      net: GR,SX,TH
+      sta: '*'
+      loc: '*'
+      cha: HH*,EH*
+      start: '2016-07-06T23:01:00'
+      end: '2016-07-06T23:02:00'

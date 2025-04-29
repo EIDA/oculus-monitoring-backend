@@ -1,0 +1,4 @@
+network=NS&station=B*&starttime=2019-01-15T00:01:00&endtime=2019-01-15T23:59:00
+network=NS&channel=HHZ,HHN&starttime=2018-11-15T00:01:00&endtime=2018-11-15T23:59:00
+network=NO,NS&starttime=2019-05-15T00:01:00&endtime=2019-05-15T23:59:00
+network=NS&station=FAUS&channel=HH?&starttime=2018-06-07T00:01:00&endtime=2018-06-27T00:01:00

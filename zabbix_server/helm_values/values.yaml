@@ -1,6 +1,7 @@
 zabbixImageTag: alpine-7.0.6
 zabbixProxy:
   enabled: false
+# Désactive la création d'un container postgresql
 postgresql:
   enabled: false
 postgresAccess:
@@ -10,7 +11,7 @@ postgresAccess:
   unifiedSecretName: ""
   unifiedSecretAutoCreate: false
   host: resif-pgpreprod.u-ga.fr
-  port: "5432"
+  port: 5432
   user: oculus
   password: ENC[AES256_GCM,data:DY1m0yZrqbH/p3he8MXySwGM5TM=,iv:UtDOuoLOHEI7+1JazP9IMj1Wfi6a2fNSn3iWlHcdfe8=,tag:4+oOhZcyZ7oKRckGG1puTw==,type:str]
   database: oculus_zabbix
@@ -31,12 +32,13 @@ zabbixWeb:
 ingress:
   enabled: true
   hosts:
-  - host: eida-oculus.resif.fr
+  - host: zabbix.local
     paths:
     - path: /
       pathType: Prefix
   ingressClassName: nginx
   pathType: Prefix
+# fullnameOverride: oculus
 sops:
   kms: []
   gcp_kms: []

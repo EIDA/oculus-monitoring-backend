@@ -1,14 +1,121 @@
 ---
-eidaNode:
-  name: ODC
-  endpoint: www.orfeus-eu.org
-  routingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
-  serviceParameters:
-    net: NL
-    sta: BHAR
-    loc: --
-    cha: HGZ
-    start: 2017-06-04T00:00:00
-    end: 2017-06-04T00:00:05
-    lat: 36.143497
-    lon: -86.803227
+node: ODC
+endpoint: www.orfeus-eu.org
+routingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
+onlineCheck:
+  net: NL
+  sta: BHAR
+  loc: --
+  cha: HGZ
+  start: 2017-06-04T00:00:00
+  end: 2017-06-04T00:00:05
+perfCheck:
+  dataselect:
+    9streams:
+      net: NL
+      sta: BHAR,BING,BSTD
+      loc: '*'
+      cha: '*'
+      start: '2017-06-04T00:01:00'
+      end: '2017-06-04T00:02:00'
+    54streams:
+      net: NL
+      sta: '*'
+      loc: '*'
+      cha: HHZ
+      start: '2009-06-05T00:01:00'
+      end: '2009-06-05T00:02:00'
+    320streams:
+      net: NL
+      sta: '*'
+      loc: '*'
+      cha: HHE,HHN,HHZ,HH2,HH3
+      start: '2015-02-06T00:01:00'
+      end: '2015-02-06T00:02:00'
+    1stream20days:
+      net: '*'
+      sta: '*'
+      loc: '*'
+      cha: '*'
+      start: '*'
+      end: '*'
+  wfcatalog:
+    9streams:
+      net: NL
+      sta: BHAR,BING,BSTD
+      loc: '*'
+      cha: '*'
+      start: '2017-06-04T00:01:00'
+      end: '2017-06-04T00:02:00'
+    54streams:
+      net: NL
+      sta: '*'
+      loc: '*'
+      cha: HHZ
+      start: '2009-06-05T00:01:00'
+      end: '2009-06-05T00:02:00'
+    320streams:
+      net: NL
+      sta: '*'
+      loc: '*'
+      cha: HHE,HHN,HHZ,HH2,HH3
+      start: '2015-02-06T00:01:00'
+      end: '2015-02-06T00:02:00'
+    1stream20days:
+      net: NL
+      sta: OPLO
+      loc: '*'
+      cha: HH?
+      start: '2012-06-08T00:00:00'
+      end: '2012-06-28T00:00:00'
+  availability:
+    9streams:
+      net: NL
+      sta: BHAR,BING,BSTD
+      loc: '*'
+      cha: '*'
+      start: '2017-06-04T00:01:00'
+      end: '2017-06-04T23:59:00'
+    54streams:
+      net: NL
+      sta: '*'
+      loc: '*'
+      cha: HHZ
+      start: '2009-06-05T00:01:00'
+      end: '2009-06-05T23:59:00'
+    320streams:
+      net: NL
+      sta: '*'
+      loc: '*'
+      cha: HHE,HHN,HHZ,HH2,HH3
+      start: '2015-02-06T00:01:00'
+      end: '2015-02-06T23:59:00'
+    1stream20days:
+      net: '*'
+      sta: '*'
+      loc: '*'
+      cha: '*'
+      start: '*'
+      end: '*'
+  station:
+    9streams:
+      net: NL
+      sta: BHAR,BING,BSTD
+      loc: '*'
+      cha: '*'
+      start: '2017-06-04T23:01:00'
+      end: '2017-06-04T23:02:00'
+    54streams:
+      net: NL
+      sta: '*'
+      loc: '*'
+      cha: HHZ
+      start: '2009-06-05T00:01:00'
+      end: '2009-06-05T00:02:00'
+    320streams:
+      net: NL
+      sta: '*'
+      loc: '*'
+      cha: HHE,HHN,HHZ,HH2,HH3
+      start: '2015-02-06T23:01:00'
+      end: '2015-02-06T23:02:00'
