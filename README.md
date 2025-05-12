@@ -54,11 +54,11 @@ Please create a new issue using the template "New Monitoring".
   ```
   pgcli postgres://oculus@bdd-resif.fr/oculus_zabbix
   ```
-### 7. Encrypt password
+### 7. decrypt password
 
   ```sh
   cd oculus-monitoring-backend/zabbix_server/helm_values
-  sops encrypt values.yaml
+  sops decrypt values.yaml
   ```
   /!\ TODO
 
