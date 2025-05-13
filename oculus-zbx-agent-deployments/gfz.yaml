@@ -1,5 +1,5 @@
 ---
-node: GHF
+node: GFZ
 endpoint: geofon.gfz.de
 routingFile: "eidaws/routing/1/query?service=dataselect&network=GE"
 onlineCheck:

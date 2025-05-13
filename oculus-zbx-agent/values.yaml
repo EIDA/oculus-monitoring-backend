@@ -21,7 +21,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "7.0.11-ubuntu"
+  tag: "7.0.11-ubuntu" #! Warning, after 7.0.11 Server Active with value "0.0.0.0/0" in ZBX_SERVER_HOST in deployment.yaml
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
