@@ -1,7 +1,7 @@
 ---
 node: BGS
 endpoint: eida.bgs.ac.uk
-routing.xml: routing.xml
+routingFile: routing.xml
 onlineCheck:
   net: GB
   sta: TARL
