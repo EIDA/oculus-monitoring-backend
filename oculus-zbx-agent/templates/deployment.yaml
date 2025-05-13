@@ -78,7 +78,7 @@ spec:
               protocol: TCP
           env:
             - name: ZBX_SERVER_HOST
-              value: 0.0.0.0/0"
+              value: "{{ .Values.zabbixServer.host }}, 0.0.0.0/0"
             - name: ZBX_SERVER_PORT
               value: "{{ .Values.zabbixServer.port }}"
             - name: ZBX_HOSTNAME
