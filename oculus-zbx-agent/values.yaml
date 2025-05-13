@@ -8,7 +8,7 @@ eidaNode:
   serviceParameters:
     net: FR
     sta: CIEL
-    loc: 00
+    loc: 0
     cha: HHZ
     start: 2025-02-01T00:00:00
     end: 2025-02-01T00:00:05
@@ -21,7 +21,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "7.0.11-ubuntu"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
@@ -48,12 +48,9 @@ podAnnotations: {}
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 podLabels: {}
 
-podSecurityContext:
-  {}
-  # fsGroup: 2000
+podSecurityContext: {} # fsGroup: 2000
 
-securityContext:
-  {}
+securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
