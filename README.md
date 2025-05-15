@@ -115,6 +115,7 @@ Please create a new issue using the template "New Monitoring".
   kubectl port-forward service/oculus-zabbix-zabbix-web 8888:80 -n eida-monitoring
   ```
 - [localhost:8888](http://localhost:8888)
+
 - Default credentials:
   - Username: Admin
   - Password: zabbix
@@ -178,7 +179,7 @@ Go to "Alerts > Actions > Autoregistration actions" and create a new action with
 - Helm CLI (version 3 or later) installed https://helm.sh/docs/intro/install
 - Plugin Helm secret https://github.com/jkroepke/helm-secrets
 - Sops core https://github.com/getsops/sops
-- Sufficient resources in the cluster to run Zabbix components
+- Sufficient resources in the cluster to run Grafana components
 
 ## Installation steps Grafana
 ### 1. Clone this repository
