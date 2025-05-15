@@ -1,19 +1,40 @@
 # Oculus Monitoring
 For the EIDA Technical Committee and EIDA Management Board that need to improve there services quality, Oculus is a central monitoring and alerting system that tests all the services at EIDA nodes. Unlike the previous situation where the moniitoring was very scattered and uneven, OCULUS will provide a global view of the services status and indicators for keeping track of service quality evolution.
 
+## Table of contents
 
-# Table of content
-- How to monitor a new thing
-- Deploying Oculus Zabbix
-  - Prerequisites
-  - Installation steps Zabbix
-  - Accessing the Zabbix Application (for development)
-  - Agent deployments
-- Zabbix configuration
-  - Import templates
-  - Autoregistration
-- Deploying Oculus Grafana
-
+- [Oculus Monitoring](#oculus-monitoring)
+- [Table of content](#table-of-content)
+- [Table of Contents](#table-of-contents)
+- [How to monitor a new thing](#how-to-monitor-a-new-thing)
+- [Deploying Oculus Zabbix and Grafana on Kubernetes using Helm](#--deploying-oculus-zabbix-and-grafana-on-kubernetes-using-helm)
+  - [Prerequisites](#prerequisites)
+  - [Installation steps Zabbix](#installation-steps-zabbix)
+    <!-- - [Clone this repository](#1-clone-this-repository)
+    - [Go to .yaml location](#2-go-to-yaml-location)
+    - [Add the Helm repository](#3-add-the-helm-repository)
+    - [Create a Namespace for Zabbix](#4-create-a-namespace-for-zabbix)
+    - [Create DataBase postgresql](#5-create-database-postgresql)
+    - [Connection to the DataBase](#6-connection-to-the-database)
+    - [decrypt password](#7-decrypt-password)
+    - [Install Zabbix](#8-install-zabbix) -->
+  - [Accessing the Zabbix Application (for development)](#accessing-the-zabbix-application-for-development)
+  - [Agent deployments](#agent-deployments)
+    - [Deploy one agent](#deploy-one-agent)
+    - [Deploy all agents](#deploy-all-agents)
+- [Zabbix configuration](#zabbix-configuration)
+  - [Import templates](#import-templates)
+  - [Autoregistration](#autoregistration)
+- [Deploying Oculus Grafana](#deploying-oculus-grafana)
+  - [Prerequisites](#prerequisites-1)
+  - [Installation steps Grafana](#installation-steps-grafana)
+    <!-- - [Clone this repository](#1-clone-this-repository-1)
+    - [Go to .yaml location](#2-go-to-yaml-location-1)
+    - [Add the Helm repository](#3-add-the-helm-repository-1)
+    - [Decrypt password](#4-decrypt-password)
+    - [Install Grafana](#5-install-grafana) -->
+  - [Accessing the Grafana Application (for development)](#accessing-the-grafana-application-for-development)
+  - [Add Zabbix datasources](#add-zabbix-datasources)
 
 
 # How to monitor a new thing
@@ -159,7 +180,7 @@ Go to "Alerts > Actions > Autoregistration actions" and create a new action with
 - Sops core https://github.com/getsops/sops
 - Sufficient resources in the cluster to run Zabbix components
 
-## Installation Steps Grafana
+## Installation steps Grafana
 ### 1. Clone this repository
   ```sh
   git clone https://github.com/EIDA/oculus-monitoring-backend
@@ -187,3 +208,15 @@ Go to "Alerts > Actions > Autoregistration actions" and create a new action with
   helm secrets upgrade --install oculus-grafana grafana/grafana \
   -f values.yaml -n eida-moniitoring
   ```
+
+## Accessing the Grafana Application (for development)
+- Port forward
+  ```sh
+  kubectl port-forward service/oculus-grafana 3000:3000 -n eida-monitoring
+  ```
+- [localhost:3000](http://localhost:3000)
+- Default credentials:
+  - Username: /
+  - Password: /
+
+## Add Zabbix datasources
