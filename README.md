@@ -32,6 +32,10 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
     - [Install Grafana](#5-install-grafana) -->
   - [Accessing the Grafana Application (for development)](#accessing-the-grafana-application-for-development)
   - [Add Zabbix datasources](#add-zabbix-datasources)
+    - [Create Grafana User groups in Zabbix](#create-grafana-user-groups-in-zabbix)
+    - [Create Grafana User in Zabbix](#create-grafana-user-in-zabbix)
+    - [Create Zabbix API tokens](#create-zabbix-api-tokens)
+    - [Configuration Zabbix datasource](#configuration-zabbix-datasource)
 
 
 # How to monitor a new thing
@@ -217,3 +221,72 @@ Go to "Alerts > Actions > Autoregistration actions" and create a new action with
   - Password: /
 
 ## Add Zabbix datasources
+You must first create a new user and user groups for Grafana in Zabbix.
+
+### Create Grafana User groups in Zabbix
+Go to "Users > User groups"
+- Click "Create user group"
+  - Group name: API-RO
+  - Enabled: check
+- Click "Template permissions"
+  - click "Add"
+  - Click "Select"
+    - Select: All Template groups
+    - Click "Select"
+  - permissions: Read
+- Click "Host permissions"
+  - Click "Add"
+  - Click "Select"
+    - Select: All Host groups
+    - Click "Select"
+- Click "Problem tag filter"
+  - Click "Add"
+  - Click "Select"
+    - Select: All Host groups EXCEPT "Application", "Databases", "Hypervisors", "Linux servers", "Virtual machines" and "Zabbix servers"
+    - Click: "Select"
+    - Click "Add"
+- Click "Update"
+
+### Create Grafana User in Zabbix
+Go to "Users > Users"
+- Click "Create User"
+  - Username: grafana
+  - Groups: API-RO and No access to the frontend
+  - Password: {passwd_user_grafana}
+- Click "Permissions"
+  - Role: Select "User role"
+- Click "Update"
+
+### Create Zabbix API tokens
+Go to "Users > API token"
+- Click "Create API token"
+  - Name: grafana
+  - User: grafana
+  - Set expiration date and time: uncheck
+  - Enabled: check
+- Click "Add"
+- Copy the {auth_token}
+
+### Install Zabbix Plugin in Grafana
+Normally, the Zabbix plugin is installed, but if this is not the case, install it manually:
+
+Go to "Administration > General > Plugins and data"
+- Plugins:
+  - Search "Zabbix"
+  - Click "Install"
+
+### Configuration Zabbix datasource
+Go to "Connections > Data sources"
+- Click "+ Add new data source"
+  - select Zabbix
+- Rename in "oculus-zabbix-datasource"
+- Connection:
+  - url: ```http://oculus-zabbix-zabbix-web:8888/api_jsonrpc.php```
+- Authentication
+  - Select "Basic authentication"
+    - user : grafana
+    - password : {passwd_user_grafana}
+- Zabbix Connection
+  - API token : {auth_token}
+- Trends : Enable
+- Click "Save & test
