@@ -207,7 +207,7 @@ Go to "Alerts > Actions > Autoregistration actions" and create a new action with
 ### 5. Install Grafana
   ```sh
   helm secrets upgrade --install oculus-grafana grafana/grafana \
-  -f values.yaml -n eida-moniitoring
+  -f values.yaml -n eida-monitoring
   ```
 
 ## Accessing the Grafana Application (for development)
