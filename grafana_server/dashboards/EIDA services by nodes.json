@@ -1,0 +1,666 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "panels": [],
+      "repeat": "EIDA_NODES",
+      "title": "$EIDA_NODES",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "cemk6kmr0s0zkb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 502,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#EAB839",
+                "value": 201
+              },
+              {
+                "color": "red",
+                "value": 400
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.6.1",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "$EIDA_NODES"
+          },
+          "host": {
+            "filter": "$EIDA_NODES"
+          },
+          "item": {
+            "filter": "Response code for step \"dataselect accessible\" of scenario \"dataselect\"."
+          },
+          "itemTag": {
+            "filter": "Application: dataselect"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "dataselect",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "cemk6kmr0s0zkb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 502,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#EAB839",
+                "value": 201
+              },
+              {
+                "color": "red",
+                "value": 400
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 3,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.6.1",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "$EIDA_NODES"
+          },
+          "host": {
+            "filter": "$EIDA_NODES"
+          },
+          "item": {
+            "filter": "Response code for step \"short request\" of scenario \"station\"."
+          },
+          "itemTag": {
+            "filter": "Application: station"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "station",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "cemk6kmr0s0zkb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 502,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#EAB839",
+                "value": 201
+              },
+              {
+                "color": "red",
+                "value": 400
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 6,
+        "y": 1
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.6.1",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "$EIDA_NODES"
+          },
+          "host": {
+            "filter": "$EIDA_NODES"
+          },
+          "item": {
+            "filter": "Response code for step \"simple request\" of scenario \"availability\"."
+          },
+          "itemTag": {
+            "filter": "Application: availability"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "station",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "cemk6kmr0s0zkb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 502,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#EAB839",
+                "value": 201
+              },
+              {
+                "color": "red",
+                "value": 400
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 9,
+        "y": 1
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.6.1",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "$EIDA_NODES"
+          },
+          "host": {
+            "filter": "$EIDA_NODES"
+          },
+          "item": {
+            "filter": "Response code for step \"simple query\" of scenario \"wfcatalog\"."
+          },
+          "itemTag": {
+            "filter": "Application: wfcatalog"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "station",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "cemk6kmr0s0zkb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 502,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#EAB839",
+                "value": 201
+              },
+              {
+                "color": "red",
+                "value": 400
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 12,
+        "y": 1
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.6.1",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "$EIDA_NODES"
+          },
+          "host": {
+            "filter": "$EIDA_NODES"
+          },
+          "item": {
+            "filter": "Response code for step \"EIDA Routing infomation\" of scenario \"present in central eida routing\"."
+          },
+          "itemTag": {
+            "filter": "Application: routing_present"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "station",
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": [
+            "BGR"
+          ],
+          "value": [
+            "BGR"
+          ]
+        },
+        "definition": "",
+        "label": "EIDA NODES",
+        "multi": true,
+        "name": "EIDA_NODES",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/.*/",
+          "host": "",
+          "item": "",
+          "itemTag": "",
+          "queryType": "group"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "EIDA nodes",
+  "uid": "demk6tswf56o0d",
+  "version": 9
+}
