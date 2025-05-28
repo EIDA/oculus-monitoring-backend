@@ -81,8 +81,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 17,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -221,24 +221,19 @@
       },
       {
         "current": {
-          "text": [
-            "Download speed for scenario \"availability\"."
-          ],
-          "value": [
-            "Download speed for scenario \"availability\"."
-          ]
+          "text": "Download speed for scenario \"availability\".",
+          "value": "Download speed for scenario \"availability\"."
         },
         "definition": "",
         "label": "ITEM",
-        "multi": true,
         "name": "ITEM",
         "options": [],
         "query": {
-          "application": "",
+          "application": "/.*/",
           "group": "$EIDA_NODES",
           "host": "$EIDA_NODES",
           "item": "/.*/",
-          "itemTag": "/.*/",
+          "itemTag": "$ITEM",
           "queryType": "item"
         },
         "refresh": 1,
@@ -249,12 +244,12 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "EIDA only nodes",
   "uid": "demk6tswf56o0d",
-  "version": 18
+  "version": 23
 }

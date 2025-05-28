@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "panels": [
     {
@@ -29,7 +29,7 @@
         "x": 0,
         "y": 0
       },
-      "id": 3,
+      "id": 1,
       "panels": [],
       "repeat": "EIDA_NODES",
       "title": "$EIDA_NODES",
@@ -45,7 +45,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "fieldMinMax": false,
           "mappings": [],
           "max": 502,
           "min": 0,
@@ -74,7 +73,7 @@
         "x": 0,
         "y": 1
       },
-      "id": 1,
+      "id": 2,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -93,17 +92,12 @@
         "wideLayout": true
       },
       "pluginVersion": "11.6.1",
-      "repeatDirection": "v",
       "targets": [
         {
           "application": {
             "filter": ""
           },
           "countTriggersBy": "",
-          "datasource": {
-            "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "cemk6kmr0s0zkb"
-          },
           "evaltype": "0",
           "functions": [],
           "group": {
@@ -162,7 +156,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "fieldMinMax": false,
           "mappings": [],
           "max": 502,
           "min": 0,
@@ -191,7 +184,7 @@
         "x": 3,
         "y": 1
       },
-      "id": 4,
+      "id": 3,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -210,17 +203,12 @@
         "wideLayout": true
       },
       "pluginVersion": "11.6.1",
-      "repeatDirection": "v",
       "targets": [
         {
           "application": {
             "filter": ""
           },
           "countTriggersBy": "",
-          "datasource": {
-            "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "cemk6kmr0s0zkb"
-          },
           "evaltype": "0",
           "functions": [],
           "group": {
@@ -230,7 +218,7 @@
             "filter": "$EIDA_NODES"
           },
           "item": {
-            "filter": "Response code for step \"short request\" of scenario \"station\"."
+            "filter": "Response code for step \"get documentation\" of scenario \"station\"."
           },
           "itemTag": {
             "filter": "Application: station"
@@ -279,7 +267,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "fieldMinMax": false,
           "mappings": [],
           "max": 502,
           "min": 0,
@@ -308,7 +295,7 @@
         "x": 6,
         "y": 1
       },
-      "id": 5,
+      "id": 4,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -327,17 +314,12 @@
         "wideLayout": true
       },
       "pluginVersion": "11.6.1",
-      "repeatDirection": "v",
       "targets": [
         {
           "application": {
             "filter": ""
           },
           "countTriggersBy": "",
-          "datasource": {
-            "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "cemk6kmr0s0zkb"
-          },
           "evaltype": "0",
           "functions": [],
           "group": {
@@ -347,7 +329,7 @@
             "filter": "$EIDA_NODES"
           },
           "item": {
-            "filter": "Response code for step \"simple request\" of scenario \"availability\"."
+            "filter": "Response code for step \"get documentation\" of scenario \"availability\"."
           },
           "itemTag": {
             "filter": "Application: availability"
@@ -382,7 +364,7 @@
           }
         }
       ],
-      "title": "station",
+      "title": "availability",
       "transparent": true,
       "type": "stat"
     },
@@ -396,7 +378,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "fieldMinMax": false,
           "mappings": [],
           "max": 502,
           "min": 0,
@@ -425,7 +406,7 @@
         "x": 9,
         "y": 1
       },
-      "id": 6,
+      "id": 5,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -444,17 +425,12 @@
         "wideLayout": true
       },
       "pluginVersion": "11.6.1",
-      "repeatDirection": "v",
       "targets": [
         {
           "application": {
             "filter": ""
           },
           "countTriggersBy": "",
-          "datasource": {
-            "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "cemk6kmr0s0zkb"
-          },
           "evaltype": "0",
           "functions": [],
           "group": {
@@ -464,7 +440,7 @@
             "filter": "$EIDA_NODES"
           },
           "item": {
-            "filter": "Response code for step \"simple query\" of scenario \"wfcatalog\"."
+            "filter": "Response code for step \"get documentation\" of scenario \"wfcatalog\"."
           },
           "itemTag": {
             "filter": "Application: wfcatalog"
@@ -499,7 +475,7 @@
           }
         }
       ],
-      "title": "station",
+      "title": "wfcatalog",
       "transparent": true,
       "type": "stat"
     },
@@ -513,7 +489,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "fieldMinMax": false,
           "mappings": [],
           "max": 502,
           "min": 0,
@@ -542,7 +517,7 @@
         "x": 12,
         "y": 1
       },
-      "id": 7,
+      "id": 6,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -561,17 +536,12 @@
         "wideLayout": true
       },
       "pluginVersion": "11.6.1",
-      "repeatDirection": "v",
       "targets": [
         {
           "application": {
             "filter": ""
           },
           "countTriggersBy": "",
-          "datasource": {
-            "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "cemk6kmr0s0zkb"
-          },
           "evaltype": "0",
           "functions": [],
           "group": {
@@ -616,14 +586,16 @@
           }
         }
       ],
-      "title": "station",
+      "title": "routing present",
       "transparent": true,
       "type": "stat"
     }
   ],
   "preload": false,
   "schemaVersion": 41,
-  "tags": [],
+  "tags": [
+    "EIDA"
+  ],
   "templating": {
     "list": [
       {
@@ -642,7 +614,7 @@
         "options": [],
         "query": {
           "application": "",
-          "group": "/.*/",
+          "group": "/^(?!(Discovered hosts|EIDA nodes)$).+/",
           "host": "",
           "item": "",
           "itemTag": "",
@@ -650,6 +622,7 @@
         },
         "refresh": 1,
         "regex": "",
+        "sort": 1,
         "type": "query"
       }
     ]
@@ -660,7 +633,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "EIDA nodes",
-  "uid": "demk6tswf56o0d",
-  "version": 9
+  "title": "EIDA services per nodes",
+  "uid": "femk8h7dfqxoge",
+  "version": 15
 }
