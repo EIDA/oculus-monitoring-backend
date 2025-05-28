@@ -12,6 +12,7 @@ zabbix_export:
       httptests:
         - uuid: fdf418ac33cf4374bd854cfef45d8604
           name: 'PC availability'
+          status: DISABLED
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
@@ -81,8 +82,12 @@ zabbix_export:
                   value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_START}'
               follow_redirects: 'NO'
               status_codes: '200'
+          tags:
+            - tag: PC
+              value: availability
         - uuid: c42e22b93ab74d2e9a8b4e1291d073d6
           name: 'PC dataselect'
+          status: DISABLED
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
@@ -152,8 +157,12 @@ zabbix_export:
                   value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_START}'
               follow_redirects: 'NO'
               status_codes: '200'
+          tags:
+            - tag: PC
+              value: dataselect
         - uuid: 46869c73a2a742b5907a2b42ea7dab08
           name: 'PC station'
+          status: DISABLED
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
@@ -206,8 +215,12 @@ zabbix_export:
                   value: '{$PERFCHECK_STATION_320STREAMS_START}'
               follow_redirects: 'NO'
               status_codes: '200'
+          tags:
+            - tag: PC
+              value: station
         - uuid: 4f175da47a63486b98f440cc295aacb4
           name: 'PC wfcatalog'
+          status: DISABLED
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
@@ -264,3 +277,6 @@ zabbix_export:
                   value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_START}'
               follow_redirects: 'NO'
               status_codes: '200'
+          tags:
+            - tag: PC
+              value: wfcatalog

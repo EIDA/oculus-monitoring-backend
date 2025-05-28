@@ -20,10 +20,10 @@ zabbix_export:
               retrieve_mode: HEADERS
               status_codes: '200'
             - name: 'simple request'
-              url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
+              url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
               query_fields:
                 - name: net
-                  value: '{$ONLINECHECK_NET}}'
+                  value: '{$ONLINECHECK_NET}'
                 - name: sta
                   value: '{$ONLINECHECK_STA}'
                 - name: loc
@@ -44,7 +44,7 @@ zabbix_export:
               status_codes: '200'
           tags:
             - tag: Application
-              value: fdsn
+              value: availability
         - uuid: dfcb1e93f5c9489598c189e82f523833
           name: dataselect
           delay: 15m
@@ -76,7 +76,7 @@ zabbix_export:
               status_codes: '200'
           tags:
             - tag: Application
-              value: fdsn
+              value: dataselect
         - uuid: 482c8b39cf3b4aca8dc9b7859373c210
           name: 'present in central eida routing'
           delay: 60m
@@ -92,7 +92,7 @@ zabbix_export:
               status_codes: '200'
           tags:
             - tag: Application
-              value: routing
+              value: routing_present
         - uuid: d3a4a789f3ee42ec8418b6e5044c8804
           name: 'routing information published at node'
           delay: 15m
@@ -104,7 +104,7 @@ zabbix_export:
               status_codes: '200'
           tags:
             - tag: Application
-              value: eidaws
+              value: routing_information
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
           delay: 15m
@@ -135,7 +135,7 @@ zabbix_export:
               status_codes: '200'
           tags:
             - tag: Application
-              value: fdsn
+              value: station
         - uuid: a5d4964d6ad84e44829dbb8dddef25cc
           name: wfcatalog
           delay: 15m
@@ -163,7 +163,7 @@ zabbix_export:
               status_codes: '200'
           tags:
             - tag: Application
-              value: eidaws
+              value: wfcatalog
       macros:
         - macro: '{$EIDA_WS_ENDPOINT}'
           value: '{#EIDA_WS_ENDPOINT}'
@@ -178,7 +178,7 @@ zabbix_export:
       priority: AVERAGE
       manual_close: 'YES'
       tags:
-        - tag: webservice
+        - tag: Application
           value: availability
     - uuid: 0848f9b91db2476a8f9b4394d895b944
       expression: 'last(/Template webservices/web.test.fail[dataselect])<>0 and last(/Template webservices/web.test.error[dataselect])<>0'
@@ -187,7 +187,7 @@ zabbix_export:
       priority: AVERAGE
       manual_close: 'YES'
       tags:
-        - tag: webservice
+        - tag: Application
           value: dataselect
     - uuid: d1da3fc8a92f4288bb0e533bfefdd3de
       expression: 'last(/Template webservices/web.test.fail[present in central eida routing])<>0 and last(/Template webservices/web.test.error[present in central eida routing])<>0'
@@ -196,8 +196,8 @@ zabbix_export:
       priority: AVERAGE
       manual_close: 'YES'
       tags:
-        - tag: webservice
-          value: eida-routing
+        - tag: Application
+          value: routing_present
     - uuid: ae1352b7f0644200b65fca44b93f9b44
       expression: 'last(/Template webservices/web.test.fail[routing information published at node])<>0 and last(/Template webservices/web.test.error[routing information published at node])<>0'
       name: 'Routing information all steps'
@@ -205,8 +205,8 @@ zabbix_export:
       priority: AVERAGE
       manual_close: 'YES'
       tags:
-        - tag: webservice
-          value: routing-information
+        - tag: Application
+          value: routing_information
     - uuid: f048e2a4d53b46acbfebb77e7d4beb45
       expression: 'last(/Template webservices/web.test.fail[station])<>0 and last(/Template webservices/web.test.error[station])<>0'
       name: 'Station all steps'
@@ -214,7 +214,7 @@ zabbix_export:
       priority: AVERAGE
       manual_close: 'YES'
       tags:
-        - tag: webservice
+        - tag: Application
           value: station
     - uuid: c129ba9cfde84b88836d45cf2ec265ce
       expression: 'last(/Template webservices/web.test.fail[wfcatalog])<>0 and last(/Template webservices/web.test.error[wfcatalog])<>0'
@@ -223,5 +223,5 @@ zabbix_export:
       priority: AVERAGE
       manual_close: 'YES'
       tags:
-        - tag: webservice
-          value: station
+        - tag: Application
+          value: wfcatalog
