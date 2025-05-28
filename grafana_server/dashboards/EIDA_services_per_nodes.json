@@ -601,13 +601,14 @@
       {
         "current": {
           "text": [
-            "BGR"
+            "All"
           ],
           "value": [
-            "BGR"
+            "$__all"
           ]
         },
         "definition": "",
+        "includeAll": true,
         "label": "EIDA NODES",
         "multi": true,
         "name": "EIDA_NODES",
@@ -635,5 +636,5 @@
   "timezone": "browser",
   "title": "EIDA services per nodes",
   "uid": "femk8h7dfqxoge",
-  "version": 15
+  "version": 16
 }
