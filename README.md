@@ -21,6 +21,7 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
 - [Zabbix configuration](#zabbix-configuration)
   - [Import templates](#import-templates)
   - [Autoregistration](#autoregistration)
+  - [Configure trigger actions](#configure-trigger-actions)
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
   - [Installation steps Grafana](#installation-steps-grafana)
@@ -170,6 +171,52 @@ Go to "Alerts > Actions > Autoregistration actions" and create a new action with
   - Link templates: Linux by Zabbix agent (Templates/Operating Systems)
   - Ennable hosts
 - Click "Add"
+
+## Configure trigger actions
+For activate mail triggers
+- go to "Alerts > Media types" and Enabled email, click on Email, and configure with your SMTP server, username, password etc.
+- Enabled: checked
+- Click "Update"
+
+### Create users and user groups
+Nous devons créer des groups pour chaque EIDA nodes, ainsi que des utilisateurs.
+
+#### User groups
+- Go to "Users > User groups"
+- Click "Create user groups"
+  - Group name : {EIDA_Nodes_name}
+  - Enabled : checked
+- Template permissions
+  - Permissions > Template groups: select "Templates/EIDA" 
+  - Permissions : Read
+- Host permissions
+  - Permissions > Host groups: select same as {EIDA_Nodes_name}
+  - Permissions Read
+- Problem tag filter
+  - Permissions > Host groups: add and select same as {EIDA_Nodes_name}
+- Click "Add"
+
+#### User
+- Go to "Users > Users"
+- Click "Create User"
+  - Username: {username}
+  - Groups: {EIDA_Nodes_name}
+  - Password: {passwd_user}
+- Click "Media"
+  - Click "Add"
+    - Type: Email
+    - Send to : {your_email}
+    - Use if severity : all checked
+    - Enabled: checked
+- Click "Permissions"
+  - Role: Select "User role"
+- Click "Add"
+
+### Trigger actions
+- Go to "Alerts > Actions > Trigger actions"
+- Click "Create action"
+  -
+
 
 # Deploying Oculus Grafana
 ## Prerequisites
