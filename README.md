@@ -22,7 +22,7 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
   - [Import templates](#import-templates)
   - [Autoregistration](#autoregistration)
   - [Configure trigger actions](#configure-trigger-actions)
-    - [Create users and user groups](#create-user-and-user-groups)
+    - [Create users and user groups](#create-users-and-user-groups)
     - [Trigger actions](#trigger-actions)
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
