@@ -179,28 +179,28 @@ For activate mail triggers
 - Click "Update"
 
 ### Create users and user groups
-Nous devons créer des groups pour chaque EIDA nodes, ainsi que des utilisateurs.
+Groups must be created for each EIDA node, as well as users.
 
 #### User groups
 - Go to "Users > User groups"
 - Click "Create user groups"
-  - Group name : {EIDA_Nodes_name}
+  - Group name : {EIDA_nodes_name}
   - Enabled : checked
 - Template permissions
   - Permissions > Template groups: select "Templates/EIDA" 
   - Permissions : Read
 - Host permissions
-  - Permissions > Host groups: select same as {EIDA_Nodes_name}
+  - Permissions > Host groups: select same as {EIDA_nodes_name}
   - Permissions Read
 - Problem tag filter
-  - Permissions > Host groups: add and select same as {EIDA_Nodes_name}
+  - Permissions > Host groups: add and select same as {EIDA_nodes_name}
 - Click "Add"
 
 #### User
 - Go to "Users > Users"
 - Click "Create User"
   - Username: {username}
-  - Groups: {EIDA_Nodes_name}
+  - Groups: {EIDA_nodes_name}
   - Password: {passwd_user}
 - Click "Media"
   - Click "Add"
@@ -215,8 +215,34 @@ Nous devons créer des groups pour chaque EIDA nodes, ainsi que des utilisateurs
 ### Trigger actions
 - Go to "Alerts > Actions > Trigger actions"
 - Click "Create action"
-  -
-
+  - Name: Reports problems
+  - Type of calculation: And/or
+  - Conditions, click "Add"
+    - Type : Trigger
+    - Operator: equals
+    - Trigger source: Template
+    - Triggers: click "Select"
+      - Select "Template/EIDA > Template Webservice", select all
+    - Click "Add"
+    - Enabled: checked
+  - Click "Operations"
+    - Default operations step duration: 1h
+    - Operations, (create a step for each EIDA Nodes) click "Add"
+      - Steps: 1 - 1
+      - Step duration : 0
+      - Send to user groups > Select {EIDA_nodes_name}
+      - Send only to : Email
+      - Click "Add"
+    - Update operations (create a step for each EIDA Nodes) click "Add"
+      - Operation : Send message
+      - Send to user groups > Select {EIDA_nodes_name}
+      - Send only to : Email
+      - Click "Add"
+    - Pause operations for symptom problems: checked
+    - Pause operations for suppressed problems: checked
+    - Notify about canceled escalations: checked
+    - Click "Add"
+- Verifie if status is "Enabled"
 
 # Deploying Oculus Grafana
 ## Prerequisites
