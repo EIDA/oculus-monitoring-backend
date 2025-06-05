@@ -244,7 +244,7 @@ Groups must be created for each EIDA node, as well as users.
     - Pause operations for suppressed problems: checked
     - Notify about canceled escalations: checked
     - Click "Add"
-- Verifie if status is "Enabled"
+- Check if status is "Enabled"
 
 # Deploying Oculus Grafana
 ## Prerequisites

@@ -1,6 +1,7 @@
 zabbixImageTag: alpine-7.0.6
 zabbixProxy:
   enabled: false
+# Désactive la création d'un container postgresql sur k8s
 postgresql:
   enabled: false
 postgresAccess:
@@ -31,12 +32,13 @@ zabbixWeb:
 ingress:
   enabled: true
   hosts:
-    - host: eida-oculus.resif.fr
-      paths:
-        - path: /
-          pathType: Prefix
+  - host: eida-oculus.resif.fr
+    paths:
+    - path: /
+      pathType: Prefix
   ingressClassName: nginx
   pathType: Prefix
+# fullnameOverride: oculus
 sops:
   kms: []
   gcp_kms: []
@@ -46,21 +48,21 @@ sops:
   lastmodified: "2025-02-14T11:07:42Z"
   mac: ENC[AES256_GCM,data:fA++13nUzTeXfOPrjaIDi0WQDJZ5Lwb1+FXauimUc2o4a1i8Yly2HOmx7jM4iERRcP4UP/L3EhB457Fhl3IhqmyszHW5jn5im78BB5aG2/FeZL5/0R+Skefs6F8nIA2dDTB56Akfsf+VlPAIDDUSkhX2OqGOW8YB6/Tf8pLwAnQ=,iv:XEFbRXSFMOIyhPyF5BwRN4RZeU/pLXydjilLsvA5278=,tag:KF0uVNqqsjgTQBLLagn2gw==,type:str]
   pgp:
-    - created_at: "2025-02-14T11:07:42Z"
-      enc: |-
-        -----BEGIN PGP MESSAGE-----
+  - created_at: "2025-02-14T11:07:42Z"
+    enc: |-
+      -----BEGIN PGP MESSAGE-----
 
-        hQEMA23uPS/3Y9M2AQf/SkfgSnnzD8aZ5ahoasog5EXjdiEuLvPyZlzARDmgcBIL
-        1GNWXicYP9Bvg8pjLBeKnuyupbDhAThhbb178rz6v3+UgtOqIqcO6XuIBk2LSGIU
-        TTahA3vf7nB2qiurIdeeFjtnppDy3dZvmx2ebvjQE6Zldp/+UCz8vA9uk/nDzH9y
-        ZI5UQ60PvIeNSc1ImWlN8SE7/fDjyx9qzgm4mZ+Cjc0Atgl2QPWkNJZqEH8pDLR3
-        6YpIajlpO9sJWoco19CzBYMer+bwysWFOQUuTcUUNRRgCFajNcR6qzKvWuljJ4KR
-        tl+LhcDdcm/oK77CSZwNzaJKtGYiKD1RogSstar0UdJeATJ0LIWUIjLGDmpD1UgL
-        LNm38YVKdyxL33ZdvgZ+g4jQv6j7e8g0yaaV/rER5IT67KTJMPRdFVLELz5l6OfB
-        YDgXRhpKYlYHuHMqw2iy9+KX1r0AnygHEoohayTyuA==
-        =FaIX
-        -----END PGP MESSAGE-----
-      fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
+      hQEMA23uPS/3Y9M2AQf/SkfgSnnzD8aZ5ahoasog5EXjdiEuLvPyZlzARDmgcBIL
+      1GNWXicYP9Bvg8pjLBeKnuyupbDhAThhbb178rz6v3+UgtOqIqcO6XuIBk2LSGIU
+      TTahA3vf7nB2qiurIdeeFjtnppDy3dZvmx2ebvjQE6Zldp/+UCz8vA9uk/nDzH9y
+      ZI5UQ60PvIeNSc1ImWlN8SE7/fDjyx9qzgm4mZ+Cjc0Atgl2QPWkNJZqEH8pDLR3
+      6YpIajlpO9sJWoco19CzBYMer+bwysWFOQUuTcUUNRRgCFajNcR6qzKvWuljJ4KR
+      tl+LhcDdcm/oK77CSZwNzaJKtGYiKD1RogSstar0UdJeATJ0LIWUIjLGDmpD1UgL
+      LNm38YVKdyxL33ZdvgZ+g4jQv6j7e8g0yaaV/rER5IT67KTJMPRdFVLELz5l6OfB
+      YDgXRhpKYlYHuHMqw2iy9+KX1r0AnygHEoohayTyuA==
+      =FaIX
+      -----END PGP MESSAGE-----
+    fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
   encrypted_regex: (password)
   mac_only_encrypted: true
   version: 3.9.1
