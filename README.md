@@ -149,7 +149,7 @@ Then deploy (or update) the agent using helm:
 
 ⚠️ If you want delete host, deleted the host FIRST in the Discovery template, and only then in the Webservice template ⚠️ Process to delete host directly in DataBase is [here](delete-host-db.md)
 
-    helm upgrade -i epos-france oculus-zbx-agent --set-file zbx_lld=oculus-zbx-agent-deployments/epos-france.yaml 
+    helm upgrade -i epos-france oculus-zbx-agent --set-file zbx_lld=oculus-zbx-agent-deployments/epos-france.yaml -n eida-moniitoring
 
 ### Deploy all agents
     for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent --set-file zbx_lld=$f; done
