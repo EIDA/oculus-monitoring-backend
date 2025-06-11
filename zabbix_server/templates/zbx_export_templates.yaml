@@ -791,6 +791,15 @@ zabbix_export:
       tags:
         - tag: Application
           value: availability
+    - uuid: d1da3fc8a92f4288bb0e533bfefdd3de
+      expression: 'last(/Template webservices/web.test.fail[present in central eida routing])<>0 and last(/Template webservices/web.test.error[present in central eida routing])<>0'
+      name: 'Central EIDA routing all steps'
+      event_name: 'EIDA routing step {ITEM.VALUE} failed. {ITEM.VALUE2}'
+      priority: AVERAGE
+      manual_close: 'YES'
+      tags:
+        - tag: Application
+          value: routing_present
     - uuid: 0848f9b91db2476a8f9b4394d895b944
       expression: 'last(/Template webservices/web.test.fail[dataselect])<>0 and last(/Template webservices/web.test.error[dataselect])<>0'
       name: 'Dataselect all steps'
@@ -800,15 +809,6 @@ zabbix_export:
       tags:
         - tag: Application
           value: dataselect
-    - uuid: d1da3fc8a92f4288bb0e533bfefdd3de
-      expression: 'last(/Template webservices/web.test.fail[present in central eida routing])<>0 and last(/Template webservices/web.test.error[present in central eida routing])<>0'
-      name: 'EIDA routing all steps'
-      event_name: 'EIDA routing step {ITEM.VALUE} failed. {ITEM.VALUE2}'
-      priority: AVERAGE
-      manual_close: 'YES'
-      tags:
-        - tag: Application
-          value: routing_present
     - uuid: ae1352b7f0644200b65fca44b93f9b44
       expression: 'last(/Template webservices/web.test.fail[routing information published at node])<>0 and last(/Template webservices/web.test.error[routing information published at node])<>0'
       name: 'Routing information all steps'
