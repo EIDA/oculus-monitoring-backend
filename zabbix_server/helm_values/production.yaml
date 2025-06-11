@@ -32,7 +32,7 @@ zabbixWeb:
 ingress:
   enabled: true
   hosts:
-  - host: eida-oculus.resif.fr
+  - host: zabbix-eida-oculus.resif.fr
     paths:
     - path: /
       pathType: Prefix

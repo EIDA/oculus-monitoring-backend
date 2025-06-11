@@ -330,7 +330,7 @@ Go to "Users > Users"
   - Password: {passwd_user_grafana}
 - Click "Permissions"
   - Role: Select "User role"
-- Click "Update"
+- Click "Add"
 
 ### Create Zabbix API tokens
 Go to "Users > API token"
