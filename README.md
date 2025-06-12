@@ -22,7 +22,7 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
   - [Import templates](#import-templates)
   - [Autoregistration](#autoregistration)
   - [Configure trigger actions](#configure-trigger-actions)
-    - [Create users and user groups](#create-users-and-user-groups)
+    - [Create users and user groups using Ansible](#create-users-and-user-groups-using-ansible)
     - [Trigger actions](#trigger-actions)
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
@@ -176,43 +176,23 @@ Go to "Alerts > Actions > Autoregistration actions" and create a new action with
 
 ## Configure trigger actions
 For activate mail triggers
-- go to "Alerts > Media types" and Enabled email, click on Email, and configure with your SMTP server, username, password etc.
+- Go to "Alerts > Media types" and Enabled email, click on Email, and configure with your SMTP server, username, password etc.
 - Enabled: checked
 - Click "Update"
 
-### Create users and user groups
+### Create users and user groups using Ansible
+For deploying playbook with Ansible, you need to install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+
 Groups must be created for each EIDA node, as well as users.
 
-#### User groups
-- Go to "Users > User groups"
-- Click "Create user groups"
-  - Group name : {EIDA_nodes_name}
-  - Enabled : checked
-- Template permissions
-  - Permissions > Template groups: select "Templates/EIDA" 
-  - Permissions : Read
-- Host permissions
-  - Permissions > Host groups: select same as {EIDA_nodes_name}
-  - Permissions Read
-- Problem tag filter
-  - Permissions > Host groups: add and select same as {EIDA_nodes_name}
-- Click "Add"
-
-#### User
-- Go to "Users > Users"
-- Click "Create User"
-  - Username: {username}
-  - Groups: {EIDA_nodes_name}
-  - Password: {passwd_user}
-- Click "Media"
-  - Click "Add"
-    - Type: Email
-    - Send to : {your_email}
-    - Use if severity : all checked
-    - Enabled: checked
-- Click "Permissions"
-  - Role: Select "User role"
-- Click "Add"
+#### 1. Go to .yaml location
+```sh
+cd ansible/playbooks
+```
+#### 2. Run playbook Ansible
+```sh
+ansible-playbook create_user.yaml
+```
 
 ### Trigger actions
 - Go to "Alerts > Actions > Trigger actions"
