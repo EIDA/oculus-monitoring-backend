@@ -23,7 +23,7 @@ zabbix_export:
               retrieve_mode: HEADERS
               status_codes: '200'
           tags:
-            - tag: Test
+            - tag: Application
               value: cors
   triggers:
     - uuid: 2a63baf4831249b98ba540307ec81825
@@ -32,5 +32,5 @@ zabbix_export:
       event_name: 'CORS test fail'
       priority: WARNING
       tags:
-        - tag: Test
+        - tag: Application
           value: cors

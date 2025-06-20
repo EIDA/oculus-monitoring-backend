@@ -15,6 +15,7 @@ zabbix_export:
       httptests:
         - uuid: abf09ffcff694750b4be1edd7ed8def0
           name: CORS
+          delay: 1h
           steps:
             - name: 'test cors'
               url: 'https://{$ENDPOINT}/'
@@ -25,7 +26,7 @@ zabbix_export:
               retrieve_mode: HEADERS
               status_codes: '200'
           tags:
-            - tag: Test
+            - tag: Application
               value: cors
     - uuid: 74f0d2bd954841d39f19a0c7d06549ee
       template: 'Template discovery'
