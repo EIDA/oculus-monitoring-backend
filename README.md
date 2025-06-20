@@ -31,7 +31,7 @@ So you woud like to monitor something related to EIDA federation ?
 
 Please create a new issue using the template "New Monitoring".
 
-In order to edites Nodes values is in this [procedures](contribute_to_change_values.md)
+In order to edit Nodes values is in this [procedures](contribute_to_change_values.md)
 
 #  Deploying Oculus Zabbix and Grafana on Kubernetes using Helm
 ## Prerequisites
