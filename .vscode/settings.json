@@ -1,7 +1,0 @@
-{
-  "ansible.python.interpreterPath": "/bin/python3",
-  "ansible.ansible.path": "ansible",
-  "ansible.ansible.useFullyQualifiedCollectionNames": true,
-  "ansible.validation.lint.enabled": true,
-  "ansible.validation.lint.path": "ansible-lint"
-}
