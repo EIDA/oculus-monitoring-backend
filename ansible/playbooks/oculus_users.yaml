@@ -1,0 +1,88 @@
+oculus_users:
+  - username: user-resif
+    name: Enzo Fogliano
+    usrgrp: Epos-France
+    email: enzo.fogliano@univ-grenoble-alpes.fr
+  - username: user-resif2
+    name: Jonathan Schaeffer
+    usrgrp: Epos-France
+    email: jonathan.schaeffer@univ-grenoble-alpes.fr
+  - username: user-bgr
+    name: Goebel Björn
+    usrgrp: BGR
+    email: Bjoern.Goebel@bgr.de
+  - username: user-bgr2
+    name: Mathias Hoffmann
+    usrgrp: BGR
+    email: Mathias.Hoffmann@bgr.de
+  - username: user-bgs
+    name: John Stevenson
+    usrgrp: BGS
+    email: jostev@bgs.ac.uk
+  - username: user-bgs2
+    name: Tarun Joseph
+    usrgrp: BGS
+    email: tjos@bgs.ac.uk
+  - username: user-gfz
+    name: Andres Heinloo
+    usrgrp: GFZ
+    email: andres@gfz-potsdam.de
+  - username: user-gfz2
+    name: Javier Quinteros
+    usrgrp: GFZ
+    email: javier@gfz-potsdam.de
+  - username: user-icgc
+    name: Jara Jose Antonio
+    usrgrp: ICGC
+    email: JoseAntonio.Jara@icgc.cat
+  - username: user-ingv
+    name: Ivano Carluccio
+    usrgrp: INGV
+    email: ivano.carluccio@ingv.it
+  - username: user-icgc2
+    name: Massimo Fares
+    usrgrp: INGV
+    email: massimo.fares@ingv.it
+  - username: user-koeri
+    name: Tuğçe Ergün
+    usrgrp: KOERI
+    email: afacan@boun.edu.tr
+  - username: user-koeri2
+    name: Fatih Turhan
+    usrgrp: KOERI
+    email: fatih.turhan@boun.edu.tr
+  - username: user-lmu
+    name: Tobias Megies
+    usrgrp: LMU
+    email: megies@geophysik.uni-muenchen.de
+  - username: user-lmu2
+    name: Joachim Wassermann
+    usrgrp: LMU
+    email: jowa@geophysik.uni-muenchen.de
+  - username: user-niep
+    name: Cristian Neagoe
+    usrgrp: NIEP
+    email: cristian.neagoe@infp.ro
+  - username: user-noa
+    name: Κωνσταντίνος Μπούκουρας
+    usrgrp: NOA
+    email: kbouk@noa.gr
+  - username: user-odc
+    name: Simon Schneider
+    usrgrp: ODC
+    email: simon.schneider@knmi.nl
+  - username: user-sed
+    name: Stefan Heimers
+    usrgrp: SED
+    email: stefan.heimers@sed.ethz.ch
+  - username: user-sed2
+    name: Kästli Philipp
+    usrgrp: SED
+    email: kaestli@sed.ethz.ch
+  - username: user-sed3
+    name: Roman Racine
+    usrgrp: SED
+    email: racine@sed.ethz.ch
+  - username: user-uib
+    name: Øyvind Natvik
+    usrgrp:

@@ -6,14 +6,6 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
 - [Deploying Oculus Zabbix and Grafana on Kubernetes using Helm](#--deploying-oculus-zabbix-and-grafana-on-kubernetes-using-helm)
   - [Prerequisites](#prerequisites)
   - [Installation steps Zabbix](#installation-steps-zabbix)
-    <!-- - [Clone this repository](#1-clone-this-repository)
-    - [Go to .yaml location](#2-go-to-yaml-location)
-    - [Add the Helm repository](#3-add-the-helm-repository)
-    - [Create a Namespace for Zabbix](#4-create-a-namespace-for-zabbix)
-    - [Create DataBase postgresql](#5-create-database-postgresql)
-    - [Connection to the DataBase](#6-connection-to-the-database)
-    - [decrypt password](#7-decrypt-password)
-    - [Install Zabbix](#8-install-zabbix) -->
   - [Accessing the Zabbix Application (for development)](#accessing-the-zabbix-application-for-development)
   - [Agent deployments](#agent-deployments)
     - [Deploy one agent](#deploy-one-agent)
@@ -27,11 +19,6 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
   - [Installation steps Grafana](#installation-steps-grafana)
-    <!-- - [Clone this repository](#1-clone-this-repository-1)
-    - [Go to .yaml location](#2-go-to-yaml-location-1)
-    - [Add the Helm repository](#3-add-the-helm-repository-1)
-    - [Decrypt password](#4-decrypt-password)
-    - [Install Grafana](#5-install-grafana) -->
   - [Accessing the Grafana Application (for development)](#accessing-the-grafana-application-for-development)
   - [Add Zabbix datasources](#add-zabbix-datasources)
     - [Create Grafana User groups in Zabbix](#create-grafana-user-groups-in-zabbix)
@@ -39,11 +26,12 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
     - [Create Zabbix API tokens](#create-zabbix-api-tokens)
     - [Configuration Zabbix datasource](#configuration-zabbix-datasource)
 
-
 # How to monitor a new thing
 So you woud like to monitor something related to EIDA federation ?
 
 Please create a new issue using the template "New Monitoring".
+
+In order to edites Nodes values is in this [procedures](contribute_to_change_values.md)
 
 #  Deploying Oculus Zabbix and Grafana on Kubernetes using Helm
 ## Prerequisites
