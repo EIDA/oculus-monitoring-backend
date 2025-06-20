@@ -147,7 +147,7 @@ onlineCheck: # Set default test parameters for each services
 
 Then deploy (or update) the agent using helm:
 
-⚠️ If you want delete host, deleted the host FIRST in the Discovery template, and only then in the Webservice template ⚠️ Process to delete host directly in DataBase is [here](delete-host-db.md)
+⚠️ If you want delete host, deleted the host FIRST in the Discovery template, and only then in the Webservice template ⚠️
 
     helm upgrade -i epos-france oculus-zbx-agent --set-file zbx_lld=oculus-zbx-agent-deployments/epos-france.yaml -n eida-moniitoring
 
