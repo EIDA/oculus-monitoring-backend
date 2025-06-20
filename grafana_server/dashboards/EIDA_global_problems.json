@@ -18,13 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 9,
+  "id": 4,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "aeon0zpk2slxce"
       },
       "fieldConfig": {
         "defaults": {
@@ -59,7 +59,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
+        "h": 9,
         "w": 5,
         "x": 0,
         "y": 0
@@ -141,13 +141,13 @@
           }
         }
       ],
-      "title": "Numbers of problems",
+      "title": "Number of problems",
       "type": "stat"
     },
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "aeon0zpk2slxce"
       },
       "fieldConfig": {
         "defaults": {
@@ -406,7 +406,7 @@
         ]
       },
       "gridPos": {
-        "h": 11,
+        "h": 15,
         "w": 19,
         "x": 5,
         "y": 0
@@ -505,7 +505,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "aeon0zpk2slxce"
       },
       "fieldConfig": {
         "defaults": {},
@@ -515,12 +515,12 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 15
       },
       "id": 1,
       "options": {
         "ackEventColor": "rgb(56, 219, 156)",
-        "ackField": true,
+        "ackField": false,
         "ageField": true,
         "allowDangerousHTML": false,
         "customLastChangeFormat": false,
@@ -543,10 +543,6 @@
         "problemTimeline": true,
         "resizedColumns": [
           {
-            "id": "tags",
-            "value": 291.75
-          },
-          {
             "id": "host",
             "value": 116.75
           },
@@ -561,6 +557,14 @@
           {
             "id": "ack",
             "value": 56
+          },
+          {
+            "id": "tags",
+            "value": 211.75
+          },
+          {
+            "id": "name",
+            "value": 766.5999755859375
           }
         ],
         "severityField": true,
@@ -609,7 +613,6 @@
         ]
       },
       "pluginVersion": "5.1.0",
-      "repeatDirection": "h",
       "targets": [
         {
           "application": {
@@ -672,7 +675,7 @@
           }
         }
       ],
-      "title": "Problems liste",
+      "title": "Problems",
       "type": "alexanderzobnin-zabbix-triggers-panel"
     }
   ],
@@ -680,15 +683,14 @@
   "refresh": "1m",
   "schemaVersion": 41,
   "tags": [
-    "EIDA"
+    "EIDA",
+    "public"
   ],
   "templating": {
     "list": [
       {
         "current": {
-          "text": [
-            "All"
-          ],
+          "text": "All",
           "value": [
             "$__all"
           ]
@@ -711,44 +713,6 @@
         "regex": "",
         "sort": 1,
         "type": "query"
-      },
-      {
-        "current": {
-          "text": [
-            "webservice: dataselect"
-          ],
-          "value": [
-            "webservice: dataselect"
-          ]
-        },
-        "includeAll": true,
-        "label": "PROBLEMS TAG",
-        "multi": true,
-        "name": "PROBLEMS_TAG",
-        "options": [
-          {
-            "selected": true,
-            "text": "webservice: dataselect",
-            "value": "webservice: dataselect"
-          },
-          {
-            "selected": false,
-            "text": "webservice: availability",
-            "value": "webservice: availability"
-          },
-          {
-            "selected": false,
-            "text": "webservice: station",
-            "value": "webservice: station"
-          },
-          {
-            "selected": false,
-            "text": "webservice: routing-information",
-            "value": "webservice: routing-information"
-          }
-        ],
-        "query": "webservice: dataselect, webservice: availability, webservice: station, webservice: routing-information",
-        "type": "custom"
       }
     ]
   },
@@ -756,10 +720,12 @@
     "from": "now-6h",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "hidden": true
+  },
   "timezone": "browser",
   "title": "EIDA global problems",
   "uid": "ben4yqwkoldkwc",
-  "version": 30,
+  "version": 16,
   "weekStart": "monday"
 }

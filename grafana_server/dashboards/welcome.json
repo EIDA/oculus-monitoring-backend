@@ -1,0 +1,96 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 5,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Welcome to EIDA Oculus\n\nFor the EIDA Technical Committee and EIDA Management Board that need to improve there services quality, OCULUS is a central monitoring and alerting system that tests all the services at EIDA nodes. Unlike the previous situation where the moniitoring was very scattered and uneven, OCULUS will provide a global view of the services status and indicators for keeping track of service quality evolution.\n\n[EIDA home page](https://www.orfeus-eu.org/data/eida/)\n\n[Github project](https://github.com/EIDA/oculus-monitoring-backend/issues/new/choose)\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.6.1",
+      "title": "",
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 2,
+      "options": {
+        "folderUID": "",
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 10,
+        "query": "EIDA",
+        "showFolderNames": true,
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": [
+          "public"
+        ]
+      },
+      "pluginVersion": "11.6.1",
+      "title": "Dashboard list",
+      "type": "dashlist"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "welcome",
+  "uid": "feon4v7w47shse",
+  "version": 19
+}

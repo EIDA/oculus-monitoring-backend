@@ -24,7 +24,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "aeon0zpk2slxce"
       },
       "fieldConfig": {
         "defaults": {
@@ -39,7 +39,9 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
           },
           "fieldMinMax": false,
           "mappings": [
@@ -113,14 +115,15 @@
       },
       "id": 1,
       "options": {
-        "colWidth": 0.9,
+        "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
+        "mergeValues": true,
         "rowHeight": 0.9,
-        "showValue": "always",
+        "showValue": "auto",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -182,13 +185,22 @@
           }
         }
       ],
-      "title": "dataselect",
-      "type": "status-history"
+      "title": "dataselect healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        }
+      ],
+      "type": "state-timeline"
     },
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "aeon0zpk2slxce"
       },
       "fieldConfig": {
         "defaults": {
@@ -203,7 +215,9 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
           },
           "fieldMinMax": false,
           "mappings": [
@@ -277,14 +291,15 @@
       },
       "id": 2,
       "options": {
-        "colWidth": 0.9,
+        "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
+        "mergeValues": true,
         "rowHeight": 0.9,
-        "showValue": "always",
+        "showValue": "auto",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -346,13 +361,22 @@
           }
         }
       ],
-      "title": "station",
-      "type": "status-history"
+      "title": "station healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        }
+      ],
+      "type": "state-timeline"
     },
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "aeon0zpk2slxce"
       },
       "fieldConfig": {
         "defaults": {
@@ -367,7 +391,9 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
           },
           "fieldMinMax": false,
           "mappings": [
@@ -441,14 +467,15 @@
       },
       "id": 3,
       "options": {
-        "colWidth": 0.9,
+        "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
+        "mergeValues": true,
         "rowHeight": 0.9,
-        "showValue": "always",
+        "showValue": "auto",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -510,13 +537,22 @@
           }
         }
       ],
-      "title": "availability",
-      "type": "status-history"
+      "title": "availability healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        }
+      ],
+      "type": "state-timeline"
     },
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "aeon0zpk2slxce"
       },
       "fieldConfig": {
         "defaults": {
@@ -531,7 +567,9 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
           },
           "fieldMinMax": false,
           "mappings": [
@@ -605,14 +643,15 @@
       },
       "id": 4,
       "options": {
-        "colWidth": 0.9,
+        "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
+        "mergeValues": true,
         "rowHeight": 0.9,
-        "showValue": "always",
+        "showValue": "auto",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -674,13 +713,22 @@
           }
         }
       ],
-      "title": "wfcatalog",
-      "type": "status-history"
+      "title": "wfcatalog healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        }
+      ],
+      "type": "state-timeline"
     },
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "aeon0zpk2slxce"
       },
       "fieldConfig": {
         "defaults": {
@@ -695,7 +743,9 @@
               "tooltip": false,
               "viz": false
             },
-            "lineWidth": 1
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
           },
           "fieldMinMax": false,
           "mappings": [
@@ -769,14 +819,15 @@
       },
       "id": 5,
       "options": {
-        "colWidth": 0.9,
+        "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
+        "mergeValues": true,
         "rowHeight": 0.9,
-        "showValue": "always",
+        "showValue": "auto",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -838,93 +889,27 @@
           }
         }
       ],
-      "title": "routing present",
-      "type": "status-history"
+      "title": "routing present healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        }
+      ],
+      "type": "state-timeline"
     }
   ],
   "preload": false,
   "schemaVersion": 41,
   "tags": [
-    "EIDA"
+    "EIDA",
+    "public"
   ],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "text": [
-            "BGR"
-          ],
-          "value": [
-            "BGR"
-          ]
-        },
-        "definition": "",
-        "label": "EIDA NODES",
-        "multi": true,
-        "name": "EIDA_NODES",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "/^(?!(Discovered hosts|EIDA nodes)$).+/",
-          "host": "",
-          "item": "",
-          "itemTag": "",
-          "queryType": "group"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": [
-            "Application: availability"
-          ],
-          "value": [
-            "Application: availability"
-          ]
-        },
-        "definition": "",
-        "label": "ITEM TAG",
-        "multi": true,
-        "name": "ITEM_TAG",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "$EIDA_NODES",
-          "host": "$EIDA_NODES",
-          "item": "",
-          "itemTag": "/.*/",
-          "queryType": "itemTag"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "Download speed for scenario \"availability\".",
-          "value": "Download speed for scenario \"availability\"."
-        },
-        "definition": "",
-        "label": "ITEM",
-        "name": "ITEM",
-        "options": [],
-        "query": {
-          "application": "/.*/",
-          "group": "$EIDA_NODES",
-          "host": "$EIDA_NODES",
-          "item": "/.*/",
-          "itemTag": "$ITEM_TAG",
-          "queryType": "item"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      }
-    ]
+    "list": []
   },
   "time": {
     "from": "now-3h",
@@ -932,8 +917,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "EIDA Global WeatherMap",
+  "title": "EIDA global WeatherMap",
   "uid": "cen19lnkzcsu8b",
-  "version": 22,
+  "version": 11,
   "weekStart": "sunday"
 }
