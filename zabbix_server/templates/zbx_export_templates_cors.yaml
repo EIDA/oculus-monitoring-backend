@@ -12,14 +12,16 @@ zabbix_export:
       httptests:
         - uuid: abf09ffcff694750b4be1edd7ed8def0
           name: CORS
+          delay: 1h
           steps:
             - name: 'test cors'
-              url: 'https://{$ENDPOINT}/api_jsonrpc.php'
+              url: 'https://{$ENDPOINT}/'
               headers:
                 - name: access-control-allow-origin
                   value: '*'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
+              status_codes: '200'
           tags:
             - tag: Test
               value: cors
@@ -28,7 +30,7 @@ zabbix_export:
       expression: 'last(/Template CORS/web.test.fail[CORS])<>0 and last(/Template CORS/web.test.error[CORS])<>0'
       name: 'CORS test'
       event_name: 'CORS test fail'
-      priority: DISASTER
+      priority: WARNING
       tags:
         - tag: Test
           value: cors

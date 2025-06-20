@@ -85,4 +85,5 @@ oculus_users:
     email: racine@sed.ethz.ch
   - username: user-uib
     name: Øyvind Natvik
-    usrgrp:
+    usrgrp: UIB
+    email: Oyvind.Natvik@uib.no
