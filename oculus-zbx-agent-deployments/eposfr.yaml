@@ -1,5 +1,5 @@
 ---
-node: Epos-France
+node: EPOSFR
 endpoint: ws.resif.fr
 routingFile: routing/eida_routing.xml
 onlineCheck:

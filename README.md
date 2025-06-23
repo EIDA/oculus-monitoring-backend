@@ -1,5 +1,5 @@
 # Oculus Monitoring
-For the EIDA Technical Committee and EIDA Management Board that need to improve there services quality, Oculus is a central monitoring and alerting system that tests all the services at EIDA nodes. Unlike the previous situation where the moniitoring was very scattered and uneven, OCULUS will provide a global view of the services status and indicators for keeping track of service quality evolution.
+For the EIDA Technical Committee and EIDA Management Board that need to improve there services quality, Oculus is a central monitoring and alerting system that tests all the services at EIDA nodes. Unlike the previous situation where the monitoring was very scattered and uneven, OCULUS will provide a global view of the services status and indicators for keeping track of service quality evolution.
 
 ## Table of contents
 - [How to monitor a new thing](#how-to-monitor-a-new-thing)
@@ -137,7 +137,7 @@ Then deploy (or update) the agent using helm:
 
 ⚠️ If you want delete host, deleted the host FIRST in the Discovery template, and only then in the Webservice template ⚠️
 
-    helm upgrade -i epos-france oculus-zbx-agent --set-file zbx_lld=oculus-zbx-agent-deployments/epos-france.yaml -n eida-moniitoring
+    helm upgrade -i epos-france oculus-zbx-agent --set-file zbx_lld=oculus-zbx-agent-deployments/epos-france.yaml -n eida-monitoring
 
 ### Deploy all agents
     for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent --set-file zbx_lld=$f -n eida-monitoring; done
@@ -179,7 +179,7 @@ cd ansible/playbooks
 ```
 #### 2. Run playbook Ansible
 ```sh
-ansible-playbook create_users.yaml
+ansible-playbook create_user.yaml
 ```
 
 ### Trigger actions
