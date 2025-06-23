@@ -1,11 +1,11 @@
 oculus_users:
   - username: user-resif
     name: Enzo Fogliano
-    usrgrp: Epos-France
+    usrgrp: EPOSFR
     email: enzo.fogliano@univ-grenoble-alpes.fr
   - username: user-resif2
     name: Jonathan Schaeffer
-    usrgrp: Epos-France
+    usrgrp: EPOSFR
     email: jonathan.schaeffer@univ-grenoble-alpes.fr
   - username: user-bgr
     name: Goebel Björn
