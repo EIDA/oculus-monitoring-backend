@@ -179,7 +179,7 @@ cd ansible/playbooks
 ```
 #### 2. Run playbook Ansible
 ```sh
-ansible-playbook create_user.yaml
+ansible-playbook create_users.yaml
 ```
 
 ### Trigger actions
