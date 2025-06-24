@@ -4,6 +4,7 @@
   gather_facts: false
   vars_files:
     - oculus_users.yaml
+    - config.yaml
   vars:
     ansible_network_os: community.zabbix.zabbix
     ansible_connection: httpapi
@@ -18,12 +19,12 @@
       delegate_to: localhost
       ansible.builtin.set_fact:
         ansible_user: ansible
-        ansible_httpapi_pass: '7h52Tn+:5/W4zTc0XY)iw"l'
+        ansible_httpapi_pass: "{{ ansible_httpapi_pass }}"
 
     - name: Set API token
       delegate_to: localhost
       ansible.builtin.set_fact:
-        ansible_zabbix_token: ef0c6a584b9cf9c32bfbd140fb79f3edfe5a1e0342ef4451e11cd2c7ffbf8d18
+        ansible_zabbix_token: "{{ ansible_zabbix_token }}"
 
     - name: Create new Zabbix users groups
       delegate_to: localhost
