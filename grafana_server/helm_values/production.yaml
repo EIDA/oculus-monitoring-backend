@@ -4,7 +4,7 @@ global:
 grafana:
   enabled: true
   adminUser: admin
-  adminPassword: ENC[AES256_GCM,data:Y3m0DFaCgr3jF2p8,iv:sT41ZvNyWwGu9RFbqWZoS6c6ekcE874flMXGkFs6o5E=,tag:E73TJekiIVTdecwRilmCLA==,type:str]
+  adminPassword: ENC[AES256_GCM,data:GZg39x93qO/vFRkh,iv:A63J0m2D/LRc7dwyV+2/uwPKROq8JLUFqfHIwWYSJxU=,tag:4ya9dXt+jhJTDtA3S/douQ==,type:str]
   service:
     type: ClusterIP
     port: 3000
@@ -40,7 +40,7 @@ grafana:
       isDefault: true
       jsonData:
         username: grafana
-        password: ENC[AES256_GCM,data:QU+RCgv6NKxKrmS9GN2BPIMf4IA=,iv:mLvY5N/tADHMAG8cFoKxY9FZkQxYmQzj1uaysV3hKcs=,tag:qlbEXh/Nl9tIK+o5mY5wpA==,type:str]
+        password: ENC[AES256_GCM,data:pf75PZ1fC2YNp5neCY+oCmMFOQ0=,iv:Z2mjrr3wyXvzZedX4EiTo871+o4KY1cL33qVp8dd5lc=,tag:BhpBTDIAl5vKAjlYp2lifg==,type:str]
   dashboards:
     enabled: true
     defaultFolderName: Default
@@ -50,9 +50,12 @@ grafana:
     host: resif-pgpreprod.u-ga.fr
     port: 5432
     user: oculus
-    password: ENC[AES256_GCM,data:YrEBBi12l2z3b7/h3VHXUm/5QUo=,iv:Xlc0dfTly3JpkESb4aZvvTxXvZ8BDLPnLYwmwVe4x00=,tag:wsw1TtyJ73jmMu8EQuXHcQ==,type:str]
+    password: ENC[AES256_GCM,data:GcAf6OCAqaWsPdYFuP9Hm3fNrS8=,iv:wRDh23UjE6Ec6Emey/CRcZ2UYexmwRJtCbF2fbYK6lQ=,tag:kYRlknIny/b9/RtYQXdhAg==,type:str]
     name: oculus_grafana
-resources:
+ingress:
+  enabled: true
+  hosts:
+  - eida-oculus.resif.fr
   requests:
     cpu: 0.5
     memory: 2Gi
@@ -73,22 +76,22 @@ sops:
   azure_kv: []
   hc_vault: []
   age: []
-  lastmodified: "2025-06-24T14:19:26Z"
-  mac: ENC[AES256_GCM,data:IHZ6a/pT3tcozTk0yYub/quloNkcRAHGpdJgA+chqrQx67M+nbkz6u62yyTdPBnidR1Vff6cS6MxhxQMmcim74Qp3QG5e5BgldN3f60S9Dzg9UuMp4FSbZaSoAE0pDtVDkWZfHwAGlm4s8Uj+PRjaHmtlYukz5hNcCMxOcnxT8c=,iv:AWgXSANP79hK+IOk1qYG/klvh4eYcum90/kPHDodrQk=,tag:94Zj8pfjyKGxd0uhmnlgrQ==,type:str]
+  lastmodified: "2025-06-24T14:19:49Z"
+  mac: ENC[AES256_GCM,data:P3B2ziYOUrjsX8lSqGFUkfKpjYl6sqKKUU+8WA/nhQ8P2jkFpZ9lanZvXbKF5RKbFOMlnVh6/TkKO8fmla//bVLNR67h6XfwGwt5n6tJyE8FNkLHvgqfjWd2Z4vUgmp5yCpQEbsOUyijIIb5Bj6ypFhuoKTXff5Yhny6gVZjxcM=,iv:/juac2KNPdaO/2F+3Ax6U1trjBZXA/qzASF7eKt9fKY=,tag:EGpeuvazpR7KTvZU7PtQfw==,type:str]
   pgp:
-  - created_at: "2025-06-24T14:19:25Z"
+  - created_at: "2025-06-24T14:19:49Z"
     enc: |-
       -----BEGIN PGP MESSAGE-----
 
-      hQEMA23uPS/3Y9M2AQf+JvotIVns9nE9NcivEEWA3JhBVjM7DNbzpHmjbTMLK9m4
-      wTBu+u6e4UiTyq/VmKR+M6StovN8VMXz/uMob4YbV7HIbc7dZf/VvZRQI8yNun59
-      uL4G6aAAVA6ogjNf/xwxm8LpY7oONP7hJs42CJN33A7zKXDwNh/XmU7f+ikyRmKy
-      PlK0k+Y0cN/P/XJPtzmPFCDL1SZhTDJXvPcWlcJHP4YNJyXRFHpyu6an9XS7c6nr
-      qlbidNlcrWTWBMgoPTPT/T41IIeW4DDHqBTW3WO+S3KsTobMlDWM59pDhfhCarSf
-      KjKuaHWHrRKSTp9eZW2aGcxK+lY1H6BByzYJCRGoRdJcAfCu2slDe2NWjXgFx+eH
-      kiO8QF6JKEM5VkTbaD2o28ECVnTaxbto2q30Wll6AGJ0KsGZmyGC555Ous6saRhe
-      NXsMaCN6xzQEgOHdaw0zRtOL7yPd1uAFUjee/U8=
-      =87G5
+      hQEMA23uPS/3Y9M2AQf+PMDMA9HkYJM0HA+4otfyZWa6H5k/JLUkwtpA6cZ9m05/
+      w2Xc/vjJwBEgiziTCCuop9rlLXaRloI83yteDZU/EmyhLIjY2yTt6xOCnx1bKY0j
+      GP18UTxHZAYt7sdjmDkpVLWqCbnjuj+obU4d53XHhcPQfQ+kPg7M/IXypRdTfBZe
+      pBHv7h+o4IrE8QzKlcgD3zvK6WD4Yr1wyc8Mv58b1gjJac8Qpthd/rswmio9B3t4
+      zZwYgs7wSi9AIhOmTnwbrk+6mkILQQa9fonucfmWP8lr7wHB2Nhp2EqboVBSMlRt
+      NAu3sUF0SgMZMGE8Xmgig28DSRmK1m1H3+iwq0ZNetJeARFlI3w+cteyoOKTUY7t
+      gYvsc/DuSKJPxv47/CkEcOVc52gmIPov67rUZk1GfAsTDToPTEz9jolzyMWGCVsk
+      oEgW0rglUfAjkDmBUctnj4m1vREGPIP7G/cWUMfCWg==
+      =rzda
       -----END PGP MESSAGE-----
     fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
   encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|adminPassword)

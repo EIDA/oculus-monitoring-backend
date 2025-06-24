@@ -1,0 +1,59 @@
+---
+- name: Create Zabbix users
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - oculus_users.yaml
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 8888
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: localhost
+
+  tasks:
+  - name: Credentials Zabbix API
+    delegate_to: localhost
+    ansible.builtin.set_fact:
+      ansible_user: ansible
+      ansible_httpapi_pass: ''
+
+  - name: Set API token
+    delegate_to: localhost
+    ansible.builtin.set_fact:
+      ansible_zabbix_token: 
+
+  - name: Create new Zabbix users groups
+    delegate_to: localhost
+    loop: "{{ oculus_users }}"
+    community.zabbix.zabbix_usergroup:
+      name: "{{ item.usrgrp }}"
+      templategroup_rights:
+        - template_group: Templates/EIDA
+          permission: read-only
+      hostgroup_rights:
+        - host_group: "{{ item.usrgrp }}"
+          permission: read-only
+      tag_filters:
+        - host_group: "{{ item.usrgrp }}"
+
+  - name: Create new zabbix users
+    delegate_to: localhost
+    loop: "{{ oculus_users }}"
+    community.zabbix.zabbix_user:
+      username: "{{ item.username }}"
+      name: "{{ item.name }}"
+      usrgrps:
+      - Internal
+      - "{{ item.usrgrp }}"
+      passwd: 2VKPpxOY3x89
+      lang: en_GB
+      autologin: false
+      refresh: "30"
+      rows_per_page: "50"
+      user_medias:
+      - mediatype: Email
+        sendto:
+        - "{{ item.email }}"

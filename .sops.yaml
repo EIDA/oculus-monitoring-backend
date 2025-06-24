@@ -1,0 +1,5 @@
+creation_rules:
+- path_regex: \.yaml$
+  pgp: "C83ECA1E0B9D719C7FA2470F18E4F5A58801E669"
+  encrypted_regex: "(password|ansible_httpapi_pass|ansible_zabbix_token|adminPassword)"
+  mac_only_encrypted: true

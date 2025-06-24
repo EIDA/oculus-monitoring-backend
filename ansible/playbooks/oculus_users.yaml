@@ -54,11 +54,11 @@ oculus_users:
   - username: user-lmu
     name: Tobias Megies
     usrgrp: LMU
-    email: megies@geophysik.uni-muenchen.de
+    email: tobias.megies@lmu.de
   - username: user-lmu2
     name: Joachim Wassermann
     usrgrp: LMU
-    email: jowa@geophysik.uni-muenchen.de
+    email: j.wassermann@lmu.de
   - username: user-niep
     name: Cristian Neagoe
     usrgrp: NIEP
