@@ -14,46 +14,46 @@
     ansible_host: localhost
 
   tasks:
-  - name: Credentials Zabbix API
-    delegate_to: localhost
-    ansible.builtin.set_fact:
-      ansible_user: ansible
-      ansible_httpapi_pass: ''
+    - name: Credentials Zabbix API
+      delegate_to: localhost
+      ansible.builtin.set_fact:
+        ansible_user: ansible
+        ansible_httpapi_pass: '7h52Tn+:5/W4zTc0XY)iw"l'
 
-  - name: Set API token
-    delegate_to: localhost
-    ansible.builtin.set_fact:
-      ansible_zabbix_token: 
+    - name: Set API token
+      delegate_to: localhost
+      ansible.builtin.set_fact:
+        ansible_zabbix_token: ef0c6a584b9cf9c32bfbd140fb79f3edfe5a1e0342ef4451e11cd2c7ffbf8d18
 
-  - name: Create new Zabbix users groups
-    delegate_to: localhost
-    loop: "{{ oculus_users }}"
-    community.zabbix.zabbix_usergroup:
-      name: "{{ item.usrgrp }}"
-      templategroup_rights:
-        - template_group: Templates/EIDA
-          permission: read-only
-      hostgroup_rights:
-        - host_group: "{{ item.usrgrp }}"
-          permission: read-only
-      tag_filters:
-        - host_group: "{{ item.usrgrp }}"
+    - name: Create new Zabbix users groups
+      delegate_to: localhost
+      loop: "{{ oculus_users }}"
+      community.zabbix.zabbix_usergroup:
+        name: "{{ item.usrgrp }}"
+        templategroup_rights:
+          - template_group: Templates/EIDA
+            permission: read-only
+        hostgroup_rights:
+          - host_group: "{{ item.usrgrp }}"
+            permission: read-only
+        tag_filters:
+          - host_group: "{{ item.usrgrp }}"
 
-  - name: Create new zabbix users
-    delegate_to: localhost
-    loop: "{{ oculus_users }}"
-    community.zabbix.zabbix_user:
-      username: "{{ item.username }}"
-      name: "{{ item.name }}"
-      usrgrps:
-      - Internal
-      - "{{ item.usrgrp }}"
-      passwd: 2VKPpxOY3x89
-      lang: en_GB
-      autologin: false
-      refresh: "30"
-      rows_per_page: "50"
-      user_medias:
-      - mediatype: Email
-        sendto:
-        - "{{ item.email }}"
+    - name: Create new zabbix users
+      delegate_to: localhost
+      loop: "{{ oculus_users }}"
+      community.zabbix.zabbix_user:
+        username: "{{ item.username }}"
+        name: "{{ item.name }}"
+        usrgrps:
+          - Internal
+          - "{{ item.usrgrp }}"
+        passwd: 2VKPpxOY3x89
+        lang: en_GB
+        autologin: false
+        refresh: "30"
+        rows_per_page: "50"
+        user_medias:
+          - mediatype: Email
+            sendto:
+              - "{{ item.email }}"
