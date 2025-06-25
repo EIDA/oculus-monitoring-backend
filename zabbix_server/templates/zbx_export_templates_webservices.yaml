@@ -14,12 +14,12 @@ zabbix_export:
           name: availability
           delay: 15m
           steps:
-            - name: 'get documentation'
+            - name: 'availability accessible'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
               status_codes: '200'
-            - name: 'simple request'
+            - name: 'availability short request'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
               query_fields:
                 - name: net
@@ -36,7 +36,7 @@ zabbix_export:
                   value: '{$ONLINECHECK_END}'
               retrieve_mode: HEADERS
               status_codes: '200'
-            - name: application.wadl
+            - name: 'availability application.wadl'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/application.wadl'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
@@ -69,7 +69,7 @@ zabbix_export:
                   value: '404'
               timeout: 60s
               status_codes: '200'
-            - name: application.wadl
+            - name: 'dataselect application.wadl'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/application.wadl'
               follow_redirects: 'NO'
               required: wadl.dev.java.net
@@ -140,12 +140,12 @@ zabbix_export:
           name: wfcatalog
           delay: 15m
           steps:
-            - name: 'get documentation'
+            - name: 'wfcatalog accessible'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
               status_codes: '200'
-            - name: 'simple query'
+            - name: 'wfcatalog short request'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
               query_fields:
                 - name: net
