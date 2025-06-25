@@ -46,11 +46,11 @@ oculus_users:
   - username: user-koeri
     name: Tuğçe Ergün
     usrgrp: KOERI
-    email: afacan@boun.edu.tr
+    email: afacan@bogazici.edu.tr
   - username: user-koeri2
     name: Fatih Turhan
     usrgrp: KOERI
-    email: fatih.turhan@boun.edu.tr
+    email: fatih.turhan@bogazici.edu.tr
   - username: user-lmu
     name: Tobias Megies
     usrgrp: LMU
