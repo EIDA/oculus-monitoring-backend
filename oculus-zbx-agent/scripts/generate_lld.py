@@ -8,6 +8,13 @@
 import yaml
 import json
 import sys
+import datetime
+
+class DateTimeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime.datetime):
+            return obj.isoformat()
+        return json.JSONEncoder.default(self,    obj)
 
 def flatten_yaml(data, parent_key='', sep='_'):
     """
@@ -15,7 +22,7 @@ def flatten_yaml(data, parent_key='', sep='_'):
     
     Args :
         data (dict ) : The dictionary to flatten
-        parent_key (str) : The base key to prefix
+        parent_key (str): The base key to prefix
         sep (str) : The separator between keys
     
     Returns:
@@ -39,8 +46,8 @@ def generate_lld(yaml_file):
     """
     # Load the YAML file
     with open(yaml_file, 'r') as yf:
-        data = yaml.safe_load(yf)
-    
+        data = yaml.load(yf,Loader=yaml.BaseLoader)
+
     # Flatten the YAML data
     flattened_data = flatten_yaml(data)
     
@@ -48,7 +55,7 @@ def generate_lld(yaml_file):
     lld_data = {f"{{#{key}}}": f"{value}" for key, value in flattened_data.items()}
     
     # Print the LLD data as JSON to the console
-    print(json.dumps([lld_data], indent=2))
+    print(json.dumps([lld_data], indent=2, cls=DateTimeEncoder))
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
