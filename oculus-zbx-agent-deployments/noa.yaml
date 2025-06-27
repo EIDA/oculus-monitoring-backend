@@ -4,29 +4,29 @@ endpoint: eida.gein.noa.gr
 routingFile: routing/routing.xml
 onlineCheck:
   net: HL
-  sta: ANAF
+  sta: ATH
   loc: --
   cha: HHZ
-  start: 2025-02-01T00:00:00
-  end: 2025-02-01T00:00:05
+  start: '2025-02-01T00:00:00'
+  end: '2025-02-01T00:00:05'
 perfCheck:
   dataselect:
     9streams:
-      net: EG,HA,HC,HL,HP,HT,LE
+      net: EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HHE,HHZ
       start: '2009-03-04T00:01:00'
       end: '2009-03-04T00:02:00'
     54streams:
-      net: EG,HA,HC,HL,HP,HT,LE
+      net: EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HHE
       start: '2012-03-04T00:01:00'
       end: '2012-03-04T00:02:00'
     320streams:
-      net: CQ,EG,HA,HC,HL,HP,HT,LE
+      net: CQ,EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HH?,HNE
@@ -41,21 +41,21 @@ perfCheck:
       end: '2012-06-06T00:00:00'
   wfcatalog:
     9streams:
-      net: EG,HA,HC,HL,HP,HT,LE
+      net: EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HHE,HHZ
       start: '2009-03-04T00:01:00'
       end: '2009-03-04T00:02:00'
     54streams:
-      net: EG,HA,HC,HL,HP,HT,LE
+      net: EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HHE
       start: '2012-03-04T00:01:00'
       end: '2012-03-04T00:02:00'
     320streams:
-      net: CQ,EG,HA,HC,HL,HP,HT,LE
+      net: CQ,EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HH?,HNE
@@ -70,21 +70,21 @@ perfCheck:
       end: '2012-06-06T00:00:00'
   availability:
     9streams:
-      net: EG,HA,HC,HL,HP,HT,LE
+      net: EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HHE,HHZ
       start: '2009-03-04T00:01:00'
       end: '2009-03-04T23:59:00'
     54streams:
-      net: EG,HA,HC,HL,HP,HT,LE
+      net: EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HHE
       start: '2012-03-04T00:01:00'
       end: '2012-03-04T23:59:00'
     320streams:
-      net: CQ,EG,HA,HC,HL,HP,HT,LE
+      net: CQ,EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HH?,HNE
@@ -99,7 +99,7 @@ perfCheck:
       end: '2012-06-06T00:00:00'
   station:
     9streams:
-      net: EG,HA,HC,HL,HP,HT,LE
+      net: EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HHE,HHZ
@@ -113,7 +113,7 @@ perfCheck:
       start: '2012-03-04T00:01:00'
       end: '2012-03-04T00:02:00'
     320streams:
-      net: CQ,EG,HA,HC,HL,HP,HT,LE
+      net: CQ,EG,HA,HC,HL,HP,HT
       sta: '*'
       loc: '*'
       cha: HH?, HNE
