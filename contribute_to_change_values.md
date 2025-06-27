@@ -22,4 +22,4 @@ Change require validation with the administator.
 Each performance check as organise by services and each services as a list of scenarios with their parameters
 
 ## Contact for alerts 
-Update email contact [here](ansible/oculus_users.yaml)
+Update email contact [here](ansible/files/oculus_users.yaml)
