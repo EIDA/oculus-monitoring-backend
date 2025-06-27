@@ -2,7 +2,7 @@
 name: New monitoring
 about: Ask for something new to monitor
 title: "[NewMonitoring] Title of your issue"
-labels: 'new'
+labels: 'new monitoring'
 assignees: jschaeff
 
 ---
