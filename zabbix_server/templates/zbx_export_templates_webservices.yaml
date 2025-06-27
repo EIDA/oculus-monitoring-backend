@@ -9,6 +9,119 @@ zabbix_export:
       name: 'Template webservices'
       groups:
         - name: Templates/EIDA
+      items:
+        - uuid: e38a49ab9c0e442c9ea3a47f8869aaee
+          name: 'CORS availability {$NODE}'
+          type: HTTP_AGENT
+          key: cors.check.availability
+          delay: 1d
+          value_type: TEXT
+          trends: '0'
+          url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
+          headers:
+            - name: Origin
+              value: orfeus-eu.org
+          retrieve_mode: HEADERS
+          request_method: HEAD
+          tags:
+            - tag: Application
+              value: availability
+            - tag: Test
+              value: cors
+          triggers:
+            - uuid: bc841ec4091a415c857b2b8e92b1c31e
+              expression: 'find(/Template webservices/cors.check.availability,,"iregexp","Access-Control-Allow-Origin:\\s\\*")=0'
+              name: 'CORS availability'
+              event_name: '{$NODE}: CORS not present for availability'
+              priority: WARNING
+              manual_close: 'YES'
+              tags:
+                - tag: Application
+                  value: availability
+        - uuid: b0264525152c454eb7bf9f22c51c20c0
+          name: 'CORS dataselect {$NODE}'
+          type: HTTP_AGENT
+          key: cors.check.dataselect
+          delay: 1d
+          value_type: CHAR
+          trends: '0'
+          url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/'
+          headers:
+            - name: Origin
+              value: orfeus-eu.org
+          retrieve_mode: HEADERS
+          request_method: HEAD
+          tags:
+            - tag: Application
+              value: dataselect
+            - tag: Test
+              value: cors
+          triggers:
+            - uuid: 2d5416dfc6c3456f892ce7fb2071e0d9
+              expression: 'find(/Template webservices/cors.check.dataselect,,"iregexp","Access-Control-Allow-Origin:\\s\\*")=0'
+              name: 'CORS dataselect'
+              event_name: '{$NODE}: CORS not present for dataselect'
+              priority: WARNING
+              manual_close: 'YES'
+              tags:
+                - tag: Application
+                  value: dataselect
+        - uuid: 502d846dbd514c108ff43ebfd7e5f1ca
+          name: 'CORS station {$NODE}'
+          type: HTTP_AGENT
+          key: cors.check.station
+          delay: 1d
+          value_type: CHAR
+          trends: '0'
+          url: 'https://{$ENDPOINT}/fdsnws/station/1/'
+          headers:
+            - name: Origin
+              value: orfeus-eu.org
+          retrieve_mode: HEADERS
+          request_method: HEAD
+          tags:
+            - tag: Application
+              value: station
+            - tag: Test
+              value: cors
+          triggers:
+            - uuid: 0aecaee4a32147b189c030c92ceba6a3
+              expression: 'find(/Template webservices/cors.check.station,,"iregexp","Access-Control-Allow-Origin:\\s\\*")=0'
+              name: 'CORS station'
+              event_name: '{$NODE}: CORS not present for station'
+              priority: WARNING
+              manual_close: 'YES'
+              tags:
+                - tag: Application
+                  value: station
+        - uuid: 6f33614a8fec40a99e366ff9e4c56cce
+          name: 'CORS wfcatalog {$NODE}'
+          type: HTTP_AGENT
+          key: cors.check.wfcatalog
+          delay: 1d
+          value_type: CHAR
+          trends: '0'
+          url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
+          headers:
+            - name: Origin
+              value: orfeus-eu.org
+          retrieve_mode: HEADERS
+          request_method: HEAD
+          tags:
+            - tag: Application
+              value: wfcatalog
+            - tag: Test
+              value: cors
+          triggers:
+            - uuid: 900f8b60f8c841ea8adfc5f8757a1fc4
+              expression: 'find(/Template webservices/cors.check.wfcatalog,,"iregexp","Access-Control-Allow-Origin:\\s\\*")=0'
+              name: 'CORS wfcatalog'
+              event_name: '{$NODE}: CORS not present for wfcatalog'
+              priority: WARNING
+              manual_close: 'YES'
+              tags:
+                - tag: Application
+                  value: wfcatalog
       httptests:
         - uuid: 32b3e3d018b2423c899d92878cbe3567
           name: availability
@@ -61,12 +174,12 @@ zabbix_export:
                   value: '{$ONLINECHECK_STA}'
                 - name: cha
                   value: '{$ONLINECHECK_CHA}'
+                - name: loc
+                  value: '{$ONLINECHECK_LOC}'
                 - name: start
                   value: '{$ONLINECHECK_START}'
                 - name: end
                   value: '{$ONLINECHECK_END}'
-                - name: nodata
-                  value: '404'
               timeout: 60s
               status_codes: '200'
             - name: 'dataselect application.wadl'
@@ -105,6 +218,34 @@ zabbix_export:
           tags:
             - tag: Application
               value: routing_information
+        - uuid: 681a5d0e1bd24a37ac4ea729a58e376f
+          name: seedpsd
+          delay: 5m
+          status: DISABLED
+          steps:
+            - name: 'seedpsd accesible'
+              url: 'https://{$ENDPOINT}/eidaws/seedpsd/1/'
+              follow_redirects: 'NO'
+            - name: 'seedpsd short request'
+              url: 'https://{$ENDPOINT}/eidaws/seedpsd/1/'
+              query_fields:
+                - name: net
+                  value: '{$ONLINECHECK_NET}'
+                - name: sta
+                  value: '{$ONLINECHECK_STA}'
+                - name: loc
+                  value: '{$ONLINECHECK_LOC}'
+                - name: cha
+                  value: '{$ONLINECHECK_CHA}'
+                - name: start
+                  value: '{$ONLINECHECK_START}'
+                - name: end
+                  value: '{$ONLINECHECK_END}'
+              follow_redirects: 'NO'
+              status_codes: '200'
+          tags:
+            - tag: Application
+              value: seedpsd
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
           delay: 15m
@@ -173,7 +314,7 @@ zabbix_export:
       expression: |
         last(/Template webservices/web.test.fail[availability])<>0
         and last(/Template webservices/web.test.error[availability])<>0
-      name: 'Availability all steps'
+      name: 'availability all steps'
       event_name: 'Availability step {ITEM.VALUE} failed. {ITEM.VALUE2}'
       priority: AVERAGE
       manual_close: 'YES'
@@ -182,7 +323,7 @@ zabbix_export:
           value: availability
     - uuid: d1da3fc8a92f4288bb0e533bfefdd3de
       expression: 'last(/Template webservices/web.test.fail[present in central eida routing])<>0 and last(/Template webservices/web.test.error[present in central eida routing])<>0'
-      name: 'Central EIDA routing all steps'
+      name: 'central EIDA routing all steps'
       event_name: 'EIDA routing step {ITEM.VALUE} failed. {ITEM.VALUE2}'
       priority: AVERAGE
       manual_close: 'YES'
@@ -191,7 +332,7 @@ zabbix_export:
           value: routing_present
     - uuid: 0848f9b91db2476a8f9b4394d895b944
       expression: 'last(/Template webservices/web.test.fail[dataselect])<>0 and last(/Template webservices/web.test.error[dataselect])<>0'
-      name: 'Dataselect all steps'
+      name: 'dataselect all steps'
       event_name: 'Dataselect step {ITEM.VALUE} failed. {ITEM.VALUE2}'
       priority: AVERAGE
       manual_close: 'YES'
@@ -200,16 +341,26 @@ zabbix_export:
           value: dataselect
     - uuid: ae1352b7f0644200b65fca44b93f9b44
       expression: 'last(/Template webservices/web.test.fail[routing information published at node])<>0 and last(/Template webservices/web.test.error[routing information published at node])<>0'
-      name: 'Routing information all steps'
+      name: 'routing information all steps'
       event_name: 'Routing information step {ITEM.VALUE} failed. {ITEM.VALUE2}'
       priority: AVERAGE
       manual_close: 'YES'
       tags:
         - tag: Application
           value: routing_information
+    - uuid: 7d9bfa2fdc1a4c94bcd9a4035ddcc157
+      expression: 'last(/Template webservices/web.test.fail[seedpsd])<>0 and last(/Template webservices/web.test.error[seedpsd])<>0'
+      name: 'seedpsd all steps'
+      event_name: SeedPSD
+      status: DISABLED
+      priority: WARNING
+      manual_close: 'YES'
+      tags:
+        - tag: Application
+          value: seedpsd
     - uuid: f048e2a4d53b46acbfebb77e7d4beb45
       expression: 'last(/Template webservices/web.test.fail[station])<>0 and last(/Template webservices/web.test.error[station])<>0'
-      name: 'Station all steps'
+      name: 'station all steps'
       event_name: 'Station step {ITEM.VALUE} failed. {ITEM.VALUE2}'
       priority: AVERAGE
       manual_close: 'YES'
@@ -218,7 +369,7 @@ zabbix_export:
           value: station
     - uuid: c129ba9cfde84b88836d45cf2ec265ce
       expression: 'last(/Template webservices/web.test.fail[wfcatalog])<>0 and last(/Template webservices/web.test.error[wfcatalog])<>0'
-      name: 'WFCatalog all steps'
+      name: 'wfcatalog all steps'
       event_name: 'WFCatalog step {ITEM.VALUE} failed. {ITEM.VALUE2}'
       priority: AVERAGE
       manual_close: 'YES'
