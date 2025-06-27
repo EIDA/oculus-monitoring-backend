@@ -1,0 +1,29 @@
+ansible_httpapi_pass: ENC[AES256_GCM,data:uoOpN6uO5afI6rgb,iv:r4IE2SnSbU6TEKY72s8RA0BG3HTf3GGt1HE+3p2detk=,tag:n1ASPnLDmv+OsEFKMM3nSQ==,type:str]
+ansible_zabbix_token: ENC[AES256_GCM,data:d3KAk3JX6gQapBSiVXO3CBVGFP/8Z57zRgyWc1LcWa3m0qlLLjDnaUCuOvHbsfLTD0yNwzijGj22Pv8SUf97zg==,iv:kQhkSRmVWSHriTRhPdIW2tXugT8S5y8oTVOVXV5ugdw=,tag:jzvCzTyqFXOJPm93NX1dfQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-06-27T14:07:19Z"
+    mac: ENC[AES256_GCM,data:wjOUpTnY1q2p41bPP0TH/Vcy+wCdowSkTx8WqGA8Wt6rjEHJ/HWQB9uQ5tR7W/VTOxRxZfhQ5lgjuFFmMReOjzw4OXIA1ZTbzmMdQ7lLX5lQaJACec/4zWtjVk8WW8qvEIVVseWuWcFtovNat7v2hs78c4gV9t2EGy38aQIE9EE=,iv:YwL3+ElAKhbLlBv/xl0BcZLIDI4HQVAUOR/3q7TtY88=,tag:QvKTLsyrEaW6/5nbMoMoIA==,type:str]
+    pgp:
+        - created_at: "2025-06-27T14:07:19Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQEMA23uPS/3Y9M2AQgAozqUf8ii8Q0BloQUGDCq6M4VrcaKfLZjyC3OcDN2pM42
+            vFB9cTrdmEKSxHobY42ht8kgpo93ap8qOmnJr3yuUzumaDRIZO/LtarQ5enuZDYy
+            Qhxw/ufblcTG2N7NZg0a5m6VWRBkc3uMvZ/SEaxB5MqTHaPLWe2HPEmA889G3ncD
+            tUw3VR493Pa9VOb3EDojo2fTHwVAdwi6jTb50I0939HNgDuveN9SyzT0vnU2DIA0
+            qwseD+lEofsl2yWjWTSxAEHLNS8ybDwkpWnOO0Idyt2LEa0Q+yJXQhgfTlw2yXJa
+            8JT1l+o/H+tkoUhuyxrfj2SWzlK32UTN8vSqnQPq6dJcAXdrDP98Yk9zOB0rG1H1
+            SAkoeFjyfZMmvIl8dJjDhBB6xSSperNSKrlVwVTDsY8c6bhY1K0slJ+os4FMa3R5
+            whvF35vPbg94YsBA84OpUgiE9EPRQPCbtUSA618=
+            =Wsor
+            -----END PGP MESSAGE-----
+          fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
+    encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|adminPassword)
+    mac_only_encrypted: true
+    version: 3.9.2

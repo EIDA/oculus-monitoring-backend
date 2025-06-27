@@ -3,8 +3,8 @@
   hosts: localhost
   gather_facts: false
   vars_files:
-    - oculus_users.yaml
-    - config.yaml
+    - ../files/oculus_users.yaml
+    - ../config/config_prod.yaml
   vars:
     ansible_network_os: community.zabbix.zabbix
     ansible_connection: httpapi
