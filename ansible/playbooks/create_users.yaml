@@ -26,7 +26,7 @@
       ansible.builtin.set_fact:
         ansible_zabbix_token: "{{ ansible_zabbix_token }}"
 
-    - name: Create new Zabbix users groups
+    - name: Create users groups
       delegate_to: localhost
       loop: "{{ oculus_users }}"
       community.zabbix.zabbix_usergroup:
@@ -40,7 +40,7 @@
         tag_filters:
           - host_group: "{{ item.usrgrp }}"
 
-    - name: Create new zabbix users
+    - name: Create users
       delegate_to: localhost
       loop: "{{ oculus_users }}"
       community.zabbix.zabbix_user:
