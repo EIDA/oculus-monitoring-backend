@@ -4,7 +4,7 @@ endpoint: ws.icgc.cat
 routingFile: eidaws/routing/routing.xml
 onlineCheck:
   net: CA
-  sta: CORG
+  sta: OLO
   loc: --
   cha: HHZ
   start: 2017-06-06T00:00:00
