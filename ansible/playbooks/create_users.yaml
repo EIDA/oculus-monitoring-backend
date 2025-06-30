@@ -55,6 +55,6 @@
         refresh: "30"
         rows_per_page: "50"
         user_medias:
-          - mediatype: Email
+          - mediatype: Email (HTML) EIDA
             sendto:
               - "{{ item.email }}"

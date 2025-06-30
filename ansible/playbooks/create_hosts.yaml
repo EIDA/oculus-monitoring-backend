@@ -3,6 +3,7 @@
   hosts: localhost
   gather_facts: false
   vars_files:
+    - ../files/eida_nodes.yaml
     - ../config/config_staging.yaml
   vars:
     ansible_network_os: community.zabbix.zabbix
@@ -24,5 +25,9 @@
       ansible.builtin.set_fact:
         ansible_zabbix_token: "{{ ansible_zabbix_token }}"
 
-    - name: Create Zabbix hosts
+    - name: Create hosts groups
       delegate_to: localhost
+      loop: "{{ eida_nodes }}"
+      community.zabbix.zabbix_group:
+        state: present
+        host_groups: "{{ item.name }}"
