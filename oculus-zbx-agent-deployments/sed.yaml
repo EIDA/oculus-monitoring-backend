@@ -4,11 +4,11 @@ endpoint: eida.ethz.ch
 routingFile: eidaws/routing/routing.xml
 onlineCheck:
   net: CH
-  sta: MUO
-  loc: --
-  cha: HHZ
-  start: 2013-07-04T00:01:00
-  end: 2013-07-04T00:01:10
+  sta: SVIK
+  loc: BT
+  cha: HGZ
+  start: 2025-05-14T00:01:00
+  end: 2025-05-14T00:01:10
 perfCheck:
   dataselect:
     9streams:
