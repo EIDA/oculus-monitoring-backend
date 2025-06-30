@@ -4,11 +4,11 @@ endpoint: ws.icgc.cat
 routingFile: eidaws/routing/routing.xml
 onlineCheck:
   net: CA
-  sta: OLO
+  sta: VNIG
   loc: --
   cha: HHZ
-  start: 2017-06-06T00:00:00
-  end: 2017-06-06T00:00:10
+  start: 2024-12-22T00:00:00
+  end: 2024-12-22T00:00:10
 perfCheck:
   dataselect:
     9streams:
