@@ -18,13 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 3,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "aeon0zpk2slxce"
+        "uid": "beou3fit1s2dcc"
       },
       "fieldConfig": {
         "defaults": {
@@ -147,7 +147,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "aeon0zpk2slxce"
+        "uid": "beou3fit1s2dcc"
       },
       "fieldConfig": {
         "defaults": {
@@ -505,7 +505,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "aeon0zpk2slxce"
+        "uid": "beou3fit1s2dcc"
       },
       "fieldConfig": {
         "defaults": {},
@@ -726,6 +726,6 @@
   "timezone": "browser",
   "title": "EIDA global problems",
   "uid": "ben4yqwkoldkwc",
-  "version": 16,
+  "version": 2,
   "weekStart": "monday"
 }
