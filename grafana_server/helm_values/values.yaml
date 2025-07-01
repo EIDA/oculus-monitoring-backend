@@ -53,12 +53,6 @@ grafana:
     password: ENC[AES256_GCM,data:YrEBBi12l2z3b7/h3VHXUm/5QUo=,iv:Xlc0dfTly3JpkESb4aZvvTxXvZ8BDLPnLYwmwVe4x00=,tag:wsw1TtyJ73jmMu8EQuXHcQ==,type:str]
     name: oculus_grafana
 resources:
-  requests:
-    cpu: 0.5
-    memory: 2Gi
-  limits:
-    cpu: 2
-    memory: 3Gi
 nodeSelector: {}
 tolerations: []
 affinity: {}
