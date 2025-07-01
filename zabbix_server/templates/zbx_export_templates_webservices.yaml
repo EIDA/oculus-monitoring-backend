@@ -18,6 +18,7 @@ zabbix_export:
           value_type: TEXT
           trends: '0'
           url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
+          status_codes: ''
           headers:
             - name: Origin
               value: orfeus-eu.org
@@ -43,9 +44,10 @@ zabbix_export:
           type: HTTP_AGENT
           key: cors.check.dataselect
           delay: 1d
-          value_type: CHAR
+          value_type: TEXT
           trends: '0'
           url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/'
+          status_codes: ''
           headers:
             - name: Origin
               value: orfeus-eu.org
@@ -71,9 +73,10 @@ zabbix_export:
           type: HTTP_AGENT
           key: cors.check.station
           delay: 1d
-          value_type: CHAR
+          value_type: TEXT
           trends: '0'
           url: 'https://{$ENDPOINT}/fdsnws/station/1/'
+          status_codes: ''
           headers:
             - name: Origin
               value: orfeus-eu.org
@@ -99,9 +102,10 @@ zabbix_export:
           type: HTTP_AGENT
           key: cors.check.wfcatalog
           delay: 1d
-          value_type: CHAR
+          value_type: TEXT
           trends: '0'
           url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
+          status_codes: ''
           headers:
             - name: Origin
               value: orfeus-eu.org
@@ -152,8 +156,7 @@ zabbix_export:
             - name: 'availability application.wadl'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/application.wadl'
               follow_redirects: 'NO'
-              retrieve_mode: HEADERS
-              required: 'content-type: application/xml'
+              required: '<application'
               status_codes: '200'
           tags:
             - tag: Application
@@ -185,7 +188,7 @@ zabbix_export:
             - name: 'dataselect application.wadl'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/application.wadl'
               follow_redirects: 'NO'
-              required: wadl.dev.java.net
+              required: '<application'
               status_codes: '200'
           tags:
             - tag: Application
@@ -272,7 +275,7 @@ zabbix_export:
             - name: application.wadl
               url: 'https://{$ENDPOINT}/fdsnws/station/1/application.wadl'
               follow_redirects: 'NO'
-              required: wadl.dev.java.net
+              required: '<application'
               status_codes: '200'
           tags:
             - tag: Application
@@ -301,6 +304,11 @@ zabbix_export:
                   value: '{$ONLINECHECK_START}'
                 - name: end
                   value: '{$ONLINECHECK_END}'
+              status_codes: '200'
+            - name: 'wfcatalog application.wadl'
+              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/application.wadl'
+              follow_redirects: 'NO'
+              required: '<application'
               status_codes: '200'
           tags:
             - tag: Application

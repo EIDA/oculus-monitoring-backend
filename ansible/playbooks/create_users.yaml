@@ -4,7 +4,7 @@
   gather_facts: false
   vars_files:
     - ../files/oculus_users.yaml
-    - ../config/config_prod.yaml
+    - ../config/config_staging.yaml
   vars:
     ansible_network_os: community.zabbix.zabbix
     ansible_connection: httpapi

@@ -1,6 +1,6 @@
 ---
 node: IGN
-endpoint:
+endpoint: fdsnws.sismologia.ign.es
 routingFile:
 onlineCheck:
   net:

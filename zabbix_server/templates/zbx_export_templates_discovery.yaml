@@ -28,7 +28,6 @@ zabbix_export:
               group_prototypes:
                 - name: '{#NODE}'
               templates:
-                - name: 'Template CORS'
                 - name: 'Template performance checks'
                 - name: 'Template webservices'
                 - name: 'Website certificate by Zabbix agent 2'
