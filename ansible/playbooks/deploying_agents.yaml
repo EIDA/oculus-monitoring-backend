@@ -6,9 +6,16 @@
     - ../files/eida_nodes.yaml
     - ../config/config_staging.yaml
   vars:
-    namespace: eida-monitoring
+    k8s_namespace: eida-monitoring
     release_name: zbx-agent
     chart_name: zabbix/zabbix-agent
     chart_version: "1.2.0"
     zabbix_server: "localhost:8888"
-  
+    deployments_dir: ../oculus-zbx-agent-deployments
+
+  tasks:
+    - name: List agents
+      ansible.builtin.find:
+        paths: "{{ deployments_dir }}"
+        patterns: "*.yaml"
+      register: agent_deployment_files
