@@ -6,28 +6,9 @@
     - ../files/eida_nodes.yaml
     - ../config/config_staging.yaml
   vars:
-    ansible_network_os: community.zabbix.zabbix
-    ansible_httpapi_port: 8888
-    ansible_httpapi_use_ssl: false
-    ansible_httpapi_validate_certs: false
-    ansible_zabbix_url_path: ""
-    ansible_host: localhost
-
-  tasks:
-    - name: Credentials Zabbix API
-      delegate_to: localhost
-      ansible.builtin.set_fact:
-        ansible_user: ansible
-        ansible_httpapi_pass: "{{ ansible_httpapi_pass }}"
-
-    - name: Set API token
-      delegate_to: localhost
-      ansible.builtin.set_fact:
-        ansible_zabbix_token: "{{ ansible_zabbix_token }}"
-
-    - name: Create hosts groups
-      delegate_to: localhost
-      loop: "{{ eida_nodes }}"
-      community.zabbix.zabbix_group:
-        state: present
-        host_groups: "{{ item.name }}"
+    namespace: eida-monitoring
+    release_name: zbx-agent
+    chart_name: zabbix/zabbix-agent
+    chart_version: "1.2.0"
+    zabbix_server: "localhost:8888"
+  
