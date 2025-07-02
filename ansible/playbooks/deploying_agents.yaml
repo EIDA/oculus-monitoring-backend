@@ -3,19 +3,27 @@
   hosts: localhost
   gather_facts: false
   vars_files:
-    - ../files/eida_nodes.yaml
     - ../config/config_staging.yaml
   vars:
     k8s_namespace: eida-monitoring
     release_name: zbx-agent
     chart_name: zabbix/zabbix-agent
     chart_version: "1.2.0"
-    zabbix_server: "localhost:8888"
-    deployments_dir: ../oculus-zbx-agent-deployments
+    zabbix_server: localhost:8888
+    deployments_dir: ../agents
 
   tasks:
     - name: List agents
+      delegate_to: localhost
       ansible.builtin.find:
         paths: "{{ deployments_dir }}"
         patterns: "*.yaml"
       register: agent_deployment_files
+
+    - name: Deploy agents
+      delegate_to: localhost
+      loop: "{{ agent_deployment_files.files }}"
+      kubernetes.core.k8s:
+        state: present
+        src: "{{ item.path }}"
+        namespace: "{{ k8s_namespace }}"

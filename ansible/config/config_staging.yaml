@@ -1,27 +1,27 @@
-ansible_httpapi_pass: ENC[AES256_GCM,data:LMY7gvpY2SfveFbr,iv:JV40cfNurGY50bZ/zncp5SGNLmYP2iN0NEBV5j2/QKY=,tag:fmEwJrcEDeaWloKYcYKy4A==,type:str]
-ansible_zabbix_token: ENC[AES256_GCM,data:UHibfMunY4cfGrd34BR3BttRpRiuMmUnc6OrCl9qqC+QPJS6OeU/Q73V61qZm8NZ36BMu2FZIyzs7xVYJebXlA==,iv:8oAqhgtszcGPIrc8g1Vhxq8b8qxjLhIPtsZ3ucB9KD8=,tag:orPx0IFSB32LBn28Z6Lmpw==,type:str]
+ansible_httpapi_pass: ENC[AES256_GCM,data:YBfQZERhjUc0uyKE,iv:OVNejo3n8fXGhU6BvUe+8IRwcM82LXYD03tpyDkx1mI=,tag:0R45jOsI5ei3e9p+uT3j6w==,type:str]
+ansible_zabbix_token: ENC[AES256_GCM,data:0YZ24vBbewlq1M1Uurlmjw6VWpF0dWymTFCdMj/YBjj0ae0WhIwvvS3bITY/hE2AnTjPOvThqsuOeSDLbP4IsQ==,iv:8l2cUG5vwNtaBj+VnE/NicT6vvBQFZLdjqsEH5ZwmbA=,tag:Ng4gq11ktuCWYaQSzooA/Q==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2025-06-27T14:07:32Z"
-    mac: ENC[AES256_GCM,data:9ptmo+IYLSr5BK+qnpnPjA8ZzF+kumMJwFo2ja/tIqKDlYP5oK0qD/UZBNmNuk+hdqSJBkiJpnGmx7mfHUInM8wJ8aFxg9FOLcy1K67E0lQyiUbTcOtlNcz4dngBzKzoy3HfNeK4dlLCIL6oNoUd/ZC29RD0pHHucpfGvLjuyr4=,iv:VdCAdT9llTz+YIuJaIbJrnAPl/U3gAVpqI4W1HUIUBY=,tag:3P8K+IJV+GeMykh3xG7Lhg==,type:str]
+    lastmodified: "2025-07-02T14:01:48Z"
+    mac: ENC[AES256_GCM,data:shmlSllk2SD80O+WBpQhK+2oggrL8CxCYELXgSdDM6iodijgL13nvmnpGqqBMlhZyBJf0NZr4LYUu92Ca/X5yLQOqQw3P4vcAXL3fkS51gn19Mw5dW4/oEwcdQMQWYLW98G5JINuxNpFH+mEVUeR+aPD1ph6xoyVkHj70nCJ/2I=,iv:AgXPCmgPuhnxGelneKysIilSLmfF+A7PZPxg20othSk=,tag:59zg45qqukK/W7aPfeXd0A==,type:str]
     pgp:
-        - created_at: "2025-06-27T14:07:32Z"
+        - created_at: "2025-07-02T14:01:48Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQEMA23uPS/3Y9M2AQgApTJTiWkPIfgyT5vmkGK61FtmkizRIzTUHAu8L3t/vxpR
-            NnJBxXPkBQxSsN0wVsPhx5ysrat58TbCqkW/zzV3Yt+JuACk3nP4j/BdPj+DviyF
-            G8cs8DolJ0Je47TVSR8mPkyr5U1WVqDiCL2dq5bzAKd2zvSDTYb3mWnj5PKazMDt
-            KIKLQvy4vRzeVVAgdcPCx+WFnOQWlz7Gzc5uPP1WvR/4tIivxQJnc9rMYhFoRI+d
-            tUj2aAqUjaqtYGVAYvxgq/AJGeqROIzmoo7S1UonylI1yfkceu5WqPFPMGm0ZMoM
-            0ljzjh3wpjWm+2iYV2+7CiG6YTluZku8pjjwUmCok9JeAYdcrP6udEZAC9HZh/re
-            r+04DASXMEKmg9rREmimtabqmhBRDiq1GA6+5VgpdYrocP4Ua19vWuajkjV11qzl
-            DgqiEjAkdhuyLMzoAHeSocR5R6k/Z01128Xk0kLOBQ==
-            =QkpD
+            hQEMA23uPS/3Y9M2AQgAjYgSMiYdsqMoBJ/gsfNGi94+RdNe+VG0INdfqg/5D3st
+            2g8TZ/hLgRKNRMjkCoLOJR40Wna7NlP6gBwPDSnBm1EPX5hNmK0EWk89mxSqNV7d
+            FtsWZQiDhiaV6XJoSAzJLb5pRp74eVJYZqL/O+tU7OKU1Fm5eS3dMOh8KBNFhHE/
+            KoZJwLOPjBMKHxTbiYWRzpm7ZVSy5gEdWva599ITJ9490OrWXVHJ417KKq2/v/LZ
+            QFJm0ss+DTRPy2bH029P/VsgQ0pNpBM8X9ZUU0TCKrP77qqXPSozIiD9+71mNrWz
+            87+CZUvFJxmy0bO4eoFGCTWQLzIFfsTuWjOC0btEgtJeASu8tgHp3bIAeoZFS3ks
+            +p/Pc+qVDudWKGIX8sj3bt8sJdocbGHHIjyCVngKH8ErnORviht2e1dU4ONisVm2
+            ciwvQl7XLdDl0r0z1JfiYTp1RKMYVNYey5uAAEq0NA==
+            =Z92I
             -----END PGP MESSAGE-----
           fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
     encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|adminPassword)
