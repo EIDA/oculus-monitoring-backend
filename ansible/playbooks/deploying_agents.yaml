@@ -10,7 +10,8 @@
     chart_name: zabbix/zabbix-agent
     chart_version: "1.2.0"
     zabbix_server: localhost:8888
-    deployments_dir: ../agents
+    ansible_python_interpreter: /usr/bin/python
+    deployments_dir: ../../oculus-zbx-agent-deployments
 
   tasks:
     - name: List agents
