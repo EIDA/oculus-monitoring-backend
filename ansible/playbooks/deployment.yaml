@@ -1,0 +1,5 @@
+---
+- name: Deploying agents
+  import_playbook: deploying_agents.yaml
+- name: Create users
+  import_playbook: zbx_create_users.yaml

@@ -1,0 +1,16 @@
+---
+- name: Install Zabbix plugins (EIDA)
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../config/config_staging.yaml
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 8888
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: localhost
+
+  tasks:

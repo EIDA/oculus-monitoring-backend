@@ -1,30 +1,62 @@
 ---
-- name: Create EIDA nodes hosts in Zabbix
+- name: Deploy Zabbix agent in k8s whith Helm
   hosts: localhost
   gather_facts: false
   vars_files:
     - ../config/config_staging.yaml
   vars:
     k8s_namespace: eida-monitoring
-    release_name: zbx-agent
-    chart_name: zabbix/zabbix-agent
-    chart_version: "1.2.0"
-    zabbix_server: localhost:8888
-    ansible_python_interpreter: /usr/bin/python
+    chart_dir: ../../oculus-zbx-agent
     deployments_dir: ../../oculus-zbx-agent-deployments
+    ansible_python_interpreter: /usr/bin/python
 
   tasks:
-    - name: List agents
-      delegate_to: localhost
-      ansible.builtin.find:
-        paths: "{{ deployments_dir }}"
-        patterns: "*.yaml"
-      register: agent_deployment_files
+    - name: Deploy all Zabbix agent
+      ansible.builtin.shell: |
+        for f in $(find {{ deployments_dir }} -type f); do
+          name=$(basename $f|cut -f1 -d'.')
+          echo $name
+          echo $f
+          helm upgrade -i $name {{ chart_dir }} --set-file zbx_lld=$f -n {{ k8s_namespace }}
+        done
+      args:
+        chdir: "{{ playbook_dir }}"
 
-    - name: Deploy agents
-      delegate_to: localhost
-      loop: "{{ agent_deployment_files.files }}"
-      kubernetes.core.k8s:
-        state: present
-        src: "{{ item.path }}"
-        namespace: "{{ k8s_namespace }}"
+    # - name: List nodes
+    #   ansible.builtin.find:
+    #     paths: "{{ deployments_dir }}"
+    #     file_type: file
+    #   register: lld_files
+
+    # - name: Show nodes
+    #   ansible.builtin.debug:
+    #     msg: "{{ item | basename | splitext | first }}"
+    #   loop: "{{ lld_files.files | map(attribute='path') | list }}"
+
+    # - name: Read LLD file content
+    #   ansible.builtin.slurp:
+    #     src: "{{ lld_file }}"
+    #   register: lld_content
+    #   loop: "{{ lld_files.files | map(attribute='path') | list }}"
+    #   loop_control:
+    #     loop_var: lld_file
+
+    # - name: Create k8s namespace
+    #   kubernetes.core.k8s:
+    #     api_version: v1
+    #     kind: Namespace
+    #     name: "{{ k8s_namespace }}"
+    #     state: prese00nt
+
+    # - name: Deploy k8s Zabbix agents
+    #   kubernetes.core.helm:
+    #     name: "{{ item.0 | basename | splitext | first }}"
+    #     chart_ref: "{{ chart_dir }}"
+    #     namespace: "{{ k8s_namespace }}"
+    #     values:
+    #       zbx_lld: "{{ item.1.content | b64decode }}"
+    #     wait: true
+    #     state: present
+    #   with_together:
+    #     - "{{ lld_files.files | map(attribute='path') | list }}"
+    #     - "{{ lld_content.results }}"
