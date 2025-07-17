@@ -3,8 +3,8 @@
   hosts: localhost
   gather_facts: false
   vars_files:
-    - ../files/oculus_users.yaml
     - ../config/config_staging.yaml
+    - ../files/oculus_users.yaml
   vars:
     ansible_network_os: community.zabbix.zabbix
     ansible_connection: httpapi
@@ -15,16 +15,8 @@
     ansible_host: localhost
 
   tasks:
-    - name: Credentials Zabbix API
-      delegate_to: localhost
-      ansible.builtin.set_fact:
-        ansible_user: ansible
-        ansible_httpapi_pass: "{{ ansible_httpapi_pass }}"
-
-    - name: Set API token
-      delegate_to: localhost
-      ansible.builtin.set_fact:
-        ansible_zabbix_token: "{{ ansible_zabbix_token }}"
+    - name: Import Zabbix Credentials
+      ansible.builtin.import_tasks: ../config/config_zabbix.yaml
 
     - name: Create users groups
       delegate_to: localhost

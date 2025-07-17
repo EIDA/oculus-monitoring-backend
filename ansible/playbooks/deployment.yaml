@@ -1,6 +1,8 @@
 ---
 - name: Import plugins
   import_playbook: zbx_templates.yaml
+- name: Autoregistration
+  import_playbook: zbx_autoregistration.yaml
 - name: Deploying agents
   import_playbook: deploying_agents.yaml
 - name: Create users

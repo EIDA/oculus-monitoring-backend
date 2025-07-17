@@ -1,5 +1,5 @@
 ---
-- name: Install Zabbix plugins (EIDA)
+- name: Configuration of Zabbix autoregistration
   hosts: localhost
   gather_facts: false
   vars_files:
@@ -17,8 +17,6 @@
     - name: Import Zabbix Credentials
       ansible.builtin.import_tasks: ../config/config_zabbix.yaml
 
-    - name: Import Zabbix templates
+    - name: Configure autoregistration
       delegate_to: localhost
-      community.zabbix.zabbix_template:
-        template_yaml: "{{ lookup('file', '../../zabbix_server/templates/zbx_export_templates.yaml') }}"
-        state: present
+
