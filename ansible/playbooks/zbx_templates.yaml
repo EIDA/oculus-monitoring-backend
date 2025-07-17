@@ -1,0 +1,32 @@
+---
+- name: Install Zabbix plugins (EIDA)
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../config/config_staging.yaml
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 8888
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: localhost
+
+  tasks:
+    - name: Credentials Zabbix API
+      delegate_to: localhost
+      ansible.builtin.set_fact:
+        ansible_user: ansible
+        ansible_httpapi_pass: "{{ ansible_httpapi_pass }}"
+
+    - name: Set API token
+      delegate_to: localhost
+      ansible.builtin.set_fact:
+        ansible_zabbix_token: "{{ ansible_zabbix_token }}"
+
+    - name: Import Zabbix templates
+      delegate_to: localhost
+      community.zabbix.zabbix_template:
+        template_yaml: "{{ lookup('file', '../../zabbix_server/templates/zbx_export_templates.yaml') }}"
+        state: present
