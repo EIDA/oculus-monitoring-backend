@@ -1,0 +1,30 @@
+---
+- name: Activate Media type Email (HTML) EIDA
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../config/config_staging.yaml
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 8888
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: localhost
+
+  tasks:
+    - name: Import Zabbix Credentials
+      ansible.builtin.import_tasks: ../config/config_zabbix.yaml
+
+    - name: Activate Media type
+      delegate_to: localhost
+      community.zabbix.zabbix_mediatype:
+        name: "Email (HTML) EIDA"
+        type: email
+        smtp_server: ""
+        smtp_helo: ""
+        smtp_email: ""
+        smtp_security: ""
+        smtp_server_port: ""
+        status: enabled

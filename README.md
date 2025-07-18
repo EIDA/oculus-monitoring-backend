@@ -164,7 +164,7 @@ Go to "Alerts > Actions > Autoregistration actions" and create a new action with
 
 ## Configure trigger actions
 For activate mail triggers
-- Go to "Alerts > Media types" and Enabled email, click on Email, and configure with your SMTP server, username, password etc.
+- Go to "Alerts > Media types" and Enabled Email (HTML), click on Email (HTML), and configure with your SMTP server, username, password etc.
 - Enabled: checked
 - Click "Update"
 

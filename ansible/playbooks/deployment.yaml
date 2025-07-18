@@ -1,7 +1,7 @@
 ---
-- name: Import plugins
+- name: Import templates
   import_playbook: zbx_templates.yaml
-- name: Autoregistration
+- name: Configure autoregistration
   import_playbook: zbx_autoregistration.yaml
 - name: Deploying agents
   import_playbook: deploying_agents.yaml

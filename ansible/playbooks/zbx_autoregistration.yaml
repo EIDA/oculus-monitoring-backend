@@ -19,4 +19,18 @@
 
     - name: Configure autoregistration
       delegate_to: localhost
-
+      community.zabbix.zabbix_action:
+        name: "EIDA nodes autoregistration"
+        event_source: auto_registration
+        status: enabled
+        esc_period: 60
+        operations:
+          - type: add_host
+          - type: add_to_host_group
+            host_groups:
+              - "Discovered hosts"
+          - type: link_to_template
+            templates:
+              - "Template discovery"
+              - "Linux by Zabbix agent"
+          - type: enable_host
