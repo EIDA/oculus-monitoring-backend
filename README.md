@@ -186,7 +186,6 @@ ansible-playbook create_users.yaml
 - Go to "Alerts > Actions > Trigger actions"
 - Click "Create action"
   - Name: Reports problems
-  - Type of calculation: And/or
   - Conditions, click "Add"
     - Type : Trigger
     - Operator: equals
@@ -206,7 +205,7 @@ ansible-playbook create_users.yaml
     - Update operations (create a step for each EIDA Nodes) click "Add"
       - Operation : Send message
       - Send to user groups > Select {EIDA_nodes_name}
-      - Send only to : Email
+      - Send only to : Email (HTML) EIDA
       - Click "Add"
     - Pause operations for symptom problems: checked
     - Pause operations for suppressed problems: checked

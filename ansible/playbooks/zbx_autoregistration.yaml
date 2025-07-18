@@ -1,5 +1,5 @@
 ---
-- name: Configuration of Zabbix autoregistration
+- name: Configuration Zabbix autoregistration
   hosts: localhost
   gather_facts: false
   vars_files:

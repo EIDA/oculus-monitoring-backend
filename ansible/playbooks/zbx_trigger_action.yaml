@@ -1,0 +1,47 @@
+---
+- name: Configuration Zabbix Trigger action
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../config/config_staging.yaml
+    - ../files/eida_nodes.yaml
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 8888
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: localhost
+
+  tasks:
+    - name: Import Zabbix Credentials
+      ansible.builtin.import_tasks: ../config/config_zabbix.yaml
+
+    - name: Configure Trigger action
+      community.zabbix.zabbix_action:
+        name: "Reports problems"
+        event_source: trigger
+        state: present
+        status: enabled
+        esc_period: 3600  # 1h
+        evaltype: 2       # 2 = And/Or
+        conditions:
+          - type: trigger
+            operator: equals
+            value: "Template Webservice"
+        operations:
+          - type: send_message
+            steps: "1-1"
+            step_duration: 0
+            send_to_user_groups:
+              - "{{ eida_nodes }}"
+            media_type: "Email (HTML) EIDA"
+        update_operations:
+          - type: send_message
+            send_to_user_groups:
+              - "{{ eida_nodes }}"
+            media_type: "Email (HTML) EIDA"
+        pause_symptom: true
+        pause_suppressed: true
+        notify_about_canceled_escalations: true
