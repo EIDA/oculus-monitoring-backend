@@ -20,28 +20,27 @@
 
     - name: Configure Trigger action
       community.zabbix.zabbix_action:
-        name: "Reports problems"
+        name: "Reports EIDA problems"
         event_source: trigger
         state: present
-        status: enabled
-        esc_period: 3600  # 1h
-        evaltype: 2       # 2 = And/Or
+        status: disabled
+        esc_period: 1h
+        eval_type: andor
         conditions:
-          - type: trigger
+          - type: host_template
             operator: equals
-            value: "Template Webservice"
+            value: "Template webservices"
         operations:
           - type: send_message
-            steps: "1-1"
-            step_duration: 0
-            send_to_user_groups:
-              - "{{ eida_nodes }}"
+            send_to_groups: "{{ eida_nodes }}"
+            media_type: "Email (HTML) EIDA"
+        recovery_operations:
+          - type: send_message
+            send_to_groups: "{{ eida_nodes }}"
             media_type: "Email (HTML) EIDA"
         update_operations:
           - type: send_message
-            send_to_user_groups:
-              - "{{ eida_nodes }}"
+            send_to_groups: "{{ eida_nodes }}"
             media_type: "Email (HTML) EIDA"
-        pause_symptom: true
-        pause_suppressed: true
-        notify_about_canceled_escalations: true
+        pause_symptoms: true
+        notify_if_canceled: true

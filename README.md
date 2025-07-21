@@ -185,13 +185,12 @@ ansible-playbook create_users.yaml
 ### Trigger actions
 - Go to "Alerts > Actions > Trigger actions"
 - Click "Create action"
-  - Name: Reports problems
+  - Name: Reports EIDA problems
   - Conditions, click "Add"
-    - Type : Trigger
+    - Type : Template
     - Operator: equals
-    - Trigger source: Template
-    - Triggers: click "Select"
-      - Select "Template/EIDA > Template Webservice", select all
+    - Template: click "Select"
+      - Select "Template/EIDA > Template webservices", click select
     - Click "Add"
     - Enabled: checked
   - Click "Operations"
