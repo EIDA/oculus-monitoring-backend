@@ -1,0 +1,27 @@
+---
+- name: Configure datasource in Grafana (Zabbix)
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../config/config_staging.yaml
+    - ../config/config_grafana.yaml
+  vars:
+    ansible_network_os: community.grafana.grafana
+
+  tasks:
+    - name: Import Grafana Credentials
+      ansible.builtin.import_tasks: ../config/config_grafana.yaml
+
+    - name: Configue datasource (Zabbix)
+      community.grafana.grafana_datasource:
+        name: oculus-zabbix-datasource
+        ds_type: "alexanderzobnin-zabbix-datasource"
+        ds_url: "http://oculus-zabbix-zabbix-web:8888/api_jsonrpc.php"
+        is_default: true
+        zabbix_user: grafana
+        zabbix_password: "{{ zabbix_grafana_pass }}"
+        url: "http://localhost:3000"
+        grafana_user: ansible
+        grafana_password: "{{ ansible_httpapi_pass }}"
+        trends: true
+        state: present

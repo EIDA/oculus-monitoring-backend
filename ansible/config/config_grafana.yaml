@@ -1,0 +1,5 @@
+- name: Credentials Grafana API
+  ansible.builtin.set_fact:
+    grafana_url: "http://localhost:3000"
+    grafana_user: ansible
+    grafana_password: "{{ ansible_httpapi_pass }}"

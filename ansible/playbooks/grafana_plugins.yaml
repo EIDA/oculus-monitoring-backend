@@ -1,0 +1,19 @@
+---
+- name: Install plugins in Grafana
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../config/config_staging.yaml
+    - ../config/config_grafana.yaml
+  vars:
+    ansible_network_os: community.grafana.grafana
+
+  tasks:
+    - name: Import Grafana Credentials
+      ansible.builtin.import_tasks: ../config/config_grafana.yaml
+
+    - name: Install plugins
+      community.grafana.grafana_plugin:
+        name: Zabbix
+        version: latest
+        state: present
