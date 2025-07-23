@@ -11,11 +11,7 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
     - [Deploy one agent](#deploy-one-agent)
     - [Deploy all agents](#deploy-all-agents)
 - [Zabbix configuration](#zabbix-configuration)
-  - [Import templates](#import-templates)
-  - [Autoregistration](#autoregistration)
-  - [Configure trigger actions](#configure-trigger-actions)
-    - [Create users and user groups using Ansible](#create-users-and-user-groups-using-ansible)
-    - [Trigger actions](#trigger-actions)
+  - [Create users and user groups using Ansible](#create-users-and-user-groups-using-ansible)
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
   - [Installation steps Grafana](#installation-steps-grafana)
@@ -24,7 +20,7 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
     - [Create Grafana User groups in Zabbix](#create-grafana-user-groups-in-zabbix)
     - [Create Grafana User in Zabbix](#create-grafana-user-in-zabbix)
     - [Create Zabbix API tokens](#create-zabbix-api-tokens)
-    - [Configuration Zabbix datasource](#configuration-zabbix-datasource)
+  - [Deploy Grafana configuration with Ansible](#deploy-grafana-configuration-with-ansible)
 
 # How to monitor a new thing
 So you woud like to monitor something related to EIDA federation ?
@@ -143,74 +139,18 @@ Then deploy (or update) the agent using helm:
     for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent --set-file zbx_lld=$f -n eida-monitoring; done
 
 # Zabbix configuration
-## Import templates
-Go to "Data collection > Templates"
-- Select "Import" in the top right corner and select the files "zbx_export_templates.yaml" (OR "zbx_export_templates_discovery.xml" and "zbx_export_web_templates.yaml" ) location : ```zabbix_server/templates```
-- Rules: all checked 
-- Click on "Import"
 
-## Autoregistration
-Go to "Alerts > Actions > Autoregistration actions" and create a new action with the following parameters:
-- Action:
-  - Name: EIDA nodes autoregistration
-  - Enabled: checked
-- Operations:
-  - Add host
-  - Add to host groups: Discovered hosts
-  - Link templates: Template discovery (Templates/EIDA)
-  - Link templates: Linux by Zabbix agent (Templates/Operating Systems)
-  - Ennable hosts
-- Click "Add"
-
-## Configure trigger actions
-For activate mail triggers
-- Go to "Alerts > Media types" and Enabled Email (HTML), click on Email (HTML), and configure with your SMTP server, username, password etc.
-- Enabled: checked
-- Click "Update"
-
-### Create users and user groups using Ansible
+## Deploy Zabbix configuration with Ansible
 For deploying playbook with Ansible, you need to install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
-Groups must be created for each EIDA node, as well as users.
-
-#### 1. Go to .yaml location
+### 1. Go to .yaml location
 ```sh
 cd ansible/playbooks
 ```
-#### 2. Run playbook Ansible
+### 2. Run playbook Ansible
 ```sh
-ansible-playbook create_users.yaml
+ansible-playbook zbx_deployment.yaml
 ```
-
-### Trigger actions
-- Go to "Alerts > Actions > Trigger actions"
-- Click "Create action"
-  - Name: Reports EIDA problems
-  - Conditions, click "Add"
-    - Type : Template
-    - Operator: equals
-    - Template: click "Select"
-      - Select "Template/EIDA > Template webservices", click select
-    - Click "Add"
-    - Enabled: checked
-  - Click "Operations"
-    - Default operations step duration: 1h
-    - Operations, (create a step for each EIDA Nodes) click "Add"
-      - Steps: 1 - 1
-      - Step duration : 0
-      - Send to user groups > Select {EIDA_nodes_name}
-      - Send only to : Email
-      - Click "Add"
-    - Update operations (create a step for each EIDA Nodes) click "Add"
-      - Operation : Send message
-      - Send to user groups > Select {EIDA_nodes_name}
-      - Send only to : Email (HTML) EIDA
-      - Click "Add"
-    - Pause operations for symptom problems: checked
-    - Pause operations for suppressed problems: checked
-    - Notify about canceled escalations: checked
-    - Click "Add"
-- Check if status is "Enabled"
 
 # Deploying Oculus Grafana
 ## Prerequisites
@@ -308,26 +248,14 @@ Go to "Users > API token"
 - Click "Add"
 - Copy the {auth_token}
 
-### Install Zabbix Plugin in Grafana
-Normally, the Zabbix plugin is installed, but if this is not the case, install it manually:
+## Deploy Grafana configuration with Ansible
+For deploying playbook with Ansible, you need to install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
-Go to "Administration > General > Plugins and data"
-- Plugins:
-  - Search "Zabbix"
-  - Click "Install"
-
-### Configuration Zabbix datasource
-Go to "Connections > Data sources"
-- Click "+ Add new data source"
-  - select Zabbix
-- Rename in "oculus-zabbix-datasource"
-- Connection:
-  - url: ```http://oculus-zabbix-zabbix-web:8888/api_jsonrpc.php```
-- Authentication
-  - Select "Basic authentication"
-    - user : grafana
-    - password : {passwd_user_grafana}
-- Zabbix Connection
-  - API token : {auth_token}
-- Trends : Enable
-- Click "Save & test
+### 1. Go to .yaml location
+```sh
+cd ansible/playbooks
+```
+### 2. Run playbook Ansible
+```sh
+ansible-playbook grafana_deployment.yaml
+```
