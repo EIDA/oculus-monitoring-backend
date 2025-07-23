@@ -1,20 +1,15 @@
 ---
-- name: Install plugins in Grafana
+- name: Install plugins in Grafana with k8s command
   hosts: localhost
   gather_facts: false
-  vars_files:
-    - ../config/config_staging.yaml
-    - ../config/config_grafana.yaml
   vars:
-    ansible_network_os: community.grafana.grafana
+    ansible_network_os: kubernetes.core.k8s
+    ansible_python_interpreter: /usr/bin/python
 
   tasks:
-    - name: Import Grafana Credentials
-      ansible.builtin.import_tasks: ../config/config_grafana.yaml
-
-    - name: Install plugins
-      community.grafana.grafana_plugin:
-        grafana_plugin_url: "https://github.com/grafana/grafana-zabbix"
-        name: Zabbix
-        version: latest
-        state: present
+    - name: Install plugins in Grafana
+      kubernetes.core.k8s_exec:
+        namespace: eida-monitoring
+        pod: oculus-grafana-b84dfff7c-dsgss
+        container: grafana
+        command: grafana-cli plugins install alexanderzobnin-zabbix-app
