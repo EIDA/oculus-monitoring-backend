@@ -4,7 +4,7 @@ global:
 grafana:
   enabled: true
   adminUser: admin
-  adminPassword: ENC[AES256_GCM,data:S+vzjucGKoXgk6OA8hj5QLPvX4gRpXzq21ojr746MTQlZ99SSYF6yQ==,iv:sVqUQhxfVqiBUXww3GXJKF/LX7L5sLiYKq8aMlKMiT0=,tag:JlNYGgVKRpj3OChDd08enQ==,type:str]
+  adminPassword: 13uSKV2OCLE4zJvEjmEvSZfbC6sLlcWUJDyfufoc
   service:
     type: ClusterIP
     port: 3000
@@ -24,13 +24,13 @@ resources: null
 nodeSelector: {}
 tolerations: []
 affinity: {}
+envFromSecret: grafana-db-secret
 grafana.ini:
   database:
-    type: postgresql
+    type: postgres
     host: resif-pgpreprod.u-ga.fr
     port: 5432
     user: oculus
-    password: ENC[AES256_GCM,data:Et3pPkBhEc/JYGVvnG4gfZAqi7o=,iv:zefEiPRMHnCZ0HPsqvWgV876Mfef37dirTSg00PaBYo=,tag:uYvpVM4c/bQu+O9j3oIv9w==,type:str]
     name: oculus_grafana
   auth.anonymous:
     enabled: true
@@ -38,35 +38,7 @@ grafana.ini:
     org_role: Viewer
   plugins:
     enabled: true
-    plugins:
-    - grafana-piechart-panel
-    - grafana-worldmap-panel
-    - alexanderzobnin-zabbix-app
-    - alexanderzobnin-zabbix-datasource
-sops:
-  kms: []
-  gcp_kms: []
-  azure_kv: []
-  hc_vault: []
-  age: []
-  lastmodified: "2025-07-23T15:04:38Z"
-  mac: ENC[AES256_GCM,data:e/GBfsKiei/Ld4tOtCxR972itQuNMZh4Ru9Etb3Y0R23MZsDZKaHNuTfxG+jw9hlv1ri1CG31mc4jBekfP3xtFp33zdRtYeF2hB8rTV5eQct2EtZF3tksBvgSIxS7RMNjgAYdsj29wIKR5M4z4LJGlvnAe54IyKVae7TdMsWJQg=,iv:HRmXzrm7tqvaiFze+nzzQt/IuhA6aT5+jaseLI0Cz70=,tag:NFD/g4IH1DomMp/CBuaiLA==,type:str]
-  pgp:
-  - created_at: "2025-07-23T15:04:38Z"
-    enc: |-
-      -----BEGIN PGP MESSAGE-----
-
-      hQEMA23uPS/3Y9M2AQgAoJB4L3KmcYpyetfl+pEPznWee4mUXREIOt216Vd+xeiW
-      QrC/zPV4U9YgoQ85Hfg2x92REqRh+n7l/9M9leIx1C5rO74S1mbUhlgZFj8r2qzH
-      lqRoIzj+kNMDcgpnVTxZo8cmAIE4Ewh5sG7u4b1pFh/q/7QyzlRYMwrrcxR5MHvX
-      fQz1FxNQa7rZUiOEyusEj/+aLfY5btLurW5aRSQVLdDpIUyJ7eWo3jvQudCpWVBv
-      KTI7umvju75EzkmqasaXpVm0+qw9JN9+QPpf3zhXwQURqjRwGB8ug41JzBPG8ZMQ
-      7B88j0L0uA12WmdE8PTOD2PwkfeipbMBU9YJIC4vBtJeAcfsq99bZDk1XYOB+rlP
-      a+qGDodrCYeqfpJ0Wn1WVW3+7UeH+EQTaAlbYLUTWlj/PlB4CUvftMnLraXCl6Cx
-      dmSRgfkIRqQK4cu1ChrDajflW52nDlX2zYk2JXfESA==
-      =acfz
-      -----END PGP MESSAGE-----
-    fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
-  encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|ansible_grafana_token|zabbix_grafana_token|zabbix_grafana_pass|adminPassword)
-  mac_only_encrypted: true
-  version: 3.9.2
+plugins:
+- grafana-piechart-panel
+- grafana-worldmap-panel
+- alexanderzobnin-zabbix-app
