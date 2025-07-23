@@ -7,3 +7,6 @@
 
 - name: Import dashboards
   import_playbook: grafana_dashboards.yaml
+
+- name: Configure welcome page
+  import_playbook: grafana_welcome.yaml

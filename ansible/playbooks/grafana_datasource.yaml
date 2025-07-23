@@ -14,14 +14,14 @@
 
     - name: Configue datasource (Zabbix)
       community.grafana.grafana_datasource:
+        grafana_url: "http://localhost:3000"
+        grafana_user: ansible
+        grafana_password: "{{ ansible_httpapi_pass }}"
         name: oculus-zabbix-datasource
         ds_type: "alexanderzobnin-zabbix-datasource"
         ds_url: "http://oculus-zabbix-zabbix-web:8888/api_jsonrpc.php"
         is_default: true
         zabbix_user: grafana
         zabbix_password: "{{ zabbix_grafana_pass }}"
-        url: "http://localhost:3000"
-        grafana_user: ansible
-        grafana_password: "{{ ansible_httpapi_pass }}"
         trends: true
         state: present

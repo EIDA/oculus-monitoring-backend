@@ -1,0 +1,28 @@
+---
+- name: Import dashboard Grafana
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../config/config_staging.yaml
+    - ../config/config_grafana.yaml
+  vars:
+    ansible_network_os: community.grafana.grafana
+
+  tasks:
+    - name: Import Grafana Credentials
+      ansible.builtin.import_tasks: ../config/config_grafana.yaml
+
+    - name: Import dashboard
+      community.grafana.grafana_dashboard:
+        grafana_url: "http://localhost:3000"
+        grafana_user: ansible
+        grafana_password: "{{ ansible_httpapi_pass }}"
+        overwrite: false
+        validate_certs: false
+        use_proxy: false
+        commit_message: "Import EIDA dashboards"
+        path: "{{ dashboards_files }}"
+        state: present
+      loop: "{{ lookup('fileglob', '../../grafana_server/dashboards/*.json', wantlist=True) }}"
+      loop_control:
+        loop_var: dashboards_files
