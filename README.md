@@ -17,8 +17,6 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
   - [Installation steps Grafana](#installation-steps-grafana)
   - [Accessing the Grafana Application (for development)](#accessing-the-grafana-application-for-development)
   - [Add Zabbix datasources](#add-zabbix-datasources)
-    - [Create Grafana User groups in Zabbix](#create-grafana-user-groups-in-zabbix)
-    - [Create Grafana User in Zabbix](#create-grafana-user-in-zabbix)
     - [Create Zabbix API tokens](#create-zabbix-api-tokens)
   - [Deploy Grafana configuration with Ansible](#deploy-grafana-configuration-with-ansible)
 
@@ -202,42 +200,6 @@ ansible-playbook zbx_deployment.yaml
   - Password: /
 
 ## Add Zabbix datasources
-You must first create a new user and user groups for Grafana in Zabbix.
-
-### Create Grafana User groups in Zabbix
-Go to "Users > User groups"
-- Click "Create user group"
-  - Group name: API-RO
-  - Enabled: check
-- Click "Template permissions"
-  - click "Add"
-  - Click "Select"
-    - Select: All Template groups
-    - Click "Select"
-  - permissions: Read
-- Click "Host permissions"
-  - Click "Add"
-  - Click "Select"
-    - Select: All Host groups
-    - Click "Select"
-- Click "Problem tag filter"
-  - Click "Add"
-  - Click "Select"
-    - Select: All Host groups EXCEPT "Application", "Databases", "Hypervisors", "Linux servers", "Virtual machines" and "Zabbix servers"
-    - Click: "Select"
-    - Click "Add"
-- Click "Update"
-
-### Create Grafana User in Zabbix
-Go to "Users > Users"
-- Click "Create User"
-  - Username: grafana
-  - Groups: API-RO and No access to the frontend
-  - Password: {passwd_user_grafana}
-- Click "Permissions"
-  - Role: Select "User role"
-- Click "Add"
-
 ### Create Zabbix API tokens
 Go to "Users > API token"
 - Click "Create API token"
@@ -255,6 +217,7 @@ For deploying playbook with Ansible, you need to install [Ansible](https://docs.
 ```sh
 cd ansible/playbooks
 ```
+
 ### 2. Run playbook Ansible
 ```sh
 ansible-playbook grafana_deployment.yaml
