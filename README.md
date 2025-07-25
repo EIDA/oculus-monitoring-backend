@@ -11,7 +11,8 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
     - [Deploy one agent](#deploy-one-agent)
     - [Deploy all agents](#deploy-all-agents)
 - [Zabbix configuration](#zabbix-configuration)
-  - [Create users and user groups using Ansible](#create-users-and-user-groups-using-ansible)
+  - [Deploy Zabbix configuration with Ansible](#deploy-zabbix-configuration-with-ansible)
+  - [Create Ansible user](#create-ansible-user)
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
   - [Installation steps Grafana](#installation-steps-grafana)
@@ -19,6 +20,7 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
   - [Add Zabbix datasources](#add-zabbix-datasources)
     - [Create Zabbix API tokens](#create-zabbix-api-tokens)
   - [Deploy Grafana configuration with Ansible](#deploy-grafana-configuration-with-ansible)
+  - [Create Ansible user](#create-ansible-user)
 
 # How to monitor a new thing
 So you woud like to monitor something related to EIDA federation ?
@@ -151,11 +153,11 @@ Go to "Users > Users"
     - Role: "Super admin role"
 - Click "Add"
 
-### 1. Go to .yaml location
+#### 1. Go to .yaml location
 ```sh
 cd ansible/playbooks
 ```
-### 2. Run playbook Ansible
+#### 2. Run playbook Ansible
 ```sh
 ansible-playbook zbx_deployment.yaml
 ```
