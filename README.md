@@ -141,6 +141,16 @@ Then deploy (or update) the agent using helm:
 ## Deploy Zabbix configuration with Ansible
 For deploying playbook with Ansible, you need to install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
+### Create Ansible user
+Go to "Users > Users"
+- Click "Create user"
+  - Username: ansible
+  - Groups: "No access to the frontend" and "Zabbix administrator"
+  - Password: {ansible_password}
+  - Click to "Permissions"
+    - Role: "Super admin role"
+- Click "Add"
+
 ### 1. Go to .yaml location
 ```sh
 cd ansible/playbooks
@@ -213,12 +223,21 @@ Go to "Users > API token"
 ## Deploy Grafana configuration with Ansible
 For deploying playbook with Ansible, you need to install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
-### 1. Go to .yaml location
+### Create Ansible user
+Go to "Administration > User and access > Users"
+- Click "New user"
+  - name: ansible
+  - username: ansible
+  - password: {ansible_password}
+- Click "Create user"
+- In section "Permissions" click to "Change" and "Yes" and reclick to "Change"
+- In section "Organization" click to "Change role", select "Admin" and click to "Save"
+#### 1. Go to .yaml location
 ```sh
 cd ansible/playbooks
 ```
 
-### 2. Run playbook Ansible
+#### 2. Run playbook Ansible
 ```sh
 ansible-playbook grafana_deployment.yaml
 ```
