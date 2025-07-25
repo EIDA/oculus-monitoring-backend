@@ -5,6 +5,7 @@
   vars_files:
     - ../config/config_staging.yaml
     - ../files/oculus_users.yaml
+    - ../files/eida_nodes.yaml
   vars:
     ansible_network_os: community.zabbix.zabbix
     ansible_connection: httpapi
@@ -53,8 +54,14 @@
 
     - name: Create API user group
       delegate_to: localhost
-
-
+      community.zabbix.zabbix_usergroup:
+        name: "API-RO"
+        templategroup_rights:
+          - template_group: Templates/EIDA
+            permission: read-only
+        hostgroup_rights: >
+          {{ eida_nodes | map('regex_replace', '^(.*)$', '{"host_group": "\1", "permission": "read-only"}') | map('from_json') | list }}
+        tag_filters: "{{ eida_nodes | map('regex_replace', '^(.*)$', '{\"host_group\": \"\\1\"}') | map('from_json') | list }}"
 
     - name: Create grafana user
       delegate_to: localhost
@@ -62,6 +69,7 @@
         username: grafana
         usrgrps:
           - API-RO
-          - "No Acces to the frontend"
-
-
+          - "No access to the frontend"
+        passwd: "{{ zabbix_grafana_pass }}"
+        lang: en_GB
+        autologin: false
