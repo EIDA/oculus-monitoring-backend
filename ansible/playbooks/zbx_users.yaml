@@ -41,7 +41,7 @@
         usrgrps:
           - Internal
           - "{{ item.usrgrp }}"
-        passwd: 2VKPpxOY3x89
+        passwd: "{{ zabbix_user_pass }}"
         lang: en_GB
         autologin: false
         refresh: "30"
@@ -50,3 +50,18 @@
           - mediatype: Email (HTML) EIDA
             sendto:
               - "{{ item.email }}"
+
+    - name: Create API user group
+      delegate_to: localhost
+
+
+
+    - name: Create grafana user
+      delegate_to: localhost
+      community.zabbix.zabbix_user:
+        username: grafana
+        usrgrps:
+          - API-RO
+          - "No Acces to the frontend"
+
+
