@@ -82,7 +82,7 @@ In order to edit Nodes values is in this [procedures](contribute_to_change_value
 ### 7. decrypt password
   ```sh
   cd oculus-monitoring-backend/zabbix_server/helm_values
-  sops decrypt values.yaml
+  sops -d -i values.yaml
   ```
   /!\ TODO
 
