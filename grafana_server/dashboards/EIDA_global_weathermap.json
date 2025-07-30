@@ -24,7 +24,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "beou3fit1s2dcc"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -138,7 +138,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -261,6 +261,33 @@
             ],
             "fields": {}
           }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
         }
       ],
       "type": "state-timeline"
@@ -268,7 +295,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "beou3fit1s2dcc"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -296,49 +323,53 @@
                   "index": 0,
                   "text": "OK"
                 },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
                 "204": {
                   "color": "yellow",
-                  "index": 1,
+                  "index": 2,
                   "text": "No Content"
                 },
                 "400": {
                   "color": "dark-orange",
-                  "index": 2,
+                  "index": 3,
                   "text": "Bad Request"
                 },
                 "401": {
                   "color": "dark-orange",
-                  "index": 3,
+                  "index": 4,
                   "text": "Unauthorized"
                 },
                 "403": {
                   "color": "dark-orange",
-                  "index": 4,
+                  "index": 5,
                   "text": "Forbidden"
                 },
                 "404": {
                   "color": "yellow",
-                  "index": 5,
+                  "index": 6,
                   "text": "Not Found"
                 },
                 "500": {
                   "color": "dark-red",
-                  "index": 6,
+                  "index": 7,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 7,
+                  "index": 8,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 8,
+                  "index": 9,
                   "text": "Service Unavailable"
                 },
                 "null": {
                   "color": "transparent",
-                  "index": 9
+                  "index": 10
                 }
               },
               "type": "value"
@@ -361,13 +392,13 @@
         "x": 0,
         "y": 17
       },
-      "id": 8,
+      "id": 6,
       "options": {
         "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "mergeValues": true,
         "rowHeight": 0.9,
@@ -378,7 +409,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -398,7 +429,7 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "Response code for step \"short request\" of scenario \"station\"."
+            "filter": "Response code for step \"get documentation\" of scenario \"station\"."
           },
           "itemTag": {
             "filter": "Application: station"
@@ -501,6 +532,33 @@
             ],
             "fields": {}
           }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
         }
       ],
       "type": "state-timeline"
@@ -508,7 +566,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "beou3fit1s2dcc"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -536,49 +594,53 @@
                   "index": 0,
                   "text": "OK"
                 },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
                 "204": {
                   "color": "yellow",
-                  "index": 1,
+                  "index": 2,
                   "text": "No Content"
                 },
                 "400": {
                   "color": "dark-orange",
-                  "index": 2,
+                  "index": 3,
                   "text": "Bad Request"
                 },
                 "401": {
                   "color": "dark-orange",
-                  "index": 3,
+                  "index": 4,
                   "text": "Unauthorized"
                 },
                 "403": {
                   "color": "dark-orange",
-                  "index": 4,
+                  "index": 5,
                   "text": "Forbidden"
                 },
                 "404": {
                   "color": "yellow",
-                  "index": 5,
+                  "index": 6,
                   "text": "Not Found"
                 },
                 "500": {
                   "color": "dark-red",
-                  "index": 6,
+                  "index": 7,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 7,
+                  "index": 8,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 8,
+                  "index": 9,
                   "text": "Service Unavailable"
                 },
                 "null": {
                   "color": "transparent",
-                  "index": 9
+                  "index": 10
                 }
               },
               "type": "value"
@@ -601,13 +663,13 @@
         "x": 0,
         "y": 34
       },
-      "id": 9,
+      "id": 3,
       "options": {
         "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "mergeValues": true,
         "rowHeight": 0.9,
@@ -618,7 +680,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -638,7 +700,7 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "Response code for step \"availability short request\" of scenario \"availability\"."
+            "filter": "Response code for step \"availability accessible\" of scenario \"availability\"."
           },
           "itemTag": {
             "filter": "Application: availability"
@@ -741,6 +803,33 @@
             ],
             "fields": {}
           }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
         }
       ],
       "type": "state-timeline"
@@ -748,7 +837,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "beou3fit1s2dcc"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -776,49 +865,53 @@
                   "index": 0,
                   "text": "OK"
                 },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
                 "204": {
                   "color": "yellow",
-                  "index": 1,
+                  "index": 2,
                   "text": "No Content"
                 },
                 "400": {
                   "color": "dark-orange",
-                  "index": 2,
+                  "index": 3,
                   "text": "Bad Request"
                 },
                 "401": {
                   "color": "dark-orange",
-                  "index": 3,
+                  "index": 4,
                   "text": "Unauthorized"
                 },
                 "403": {
                   "color": "dark-orange",
-                  "index": 4,
+                  "index": 5,
                   "text": "Forbidden"
                 },
                 "404": {
                   "color": "yellow",
-                  "index": 5,
+                  "index": 6,
                   "text": "Not Found"
                 },
                 "500": {
                   "color": "dark-red",
-                  "index": 6,
+                  "index": 7,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 7,
+                  "index": 8,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 8,
+                  "index": 9,
                   "text": "Service Unavailable"
                 },
                 "null": {
                   "color": "transparent",
-                  "index": 9
+                  "index": 10
                 }
               },
               "type": "value"
@@ -841,13 +934,13 @@
         "x": 0,
         "y": 51
       },
-      "id": 10,
+      "id": 4,
       "options": {
         "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "mergeValues": true,
         "rowHeight": 0.9,
@@ -858,7 +951,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -878,7 +971,7 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "Response code for step \"wfcatalog short request\" of scenario \"wfcatalog\"."
+            "filter": "Response code for step \"wfcatalog accessible\" of scenario \"wfcatalog\"."
           },
           "itemTag": {
             "filter": "Application: wfcatalog"
@@ -981,6 +1074,33 @@
             ],
             "fields": {}
           }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
         }
       ],
       "type": "state-timeline"
@@ -988,7 +1108,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "beou3fit1s2dcc"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -1016,49 +1136,53 @@
                   "index": 0,
                   "text": "OK"
                 },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
                 "204": {
                   "color": "yellow",
-                  "index": 1,
+                  "index": 2,
                   "text": "No Content"
                 },
                 "400": {
                   "color": "dark-orange",
-                  "index": 2,
+                  "index": 3,
                   "text": "Bad Request"
                 },
                 "401": {
                   "color": "dark-orange",
-                  "index": 3,
+                  "index": 4,
                   "text": "Unauthorized"
                 },
                 "403": {
                   "color": "dark-orange",
-                  "index": 4,
+                  "index": 5,
                   "text": "Forbidden"
                 },
                 "404": {
                   "color": "yellow",
-                  "index": 5,
+                  "index": 6,
                   "text": "Not Found"
                 },
                 "500": {
                   "color": "dark-red",
-                  "index": 6,
+                  "index": 7,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 7,
+                  "index": 8,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 8,
+                  "index": 9,
                   "text": "Service Unavailable"
                 },
                 "null": {
                   "color": "transparent",
-                  "index": 9
+                  "index": 10
                 }
               },
               "type": "value"
@@ -1081,13 +1205,13 @@
         "x": 0,
         "y": 68
       },
-      "id": 12,
+      "id": 5,
       "options": {
         "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "mergeValues": true,
         "rowHeight": 0.9,
@@ -1098,7 +1222,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -1221,6 +1345,33 @@
             ],
             "fields": {}
           }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
         }
       ],
       "type": "state-timeline"
@@ -1244,6 +1395,6 @@
   "timezone": "browser",
   "title": "EIDA global WeatherMap",
   "uid": "cen19lnkzcsu8b",
-  "version": 24,
+  "version": 8,
   "weekStart": "monday"
 }

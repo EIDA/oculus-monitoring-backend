@@ -18,13 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 5,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "beou3fit1s2dcc"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -82,7 +82,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -147,7 +147,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "beou3fit1s2dcc"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -406,7 +406,7 @@
         ]
       },
       "gridPos": {
-        "h": 15,
+        "h": 16,
         "w": 19,
         "x": 5,
         "y": 0
@@ -424,7 +424,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -505,7 +505,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "beou3fit1s2dcc"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {},
@@ -515,7 +515,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 16
       },
       "id": 1,
       "options": {
@@ -612,7 +612,7 @@
           }
         ]
       },
-      "pluginVersion": "5.1.0",
+      "pluginVersion": "5.2.0",
       "targets": [
         {
           "application": {
@@ -726,6 +726,6 @@
   "timezone": "browser",
   "title": "EIDA global problems",
   "uid": "ben4yqwkoldkwc",
-  "version": 2,
+  "version": 3,
   "weekStart": "monday"
 }
