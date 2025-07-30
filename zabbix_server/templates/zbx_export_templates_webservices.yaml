@@ -256,7 +256,7 @@ zabbix_export:
           name: station
           delay: 15m
           steps:
-            - name: 'get documentation'
+            - name: 'station accessible'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
