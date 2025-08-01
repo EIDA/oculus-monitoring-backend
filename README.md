@@ -2,25 +2,43 @@
 For the EIDA Technical Committee and EIDA Management Board that need to improve there services quality, Oculus is a central monitoring and alerting system that tests all the services at EIDA nodes. Unlike the previous situation where the monitoring was very scattered and uneven, OCULUS will provide a global view of the services status and indicators for keeping track of service quality evolution.
 
 ## Table of contents
+- [Oculus Monitoring](#oculus-monitoring)
+  - [Table of contents](#table-of-contents)
 - [How to monitor a new thing](#how-to-monitor-a-new-thing)
-- [Deploying Oculus Zabbix and Grafana on Kubernetes using Helm](#--deploying-oculus-zabbix-and-grafana-on-kubernetes-using-helm)
+- [Deploying Oculus Zabbix and Grafana on Kubernetes using Helm](#deploying-oculus-zabbix-and-grafana-on-kubernetes-using-helm)
   - [Prerequisites](#prerequisites)
   - [Installation steps Zabbix](#installation-steps-zabbix)
+    - [1. Clone this repository](#1-clone-this-repository)
+    - [2. Go to .yaml location](#2-go-to-yaml-location)
+    - [3. Add the Helm repository](#3-add-the-helm-repository)
+    - [4. Create a Namespace for Zabbix](#4-create-a-namespace-for-zabbix)
+    - [5. Create DataBase postgresql](#5-create-database-postgresql)
+    - [6. Connection to the DataBase](#6-connection-to-the-database)
+    - [7. decrypt password](#7-decrypt-password)
+    - [8. Install Zabbix](#8-install-zabbix)
   - [Accessing the Zabbix Application (for development)](#accessing-the-zabbix-application-for-development)
-  - [Agent deployments](#agent-deployments)
-    - [Deploy one agent](#deploy-one-agent)
-    - [Deploy all agents](#deploy-all-agents)
 - [Zabbix configuration](#zabbix-configuration)
   - [Deploy Zabbix configuration with Ansible](#deploy-zabbix-configuration-with-ansible)
-  - [Create Ansible user](#create-ansible-user)
+    - [Zabbix Ansible deployment descriptions](#zabbix-ansible-deployment-descriptions)
+    - [Create Ansible user](#create-ansible-user)
+      - [1. Go to .yaml location](#1-go-to-yaml-location)
+      - [2. Run playbook Ansible](#2-run-playbook-ansible)
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
   - [Installation steps Grafana](#installation-steps-grafana)
+    - [1. Clone this repository](#1-clone-this-repository-1)
+    - [2. Go to .yaml location](#2-go-to-yaml-location-1)
+    - [3. Add the Helm repository](#3-add-the-helm-repository-1)
+    - [4. Decrypt password](#4-decrypt-password)
+    - [5. Install Grafana](#5-install-grafana)
   - [Accessing the Grafana Application (for development)](#accessing-the-grafana-application-for-development)
   - [Add Zabbix datasources](#add-zabbix-datasources)
     - [Create Zabbix API tokens](#create-zabbix-api-tokens)
   - [Deploy Grafana configuration with Ansible](#deploy-grafana-configuration-with-ansible)
-  - [Create Ansible user](#create-ansible-user)
+    - [Grafana Ansible deployment descriptions](#grafana-ansible-deployment-descriptions)
+    - [Create Ansible user](#create-ansible-user-1)
+      - [1. Go to .yaml location](#1-go-to-yaml-location-1)
+      - [2. Run playbook Ansible](#2-run-playbook-ansible-1)
 
 # How to monitor a new thing
 So you woud like to monitor something related to EIDA federation ?
@@ -107,41 +125,19 @@ In order to edit Nodes values is in this [procedures](contribute_to_change_value
   - Username: Admin
   - Password: zabbix
 
-## Agent deployments
-### Deploy one agent
-Create a configuration file for each agent in `oculus-zbx-agent-deployments` (for instant `epos-france.yaml`).
-
-Set the content according to this template:
-
-Complet template example [here](oculus-zbx-agent/scripts/example_lld.yaml) 
-
-``` yaml
----
-node: Epos-France    # Will be used as identifier for the agent
-endpoint: ws.resif.fr  # The endpoint to test
-routingFile: routing/eida_routing.xml
-onlineCheck: # Set default test parameters for each services
-  net: FR
-  sta: CIEL
-  loc: "00"
-  cha: HHZ
-  start: 2025-02-01T00:00:00
-  end: 2025-02-01T00:00:05
-```
-
-Then deploy (or update) the agent using helm:
-
-⚠️ If you want delete host, deleted the host FIRST in the Discovery template, and only then in the Webservice template ⚠️
-
-    helm upgrade -i epos-france oculus-zbx-agent --set-file zbx_lld=oculus-zbx-agent-deployments/epos-france.yaml -n eida-monitoring
-
-### Deploy all agents
-    for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent --set-file zbx_lld=$f -n eida-monitoring; done
-
 # Zabbix configuration
 
 ## Deploy Zabbix configuration with Ansible
 For deploying playbook with Ansible, you need to install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+
+### Zabbix Ansible deployment descriptions
+The Zabbix Ansible script will deploy this playbooks:
+- Import templates
+- Config autoregistration
+- Deploying agents
+- Activate media type
+- Create EIDA users
+- Configuration triggers actions
 
 ### Create Ansible user
 Go to "Users > Users"
@@ -224,6 +220,12 @@ Go to "Users > API token"
 
 ## Deploy Grafana configuration with Ansible
 For deploying playbook with Ansible, you need to install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+
+### Grafana Ansible deployment descriptions
+The Grafana Ansible script will deploy this playbooks:
+- Install plugins
+- Add datasources
+- Import dashboards
 
 ### Create Ansible user
 Go to "Administration > User and access > Users"
