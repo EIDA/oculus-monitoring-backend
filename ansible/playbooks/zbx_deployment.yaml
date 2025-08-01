@@ -1,0 +1,18 @@
+---
+- name: Import templates
+  import_playbook: zbx_templates.yaml
+
+- name: Configure autoregistration
+  import_playbook: zbx_autoregistration.yaml
+
+- name: Deploying agents
+  import_playbook: deploying_agents.yaml
+
+- name: Activate Media type
+  import_playbook: zbx_media.yaml
+
+- name: Create users
+  import_playbook: zbx_users.yaml
+
+- name: Configuration Zabbix Triggers
+  import_playbook: zbx_trigger_action.yaml

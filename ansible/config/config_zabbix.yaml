@@ -1,0 +1,8 @@
+- name: Credentials Zabbix API
+  ansible.builtin.set_fact:
+    ansible_user: ansible
+    ansible_httpapi_pass: "{{ ansible_httpapi_pass }}"
+
+- name: Set API token
+  ansible.builtin.set_fact:
+    ansible_zabbix_token: "{{ ansible_zabbix_token }}"

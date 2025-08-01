@@ -3,8 +3,9 @@
   hosts: localhost
   gather_facts: false
   vars_files:
-    - ../files/oculus_users.yaml
     - ../config/config_staging.yaml
+    - ../files/oculus_users.yaml
+    - ../files/eida_nodes.yaml
   vars:
     ansible_network_os: community.zabbix.zabbix
     ansible_connection: httpapi
@@ -15,16 +16,8 @@
     ansible_host: localhost
 
   tasks:
-    - name: Credentials Zabbix API
-      delegate_to: localhost
-      ansible.builtin.set_fact:
-        ansible_user: ansible
-        ansible_httpapi_pass: "{{ ansible_httpapi_pass }}"
-
-    - name: Set API token
-      delegate_to: localhost
-      ansible.builtin.set_fact:
-        ansible_zabbix_token: "{{ ansible_zabbix_token }}"
+    - name: Import Zabbix Credentials
+      ansible.builtin.import_tasks: ../config/config_zabbix.yaml
 
     - name: Create users groups
       delegate_to: localhost
@@ -49,7 +42,7 @@
         usrgrps:
           - Internal
           - "{{ item.usrgrp }}"
-        passwd: 2VKPpxOY3x89
+        passwd: "{{ zabbix_user_pass }}"
         lang: en_GB
         autologin: false
         refresh: "30"
@@ -58,3 +51,25 @@
           - mediatype: Email (HTML) EIDA
             sendto:
               - "{{ item.email }}"
+
+    - name: Create API user group
+      delegate_to: localhost
+      community.zabbix.zabbix_usergroup:
+        name: "API-RO"
+        templategroup_rights:
+          - template_group: Templates/EIDA
+            permission: read-only
+        hostgroup_rights: >
+          {{ eida_nodes | map('regex_replace', '^(.*)$', '{"host_group": "\1", "permission": "read-only"}') | map('from_json') | list }}
+        tag_filters: "{{ eida_nodes | map('regex_replace', '^(.*)$', '{\"host_group\": \"\\1\"}') | map('from_json') | list }}"
+
+    - name: Create grafana user
+      delegate_to: localhost
+      community.zabbix.zabbix_user:
+        username: grafana
+        usrgrps:
+          - API-RO
+          - "No access to the frontend"
+        passwd: "{{ zabbix_grafana_pass }}"
+        lang: en_GB
+        autologin: false

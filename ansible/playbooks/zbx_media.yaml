@@ -1,0 +1,82 @@
+---
+- name: Activate Media type Email (HTML) EIDA
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../config/config_staging.yaml
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 8888
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: localhost
+
+  tasks:
+    - name: Import Zabbix Credentials
+      ansible.builtin.import_tasks: ../config/config_zabbix.yaml
+
+    - name: Activate Media type
+      delegate_to: localhost
+      community.zabbix.zabbix_mediatype:
+        name: "Email (HTML) EIDA"
+        type: email
+        smtp_server: "mail.example.com"
+        smtp_email: "zabbix@example.com"
+        smtp_server_port: 25
+        message_format: "html"
+        status: enabled
+        message_templates:
+          - eventsource: triggers
+            recovery: operations
+            subject: "Problem: {EVENT.NAME}"
+            body: |
+              <b>Problem started</b> at {EVENT.TIME} on {EVENT.DATE}<br>
+              <b>Problem name:</b> {EVENT.NAME}<br>
+              <b>Host:</b> {HOST.NAME}<br>
+              <b>Severity:</b> {EVENT.SEVERITY}<br>
+              <b>Operational data:</b> {EVENT.OPDATA}<br>
+              <b>Original problem ID:</b> {EVENT.ID}<br>
+              {TRIGGER.URL}
+          - eventsource: triggers
+            recovery: recovery_operations
+            subject: "Resolved in {EVENT.DURATION}: {EVENT.NAME}"
+            body: |
+              <b>Problem has been resolved</b> at {EVENT.RECOVERY.TIME} on {EVENT.RECOVERY.DATE}<br>
+              <b>Problem name:</b> {EVENT.NAME}<br>
+              <b>Problem duration:</b> {EVENT.DURATION}<br>
+              <b>Host:</b> {HOST.NAME}<br>
+              <b>Severity:</b> {EVENT.SEVERITY}<br>
+              <b>Original problem ID:</b> {EVENT.ID}<br>
+              {TRIGGER.URL}
+          - eventsource: triggers
+            recovery: update_operations
+            subject: "Updated problem in {EVENT.AGE}: {EVENT.NAME}"
+            body: |
+              <b>{USER.FULLNAME} {EVENT.UPDATE.ACTION} problem</b>
+              at {EVENT.UPDATE.DATE} {EVENT.UPDATE.TIME}.<br>
+              {EVENT.UPDATE.MESSAGE}<br><br>
+              <b>Current problem status:</b> {EVENT.STATUS}<br>
+              <b>Age:</b> {EVENT.AGE}<br>
+              <b>Acknowledged:</b> {EVENT.ACK.STATUS}
+          - eventsource: discovery
+            recovery: operations
+            subject: "Discovery: {DISCOVERY.DEVICE.STATUS} {DISCOVERY.DEVICE.IPADDRESS}"
+            body: |
+              <b>Discovery rule:</b> {DISCOVERY.RULE.NAME}<br><br>
+              <b>Device IP:</b> {DISCOVERY.DEVICE.IPADDRESS}<br>
+              <b>Device DNS:</b> {DISCOVERY.DEVICE.DNS}<br>
+              <b>Device status:</b> {DISCOVERY.DEVICE.STATUS}<br>
+              <b>Device uptime:</b> {DISCOVERY.DEVICE.UPTIME}<br><br>
+              <b>Device service name:</b> {DISCOVERY.SERVICE.NAME}<br>
+              <b>Device service port:</b> {DISCOVERY.SERVICE.PORT}<br>
+              <b>Device service status:</b> {DISCOVERY.SERVICE.STATUS}<br>
+              <b>Device service uptime:</b> {DISCOVERY.SERVICE.UPTIME}
+          - eventsource: autoregistration
+            recovery: operations
+            subject: "Autoregistration: {HOST.HOST}"
+            body: |
+              <b>Host name:</b> {HOST.HOST}<br>
+              <b>Host IP:</b> {HOST.IP}<br>
+              <b>Agent port:</b> {HOST.PORT}

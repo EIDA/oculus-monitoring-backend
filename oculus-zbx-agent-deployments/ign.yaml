@@ -3,10 +3,10 @@ node: IGN
 endpoint: fdsnws.sismologia.ign.es
 routingFile:
 onlineCheck:
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
+  net: ES
+  sta: YEBES
+  loc: '*'
+  cha: HHZ
+  start: '2025-06-25T23:00:00'
+  end: '2025-06-25T23:00:10'
 perfCheck:

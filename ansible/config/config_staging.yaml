@@ -1,29 +1,33 @@
-ansible_httpapi_pass: ENC[AES256_GCM,data:LMY7gvpY2SfveFbr,iv:JV40cfNurGY50bZ/zncp5SGNLmYP2iN0NEBV5j2/QKY=,tag:fmEwJrcEDeaWloKYcYKy4A==,type:str]
-ansible_zabbix_token: ENC[AES256_GCM,data:UHibfMunY4cfGrd34BR3BttRpRiuMmUnc6OrCl9qqC+QPJS6OeU/Q73V61qZm8NZ36BMu2FZIyzs7xVYJebXlA==,iv:8oAqhgtszcGPIrc8g1Vhxq8b8qxjLhIPtsZ3ucB9KD8=,tag:orPx0IFSB32LBn28Z6Lmpw==,type:str]
+ansible_httpapi_pass: ENC[AES256_GCM,data:5LqW/LZbxk/VGCED,iv:+23hJP4BlpuJANqA9NX4rRV6QE9iargzcrUnk8xk4fE=,tag:eO1zKfXE8B8NPOoleYQ+DQ==,type:str]
+ansible_zabbix_token: ENC[AES256_GCM,data:n956EB6SRXozGK3Txr2gqI0Gkg3vVAhQAJcDK2E2qr+X0iMxzgqaIAP1RUi5CoGFS581bqwElmyh1BHHzcLZew==,iv:ou5mx9IVPmvrgpT6IXQrbhUO5h1EnvEzzY0SA+wWntY=,tag:F0NVWodiwslMWxdWxxaPrw==,type:str]
+ansible_grafana_token: ENC[AES256_GCM,data:wjqzcMvmE4mKLymCfBZ4aWm4T1h+XFU1Fl15npnpZErXbX5G9GCb6LkhwOl7+g==,iv:HyKvUfg3c55icccRhORJq71+GrRPMR+hblBdXqa/W3c=,tag:MX+67UPlUCNoKrCaGUl9jQ==,type:str]
+zabbix_grafana_token: ENC[AES256_GCM,data:6hPpDdgu59IWKIswIA0koOLRefwS6IG8/RGd35baMUbmP4h3tiuQv7dh7c5GkxP2aaIxqp4LwlCOuJrMt4rpuQ==,iv:15ykxNvmp7f6KllFfMjZVa04cfKbgG298J5vHqqbwsg=,tag:hAPkkkA0BTPUJueKyBnrFw==,type:str]
+zabbix_grafana_pass: ENC[AES256_GCM,data:N/P6z+FRsqBizHNo,iv:aBbslXr6bjgVJX20U12Y6J99emxi7vtQeuBDjS+bmw8=,tag:7Nnz9Borf55Qyq2IKD2u0Q==,type:str]
+zabbix_user_pass: ENC[AES256_GCM,data:b7JaE3T5zWBUwOi9,iv:hhcNykoSXSeq5nANp5GdBZAPEB+1gq9SYvrFMvHpSGY=,tag:NNSxTJXHxTYdT1Gquvmf0Q==,type:str]
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age: []
-    lastmodified: "2025-06-27T14:07:32Z"
-    mac: ENC[AES256_GCM,data:9ptmo+IYLSr5BK+qnpnPjA8ZzF+kumMJwFo2ja/tIqKDlYP5oK0qD/UZBNmNuk+hdqSJBkiJpnGmx7mfHUInM8wJ8aFxg9FOLcy1K67E0lQyiUbTcOtlNcz4dngBzKzoy3HfNeK4dlLCIL6oNoUd/ZC29RD0pHHucpfGvLjuyr4=,iv:VdCAdT9llTz+YIuJaIbJrnAPl/U3gAVpqI4W1HUIUBY=,tag:3P8K+IJV+GeMykh3xG7Lhg==,type:str]
-    pgp:
-        - created_at: "2025-06-27T14:07:32Z"
-          enc: |-
-            -----BEGIN PGP MESSAGE-----
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age: []
+  lastmodified: "2025-07-25T15:10:38Z"
+  mac: ENC[AES256_GCM,data:F2ybvfMgyG/RVPdgMOOsOBow5xhNkoMDmVcMaE1EOHGgrr7N63lRJt1HJl7pFhp/K6lz6hmx9QR/hXkBMH2jdnkHDs44K24zHpMe+Ea2sfZYR3eSTUFyVvetDPS+Oa5wLSwRltv/FdUPDgmM1ApwJ0+7MENH57J3SzAKOLequc0=,iv:RAGPMKUfRJlUhe1hHfHTqg0AvZDeqrp5aDOEjlzg0Gs=,tag:KTpmoREhPpwepCPbYfZi5w==,type:str]
+  pgp:
+  - created_at: "2025-07-25T15:10:38Z"
+    enc: |-
+      -----BEGIN PGP MESSAGE-----
 
-            hQEMA23uPS/3Y9M2AQgApTJTiWkPIfgyT5vmkGK61FtmkizRIzTUHAu8L3t/vxpR
-            NnJBxXPkBQxSsN0wVsPhx5ysrat58TbCqkW/zzV3Yt+JuACk3nP4j/BdPj+DviyF
-            G8cs8DolJ0Je47TVSR8mPkyr5U1WVqDiCL2dq5bzAKd2zvSDTYb3mWnj5PKazMDt
-            KIKLQvy4vRzeVVAgdcPCx+WFnOQWlz7Gzc5uPP1WvR/4tIivxQJnc9rMYhFoRI+d
-            tUj2aAqUjaqtYGVAYvxgq/AJGeqROIzmoo7S1UonylI1yfkceu5WqPFPMGm0ZMoM
-            0ljzjh3wpjWm+2iYV2+7CiG6YTluZku8pjjwUmCok9JeAYdcrP6udEZAC9HZh/re
-            r+04DASXMEKmg9rREmimtabqmhBRDiq1GA6+5VgpdYrocP4Ua19vWuajkjV11qzl
-            DgqiEjAkdhuyLMzoAHeSocR5R6k/Z01128Xk0kLOBQ==
-            =QkpD
-            -----END PGP MESSAGE-----
-          fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
-    encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|adminPassword)
-    mac_only_encrypted: true
-    version: 3.9.2
+      hQEMA23uPS/3Y9M2AQf9HPfkNzzec5CobX/V8oMjJUH2+xl+oT+pAtMW+Oh7MZpA
+      KAKo+M9d4CH8k8i/SQVMnZKfaXsAsIXNtR6xPFiGf8cBBrQ0PpQbWS1ahnm7ez3d
+      9kVXzwGgiuAOe4mFqE1JwJIL8ZrqUX3RLyrEHJcjcY7i5oObHe+I/vamlLcOwUDY
+      ljlfqWWHmLTidQc1AMNRU5jO8xj5GDt578Bm3l6ZQYpgJmvGhv6/guXiH5x9tpqr
+      CTd23ooNdoN8lDZWHLBp/O7H97+LbEyDit6Qwlo3CKMdd3aVz6BeQRxG9rNJS1Ii
+      5LJebuwMU0lfmuroJ6F++7gc0d4gSRooGxuEnUZUa9JeAd+zrDAe5RRmNBVxu5Rt
+      +95hyqF5OnV0ebF8pyCifk0kQJe/75H1phjqAtGeKi6m4/HicHiCUGgLq0Vbw6WK
+      2W6W6eeYDa3+/Q2tP0P6/TN+86ECmIJEjgWQzRAfsg==
+      =1pfq
+      -----END PGP MESSAGE-----
+    fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
+  encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|ansible_grafana_token|zabbix_grafana_token|zabbix_grafana_pass|zabbix_user_pass|adminPassword)
+  mac_only_encrypted: true
+  version: 3.9.2

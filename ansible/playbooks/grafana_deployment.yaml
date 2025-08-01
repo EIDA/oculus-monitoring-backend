@@ -1,0 +1,12 @@
+---
+- name: Install plugins
+  import_playbook: grafana_plugins.yaml
+
+- name: Add datasource
+  import_playbook: grafana_datasource.yaml
+
+- name: Import dashboards
+  import_playbook: grafana_dashboards.yaml
+
+- name: Configure welcome page
+  import_playbook: grafana_welcome.yaml

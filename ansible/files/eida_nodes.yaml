@@ -1,14 +1,15 @@
 eida_nodes:
-- name: BGR
-- name: BGS
-- name: EPOSFR
-- name: GFZ
-- name: ICGC
-- name: INGV
-- name: KOERI
-- name: LMU
-- name: NIEP
-- name: NOA
-- name: ODC
-- name: SED
-- name: UIB
+- BGR
+- BGS
+- EPOSFR
+- GFZ
+- ICGC
+- IGN
+- INGV
+- KOERI
+- LMU
+- NIEP
+- NOA
+- ODC
+- SED
+- UIB

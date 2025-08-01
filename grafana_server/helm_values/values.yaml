@@ -4,7 +4,7 @@ global:
 grafana:
   enabled: true
   adminUser: admin
-  adminPassword: ENC[AES256_GCM,data:Y3m0DFaCgr3jF2p8,iv:sT41ZvNyWwGu9RFbqWZoS6c6ekcE874flMXGkFs6o5E=,tag:E73TJekiIVTdecwRilmCLA==,type:str]
+  adminPassword: ENC[AES256_GCM,data:EX//TXk922zInqhK6GwFTxpIeVMNWZO5MV7WVH5iMbR4jl83k1M0vA==,iv:fy/V56sHEy01qqdGMrqQsj4qkEeqjtbzgwvRhWn43lc=,tag:5gOFPhytBOexaUFZ0kc4CA==,type:str]
   service:
     type: ClusterIP
     port: 3000
@@ -16,75 +16,56 @@ grafana:
       paths:
       - /
     tls: []
-  persistence:
-    type: pvc
-    enabled: true
-    storageClassName: standard
-    accessModes:
-    - ReadWriteOnce
-    size: 10Gi
-  plugins:
-    enabled: true
-    plugins:
-    - grafana-piechart-panel
-    - grafana-worldmap-panel
-    - alexanderzobnin-zabbix-app
-    - alexanderzobnin-zabbix-datasource
-  datasources:
-    enabled: true
-    defaultDatasource:
-      name: Zabbix
-      type: alexanderzobnin-zabbix-datasource
-      url: http://oculus-zabbix-zabbix-web:8888/api_jsonrpc.php
-      access: proxy
-      isDefault: true
-      jsonData:
-        username: grafana
-        password: ENC[AES256_GCM,data:QU+RCgv6NKxKrmS9GN2BPIMf4IA=,iv:mLvY5N/tADHMAG8cFoKxY9FZkQxYmQzj1uaysV3hKcs=,tag:qlbEXh/Nl9tIK+o5mY5wpA==,type:str]
   dashboards:
     enabled: true
     defaultFolderName: Default
     configMaps: []
-  database:
-    type: postgresql
-    host: resif-pgpreprod.u-ga.fr
-    port: 5432
-    user: oculus
-    password: ENC[AES256_GCM,data:YrEBBi12l2z3b7/h3VHXUm/5QUo=,iv:Xlc0dfTly3JpkESb4aZvvTxXvZ8BDLPnLYwmwVe4x00=,tag:wsw1TtyJ73jmMu8EQuXHcQ==,type:str]
-    name: oculus_grafana
-resources:
+resources: null
 nodeSelector: {}
 tolerations: []
 affinity: {}
+envFromSecret: grafana-db-secret
 grafana.ini:
+  database:
+    type: postgres
+    host: resif-pgpreprod.u-ga.fr
+    port: 5432
+    user: oculus
+    name: oculus_grafana
   auth.anonymous:
     enabled: true
     org_name: Main Org.
     org_role: Viewer
+  plugins:
+    enabled: true
+plugins:
+- grafana-piechart-panel
+- grafana-worldmap-panel
+- alexanderzobnin-zabbix-app
 sops:
   kms: []
   gcp_kms: []
   azure_kv: []
   hc_vault: []
   age: []
-  lastmodified: "2025-06-24T14:19:26Z"
-  mac: ENC[AES256_GCM,data:IHZ6a/pT3tcozTk0yYub/quloNkcRAHGpdJgA+chqrQx67M+nbkz6u62yyTdPBnidR1Vff6cS6MxhxQMmcim74Qp3QG5e5BgldN3f60S9Dzg9UuMp4FSbZaSoAE0pDtVDkWZfHwAGlm4s8Uj+PRjaHmtlYukz5hNcCMxOcnxT8c=,iv:AWgXSANP79hK+IOk1qYG/klvh4eYcum90/kPHDodrQk=,tag:94Zj8pfjyKGxd0uhmnlgrQ==,type:str]
+  lastmodified: "2025-07-24T09:12:40Z"
+  mac: ENC[AES256_GCM,data:rS0dJlFvhY9xRPVOWw6aCwDkY2Y9hDpUfNcsLcW2aDhlVSeO/624I+k+PCI155lRcqe3bM9e+icxSYkw+IYpp3mEL+9H/twwSxrzaejJ9KODwY2auksVdrLPinc+dHLZfQUwQLe5Xp0J4qSlweNK3lCdT6zykN/D+V7fCsQVB34=,iv:VyyhoKjbLflufKuhtYFj/ZtAnNZQDyiOP0RqMQUEP4Q=,tag:5w/QdwM/N/9lmfXD9epolA==,type:str]
   pgp:
-  - created_at: "2025-06-24T14:19:25Z"
+  - created_at: "2025-07-24T09:12:40Z"
     enc: |-
       -----BEGIN PGP MESSAGE-----
 
-      hQEMA23uPS/3Y9M2AQf+JvotIVns9nE9NcivEEWA3JhBVjM7DNbzpHmjbTMLK9m4
-      wTBu+u6e4UiTyq/VmKR+M6StovN8VMXz/uMob4YbV7HIbc7dZf/VvZRQI8yNun59
-      uL4G6aAAVA6ogjNf/xwxm8LpY7oONP7hJs42CJN33A7zKXDwNh/XmU7f+ikyRmKy
-      PlK0k+Y0cN/P/XJPtzmPFCDL1SZhTDJXvPcWlcJHP4YNJyXRFHpyu6an9XS7c6nr
-      qlbidNlcrWTWBMgoPTPT/T41IIeW4DDHqBTW3WO+S3KsTobMlDWM59pDhfhCarSf
-      KjKuaHWHrRKSTp9eZW2aGcxK+lY1H6BByzYJCRGoRdJcAfCu2slDe2NWjXgFx+eH
-      kiO8QF6JKEM5VkTbaD2o28ECVnTaxbto2q30Wll6AGJ0KsGZmyGC555Ous6saRhe
-      NXsMaCN6xzQEgOHdaw0zRtOL7yPd1uAFUjee/U8=
-      =87G5
+      hQEMA23uPS/3Y9M2AQgAyLQ5uIrj7UWJCX7x8z+3DpNiGmD8wNQvsuf+BL15KOdd
+      cNlRh5vmqCaG6OC2Vmtu+QSyyW4iaXFkTAyhMUKs3+2/Lwl2i1lFMoeVwd4qa8dT
+      /RM2rECVz2j1iWyiyylZ4fZ0JJL1iBZgjPBR5MDlYCDOzHSmtkA3lbcO7uvwHHU8
+      9BbgSi5F2q4urlk+qBB7n6k2klWrmJtAeYL5UR/wwCVpAQJLE1OzssTnQj01RrjW
+      5Rd/oSbcuH4vI1hnxLlLVvehjUP7rn/ZeHF7x8XqMyaAR1idRmm+Xd2VgIdyQw5p
+      udFI04mtUhVne+w2eJCtnJtA+JfJnGbGGc6qVQ4CFNJeARhTxda7GfJMpsVzeqzi
+      LsnzcDdw3K//CdSWalwLJptg+Abuu5RNodsv36xBPk9MC+JkB2sbDXGNogmz04Ex
+      9yCqtnTVOeCTgW9SjkPX6IjX/NcL1U6LkhnoJtseWg==
+      =c0n1
       -----END PGP MESSAGE-----
     fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
-  encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|adminPassword)
+  encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|ansible_grafana_token|zabbix_grafana_token|zabbix_grafana_pass|adminPassword)
   mac_only_encrypted: true
   version: 3.9.2
