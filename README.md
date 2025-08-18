@@ -33,6 +33,7 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
     - [5. Install Grafana](#5-install-grafana)
   - [Accessing the Grafana Application (for development)](#accessing-the-grafana-application-for-development)
   - [Add Zabbix datasources](#add-zabbix-datasources)
+    - [Accessing the Zabbix Application](#accessing-the-zabbix-application)
     - [Create Zabbix API tokens](#create-zabbix-api-tokens)
   - [Deploy Grafana configuration with Ansible](#deploy-grafana-configuration-with-ansible)
     - [Grafana Ansible deployment descriptions](#grafana-ansible-deployment-descriptions)
@@ -198,16 +199,22 @@ ansible-playbook zbx_deployment.yaml
   ```
 
 ## Accessing the Grafana Application (for development)
-- Port forward
+- Port forward Grafana
   ```sh
   kubectl port-forward service/oculus-grafana 3000:3000 -n eida-monitoring
   ```
 - [localhost:3000](http://localhost:3000)
 - Default credentials:
-  - Username: /
-  - Password: /
+  - Username: admin
+  - Password: {admin_passwd}
 
 ## Add Zabbix datasources
+### Accessing the Zabbix Application
+- Port forwrd Zabbix
+  ```sh
+  kubectl port-forward service/oculus-zabbix-zabbix-web 8888:8888 -n eida-monitoring
+  ```
+
 ### Create Zabbix API tokens
 Go to "Users > API token"
 - Click "Create API token"
