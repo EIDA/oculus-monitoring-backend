@@ -12,7 +12,7 @@ grafana:
     enabled: true
     annotations: {}
     hosts:
-    - host: eida-oculus.resif.fr
+    - host: eida-oculus.orfeus-eu.org
       paths:
       - /
     tls: []
