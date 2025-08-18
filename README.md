@@ -37,7 +37,11 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
     - [Create Zabbix API tokens](#create-zabbix-api-tokens)
   - [Deploy Grafana configuration with Ansible](#deploy-grafana-configuration-with-ansible)
     - [Grafana Ansible deployment descriptions](#grafana-ansible-deployment-descriptions)
-    - [Create Ansible user](#create-ansible-user-1)
+    - [Create Ansible user and service accounts](#create-ansible-user-and-service-accounts)
+    - [Configure Ansible Grafana auth](#configure-ansible-grafana-auth)
+      - [1. Go to config auth location](#1-go-to-config-auth-location)
+      - [2. Decrypt file](#2-decrypt-file)
+    - [Launch Ansible](#launch-ansible)
       - [1. Go to .yaml location](#1-go-to-yaml-location-1)
       - [2. Run playbook Ansible](#2-run-playbook-ansible-1)
 
@@ -210,13 +214,13 @@ ansible-playbook zbx_deployment.yaml
 
 ## Add Zabbix datasources
 ### Accessing the Zabbix Application
-- Port forwrd Zabbix
+Port forwrd Zabbix
   ```sh
   kubectl port-forward service/oculus-zabbix-zabbix-web 8888:8888 -n eida-monitoring
   ```
 
 ### Create Zabbix API tokens
-Go to "Users > API token"
+In Zabbix application, go to "Users > API token"
 - Click "Create API token"
   - Name: grafana
   - User: grafana
@@ -230,19 +234,48 @@ For deploying playbook with Ansible, you need to install [Ansible](https://docs.
 
 ### Grafana Ansible deployment descriptions
 The Grafana Ansible script will deploy this playbooks:
-- Install plugins
 - Add datasources
 - Import dashboards
 
-### Create Ansible user
-Go to "Administration > User and access > Users"
+### Create Ansible user and service accounts
+In Grafana application, go to "Administration > User and access > Users"
 - Click "New user"
-  - name: ansible
-  - username: ansible
-  - password: {ansible_password}
+  - Name: ansible
+  - Username: ansible
+  - Password: {ansible_password}
 - Click "Create user"
 - In section "Permissions" click to "Change" and "Yes" and reclick to "Change"
 - In section "Organization" click to "Change role", select "Admin" and click to "Save"
+Go to "Administration > User and access > Service accounts"
+- Click "Add service account"
+  - Name: ansible
+  - Role: Admin
+    - Click "Add service account token"
+    - Click "No expiration"
+    - Click "Generate token"
+      - Copy to clipboard and paste in file "config_prod" or "config_staging" in path ``` ansible/config/```
+      - Click "Close"
+    - Click in red cross on section "User"
+    - Click "Add permission"
+      - Select "User"
+      - Select "ansible"
+      - Select "Admin"
+      - Click "Save"
+
+### Configure Ansible Grafana auth
+#### 1. Go to config auth location
+  ```sh
+  cd ansible/config
+  ```
+
+#### 2. Decrypt file
+  ```sh
+  sops -d -i config_prod.yaml
+  OR
+  sops -d -i config_staging.yaml
+  ```
+
+### Launch Ansible
 #### 1. Go to .yaml location
 ```sh
 cd ansible/playbooks
