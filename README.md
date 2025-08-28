@@ -8,11 +8,25 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
 - [Deploying Oculus Zabbix and Grafana on Kubernetes using Helm](#deploying-oculus-zabbix-and-grafana-on-kubernetes-using-helm)
   - [Prerequisites](#prerequisites)
   - [Installation steps Zabbix](#installation-steps-zabbix)
+    - [1. Clone this repository](#1-clone-this-repository)
+    - [2. Go to .yaml location](#2-go-to-yaml-location)
+    - [3. Add the Helm repository](#3-add-the-helm-repository)
+    - [4. Create a Namespace for Zabbix](#4-create-a-namespace-for-zabbix)
+    - [5. Create DataBase postgresql](#5-create-database-postgresql)
+    - [6. Connection to the DataBase](#6-connection-to-the-database)
+    - [7. decrypt password](#7-decrypt-password)
+    - [8. Install Zabbix](#8-install-zabbix)
   - [Accessing the Zabbix Application (for development)](#accessing-the-zabbix-application-for-development)
 - [Zabbix configuration](#zabbix-configuration)
   - [Deploy Zabbix configuration with Ansible](#deploy-zabbix-configuration-with-ansible)
     - [Zabbix Ansible deployment descriptions](#zabbix-ansible-deployment-descriptions)
     - [Create Ansible user](#create-ansible-user)
+    - [Zabbix configuration deployment](#zabbix-configuration-deployment)
+      - [1. Go to .yaml location](#1-go-to-yaml-location)
+      - [2. Run playbook Ansible](#2-run-playbook-ansible)
+      - [For developmenet: Manual Zabbix agent deployment](#for-developmenet-manual-zabbix-agent-deployment)
+        - [Deploy one agent](#deploy-one-agent)
+        - [Deploy all agents](#deploy-all-agents)
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
   - [Installation steps Grafana](#installation-steps-grafana)
@@ -32,7 +46,8 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
       - [1. Go to config auth location](#1-go-to-config-auth-location)
       - [2. Decrypt file](#2-decrypt-file)
     - [Launch Ansible](#launch-ansible)
-
+      - [1. Go to .yaml location](#1-go-to-yaml-location-1)
+      - [2. Run playbook Ansible](#2-run-playbook-ansible-1)
 # How to monitor a new thing
 So you woud like to monitor something related to EIDA federation ?
 
@@ -142,6 +157,8 @@ Go to "Users > Users"
     - Role: "Super admin role"
 - Click "Add"
 
+### Zabbix configuration deployment
+
 #### 1. Go to .yaml location
 ```sh
 cd ansible/playbooks
@@ -149,6 +166,18 @@ cd ansible/playbooks
 #### 2. Run playbook Ansible
 ```sh
 ansible-playbook zbx_deployment.yaml
+```
+
+#### For developmenet: Manual Zabbix agent deployment
+
+##### Deploy one agent
+```sh
+helm upgrade -i eposfr oculus-zbx-agent --set-file zbx_lld=oculus-zbx-agent-deployments/eposfr.yaml -n eida-monitoring
+```
+
+##### Deploy all agents
+```sh
+for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent --set-file zbx_lld=$f -n eida-monitoring; done
 ```
 
 # Deploying Oculus Grafana
