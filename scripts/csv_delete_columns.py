@@ -15,8 +15,8 @@ if not os.path.exists(input_file):
     sys.exit(1)
 
 try:
-    # read csv file
-    df = pd.read_csv(input_file)
+    # read csv file preserving NULL values as strings
+    df = pd.read_csv(input_file, quoting=3, escapechar='\\', keep_default_na=False, na_values=[])
     
     # check if file is empty
     if df.empty:
@@ -41,7 +41,7 @@ try:
             choice = input(f"\nWhich column to delete ? (0-{len(df.columns)-1}) or 'q' for quit: ")
             
             if choice.lower() == 'q':
-                print("Annulé.")
+                print("Canceled.")
                 sys.exit(0)
             
             column_index = int(choice)
@@ -63,9 +63,9 @@ try:
         except ValueError:
             print("Error: enter a valid number or 'q' for quit")
     
-    # save
+    # save preserving NULL values and original format
     output_file = input_file.replace('.csv', '_clean.csv')
-    df.to_csv(output_file, index=False)
+    df.to_csv(output_file, index=False, quoting=3, escapechar='\\')
     
     print(f"\nColumn '{column_to_delete}' deleted ! File save here : {output_file}")
     print(f"New file : {df.shape[0]} lignes, {df.shape[1]} columns")
