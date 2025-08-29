@@ -1762,10 +1762,10 @@
       {
         "current": {
           "text": [
-            "All"
+            "BGR"
           ],
           "value": [
-            "$__all"
+            "BGR"
           ]
         },
         "definition": "",

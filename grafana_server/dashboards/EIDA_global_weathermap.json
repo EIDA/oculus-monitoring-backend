@@ -429,7 +429,7 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "Response code for step \"get documentation\" of scenario \"station\"."
+            "filter": "Response code for step \"station accessible\" of scenario \"station\"."
           },
           "itemTag": {
             "filter": "Application: station"
@@ -1395,6 +1395,6 @@
   "timezone": "browser",
   "title": "EIDA global WeatherMap",
   "uid": "cen19lnkzcsu8b",
-  "version": 8,
+  "version": 9,
   "weekStart": "monday"
 }

@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 4,
   "links": [],
   "panels": [
     {
@@ -38,7 +38,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -91,7 +91,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -149,7 +149,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -202,7 +202,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -260,7 +260,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -313,7 +313,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -371,7 +371,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -424,7 +424,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -482,7 +482,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "cemk6kmr0s0zkb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -535,7 +535,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -600,9 +600,7 @@
     "list": [
       {
         "current": {
-          "text": [
-            "All"
-          ],
+          "text": "All",
           "value": [
             "$__all"
           ]
@@ -636,5 +634,5 @@
   "timezone": "browser",
   "title": "EIDA services per nodes",
   "uid": "femk8h7dfqxoge",
-  "version": 16
+  "version": 2
 }
