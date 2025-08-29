@@ -12,7 +12,7 @@ zabbix_export:
       httptests:
         - uuid: fdf418ac33cf4374bd854cfef45d8604
           name: 'PC availability'
-          status: DISABLED
+          delay: 2h
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
@@ -30,6 +30,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_AVAILABILITY_9STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '54 streams'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
@@ -47,6 +48,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_AVAILABILITY_54STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '320 streams'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
@@ -64,6 +66,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_AVAILABILITY_320STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '1 stream 20 days'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
@@ -81,13 +84,14 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
           tags:
             - tag: PC
               value: availability
         - uuid: c42e22b93ab74d2e9a8b4e1291d073d6
           name: 'PC dataselect'
-          status: DISABLED
+          delay: 2h
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
@@ -105,6 +109,7 @@ zabbix_export:
                 - name: location
                   value: '{$PERFCHECK_DATASELECT_9STREAMS_LOC}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '54 streams'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
@@ -122,6 +127,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_DATASELECT_54STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '320 streams'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
@@ -139,6 +145,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_DATASELECT_320STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '1 stream 20 days'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
@@ -156,13 +163,14 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
           tags:
             - tag: PC
               value: dataselect
         - uuid: 46869c73a2a742b5907a2b42ea7dab08
           name: 'PC station'
-          status: DISABLED
+          delay: 2h
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
@@ -180,6 +188,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_STATION_9STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '54 streams'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
@@ -197,6 +206,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_STATION_54STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '320 streams'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
@@ -214,17 +224,19 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_STATION_320STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
           tags:
             - tag: PC
               value: station
         - uuid: 4f175da47a63486b98f440cc295aacb4
           name: 'PC wfcatalog'
-          status: DISABLED
+          delay: 2h
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '54 streams'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
@@ -242,6 +254,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_WFCATALOG_54STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '320 streams'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
@@ -259,6 +272,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_WFCATALOG_320STREAMS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
             - name: '1 stream 20 days'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
@@ -276,6 +290,7 @@ zabbix_export:
                 - name: starttime
                   value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_START}'
               follow_redirects: 'NO'
+              timeout: 1000s
               status_codes: '200'
           tags:
             - tag: PC
