@@ -32,13 +32,13 @@ perfCheck:
       cha: '*'
       start: '2020-08-05T00:01:00'
       end: '2020-08-05T00:02:00'
-    1stream20days:
+    1stream15days:
       net: CA
       sta: CBEU
       loc: '*'
       cha: HH?
       start: '2012-06-08T00:00:00'
-      end: '2012-06-28T00:00:00'
+      end: '2012-06-23T00:00:00'
   wfcatalog:
     9streams:
       net: CA
@@ -61,13 +61,13 @@ perfCheck:
       cha: '*'
       start: '*'
       end: '*'
-    1stream20days:
+    1stream15days:
       net: CA
       sta: CBEU
       loc: --
       cha: HH?
       start: '2012-06-08T00:00:00'
-      end: '2012-06-28T00:00:00'
+      end: '2012-06-23T00:00:00'
   availability:
     9streams:
       net: CA
@@ -90,13 +90,13 @@ perfCheck:
       cha: '*'
       start: '2020-08-05T00:01:00'
       end: '2020-08-05T23:59:00'
-    1stream20days:
+    1stream15days:
       net: CA
       sta: CBEU
       loc: '*'
       cha: HH?
       start: '2012-06-08T00:00:00'
-      end: '2012-06-28T00:00:00'
+      end: '2012-06-23T00:00:00'
   station:
     9streams:
       net: '*'

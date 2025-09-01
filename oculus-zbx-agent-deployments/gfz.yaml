@@ -34,13 +34,13 @@ perfCheck:
       cha: HH*,SH*
       start: '2011-06-03T00:01:00'
       end: '2011-06-03T00:02:00'
-    1stream20days:
+    1stream15days:
       net: CZ
       sta: VRAC
       loc: --
       cha: HH?
       start: '2012-06-08T00:00:00'
-      end: '2012-06-28T00:00:00'
+      end: '2012-06-23T00:00:00'
   wfcatalog:
     9streams:
       net: CX
@@ -63,13 +63,13 @@ perfCheck:
       cha: HH*,SH*
       start: '2011-06-03T00:01:00'
       end: '2011-06-03T00:02:00'
-    1stream20days:
+    1stream15days:
       net: CZ
       sta: VRAC
       loc: --
       cha: HH?
       start: '2012-06-08T00:00:00'
-      end: '2012-06-28T00:00:00'
+      end: '2012-06-23T00:00:00'
   availability:
     9streams:
       net: CX
@@ -92,13 +92,13 @@ perfCheck:
       cha: HH*,SH*
       start: '2011-06-03T00:01:00'
       end: '2011-06-03T23:59:00'
-    1stream20days:
+    1stream15days:
       net: GE
       sta: IBBN
       loc: '*'
       cha: HH?
       start: '2022-06-08T00:00:00'
-      end: '2022-06-28T00:00:00'
+      end: '2022-06-23T00:00:00'
   station:
     9streams:
       net: CX

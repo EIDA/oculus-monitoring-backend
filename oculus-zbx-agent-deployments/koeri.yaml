@@ -32,13 +32,13 @@ perfCheck:
       cha: BHN,BHZ,HHN,HH2
       start: '2014-03-06T00:01:00'
       end: '2014-03-06T00:02:00'
-    1stream20days:
+    1stream15days:
       net: KO
       sta: GULA
       loc: '*'
       cha: HH?
       start: '2012-06-04T00:00:00'
-      end: '2012-06-24T00:00:00'
+      end: '2012-06-19T00:00:00'
   wfcatalog:
     9streams:
       net: IJ
@@ -61,7 +61,7 @@ perfCheck:
       cha: '*'
       start: '*'
       end: '*'
-    1stream20days:
+    1stream15days:
       net: '*'
       sta: '*'
       loc: '*'
@@ -90,13 +90,13 @@ perfCheck:
       cha: BHN,BHZ,HHN,HH2
       start: '2014-03-06T00:01:00'
       end: '2014-03-06T23:59:00'
-    1stream20days:
+    1stream15days:
       net: KO
       sta: GULA
       loc: '*'
       cha: HH?
       start: '2012-06-04T00:00:00'
-      end: '2012-06-06T00:00:00'
+      end: '2012-06-19T00:00:00'
   station:
     9streams:
       net: IJ
