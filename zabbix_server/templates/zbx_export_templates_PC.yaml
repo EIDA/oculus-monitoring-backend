@@ -12,7 +12,7 @@ zabbix_export:
       httptests:
         - uuid: fdf418ac33cf4374bd854cfef45d8604
           name: 'PC availability'
-          delay: 2h
+          delay: 12h
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
@@ -68,21 +68,21 @@ zabbix_export:
               follow_redirects: 'NO'
               timeout: 1000s
               status_codes: '200'
-            - name: '1 stream 20 days'
+            - name: '1 stream 15 days'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
               query_fields:
                 - name: channel
-                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_CHA}'
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_CHA}'
                 - name: endtime
-                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_END}'
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_END}'
                 - name: location
-                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_LOC}'
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_LOC}'
                 - name: network
-                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_NET}'
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_NET}'
                 - name: station
-                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_STA}'
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_STA}'
                 - name: starttime
-                  value: '{$PERFCHECK_AVAILABILITY_1STREAM20DAYS_START}'
+                  value: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_START}'
               follow_redirects: 'NO'
               timeout: 1000s
               status_codes: '200'
@@ -91,7 +91,7 @@ zabbix_export:
               value: availability
         - uuid: c42e22b93ab74d2e9a8b4e1291d073d6
           name: 'PC dataselect'
-          delay: 2h
+          delay: 12h
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
@@ -147,21 +147,21 @@ zabbix_export:
               follow_redirects: 'NO'
               timeout: 1000s
               status_codes: '200'
-            - name: '1 stream 20 days'
+            - name: '1 stream 15 days'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
               query_fields:
                 - name: channel
-                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_CHA}'
+                  value: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_CHA}'
                 - name: endtime
-                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_END}'
+                  value: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_END}'
                 - name: location
-                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_LOC}'
+                  value: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_LOC}'
                 - name: network
-                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_NET}'
+                  value: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_NET}'
                 - name: station
-                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_STA}'
+                  value: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_STA}'
                 - name: starttime
-                  value: '{$PERFCHECK_DATASELECT_1STREAM20DAYS_START}'
+                  value: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_START}'
               follow_redirects: 'NO'
               timeout: 1000s
               status_codes: '200'
@@ -170,7 +170,7 @@ zabbix_export:
               value: dataselect
         - uuid: 46869c73a2a742b5907a2b42ea7dab08
           name: 'PC station'
-          delay: 2h
+          delay: 12h
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
@@ -231,7 +231,7 @@ zabbix_export:
               value: station
         - uuid: 4f175da47a63486b98f440cc295aacb4
           name: 'PC wfcatalog'
-          delay: 2h
+          delay: 12h
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
@@ -274,21 +274,21 @@ zabbix_export:
               follow_redirects: 'NO'
               timeout: 1000s
               status_codes: '200'
-            - name: '1 stream 20 days'
+            - name: '1 stream 15 days'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
               query_fields:
                 - name: channel
-                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_CHA}'
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_CHA}'
                 - name: endtime
-                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_END}'
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_END}'
                 - name: location
-                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_LOC}'
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_LOC}'
                 - name: network
-                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_NET}'
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_NET}'
                 - name: station
-                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_STA}'
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_STA}'
                 - name: starttime
-                  value: '{$PERFCHECK_WFCATALOG_1STREAM20DAYS_START}'
+                  value: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_START}'
               follow_redirects: 'NO'
               timeout: 1000s
               status_codes: '200'
