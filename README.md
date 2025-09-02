@@ -136,6 +136,16 @@ Go to "Users > Users"
     - Role: "Super admin role"
 - Click "Add"
 
+### Create Ansible API token
+Go to "User > API tokens"
+- Click "Create API token"
+  - Name: ansible
+  - User: ansible
+  - uncheck "Set expiration date and time"
+  - check "Enabled"
+- Click "Add"
+- Copy to clipboard "Auth token" value and paste in file "config_prod" or "config_staging" in path ``` ansible/config/``` 
+
 ### Zabbix configuration deployment
 
 #### 1. Go to .yaml location
