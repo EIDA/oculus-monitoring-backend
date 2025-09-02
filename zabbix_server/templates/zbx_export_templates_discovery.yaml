@@ -36,7 +36,7 @@ zabbix_export:
                   value: '14'
                   description: 'Number of days until the certificate expires.'
                 - macro: '{$CERT.WEBSITE.HOSTNAME}'
-                  value: '{#EIDA_WS_ENDPOINT}'
+                  value: '{#ENDPOINT}'
                 - macro: '{$ENDPOINT}'
                   value: '{#ENDPOINT}'
                   description: 'Node endpoint URL'
