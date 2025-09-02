@@ -89,9 +89,9 @@ oculus_users:
   email: Oyvind.Natvik@uib.no
 - username: user-ign
   name: Barco De La Torre Jaime
-  usrgrp: UIB
+  usrgrp: IGN
   email: jbarco@transportes.gob.es
 - username: user-ign2
   name: Nuño Esteban Félix
-  usrgrp: UIB
+  usrgrp: IGN
   email: fnuno@transportes.gob.es
