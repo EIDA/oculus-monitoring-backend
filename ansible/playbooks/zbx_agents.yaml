@@ -30,7 +30,7 @@
 
     - name: Create Zabbix hosts from file names
       community.zabbix.zabbix_host:
-        host_name: "{{ item.path | basename | regex_replace('\\.(yaml|yml)$', '') }}"
+        host_name: "{{ item.path | basename | regex_replace('\\.(yaml|yml)$', '') | upper }}"
         host_groups:
           - "EIDA nodes"
         status: "enabled"
@@ -43,7 +43,9 @@
 
     - name: Display creation results
       ansible.builtin.debug:
-        msg: "Host '{{ item.item.path | basename | regex_replace('\\.(yaml|yml)$', '') }}': {{ 'Created/Updated' if item.changed else 'Already exists' }}"
+        msg: >
+          Host '{{ item.item.path | basename | regex_replace('\\.(yaml|yml)$', '') | upper }}':
+          {{ 'Created/Updated' if item.changed else 'Already exists' }}
       loop: "{{ host_results.results }}"
       loop_control:
         label: "{{ item.item.path | basename }}"
