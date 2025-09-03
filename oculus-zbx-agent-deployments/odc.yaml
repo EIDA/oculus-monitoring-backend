@@ -1,6 +1,6 @@
 ---
 node: ODC
-endpoint: www.orfeus-eu.org
+endpoint: orfeus-eu.org
 routingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
 onlineCheck:
   net: NL
