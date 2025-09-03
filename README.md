@@ -94,10 +94,8 @@ In order to edit Nodes values is in this [procedures](contribute_to_change_value
 ### 8. Install Zabbix
   Apply Helm Chart
   ```sh
-  export ZABBIX_CHART_VERSION='7.0.6'
   helm secrets upgrade --install oculus-zabbix zabbix-community/zabbix \
   --dependency-update \
-  --version $ZABBIX_CHART_VERSION \
   -f values.yaml -n eida-monitoring --debug
   ```
 
