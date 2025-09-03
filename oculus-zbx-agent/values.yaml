@@ -1,7 +1,6 @@
 # Default values for oculus-zbx-agent.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
 zabbixServer:
   host: oculus-zabbix-zabbix-server
   port: 10051
