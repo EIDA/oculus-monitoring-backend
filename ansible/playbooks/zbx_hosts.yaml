@@ -13,10 +13,17 @@
     ansible_zabbix_url_path: ""
     ansible_host: localhost
     host_files_directory: "../../oculus-zbx-agent-deployments"
+    macros_output_directory: "../files/macros"
 
   tasks:
     - name: Import Zabbix Credentials
       ansible.builtin.import_tasks: ../config/config_zabbix.yaml
+
+    - name: Create macros output directory
+      ansible.builtin.file:
+        path: "{{ macros_output_directory }}"
+        state: directory
+        mode: '0755'
 
     - name: Find all YAML files
       ansible.builtin.find:
@@ -28,14 +35,36 @@
       ansible.builtin.debug:
         msg: "Found {{ host_files.files | length }} files: {{ host_files.files | map(attribute='path') | map('basename') | list }}"
 
-    - name: Create Zabbix hosts from file names
+    - name: Execute values_to_macros.py and save output
+      ansible.builtin.shell:
+        cmd: "python ../../oculus-zbx-agent/scripts/values_to_macros.py {{ item.path }} > {{ macros_output_directory }}/{{ item.path | basename }}"
+        chdir: "{{ playbook_dir }}"
+      loop: "{{ host_files.files }}"
+      loop_control:
+        label: "{{ item.path | basename }}"
+      register: macros_generation
+
+    - name: Create Zabbix hosts groups
+      community.zabbix.zabbix_group:
+        state: present
+        host_groups: "{{ item.path | basename | regex_replace('\\.(yaml|yml)$', '') | upper }}"
+      loop: "{{ host_files.files }}"
+      loop_control:
+        label: "{{ item.path | basename }}"
+
+    - name: Create Zabbix hosts from file names with macros
       community.zabbix.zabbix_host:
         host_name: "{{ item.path | basename | regex_replace('\\.(yaml|yml)$', '') | upper }}"
         host_groups:
           - "EIDA nodes"
+          - "{{ item.path | basename | regex_replace('\\.(yaml|yml)$', '') | upper }}"
+        link_templates:
+          - "Template performance checks"
+          - "Template webservices"
         status: "enabled"
         state: "present"
         inventory_mode: "disabled"
+        macros: "{{ lookup('file', macros_output_directory + '/' + item.path | basename) | from_yaml }}"
       loop: "{{ host_files.files }}"
       loop_control:
         label: "{{ item.path | basename }}"
@@ -43,8 +72,8 @@
 
     - name: Display creation results
       ansible.builtin.debug:
-        msg: >
-          Host '{{ item.item.path | basename | regex_replace('\\.(yaml|yml)$', '') | upper }}':
+        msg: >-
+          Host '{{ item.item.path | basename | regex_replace('\.(yaml|yml)$', '') | upper }}':
           {{ 'Created/Updated' if item.changed else 'Already exists' }}
       loop: "{{ host_results.results }}"
       loop_control:

@@ -2,11 +2,8 @@
 - name: Import templates
   import_playbook: zbx_templates.yaml
 
-- name: Configure autoregistration
-  import_playbook: zbx_autoregistration.yaml
-
-- name: Deploying agents
-  import_playbook: deploying_agents.yaml
+- name: Deploying hosts and hosts groups
+  import_playbook: zbx_hosts.yaml
 
 - name: Activate Media type
   import_playbook: zbx_media.yaml
