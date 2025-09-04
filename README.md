@@ -13,9 +13,6 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
     - [Zabbix Ansible deployment descriptions](#zabbix-ansible-deployment-descriptions)
     - [Create Ansible user](#create-ansible-user)
     - [Zabbix configuration deployment](#zabbix-configuration-deployment)
-      - [For developmenet: Manual Zabbix agent deployment](#for-developmenet-manual-zabbix-agent-deployment)
-        - [Deploy one agent](#deploy-one-agent)
-        - [Deploy all agents](#deploy-all-agents)
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
   - [Accessing the Grafana Application (for development)](#accessing-the-grafana-application-for-development)
@@ -153,18 +150,6 @@ cd ansible/playbooks
 #### 2. Run playbook Ansible
 ```sh
 ansible-playbook zbx_deployment.yaml
-```
-
-#### For developmenet: Manual Zabbix agent deployment
-
-##### Deploy one agent
-```sh
-helm upgrade -i eposfr oculus-zbx-agent --set-file zbx_lld=oculus-zbx-agent-deployments/eposfr.yaml -n eida-monitoring
-```
-
-##### Deploy all agents
-```sh
-for f in $(find oculus-zbx-agent-deployments -type f); do name=$(basename $f|cut -f1 -d'.'); echo $name; echo $f; helm upgrade -i $name oculus-zbx-agent --set-file zbx_lld=$f -n eida-monitoring; done
 ```
 
 # Deploying Oculus Grafana
