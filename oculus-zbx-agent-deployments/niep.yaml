@@ -1,7 +1,7 @@
 ---
 node: NIEP
 endpoint: eida-sc3.infp.ro
-routingFile: routing/1/routing.xml
+routingFile: eidaws/routing/1/routing.xml
 onlineCheck:
   net: RO
   sta: PLOR1
