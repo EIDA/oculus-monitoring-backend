@@ -22,6 +22,8 @@ zabbix_export:
           headers:
             - name: Origin
               value: orfeus-eu.org
+            - name: User-agent
+              value: oculus-monitor
           retrieve_mode: HEADERS
           request_method: HEAD
           tags:
@@ -51,6 +53,8 @@ zabbix_export:
           headers:
             - name: Origin
               value: orfeus-eu.org
+            - name: User-agent
+              value: oculus-monitor
           retrieve_mode: HEADERS
           request_method: HEAD
           tags:
@@ -80,6 +84,8 @@ zabbix_export:
           headers:
             - name: Origin
               value: orfeus-eu.org
+            - name: User-agent
+              value: oculus-monitor
           retrieve_mode: HEADERS
           request_method: HEAD
           tags:
@@ -109,6 +115,8 @@ zabbix_export:
           headers:
             - name: Origin
               value: orfeus-eu.org
+            - name: User-agent
+              value: oculus-monitor
           retrieve_mode: HEADERS
           request_method: HEAD
           tags:
