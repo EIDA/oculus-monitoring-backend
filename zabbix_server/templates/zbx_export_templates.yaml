@@ -343,6 +343,7 @@ zabbix_export:
         - uuid: fdf418ac33cf4374bd854cfef45d8604
           name: 'PC availability'
           delay: 12h
+          status: DISABLED
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/query'
@@ -422,6 +423,7 @@ zabbix_export:
         - uuid: c42e22b93ab74d2e9a8b4e1291d073d6
           name: 'PC dataselect'
           delay: 12h
+          status: DISABLED
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
@@ -501,6 +503,7 @@ zabbix_export:
         - uuid: 46869c73a2a742b5907a2b42ea7dab08
           name: 'PC station'
           delay: 12h
+          status: DISABLED
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
@@ -562,6 +565,7 @@ zabbix_export:
         - uuid: 4f175da47a63486b98f440cc295aacb4
           name: 'PC wfcatalog'
           delay: 12h
+          status: DISABLED
           steps:
             - name: '9 streams'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
@@ -643,6 +647,8 @@ zabbix_export:
           headers:
             - name: Origin
               value: orfeus-eu.org
+            - name: User-agent
+              value: oculus-monitor
           retrieve_mode: HEADERS
           request_method: HEAD
           tags:
@@ -672,6 +678,8 @@ zabbix_export:
           headers:
             - name: Origin
               value: orfeus-eu.org
+            - name: User-agent
+              value: oculus-monitor
           retrieve_mode: HEADERS
           request_method: HEAD
           tags:
@@ -701,6 +709,8 @@ zabbix_export:
           headers:
             - name: Origin
               value: orfeus-eu.org
+            - name: User-agent
+              value: oculus-monitor
           retrieve_mode: HEADERS
           request_method: HEAD
           tags:
@@ -730,6 +740,8 @@ zabbix_export:
           headers:
             - name: Origin
               value: orfeus-eu.org
+            - name: User-agent
+              value: oculus-monitor
           retrieve_mode: HEADERS
           request_method: HEAD
           tags:
