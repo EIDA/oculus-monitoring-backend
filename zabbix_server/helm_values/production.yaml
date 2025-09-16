@@ -30,12 +30,14 @@ zabbixWeb:
     type: ClusterIP
     port: 8888
 ingress:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
   enabled: true
   hosts:
-  - host: zabbix-eida-oculus.resif.fr
+  - host: ws.resif.fr
     paths:
-    - path: /
-      pathType: Prefix
+    - path: /oculus-zbx/(.*)
+      pathType: ImplementationSpecific
   ingressClassName: nginx
   pathType: Prefix
 # fullnameOverride: oculus
