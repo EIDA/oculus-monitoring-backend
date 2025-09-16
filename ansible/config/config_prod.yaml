@@ -1,33 +1,33 @@
-ansible_httpapi_pass: ENC[AES256_GCM,data:+2HjD1naHchVNJGK,iv:+jjfxtjOQHd85Qyco+ZC9doKcrC79B8friXhZzGtNWk=,tag:Z9HcXQBWOSpg/o7OmDaenA==,type:str]
-ansible_zabbix_token: ENC[AES256_GCM,data:L2fOCKA5HNl4nb6fEOHIYAPN1F+0CjvYLwl+MD7Sk9l4GgxFHAPyMv38C9YozCRAnFzGlQY23ZK8AmCmrC0fpA==,iv:vNQ7wum8tUaiGccze8HpFuaBhX+MkooYJZ/IfSFaSo8=,tag:0CEWS1Lp4vG5CA8HWPTEFQ==,type:str]
-ansible_grafana_token: ENC[AES256_GCM,data:TXPWi9G5j+mz7nzTl2Fj1HgR9qFjSip2wTb1zCkunRwDJHvlee5NPa1CZ5w91w==,iv:6uXUSMZMFUkTgBd8pWlZlAjDryNqdb3DAt/4R7lH5/Q=,tag:N67UwpmVlVRK0nLkEsrhCQ==,type:str]
-zabbix_grafana_token: ENC[AES256_GCM,data:mZ2m0pnc+GtXfcLzW7z5xgO7IBU6CWq0i37RPGARBRVl4lz55l5SXYOuNCLosFqnkf5vIDBKSZOp4vvH9lqnjA==,iv:neugLFuCMijivStEwv1GaGRV9NPC3aBuSFMobToYwMM=,tag:xUomJcdPxx/26SBBlPkH5Q==,type:str]
-zabbix_grafana_pass: ENC[AES256_GCM,data:VZMkJpYUgdaTMWFF,iv:/mIBTe4LT91G2DXexLfLAb2kMnk8aFwC2Oq79fVdrFc=,tag:JDdtfB/zyLzJI6ImJQAJYg==,type:str]
-zabbix_user_pass: ENC[AES256_GCM,data:ZAvbdwp3JjnSf/7C,iv:uKlg+0AnYFMXO6pblbBPYQ+agzARFkcd2E1CMSmS/80=,tag:1hD4XJujPyHawf44tf7Hjg==,type:str]
+ansible_httpapi_pass: ENC[AES256_GCM,data:TLz9tSJQhheR7zFA,iv:e1ty0WOMDqf1IsfwMgL0CF9Q/JDus2p9odP9bOgk/T4=,tag:r0NrVYbhGX2BG4sYoNmkaQ==,type:str]
+ansible_zabbix_token: ENC[AES256_GCM,data:4QKT0b9IO5XSU/0OL5fr0vzXmF1eFzVLo5AOQY+0o7F8XYguGIQYw0l6VTvUoRFtvxIQlRAIFz/9QsuEDkUebw==,iv:a2G7NjZF8qrEkn9mg/Bu8cmnrHoQdF+gzPzggnz5xNE=,tag:oN0acGWVEO+yd+BVOIpysw==,type:str]
+ansible_grafana_token: ENC[AES256_GCM,data:lrFJ5+DAw6JBDalK1OzGNms96HqO3oFfbxi5rgLLJa5qGANewRGllw3gqYpeLg==,iv:bBK5JmwG03JwoCthXVuMWN2nadDG90lyH5L74k1oF+I=,tag:YWRsUh9bZPd+rVZvRgVMhg==,type:str]
+zabbix_grafana_token: ENC[AES256_GCM,data:LjKfiUOwuUnysMzQPyV8nNPMVLVYGcRGJO5vydRlFd+2YPpfREGg9Qgfy9b0nn4SjuTXeGKXIp/MBIsfigw6+A==,iv:uYC7Z1ZeRO0D9vjpRfCffLJEMLvYQNA9LdlEBPPQT6Q=,tag:j1+Iw4lCt3uA/yXapz7u4g==,type:str]
+zabbix_grafana_pass: ENC[AES256_GCM,data:YAjPIT8HInjzIO6o,iv:9TsGZc91U8v0FcsQnGe4FANgEcYNguHdmsFrTRuH9O4=,tag:NMFcybHjXXT3B8W9bBWf9w==,type:str]
+zabbix_user_pass: ENC[AES256_GCM,data:xd3Rx9DZPlTIPkLE,iv:jnFjSsQACXNXAi/qtvWRsHVyqYUp0bXdicemqf83O6M=,tag:6ovWy9E8hMxOH8QfX1xj4g==,type:str]
 sops:
-  kms: []
-  gcp_kms: []
-  azure_kv: []
-  hc_vault: []
-  age: []
-  lastmodified: "2025-07-25T15:10:24Z"
-  mac: ENC[AES256_GCM,data:67Y03w/PnuKR3+ActubnZ5SAfb9uJWYT9KU83MTSRaN9HfZXmisWT0U+sJQm4wtiEOxsjGnHR34j2BdJZgRuZqk2KzCXpXIcClPAT9rdW8y7BiEfKFTae4QQLtp+K1lZzjuyi0c3c6uJcGuQIv1/PbijMH9oJaG6cQVjcKXyl8U=,iv:s1jmuCeU4pBqFudRKOB2JAZC2LSFXhtbV49jWucXJH4=,tag:yXSHBe5S5eYUFxERvjKU1w==,type:str]
-  pgp:
-  - created_at: "2025-07-25T15:10:24Z"
-    enc: |-
-      -----BEGIN PGP MESSAGE-----
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-09-16T13:33:15Z"
+    mac: ENC[AES256_GCM,data:rsRtIY9/lgcP+NeSE34QHfqEZUR4gqr4F5RXf5hgIFWDbjRG1R/PVRIKaLgXulix5ny2BurxZp5SWOdHcUed3y251tveN2H08DZ80/ErX59ZL/gq/s4LbAdbDy61T2UZwcJ40GYQoA8we45P6UT4kCGlnYVkfjXiGnjRFlXNCFI=,iv:rLxsw2Kk1F6dH7iW9ptnTr3XAwP1VK46fLXUbtYUml8=,tag:h1nu303nSU+JpXizTwMg/A==,type:str]
+    pgp:
+        - created_at: "2025-09-16T13:33:15Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
 
-      hQEMA23uPS/3Y9M2AQgApo9WN090t7cIjBbqLNJI/FlfO5FNsJJQgiblmZ58SaL4
-      gYDZUHubuxVH3LunZx/i0Lj8MCt0hjSrNVIkF9ar6jKz4T/94kGVZ9Nt9Hf4TEkh
-      wg+hg6fExuv7rh3zLuqFKBxfUfYdnnY9/SAwAv5/IYHvA8nANAEVMM2jlzkHH7uq
-      TLHtocxGYn5rX6KlXdF8RtKRvS/SGNV/ss+D9V6aK/e0jNOggmY3Z6u3xfJAdD9U
-      K2vTfsLNG4cm5akUmFWhzp08cWlJ1A4jaYqfuB3MkjttLxcut3FuOJxzft/b33Uo
-      tmkTXZNGlDeIsMn/e66URqttXuNNjc/a3f/pNUqcntJeAb99yQq3Pdhs0TenKLj5
-      VV5ZM6ZPN5i9fImvLbb3mTM3trhIZSo5hC9MvB9Nh/2gytzq/jSHYmj3Ve0VGe+g
-      +uO5H1ClWOnCGpijbTIlGwcOtc312QT62TooTreD0w==
-      =OJc7
-      -----END PGP MESSAGE-----
-    fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
-  encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|ansible_grafana_token|zabbix_grafana_token|zabbix_grafana_pass|zabbix_user_pass|adminPassword)
-  mac_only_encrypted: true
-  version: 3.9.2
+            hQEMA23uPS/3Y9M2AQf/X6N0UUM0VqjgH/XrDxXbBuWw8TJa2wRLdQlnXqvr6BoN
+            MVt+PJFOMyXWTuX1SykSHF6ZdKvlNutOSeFCfwygLTSXUrCO0pYrG1O0JQcTtsko
+            BmtooccPxTw5axTWCKISWItBSNyatoNp2MhkI+z/wkjvMaDtsIbgWWp0MteDjC3S
+            f2hSadzfs5sAHAT8us1ZiaEx/1ZuR2brjHlPj6zEWzzHtY/OyEkNfJt6fCIR9nlF
+            KdqBH+H9ZO5FFZ2MQ95IVxeX8rMYiUK0Uex9mEYQ0djzqi0uGhVYWmToEh4KKtGV
+            6bJ7Y9qxg1nMz65UrVKH95nYA+qcZRjGrbOZiY66jtJeAbi7xqa1cGBYHK3nGMJ4
+            +CQaBUU+TJmDHUG01O2NY4vj54NSKjsXmEHHt+JyZAki0dgI0+6G274ata2rVFbo
+            Kr5JqxBfz0Fv4sBX5IYYl7tsllYLu2UEv9IFXQ7zxQ==
+            =T3V5
+            -----END PGP MESSAGE-----
+          fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
+    encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|ansible_grafana_token|zabbix_grafana_token|zabbix_grafana_pass|zabbix_user_pass|adminPassword)
+    mac_only_encrypted: true
+    version: 3.9.2
