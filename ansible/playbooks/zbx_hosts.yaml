@@ -12,7 +12,7 @@
     ansible_httpapi_validate_certs: false
     ansible_zabbix_url_path: ""
     ansible_host: localhost
-    host_files_directory: "../../oculus-zbx-agent-deployments"
+    host_files_directory: "../../eida_nodes"
     macros_output_directory: "../files/macros"
 
   tasks:
@@ -37,7 +37,7 @@
 
     - name: Execute values_to_macros.py and save output
       ansible.builtin.shell:
-        cmd: "python ../../oculus-zbx-agent/scripts/values_to_macros.py {{ item.path }} > {{ macros_output_directory }}/{{ item.path | basename }}"
+        cmd: "python ../../scripts/values_to_macros.py {{ item.path }} > {{ macros_output_directory }}/{{ item.path | basename }}"
         chdir: "{{ playbook_dir }}"
       loop: "{{ host_files.files }}"
       loop_control:
