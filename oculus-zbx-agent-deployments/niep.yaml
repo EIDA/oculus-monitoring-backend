@@ -5,10 +5,10 @@ routingFile: eidaws/routing/1/routing.xml
 onlineCheck:
   net: RO
   sta: LEOM
-  loc: ""
+  loc: --
   cha: HHZ
   start: 2023-01-01T00:00:00
-  end: 2017-01-01T00:00:05
+  end: 2023-01-01T00:00:05
 perfCheck:
   dataselect:
     9streams:

@@ -3,19 +3,19 @@
 - macro: "{$ENDPOINT}"
   value: 'eida-sc3.infp.ro'
 - macro: "{$ROUTINGFILE}"
-  value: 'routing/1/routing.xml'
+  value: 'eidaws/routing/1/routing.xml'
 - macro: "{$ONLINECHECK_NET}"
   value: 'RO'
 - macro: "{$ONLINECHECK_STA}"
-  value: 'PLOR1'
+  value: 'LEOM'
 - macro: "{$ONLINECHECK_LOC}"
-  value: '00'
+  value: ''
 - macro: "{$ONLINECHECK_CHA}"
   value: 'HHZ'
 - macro: "{$ONLINECHECK_START}"
-  value: '2017-05-20T00:00:00'
+  value: '2023-01-01T00:00:00'
 - macro: "{$ONLINECHECK_END}"
-  value: '2017-05-20T00:00:05'
+  value: '2017-01-01T00:00:05'
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_NET}"
   value: 'RO'
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_STA}"

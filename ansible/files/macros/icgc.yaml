@@ -7,7 +7,7 @@
 - macro: "{$ONLINECHECK_NET}"
   value: 'CA'
 - macro: "{$ONLINECHECK_STA}"
-  value: 'VNIG'
+  value: 'CAVN'
 - macro: "{$ONLINECHECK_LOC}"
   value: '--'
 - macro: "{$ONLINECHECK_CHA}"
@@ -19,11 +19,11 @@
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_NET}"
   value: 'CA'
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_STA}"
-  value: 'CMAS,CORI,EBR'
+  value: 'CMAS,CORI,CBEU'
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_LOC}"
   value: '*'
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_CHA}"
-  value: 'HH?,HNE'
+  value: 'HH?'
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_START}"
   value: '2019-11-07T00:01:00'
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_END}"
@@ -67,11 +67,11 @@
 - macro: "{$PERFCHECK_WFCATALOG_9STREAMS_NET}"
   value: 'CA'
 - macro: "{$PERFCHECK_WFCATALOG_9STREAMS_STA}"
-  value: 'CMAS,CORI,EBR'
+  value: 'CMAS,CORI,CBEU'
 - macro: "{$PERFCHECK_WFCATALOG_9STREAMS_LOC}"
   value: '*'
 - macro: "{$PERFCHECK_WFCATALOG_9STREAMS_CHA}"
-  value: 'HH?,HNE'
+  value: 'HH?'
 - macro: "{$PERFCHECK_WFCATALOG_9STREAMS_START}"
   value: '2019-11-07T00:01:00'
 - macro: "{$PERFCHECK_WFCATALOG_9STREAMS_END}"
@@ -115,11 +115,11 @@
 - macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_NET}"
   value: 'CA'
 - macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_STA}"
-  value: 'CMAS,CORI,EBR'
+  value: 'CMAS,CORI,CBEU'
 - macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_LOC}"
   value: '*'
 - macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_CHA}"
-  value: 'HH?,HNE'
+  value: 'HH?'
 - macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_START}"
   value: '2019-11-07T00:01:00'
 - macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_END}"
@@ -185,7 +185,7 @@
 - macro: "{$PERFCHECK_STATION_54STREAMS_END}"
   value: '2018-09-15T00:02:00'
 - macro: "{$PERFCHECK_STATION_320STREAMS_NET}"
-  value: 'CA,YK,ES'
+  value: 'CA,YK,EB'
 - macro: "{$PERFCHECK_STATION_320STREAMS_STA}"
   value: '*'
 - macro: "{$PERFCHECK_STATION_320STREAMS_LOC}"
