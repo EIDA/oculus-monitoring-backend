@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: false
   vars_files:
-    - ../config/config_staging.yaml
+    - ../config/config_prod.yaml
     - ../files/eida_nodes.yaml
   vars:
     ansible_network_os: community.zabbix.zabbix
