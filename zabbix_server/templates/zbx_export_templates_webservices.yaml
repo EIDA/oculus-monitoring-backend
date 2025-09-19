@@ -345,8 +345,8 @@ zabbix_export:
     - uuid: d1da3fc8a92f4288bb0e533bfefdd3de
       expression: 'last(/Template webservices/web.test.fail[present in central eida routing])<>0 and last(/Template webservices/web.test.error[present in central eida routing])<>0'
       name: 'central EIDA routing all steps'
-      event_name: 'EIDA routing step {ITEM.VALUE} failed. {ITEM.VALUE2}'
-      priority: AVERAGE
+      event_name: 'EIDA central routing step {ITEM.VALUE} failed. {ITEM.VALUE2}'
+      priority: HIGH
       manual_close: 'YES'
       tags:
         - tag: Application
