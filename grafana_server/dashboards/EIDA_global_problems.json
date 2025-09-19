@@ -18,25 +18,87 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 8,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "aevd6qhslzvnkb"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "fieldMinMax": false,
           "mappings": [
             {
               "options": {
-                "Null": {
+                "200": {
+                  "color": "green",
                   "index": 0,
-                  "text": "N/A"
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 3,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 4,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 6,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 7,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 8,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "transparent",
+                  "index": 10
                 }
               },
               "type": "value"
@@ -46,573 +108,38 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
-              },
-              {
-                "color": "dark-red",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 5,
-        "x": 0,
-        "y": 0
-      },
-      "id": 2,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": ""
-          },
-          "itemTag": {
-            "filter": ""
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "acknowledged": 2,
-            "count": true,
-            "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 0,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "4",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "showProblems": "problems",
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "Number of problems",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Disaster"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "none"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "custom.align",
-                "value": "auto"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "dark-red",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "High"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "dark-orange",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Average"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "semi-dark-orange",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Warning"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Information"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "blue",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Not classified"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "#b0b0b0",
-                      "value": 1
-                    }
-                  ]
-                }
+                "color": "green",
+                "value": 0
               }
             ]
           }
-        ]
-      },
-      "gridPos": {
-        "h": 16,
-        "w": 19,
-        "x": 5,
-        "y": 0
-      },
-      "id": 3,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
         },
-        "showHeader": true
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": ""
-          },
-          "itemTag": {
-            "filter": ""
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "acknowledged": 2,
-            "count": false,
-            "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 0,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "4",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "showProblems": "problems",
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "Problems severity",
-      "transformations": [
-        {
-          "id": "filterFieldsByName",
-          "options": {
-            "include": {
-              "names": [
-                "Host group",
-                "Disaster",
-                "High",
-                "Average",
-                "Warning"
-              ]
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
-      },
-      "fieldConfig": {
-        "defaults": {},
         "overrides": []
       },
       "gridPos": {
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 0
       },
-      "id": 1,
+      "id": 2,
       "options": {
-        "ackEventColor": "rgb(56, 219, 156)",
-        "ackField": false,
-        "ageField": true,
-        "allowDangerousHTML": false,
-        "customLastChangeFormat": false,
-        "descriptionAtNewLine": false,
-        "descriptionField": true,
-        "fontSize": "100%",
-        "highlightBackground": false,
-        "highlightNewEvents": false,
-        "highlightNewerThan": "1h",
-        "hostField": true,
-        "hostGroups": false,
-        "hostProxy": false,
-        "hostTechNameField": false,
-        "lastChangeFormat": "",
-        "layout": "table",
-        "markAckEvents": false,
-        "okEventColor": "rgb(56, 189, 113)",
-        "opdataField": false,
-        "pageSize": 100,
-        "problemTimeline": true,
-        "resizedColumns": [
-          {
-            "id": "host",
-            "value": 116.75
-          },
-          {
-            "id": "lastchange",
-            "value": 169
-          },
-          {
-            "id": "age",
-            "value": 81
-          },
-          {
-            "id": "ack",
-            "value": 56
-          },
-          {
-            "id": "tags",
-            "value": 211.75
-          },
-          {
-            "id": "name",
-            "value": 766.5999755859375
-          }
-        ],
-        "severityField": true,
-        "showDatasourceName": false,
-        "showTags": true,
-        "sortProblems": "lastchange",
-        "statusField": true,
-        "statusIcon": false,
-        "triggerSeverity": [
-          {
-            "color": "rgb(108, 108, 108)",
-            "priority": 0,
-            "severity": "Not classified",
-            "show": true
-          },
-          {
-            "color": "rgb(120, 158, 183)",
-            "priority": 1,
-            "severity": "Information",
-            "show": true
-          },
-          {
-            "color": "rgb(175, 180, 36)",
-            "priority": 2,
-            "severity": "Warning",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 137, 30)",
-            "priority": 3,
-            "severity": "Average",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 101, 72)",
-            "priority": 4,
-            "severity": "High",
-            "show": true
-          },
-          {
-            "color": "rgb(215, 0, 0)",
-            "priority": 5,
-            "severity": "Disaster",
-            "show": true
-          }
-        ]
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "5.2.0",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
           "application": {
@@ -626,43 +153,35 @@
           "evaltype": "0",
           "functions": [],
           "group": {
-            "filter": "$EIDA_NODES"
+            "filter": "/.*/"
           },
           "host": {
-            "filter": "$EIDA_NODES"
+            "filter": "/.*/"
           },
           "item": {
-            "filter": ""
+            "filter": "Response code for step \"dataselect accessible\" of scenario \"dataselect\"."
           },
           "itemTag": {
-            "filter": ""
+            "filter": "Application: dataselect"
           },
           "macro": {
             "filter": ""
           },
           "options": {
-            "acknowledged": 2,
             "count": false,
             "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 0,
             "showDisabledItems": false,
             "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
             "useTrends": "default",
             "useZabbixValueMapping": false
           },
           "proxy": {
             "filter": ""
           },
-          "queryType": "5",
+          "queryType": "0",
           "refId": "A",
           "resultFormat": "time_series",
           "schema": 12,
-          "showProblems": "problems",
           "table": {
             "skipEmptyValues": false
           },
@@ -675,8 +194,1192 @@
           }
         }
       ],
-      "title": "Problems",
-      "type": "alexanderzobnin-zabbix-triggers-panel"
+      "title": "dataselect healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GFZ"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "SED"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "aevd6qhslzvnkb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "fieldMinMax": false,
+          "mappings": [
+            {
+              "options": {
+                "200": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 3,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 4,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 6,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 7,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 8,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "transparent",
+                  "index": 10
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 6,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "/.*/"
+          },
+          "host": {
+            "filter": "/.*/"
+          },
+          "item": {
+            "filter": "Response code for step \"station accessible\" of scenario \"station\"."
+          },
+          "itemTag": {
+            "filter": "Application: station"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "station healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GFZ"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "SED"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "aevd6qhslzvnkb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "fieldMinMax": false,
+          "mappings": [
+            {
+              "options": {
+                "200": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 3,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 4,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 6,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 7,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 8,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "transparent",
+                  "index": 10
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": 3,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "/.*/"
+          },
+          "host": {
+            "filter": "/.*/"
+          },
+          "item": {
+            "filter": "Response code for step \"availability accessible\" of scenario \"availability\"."
+          },
+          "itemTag": {
+            "filter": "Application: availability"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "availability healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GFZ"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "SED"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "aevd6qhslzvnkb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "fieldMinMax": false,
+          "mappings": [
+            {
+              "options": {
+                "200": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 3,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 4,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 6,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 7,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 8,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "transparent",
+                  "index": 10
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 51
+      },
+      "id": 4,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "/.*/"
+          },
+          "host": {
+            "filter": "/.*/"
+          },
+          "item": {
+            "filter": "Response code for step \"wfcatalog accessible\" of scenario \"wfcatalog\"."
+          },
+          "itemTag": {
+            "filter": "Application: wfcatalog"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "wfcatalog healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GFZ"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "SED"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "aevd6qhslzvnkb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "fieldMinMax": false,
+          "mappings": [
+            {
+              "options": {
+                "200": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 3,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 4,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 6,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 7,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 8,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "transparent",
+                  "index": 10
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 68
+      },
+      "id": 5,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "/.*/"
+          },
+          "host": {
+            "filter": "/.*/"
+          },
+          "item": {
+            "filter": "Response code for step \"EIDA Routing infomation\" of scenario \"present in central eida routing\"."
+          },
+          "itemTag": {
+            "filter": "Application: routing_present"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "central routing healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GFZ"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "SED"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "GFZ": 4,
+              "ICGC": 5,
+              "INGV": 6,
+              "KOERI": 7,
+              "LMU": 8,
+              "NIEP": 9,
+              "NOA": 10,
+              "ODC": 11,
+              "SED": 12,
+              "Time": 0,
+              "UIB": 13
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
     }
   ],
   "preload": false,
@@ -687,45 +1390,16 @@
     "public"
   ],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
-        },
-        "definition": "",
-        "includeAll": true,
-        "label": "EIDA NODES",
-        "multi": true,
-        "name": "EIDA_NODES",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "/^(?!(Discovered hosts|EIDA nodes)$).+/",
-          "host": "",
-          "item": "",
-          "itemTag": "",
-          "queryType": "group"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      }
-    ]
+    "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
-  "timepicker": {
-    "hidden": true
-  },
+  "timepicker": {},
   "timezone": "browser",
-  "title": "EIDA global problems",
-  "uid": "ben4yqwkoldkwc",
-  "version": 3,
+  "title": "EIDA global WeatherMap",
+  "uid": "cen19lnkzcsu8b",
+  "version": 4,
   "weekStart": "monday"
 }
