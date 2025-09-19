@@ -2,7 +2,7 @@
 
 To modify the parameters of the checks made by Oculus, you must:
 1. create a new branch
-2. modify the .yaml file of your Node (present [here](oculus-zbx-agent-deployments/)) You can modifie everything in the GitHub web interface
+2. modify the .yaml file of your Node (present [here](eida_nodes/)) You can modifie everything in the GitHub web interface
 3. Create a new [Pull Requests](https://github.com/EIDA/oculus-monitoring-backend/pulls)
 
 The `OnlineCheck` section is used to perform the main zabbix tests, while `perfCheck` is for performance tests, do not chenge this.
