@@ -9,13 +9,13 @@
 - macro: "{$ONLINECHECK_STA}"
   value: 'LEOM'
 - macro: "{$ONLINECHECK_LOC}"
-  value: ''
+  value: '--'
 - macro: "{$ONLINECHECK_CHA}"
   value: 'HHZ'
 - macro: "{$ONLINECHECK_START}"
   value: '2023-01-01T00:00:00'
 - macro: "{$ONLINECHECK_END}"
-  value: '2017-01-01T00:00:05'
+  value: '2023-01-01T00:00:05'
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_NET}"
   value: 'RO'
 - macro: "{$PERFCHECK_DATASELECT_9STREAMS_STA}"
