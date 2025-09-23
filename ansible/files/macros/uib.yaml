@@ -196,3 +196,5 @@
   value: '2019-05-15T00:01:00'
 - macro: "{$PERFCHECK_STATION_320STREAMS_END}"
   value: '2019-05-15T00:02:00'
+- macro: "{$CERT.WEBSITE.HOSTNAME}"
+  value: 'eida.geo.uib.no'

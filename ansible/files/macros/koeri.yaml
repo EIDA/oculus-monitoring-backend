@@ -196,3 +196,5 @@
   value: '*'
 - macro: "{$PERFCHECK_STATION_320STREAMS_END}"
   value: '*'
+- macro: "{$CERT.WEBSITE.HOSTNAME}"
+  value: 'eida.koeri.boun.edu.tr'

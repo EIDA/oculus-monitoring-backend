@@ -16,183 +16,245 @@
   value: '2025-02-01T00:00:00'
 - macro: "{$ONLINECHECK_END}"
   value: '2025-02-01T00:00:05'
-- macro: "{$PERFCHECK_DATASELECT_9STREAMS_NET}"
+- macro: "{$PERFCHECK_0_WEBSERVICE}"
+  value: 'dataselect'
+- macro: "{$PERFCHECK_0_SCENARIO}"
+  value: '9streams'
+- macro: "{$PERFCHECK_0_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_DATASELECT_9STREAMS_STA}"
+- macro: "{$PERFCHECK_0_STA}"
   value: 'ATE,BANN,BLAF'
-- macro: "{$PERFCHECK_DATASELECT_9STREAMS_LOC}"
+- macro: "{$PERFCHECK_0_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_DATASELECT_9STREAMS_CHA}"
+- macro: "{$PERFCHECK_0_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_DATASELECT_9STREAMS_START}"
+- macro: "{$PERFCHECK_0_START}"
   value: '2016-04-04T00:01:00'
-- macro: "{$PERFCHECK_DATASELECT_9STREAMS_END}"
+- macro: "{$PERFCHECK_0_END}"
   value: '2016-04-04T00:02:00'
-- macro: "{$PERFCHECK_DATASELECT_54STREAMS_NET}"
+- macro: "{$PERFCHECK_1_WEBSERVICE}"
+  value: 'dataselect'
+- macro: "{$PERFCHECK_1_SCENARIO}"
+  value: '54streams'
+- macro: "{$PERFCHECK_1_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_DATASELECT_54STREAMS_STA}"
+- macro: "{$PERFCHECK_1_STA}"
   value: '*'
-- macro: "{$PERFCHECK_DATASELECT_54STREAMS_LOC}"
+- macro: "{$PERFCHECK_1_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_DATASELECT_54STREAMS_CHA}"
+- macro: "{$PERFCHECK_1_CHA}"
   value: 'HHE'
-- macro: "{$PERFCHECK_DATASELECT_54STREAMS_START}"
+- macro: "{$PERFCHECK_1_START}"
   value: '2014-04-05T00:01:00'
-- macro: "{$PERFCHECK_DATASELECT_54STREAMS_END}"
+- macro: "{$PERFCHECK_1_END}"
   value: '2014-04-05T00:02:00'
-- macro: "{$PERFCHECK_DATASELECT_320STREAMS_NET}"
+- macro: "{$PERFCHECK_2_WEBSERVICE}"
+  value: 'dataselect'
+- macro: "{$PERFCHECK_2_SCENARIO}"
+  value: '320streams'
+- macro: "{$PERFCHECK_2_NET}"
   value: 'FR,G,GL,MQ'
-- macro: "{$PERFCHECK_DATASELECT_320STREAMS_STA}"
+- macro: "{$PERFCHECK_2_STA}"
   value: '*'
-- macro: "{$PERFCHECK_DATASELECT_320STREAMS_LOC}"
+- macro: "{$PERFCHECK_2_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_DATASELECT_320STREAMS_CHA}"
+- macro: "{$PERFCHECK_2_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_DATASELECT_320STREAMS_START}"
+- macro: "{$PERFCHECK_2_START}"
   value: '2017-04-05T00:01:00'
-- macro: "{$PERFCHECK_DATASELECT_320STREAMS_END}"
+- macro: "{$PERFCHECK_2_END}"
   value: '2017-04-05T00:02:00'
-- macro: "{$PERFCHECK_DATASELECT_1STREAM15DAYS_NET}"
+- macro: "{$PERFCHECK_3_WEBSERVICE}"
+  value: 'dataselect'
+- macro: "{$PERFCHECK_3_SCENARIO}"
+  value: '1stream15days'
+- macro: "{$PERFCHECK_3_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_DATASELECT_1STREAM15DAYS_STA}"
+- macro: "{$PERFCHECK_3_STA}"
   value: 'CIEL'
-- macro: "{$PERFCHECK_DATASELECT_1STREAM15DAYS_LOC}"
+- macro: "{$PERFCHECK_3_LOC}"
   value: '00'
-- macro: "{$PERFCHECK_DATASELECT_1STREAM15DAYS_CHA}"
+- macro: "{$PERFCHECK_3_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_DATASELECT_1STREAM15DAYS_START}"
+- macro: "{$PERFCHECK_3_START}"
   value: '2022-06-01T00:00:00'
-- macro: "{$PERFCHECK_DATASELECT_1STREAM15DAYS_END}"
+- macro: "{$PERFCHECK_3_END}"
   value: '2022-06-16T00:00:00'
-- macro: "{$PERFCHECK_WFCATALOG_9STREAMS_NET}"
+- macro: "{$PERFCHECK_4_WEBSERVICE}"
+  value: 'wfcatalog'
+- macro: "{$PERFCHECK_4_SCENARIO}"
+  value: '9streams'
+- macro: "{$PERFCHECK_4_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_WFCATALOG_9STREAMS_STA}"
+- macro: "{$PERFCHECK_4_STA}"
   value: 'ATE,BANN,BLAF'
-- macro: "{$PERFCHECK_WFCATALOG_9STREAMS_LOC}"
+- macro: "{$PERFCHECK_4_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_WFCATALOG_9STREAMS_CHA}"
+- macro: "{$PERFCHECK_4_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_WFCATALOG_9STREAMS_START}"
+- macro: "{$PERFCHECK_4_START}"
   value: '2016-04-04T00:01:00'
-- macro: "{$PERFCHECK_WFCATALOG_9STREAMS_END}"
+- macro: "{$PERFCHECK_4_END}"
   value: '2016-04-04T00:02:00'
-- macro: "{$PERFCHECK_WFCATALOG_54STREAMS_NET}"
+- macro: "{$PERFCHECK_5_WEBSERVICE}"
+  value: 'wfcatalog'
+- macro: "{$PERFCHECK_5_SCENARIO}"
+  value: '54streams'
+- macro: "{$PERFCHECK_5_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_WFCATALOG_54STREAMS_STA}"
+- macro: "{$PERFCHECK_5_STA}"
   value: '*'
-- macro: "{$PERFCHECK_WFCATALOG_54STREAMS_LOC}"
+- macro: "{$PERFCHECK_5_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_WFCATALOG_54STREAMS_CHA}"
+- macro: "{$PERFCHECK_5_CHA}"
   value: 'HHE'
-- macro: "{$PERFCHECK_WFCATALOG_54STREAMS_START}"
+- macro: "{$PERFCHECK_5_START}"
   value: '2014-04-05T00:01:00'
-- macro: "{$PERFCHECK_WFCATALOG_54STREAMS_END}"
+- macro: "{$PERFCHECK_5_END}"
   value: '2014-04-05T00:02:00'
-- macro: "{$PERFCHECK_WFCATALOG_320STREAMS_NET}"
+- macro: "{$PERFCHECK_6_WEBSERVICE}"
+  value: 'wfcatalog'
+- macro: "{$PERFCHECK_6_SCENARIO}"
+  value: '320streams'
+- macro: "{$PERFCHECK_6_NET}"
   value: 'FR,G,GL,MQ'
-- macro: "{$PERFCHECK_WFCATALOG_320STREAMS_STA}"
+- macro: "{$PERFCHECK_6_STA}"
   value: '*'
-- macro: "{$PERFCHECK_WFCATALOG_320STREAMS_LOC}"
+- macro: "{$PERFCHECK_6_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_WFCATALOG_320STREAMS_CHA}"
+- macro: "{$PERFCHECK_6_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_WFCATALOG_320STREAMS_START}"
+- macro: "{$PERFCHECK_6_START}"
   value: '2017-04-05T00:01:00'
-- macro: "{$PERFCHECK_WFCATALOG_320STREAMS_END}"
+- macro: "{$PERFCHECK_6_END}"
   value: '2017-04-05T00:02:00'
-- macro: "{$PERFCHECK_WFCATALOG_1STREAM15DAYS_NET}"
+- macro: "{$PERFCHECK_7_WEBSERVICE}"
+  value: 'wfcatalog'
+- macro: "{$PERFCHECK_7_SCENARIO}"
+  value: '1stream15days'
+- macro: "{$PERFCHECK_7_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_WFCATALOG_1STREAM15DAYS_STA}"
+- macro: "{$PERFCHECK_7_STA}"
   value: 'SJAF'
-- macro: "{$PERFCHECK_WFCATALOG_1STREAM15DAYS_LOC}"
+- macro: "{$PERFCHECK_7_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_WFCATALOG_1STREAM15DAYS_CHA}"
+- macro: "{$PERFCHECK_7_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_WFCATALOG_1STREAM15DAYS_START}"
+- macro: "{$PERFCHECK_7_START}"
   value: '2012-06-08T00:00:00'
-- macro: "{$PERFCHECK_WFCATALOG_1STREAM15DAYS_END}"
+- macro: "{$PERFCHECK_7_END}"
   value: '2012-06-23T00:00:00'
-- macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_NET}"
+- macro: "{$PERFCHECK_8_WEBSERVICE}"
+  value: 'availability'
+- macro: "{$PERFCHECK_8_9STREAMS}"
+  value: ''
+- macro: "{$PERFCHECK_8_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_STA}"
+- macro: "{$PERFCHECK_8_STA}"
   value: 'ATE,BANN,BLAF'
-- macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_LOC}"
+- macro: "{$PERFCHECK_8_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_CHA}"
+- macro: "{$PERFCHECK_8_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_START}"
+- macro: "{$PERFCHECK_8_START}"
   value: '2016-04-04T00:01:00'
-- macro: "{$PERFCHECK_AVAILABILITY_9STREAMS_END}"
+- macro: "{$PERFCHECK_8_END}"
   value: '2016-04-04T23:59:00'
-- macro: "{$PERFCHECK_AVAILABILITY_54STREAMS_NET}"
+- macro: "{$PERFCHECK_9_WEBSERVICE}"
+  value: 'availability'
+- macro: "{$PERFCHECK_9_SCENARIO}"
+  value: '54streams'
+- macro: "{$PERFCHECK_9_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_AVAILABILITY_54STREAMS_STA}"
+- macro: "{$PERFCHECK_9_STA}"
   value: '*'
-- macro: "{$PERFCHECK_AVAILABILITY_54STREAMS_LOC}"
+- macro: "{$PERFCHECK_9_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_AVAILABILITY_54STREAMS_CHA}"
+- macro: "{$PERFCHECK_9_CHA}"
   value: 'HHE'
-- macro: "{$PERFCHECK_AVAILABILITY_54STREAMS_START}"
+- macro: "{$PERFCHECK_9_START}"
   value: '2014-04-05T00:01:00'
-- macro: "{$PERFCHECK_AVAILABILITY_54STREAMS_END}"
+- macro: "{$PERFCHECK_9_END}"
   value: '2014-04-05T23:59:00'
-- macro: "{$PERFCHECK_AVAILABILITY_320STREAMS_NET}"
+- macro: "{$PERFCHECK_10_WEBSERVICE}"
+  value: 'availability'
+- macro: "{$PERFCHECK_10_SCENARIO}"
+  value: '320streams'
+- macro: "{$PERFCHECK_10_NET}"
   value: 'FR,G,GL,MQ'
-- macro: "{$PERFCHECK_AVAILABILITY_320STREAMS_STA}"
+- macro: "{$PERFCHECK_10_STA}"
   value: '*'
-- macro: "{$PERFCHECK_AVAILABILITY_320STREAMS_LOC}"
+- macro: "{$PERFCHECK_10_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_AVAILABILITY_320STREAMS_CHA}"
+- macro: "{$PERFCHECK_10_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_AVAILABILITY_320STREAMS_START}"
+- macro: "{$PERFCHECK_10_START}"
   value: '2017-04-05T00:01:00'
-- macro: "{$PERFCHECK_AVAILABILITY_320STREAMS_END}"
+- macro: "{$PERFCHECK_10_END}"
   value: '2017-04-05T23:59:00'
-- macro: "{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_NET}"
+- macro: "{$PERFCHECK_11_WEBSERVICE}"
+  value: 'availability'
+- macro: "{$PERFCHECK_11_SCENARIO}"
+  value: '1stream15days'
+- macro: "{$PERFCHECK_11_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_STA}"
+- macro: "{$PERFCHECK_11_STA}"
   value: 'SJAF'
-- macro: "{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_LOC}"
+- macro: "{$PERFCHECK_11_LOC}"
   value: '00'
-- macro: "{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_CHA}"
+- macro: "{$PERFCHECK_11_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_START}"
+- macro: "{$PERFCHECK_11_START}"
   value: '2012-06-08T00:00:00'
-- macro: "{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_END}"
+- macro: "{$PERFCHECK_11_END}"
   value: '2012-06-23T00:00:00'
-- macro: "{$PERFCHECK_STATION_9STREAMS_NET}"
+- macro: "{$PERFCHECK_12_WEBSERVICE}"
+  value: 'station'
+- macro: "{$PERFCHECK_12_SCENARIO}"
+  value: '9streams'
+- macro: "{$PERFCHECK_12_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_STATION_9STREAMS_STA}"
+- macro: "{$PERFCHECK_12_STA}"
   value: 'ATE,BANN,BLAF'
-- macro: "{$PERFCHECK_STATION_9STREAMS_LOC}"
+- macro: "{$PERFCHECK_12_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_STATION_9STREAMS_CHA}"
+- macro: "{$PERFCHECK_12_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_STATION_9STREAMS_START}"
+- macro: "{$PERFCHECK_12_START}"
   value: '2016-04-04T23:01:00'
-- macro: "{$PERFCHECK_STATION_9STREAMS_END}"
+- macro: "{$PERFCHECK_12_END}"
   value: '2016-04-04T23:02:00'
-- macro: "{$PERFCHECK_STATION_54STREAMS_NET}"
+- macro: "{$PERFCHECK_13_WEBSERVICE}"
+  value: 'station'
+- macro: "{$PERFCHECK_13_SCENARIO}"
+  value: '54streams'
+- macro: "{$PERFCHECK_13_NET}"
   value: 'FR'
-- macro: "{$PERFCHECK_STATION_54STREAMS_STA}"
+- macro: "{$PERFCHECK_13_STA}"
   value: '*'
-- macro: "{$PERFCHECK_STATION_54STREAMS_LOC}"
+- macro: "{$PERFCHECK_13_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_STATION_54STREAMS_CHA}"
+- macro: "{$PERFCHECK_13_CHA}"
   value: 'HHE'
-- macro: "{$PERFCHECK_STATION_54STREAMS_START}"
+- macro: "{$PERFCHECK_13_START}"
   value: '2014-04-05T00:01:00'
-- macro: "{$PERFCHECK_STATION_54STREAMS_END}"
+- macro: "{$PERFCHECK_13_END}"
   value: '2014-04-05T00:02:00'
-- macro: "{$PERFCHECK_STATION_320STREAMS_NET}"
+- macro: "{$PERFCHECK_14_WEBSERVICE}"
+  value: 'station'
+- macro: "{$PERFCHECK_14_SCENARIO}"
+  value: '320streams'
+- macro: "{$PERFCHECK_14_NET}"
   value: 'FR,G,GL,MQ'
-- macro: "{$PERFCHECK_STATION_320STREAMS_STA}"
+- macro: "{$PERFCHECK_14_STA}"
   value: '*'
-- macro: "{$PERFCHECK_STATION_320STREAMS_LOC}"
+- macro: "{$PERFCHECK_14_LOC}"
   value: '*'
-- macro: "{$PERFCHECK_STATION_320STREAMS_CHA}"
+- macro: "{$PERFCHECK_14_CHA}"
   value: 'HH?'
-- macro: "{$PERFCHECK_STATION_320STREAMS_START}"
+- macro: "{$PERFCHECK_14_START}"
   value: '2017-04-06T23:01:00'
-- macro: "{$PERFCHECK_STATION_320STREAMS_END}"
+- macro: "{$PERFCHECK_14_END}"
   value: '2017-04-06T23:02:00'
+- macro: "{$CERT.WEBSITE.HOSTNAME}"
+  value: 'ws.resif.fr'

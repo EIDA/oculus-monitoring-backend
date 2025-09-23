@@ -196,3 +196,5 @@
   value: '2016-11-04T23:01:00'
 - macro: "{$PERFCHECK_STATION_320STREAMS_END}"
   value: '2016-11-04T23:02:00'
+- macro: "{$CERT.WEBSITE.HOSTNAME}"
+  value: 'eida.gein.noa.gr'

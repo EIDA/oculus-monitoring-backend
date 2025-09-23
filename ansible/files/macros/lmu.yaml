@@ -196,3 +196,5 @@
   value: '2017-05-20T00:00:00'
 - macro: "{$PERFCHECK_STATION_320STREAMS_END}"
   value: '2017-05-20T00:01:00'
+- macro: "{$CERT.WEBSITE.HOSTNAME}"
+  value: 'erde.geophysik.uni-muenchen.de'

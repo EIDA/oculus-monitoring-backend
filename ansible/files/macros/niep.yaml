@@ -194,3 +194,5 @@
   value: 'HHE,HHN,HHZ,HNE,HNN,HNZ'
 - macro: "{$PERFCHECK_STATION_320STREAMS_START}"
   value: '2013-05-22T23:01:00'
+- macro: "{$CERT.WEBSITE.HOSTNAME}"
+  value: 'eida-sc3.infp.ro'

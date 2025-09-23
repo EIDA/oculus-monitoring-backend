@@ -1,4 +1,26 @@
 ---
+- name: Select environment
+  hosts: localhost
+  tasks:
+    - name: Prompt for environment selection
+      ansible.builtin.pause:
+        prompt: "Select environment (prod/staging/)"
+      register: environment_input
+
+    - name: Validate environment input
+      ansible.builtin.fail:
+        msg: "Invalid environment. Please choose 'prod' or 'staging'"
+      when: environment_input.user_input not in ['prod', 'staging']
+
+    - name: Set config file path
+      ansible.builtin.set_fact:
+        config_file: "../config/config_{{ environment_input.user_input }}.yaml"
+
+    - name: Store environment for other playbooks
+      ansible.builtin.set_fact:
+        selected_environment: "{{ environment_input.user_input }}"
+        cacheable: True
+
 - name: Import templates
   import_playbook: zbx_templates.yaml
 

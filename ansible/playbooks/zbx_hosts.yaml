@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: false
   vars_files:
-    - ../config/config_prod.yaml
+    - "../config/config_{{ hostvars['localhost']['selected_environment'] | default('staging') }}.yaml"
   vars:
     ansible_network_os: community.zabbix.zabbix
     ansible_connection: httpapi
@@ -61,11 +61,14 @@
         link_templates:
           - "Template performance checks"
           - "Template webservices"
+          - "Website certificate by Zabbix agent 2"
         status: "enabled"
         state: "present"
         interfaces:
           - type: 1
-            ip: 127.0.0.1
+            useip: 1
+            main: 1
+            ip: "127.0.0.1"
             port: "10050"
         inventory_mode: "disabled"
         macros: "{{ lookup('file', macros_output_directory + '/' + item.path | basename) | from_yaml }}"
