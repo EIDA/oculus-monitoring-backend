@@ -63,6 +63,10 @@
           - "Template webservices"
         status: "enabled"
         state: "present"
+        interfaces:
+          - type: 1
+            ip: 127.0.0.1
+            port: "10050"
         inventory_mode: "disabled"
         macros: "{{ lookup('file', macros_output_directory + '/' + item.path | basename) | from_yaml }}"
       loop: "{{ host_files.files }}"

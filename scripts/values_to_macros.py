@@ -48,13 +48,13 @@ def generate_lld(yaml_file):
     Args:
         yaml_file (str): The path to the input YAML file
     """
-    # Load the YAML file
+    # load the YAML file
     with open(yaml_file, 'r') as yf:
         data = yaml.load(yf, Loader=yaml.BaseLoader)
 
     flattened_data = flatten_yaml(data)
     
-    # Generate Ansible macros format
+    # generate Ansible macros format
     macros = []
     for key, value in flattened_data.items():
         macro_key = f"{{${key.upper()}}}"
@@ -65,6 +65,21 @@ def generate_lld(yaml_file):
         }
         macros.append(macro_entry)
     
+    # add CERT.WEBSITE.HOSTNAME for Template Web Certificate
+    endpoint_value = None
+    for key, value in flattened_data.items():
+        if key.upper() == 'ENDPOINT':
+            endpoint_value = str(value)
+            break
+    
+    if endpoint_value:
+        cert_macro = {
+            "macro": "{$CERT.WEBSITE.HOSTNAME}",
+            "value": endpoint_value
+        }
+        macros.append(cert_macro)
+
+
     for macro in macros:
         print(f'- macro: "{macro["macro"]}"')
         print(f'  value: \'{macro["value"]}\'')
