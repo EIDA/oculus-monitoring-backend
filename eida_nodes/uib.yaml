@@ -10,112 +10,122 @@ onlineCheck:
   start: 2019-01-15T00:01:50
   end: 2019-01-15T00:02:00
 perfCheck:
-  dataselect:
-    9streams:
-      net: NS
-      sta: B*
-      loc: '*'
-      cha: '*'
-      start: '2019-01-15T00:01:00'
-      end: '2019-01-15T00:02:00'
-    54streams:
-      net: NS
-      sta: '*'
-      loc: '*'
-      cha: HHZ,HHN
-      start: '2018-11-15T00:01:00'
-      end: '2018-11-15T00:02:00'
-    320streams:
-      net: NO,NS
-      sta: '*'
-      loc: '*'
-      cha: '*'
-      start: '2019-05-15T00:01:00'
-      end: '2019-05-15T00:02:00'
-    1stream15days:
-      net: NS
-      sta: FAUS
-      loc: '*'
-      cha: HH?
-      start: '2018-06-07T00:01:00'
-      end: '2018-06-22T00:01:00'
-  wfcatalog:
-    9streams:
-      net: NS
-      sta: B*
-      loc: '*'
-      cha: '*'
-      start: '2019-01-15T00:01:00'
-      end: '2019-01-15T00:02:00'
-    54streams:
-      net: NS
-      sta: '*'
-      loc: '*'
-      cha: HHZ,HHN
-      start: '2018-11-15T00:01:00'
-      end: '2018-11-15T00:02:00'
-    320streams:
-      net: NO,NS
-      sta: '*'
-      loc: '*'
-      cha: '*'
-      start: '2019-05-15T00:01:00'
-      end: '2019-05-15T00:02:00'
-    1stream15days:
-      net: NS
-      sta: FAUS
-      loc: '*'
-      cha: HH?
-      start: '2018-06-07T00:01:00'
-      end: '2018-06-22T00:01:00'
-  availability:
-    9streams:
-      net: NS
-      sta: B*
-      loc: '*'
-      cha: '*'
-      start: '2019-01-15T00:01:00'
-      end: '2019-01-15T23:59:00'
-    54streams:
-      net: NS
-      sta: '*'
-      loc: '*'
-      cha: HHZ,HHN
-      start: '2018-11-15T00:01:00'
-      end: '2018-11-15T23:59:00'
-    320streams:
-      net: NO,NS
-      sta: '*'
-      loc: '*'
-      cha: '*'
-      start: '2019-05-15T00:01:00'
-      end: '2019-05-15T23:59:00'
-    1stream15days:
-      net: NS
-      sta: FAUS
-      loc: '*'
-      cha: HH?
-      start: '2018-06-07T00:01:00'
-      end: '2018-06-22T00:01:00'
-  station:
-    9streams:
-      net: '*'
-      sta: '*'
-      loc: '*'
-      cha: '*'
-      start: '*'
-      end: '*'
-    54streams:
-      net: NS
-      sta: '*'
-      loc: '*'
-      cha: HHZ,HHN
-      start: '2018-11-15T00:01:00'
-      end: '2018-11-15T00:02:00'
-    320streams:
-      net: NO,NS
-      sta: '*'
-      loc: '*'
-      cha: '*'
-      start: '2019-05-15T00:01:00'
-      end: '2019-05-15T00:02:00'
+- webservice: dataselect
+  scenario: 9streams
+  net: NS
+  sta: B*
+  loc: '*'
+  cha: '*'
+  start: '2019-01-15T00:01:00'
+  end: '2019-01-15T00:02:00'
+- webservice: dataselect
+  scenario: 54streams
+  net: NS
+  sta: '*'
+  loc: '*'
+  cha: HHZ,HHN
+  start: '2018-11-15T00:01:00'
+  end: '2018-11-15T00:02:00'
+- webservice: dataselect
+  scenario: 320streams
+  net: NO,NS
+  sta: '*'
+  loc: '*'
+  cha: '*'
+  start: '2019-05-15T00:01:00'
+  end: '2019-05-15T00:02:00'
+- webservice: dataselect
+  scenario: 1stream15days
+  net: NS
+  sta: FAUS
+  loc: '*'
+  cha: HH?
+  start: '2018-06-07T00:01:00'
+  end: '2018-06-22T00:01:00'
+- webservice: wfcatalog
+  scenario: 9streams
+  net: NS
+  sta: B*
+  loc: '*'
+  cha: '*'
+  start: '2019-01-15T00:01:00'
+  end: '2019-01-15T00:02:00'
+- webservice: wfcatalog
+  scenario: 54streams
+  net: NS
+  sta: '*'
+  loc: '*'
+  cha: HHZ,HHN
+  start: '2018-11-15T00:01:00'
+  end: '2018-11-15T00:02:00'
+- webservice: wfcatalog
+  scenario: 320streams
+  net: NO,NS
+  sta: '*'
+  loc: '*'
+  cha: '*'
+  start: '2019-05-15T00:01:00'
+  end: '2019-05-15T00:02:00'
+- webservice: wfcatalog
+  scenario: 1stream15days
+  sta: FAUS
+  loc: '*'
+  cha: HH?
+  start: '2018-06-07T00:01:00'
+  end: '2018-06-22T00:01:00'
+- webservice: availability
+  scenario: 9streams
+  net: NS
+  sta: B*
+  loc: '*'
+  cha: '*'
+  start: '2019-01-15T00:01:00'
+  end: '2019-01-15T23:59:00'
+- webservice: availability
+  scenario: 54streams
+  net: NS
+  sta: '*'
+  loc: '*'
+  cha: HHZ,HHN
+  start: '2018-11-15T00:01:00'
+  end: '2018-11-15T23:59:00'
+- webservice: availability
+  scenario: 320streams
+  net: NO,NS
+  sta: '*'
+  loc: '*'
+  cha: '*'
+  start: '2019-05-15T00:01:00'
+  end: '2019-05-15T23:59:00'
+- webservice: availability
+  scenario: 1stream15days
+  net: NS
+  sta: FAUS
+  loc: '*'
+  cha: HH?
+  start: '2018-06-07T00:01:00'
+  end: '2018-06-22T00:01:00'
+- webservice: station
+  scenario: 9streams
+  net: '*'
+  sta: '*'
+  loc: '*'
+  cha: '*'
+  start: '*'
+  end: '*'
+- webservice: station
+  scenario: 54streams
+  net: NS
+  sta: '*'
+  loc: '*'
+  cha: HHZ,HHN
+  start: '2018-11-15T00:01:00'
+  end: '2018-11-15T00:02:00'
+- webservice: station
+  scenario: 320streams
+  net: NO,NS
+  sta: '*'
+  loc: '*'
+  cha: '*'
+  start: '2019-05-15T00:01:00'
+  end: '2019-05-15T00:02:00'

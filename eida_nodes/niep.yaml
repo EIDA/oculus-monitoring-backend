@@ -10,111 +10,122 @@ onlineCheck:
   start: 2023-01-01T00:00:00
   end: 2023-01-01T00:00:05
 perfCheck:
-  dataselect:
-    9streams:
-      net: RO
-      sta: PLOR1,PLOR2,PLOR3
-      loc: '*'
-      cha: HH?
-      start: '2017-05-20T00:01:00'
-      end: '2017-05-20T00:02:00'
-    54streams:
-      net: RO,BS
-      sta: '*'
-      loc: '*'
-      cha: HHE
-      start: '2017-05-20T00:01:00'
-      end: '2017-05-20T00:02:00'
-    320streams:
-      net: RO,BS
-      sta: '*'
-      loc: '*'
-      cha: HHE,HHN,HHZ,HNE,HNN,HNZ
-      start: '2013-05-22T00:01:00'
-      end: '2013-05-22T00:02:00'
-    1stream15days:
-      net: RO
-      sta: GZR
-      loc: '*'
-      cha: HH?
-      start: '2012-06-04T00:00:00'
-      end: '2012-06-19T00:00:00'
-  wfcatalog:
-    9streams:
-      net: RO
-      sta: PLOR1,PLOR2,PLOR3
-      loc: '*'
-      cha: HH?
-      start: '2017-05-20T00:01:00'
-      end: '2017-05-20T00:02:00'
-    54streams:
-      net: RO,BS
-      sta: '*'
-      loc: '*'
-      cha: HHE
-      start: '2017-05-20T00:01:00'
-      end: '2017-05-20T00:02:00'
-    320streams:
-      net: RO,BS
-      sta: '*'
-      loc: '*'
-      cha: HHE,HHN,HHZ,HNE,HNN,HNZ
-      start: '2013-05-22T00:01:00'
-      end: '2013-05-22T00:02:00'
-    1stream15days:
-      net: RO
-      sta: GZR
-      loc: --
-      cha: HH?
-      start: '2012-06-04T00:00:00'
-      end: '2012-06-19T00:00:00'
-  availability:
-    9streams:
-      net: RO
-      sta: PLOR1,PLOR2,PLOR3
-      loc: '*'
-      cha: HH?
-      start: '2017-05-20T00:01:00'
-      end: '2017-05-20T23:59:00'
-    54streams:
-      net: RO,BS
-      sta: '*'
-      loc: '*'
-      cha: HHE
-      start: '2017-05-20T00:01:00'
-      end: '2017-05-20T23:59:00'
-    320streams:
-      net: RO,BS
-      sta: '*'
-      loc: '*'
-      cha: HHE,HHN,HHZ,HNE,HNN,HNZ
-      start: '2013-05-22T00:01:00'
-      end: '2013-05-22T23:59:00'
-    1stream15days:
-      net: RO
-      sta: GZR
-      loc: '*'
-      cha: HH?
-      start: '2012-06-04T00:00:00'
-      end: '2012-06-19T00:00:00'
-  station:
-    9streams:
-      net: RO
-      sta: PLOR1,PLOR2,PLOR3
-      loc: '*'
-      cha: HH?
-      start: '2017-05-22T23:01:00'
-      end: '2017-05-22T23:02:00'
-    54streams:
-      net: RO,BS
-      sta: '*'
-      loc: '*'
-      cha: HHE
-      start: '2017-05-20T00:01:00'
-      end: '2017-05-20T00:02:00'
-    320streams:
-      net: RO,BS
-      sta: '*'
-      loc: '*'
-      cha: HHE,HHN,HHZ,HNE,HNN,HNZ
-      start: '2013-05-22T23:01:00'
+- webservice: dataselect
+  scenario: 9streams
+  net: RO
+  sta: PLOR1,PLOR2,PLOR3
+  loc: '*'
+  cha: HH?
+  start: '2017-05-20T00:01:00'
+  end: '2017-05-20T00:02:00'
+- webservice: dataselect
+  scenario: 54streams
+  net: RO,BS
+  sta: '*'
+  loc: '*'
+  cha: HHE
+  start: '2017-05-20T00:01:00'
+  end: '2017-05-20T00:02:00'
+- webservice: dataselect
+  scenario: 320streams
+  net: RO,BS
+  sta: '*'
+  loc: '*'
+  cha: HHE,HHN,HHZ,HNE,HNN,HNZ
+  start: '2013-05-22T00:01:00'
+  end: '2013-05-22T00:02:00'
+- webservice: dataselect
+  scenario: 1stream15days
+  net: RO
+  sta: GZR
+  loc: '*'
+  cha: HH?
+  start: '2012-06-04T00:00:00'
+  end: '2012-06-19T00:00:00'
+- webservice: wfcatalog
+  scenario: 9streams
+  net: RO
+  sta: PLOR1,PLOR2,PLOR3
+  loc: '*'
+  cha: HH?
+  start: '2017-05-20T00:01:00'
+  end: '2017-05-20T00:02:00'
+- webservice: wfcatalog
+  scenario: 54streams
+  net: RO,BS
+  sta: '*'
+  loc: '*'
+  cha: HHE
+  start: '2017-05-20T00:01:00'
+  end: '2017-05-20T00:02:00'
+- webservice: wfcatalog
+  scenario: 320streams
+  net: RO,BS
+  sta: '*'
+  loc: '*'
+  cha: HHE,HHN,HHZ,HNE,HNN,HNZ
+  start: '2013-05-22T00:01:00'
+  end: '2013-05-22T00:02:00'
+- webservice: wfcatalog
+  scenario: 1stream15days
+  net: RO
+  sta: GZR
+  loc: --
+  cha: HH?
+  start: '2012-06-04T00:00:00'
+  end: '2012-06-19T00:00:00'
+- webservice: availability
+  scenario: 9streams
+  net: RO
+  sta: PLOR1,PLOR2,PLOR3
+  loc: '*'
+  cha: HH?
+  start: '2017-05-20T00:01:00'
+  end: '2017-05-20T23:59:00'
+- webservice: availability
+  scenario: 54streams
+  net: RO,BS
+  sta: '*'
+  loc: '*'
+  cha: HHE
+  start: '2017-05-20T00:01:00'
+  end: '2017-05-20T23:59:00'
+- webservice: availability
+  scenario: 320streams
+  net: RO,BS
+  sta: '*'
+  loc: '*'
+  cha: HHE,HHN,HHZ,HNE,HNN,HNZ
+  start: '2013-05-22T00:01:00'
+  end: '2013-05-22T23:59:00'
+- webservice: availability
+  scenario: 1stream15days
+  net: RO
+  sta: GZR
+  loc: '*'
+  cha: HH?
+  start: '2012-06-04T00:00:00'
+  end: '2012-06-19T00:00:00'
+- webservice: station
+  scenario: 9streams
+  net: RO
+  sta: PLOR1,PLOR2,PLOR3
+  loc: '*'
+  cha: HH?
+  start: '2017-05-22T23:01:00'
+  end: '2017-05-22T23:02:00'
+- webservice: station
+  scenario: 54streams
+  net: RO,BS
+  sta: '*'
+  loc: '*'
+  cha: HHE
+  start: '2017-05-20T00:01:00'
+  end: '2017-05-20T00:02:00'
+- webservice: station
+  scenario: 320streams
+  net: RO,BS
+  sta: '*'
+  loc: '*'
+  cha: HHE,HHN,HHZ,HNE,HNN,HNZ
+  start: '2013-05-22T23:01:00'
