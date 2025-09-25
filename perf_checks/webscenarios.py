@@ -43,6 +43,7 @@ def build_url(endpoint, webservice, params):
 
 def make_request(url):
     """make http request"""
+    temp_file_path = None
     try:
         start_time = time.time()
 
@@ -76,8 +77,8 @@ def make_request(url):
     
     # exceltions timeout 
     except requests.exceptions.Timeout:
-        if temp_file and os.path.exists(temp_file.name):
-            os.unlink(temp_file.name)
+        if temp_file_path and os.path.exists(temp_file_path):
+            os.unlink(temp_file_path)
         return {
             'status_code': 'TIMEOUT',
             'response_time_ms': 30000,
@@ -86,8 +87,8 @@ def make_request(url):
         }
     # exception connection error
     except requests.exceptions.ConnectionError:
-        if temp_file and os.path.exists(temp_file.name):
-            os.unlink(temp_file.name)
+        if temp_file_path and os.path.exists(temp_file_path):
+            os.unlink(temp_file_path)
         return {
             'status_code': 'CONNECTION_ERROR',
             'response_time_ms': 0,
@@ -96,8 +97,8 @@ def make_request(url):
         }
     # eception  request exception
     except requests.exceptions.RequestException as e:
-        if temp_file and os.path.exists(temp_file.name):
-            os.unlink(temp_file.name)
+        if temp_file_path and os.path.exists(temp_file_path):
+            os.unlink(temp_file_path)
         return {
             'status_code': 'REQUEST_ERROR',
             'response_time_ms': 0,
@@ -106,8 +107,8 @@ def make_request(url):
             'url': url
         }
     except Exception as e:
-        if temp_file and os.path.exists(temp_file.name):
-            os.unlink(temp_file.name)
+        if temp_file_path and os.path.exists(temp_file_path):
+            os.unlink(temp_file_path)
         return {
             'status_code': 'ERROR',
             'response_time_ms': 0,
@@ -137,17 +138,17 @@ def process_node(node_name, node_data):
         url = build_url(endpoint, webservice, check)
 
         print(f"testing {node_name}: {webservice}.{scenario}")
-        results = make_request(url)
+        result = make_request(url)
 
         # store result
         key = f"{webservice}.{scenario}"
         results[key] = {
-            'status_code': results['status_code'],
-            'response_time_ms': results['response_time_ms'],
-            'content_size_bytes': results['content_size_bytes']
+            'status_code': result['status_code'],
+            'response_time_ms': result['response_time_ms'],
+            'content_size_bytes': result['content_size_bytes']
         }
 
-        print(f" -> status: {results['status_code']}, time: {results['response_time_ms']}ms, size: {results['content_size_bytes']} bytes")
+        print(f" -> status: {result['status_code']}, time: {result['response_time_ms']}ms, size: {result['content_size_bytes']} bytes")
 
     return results
 
