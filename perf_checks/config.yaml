@@ -1,4 +1,0 @@
-zabbix:
-  server: "http://oculus-zabbix-zabbix-web"
-  port: 10051
-  timeout: 30

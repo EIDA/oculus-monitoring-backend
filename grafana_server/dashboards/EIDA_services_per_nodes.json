@@ -38,7 +38,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "aevd6qhslzvnkb"
       },
       "fieldConfig": {
         "defaults": {
@@ -52,7 +52,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "#EAB839",
@@ -91,7 +92,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
           "application": {
@@ -149,7 +150,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "aevd6qhslzvnkb"
       },
       "fieldConfig": {
         "defaults": {
@@ -163,7 +164,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "#EAB839",
@@ -202,7 +204,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
           "application": {
@@ -218,7 +220,7 @@
             "filter": "$EIDA_NODES"
           },
           "item": {
-            "filter": "Response code for step \"get documentation\" of scenario \"station\"."
+            "filter": "Response code for step \"station accessible\" of scenario \"station\"."
           },
           "itemTag": {
             "filter": "Application: station"
@@ -260,7 +262,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "aevd6qhslzvnkb"
       },
       "fieldConfig": {
         "defaults": {
@@ -274,7 +276,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "#EAB839",
@@ -313,7 +316,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
           "application": {
@@ -329,7 +332,7 @@
             "filter": "$EIDA_NODES"
           },
           "item": {
-            "filter": "Response code for step \"get documentation\" of scenario \"availability\"."
+            "filter": "Response code for step \"availability accessible\" of scenario \"availability\"."
           },
           "itemTag": {
             "filter": "Application: availability"
@@ -371,7 +374,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "aevd6qhslzvnkb"
       },
       "fieldConfig": {
         "defaults": {
@@ -385,7 +388,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "#EAB839",
@@ -424,7 +428,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
           "application": {
@@ -440,7 +444,7 @@
             "filter": "$EIDA_NODES"
           },
           "item": {
-            "filter": "Response code for step \"get documentation\" of scenario \"wfcatalog\"."
+            "filter": "Response code for step \"wfcatalog accessible\" of scenario \"wfcatalog\"."
           },
           "itemTag": {
             "filter": "Application: wfcatalog"
@@ -482,7 +486,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "aevd6qhslzvnkb"
       },
       "fieldConfig": {
         "defaults": {
@@ -496,7 +500,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "#EAB839",
@@ -535,7 +540,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
           "application": {
@@ -600,7 +605,9 @@
     "list": [
       {
         "current": {
-          "text": "All",
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
@@ -634,5 +641,5 @@
   "timezone": "browser",
   "title": "EIDA services per nodes",
   "uid": "femk8h7dfqxoge",
-  "version": 2
+  "version": 4
 }
