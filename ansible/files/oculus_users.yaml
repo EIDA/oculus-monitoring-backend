@@ -68,9 +68,9 @@ oculus_users:
   usrgrp: NOA
   email: kbouk@noa.gr
 - username: user-odc
-  name: Simon Schneider
+  name: RDSA AGILE
   usrgrp: ODC
-  email: simon.schneider@knmi.nl
+  email: rdsa-agile@knmi.nl
 - username: user-sed
   name: Stefan Heimers
   usrgrp: SED
