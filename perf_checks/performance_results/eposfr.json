@@ -1,0 +1,77 @@
+{
+  "dataselect.9streams": {
+    "status_code": 200,
+    "response_time_ms": 715.11,
+    "content_size_bytes": 122880
+  },
+  "dataselect.54streams": {
+    "status_code": 200,
+    "response_time_ms": 3918.14,
+    "content_size_bytes": 782336
+  },
+  "dataselect.320streams": {
+    "status_code": 200,
+    "response_time_ms": 25720.52,
+    "content_size_bytes": 4444160
+  },
+  "dataselect.1stream15days": {
+    "status_code": 200,
+    "response_time_ms": 16197.65,
+    "content_size_bytes": 845680640
+  },
+  "wfcatalog.9streams": {
+    "status_code": 404,
+    "response_time_ms": 59.54,
+    "content_size_bytes": 153
+  },
+  "wfcatalog.54streams": {
+    "status_code": 404,
+    "response_time_ms": 78.28,
+    "content_size_bytes": 153
+  },
+  "wfcatalog.320streams": {
+    "status_code": 404,
+    "response_time_ms": 76.39,
+    "content_size_bytes": 153
+  },
+  "wfcatalog.1stream15days": {
+    "status_code": 404,
+    "response_time_ms": 67.3,
+    "content_size_bytes": 153
+  },
+  "availability.9streams": {
+    "status_code": 200,
+    "response_time_ms": 176.02,
+    "content_size_bytes": 1744
+  },
+  "availability.54streams": {
+    "status_code": 200,
+    "response_time_ms": 1017.81,
+    "content_size_bytes": 6867
+  },
+  "availability.320streams": {
+    "status_code": 200,
+    "response_time_ms": 2368.0,
+    "content_size_bytes": 49159
+  },
+  "availability.1stream15days": {
+    "status_code": 200,
+    "response_time_ms": 122.78,
+    "content_size_bytes": 10246
+  },
+  "station.9streams": {
+    "status_code": 200,
+    "response_time_ms": 783.79,
+    "content_size_bytes": 4517
+  },
+  "station.54streams": {
+    "status_code": 200,
+    "response_time_ms": 788.22,
+    "content_size_bytes": 103657
+  },
+  "station.320streams": {
+    "status_code": 200,
+    "response_time_ms": 874.72,
+    "content_size_bytes": 187506
+  }
+}
