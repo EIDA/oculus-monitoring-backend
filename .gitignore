@@ -1,4 +1,3 @@
 .vscode/
 .ansible/
-ansible/files/macros/*
-perf_check/performance_results/*
+ansible/files/macros/
