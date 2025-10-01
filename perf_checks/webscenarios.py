@@ -22,7 +22,15 @@ def load_yaml_files(nodes_dir):
 
 def build_url(endpoint, webservice, params):
     """build the URL for the requests"""
-    base_url = f"https://{endpoint}/fdsnws/{webservice}/1/query"
+
+    # for ws wfcatalog is /eidaws/, for other is /fdsnws/
+    if webservice == 'wfcatalog':
+        service_path = 'eidaws'
+    else:
+        service_path = 'fdsnws'
+
+
+    base_url = f"https://{endpoint}/{service_path}/{webservice}/1/query"
 
     # query parameters
     query_params = {}
@@ -95,7 +103,7 @@ def make_request(url):
             'content_size_bytes': 0,
             'url': url
         }
-    # eception  request exception
+    # eception request exception
     except requests.exceptions.RequestException as e:
         if temp_file_path and os.path.exists(temp_file_path):
             os.unlink(temp_file_path)
