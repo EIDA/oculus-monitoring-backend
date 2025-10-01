@@ -9,6 +9,889 @@ zabbix_export:
       name: 'Template performance checks'
       groups:
         - name: Templates/EIDA
+      items:
+        - uuid: 14d3986c603e476d82f592b2b6426e68
+          name: 'perfCheck Availability - 1stream15days - Content Size Bytes'
+          type: TRAP
+          key: availability.1stream15days.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for availability 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: availability
+        - uuid: 11ac8f142b324e05a595fc83f6ee9dab
+          name: 'perfCheck Availability - 1stream15days - Response Time Ms'
+          type: TRAP
+          key: availability.1stream15days.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for availability 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: availability
+        - uuid: 18db6032b8ad4426999add062e6a2f2f
+          name: 'perfCheck Availability - 1stream15days - Status Code'
+          type: TRAP
+          key: availability.1stream15days.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for availability 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: availability
+        - uuid: 3b0f7ff76b55440a86d508101ffa2feb
+          name: 'perfCheck Availability - 1stream15days - Transfer Rate'
+          type: TRAP
+          key: availability.1stream15days.transfer_rate
+          delay: '0'
+          units: bytes/s
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: availability
+        - uuid: dfee44fb1fd94556a2c41cf783cfb0e3
+          name: 'perfCheck Availability - 9streams - Content Size Bytes'
+          type: TRAP
+          key: availability.9streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for availability 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: availability
+        - uuid: d1d4ec99099d46b88dbda282c514df27
+          name: 'perfCheck Availability - 9streams - Response Time Ms'
+          type: TRAP
+          key: availability.9streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for availability 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: availability
+        - uuid: 5cb194727a0a41c792d2d1ce7e0d564d
+          name: 'perfCheck Availability - 9streams - Status Code'
+          type: TRAP
+          key: availability.9streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for availability 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: availability
+        - uuid: 0f15ff81e3fb435784d820882edc95bb
+          name: 'perfCheck Availability - 9streams - Transfer Rate'
+          type: TRAP
+          key: availability.9streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for availability 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: availability
+        - uuid: e040918e33de454dbf3d97d8493a0377
+          name: 'perfCheck Availability - 54streams - Content Size Bytes'
+          type: TRAP
+          key: availability.54streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for availability 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: availability
+        - uuid: f205ad36a9b54c359453c60b857a6e29
+          name: 'perfCheck Availability - 54streams - Response Time Ms'
+          type: TRAP
+          key: availability.54streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for availability 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: availability
+        - uuid: d2c69bded0b949c98b6dc2538122268a
+          name: 'perfCheck Availability - 54streams - Status Code'
+          type: TRAP
+          key: availability.54streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for availability 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: availability
+        - uuid: 9a0bfc3077b0469886ec67fe806504da
+          name: 'perfCheck Availability - 54streams - Transfer Rate'
+          type: TRAP
+          key: availability.54streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for availability 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: availability
+        - uuid: c6a8cea73fbf4144a69979a3f049b3c4
+          name: 'perfCheck Availability - 320streams - Content Size Bytes'
+          type: TRAP
+          key: availability.320streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for availability 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: availability
+        - uuid: c1641a059b744bf9a062ef615c594abe
+          name: 'perfCheck Availability - 320streams - Response Time Ms'
+          type: TRAP
+          key: availability.320streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for availability 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: availability
+        - uuid: 57f69e0feeec4c2f99ff23df53f26e64
+          name: 'perfCheck Availability - 320streams - Status Code'
+          type: TRAP
+          key: availability.320streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for availability 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: availability
+        - uuid: 4b1beddede8145b7bd9dbdcb054c05ec
+          name: 'perfCheck Availability - 320streams - Transfer Rate'
+          type: TRAP
+          key: availability.320streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for availability 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: availability
+        - uuid: 8d4925f39b2349f6b4c182578cc0760c
+          name: 'perfCheck Dataselect - 1stream15days - Content Size Bytes'
+          type: TRAP
+          key: dataselect.1stream15days.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for dataselect 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: dataselect
+        - uuid: 9374585765ef4f2c84553dc17652a9cf
+          name: 'perfCheck Dataselect - 1stream15days - Response Time Ms'
+          type: TRAP
+          key: dataselect.1stream15days.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for dataselect 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: dataselect
+        - uuid: b6229ec63e9945fa8126cc916ff8f940
+          name: 'perfCheck Dataselect - 1stream15days - Status Code'
+          type: TRAP
+          key: dataselect.1stream15days.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for dataselect 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: dataselect
+        - uuid: e266ece1375a460e9bb67bf3f4a47fe5
+          name: 'perfCheck Dataselect - 1stream15days - Transfer Rate'
+          type: TRAP
+          key: dataselect.1stream15days.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for dataselect 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: dataselect
+        - uuid: fe2b582977674a4fad77e3cdf7c64e6f
+          name: 'perfCheck Dataselect - 9streams - Content Size Bytes'
+          type: TRAP
+          key: dataselect.9streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for dataselect 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: dataselect
+        - uuid: 8e5554c1e7774f9cbfda332b2230bd07
+          name: 'perfCheck Dataselect - 9streams - Response Time Ms'
+          type: TRAP
+          key: dataselect.9streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for dataselect 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: dataselect
+        - uuid: 45e53bc1c4dc4a648f791e39555c0d15
+          name: 'perfCheck Dataselect - 9streams - Status Code'
+          type: TRAP
+          key: dataselect.9streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for dataselect 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: dataselect
+        - uuid: a74342eb51764a419b932e2836590827
+          name: 'perfCheck Dataselect - 9streams - Transfer Rate'
+          type: TRAP
+          key: dataselect.9streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for dataselect 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: dataselect
+        - uuid: 363848b841e34f5cbfa7924f1d0ab385
+          name: 'perfCheck Dataselect - 54streams - Content Size Bytes'
+          type: TRAP
+          key: dataselect.54streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for dataselect 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: dataselect
+        - uuid: 099d4085020642f190146d2db6c6c2de
+          name: 'perfCheck Dataselect - 54streams - Response Time Ms'
+          type: TRAP
+          key: dataselect.54streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for dataselect 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: dataselect
+        - uuid: ca51a0548099412dbab2f8e4e82c0482
+          name: 'perfCheck Dataselect - 54streams - Status Code'
+          type: TRAP
+          key: dataselect.54streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for dataselect 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: dataselect
+        - uuid: 0c57f46e2e1c457293a2c3f9309a24f8
+          name: 'perfCheck Dataselect - 54streams - Transfer Rate'
+          type: TRAP
+          key: dataselect.54streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for dataselect 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: dataselect
+        - uuid: 344326790bea4c9299251e700a9de814
+          name: 'perfCheck Dataselect - 320streams - Content Size Bytes'
+          type: TRAP
+          key: dataselect.320streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for dataselect 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: dataselect
+        - uuid: ad067d11c0d74ba9a8a2afa99afc573c
+          name: 'perfCheck Dataselect - 320streams - Response Time Ms'
+          type: TRAP
+          key: dataselect.320streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for dataselect 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: dataselect
+        - uuid: 2d816447bcd84bb3add116cc26c95108
+          name: 'perfCheck Dataselect - 320streams - Status Code'
+          type: TRAP
+          key: dataselect.320streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for dataselect 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: dataselect
+        - uuid: 1ee8ceb49cc24b10a2b2961f41f1a8e1
+          name: 'perfCheck Dataselect - 320streams - Transfer Rate'
+          type: TRAP
+          key: dataselect.320streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for dataselect 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: dataselect
+        - uuid: 17d67084f7054df8bc02bde61da9ac2d
+          name: 'perfCheck Station - 1stream15days - Transfer Rate'
+          type: TRAP
+          key: station.1stream15days.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for station 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: station
+        - uuid: 0b3d32007bfe49c2ad1b4c39e6cf4962
+          name: 'perfCheck Station - 9streams - Content Size Bytes'
+          type: TRAP
+          key: station.9streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for station 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: station
+        - uuid: 1f3681c05e834921ab987872b48a57b2
+          name: 'perfCheck Station - 9streams - Response Time Ms'
+          type: TRAP
+          key: station.9streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for station 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: station
+        - uuid: a4dd510a60d34f998e18d160c2d09a97
+          name: 'perfCheck Station - 9streams - Status Code'
+          type: TRAP
+          key: station.9streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for station 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: station
+        - uuid: c2bedc1a63c74620868d9ace4c9cef98
+          name: 'perfCheck Station - 9streams - Transfer Rate'
+          type: TRAP
+          key: station.9streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for station 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: station
+        - uuid: 6521b56705ac4159842e73ab4b66bb27
+          name: 'perfCheck Station - 54streams - Content Size Bytes'
+          type: TRAP
+          key: station.54streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for station 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: station
+        - uuid: d3642359101f4b9d94b645ef7e8fbc4b
+          name: 'perfCheck Station - 54streams - Response Time Ms'
+          type: TRAP
+          key: station.54streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for station 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: station
+        - uuid: 986e11d58e0e4571842ea125132fa721
+          name: 'perfCheck Station - 54streams - Status Code'
+          type: TRAP
+          key: station.54streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for station 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: station
+        - uuid: a0e1c88981e049158613ac396d99b9ee
+          name: 'perfCheck Station - 54streams - Transfer Rate'
+          type: TRAP
+          key: station.54streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for station 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: station
+        - uuid: 14197a2cd0bc4109925f5355ccc651cb
+          name: 'perfCheck Station - 320streams - Content Size Bytes'
+          type: TRAP
+          key: station.320streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for station 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: station
+        - uuid: f4ec577c215c419d8fe9a93c9f41b97d
+          name: 'perfCheck Station - 320streams - Response Time Ms'
+          type: TRAP
+          key: station.320streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for station 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: station
+        - uuid: 1932aec1c6554e74a1ba687f16f85b26
+          name: 'perfCheck Station - 320streams - Status Code'
+          type: TRAP
+          key: station.320streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for station 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: station
+        - uuid: 9827f55ca6e44816aee105a4b59661bd
+          name: 'perfCheck Station - 320streams - Transfer Rate'
+          type: TRAP
+          key: station.320streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for station 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: station
+        - uuid: 62f9af19ef844e5ca7f87b6d4bfb2692
+          name: 'perfCheck Wfcatalog - 1stream15days - Content Size Bytes'
+          type: TRAP
+          key: wfcatalog.1stream15days.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for wfcatalog 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: wfcatalog
+        - uuid: fcc57335ab79473194dc165678003203
+          name: 'perfCheck Wfcatalog - 1stream15days - Response Time Ms'
+          type: TRAP
+          key: wfcatalog.1stream15days.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for wfcatalog 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: wfcatalog
+        - uuid: e2a82c00606945599cfe622317381c6b
+          name: 'perfCheck Wfcatalog - 1stream15days - Status Code'
+          type: TRAP
+          key: wfcatalog.1stream15days.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for wfcatalog 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: wfcatalog
+        - uuid: bc6cb63bb1ae40389e847f60a64d1bed
+          name: 'perfCheck Wfcatalog - 1stream15days - Transfer Rate'
+          type: TRAP
+          key: wfcatalog.1stream15days.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for wfcatalog 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: wfcatalog
+        - uuid: f2fd689566b74f319d2b0defe2faaffc
+          name: 'perfCheck Wfcatalog - 9streams - Content Size Bytes'
+          type: TRAP
+          key: wfcatalog.9streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for wfcatalog 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: a92038f041f545f9bd17216c17949016
+          name: 'perfCheck Wfcatalog - 9streams - Response Time Ms'
+          type: TRAP
+          key: wfcatalog.9streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for wfcatalog 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: f0c9f2e041374354834829531acfc5c2
+          name: 'perfCheck Wfcatalog - 9streams - Status Code'
+          type: TRAP
+          key: wfcatalog.9streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for wfcatalog 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: c1c85ca742a042eca30e9dc1916cf5e5
+          name: 'perfCheck Wfcatalog - 9streams - Transfer Rate'
+          type: TRAP
+          key: wfcatalog.9streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for wfcatalog 9streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 9streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: a893f3fb47bf44cba97c2122f1aefcc4
+          name: 'perfCheck Wfcatalog - 54streams - Content Size Bytes'
+          type: TRAP
+          key: wfcatalog.54streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for wfcatalog 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: f7441e89da2d4555a8dd8a81599f337c
+          name: 'perfCheck Wfcatalog - 54streams - Response Time Ms'
+          type: TRAP
+          key: wfcatalog.54streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for wfcatalog 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: 0fa5285f61c0432cad2366ee7cdcbcba
+          name: 'perfCheck Wfcatalog - 54streams - Status Code'
+          type: TRAP
+          key: wfcatalog.54streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for wfcatalog 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: 56008c286a964162877d7d205841e17a
+          name: 'perfCheck Wfcatalog - 54streams - Transfer Rate'
+          type: TRAP
+          key: wfcatalog.54streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for wfcatalog 54streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 54streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: 678d06372db34f1f849af69d29dfe3c7
+          name: 'perfCheck Wfcatalog - 320streams - Content Size Bytes'
+          type: TRAP
+          key: wfcatalog.320streams.content_size_bytes
+          delay: '0'
+          history: 30d
+          units: B
+          description: 'Content size in bytes for wfcatalog 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: 2ed48342176a4c91beed821331906cff
+          name: 'perfCheck Wfcatalog - 320streams - Response Time Ms'
+          type: TRAP
+          key: wfcatalog.320streams.response_time_ms
+          delay: '0'
+          history: 30d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for wfcatalog 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: 86e9731143854e56a65caad9f5f54b58
+          name: 'perfCheck Wfcatalog - 320streams - Status Code'
+          type: TRAP
+          key: wfcatalog.320streams.status_code
+          delay: '0'
+          history: 30d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for wfcatalog 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: wfcatalog
+        - uuid: ea2b197c19ee497eaebfd58b30c53e4b
+          name: 'perfCheck Wfcatalog - 320streams - Transfer Rate'
+          type: TRAP
+          key: wfcatalog.320streams.transfer_rate
+          delay: '0'
+          history: 30d
+          units: bytes/s
+          description: 'Data transfer rate in bytes per second for wfcatalog 320streams'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 320streams
+            - tag: webservice
+              value: wfcatalog
       httptests:
         - uuid: fdf418ac33cf4374bd854cfef45d8604
           name: 'PC availability'
