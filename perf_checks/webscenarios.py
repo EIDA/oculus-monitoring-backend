@@ -6,18 +6,19 @@ import requests
 from pathlib import Path
 from urllib.parse import urlencode
 import tempfile
+from zabbix_utils import Sender, ItemValue
 
-# def load_yaml_files(nodes_dir):
-#     """load all EIDA nodes .yaml"""
-#     yaml_files = {}
-#     nodes_path = Path(nodes_dir)
+def load_yaml_files(nodes_dir):
+    """load all EIDA nodes .yaml"""
+    yaml_files = {}
+    nodes_path = Path(nodes_dir)
 
-#     for yaml_file in nodes_path.glob("*.yaml"):
-#         with open(yaml_file, 'r') as f:
-#             data = yaml.safe_load(f)
-#             yaml_files[yaml_file.stem] = data
+    for yaml_file in nodes_path.glob("*.yaml"):
+        with open(yaml_file, 'r') as f:
+            data = yaml.safe_load(f)
+            yaml_files[yaml_file.stem] = data
 
-#     return yaml_files
+    return yaml_files
 
 def build_url(endpoint, webservice, params):
     """build the URL for the requests"""
@@ -116,6 +117,48 @@ def make_request(url):
             'url': url
         }
 
+def send_to_zabbix(hostname, results):
+    """send results to zbx srv"""
+    try:
+        # zbx srv config
+        ZABBIX_SERVER = "127.0.0.1"
+        ZABBIX_PORT = 10051
+
+        # connecy to zbx srv
+        sender = Sender(server=ZABBIX_SERVER, port=ZABBIX_PORT)
+
+        print(f"\nsending data to zabbix for host: {hostname}")
+
+        items = []
+
+        for key, metrics in results.items():
+            # key format: dataselect.9streams
+            items.extend([
+                ItemValue(hostname, f"{key}.status_code", str(metrics['status_code'])),
+                ItemValue(hostname, f"{key}.response_time_ms", metrics['response_time_ms']),
+                ItemValue(hostname, f"{key}.content_size_bytes", metrics['content_size_bytes'])
+            ])
+
+            print(f"    {key}.status_code = {metrics['status_code']}")
+            print(f"    {key}.response_time_ms = {metrics['response_time_ms']}")
+            print(f"    {key}.content_size_bytes = {metrics['content_size_bytes']}")
+
+        # send via zbx srv
+        print(f"\nsending {len(items)} items to zabbix")
+        response = sender.send(items)
+        print(f"{hostname}: {response.processed}/{response.total} items send successfully")
+
+        if response.failed > 0:
+            print(f"    failed: {response.failed} items")
+            return False
+        else:
+            print(f"    all items sent successfully")
+            return True
+    except Exception as e:
+        print(f"    error sending to zabbix: {e}")
+        return False
+
+
 def process_node(node_name, node_data):
     """process one node and return results"""
     results = {}
@@ -152,31 +195,41 @@ def process_node(node_name, node_data):
     return results
 
 def main():
-    # Load only eposfr.yaml
-    eposfr_file = Path("../eida_nodes/eposfr.yaml")
+    # load all .yaml files
+    nodes_dir = "../eida_nodes"
+    yaml_data = load_yaml_files(nodes_dir)
     
-    if not eposfr_file.exists():
-        print("eposfr.yaml not found")
+    if not yaml_data:
+        print(f"no yaml files found in {nodes_dir}")
         return
-    
-    with open(eposfr_file, 'r') as f:
-        eposfr_data = yaml.safe_load(f)
     
     results_dir = Path("performance_results")
     results_dir.mkdir(exist_ok=True)
 
-    print(f"\nprocessing node: eposfr")
-    results = process_node('eposfr', eposfr_data)
+    for node_name, node_data in yaml_data.items():
+        print(f"\n{'='*50}")
+        print(f"processing node: {node_name}")
+        print(f"{'='*50}")
 
-    if results:
-        # save results in json
-        output_file = results_dir / "eposfr.json"
-        with open(output_file, 'w') as f:
-            json.dump(results, f, indent=2)
+        results = process_node(node_name, node_data)
 
-        print(f"result saved to {output_file}")
-    else:
-        print("no result for node eposfr")
+        if results:
+            # save results json
+            output_file = results_dir / f"{node_name}.json"
+            with open(output_file, 'w') as f:
+                json.dump(results, f, indent=2)
+
+            print(f"results saved to {output_file}")
+
+            # send to zbx
+            hostname = node_name.upper()
+            if send_to_zabbix(hostname, results):
+                print(f"{node_name}: perfCheck and zabbix sending completed")
+            else:
+                print(f"{node_name}: perfCheck completed but zabbix sending failed")
+        else:
+            print(f"no results for node {node_name}")
+    print(f"\nall nodes processing completed")
 
 if __name__ == "__main__":
     main()
