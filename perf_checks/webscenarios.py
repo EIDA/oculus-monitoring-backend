@@ -210,9 +210,6 @@ def main():
     if not yaml_data:
         print(f"no yaml files found in {nodes_dir}")
         return
-    
-    results_dir = Path("performance_results")
-    results_dir.mkdir(exist_ok=True)
 
     for node_name, node_data in yaml_data.items():
         print(f"\n{'='*50}")
@@ -222,13 +219,6 @@ def main():
         results = process_node(node_name, node_data)
 
         if results:
-            # save results json
-            output_file = results_dir / f"{node_name}.json"
-            with open(output_file, 'w') as f:
-                json.dump(results, f, indent=2)
-
-            print(f"results saved to {output_file}")
-
             # send to zbx
             hostname = node_name.upper()
             if send_to_zabbix(hostname, results):
@@ -237,6 +227,7 @@ def main():
                 print(f"{node_name}: perfCheck completed but zabbix sending failed")
         else:
             print(f"no results for node {node_name}")
+
     print(f"\nall nodes processing completed")
 
 if __name__ == "__main__":
