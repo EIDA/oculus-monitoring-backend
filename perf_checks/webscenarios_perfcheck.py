@@ -1,20 +1,11 @@
 # /// script
-# requires-python = ">=3.12"
+# requires-python = ">=3.13"
 # dependencies = [
-#     "itemvalue",
-#     "os",
-#     "path",
+#     "pyyaml",
 #     "requests",
-#     "sender",
-#     "shutil",
-#     "subprocess",
-#     "tempfile",
-#     "time",
-#     "urlencode",
-#     "yaml",
+#     "zabbix-utils",
 # ]
 # ///
-
 import os
 import yaml
 import time
@@ -23,7 +14,6 @@ import subprocess
 import shutil
 from pathlib import Path
 from urllib.parse import urlencode
-import tempfile
 from zabbix_utils import Sender, ItemValue
 
 def clone_repository():
@@ -110,19 +100,11 @@ def make_request(url):
         # download full content with get
         response = requests.get(url, headers=headers, timeout=60, allow_redirects=True)
 
-        # create temp files
-        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-            temp_file.write(response.content)
-            temp_file_path = temp_file.name
-        
         end_time = time.time()
         response_time = round((end_time - start_time) * 1000, 2)
 
         # get size file
-        content_size = os.path.getsize(temp_file_path)
-
-        # delete tmp file
-        os.unlink(temp_file_path)
+        content_size = len(response.content)
 
         return {
             'status_code': response.status_code,
@@ -133,8 +115,6 @@ def make_request(url):
     
     # exceltions timeout 
     except requests.exceptions.Timeout:
-        if temp_file_path and os.path.exists(temp_file_path):
-            os.unlink(temp_file_path)
         return {
             'status_code': 'TIMEOUT',
             'response_time_ms': 60000,
@@ -143,8 +123,6 @@ def make_request(url):
         }
     # exception connection error
     except requests.exceptions.ConnectionError:
-        if temp_file_path and os.path.exists(temp_file_path):
-            os.unlink(temp_file_path)
         return {
             'status_code': 'CONNECTION_ERROR',
             'response_time_ms': 0,
@@ -153,8 +131,6 @@ def make_request(url):
         }
     # eception request exception
     except requests.exceptions.RequestException as e:
-        if temp_file_path and os.path.exists(temp_file_path):
-            os.unlink(temp_file_path)
         return {
             'status_code': 'REQUEST_ERROR',
             'response_time_ms': 0,
@@ -163,8 +139,6 @@ def make_request(url):
             'url': url
         }
     except Exception as e:
-        if temp_file_path and os.path.exists(temp_file_path):
-            os.unlink(temp_file_path)
         return {
             'status_code': 'ERROR',
             'response_time_ms': 0,
