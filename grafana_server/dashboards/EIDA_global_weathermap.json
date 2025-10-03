@@ -1277,7 +1277,7 @@
           }
         }
       ],
-      "title": "routing present healthcheck",
+      "title": "routing central healthcheck",
       "transformations": [
         {
           "id": "renameByRegex",
@@ -1395,6 +1395,6 @@
   "timezone": "browser",
   "title": "EIDA global WeatherMap",
   "uid": "cen19lnkzcsu8b",
-  "version": 10,
+  "version": 11,
   "weekStart": "monday"
 }
