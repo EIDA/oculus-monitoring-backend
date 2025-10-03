@@ -34,7 +34,7 @@ def log_and_print(message, level=logging.INFO):
     logger.log(level, message)
 
 def clone_repository():
-    """clone the oculus-monitoring-backend repo"""
+    """clone the oculus-monitoring-backend repo """
     repo_url = "https://github.com/EIDA/oculus-monitoring-backend"
     clone_dir = "oculus-monitoring-backend"
 
