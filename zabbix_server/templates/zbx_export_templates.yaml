@@ -1646,6 +1646,9 @@ zabbix_export:
         - uuid: 32b3e3d018b2423c899d92878cbe3567
           name: availability
           delay: 15m
+          headers:
+            - name: User-agent
+              value: oculus-monitor
           steps:
             - name: 'availability accessible'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
@@ -1680,6 +1683,9 @@ zabbix_export:
         - uuid: dfcb1e93f5c9489598c189e82f523833
           name: dataselect
           delay: 15m
+          headers:
+            - name: User-agent
+              value: oculus-monitor
           steps:
             - name: 'dataselect accessible'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/'
@@ -1713,6 +1719,9 @@ zabbix_export:
         - uuid: 482c8b39cf3b4aca8dc9b7859373c210
           name: 'present in central eida routing'
           delay: 60m
+          headers:
+            - name: User-agent
+              value: oculus-monitor
           steps:
             - name: 'EIDA Routing infomation'
               url: 'https://www.orfeus-eu.org/eidaws/routing/1/query'
@@ -1729,6 +1738,9 @@ zabbix_export:
         - uuid: d3a4a789f3ee42ec8418b6e5044c8804
           name: 'routing information published at node'
           delay: 15m
+          headers:
+            - name: User-agent
+              value: oculus-monitor
           steps:
             - name: 'eida routing XML file'
               url: 'https://{$ENDPOINT}/{$ROUTINGFILE}'
@@ -1741,6 +1753,9 @@ zabbix_export:
         - uuid: 681a5d0e1bd24a37ac4ea729a58e376f
           name: seedpsd
           delay: 5m
+          headers:
+            - name: User-agent
+              value: oculus-monitor
           status: DISABLED
           steps:
             - name: 'seedpsd accesible'
@@ -1771,6 +1786,9 @@ zabbix_export:
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
           delay: 15m
+          headers:
+            - name: User-agent
+              value: oculus-monitor
           steps:
             - name: 'station accessible'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/'
@@ -1803,6 +1821,9 @@ zabbix_export:
         - uuid: a5d4964d6ad84e44829dbb8dddef25cc
           name: wfcatalog
           delay: 15m
+          headers:
+            - name: User-agent
+              value: oculus-monitor
           steps:
             - name: 'wfcatalog accessible'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
