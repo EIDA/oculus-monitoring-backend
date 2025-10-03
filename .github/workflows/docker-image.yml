@@ -14,7 +14,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: chdir to script
-      run: cd perf_checks
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag oculus_perfcheck:main
+      run: cd perf_check ; docker build . --file Dockerfile --tag oculus_perfcheck:main
