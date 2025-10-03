@@ -1,6 +1,22 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "itemvalue",
+#     "os",
+#     "path",
+#     "requests",
+#     "sender",
+#     "shutil",
+#     "subprocess",
+#     "tempfile",
+#     "time",
+#     "urlencode",
+#     "yaml",
+# ]
+# ///
+
 import os
 import yaml
-import json
 import time
 import requests
 import subprocess
