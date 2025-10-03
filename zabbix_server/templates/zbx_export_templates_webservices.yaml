@@ -170,7 +170,7 @@ zabbix_export:
               required: '<application'
               status_codes: '200'
           tags:
-            - tag: Application
+            - tag: webservice
               value: availability
         - uuid: dfcb1e93f5c9489598c189e82f523833
           name: dataselect
@@ -206,7 +206,7 @@ zabbix_export:
               required: '<application'
               status_codes: '200'
           tags:
-            - tag: Application
+            - tag: webservice
               value: dataselect
         - uuid: 482c8b39cf3b4aca8dc9b7859373c210
           name: 'present in central eida routing'
@@ -225,7 +225,7 @@ zabbix_export:
               required: '{$ENDPOINT}'
               status_codes: '200'
           tags:
-            - tag: Application
+            - tag: webservice
               value: routing_present
         - uuid: d3a4a789f3ee42ec8418b6e5044c8804
           name: 'routing information published at node'
@@ -240,7 +240,7 @@ zabbix_export:
               required: 'ns0:route networkCode="{$ONLINECHECK_NET}"'
               status_codes: '200'
           tags:
-            - tag: Application
+            - tag: webservice
               value: routing_information
         - uuid: 681a5d0e1bd24a37ac4ea729a58e376f
           name: seedpsd
@@ -273,7 +273,7 @@ zabbix_export:
               retrieve_mode: HEADERS
               status_codes: '200'
           tags:
-            - tag: Application
+            - tag: webservice
               value: seedpsd
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
@@ -308,7 +308,7 @@ zabbix_export:
               required: '<application'
               status_codes: '200'
           tags:
-            - tag: Application
+            - tag: webservice
               value: station
         - uuid: a5d4964d6ad84e44829dbb8dddef25cc
           name: wfcatalog
@@ -345,7 +345,7 @@ zabbix_export:
               required: '<application'
               status_codes: '200'
           tags:
-            - tag: Application
+            - tag: webservice
               value: wfcatalog
       macros:
         - macro: '{$EIDA_WS_ENDPOINT}'
