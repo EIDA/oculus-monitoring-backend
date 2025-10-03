@@ -3,10 +3,42 @@ import yaml
 import json
 import time
 import requests
+import subprocess
+import shutil
 from pathlib import Path
 from urllib.parse import urlencode
 import tempfile
 from zabbix_utils import Sender, ItemValue
+
+def clone_repository():
+    """clone the oculus-monitoring-backend repo"""
+    repo_url = "https://github.com/EIDA/oculus-monitoring-backend"
+    clone_dir = "oculus-monitoring-backend"
+
+    try:
+        # remove existing repo if exists
+        if os.path.exists(clone_dir):
+            shutil.rmtree(clone_dir)
+
+        print(f"cloning repository from {repo_url}")
+        subprocess.run(['git', 'clone', repo_url, clone_dir], check=True, capture_output=True)
+
+        nodes_dir = os.path.join(clone_dir, "eida_nodes")
+
+        if not os.path.exists(nodes_dir):
+            print(f"eida_nodes directory not found, in cloned repository")
+            return None
+        
+        print(f"repository cloned successfully to {clone_dir}")
+        return nodes_dir
+    
+    except subprocess.CalledProcessError as e:
+        print(f"error cloning repository: {e}")
+        return None
+    except Exception as e:
+        print(f"unexpected error during git clone: {e}")
+        return None
+
 
 def load_yaml_files(nodes_dir):
     """load all EIDA nodes .yaml"""
@@ -60,7 +92,7 @@ def make_request(url):
         }
 
         # download full content with get
-        response = requests.get(url, headers=headers, timeout=30, allow_redirects=True)
+        response = requests.get(url, headers=headers, timeout=60, allow_redirects=True)
 
         # create temp files
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
@@ -89,7 +121,7 @@ def make_request(url):
             os.unlink(temp_file_path)
         return {
             'status_code': 'TIMEOUT',
-            'response_time_ms': 30000,
+            'response_time_ms': 60000,
             'content_size_bytes': 0,
             'url': url
         }
@@ -140,16 +172,24 @@ def send_to_zabbix(hostname, results):
         items = []
 
         for key, metrics in results.items():
+            # calculate transfer rate (bytes/s)
+            transfer_rate = 0
+            if metrics['response_time_ms'] > 0 and metrics['content_size_bytes'] > 0:
+                # convert to seconds and calc bytes/s
+                transfer_rate = round(metrics['content_size_bytes'] / (metrics['response_time_ms'] / 1000), 2)
+
             # key format: dataselect.9streams
             items.extend([
                 ItemValue(hostname, f"{key}.status_code", str(metrics['status_code'])),
                 ItemValue(hostname, f"{key}.response_time_ms", metrics['response_time_ms']),
-                ItemValue(hostname, f"{key}.content_size_bytes", metrics['content_size_bytes'])
+                ItemValue(hostname, f"{key}.content_size_bytes", metrics['content_size_bytes']),
+                ItemValue(hostname, f"{key}.transfer_rate", transfer_rate)
             ])
 
             print(f"    {key}.status_code = {metrics['status_code']}")
             print(f"    {key}.response_time_ms = {metrics['response_time_ms']}")
             print(f"    {key}.content_size_bytes = {metrics['content_size_bytes']}")
+            print(f"    {key}.transfer_rate = {transfer_rate} bytes/sec")
 
         # send via zbx srv
         print(f"\nsending {len(items)} items to zabbix")
@@ -204,7 +244,12 @@ def process_node(node_name, node_data):
 
 def main():
     # load all .yaml files
-    nodes_dir = "../eida_nodes"
+    nodes_dir = clone_repository()
+
+    if not nodes_dir:
+        print("failed to clone repository or find eida_nodes directory")
+        return
+
     yaml_data = load_yaml_files(nodes_dir)
     
     if not yaml_data:
