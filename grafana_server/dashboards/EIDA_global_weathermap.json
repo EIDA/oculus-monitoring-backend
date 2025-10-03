@@ -161,7 +161,7 @@
             "filter": "Response code for step \"dataselect short request\" of scenario \"dataselect\"."
           },
           "itemTag": {
-            "filter": "Application: dataselect"
+            "filter": "webservice: dataselect"
           },
           "macro": {
             "filter": ""
@@ -432,7 +432,7 @@
             "filter": "Response code for step \"station accessible\" of scenario \"station\"."
           },
           "itemTag": {
-            "filter": "Application: station"
+            "filter": "webservice: station"
           },
           "macro": {
             "filter": ""
@@ -703,7 +703,7 @@
             "filter": "Response code for step \"availability accessible\" of scenario \"availability\"."
           },
           "itemTag": {
-            "filter": "Application: availability"
+            "filter": "webservice: availability"
           },
           "macro": {
             "filter": ""
@@ -974,7 +974,7 @@
             "filter": "Response code for step \"wfcatalog accessible\" of scenario \"wfcatalog\"."
           },
           "itemTag": {
-            "filter": "Application: wfcatalog"
+            "filter": "webservice: wfcatalog"
           },
           "macro": {
             "filter": ""
@@ -1245,7 +1245,7 @@
             "filter": "Response code for step \"EIDA Routing infomation\" of scenario \"present in central eida routing\"."
           },
           "itemTag": {
-            "filter": "Application: routing_present"
+            "filter": "webservice: routing_present"
           },
           "macro": {
             "filter": ""
@@ -1395,6 +1395,6 @@
   "timezone": "browser",
   "title": "EIDA global WeatherMap",
   "uid": "cen19lnkzcsu8b",
-  "version": 9,
+  "version": 10,
   "weekStart": "monday"
 }
