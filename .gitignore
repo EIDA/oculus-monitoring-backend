@@ -3,3 +3,4 @@
 ansible/files/macros/
 perf_checks/performance_results/
 perf_checks/oculus-monitoring-backend
+perf_checks/webscenarios_perfcheck.log

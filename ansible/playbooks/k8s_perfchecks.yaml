@@ -1,0 +1,22 @@
+---
+- name: Deploy tests perfchecks python scrips on k8s cluster
+  kubernetes.core.k8s:
+    state: present
+    namespace: eida-monitoring
+    definition:
+      apiVersion: batch/v1
+      kind: CronJob
+      metadata:
+        name: oculus-perfchecks
+      spec:
+        suspend: false
+        schedule: "0 13 * * *" # everyday at 1pm
+        jobTemplate:
+          spec:
+            template:
+              spec:
+                restartPolicy: OnFailure
+                containers:
+                  - name: oculus-perfchecks
+                    image: ghcr.io/eida/oculus-perfchecks
+                    imagePullPolicy: Always

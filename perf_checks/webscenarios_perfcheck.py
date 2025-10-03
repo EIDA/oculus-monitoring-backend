@@ -12,9 +12,26 @@ import time
 import requests
 import subprocess
 import shutil
+import logging
 from pathlib import Path
 from urllib.parse import urlencode
 from zabbix_utils import Sender, ItemValue
+
+# config logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('webscenarios_perfcheck.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+def log_and_print(message, level=logging.INFO):
+    """utilities fot log and print"""
+    print(message)
+    logger.log(level, message)
 
 def clone_repository():
     """clone the oculus-monitoring-backend repo"""
@@ -26,23 +43,23 @@ def clone_repository():
         if os.path.exists(clone_dir):
             shutil.rmtree(clone_dir)
 
-        print(f"cloning repository from {repo_url}")
+        log_and_print(f"cloning repository from {repo_url}")
         subprocess.run(['git', 'clone', repo_url, clone_dir], check=True, capture_output=True)
 
         nodes_dir = os.path.join(clone_dir, "eida_nodes")
 
         if not os.path.exists(nodes_dir):
-            print(f"eida_nodes directory not found, in cloned repository")
+            log_and_print(f"eida_nodes directory not found, in cloned repository")
             return None
         
-        print(f"repository cloned successfully to {clone_dir}")
+        log_and_print(f"repository cloned successfully to {clone_dir}")
         return nodes_dir
     
     except subprocess.CalledProcessError as e:
-        print(f"error cloning repository: {e}")
+        log_and_print(f"error cloning repository: {e}")
         return None
     except Exception as e:
-        print(f"unexpected error during git clone: {e}")
+        log_and_print(f"unexpected error during git clone: {e}")
         return None
 
 
@@ -151,13 +168,13 @@ def send_to_zabbix(hostname, results):
     """send results to zbx srv"""
     try:
         # zbx srv config
-        ZABBIX_SERVER = "127.0.0.1"
+        ZABBIX_SERVER = os.getenv('ZABBIX_SERVER')
         ZABBIX_PORT = 10051
 
         # connecy to zbx srv
         sender = Sender(server=ZABBIX_SERVER, port=ZABBIX_PORT)
 
-        print(f"\nsending data to zabbix for host: {hostname}")
+        log_and_print(f"\nsending data to zabbix for host: {hostname}")
 
         items = []
 
@@ -176,24 +193,24 @@ def send_to_zabbix(hostname, results):
                 ItemValue(hostname, f"{key}.transfer_rate", transfer_rate)
             ])
 
-            print(f"    {key}.status_code = {metrics['status_code']}")
-            print(f"    {key}.response_time_ms = {metrics['response_time_ms']}")
-            print(f"    {key}.content_size_bytes = {metrics['content_size_bytes']}")
-            print(f"    {key}.transfer_rate = {transfer_rate} bytes/sec")
+            log_and_print(f"    {key}.status_code = {metrics['status_code']}")
+            log_and_print(f"    {key}.response_time_ms = {metrics['response_time_ms']}")
+            log_and_print(f"    {key}.content_size_bytes = {metrics['content_size_bytes']}")
+            log_and_print(f"    {key}.transfer_rate = {transfer_rate} bytes/sec")
 
         # send via zbx srv
-        print(f"\nsending {len(items)} items to zabbix")
+        log_and_print(f"\nsending {len(items)} items to zabbix")
         response = sender.send(items)
-        print(f"{hostname}: {response.processed}/{response.total} items send successfully")
+        log_and_print(f"{hostname}: {response.processed}/{response.total} items send successfully")
 
         if response.failed > 0:
-            print(f"    failed: {response.failed} items")
+            log_and_print(f"    failed: {response.failed} items")
             return False
         else:
-            print(f"    all items sent successfully")
+            log_and_print(f"    all items sent successfully")
             return True
     except Exception as e:
-        print(f"    error sending to zabbix: {e}")
+        log_and_print(f"    error sending to zabbix: {e}")
         return False
 
 
@@ -203,7 +220,7 @@ def process_node(node_name, node_data):
     endpoint = node_data.get('endpoint')
 
     if not endpoint:
-        print(f"no endpoint found for node {node_name}")
+        log_and_print(f"no endpoint found for node {node_name}")
         return results
     
     perf_checks = node_data.get('perfCheck', [])
@@ -217,7 +234,7 @@ def process_node(node_name, node_data):
 
         url = build_url(endpoint, webservice, check)
 
-        print(f"testing {node_name}: {webservice}.{scenario}")
+        log_and_print(f"testing {node_name}: {webservice}.{scenario}")
         result = make_request(url)
 
         # store result
@@ -228,7 +245,7 @@ def process_node(node_name, node_data):
             'content_size_bytes': result['content_size_bytes']
         }
 
-        print(f" -> status: {result['status_code']}, time: {result['response_time_ms']}ms, size: {result['content_size_bytes']} bytes")
+        log_and_print(f" -> status: {result['status_code']}, time: {result['response_time_ms']}ms, size: {result['content_size_bytes']} bytes")
     
     return results
 
@@ -237,19 +254,19 @@ def main():
     nodes_dir = clone_repository()
 
     if not nodes_dir:
-        print("failed to clone repository or find eida_nodes directory")
+        log_and_print("failed to clone repository or find eida_nodes directory")
         return
 
     yaml_data = load_yaml_files(nodes_dir)
     
     if not yaml_data:
-        print(f"no yaml files found in {nodes_dir}")
+        log_and_print(f"no yaml files found in {nodes_dir}")
         return
 
     for node_name, node_data in yaml_data.items():
-        print(f"\n{'='*50}")
-        print(f"processing node: {node_name}")
-        print(f"{'='*50}")
+        log_and_print(f"\n{'='*50}")
+        log_and_print(f"processing node: {node_name}")
+        log_and_print(f"{'='*50}")
 
         results = process_node(node_name, node_data)
 
@@ -257,13 +274,13 @@ def main():
             # send to zbx
             hostname = node_name.upper()
             if send_to_zabbix(hostname, results):
-                print(f"{node_name}: perfCheck and zabbix sending completed")
+                log_and_print(f"{node_name}: perfCheck and zabbix sending completed")
             else:
-                print(f"{node_name}: perfCheck completed but zabbix sending failed")
+                log_and_print(f"{node_name}: perfCheck completed but zabbix sending failed")
         else:
-            print(f"no results for node {node_name}")
+            log_and_print(f"no results for node {node_name}")
 
-    print(f"\nall nodes processing completed")
+    log_and_print(f"\nall nodes processing completed")
 
 if __name__ == "__main__":
     main()
