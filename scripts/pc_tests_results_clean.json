@@ -2,706 +2,679 @@
   {
     "testid": "statxt-1min-koeri-54streams",
     "timestamp": "2025-06-23 07:22:09.317932",
-    "requestduration": "00:00:01.351381", 
+    "requestduration": "00:00:01.351381",
     "returncode": "200",
     "responselength": "8606"
   },
   {
     "testid": "statxt-1min-sed-54streams",
     "timestamp": "2025-06-23 07:22:07.966072",
-    "requestduration": "00:00:02.007327", 
+    "requestduration": "00:00:02.007327",
     "returncode": "200",
     "responselength": "6725"
   },
   {
     "testid": "statxt-1min-resif-54streams",
     "timestamp": "2025-06-23 07:22:05.958156",
-    "requestduration": "00:00:01.844989", 
+    "requestduration": "00:00:01.844989",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "staxmlresp-1min-sed-54streams",
     "timestamp": "2025-06-23 07:22:04.112891",
-    "requestduration": "00:00:02.298042", 
+    "requestduration": "00:00:02.298042",
     "returncode": "200",
     "responselength": "1008660"
   },
   {
     "testid": "staxmlresp-1min-resif-54streams",
     "timestamp": "2025-06-23 07:22:01.814259",
-    "requestduration": "00:00:01.880137", 
+    "requestduration": "00:00:01.880137",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "staxmlresp-1min-odc-54streams",
     "timestamp": "2025-06-23 07:21:59.93355",
-    "requestduration": "00:00:01.678184", 
+    "requestduration": "00:00:01.678184",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "staxmlresp-1min-niep-54streams",
     "timestamp": "2025-06-23 07:21:58.255045",
-    "requestduration": "00:00:05.672007", 
+    "requestduration": "00:00:05.672007",
     "returncode": "200",
     "responselength": "3867723"
   },
   {
     "testid": "avail-1day-text-resif-320streams",
     "timestamp": "2025-06-23 07:21:52.582418",
-    "requestduration": "00:00:13.908373", 
+    "requestduration": "00:00:13.908373",
     "returncode": "200",
     "responselength": "48811"
   },
   {
     "testid": "avail-1day-text-gfz-320streams",
     "timestamp": "2025-06-23 07:21:38.673366",
-    "requestduration": "00:00:04.538125", 
+    "requestduration": "00:00:04.538125",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "avail-1day-text-odc-320streams",
     "timestamp": "2025-06-23 07:21:34.134628",
-    "requestduration": "00:08:51.409414", 
+    "requestduration": "00:08:51.409414",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "avail-1day-text-sed-320streams",
     "timestamp": "2025-06-23 07:12:42.724592",
-    "requestduration": "00:00:28.593827", 
+    "requestduration": "00:00:28.593827",
     "returncode": "200",
     "responselength": "33660"
   },
   {
     "testid": "avail-1day-text-afad-54streams",
     "timestamp": "2025-06-23 07:12:14.130208",
-    "requestduration": "00:00:00.583029", 
+    "requestduration": "00:00:00.583029",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "statxt-1min-lmu-54streams",
     "timestamp": "2025-06-23 07:12:13.546731",
-    "requestduration": "00:00:01.454537", 
+    "requestduration": "00:00:01.454537",
     "returncode": "200",
     "responselength": "9722"
   },
   {
     "testid": "staxml-1min-sed-54streams",
     "timestamp": "2025-06-23 07:12:12.091634",
-    "requestduration": "00:00:02.153593", 
+    "requestduration": "00:00:02.153593",
     "returncode": "200",
     "responselength": "68401"
   },
   {
-    "testid": "staxml-1min-lmu-54streams",
+    "testid": "<-1min-lmu-54streams",
     "timestamp": "2025-06-23 07:12:09.937451",
-    "requestduration": "00:00:02.277855", 
+    "requestduration": "00:00:02.277855",
     "returncode": "200",
     "responselength": "59787"
   },
   {
     "testid": "staxml-1min-uib-54streams",
     "timestamp": "2025-06-23 07:12:07.658931",
-    "requestduration": "00:00:03.51803", 
+    "requestduration": "00:00:03.51803",
     "returncode": "200",
     "responselength": "126969"
   },
   {
     "testid": "statxt-1min-iris-54streams",
     "timestamp": "2025-06-23 07:12:04.140312",
-    "requestduration": "00:00:00.171947", 
+    "requestduration": "00:00:00.171947",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "avail-1day-text-ingv-54streams",
     "timestamp": "2025-06-23 07:12:03.967901",
-    "requestduration": "00:00:23.176666", 
+    "requestduration": "00:00:23.176666",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "avail-1day-text-resif-54streams",
     "timestamp": "2025-06-23 07:11:40.790623",
-    "requestduration": "00:00:03.108836", 
+    "requestduration": "00:00:03.108836",
     "returncode": "200",
     "responselength": "6846"
   },
   {
-    "testid": "avail-1day-text-odc-54streams",
-    "timestamp": "2025-06-23 07:11:37.681181",
-    "requestduration": "00:01:20.085998",
-    "connected": "True",
-    "completed": "False",
-    "returncode": "NULL",
-    "responselength": "0"
-  },
-  {
     "testid": "avail-1day-text-bgr-54streams",
     "timestamp": "2025-06-23 07:10:17.594639",
-    "requestduration": "00:00:09.406265", 
+    "requestduration": "00:00:09.406265",
     "returncode": "200",
     "responselength": "7173"
   },
   {
     "testid": "avail-1day-text-uib-54streams",
     "timestamp": "2025-06-23 07:10:08.187753",
-    "requestduration": "00:00:07.590726", 
+    "requestduration": "00:00:07.590726",
     "returncode": "200",
     "responselength": "6410"
   },
   {
-    "testid": "avail-1day-text-niep-54streams",
-    "timestamp": "2025-06-23 07:10:00.596439",
-    "requestduration": "00:01:20.085886",
-    "connected": "True",
-    "completed": "False",
-    "returncode": "NULL",
-    "responselength": "0"
-  },
-  {
     "testid": "avail-1day-text-sed-54streams",
     "timestamp": "2025-06-23 07:08:40.509986",
-    "requestduration": "00:00:05.067904", 
+    "requestduration": "00:00:05.067904",
     "returncode": "200",
     "responselength": "5974"
   },
   {
     "testid": "avail-1day-text-bgs-9streams",
     "timestamp": "2025-06-23 07:08:35.441375",
-    "requestduration": "00:00:02.612581", 
+    "requestduration": "00:00:02.612581",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "avail-1day-text-afad-9streams",
     "timestamp": "2025-06-23 07:08:32.828107",
-    "requestduration": "00:00:06.97583", 
+    "requestduration": "00:00:06.97583",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "avail-1day-text-resif-9streams",
     "timestamp": "2025-06-23 07:08:25.8515",
-    "requestduration": "00:00:00.551871", 
+    "requestduration": "00:00:00.551871",
     "returncode": "200",
     "responselength": "1069"
   },
   {
     "testid": "avail-1day-text-ingv-9streams",
     "timestamp": "2025-06-23 07:08:25.298941",
-    "requestduration": "00:00:12.440301", 
+    "requestduration": "00:00:12.440301",
     "returncode": "200",
     "responselength": "23959"
   },
   {
     "testid": "avail-1day-text-bgr-9streams",
     "timestamp": "2025-06-23 07:08:12.858032",
-    "requestduration": "00:00:00.979538", 
+    "requestduration": "00:00:00.979538",
     "returncode": "200",
     "responselength": "1069"
   },
   {
-    "testid": "avail-1day-text-niep-9streams",
-    "timestamp": "2025-06-23 07:08:11.877887",
-    "requestduration": "00:00:40.04577",
-    "connected": "True",
-    "completed": "False",
-    "returncode": "NULL",
-    "responselength": "0"
-  },
-  {
     "testid": "avail-1day-text-gfz-9streams",
     "timestamp": "2025-06-23 07:07:31.831457",
-    "requestduration": "00:00:00.284673", 
+    "requestduration": "00:00:00.284673",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "avail-1day-text-odc-9streams",
     "timestamp": "2025-06-23 07:07:31.546077",
-    "requestduration": "00:00:15.452412", 
+    "requestduration": "00:00:15.452412",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "avail-1day-text-iris-9streams",
     "timestamp": "2025-06-23 07:07:16.093056",
-    "requestduration": "00:00:00.838472", 
+    "requestduration": "00:00:00.838472",
     "returncode": "200",
     "responselength": "851"
   },
   {
     "testid": "avail-1day-text-sed-9streams",
     "timestamp": "2025-06-23 07:07:15.253958",
-    "requestduration": "00:00:01.216269", 
+    "requestduration": "00:00:01.216269",
     "returncode": "200",
     "responselength": "1069"
   },
   {
     "testid": "avail-1day-text-noa-9streams",
     "timestamp": "2025-06-23 07:07:14.036976",
-    "requestduration": "00:00:29.649123", 
+    "requestduration": "00:00:29.649123",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "staxmlresp-1min-bgs-9streams",
     "timestamp": "2025-06-23 07:06:44.387222",
-    "requestduration": "00:00:00.8394", 
+    "requestduration": "00:00:00.8394",
     "returncode": "200",
     "responselength": "164029"
   },
   {
     "testid": "staxml-1min-bgs-9streams",
     "timestamp": "2025-06-23 07:06:43.547143",
-    "requestduration": "00:00:00.834899", 
+    "requestduration": "00:00:00.834899",
     "returncode": "200",
     "responselength": "4950"
   },
   {
     "testid": "staxmlresp-1min-afad-9streams",
     "timestamp": "2025-06-23 07:06:42.711893",
-    "requestduration": "00:00:11.648126", 
+    "requestduration": "00:00:11.648126",
     "returncode": "200",
     "responselength": "7249663"
   },
   {
     "testid": "statxt-1min-afad-9streams",
     "timestamp": "2025-06-23 07:06:31.063083",
-    "requestduration": "00:00:11.429495", 
+    "requestduration": "00:00:11.429495",
     "returncode": "200",
     "responselength": "42488"
   },
   {
     "testid": "staxmlresp-1min-sed-9streams",
     "timestamp": "2025-06-23 07:06:19.633022",
-    "requestduration": "00:00:00.411653", 
+    "requestduration": "00:00:00.411653",
     "returncode": "200",
     "responselength": "124775"
   },
   {
     "testid": "staxmlresp-1min-resif-9streams",
     "timestamp": "2025-06-23 07:06:19.220811",
-    "requestduration": "00:00:00.370849", 
+    "requestduration": "00:00:00.370849",
     "returncode": "200",
     "responselength": "217714"
   },
   {
     "testid": "staxmlresp-1min-odc-9streams",
     "timestamp": "2025-06-23 07:06:18.849349",
-    "requestduration": "00:00:00.601843", 
+    "requestduration": "00:00:00.601843",
     "returncode": "200",
     "responselength": "31308"
   },
   {
     "testid": "staxmlresp-1min-noa-9streams",
     "timestamp": "2025-06-23 07:06:18.246916",
-    "requestduration": "00:00:07.208927", 
+    "requestduration": "00:00:07.208927",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "staxmlresp-1min-niep-9streams",
     "timestamp": "2025-06-23 07:06:11.037443",
-    "requestduration": "00:00:00.610458", 
+    "requestduration": "00:00:00.610458",
     "returncode": "200",
     "responselength": "59579"
   },
   {
     "testid": "staxmlresp-1min-lmu-9streams",
     "timestamp": "2025-06-23 07:06:10.426423",
-    "requestduration": "00:00:00.395791", 
+    "requestduration": "00:00:00.395791",
     "returncode": "200",
     "responselength": "173724"
   },
   {
     "testid": "staxmlresp-1min-bgr-9streams",
     "timestamp": "2025-06-23 07:06:10.030106",
-    "requestduration": "00:00:00.422788", 
+    "requestduration": "00:00:00.422788",
     "returncode": "200",
     "responselength": "19882"
   },
   {
     "testid": "statxt-1min-sed-9streams",
     "timestamp": "2025-06-23 07:06:09.606793",
-    "requestduration": "00:00:00.38845", 
+    "requestduration": "00:00:00.38845",
     "returncode": "200",
     "responselength": "1286"
   },
   {
     "testid": "statxt-1min-resif-9streams",
     "timestamp": "2025-06-23 07:06:09.217805",
-    "requestduration": "00:00:00.364328", 
+    "requestduration": "00:00:00.364328",
     "returncode": "200",
     "responselength": "1682"
   },
   {
     "testid": "statxt-1min-odc-9streams",
     "timestamp": "2025-06-23 07:06:08.852928",
-    "requestduration": "00:00:00.399263", 
+    "requestduration": "00:00:00.399263",
     "returncode": "200",
     "responselength": "1238"
   },
   {
     "testid": "statxt-1min-noa-9streams",
     "timestamp": "2025-06-23 07:06:08.45304",
-    "requestduration": "00:00:07.228854", 
+    "requestduration": "00:00:07.228854",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "statxt-1min-niep-9streams",
     "timestamp": "2025-06-23 07:06:01.223664",
-    "requestduration": "00:00:00.584241", 
+    "requestduration": "00:00:00.584241",
     "returncode": "200",
     "responselength": "1643"
   },
   {
     "testid": "statxt-1min-lmu-9streams",
     "timestamp": "2025-06-23 07:06:00.6389",
-    "requestduration": "00:00:00.39657", 
+    "requestduration": "00:00:00.39657",
     "returncode": "200",
     "responselength": "1845"
   },
   {
     "testid": "statxt-1min-koeri-9streams",
     "timestamp": "2025-06-23 07:06:00.241772",
-    "requestduration": "00:00:01.168745", 
+    "requestduration": "00:00:01.168745",
     "returncode": "200",
     "responselength": "1517"
   },
   {
     "testid": "statxt-1min-iris-9streams",
     "timestamp": "2025-06-23 07:05:59.072467",
-    "requestduration": "00:00:01.433832", 
+    "requestduration": "00:00:01.433832",
     "returncode": "200",
     "responselength": "1400"
   },
   {
     "testid": "statxt-1min-ingv-9streams",
     "timestamp": "2025-06-23 07:05:57.638164",
-    "requestduration": "00:00:03.289351", 
+    "requestduration": "00:00:03.289351",
     "returncode": "200",
     "responselength": "6499"
   },
   {
     "testid": "statxt-1min-gfz-9streams",
     "timestamp": "2025-06-23 07:05:54.348448",
-    "requestduration": "00:00:00.292578", 
+    "requestduration": "00:00:00.292578",
     "returncode": "200",
     "responselength": "2429"
   },
   {
     "testid": "statxt-1min-bgr-9streams",
     "timestamp": "2025-06-23 07:05:54.055274",
-    "requestduration": "00:00:00.433316", 
+    "requestduration": "00:00:00.433316",
     "returncode": "200",
     "responselength": "1160"
   },
   {
     "testid": "staxml-1min-sed-9streams",
     "timestamp": "2025-06-23 07:05:53.621403",
-    "requestduration": "00:00:00.519523", 
+    "requestduration": "00:00:00.519523",
     "returncode": "200",
     "responselength": "10523"
   },
   {
     "testid": "staxml-1min-resif-9streams",
     "timestamp": "2025-06-23 07:05:53.101312",
-    "requestduration": "00:00:00.361819", 
+    "requestduration": "00:00:00.361819",
     "returncode": "200",
     "responselength": "17770"
   },
   {
     "testid": "staxml-1min-noa-9streams",
     "timestamp": "2025-06-23 07:05:52.738883",
-    "requestduration": "00:00:07.098769", 
+    "requestduration": "00:00:07.098769",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "1minPM-bgs-320streams",
     "timestamp": "2025-06-23 07:05:45.639766",
-    "requestduration": "00:00:25.163987", 
+    "requestduration": "00:00:25.163987",
     "returncode": "200",
     "responselength": "1814528"
   },
   {
     "testid": "1minPM-sed-320streams",
     "timestamp": "2025-06-23 07:05:20.475438",
-    "requestduration": "00:00:15.852736", 
+    "requestduration": "00:00:15.852736",
     "returncode": "200",
     "responselength": "3985408"
   },
   {
     "testid": "1minAM-resif-320streams",
     "timestamp": "2025-06-23 07:05:04.622391",
-    "requestduration": "00:00:30.195336", 
+    "requestduration": "00:00:30.195336",
     "returncode": "200",
     "responselength": "4460544"
   },
   {
     "testid": "1minPM-resif-320streams",
     "timestamp": "2025-06-23 07:04:34.426745",
-    "requestduration": "00:00:10.609102", 
+    "requestduration": "00:00:10.609102",
     "returncode": "200",
     "responselength": "4521984"
   },
   {
     "testid": "1minAM-gfz-320streams",
     "timestamp": "2025-06-23 07:04:23.817343",
-    "requestduration": "00:01:31.536837", 
+    "requestduration": "00:01:31.536837",
     "returncode": "200",
     "responselength": "1668096"
   },
   {
     "testid": "1minPM-gfz-320streams",
     "timestamp": "2025-06-23 07:02:52.280152",
-    "requestduration": "00:01:17.516083", 
+    "requestduration": "00:01:17.516083",
     "returncode": "200",
     "responselength": "1472512"
   },
   {
     "testid": "1minPM-odc-320streams",
     "timestamp": "2025-06-23 07:01:34.76367",
-    "requestduration": "00:00:36.35732", 
+    "requestduration": "00:00:36.35732",
     "returncode": "200",
     "responselength": "1872384"
   },
   {
     "testid": "1minPM-niep-320streams",
     "timestamp": "2025-06-23 07:00:58.405958",
-    "requestduration": "00:01:15.456136", 
+    "requestduration": "00:01:15.456136",
     "returncode": "200",
     "responselength": "3085312"
   },
   {
     "testid": "1minPM-noa-320streams",
     "timestamp": "2025-06-23 06:59:42.949085",
-    "requestduration": "00:10:08.800376", 
+    "requestduration": "00:10:08.800376",
     "returncode": "200",
     "responselength": "760320"
   },
   {
     "testid": "1minPM-ingv-320streams",
     "timestamp": "2025-06-23 06:49:34.14823",
-    "requestduration": "00:04:55.412751", 
+    "requestduration": "00:04:55.412751",
     "returncode": "200",
     "responselength": "2452480"
   },
   {
     "testid": "1minPM-iris-320streams",
     "timestamp": "2025-06-23 06:44:38.735041",
-    "requestduration": "00:10:40.526349", 
+    "requestduration": "00:10:40.526349",
     "returncode": "200",
     "responselength": "24906752"
   },
   {
     "testid": "1minAM-odc-320streams",
     "timestamp": "2025-06-23 06:33:58.208345",
-    "requestduration": "00:00:33.092858", 
+    "requestduration": "00:00:33.092858",
     "returncode": "200",
     "responselength": "1911296"
   },
   {
     "testid": "1minAM-sed-320streams",
     "timestamp": "2025-06-23 06:33:25.115175",
-    "requestduration": "00:00:16.970561", 
+    "requestduration": "00:00:16.970561",
     "returncode": "200",
     "responselength": "3990016"
   },
   {
     "testid": "1minAM-afad-54streams",
     "timestamp": "2025-06-23 06:33:08.144026",
-    "requestduration": "00:00:00.609169", 
+    "requestduration": "00:00:00.609169",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "1minAM-ingv-54streams",
     "timestamp": "2025-06-23 06:33:07.534228",
-    "requestduration": "00:00:05.037788", 
+    "requestduration": "00:00:05.037788",
     "returncode": "200",
     "responselength": "193536"
   },
   {
     "testid": "1minAM-resif-54streams",
     "timestamp": "2025-06-23 06:33:02.496076",
-    "requestduration": "00:00:07.042336", 
+    "requestduration": "00:00:07.042336",
     "returncode": "200",
     "responselength": "782336"
   },
   {
     "testid": "1minAM-odc-54streams",
     "timestamp": "2025-06-23 06:32:55.453118",
-    "requestduration": "00:00:05.37399", 
+    "requestduration": "00:00:05.37399",
     "returncode": "200",
     "responselength": "26112"
   },
   {
     "testid": "1minPM-bgr-54streams",
     "timestamp": "2025-06-23 06:32:50.078478",
-    "requestduration": "00:00:25.725376", 
+    "requestduration": "00:00:25.725376",
     "returncode": "200",
     "responselength": "301568"
   },
   {
     "testid": "1minPM-lmu-54streams",
     "timestamp": "2025-06-23 06:32:24.352763",
-    "requestduration": "00:00:19.552946", 
+    "requestduration": "00:00:19.552946",
     "returncode": "200",
     "responselength": "1079296"
   },
   {
     "testid": "1minAM-bgr-54streams",
     "timestamp": "2025-06-23 06:32:04.799032",
-    "requestduration": "00:00:23.949436", 
+    "requestduration": "00:00:23.949436",
     "returncode": "200",
     "responselength": "293888"
   },
   {
     "testid": "1minAM-uib-54streams",
     "timestamp": "2025-06-23 06:31:40.84902",
-    "requestduration": "00:00:13.696092", 
+    "requestduration": "00:00:13.696092",
     "returncode": "200",
     "responselength": "505856"
   },
   {
     "testid": "1minPM-sed-54streams",
     "timestamp": "2025-06-23 06:31:27.152502",
-    "requestduration": "00:00:03.004841", 
+    "requestduration": "00:00:03.004841",
     "returncode": "200",
     "responselength": "476672"
   },
   {
     "testid": "1minAM-niep-54streams",
     "timestamp": "2025-06-23 06:31:24.146937",
-    "requestduration": "00:00:08.577202", 
+    "requestduration": "00:00:08.577202",
     "returncode": "200",
     "responselength": "340480"
   },
   {
     "testid": "1minPM-ingv-54streams",
     "timestamp": "2025-06-23 06:31:15.56907",
-    "requestduration": "00:00:15.758775", 
+    "requestduration": "00:00:15.758775",
     "returncode": "200",
     "responselength": "175104"
   },
   {
     "testid": "1minPM-noa-54streams",
     "timestamp": "2025-06-23 06:30:59.809597",
-    "requestduration": "00:04:30.709951", 
+    "requestduration": "00:04:30.709951",
     "returncode": "200",
     "responselength": "619520"
   },
   {
     "testid": "1minAM-sed-54streams",
     "timestamp": "2025-06-23 06:26:29.09904",
-    "requestduration": "00:00:03.438178", 
+    "requestduration": "00:00:03.438178",
     "returncode": "200",
     "responselength": "475648"
   },
   {
     "testid": "1minPM-resif-54streams",
     "timestamp": "2025-06-23 06:26:25.660511",
-    "requestduration": "00:00:02.62906", 
+    "requestduration": "00:00:02.62906",
     "returncode": "200",
     "responselength": "790528"
   },
   {
     "testid": "1minPM-bgs-9streams",
     "timestamp": "2025-06-23 06:26:23.03087",
-    "requestduration": "00:00:01.128904", 
+    "requestduration": "00:00:01.128904",
     "returncode": "200",
     "responselength": "40960"
   },
   {
     "testid": "1minAM-bgs-9streams",
     "timestamp": "2025-06-23 06:26:21.90138",
-    "requestduration": "00:00:01.44872", 
+    "requestduration": "00:00:01.44872",
     "returncode": "200",
     "responselength": "40960"
   },
   {
     "testid": "1minPM-afad-9streams",
     "timestamp": "2025-06-23 06:26:20.452367",
-    "requestduration": "00:00:00.007835", 
+    "requestduration": "00:00:00.007835",
     "returncode": "400",
     "responselength": "362"
   },
   {
     "testid": "1minAM-afad-9streams",
     "timestamp": "2025-06-23 06:26:20.444198",
-    "requestduration": "00:00:00.009001", 
+    "requestduration": "00:00:00.009001",
     "returncode": "400",
     "responselength": "362"
   },
   {
     "testid": "1minAM-resif-9streams",
     "timestamp": "2025-06-23 06:26:20.434605",
-    "requestduration": "00:00:00.839296", 
+    "requestduration": "00:00:00.839296",
     "returncode": "200",
     "responselength": "122880"
   },
   {
     "testid": "1minAM-ingv-9streams",
     "timestamp": "2025-06-23 06:26:19.594819",
-    "requestduration": "00:00:13.396243", 
+    "requestduration": "00:00:13.396243",
     "returncode": "200",
     "responselength": "289792"
   },
   {
     "testid": "1minPM-noa-9streams",
     "timestamp": "2025-06-23 06:26:06.197934",
-    "requestduration": "00:00:06.987273", 
+    "requestduration": "00:00:06.987273",
     "returncode": "204",
     "responselength": "0"
   },
   {
     "testid": "1minAM-bgr-9streams",
     "timestamp": "2025-06-23 06:25:59.210035",
-    "requestduration": "00:00:01.193896", 
+    "requestduration": "00:00:01.193896",
     "returncode": "200",
     "responselength": "50688"
   },
   {
     "testid": "1minPM-sed-9streams",
     "timestamp": "2025-06-23 06:25:58.015429",
-    "requestduration": "00:00:00.610182", 
+    "requestduration": "00:00:00.610182",
     "returncode": "200",
     "responselength": "67584"
   },
   {
     "testid": "1minPM-resif-9streams",
     "timestamp": "2025-06-23 06:25:57.40463",
-    "requestduration": "00:00:01.405016", 
+    "requestduration": "00:00:01.405016",
     "returncode": "200",
     "responselength": "135168"
   },
   {
     "testid": "1minPM-iris-9streams",
     "timestamp": "2025-06-23 06:25:55.998933",
-    "requestduration": "00:00:01.808542", 
+    "requestduration": "00:00:01.808542",
     "returncode": "200",
     "responselength": "139264"
   },
   {
     "testid": "1minPM-gfz-9streams",
     "timestamp": "2025-06-23 06:25:54.18996",
-    "requestduration": "00:00:00.725377", 
+    "requestduration": "00:00:00.725377",
     "returncode": "200",
     "responselength": "98304"
   },
   {
     "testid": "1minPM-odc-9streams",
     "timestamp": "2025-06-23 06:25:53.463938",
-    "requestduration": "00:00:02.07006", 
+    "requestduration": "00:00:02.07006",
     "returncode": "200",
     "responselength": "81408"
   }
