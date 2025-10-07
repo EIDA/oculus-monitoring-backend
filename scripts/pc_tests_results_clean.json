@@ -98,7 +98,7 @@
     "responselength": "68401"
   },
   {
-    "testid": "<-1min-lmu-54streams",
+    "testid": "staxml-1min-lmu-54streams",
     "timestamp": "2025-06-23 07:12:09.937451",
     "requestduration": "00:00:02.277855",
     "returncode": "200",
