@@ -1,0 +1,474 @@
+[
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 07:21:52.582418",
+    "availability.320streams.response_time_ms": 13908,
+    "availability.320streams.status_code": 200,
+    "availability.320streams.content_size_bytes": 48811,
+    "availability.320streams.transfer_rate": 3509.47
+  },
+  {
+    "eida_node": "GFZ",
+    "timestamp": "2025-06-23 07:21:38.673366",
+    "availability.320streams.response_time_ms": 4538,
+    "availability.320streams.status_code": 204,
+    "availability.320streams.content_size_bytes": 0,
+    "availability.320streams.transfer_rate": 0.0
+  },
+  {
+    "eida_node": "ODC",
+    "timestamp": "2025-06-23 07:21:34.134628",
+    "availability.320streams.response_time_ms": 531409,
+    "availability.320streams.status_code": 204,
+    "availability.320streams.content_size_bytes": 0,
+    "availability.320streams.transfer_rate": 0.0
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 07:12:42.724592",
+    "availability.320streams.response_time_ms": 28593,
+    "availability.320streams.status_code": 200,
+    "availability.320streams.content_size_bytes": 33660,
+    "availability.320streams.transfer_rate": 1177.18
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 07:12:12.091634",
+    "station.54streams.response_time_ms": 2153,
+    "station.54streams.status_code": 200,
+    "station.54streams.content_size_bytes": 68401,
+    "station.54streams.transfer_rate": 31761.34
+  },
+  {
+    "eida_node": "LMU",
+    "timestamp": "2025-06-23 07:12:09.937451",
+    "station.54streams.response_time_ms": 2277,
+    "station.54streams.status_code": 200,
+    "station.54streams.content_size_bytes": 59787,
+    "station.54streams.transfer_rate": 26247.06
+  },
+  {
+    "eida_node": "UIB",
+    "timestamp": "2025-06-23 07:12:07.658931",
+    "station.54streams.response_time_ms": 3051,
+    "station.54streams.status_code": 200,
+    "station.54streams.content_size_bytes": 126969,
+    "station.54streams.transfer_rate": 41604.59
+  },
+  {
+    "eida_node": "INGV",
+    "timestamp": "2025-06-23 07:12:03.967901",
+    "availability.54streams.response_time_ms": 23176,
+    "availability.54streams.status_code": 204,
+    "availability.54streams.content_size_bytes": 0,
+    "availability.54streams.transfer_rate": 0.0
+  },
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 07:11:40.790623",
+    "availability.54streams.response_time_ms": 3108,
+    "availability.54streams.status_code": 200,
+    "availability.54streams.content_size_bytes": 6846,
+    "availability.54streams.transfer_rate": 2202.11
+  },
+  {
+    "eida_node": "BGR",
+    "timestamp": "2025-06-23 07:10:17.594639",
+    "availability.54streams.response_time_ms": 9406,
+    "availability.54streams.status_code": 200,
+    "availability.54streams.content_size_bytes": 7173,
+    "availability.54streams.transfer_rate": 762.58
+  },
+  {
+    "eida_node": "UIB",
+    "timestamp": "2025-06-23 07:10:08.187753",
+    "availability.54streams.response_time_ms": 7590,
+    "availability.54streams.status_code": 200,
+    "availability.54streams.content_size_bytes": 6410,
+    "availability.54streams.transfer_rate": 844.45
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 07:08:40.509986",
+    "availability.54streams.response_time_ms": 5067,
+    "availability.54streams.status_code": 200,
+    "availability.54streams.content_size_bytes": 5974,
+    "availability.54streams.transfer_rate": 1178.79
+  },
+  {
+    "eida_node": "BGS",
+    "timestamp": "2025-06-23 07:08:35.441375",
+    "availability.9streams.response_time_ms": 2612,
+    "availability.9streams.status_code": 204,
+    "availability.9streams.content_size_bytes": 0,
+    "availability.9streams.transfer_rate": 0.0
+  },
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 07:08:25.8515",
+    "availability.9streams.response_time_ms": 551,
+    "availability.9streams.status_code": 200,
+    "availability.9streams.content_size_bytes": 1069,
+    "availability.9streams.transfer_rate": 1937.05
+  },
+  {
+    "eida_node": "INGV",
+    "timestamp": "2025-06-23 07:08:25.298941",
+    "availability.9streams.response_time_ms": 12440,
+    "availability.9streams.status_code": 200,
+    "availability.9streams.content_size_bytes": 23959,
+    "availability.9streams.transfer_rate": 1925.92
+  },
+  {
+    "eida_node": "BGR",
+    "timestamp": "2025-06-23 07:08:12.858032",
+    "availability.9streams.response_time_ms": 979,
+    "availability.9streams.status_code": 200,
+    "availability.9streams.content_size_bytes": 1069,
+    "availability.9streams.transfer_rate": 1091.33
+  },
+  {
+    "eida_node": "GFZ",
+    "timestamp": "2025-06-23 07:07:31.831457",
+    "availability.9streams.response_time_ms": 284,
+    "availability.9streams.status_code": 204,
+    "availability.9streams.content_size_bytes": 0,
+    "availability.9streams.transfer_rate": 0.0
+  },
+  {
+    "eida_node": "ODC",
+    "timestamp": "2025-06-23 07:07:31.546077",
+    "availability.9streams.response_time_ms": 15452,
+    "availability.9streams.status_code": 204,
+    "availability.9streams.content_size_bytes": 0,
+    "availability.9streams.transfer_rate": 0.0
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 07:07:15.253958",
+    "availability.9streams.response_time_ms": 1216,
+    "availability.9streams.status_code": 200,
+    "availability.9streams.content_size_bytes": 1069,
+    "availability.9streams.transfer_rate": 878.92
+  },
+  {
+    "eida_node": "NOA",
+    "timestamp": "2025-06-23 07:07:14.036976",
+    "availability.9streams.response_time_ms": 29649,
+    "availability.9streams.status_code": 204,
+    "availability.9streams.content_size_bytes": 0,
+    "availability.9streams.transfer_rate": 0.0
+  },
+  {
+    "eida_node": "BGS",
+    "timestamp": "2025-06-23 07:06:43.547143",
+    "station.9streams.response_time_ms": 834,
+    "station.9streams.status_code": 200,
+    "station.9streams.content_size_bytes": 4950,
+    "station.9streams.transfer_rate": 5928.86
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 07:05:53.621403",
+    "station.9streams.response_time_ms": 519,
+    "station.9streams.status_code": 200,
+    "station.9streams.content_size_bytes": 10523,
+    "station.9streams.transfer_rate": 20255.12
+  },
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 07:05:53.101312",
+    "station.9streams.response_time_ms": 361,
+    "station.9streams.status_code": 200,
+    "station.9streams.content_size_bytes": 17770,
+    "station.9streams.transfer_rate": 49112.95
+  },
+  {
+    "eida_node": "NOA",
+    "timestamp": "2025-06-23 07:05:52.738883",
+    "station.9streams.response_time_ms": 7098,
+    "station.9streams.status_code": 204,
+    "station.9streams.content_size_bytes": 0,
+    "station.9streams.transfer_rate": 0.0
+  },
+  {
+    "eida_node": "BGS",
+    "timestamp": "2025-06-23 07:05:45.639766",
+    "dataselect.320streams.response_time_ms": 25163,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 1814528,
+    "dataselect.320streams.transfer_rate": 72108.13
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 07:05:20.475438",
+    "dataselect.320streams.response_time_ms": 15852,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 3985408,
+    "dataselect.320streams.transfer_rate": 251401.9
+  },
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 07:05:04.622391",
+    "dataselect.320streams.response_time_ms": 30195,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 4460544,
+    "dataselect.320streams.transfer_rate": 147722.95
+  },
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 07:04:34.426745",
+    "dataselect.320streams.response_time_ms": 10609,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 4521984,
+    "dataselect.320streams.transfer_rate": 426236.26
+  },
+  {
+    "eida_node": "GFZ",
+    "timestamp": "2025-06-23 07:04:23.817343",
+    "dataselect.320streams.response_time_ms": 91536,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 1668096,
+    "dataselect.320streams.transfer_rate": 18223.22
+  },
+  {
+    "eida_node": "GFZ",
+    "timestamp": "2025-06-23 07:02:52.280152",
+    "dataselect.320streams.response_time_ms": 77516,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 1472512,
+    "dataselect.320streams.transfer_rate": 18996.21
+  },
+  {
+    "eida_node": "ODC",
+    "timestamp": "2025-06-23 07:01:34.76367",
+    "dataselect.320streams.response_time_ms": 36035,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 1872384,
+    "dataselect.320streams.transfer_rate": 51959.09
+  },
+  {
+    "eida_node": "NIEP",
+    "timestamp": "2025-06-23 07:00:58.405958",
+    "dataselect.320streams.response_time_ms": 75456,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 3085312,
+    "dataselect.320streams.transfer_rate": 40888.82
+  },
+  {
+    "eida_node": "NOA",
+    "timestamp": "2025-06-23 06:59:42.949085",
+    "dataselect.320streams.response_time_ms": 608800,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 760320,
+    "dataselect.320streams.transfer_rate": 1248.88
+  },
+  {
+    "eida_node": "INGV",
+    "timestamp": "2025-06-23 06:49:34.14823",
+    "dataselect.320streams.response_time_ms": 295412,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 2452480,
+    "dataselect.320streams.transfer_rate": 8301.88
+  },
+  {
+    "eida_node": "ODC",
+    "timestamp": "2025-06-23 06:33:58.208345",
+    "dataselect.320streams.response_time_ms": 33092,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 1911296,
+    "dataselect.320streams.transfer_rate": 57755.54
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 06:33:25.115175",
+    "dataselect.320streams.response_time_ms": 16970,
+    "dataselect.320streams.status_code": 200,
+    "dataselect.320streams.content_size_bytes": 3990016,
+    "dataselect.320streams.transfer_rate": 235113.97
+  },
+  {
+    "eida_node": "INGV",
+    "timestamp": "2025-06-23 06:33:07.534228",
+    "dataselect.54streams.response_time_ms": 5037,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 193536,
+    "dataselect.54streams.transfer_rate": 38416.86
+  },
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 06:33:02.496076",
+    "dataselect.54streams.response_time_ms": 7042,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 782336,
+    "dataselect.54streams.transfer_rate": 111090.41
+  },
+  {
+    "eida_node": "ODC",
+    "timestamp": "2025-06-23 06:32:55.453118",
+    "dataselect.54streams.response_time_ms": 5037,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 26112,
+    "dataselect.54streams.transfer_rate": 5183.63
+  },
+  {
+    "eida_node": "BGR",
+    "timestamp": "2025-06-23 06:32:50.078478",
+    "dataselect.54streams.response_time_ms": 25725,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 301568,
+    "dataselect.54streams.transfer_rate": 11722.59
+  },
+  {
+    "eida_node": "LMU",
+    "timestamp": "2025-06-23 06:32:24.352763",
+    "dataselect.54streams.response_time_ms": 19552,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 1079296,
+    "dataselect.54streams.transfer_rate": 55198.64
+  },
+  {
+    "eida_node": "BGR",
+    "timestamp": "2025-06-23 06:32:04.799032",
+    "dataselect.54streams.response_time_ms": 23949,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 293888,
+    "dataselect.54streams.transfer_rate": 12271.19
+  },
+  {
+    "eida_node": "UIB",
+    "timestamp": "2025-06-23 06:31:40.84902",
+    "dataselect.54streams.response_time_ms": 13696,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 505856,
+    "dataselect.54streams.transfer_rate": 36934.33
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 06:31:27.152502",
+    "dataselect.54streams.response_time_ms": 3004,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 476672,
+    "dataselect.54streams.transfer_rate": 158634.68
+  },
+  {
+    "eida_node": "NIEP",
+    "timestamp": "2025-06-23 06:31:24.146937",
+    "dataselect.54streams.response_time_ms": 8577,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 340480,
+    "dataselect.54streams.transfer_rate": 39695.93
+  },
+  {
+    "eida_node": "INGV",
+    "timestamp": "2025-06-23 06:31:15.56907",
+    "dataselect.54streams.response_time_ms": 15758,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 175104,
+    "dataselect.54streams.transfer_rate": 11111.52
+  },
+  {
+    "eida_node": "NOA",
+    "timestamp": "2025-06-23 06:30:59.809597",
+    "dataselect.54streams.response_time_ms": 270709,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 619520,
+    "dataselect.54streams.transfer_rate": 2288.5
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 06:26:29.09904",
+    "dataselect.54streams.response_time_ms": 3438,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 475648,
+    "dataselect.54streams.transfer_rate": 138343.04
+  },
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 06:26:25.660511",
+    "dataselect.54streams.response_time_ms": 2062,
+    "dataselect.54streams.status_code": 200,
+    "dataselect.54streams.content_size_bytes": 790528,
+    "dataselect.54streams.transfer_rate": 383210.87
+  },
+  {
+    "eida_node": "BGS",
+    "timestamp": "2025-06-23 06:26:23.03087",
+    "dataselect.9streams.response_time_ms": 1128,
+    "dataselect.9streams.status_code": 200,
+    "dataselect.9streams.content_size_bytes": 40960,
+    "dataselect.9streams.transfer_rate": 36282.98
+  },
+  {
+    "eida_node": "BGS",
+    "timestamp": "2025-06-23 06:26:21.90138",
+    "dataselect.9streams.response_time_ms": 1044,
+    "dataselect.9streams.status_code": 200,
+    "dataselect.9streams.content_size_bytes": 40960,
+    "dataselect.9streams.transfer_rate": 39200.97
+  },
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 06:26:20.434605",
+    "dataselect.9streams.response_time_ms": 839,
+    "dataselect.9streams.status_code": 200,
+    "dataselect.9streams.content_size_bytes": 122880,
+    "dataselect.9streams.transfer_rate": 146408.42
+  },
+  {
+    "eida_node": "INGV",
+    "timestamp": "2025-06-23 06:26:19.594819",
+    "dataselect.9streams.response_time_ms": 13396,
+    "dataselect.9streams.status_code": 200,
+    "dataselect.9streams.content_size_bytes": 289792,
+    "dataselect.9streams.transfer_rate": 21632.33
+  },
+  {
+    "eida_node": "NOA",
+    "timestamp": "2025-06-23 06:26:06.197934",
+    "dataselect.9streams.response_time_ms": 6987,
+    "dataselect.9streams.status_code": 204,
+    "dataselect.9streams.content_size_bytes": 0,
+    "dataselect.9streams.transfer_rate": 0.0
+  },
+  {
+    "eida_node": "BGR",
+    "timestamp": "2025-06-23 06:25:59.210035",
+    "dataselect.9streams.response_time_ms": 1193,
+    "dataselect.9streams.status_code": 200,
+    "dataselect.9streams.content_size_bytes": 50688,
+    "dataselect.9streams.transfer_rate": 42455.96
+  },
+  {
+    "eida_node": "SED",
+    "timestamp": "2025-06-23 06:25:58.015429",
+    "dataselect.9streams.response_time_ms": 610,
+    "dataselect.9streams.status_code": 200,
+    "dataselect.9streams.content_size_bytes": 67584,
+    "dataselect.9streams.transfer_rate": 110760.4
+  },
+  {
+    "eida_node": "EPOSFR",
+    "timestamp": "2025-06-23 06:25:57.40463",
+    "dataselect.9streams.response_time_ms": 1405,
+    "dataselect.9streams.status_code": 200,
+    "dataselect.9streams.content_size_bytes": 135168,
+    "dataselect.9streams.transfer_rate": 96203.89
+  },
+  {
+    "eida_node": "GFZ",
+    "timestamp": "2025-06-23 06:25:54.18996",
+    "dataselect.9streams.response_time_ms": 725,
+    "dataselect.9streams.status_code": 200,
+    "dataselect.9streams.content_size_bytes": 98304,
+    "dataselect.9streams.transfer_rate": 135521.25
+  },
+  {
+    "eida_node": "ODC",
+    "timestamp": "2025-06-23 06:25:53.463938",
+    "dataselect.9streams.response_time_ms": 2007,
+    "dataselect.9streams.status_code": 200,
+    "dataselect.9streams.content_size_bytes": 81408,
+    "dataselect.9streams.transfer_rate": 40561.91
+  }
+]
