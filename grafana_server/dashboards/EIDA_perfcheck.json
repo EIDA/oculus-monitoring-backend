@@ -105,7 +105,10 @@
       "options": {
         "legend": {
           "calcs": [
-            "mean"
+            "mean",
+            "last",
+            "min",
+            "max"
           ],
           "displayMode": "table",
           "placement": "bottom",
@@ -192,11 +195,11 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 12
       },
-      "id": 2,
+      "id": 5,
       "panels": [],
-      "title": "Reponse code",
+      "title": "Transfer Rate",
       "type": "row"
     },
     {
@@ -208,80 +211,46 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
             "axisPlacement": "auto",
-            "fillOpacity": 70,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
             "insertNulls": false,
-            "lineWidth": 0,
-            "spanNulls": false
-          },
-          "mappings": [
-            {
-              "options": {
-                "200": {
-                  "color": "green",
-                  "index": 0,
-                  "text": "OK"
-                },
-                "201": {
-                  "color": "yellow",
-                  "index": 1
-                },
-                "204": {
-                  "color": "yellow",
-                  "index": 2,
-                  "text": "No Content"
-                },
-                "400": {
-                  "color": "dark-orange",
-                  "index": 3,
-                  "text": "Bad Request"
-                },
-                "401": {
-                  "color": "dark-orange",
-                  "index": 4,
-                  "text": "Unauthorized"
-                },
-                "403": {
-                  "color": "dark-orange",
-                  "index": 5,
-                  "text": "Forbidden"
-                },
-                "404": {
-                  "color": "yellow",
-                  "index": 6,
-                  "text": "Not Found"
-                },
-                "500": {
-                  "color": "dark-red",
-                  "index": 7,
-                  "text": "Internal Server Error"
-                },
-                "502": {
-                  "color": "dark-red",
-                  "index": 8,
-                  "text": "Bad Gateway"
-                },
-                "503": {
-                  "color": "dark-red",
-                  "index": 9,
-                  "text": "Service Unavailable"
-                },
-                "null": {
-                  "color": "transparent",
-                  "index": 10
-                }
-              },
-              "type": "value"
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "fieldMinMax": false,
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -289,7 +258,8 @@
                 "color": "green"
               }
             ]
-          }
+          },
+          "unit": "binBps"
         },
         "overrides": []
       },
@@ -297,19 +267,21 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 13
       },
-      "id": 1,
+      "id": 6,
       "options": {
-        "alignValue": "left",
         "legend": {
-          "displayMode": "list",
+          "calcs": [
+            "mean",
+            "last",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
-        "mergeValues": true,
-        "rowHeight": 0.9,
-        "showValue": "auto",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -338,7 +310,7 @@
             "filter": "$EIDA_NODES"
           },
           "item": {
-            "filter": "$STREAMS_CODE"
+            "filter": "$TRANSFER_RATE"
           },
           "itemTag": {
             "filter": "$WS"
@@ -381,33 +353,9 @@
             "regex": "^[^\"]*\"([^\"]*)\".*",
             "renamePattern": "$1"
           }
-        },
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "destinationType": "string",
-                "targetField": "9 streams"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "54 streams"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "320 streams"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "1 stream 20 days"
-              }
-            ],
-            "fields": {}
-          }
         }
       ],
-      "type": "state-timeline"
+      "type": "timeseries"
     }
   ],
   "preload": false,
@@ -422,10 +370,10 @@
       {
         "current": {
           "text": [
-            "EPOSFR"
+            "All"
           ],
           "value": [
-            "EPOSFR"
+            "$__all"
           ]
         },
         "datasource": {
@@ -453,12 +401,13 @@
         "type": "query"
       },
       {
+        "allowCustomValue": true,
         "current": {
           "text": [
-            "All"
+            "webservice: availability"
           ],
           "value": [
-            "$__all"
+            "webservice: availability"
           ]
         },
         "definition": "",
@@ -473,11 +422,11 @@
           "group": "$EIDA_NODES",
           "host": "$EIDA_NODES",
           "item": "",
-          "itemTag": "/^PC.*/",
+          "itemTag": "/^webservice.*/",
           "queryType": "itemTag"
         },
         "refresh": 1,
-        "regex": "",
+        "regex": "^(?!.*routing_present|.*routing_information).*$",
         "type": "query"
       },
       {
@@ -490,15 +439,15 @@
         "definition": "",
         "hide": 2,
         "includeAll": true,
-        "label": "SCENARIO CODE",
+        "label": "TRANSFER RATE",
         "multi": true,
-        "name": "STREAMS_CODE",
+        "name": "TRANSFER_RATE",
         "options": [],
         "query": {
           "application": "PC",
           "group": "$EIDA_NODES",
           "host": "$EIDA_NODES",
-          "item": "/^Response code.*/",
+          "item": "/.*Transfer Rate$/",
           "itemTag": "$WS",
           "queryType": "item"
         },
@@ -510,9 +459,7 @@
       {
         "current": {
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
         "definition": "",
         "hide": 2,
@@ -525,7 +472,7 @@
           "application": "PC",
           "group": "$EIDA_NODES",
           "host": "$EIDA_NODES",
-          "item": "/^Response time.*/",
+          "item": "/.*Response Time Ms$/",
           "itemTag": "$WS",
           "queryType": "item"
         },
@@ -544,6 +491,6 @@
   "timezone": "browser",
   "title": "EIDA PerfCheck",
   "uid": "eb676f02-3961-4251-8d28-6e3f0f20bf95",
-  "version": 42,
+  "version": 53,
   "weekStart": "monday"
 }
