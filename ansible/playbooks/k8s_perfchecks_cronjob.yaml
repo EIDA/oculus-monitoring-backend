@@ -5,7 +5,7 @@ metadata:
   namespace: eida-monitoring
 spec:
   suspend: false
-  schedule: "0 13 * * *" # everyday at 1pm
+  schedule: "0 0,12 * * *" # everyday at 14h10
   jobTemplate:
     spec:
       template:
