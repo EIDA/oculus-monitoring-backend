@@ -115,7 +115,7 @@ def make_request(url):
         }
 
         # download full content with get
-        response = requests.get(url, headers=headers, timeout=60, allow_redirects=True)
+        response = requests.get(url, headers=headers, timeout=180, allow_redirects=True)
 
         end_time = time.time()
         response_time = round((end_time - start_time) * 1000, 2)
@@ -134,7 +134,7 @@ def make_request(url):
     except requests.exceptions.Timeout:
         return {
             'status_code': 'TIMEOUT',
-            'response_time_ms': 60000,
+            'response_time_ms': 180000,
             'content_size_bytes': 0,
             'url': url
         }
