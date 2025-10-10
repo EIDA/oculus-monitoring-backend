@@ -1,37 +1,9 @@
-global:
-  imageRegistry: null
-  imagePullSecrets: []
-grafana:
+adminUser: admin
+ingress:
   enabled: true
-  adminUser: admin
-  adminPassword: ENC[AES256_GCM,data:TZBw9hSxXPei7BgeKvKCd6mGyn0nxSqTTBsmxq7L1t27uyICcTcRYQ==,iv:foiOzmHyofntIkUsj9RFjFUi/UeQRtDCA66l+nNI/Ss=,tag:AcD+IgsM4Lcic2HUfMkL0g==,type:str]
-  service:
-    type: ClusterIP
-    port: 3000
-  ingress:
-    enabled: true
-    annotations: {}
-    hosts:
-    - host: grafana.local
-      paths:
-      - /
-    tls: []
-  dashboards:
-    enabled: true
-    defaultFolderName: Default
-    configMaps: []
-resources: null
-nodeSelector: {}
-tolerations: []
-affinity: {}
-envFromSecret: grafana-db-secret
+  hosts:
+  - grafana.local
 grafana.ini:
-  database:
-    type: postgres
-    host: resif-pgpreprod.u-ga.fr
-    port: 5432
-    user: oculus
-    name: oculus_grafana
   auth.anonymous:
     enabled: true
     org_name: Main Org.
@@ -42,30 +14,3 @@ plugins:
 - grafana-piechart-panel
 - grafana-worldmap-panel
 - alexanderzobnin-zabbix-app
-sops:
-  kms: []
-  gcp_kms: []
-  azure_kv: []
-  hc_vault: []
-  age: []
-  lastmodified: "2025-08-18T10:01:43Z"
-  mac: ENC[AES256_GCM,data:4m2159j5V3yrFHI5YM8/hNkCl7cEzRuidjjckf2DP2YKSTSexf/7jbj5NGC53fNjHnpmxHmO1g9gPa0R2elVfqsUDK245y78cdCkaXHBalmjNW98R9iFIzsdw4nS/6bK6FPFiPlL5FzInhx+pEMLXpcq+uyRXczlyTU89gdLRGA=,iv:tFvGK+++rzUXJKRdKBwdU7xaX97HJis/++eWCjRL8Tg=,tag:CGKDvj1UwcO5wxxkgoyZ6w==,type:str]
-  pgp:
-  - created_at: "2025-08-18T10:01:43Z"
-    enc: |-
-      -----BEGIN PGP MESSAGE-----
-
-      hQEMA23uPS/3Y9M2AQf5ATSLfnEIeHdXpzHEoc0rb42Q4ihCWKenN0w1p4ldAZlm
-      RWk2Ce0xBc3B6ymUeab1x3Hk2GTo+VkTbEUPooUpDyU7AXQVnEvPbg63FxFVHwSo
-      Efj54YPHwSPdITWL+4Te1rsHu2jPWzc1StUyhVsjkUNDitMq44ijAR6hlkaZ19/t
-      K+MpbfsB/3vYXee0vzyWEvTTSk+jPL7rTFd1Zhs6XTql7yDblmKZW35kr4QFoGFH
-      NmvOXGO2OvSb0uKHVsT/+sZoFS8tmw1MskgH8nl+OG6dhM5yMRni6xOK9fY835M3
-      vR1AN1nQJ5TrdrrIJO4dCvw7Qt3FRnQrNqn22xKSFNJeAUsRWkq/GDo3znlUE4nx
-      jj24fm8OtjwRM+F11Oo0EOT6+5zjiwetlmB6Gtx9xgYaOKLsz4apqOzz9hxp6K6Q
-      M6ZoapqkBn1xHwPAL91Id7vqApsYZ5Z0B37L35H/jw==
-      =OulW
-      -----END PGP MESSAGE-----
-    fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
-  encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|ansible_grafana_token|zabbix_grafana_token|zabbix_grafana_pass|zabbix_user_pass|adminPassword)
-  mac_only_encrypted: true
-  version: 3.9.2
