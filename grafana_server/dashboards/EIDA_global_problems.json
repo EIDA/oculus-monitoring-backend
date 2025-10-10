@@ -18,13 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 9,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {
@@ -46,7 +46,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "dark-red",
@@ -59,7 +60,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 7,
         "w": 5,
         "x": 0,
         "y": 0
@@ -82,7 +83,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "application": {
@@ -113,7 +114,7 @@
             "hostProxy": false,
             "hostsInMaintenance": false,
             "limit": 1001,
-            "minSeverity": 0,
+            "minSeverity": 2,
             "showDisabledItems": false,
             "skipEmptyValues": false,
             "sortProblems": "default",
@@ -147,7 +148,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {
@@ -166,7 +167,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -203,7 +205,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": 0
                     },
                     {
                       "color": "green",
@@ -240,7 +243,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": 0
                     },
                     {
                       "color": "green",
@@ -277,7 +281,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": 0
                     },
                     {
                       "color": "green",
@@ -314,7 +319,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": 0
                     },
                     {
                       "color": "green",
@@ -351,7 +357,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": 0
                     },
                     {
                       "color": "green",
@@ -388,7 +395,8 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": 0
                     },
                     {
                       "color": "green",
@@ -406,7 +414,7 @@
         ]
       },
       "gridPos": {
-        "h": 16,
+        "h": 15,
         "w": 19,
         "x": 5,
         "y": 0
@@ -424,7 +432,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "application": {
@@ -455,7 +463,7 @@
             "hostProxy": false,
             "hostsInMaintenance": false,
             "limit": 1001,
-            "minSeverity": 0,
+            "minSeverity": 2,
             "showDisabledItems": false,
             "skipEmptyValues": false,
             "sortProblems": "default",
@@ -505,7 +513,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {},
@@ -515,7 +523,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 15
       },
       "id": 1,
       "options": {
@@ -612,7 +620,7 @@
           }
         ]
       },
-      "pluginVersion": "5.2.0",
+      "pluginVersion": "6.0.2",
       "targets": [
         {
           "application": {
@@ -675,7 +683,7 @@
           }
         }
       ],
-      "title": "Problems",
+      "title": "Events",
       "type": "alexanderzobnin-zabbix-triggers-panel"
     }
   ],
@@ -726,6 +734,6 @@
   "timezone": "browser",
   "title": "EIDA global problems",
   "uid": "ben4yqwkoldkwc",
-  "version": 8,
+  "version": 4,
   "weekStart": "monday"
 }

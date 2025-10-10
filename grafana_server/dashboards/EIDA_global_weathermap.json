@@ -24,7 +24,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {
@@ -108,7 +108,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           }
@@ -138,7 +139,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "application": {
@@ -295,7 +296,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {
@@ -379,7 +380,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           }
@@ -409,7 +411,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "application": {
@@ -566,7 +568,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {
@@ -650,7 +652,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           }
@@ -680,7 +683,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "application": {
@@ -837,7 +840,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {
@@ -921,7 +924,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           }
@@ -951,7 +955,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "application": {
@@ -1108,7 +1112,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {
@@ -1192,7 +1196,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           }
@@ -1222,7 +1227,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "application": {
@@ -1388,13 +1393,13 @@
     "list": []
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-30d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "EIDA global WeatherMap",
   "uid": "cen19lnkzcsu8b",
-  "version": 11,
+  "version": 3,
   "weekStart": "monday"
 }

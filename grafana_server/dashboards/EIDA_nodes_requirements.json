@@ -31,13 +31,14 @@
       },
       "id": 6,
       "panels": [],
-      "title": "CORS",
+      "repeat": "EIDA_NODE",
+      "title": "CORS problems at $EIDA_NODE",
       "type": "row"
     },
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {},
@@ -140,7 +141,9 @@
           }
         ]
       },
-      "pluginVersion": "5.2.0",
+      "pluginVersion": "6.0.2",
+      "repeat": "WS",
+      "repeatDirection": "h",
       "targets": [
         {
           "application": {
@@ -150,10 +153,10 @@
           "evaltype": "0",
           "functions": [],
           "group": {
-            "filter": "$EIDA_NODES"
+            "filter": "$EIDA_NODE"
           },
           "host": {
-            "filter": "$EIDA_NODES"
+            "filter": "$EIDA_NODE"
           },
           "item": {
             "filter": ""
@@ -203,526 +206,23 @@
       "type": "alexanderzobnin-zabbix-triggers-panel"
     },
     {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
-      },
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 12
-      },
-      "id": 3,
-      "options": {
-        "ackEventColor": "rgb(56, 219, 156)",
-        "ackField": true,
-        "ageField": true,
-        "allowDangerousHTML": false,
-        "customLastChangeFormat": false,
-        "descriptionAtNewLine": false,
-        "descriptionField": true,
-        "fontSize": "100%",
-        "highlightBackground": false,
-        "highlightNewEvents": false,
-        "highlightNewerThan": "1h",
-        "hostField": true,
-        "hostGroups": false,
-        "hostProxy": false,
-        "hostTechNameField": false,
-        "lastChangeFormat": "",
-        "layout": "table",
-        "markAckEvents": false,
-        "okEventColor": "rgb(56, 189, 113)",
-        "opdataField": false,
-        "pageSize": 1000,
-        "problemTimeline": true,
-        "resizedColumns": [
-          {
-            "id": "name",
-            "value": 414.29998779296875
-          },
-          {
-            "id": "host",
-            "value": 105.14999389648438
-          },
-          {
-            "id": "lastchange",
-            "value": 316
-          },
-          {
-            "id": "ack",
-            "value": 186.40000915527344
-          },
-          {
-            "id": "tags",
-            "value": 402.1500244140625
-          }
-        ],
-        "severityField": true,
-        "showDatasourceName": false,
-        "showTags": true,
-        "sortProblems": "lastchange",
-        "statusField": true,
-        "statusIcon": false,
-        "triggerSeverity": [
-          {
-            "color": "rgb(108, 108, 108)",
-            "priority": 0,
-            "severity": "Not classified",
-            "show": true
-          },
-          {
-            "color": "rgb(120, 158, 183)",
-            "priority": 1,
-            "severity": "Information",
-            "show": true
-          },
-          {
-            "color": "rgb(175, 180, 36)",
-            "priority": 2,
-            "severity": "Warning",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 137, 30)",
-            "priority": 3,
-            "severity": "Average",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 101, 72)",
-            "priority": 4,
-            "severity": "High",
-            "show": true
-          },
-          {
-            "color": "rgb(215, 0, 0)",
-            "priority": 5,
-            "severity": "Disaster",
-            "show": true
-          }
-        ]
-      },
-      "pluginVersion": "5.2.0",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "problems",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": ""
-          },
-          "itemTag": {
-            "filter": ""
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "acknowledged": 2,
-            "count": true,
-            "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 0,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "5",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "showProblems": "problems",
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": "Test:cors, Application:dataselect"
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "CORS dataselect",
-      "type": "alexanderzobnin-zabbix-triggers-panel"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
-      },
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 23
-      },
-      "id": 4,
-      "options": {
-        "ackEventColor": "rgb(56, 219, 156)",
-        "ackField": true,
-        "ageField": true,
-        "allowDangerousHTML": false,
-        "customLastChangeFormat": false,
-        "descriptionAtNewLine": false,
-        "descriptionField": true,
-        "fontSize": "100%",
-        "highlightBackground": false,
-        "highlightNewEvents": false,
-        "highlightNewerThan": "1h",
-        "hostField": true,
-        "hostGroups": false,
-        "hostProxy": false,
-        "hostTechNameField": false,
-        "lastChangeFormat": "",
-        "layout": "table",
-        "markAckEvents": false,
-        "okEventColor": "rgb(56, 189, 113)",
-        "opdataField": false,
-        "pageSize": 1000,
-        "problemTimeline": true,
-        "resizedColumns": [
-          {
-            "id": "name",
-            "value": 414.29998779296875
-          },
-          {
-            "id": "host",
-            "value": 105.14999389648438
-          },
-          {
-            "id": "lastchange",
-            "value": 316
-          },
-          {
-            "id": "ack",
-            "value": 186.40000915527344
-          },
-          {
-            "id": "tags",
-            "value": 402.1500244140625
-          }
-        ],
-        "severityField": true,
-        "showDatasourceName": false,
-        "showTags": true,
-        "sortProblems": "lastchange",
-        "statusField": true,
-        "statusIcon": false,
-        "triggerSeverity": [
-          {
-            "color": "rgb(108, 108, 108)",
-            "priority": 0,
-            "severity": "Not classified",
-            "show": true
-          },
-          {
-            "color": "rgb(120, 158, 183)",
-            "priority": 1,
-            "severity": "Information",
-            "show": true
-          },
-          {
-            "color": "rgb(175, 180, 36)",
-            "priority": 2,
-            "severity": "Warning",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 137, 30)",
-            "priority": 3,
-            "severity": "Average",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 101, 72)",
-            "priority": 4,
-            "severity": "High",
-            "show": true
-          },
-          {
-            "color": "rgb(215, 0, 0)",
-            "priority": 5,
-            "severity": "Disaster",
-            "show": true
-          }
-        ]
-      },
-      "pluginVersion": "5.2.0",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "problems",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": ""
-          },
-          "itemTag": {
-            "filter": ""
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "acknowledged": 2,
-            "count": true,
-            "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 0,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "5",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "showProblems": "problems",
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": "Test:cors, Application:station"
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "CORS station",
-      "type": "alexanderzobnin-zabbix-triggers-panel"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
-      },
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 34
-      },
-      "id": 5,
-      "options": {
-        "ackEventColor": "rgb(56, 219, 156)",
-        "ackField": true,
-        "ageField": true,
-        "allowDangerousHTML": false,
-        "customLastChangeFormat": false,
-        "descriptionAtNewLine": false,
-        "descriptionField": true,
-        "fontSize": "100%",
-        "highlightBackground": false,
-        "highlightNewEvents": false,
-        "highlightNewerThan": "1h",
-        "hostField": true,
-        "hostGroups": false,
-        "hostProxy": false,
-        "hostTechNameField": false,
-        "lastChangeFormat": "",
-        "layout": "table",
-        "markAckEvents": false,
-        "okEventColor": "rgb(56, 189, 113)",
-        "opdataField": false,
-        "pageSize": 1000,
-        "problemTimeline": true,
-        "resizedColumns": [
-          {
-            "id": "name",
-            "value": 414.29998779296875
-          },
-          {
-            "id": "host",
-            "value": 105.14999389648438
-          },
-          {
-            "id": "lastchange",
-            "value": 316
-          },
-          {
-            "id": "ack",
-            "value": 186.40000915527344
-          },
-          {
-            "id": "tags",
-            "value": 402.1500244140625
-          }
-        ],
-        "severityField": true,
-        "showDatasourceName": false,
-        "showTags": true,
-        "sortProblems": "lastchange",
-        "statusField": true,
-        "statusIcon": false,
-        "triggerSeverity": [
-          {
-            "color": "rgb(108, 108, 108)",
-            "priority": 0,
-            "severity": "Not classified",
-            "show": true
-          },
-          {
-            "color": "rgb(120, 158, 183)",
-            "priority": 1,
-            "severity": "Information",
-            "show": true
-          },
-          {
-            "color": "rgb(175, 180, 36)",
-            "priority": 2,
-            "severity": "Warning",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 137, 30)",
-            "priority": 3,
-            "severity": "Average",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 101, 72)",
-            "priority": 4,
-            "severity": "High",
-            "show": true
-          },
-          {
-            "color": "rgb(215, 0, 0)",
-            "priority": 5,
-            "severity": "Disaster",
-            "show": true
-          }
-        ]
-      },
-      "pluginVersion": "5.2.0",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "problems",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": ""
-          },
-          "itemTag": {
-            "filter": ""
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "acknowledged": 2,
-            "count": true,
-            "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 0,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "5",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "showProblems": "problems",
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": "Test:cors, Application:wfcatalog"
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "CORS wfcatalog",
-      "type": "alexanderzobnin-zabbix-triggers-panel"
-    },
-    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 12
       },
       "id": 7,
       "panels": [],
-      "title": "WADL",
+      "repeat": "EIDA_NODE",
+      "title": "WADL at $EIDA_NODE",
       "type": "row"
     },
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ef0ms3r1nwoowb"
       },
       "fieldConfig": {
         "defaults": {
@@ -805,7 +305,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           }
@@ -816,7 +317,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 13
       },
       "id": 9,
       "options": {
@@ -835,7 +336,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "application": {
@@ -843,25 +344,52 @@
           },
           "countTriggersBy": "",
           "evaltype": "0",
-          "functions": [],
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/.*scenario \"(.*)\"./",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
           "group": {
-            "filter": "$EIDA_NODES"
+            "filter": "$EIDA_NODE"
           },
           "host": {
-            "filter": "$EIDA_NODES"
+            "filter": "$EIDA_NODE"
           },
           "item": {
-            "filter": "Response code for step \"dataselect application.wadl\" of scenario \"dataselect\"."
+            "filter": "Response code for step \".* application.wadl\" of scenario \"$WS\".*"
           },
           "itemTag": {
-            "filter": "Application: dataselect"
+            "filter": "webservice: $WS"
           },
           "macro": {
             "filter": ""
           },
           "options": {
             "count": false,
-            "disableDataAlignment": false,
+            "disableDataAlignment": true,
             "showDisabledItems": false,
             "skipEmptyValues": false,
             "useTrends": "default",
@@ -886,7 +414,7 @@
           }
         }
       ],
-      "title": "dataselect WADL",
+      "title": "WADL files accessible",
       "transformations": [
         {
           "id": "renameByRegex",
@@ -983,808 +511,73 @@
         }
       ],
       "type": "state-timeline"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "axisPlacement": "auto",
-            "fillOpacity": 70,
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineWidth": 0,
-            "spanNulls": false
-          },
-          "mappings": [
-            {
-              "options": {
-                "200": {
-                  "color": "green",
-                  "index": 0,
-                  "text": "OK"
-                },
-                "201": {
-                  "color": "yellow",
-                  "index": 1
-                },
-                "204": {
-                  "color": "yellow",
-                  "index": 2,
-                  "text": "No Content"
-                },
-                "400": {
-                  "color": "dark-orange",
-                  "index": 3,
-                  "text": "Bad Request"
-                },
-                "401": {
-                  "color": "dark-orange",
-                  "index": 4,
-                  "text": "Unauthorized"
-                },
-                "403": {
-                  "color": "dark-orange",
-                  "index": 5,
-                  "text": "Forbidden"
-                },
-                "404": {
-                  "color": "yellow",
-                  "index": 6,
-                  "text": "Not Found"
-                },
-                "500": {
-                  "color": "dark-red",
-                  "index": 7,
-                  "text": "Internal Server Error"
-                },
-                "502": {
-                  "color": "dark-red",
-                  "index": 8,
-                  "text": "Bad Gateway"
-                },
-                "503": {
-                  "color": "dark-red",
-                  "index": 9,
-                  "text": "Service Unavailable"
-                },
-                "null": {
-                  "color": "transparent",
-                  "index": 10
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 24,
-        "x": 0,
-        "y": 59
-      },
-      "id": 10,
-      "options": {
-        "alignValue": "left",
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "mergeValues": true,
-        "rowHeight": 0.9,
-        "showValue": "auto",
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": "Response code for step \"application.wadl\" of scenario \"station\"."
-          },
-          "itemTag": {
-            "filter": "Application: station"
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "count": false,
-            "disableDataAlignment": false,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "0",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "station WADL",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "^(.*):.*$",
-            "renamePattern": "$1"
-          }
-        },
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "destinationType": "string",
-                "targetField": "ICGC"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "GFZ"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "NIEP"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "NOA"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "LMU"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "ODC"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "INGV"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "SED"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "UIB"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "BGS"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "BGR"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "KOERI"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "EPOSFR"
-              }
-            ],
-            "fields": {}
-          }
-        }
-      ],
-      "type": "state-timeline"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "axisPlacement": "auto",
-            "fillOpacity": 70,
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineWidth": 0,
-            "spanNulls": false
-          },
-          "mappings": [
-            {
-              "options": {
-                "200": {
-                  "color": "green",
-                  "index": 0,
-                  "text": "OK"
-                },
-                "201": {
-                  "color": "yellow",
-                  "index": 1
-                },
-                "204": {
-                  "color": "yellow",
-                  "index": 2,
-                  "text": "No Content"
-                },
-                "400": {
-                  "color": "dark-orange",
-                  "index": 3,
-                  "text": "Bad Request"
-                },
-                "401": {
-                  "color": "dark-orange",
-                  "index": 4,
-                  "text": "Unauthorized"
-                },
-                "403": {
-                  "color": "dark-orange",
-                  "index": 5,
-                  "text": "Forbidden"
-                },
-                "404": {
-                  "color": "yellow",
-                  "index": 6,
-                  "text": "Not Found"
-                },
-                "500": {
-                  "color": "dark-red",
-                  "index": 7,
-                  "text": "Internal Server Error"
-                },
-                "502": {
-                  "color": "dark-red",
-                  "index": 8,
-                  "text": "Bad Gateway"
-                },
-                "503": {
-                  "color": "dark-red",
-                  "index": 9,
-                  "text": "Service Unavailable"
-                },
-                "null": {
-                  "color": "transparent",
-                  "index": 10
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 24,
-        "x": 0,
-        "y": 72
-      },
-      "id": 8,
-      "options": {
-        "alignValue": "left",
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "mergeValues": true,
-        "rowHeight": 0.9,
-        "showValue": "auto",
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": "Response code for step \"availability application.wadl\" of scenario \"availability\"."
-          },
-          "itemTag": {
-            "filter": "Application: availability"
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "count": false,
-            "disableDataAlignment": false,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "0",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "availability WADL",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "^(.*):.*$",
-            "renamePattern": "$1"
-          }
-        },
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "destinationType": "string",
-                "targetField": "ICGC"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "GFZ"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "NIEP"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "NOA"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "LMU"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "ODC"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "INGV"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "SED"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "UIB"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "BGS"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "BGR"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "KOERI"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "EPOSFR"
-              }
-            ],
-            "fields": {}
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "includeByName": {},
-            "indexByName": {
-              "BGR": 1,
-              "BGS": 2,
-              "EPOSFR": 3,
-              "GFZ": 4,
-              "ICGC": 5,
-              "INGV": 6,
-              "KOERI": 7,
-              "LMU": 8,
-              "NIEP": 9,
-              "NOA": 10,
-              "ODC": 11,
-              "SED": 12,
-              "Time": 0,
-              "UIB": 13
-            },
-            "renameByName": {
-              "BGS": ""
-            }
-          }
-        }
-      ],
-      "type": "state-timeline"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "axisPlacement": "auto",
-            "fillOpacity": 70,
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineWidth": 0,
-            "spanNulls": false
-          },
-          "mappings": [
-            {
-              "options": {
-                "200": {
-                  "color": "green",
-                  "index": 0,
-                  "text": "OK"
-                },
-                "201": {
-                  "color": "yellow",
-                  "index": 1
-                },
-                "204": {
-                  "color": "yellow",
-                  "index": 2,
-                  "text": "No Content"
-                },
-                "400": {
-                  "color": "dark-orange",
-                  "index": 3,
-                  "text": "Bad Request"
-                },
-                "401": {
-                  "color": "dark-orange",
-                  "index": 4,
-                  "text": "Unauthorized"
-                },
-                "403": {
-                  "color": "dark-orange",
-                  "index": 5,
-                  "text": "Forbidden"
-                },
-                "404": {
-                  "color": "yellow",
-                  "index": 6,
-                  "text": "Not Found"
-                },
-                "500": {
-                  "color": "dark-red",
-                  "index": 7,
-                  "text": "Internal Server Error"
-                },
-                "502": {
-                  "color": "dark-red",
-                  "index": 8,
-                  "text": "Bad Gateway"
-                },
-                "503": {
-                  "color": "dark-red",
-                  "index": 9,
-                  "text": "Service Unavailable"
-                },
-                "null": {
-                  "color": "transparent",
-                  "index": 10
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 24,
-        "x": 0,
-        "y": 85
-      },
-      "id": 11,
-      "options": {
-        "alignValue": "left",
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "mergeValues": true,
-        "rowHeight": 0.9,
-        "showValue": "auto",
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.0.2",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": "Response code for step \"wfcatalog application.wadl\" of scenario \"wfcatalog\"."
-          },
-          "itemTag": {
-            "filter": "Application: wfcatalog"
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "count": false,
-            "disableDataAlignment": false,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "0",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "wfcatalog WADL",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "^(.*):.*$",
-            "renamePattern": "$1"
-          }
-        },
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "destinationType": "string",
-                "targetField": "ICGC"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "GFZ"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "NIEP"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "NOA"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "LMU"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "ODC"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "INGV"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "SED"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "UIB"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "BGS"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "BGR"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "KOERI"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "EPOSFR"
-              }
-            ],
-            "fields": {}
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "includeByName": {},
-            "indexByName": {
-              "BGR": 1,
-              "BGS": 2,
-              "EPOSFR": 3,
-              "GFZ": 4,
-              "ICGC": 5,
-              "INGV": 6,
-              "KOERI": 7,
-              "LMU": 8,
-              "NOA": 9,
-              "ODC": 10,
-              "SED": 11,
-              "Time": 0,
-              "UIB": 12
-            },
-            "renameByName": {
-              "UIB": ""
-            }
-          }
-        }
-      ],
-      "type": "state-timeline"
     }
   ],
   "preload": false,
   "refresh": "1m",
   "schemaVersion": 41,
-  "tags": [],
+  "tags": [
+    "EIDA"
+  ],
   "templating": {
     "list": [
       {
+        "allowCustomValue": false,
         "current": {
-          "text": [
-            "BGR"
-          ],
-          "value": [
-            "BGR"
-          ]
+          "text": "BGR",
+          "value": "BGR"
         },
         "definition": "",
-        "includeAll": true,
-        "label": "EIDA NODES",
-        "multi": true,
-        "name": "EIDA_NODES",
+        "includeAll": false,
+        "label": "EIDA NODE",
+        "name": "EIDA_NODE",
         "options": [],
         "query": {
           "application": "",
-          "group": "/^(?!(Discovered hosts|EIDA nodes)$).+/",
+          "group": "/^EIDA nodes$/",
           "host": "/.*/",
           "item": "",
           "itemTag": "",
-          "queryType": "group"
+          "queryType": "host"
         },
         "refresh": 1,
         "regex": "",
         "sort": 1,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": [
+            "dataselect",
+            "availability",
+            "station",
+            "wfcatalog"
+          ],
+          "value": [
+            "dataselect",
+            "availability",
+            "station",
+            "wfcatalog"
+          ]
+        },
+        "definition": "",
+        "hide": 2,
+        "includeAll": true,
+        "label": "webservice",
+        "multi": true,
+        "name": "WS",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/.*/",
+          "host": "/.*/",
+          "item": "",
+          "itemTag": "/webservice: [^(routing.*)]/",
+          "queryType": "itemTag"
+        },
+        "refresh": 1,
+        "regex": "/webservice: (.*)/",
         "type": "query"
       }
     ]
@@ -1800,5 +593,5 @@
   "timezone": "browser",
   "title": "EIDA Nodes requirements",
   "uid": "eeq7mizn2y8zkb",
-  "version": 14
+  "version": 8
 }

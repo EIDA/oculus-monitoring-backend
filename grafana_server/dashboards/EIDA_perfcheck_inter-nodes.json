@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 9,
+  "id": 5,
   "links": [],
   "panels": [
     {
@@ -37,7 +37,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "aevd6qhslzvnkb"
+        "uid": "ef0ms3r1nwoowb"
       },
       "description": "",
       "fieldConfig": {
@@ -118,7 +118,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.0",
+      "pluginVersion": "12.1.1",
       "repeat": "SCENARIO",
       "repeatDirection": "v",
       "targets": [
@@ -191,7 +191,9 @@
   "preload": false,
   "refresh": "15m",
   "schemaVersion": 41,
-  "tags": [],
+  "tags": [
+    "EIDA"
+  ],
   "templating": {
     "list": [
       {
@@ -204,7 +206,7 @@
         },
         "datasource": {
           "type": "alexanderzobnin-zabbix-datasource",
-          "uid": "aevd6qhslzvnkb"
+          "uid": "ef0ms3r1nwoowb"
         },
         "definition": "",
         "description": "",
@@ -359,6 +361,6 @@
   "timezone": "browser",
   "title": "EIDA PerfCheck inter-nodes",
   "uid": "1a7598eb-5c4e-41c9-a596-70f9ee92eb7f",
-  "version": 10,
+  "version": 5,
   "weekStart": "monday"
 }
