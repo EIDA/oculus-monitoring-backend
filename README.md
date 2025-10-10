@@ -187,7 +187,7 @@ ansible-playbook zbx_deployment.yaml
 
 ### 5. Install Grafana
   ```sh
-  helm secrets upgrade --install oculus-grafana grafana/grafana \
+  helm upgrade --install oculus-grafana grafana/grafana \
   -f values.yaml -n eida-monitoring
   ```
 
