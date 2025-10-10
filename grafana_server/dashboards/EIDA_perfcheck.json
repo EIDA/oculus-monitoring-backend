@@ -37,7 +37,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "aevd6qhslzvnkb"
       },
       "description": "",
       "fieldConfig": {
@@ -87,7 +87,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           },
@@ -105,10 +106,7 @@
       "options": {
         "legend": {
           "calcs": [
-            "mean",
-            "last",
-            "min",
-            "max"
+            "mean"
           ],
           "displayMode": "table",
           "placement": "bottom",
@@ -120,7 +118,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.1.0",
       "repeat": "WS",
       "repeatDirection": "v",
       "targets": [
@@ -190,172 +188,253 @@
       "type": "timeseries"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 23
       },
-      "id": 5,
-      "panels": [],
-      "title": "Transfer Rate",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 6,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          },
-          "unit": "binBps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 13
-      },
-      "id": 6,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "last",
-            "min",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.0.2",
-      "repeat": "WS",
-      "repeatDirection": "v",
-      "targets": [
+      "id": 2,
+      "panels": [
         {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
           "datasource": {
             "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "dest9vodnjv9cc"
+            "uid": "aevd6qhslzvnkb"
           },
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "200": {
+                      "color": "green",
+                      "index": 0,
+                      "text": "OK"
+                    },
+                    "201": {
+                      "color": "yellow",
+                      "index": 1
+                    },
+                    "204": {
+                      "color": "yellow",
+                      "index": 2,
+                      "text": "No Content"
+                    },
+                    "400": {
+                      "color": "dark-orange",
+                      "index": 3,
+                      "text": "Bad Request"
+                    },
+                    "401": {
+                      "color": "dark-orange",
+                      "index": 4,
+                      "text": "Unauthorized"
+                    },
+                    "403": {
+                      "color": "dark-orange",
+                      "index": 5,
+                      "text": "Forbidden"
+                    },
+                    "404": {
+                      "color": "yellow",
+                      "index": 6,
+                      "text": "Not Found"
+                    },
+                    "500": {
+                      "color": "dark-red",
+                      "index": 7,
+                      "text": "Internal Server Error"
+                    },
+                    "502": {
+                      "color": "dark-red",
+                      "index": 8,
+                      "text": "Bad Gateway"
+                    },
+                    "503": {
+                      "color": "dark-red",
+                      "index": 9,
+                      "text": "Service Unavailable"
+                    },
+                    "null": {
+                      "color": "transparent",
+                      "index": 10
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "binBps"
+            },
+            "overrides": []
           },
-          "host": {
-            "filter": "$EIDA_NODES"
+          "gridPos": {
+            "h": 11,
+            "w": 24,
+            "x": 0,
+            "y": 24
           },
-          "item": {
-            "filter": "$TRANSFER_RATE"
-          },
-          "itemTag": {
-            "filter": "$WS"
-          },
-          "macro": {
-            "filter": ""
-          },
+          "id": 1,
           "options": {
-            "count": false,
-            "disableDataAlignment": false,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
+            "legend": {
+              "calcs": [
+                "mean",
+                "last",
+                "min",
+                "max"
+              ],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
           },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "0",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
+          "pluginVersion": "12.1.0",
+          "repeat": "WS",
+          "repeatDirection": "v",
+          "targets": [
+            {
+              "application": {
+                "filter": ""
+              },
+              "countTriggersBy": "",
+              "datasource": {
+                "type": "alexanderzobnin-zabbix-datasource",
+                "uid": "dest9vodnjv9cc"
+              },
+              "evaltype": "0",
+              "functions": [],
+              "group": {
+                "filter": "$EIDA_NODES"
+              },
+              "host": {
+                "filter": "$EIDA_NODES"
+              },
+              "item": {
+                "filter": "$TRANSFER_RATE"
+              },
+              "itemTag": {
+                "filter": "$WS"
+              },
+              "macro": {
+                "filter": ""
+              },
+              "options": {
+                "count": false,
+                "disableDataAlignment": false,
+                "showDisabledItems": false,
+                "skipEmptyValues": false,
+                "useTrends": "default",
+                "useZabbixValueMapping": false
+              },
+              "proxy": {
+                "filter": ""
+              },
+              "queryType": "0",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "schema": 12,
+              "table": {
+                "skipEmptyValues": false
+              },
+              "tags": {
+                "filter": ""
+              },
+              "textFilter": "",
+              "trigger": {
+                "filter": ""
+              }
+            }
+          ],
+          "title": "$WS",
+          "transformations": [
+            {
+              "id": "renameByRegex",
+              "options": {
+                "regex": "^[^\"]*\"([^\"]*)\".*",
+                "renamePattern": "$1"
+              }
+            },
+            {
+              "id": "convertFieldType",
+              "options": {
+                "conversions": [
+                  {
+                    "destinationType": "string",
+                    "targetField": "9 streams"
+                  },
+                  {
+                    "destinationType": "string",
+                    "targetField": "54 streams"
+                  },
+                  {
+                    "destinationType": "string",
+                    "targetField": "320 streams"
+                  },
+                  {
+                    "destinationType": "string",
+                    "targetField": "1 stream 15 days"
+                  }
+                ],
+                "fields": {}
+              }
+            }
+          ],
+          "type": "timeseries"
         }
       ],
-      "title": "$WS",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "^[^\"]*\"([^\"]*)\".*",
-            "renamePattern": "$1"
-          }
-        }
-      ],
-      "type": "timeseries"
+      "title": "Transfer Rate",
+      "type": "row"
     }
   ],
   "preload": false,
@@ -368,23 +447,19 @@
   "templating": {
     "list": [
       {
+        "allowCustomValue": false,
         "current": {
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": "BGR",
+          "value": "BGR"
         },
         "datasource": {
           "type": "alexanderzobnin-zabbix-datasource",
-          "uid": "dest9vodnjv9cc"
+          "uid": "aevd6qhslzvnkb"
         },
         "definition": "",
         "description": "",
-        "includeAll": true,
+        "includeAll": false,
         "label": "EIDA NODES",
-        "multi": true,
         "name": "EIDA_NODES",
         "options": [],
         "query": {
@@ -401,13 +476,14 @@
         "type": "query"
       },
       {
-        "allowCustomValue": true,
         "current": {
           "text": [
-            "webservice: availability"
+            "webservice: availability",
+            "webservice: dataselect"
           ],
           "value": [
-            "webservice: availability"
+            "webservice: availability",
+            "webservice: dataselect"
           ]
         },
         "definition": "",
@@ -422,7 +498,7 @@
           "group": "$EIDA_NODES",
           "host": "$EIDA_NODES",
           "item": "",
-          "itemTag": "/^webservice.*/",
+          "itemTag": "/.*webservice.*/",
           "queryType": "itemTag"
         },
         "refresh": 1,
@@ -432,9 +508,7 @@
       {
         "current": {
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
         "definition": "",
         "hide": 2,
@@ -459,7 +533,9 @@
       {
         "current": {
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "definition": "",
         "hide": 2,
@@ -491,6 +567,6 @@
   "timezone": "browser",
   "title": "EIDA PerfCheck",
   "uid": "eb676f02-3961-4251-8d28-6e3f0f20bf95",
-  "version": 53,
+  "version": 13,
   "weekStart": "monday"
 }
