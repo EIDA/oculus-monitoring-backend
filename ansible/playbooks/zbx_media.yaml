@@ -35,6 +35,7 @@
               <b>Problem started</b> at {EVENT.TIME} on {EVENT.DATE}<br>
               <b>Problem name:</b> {EVENT.NAME}<br>
               <b>Host:</b> {HOST.NAME}<br>
+              <b>Description:</b> {}<br>
               <b>Severity:</b> {EVENT.SEVERITY}<br>
               <b>Operational data:</b> {EVENT.OPDATA}<br>
               <b>Original problem ID:</b> {EVENT.ID}<br>
@@ -60,23 +61,3 @@
               <b>Current problem status:</b> {EVENT.STATUS}<br>
               <b>Age:</b> {EVENT.AGE}<br>
               <b>Acknowledged:</b> {EVENT.ACK.STATUS}
-          - eventsource: discovery
-            recovery: operations
-            subject: "Discovery: {DISCOVERY.DEVICE.STATUS} {DISCOVERY.DEVICE.IPADDRESS}"
-            body: |
-              <b>Discovery rule:</b> {DISCOVERY.RULE.NAME}<br><br>
-              <b>Device IP:</b> {DISCOVERY.DEVICE.IPADDRESS}<br>
-              <b>Device DNS:</b> {DISCOVERY.DEVICE.DNS}<br>
-              <b>Device status:</b> {DISCOVERY.DEVICE.STATUS}<br>
-              <b>Device uptime:</b> {DISCOVERY.DEVICE.UPTIME}<br><br>
-              <b>Device service name:</b> {DISCOVERY.SERVICE.NAME}<br>
-              <b>Device service port:</b> {DISCOVERY.SERVICE.PORT}<br>
-              <b>Device service status:</b> {DISCOVERY.SERVICE.STATUS}<br>
-              <b>Device service uptime:</b> {DISCOVERY.SERVICE.UPTIME}
-          - eventsource: autoregistration
-            recovery: operations
-            subject: "Autoregistration: {HOST.HOST}"
-            body: |
-              <b>Host name:</b> {HOST.HOST}<br>
-              <b>Host IP:</b> {HOST.IP}<br>
-              <b>Agent port:</b> {HOST.PORT}
