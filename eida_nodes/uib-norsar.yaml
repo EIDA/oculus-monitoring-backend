@@ -1,5 +1,5 @@
 ---
-node: UIB
+node: UIB-NORSAR
 endpoint: eida.geo.uib.no
 routingFile: eidaws/routing.xml
 onlineCheck:

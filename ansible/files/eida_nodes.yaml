@@ -2,7 +2,7 @@ eida_nodes:
 - BGR
 - BGS
 - EPOSFR
-- GFZ
+- GEOFON
 - ICGC
 - IGN
 - INGV
@@ -11,5 +11,5 @@ eida_nodes:
 - NIEP
 - NOA
 - ODC
-- SED
-- UIB
+- ETH
+- UIB-NORSAR

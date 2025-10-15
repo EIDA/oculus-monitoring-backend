@@ -1,5 +1,5 @@
 ---
-node: SED
+node: ETH
 endpoint: eida.ethz.ch
 routingFile: eidaws/routing/routing.xml
 onlineCheck:

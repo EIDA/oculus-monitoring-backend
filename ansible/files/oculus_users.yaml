@@ -25,11 +25,11 @@ oculus_users:
   email: tjos@bgs.ac.uk
 - username: user-gfz
   name: Andres Heinloo
-  usrgrp: GFZ
+  usrgrp: GEOFON
   email: andres@gfz-potsdam.de
 - username: user-gfz2
   name: Javier Quinteros
-  usrgrp: GFZ
+  usrgrp: GEOFON
   email: javier@gfz-potsdam.de
 - username: user-icgc
   name: Jara Jose Antonio
@@ -73,19 +73,19 @@ oculus_users:
   email: rdsa-agile@knmi.nl
 - username: user-sed
   name: Stefan Heimers
-  usrgrp: SED
+  usrgrp: ETH
   email: stefan.heimers@sed.ethz.ch
 - username: user-sed2
   name: Kästli Philipp
-  usrgrp: SED
+  usrgrp: ETH
   email: kaestli@sed.ethz.ch
 - username: user-sed3
   name: Roman Racine
-  usrgrp: SED
+  usrgrp: ETH
   email: racine@sed.ethz.ch
 - username: user-uib
   name: Øyvind Natvik
-  usrgrp: UIB
+  usrgrp: UIB-NORSAR
   email: Oyvind.Natvik@uib.no
 - username: user-ign
   name: Barco De La Torre Jaime
