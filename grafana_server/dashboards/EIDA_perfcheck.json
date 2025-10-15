@@ -150,7 +150,7 @@
           },
           "options": {
             "count": false,
-            "disableDataAlignment": false,
+            "disableDataAlignment": true,
             "showDisabledItems": false,
             "skipEmptyValues": false,
             "useTrends": "default",
@@ -193,7 +193,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 45
       },
       "id": 2,
       "panels": [],
@@ -321,7 +321,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 46
       },
       "id": 1,
       "options": {
@@ -374,7 +374,7 @@
           },
           "options": {
             "count": false,
-            "disableDataAlignment": false,
+            "disableDataAlignment": true,
             "showDisabledItems": false,
             "skipEmptyValues": false,
             "useTrends": "default",
@@ -448,8 +448,8 @@
       {
         "allowCustomValue": false,
         "current": {
-          "text": "EPOSFR",
-          "value": "EPOSFR"
+          "text": "ODC",
+          "value": "ODC"
         },
         "datasource": {
           "type": "alexanderzobnin-zabbix-datasource",
@@ -476,13 +476,9 @@
       },
       {
         "current": {
-          "text": [
-            "webservice: availability",
-            "webservice: dataselect"
-          ],
+          "text": "All",
           "value": [
-            "webservice: availability",
-            "webservice: dataselect"
+            "$__all"
           ]
         },
         "definition": "",
@@ -559,13 +555,13 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "EIDA PerfCheck",
   "uid": "eb676f02-3961-4251-8d28-6e3f0f20bf95",
-  "version": 4,
+  "version": 9,
   "weekStart": "monday"
 }
