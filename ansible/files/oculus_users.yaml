@@ -23,11 +23,11 @@ oculus_users:
   name: Tarun Joseph
   usrgrp: BGS
   email: tjos@bgs.ac.uk
-- username: user-gfz
+- username: user-geofon
   name: Andres Heinloo
   usrgrp: GEOFON
   email: andres@gfz-potsdam.de
-- username: user-gfz2
+- username: user-geofon2
   name: Javier Quinteros
   usrgrp: GEOFON
   email: javier@gfz-potsdam.de
@@ -71,19 +71,19 @@ oculus_users:
   name: RDSA AGILE
   usrgrp: ODC
   email: rdsa-agile@knmi.nl
-- username: user-sed
+- username: user-eth
   name: Stefan Heimers
   usrgrp: ETH
   email: stefan.heimers@sed.ethz.ch
-- username: user-sed2
+- username: user-eth2
   name: Kästli Philipp
   usrgrp: ETH
   email: kaestli@sed.ethz.ch
-- username: user-sed3
+- username: user-eth3
   name: Roman Racine
   usrgrp: ETH
   email: racine@sed.ethz.ch
-- username: user-uib
+- username: user-uib-norsar
   name: Øyvind Natvik
   usrgrp: UIB-NORSAR
   email: Oyvind.Natvik@uib.no
