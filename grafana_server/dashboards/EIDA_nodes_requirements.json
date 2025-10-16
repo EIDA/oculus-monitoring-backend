@@ -429,84 +429,22 @@
             "conversions": [
               {
                 "destinationType": "string",
-                "targetField": "ICGC"
+                "targetField": "availability"
               },
               {
                 "destinationType": "string",
-                "targetField": "GFZ"
+                "targetField": "dataselect"
               },
               {
                 "destinationType": "string",
-                "targetField": "NIEP"
+                "targetField": "station"
               },
               {
                 "destinationType": "string",
-                "targetField": "NOA"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "LMU"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "ODC"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "INGV"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "SED"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "UIB"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "BGS"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "BGR"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "KOERI"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "EPOSFR"
+                "targetField": "wfcatalog"
               }
             ],
             "fields": {}
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "includeByName": {},
-            "indexByName": {
-              "BGR": 1,
-              "BGS": 2,
-              "EPOSFR": 3,
-              "GFZ": 4,
-              "ICGC": 5,
-              "INGV": 6,
-              "KOERI": 7,
-              "LMU": 8,
-              "NOA": 9,
-              "ODC": 10,
-              "SED": 11,
-              "Time": 0,
-              "UIB": 12
-            },
-            "renameByName": {
-              "INGV": "",
-              "ODC": ""
-            }
           }
         }
       ],
@@ -524,8 +462,8 @@
       {
         "allowCustomValue": false,
         "current": {
-          "text": "BGR",
-          "value": "BGR"
+          "text": "BGS",
+          "value": "BGS"
         },
         "definition": "",
         "includeAll": false,
@@ -593,5 +531,5 @@
   "timezone": "browser",
   "title": "EIDA Nodes requirements",
   "uid": "eeq7mizn2y8zkb",
-  "version": 8
+  "version": 10
 }
