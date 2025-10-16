@@ -1,0 +1,50 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 44950db14d8549c2a022ab3d5ba3ff96
+      name: Templates/EIDA
+  templates:
+    - uuid: bd7e234e9843428694e3a69342571091
+      template: 'Template routing'
+      name: 'Template routing'
+      groups:
+        - name: Templates/EIDA
+      items:
+        - uuid: 801dc7c5ae3e446f91f9babff21c90a4
+          name: 'Routing central'
+          type: HTTP_AGENT
+          key: routing.central
+          delay: 1d
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.datacenters[?(@.name==''{$NODE}'')].name'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: ERROR
+          timeout: 30s
+          url: 'https://www.orfeus-eu.org/eidaws/routing/1/globalconfig'
+          query_fields:
+            - name: format
+              value: fdsn
+          headers:
+            - name: Accept
+              value: application/json
+            - name: Content-Type
+              value: application/json
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: format
+              value: json
+            - tag: routing
+              value: central
+          triggers:
+            - uuid: ee444d811caf48f79e492e98f7b43e89
+              expression: 'last(/Template routing/routing.central)="ERROR"'
+              name: 'EIDA routing present'
+              event_name: 'Node {$NODE} not found in EIDA central routing'
+              priority: HIGH
+              description: 'The datacenter is not present in the list at https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn'
+              manual_close: 'YES'

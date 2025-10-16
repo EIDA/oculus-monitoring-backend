@@ -448,8 +448,8 @@
       {
         "allowCustomValue": false,
         "current": {
-          "text": "ODC",
-          "value": "ODC"
+          "text": "EPOSFR",
+          "value": "EPOSFR"
         },
         "datasource": {
           "type": "alexanderzobnin-zabbix-datasource",

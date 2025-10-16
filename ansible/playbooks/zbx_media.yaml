@@ -39,7 +39,6 @@
               <b>Severity:</b> {EVENT.SEVERITY}<br>
               <b>Operational data:</b> {EVENT.OPDATA}<br>
               <b>Original problem ID:</b> {EVENT.ID}<br>
-              {TRIGGER.URL}
           - eventsource: triggers
             recovery: recovery_operations
             subject: "Resolved in {EVENT.DURATION}: {EVENT.NAME}"
@@ -50,7 +49,6 @@
               <b>Host:</b> {HOST.NAME}<br>
               <b>Severity:</b> {EVENT.SEVERITY}<br>
               <b>Original problem ID:</b> {EVENT.ID}<br>
-              {TRIGGER.URL}
           - eventsource: triggers
             recovery: update_operations
             subject: "Updated problem in {EVENT.AGE}: {EVENT.NAME}"

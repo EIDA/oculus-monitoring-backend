@@ -359,8 +359,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "EIDA PerfCheck inter-nodes",
+  "title": "EIDA PerfCheck inter - nodes",
   "uid": "1a7598eb-5c4e-41c9-a596-70f9ee92eb7f",
-  "version": 5,
+  "version": 7,
   "weekStart": "monday"
 }
