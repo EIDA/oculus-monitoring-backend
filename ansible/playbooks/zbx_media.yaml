@@ -23,7 +23,7 @@
         name: "Email (HTML) EIDA"
         type: email
         smtp_server: "mailhost.u-ga.fr"
-        smtp_email: "noreply-oculus@univ-grenoble-alpes.fr"
+        smtp_email: "ne-pas-repondre@univ-grenoble-alpes.fr"
         smtp_server_port: 25
         message_format: "html"
         status: disabled

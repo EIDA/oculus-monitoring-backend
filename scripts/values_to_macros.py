@@ -44,6 +44,7 @@ def flatten_yaml(data, parent_key='', sep='_'):
 def generate_lld(yaml_file):
     """
     Generates Ansible macros format output from a YAML file structure
+    Only processes specific sections: node, endpoint, routingFile, onlineCheck
     
     Args:
         yaml_file (str): The path to the input YAML file
@@ -52,7 +53,11 @@ def generate_lld(yaml_file):
     with open(yaml_file, 'r') as yf:
         data = yaml.load(yf, Loader=yaml.BaseLoader)
 
-    flattened_data = flatten_yaml(data)
+    # Filter data to include only specified sections
+    allowed_sections = ['node', 'endpoint', 'routingFile', 'onlineCheck']
+    filtered_data = {key: value for key, value in data.items() if key in allowed_sections}
+    
+    flattened_data = flatten_yaml(filtered_data)
     
     # generate Ansible macros format
     macros = []
@@ -78,7 +83,6 @@ def generate_lld(yaml_file):
             "value": endpoint_value
         }
         macros.append(cert_macro)
-
 
     for macro in macros:
         print(f'- macro: "{macro["macro"]}"')
