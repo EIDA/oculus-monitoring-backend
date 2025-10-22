@@ -1,8 +1,8 @@
-#! /bin/env -S uv run
+#! /usr/bin/env -S uv run
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "pyyaml",
+#   "pyyaml",
 # ]
 # ///
 import yaml
@@ -15,18 +15,16 @@ class DateTimeEncoder(json.JSONEncoder):
         if isinstance(obj, datetime.datetime):
             return obj.isoformat()
         return super().default(obj)
-
+    
 def flatten_yaml(data, parent_key='', sep='_'):
     """
-    Flattens a nested YAML/dict structure into a flat dictionary.
-    
-    Args:
-        data: The data structure to flatten
-        parent_key: The parent key for nested structures
-        sep: The separator to use between keys
-    
-    Returns:
-        dict: Flattened dictionary
+    flattens a nested yaml/dict structure into a flat dictionarry
+    args:
+        data: the data structure to flatten
+        parent_key: the parent key for nested structures
+        sep: separator to use between keys
+    returns:
+        dict; flattened dictrionary
     """
     items = []
     if isinstance(data, dict):
@@ -40,43 +38,39 @@ def flatten_yaml(data, parent_key='', sep='_'):
             else:
                 items.append((new_key, v))
     return dict(items)
-
+    
 def generate_lld(yaml_file):
     """
-    Generates Ansible macros format output from a YAML file structure
-    Only processes specific sections: node, endpoint, routingFile, onlineCheck
-    
-    Args:
-        yaml_file (str): The path to the input YAML file
+    generate ansible macros format output from a yaml file structure
+    only processes specific sections; node, endpoint, routingFile, onlinecheck
+    args:
+        yaml_file (string): the path to the input yaml file
     """
-    # load the YAML file
     with open(yaml_file, 'r') as yf:
         data = yaml.load(yf, Loader=yaml.BaseLoader)
 
-    # Filter data to include only specified sections
     allowed_sections = ['node', 'endpoint', 'routingFile', 'onlineCheck']
     filtered_data = {key: value for key, value in data.items() if key in allowed_sections}
-    
+
     flattened_data = flatten_yaml(filtered_data)
-    
-    # generate Ansible macros format
+
     macros = []
     for key, value in flattened_data.items():
         macro_key = f"{{${key.upper()}}}"
-        
+
         macro_entry = {
             "macro": macro_key,
             "value": str(value)
         }
         macros.append(macro_entry)
-    
-    # add CERT.WEBSITE.HOSTNAME for Template Web Certificate
+
+    # add CERT.WEBSITE.HOSTNAME for template web certificate
     endpoint_value = None
     for key, value in flattened_data.items():
         if key.upper() == 'ENDPOINT':
             endpoint_value = str(value)
             break
-    
+        
     if endpoint_value:
         cert_macro = {
             "macro": "{$CERT.WEBSITE.HOSTNAME}",
@@ -88,11 +82,12 @@ def generate_lld(yaml_file):
         print(f'- macro: "{macro["macro"]}"')
         print(f'  value: \'{macro["value"]}\'')
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python values_to_macros.py <input_yaml_file>")
+        print("usage: python values_to_macros.py <input_yaml_file>")
         sys.exit(1)
-    
+
     input_yaml_file = sys.argv[1]
-    
+
     generate_lld(input_yaml_file)
