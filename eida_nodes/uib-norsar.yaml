@@ -9,6 +9,8 @@ onlineCheck:
   cha: HHZ
   start: 2019-01-15T00:01:50
   end: 2019-01-15T00:02:00
+requiremets:
+  network: { biggest_network_code }
 perfCheck:
 - webservice: dataselect
   scenario: 9streams

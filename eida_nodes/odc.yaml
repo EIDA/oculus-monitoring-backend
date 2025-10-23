@@ -9,6 +9,8 @@ onlineCheck:
   cha: HGZ
   start: 2017-06-04T00:00:00
   end: 2017-06-04T00:00:05
+requiremets:
+  network: { biggest_network_code }
 perfCheck:
 - webservice: dataselect
   scenario: 9streams

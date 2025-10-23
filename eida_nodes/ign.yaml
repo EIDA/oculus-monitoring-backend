@@ -9,3 +9,126 @@ onlineCheck:
   cha: HNZ
   start: "2025-06-25T23:00:00"
   end: "2025-06-25T23:00:10"
+requiremets:
+  network: { biggest_network_code }
+perfCheck:
+- webservice: dataselect
+  scenario: 9streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: dataselect
+  scenario: 54streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: dataselect
+  scenario: 320streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: dataselect
+  scenario: 1stream15days
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: wfcatalog
+  scenario: 9streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: wfcatalog
+  scenario: 54streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: wfcatalog
+  scenario: 320streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: wfcatalog
+  scenario: 1stream15days
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: availability
+  scenario: 9streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: availability
+  scenario: 54streams
+  net:
+  sta:
+  loc:
+  cha:
+  star:
+  end:
+- webservice: availability
+  scenario: 320streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: availability
+  scenario: 1stream15days
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: station
+  scenario: 9streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: station
+  scenario: 54streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
+- webservice: station
+  scenario: 320streams
+  net:
+  sta:
+  loc:
+  cha:
+  start:
+  end:
