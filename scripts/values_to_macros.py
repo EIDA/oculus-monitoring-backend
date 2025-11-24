@@ -10,7 +10,6 @@ import json
 import sys
 import datetime
 
-
 class DateTimeEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, datetime.datetime):
