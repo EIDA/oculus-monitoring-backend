@@ -1550,12 +1550,54 @@ zabbix_export:
             - tag: routing
               value: central
           triggers:
-            - uuid: ee444d811caf48f79e492e98f7b43e89
+            - uuid: 5a0bf9b2fcbc437eb399f0683dcfb95e
               expression: 'last(/Template routing/routing.central)="ERROR"'
-              name: 'EIDA routing present'
-              event_name: 'Node {$NODE} not found in EIDA central routing'
-              priority: HIGH
-              description: 'The datacenter is not present in the list at https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn'
+              name: 'EIDA central rouging node not present'
+              priority: WARNING
+              description: |
+                The node is not present in EIDA central routing here:
+                https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
+              manual_close: 'YES'
+        - uuid: ec644c6f926642f8b2d76db892f33316
+          name: 'Routing central count datasets'
+          type: HTTP_AGENT
+          key: routing.central_datasets
+          delay: 1d
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.datacenters[?(@.name == ''{$NODE}'')].repositories[?(@.name == ''archive'')].datasets.first().length()'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '0'
+          timeout: 1m
+          url: 'https://www.orfeus-eu.org/eidaws/routing/1/globalconfig'
+          query_fields:
+            - name: format
+              value: fdsn
+          headers:
+            - name: Accept
+              value: application/json
+            - name: Content-Type
+              value: application/json
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: format
+              value: json
+            - tag: routing
+              value: central_datasets
+          triggers:
+            - uuid: 535e10a824c849a8a4e6ae79c0066730
+              expression: 'change(/Template routing/routing.central_datasets)<0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'change(/Template routing/routing.central_datasets)>0'
+              name: 'EIDA central routing lost at least one network for node {$NODE}'
+              priority: AVERAGE
+              description: |
+                Central routing system advertises less networks than before (now : {ITEM.LASTVALUE}
+                check the full information : https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
               manual_close: 'YES'
     - uuid: b192614a2cbc490eb3ca047e9eb36328
       template: 'Template webservices'
