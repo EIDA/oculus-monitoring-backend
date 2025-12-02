@@ -1,5 +1,5 @@
 ---
-- name: Activate Media type Email (HTML) EIDA
+- name: Activate Media type  Email (HTML) EIDA
   hosts: localhost
   gather_facts: false
   vars_files:
