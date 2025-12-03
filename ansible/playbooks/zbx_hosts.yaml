@@ -61,6 +61,7 @@
         link_templates:
           - "Template performance checks"
           - "Template webservices"
+          - "Template routing"
           - "Website certificate by Zabbix agent 2"
         status: "enabled"
         state: "present"
