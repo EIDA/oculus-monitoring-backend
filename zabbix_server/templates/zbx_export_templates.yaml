@@ -61,279 +61,6 @@ zabbix_export:
                 - macro: '{$ONLINECHECK_START}'
                   value: '{#ONLINECHECK_START}'
                   description: 'Node start time'
-                - macro: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_CHA}'
-                  value: '{#PERFCHECK_AVAILABILITY_1STREAM15DAYS_CHA}'
-                  description: 'Availability 1 stream 15 days channel'
-                - macro: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_END}'
-                  value: '{#PERFCHECK_AVAILABILITY_1STREAM15DAYS_END}'
-                  description: 'Availability 1 stream 15 days end time'
-                - macro: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_LOC}'
-                  value: '{#PERFCHECK_AVAILABILITY_1STREAM15DAYS_LOC}'
-                  description: 'Availability 1 stream 15 days location'
-                - macro: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_NET}'
-                  value: '{#PERFCHECK_AVAILABILITY_1STREAM15DAYS_NET}'
-                  description: 'Availability 1 stream 15 days network'
-                - macro: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_STA}'
-                  value: '{#PERFCHECK_AVAILABILITY_1STREAM15DAYS_STA}'
-                  description: 'Availability 1 stream 15 days station'
-                - macro: '{$PERFCHECK_AVAILABILITY_1STREAM15DAYS_START}'
-                  value: '{#PERFCHECK_AVAILABILITY_1STREAM15DAYS_START}'
-                  description: 'Availability 1 stream 15 days start time'
-                - macro: '{$PERFCHECK_AVAILABILITY_9STREAMS_CHA}'
-                  value: '{#PERFCHECK_AVAILABILITY_9STREAMS_CHA}'
-                  description: 'Availability 9 streams channel'
-                - macro: '{$PERFCHECK_AVAILABILITY_9STREAMS_END}'
-                  value: '{#PERFCHECK_AVAILABILITY_9STREAMS_END}'
-                  description: 'Availability 9 streams end time'
-                - macro: '{$PERFCHECK_AVAILABILITY_9STREAMS_LOC}'
-                  value: '{#PERFCHECK_AVAILABILITY_9STREAMS_LOC}'
-                  description: 'Availability 9 streams location'
-                - macro: '{$PERFCHECK_AVAILABILITY_9STREAMS_NET}'
-                  value: '{#PERFCHECK_AVAILABILITY_9STREAMS_NET}'
-                  description: 'Availability 9 streams network'
-                - macro: '{$PERFCHECK_AVAILABILITY_9STREAMS_STA}'
-                  value: '{#PERFCHECK_AVAILABILITY_9STREAMS_STA}'
-                  description: 'Availability 9 streams station'
-                - macro: '{$PERFCHECK_AVAILABILITY_9STREAMS_START}'
-                  value: '{#PERFCHECK_AVAILABILITY_9STREAMS_START}'
-                  description: 'Availability 9 streams start time'
-                - macro: '{$PERFCHECK_AVAILABILITY_54STREAMS_CHA}'
-                  value: '{#PERFCHECK_AVAILABILITY_54STREAMS_CHA}'
-                  description: 'Availability 54 streams channel'
-                - macro: '{$PERFCHECK_AVAILABILITY_54STREAMS_END}'
-                  value: '{#PERFCHECK_AVAILABILITY_54STREAMS_END}'
-                  description: 'Availability 54 streams end time'
-                - macro: '{$PERFCHECK_AVAILABILITY_54STREAMS_LOC}'
-                  value: '{#PERFCHECK_AVAILABILITY_54STREAMS_LOC}'
-                  description: 'Availability 54 streams location'
-                - macro: '{$PERFCHECK_AVAILABILITY_54STREAMS_NET}'
-                  value: '{#PERFCHECK_AVAILABILITY_54STREAMS_NET}'
-                  description: 'Availability 54 streams network'
-                - macro: '{$PERFCHECK_AVAILABILITY_54STREAMS_STA}'
-                  value: '{#PERFCHECK_AVAILABILITY_54STREAMS_STA}'
-                  description: 'Availability 54 streams station'
-                - macro: '{$PERFCHECK_AVAILABILITY_54STREAMS_START}'
-                  value: '{#PERFCHECK_AVAILABILITY_54STREAMS_START}'
-                  description: 'Availability 54 streams start time'
-                - macro: '{$PERFCHECK_AVAILABILITY_320STREAMS_CHA}'
-                  value: '{#PERFCHECK_AVAILABILITY_320STREAMS_CHA}'
-                  description: 'Availability 320 streams channel'
-                - macro: '{$PERFCHECK_AVAILABILITY_320STREAMS_END}'
-                  value: '{#PERFCHECK_AVAILABILITY_320STREAMS_END}'
-                  description: 'Availability 320 streams end time'
-                - macro: '{$PERFCHECK_AVAILABILITY_320STREAMS_LOC}'
-                  value: '{#PERFCHECK_AVAILABILITY_320STREAMS_LOC}'
-                  description: 'Availability 320 streams location'
-                - macro: '{$PERFCHECK_AVAILABILITY_320STREAMS_NET}'
-                  value: '{#PERFCHECK_AVAILABILITY_320STREAMS_NET}'
-                  description: 'Availability 320 streams network'
-                - macro: '{$PERFCHECK_AVAILABILITY_320STREAMS_STA}'
-                  value: '{#PERFCHECK_AVAILABILITY_320STREAMS_STA}'
-                  description: 'Availability 320 streams station'
-                - macro: '{$PERFCHECK_AVAILABILITY_320STREAMS_START}'
-                  value: '{#PERFCHECK_AVAILABILITY_320STREAMS_START}'
-                  description: 'Availability 320 streams start time'
-                - macro: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_CHA}'
-                  value: '{#PERFCHECK_DATASELECT_1STREAM15DAYS_CHA}'
-                  description: 'Dataselect 1 stream 15 days channel'
-                - macro: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_END}'
-                  value: '{#PERFCHECK_DATASELECT_1STREAM15DAYS_END}'
-                  description: 'Dataselect 1 stream 15 days end time'
-                - macro: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_LOC}'
-                  value: '{#PERFCHECK_DATASELECT_1STREAM15DAYS_LOC}'
-                  description: 'Dataselect 1 stream 15 days location'
-                - macro: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_NET}'
-                  value: '{#PERFCHECK_DATASELECT_1STREAM15DAYS_NET}'
-                  description: 'Dataselect 1 stream 15 days network'
-                - macro: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_STA}'
-                  value: '{#PERFCHECK_DATASELECT_1STREAM15DAYS_STA}'
-                  description: 'Dataselect 1 stream 15 days station'
-                - macro: '{$PERFCHECK_DATASELECT_1STREAM15DAYS_START}'
-                  value: '{#PERFCHECK_DATASELECT_1STREAM15DAYS_START}'
-                  description: 'Dataselect 1 stream 15 days start time'
-                - macro: '{$PERFCHECK_DATASELECT_9STREAMS_CHA}'
-                  value: '{#PERFCHECK_DATASELECT_9STREAMS_CHA}'
-                  description: 'Dataselect 9 streams channel'
-                - macro: '{$PERFCHECK_DATASELECT_9STREAMS_END}'
-                  value: '{#PERFCHECK_DATASELECT_9STREAMS_END}'
-                  description: 'Dataselect 9 streams end time'
-                - macro: '{$PERFCHECK_DATASELECT_9STREAMS_LOC}'
-                  value: '{#PERFCHECK_DATASELECT_9STREAMS_LOC}'
-                  description: 'Dataselect 9 streams  location'
-                - macro: '{$PERFCHECK_DATASELECT_9STREAMS_NET}'
-                  value: '{#PERFCHECK_DATASELECT_9STREAMS_NET}'
-                  description: 'Dataselect 9 streams network'
-                - macro: '{$PERFCHECK_DATASELECT_9STREAMS_STA}'
-                  value: '{#PERFCHECK_DATASELECT_9STREAMS_STA}'
-                  description: 'Dataselect 9 streams station'
-                - macro: '{$PERFCHECK_DATASELECT_9STREAMS_START}'
-                  value: '{#PERFCHECK_DATASELECT_9STREAMS_START}'
-                  description: 'Dataselect 9 streams start time'
-                - macro: '{$PERFCHECK_DATASELECT_54STREAMS_CHA}'
-                  value: '{#PERFCHECK_DATASELECT_54STREAMS_CHA}'
-                  description: 'Dataselect 54 streams channel'
-                - macro: '{$PERFCHECK_DATASELECT_54STREAMS_END}'
-                  value: '{#PERFCHECK_DATASELECT_54STREAMS_END}'
-                  description: 'Dataselect 54 streams end time'
-                - macro: '{$PERFCHECK_DATASELECT_54STREAMS_LOC}'
-                  value: '{#PERFCHECK_DATASELECT_54STREAMS_LOC}'
-                  description: 'Dataselect 54 streams location'
-                - macro: '{$PERFCHECK_DATASELECT_54STREAMS_NET}'
-                  value: '{#PERFCHECK_DATASELECT_54STREAMS_NET}'
-                  description: 'Dataselect 54 streams network'
-                - macro: '{$PERFCHECK_DATASELECT_54STREAMS_STA}'
-                  value: '{#PERFCHECK_DATASELECT_54STREAMS_STA}'
-                  description: 'Dataselect 54 streams station'
-                - macro: '{$PERFCHECK_DATASELECT_54STREAMS_START}'
-                  value: '{#PERFCHECK_DATASELECT_54STREAMS_START}'
-                  description: 'Dataselect 54 streams start time'
-                - macro: '{$PERFCHECK_DATASELECT_320STREAMS_CHA}'
-                  value: '{#PERFCHECK_DATASELECT_320STREAMS_CHA}'
-                  description: 'Dataselect 320 streams channel'
-                - macro: '{$PERFCHECK_DATASELECT_320STREAMS_END}'
-                  value: '{#PERFCHECK_DATASELECT_320STREAMS_END}'
-                  description: 'Dataselect 320 streams end time'
-                - macro: '{$PERFCHECK_DATASELECT_320STREAMS_LOC}'
-                  value: '{#PERFCHECK_DATASELECT_320STREAMS_LOC}'
-                  description: 'Dataselect 320 streams location'
-                - macro: '{$PERFCHECK_DATASELECT_320STREAMS_NET}'
-                  value: '{#PERFCHECK_DATASELECT_320STREAMS_NET}'
-                  description: 'Dataselect 320 streams network'
-                - macro: '{$PERFCHECK_DATASELECT_320STREAMS_STA}'
-                  value: '{#PERFCHECK_DATASELECT_320STREAMS_STA}'
-                  description: 'Dataselect 320 streams station'
-                - macro: '{$PERFCHECK_DATASELECT_320STREAMS_START}'
-                  value: '{#PERFCHECK_DATASELECT_320STREAMS_START}'
-                  description: 'Dataselect 320 streams start time'
-                - macro: '{$PERFCHECK_STATION_9STREAMS_CHA}'
-                  value: '{#PERFCHECK_STATION_9STREAMS_CHA}'
-                  description: 'Station 9 streams channel'
-                - macro: '{$PERFCHECK_STATION_9STREAMS_END}'
-                  value: '{#PERFCHECK_STATION_9STREAMS_END}'
-                  description: 'Station 9 streams end time'
-                - macro: '{$PERFCHECK_STATION_9STREAMS_LOC}'
-                  value: '{#PERFCHECK_STATION_9STREAMS_LOC}'
-                  description: 'Station 9 streams location'
-                - macro: '{$PERFCHECK_STATION_9STREAMS_NET}'
-                  value: '{#PERFCHECK_STATION_9STREAMS_NET}'
-                  description: 'Station 9 streams network'
-                - macro: '{$PERFCHECK_STATION_9STREAMS_STA}'
-                  value: '{#PERFCHECK_STATION_9STREAMS_STA}'
-                  description: 'Station 9 streams station'
-                - macro: '{$PERFCHECK_STATION_9STREAMS_START}'
-                  value: '{#PERFCHECK_STATION_9STREAMS_START}'
-                  description: 'Station 9 streams start time'
-                - macro: '{$PERFCHECK_STATION_54STREAMS_CHA}'
-                  value: '{#PERFCHECK_STATION_54STREAMS_CHA}'
-                  description: 'Station 54 streams channel'
-                - macro: '{$PERFCHECK_STATION_54STREAMS_END}'
-                  value: '{#PERFCHECK_STATION_54STREAMS_END}'
-                  description: 'Station 54 streams end time'
-                - macro: '{$PERFCHECK_STATION_54STREAMS_LOC}'
-                  value: '{#PERFCHECK_STATION_54STREAMS_LOC}'
-                  description: 'Station 54 streams location'
-                - macro: '{$PERFCHECK_STATION_54STREAMS_NET}'
-                  value: '{#PERFCHECK_STATION_54STREAMS_NET}'
-                  description: 'Station 54 streams network'
-                - macro: '{$PERFCHECK_STATION_54STREAMS_STA}'
-                  value: '{#PERFCHECK_STATION_54STREAMS_STA}'
-                  description: 'Station 54 streams station'
-                - macro: '{$PERFCHECK_STATION_54STREAMS_START}'
-                  value: '{#PERFCHECK_STATION_54STREAMS_START}'
-                  description: 'Station 54 streams start time'
-                - macro: '{$PERFCHECK_STATION_320STREAMS_CHA}'
-                  value: '{#PERFCHECK_STATION_320STREAMS_CHA}'
-                  description: 'Station 320 streams channel'
-                - macro: '{$PERFCHECK_STATION_320STREAMS_END}'
-                  value: '{#PERFCHECK_STATION_320STREAMS_END}'
-                  description: 'Station 320 streams end time'
-                - macro: '{$PERFCHECK_STATION_320STREAMS_LOC}'
-                  value: '{#PERFCHECK_STATION_320STREAMS_LOC}'
-                  description: 'Station 320 streams location'
-                - macro: '{$PERFCHECK_STATION_320STREAMS_NET}'
-                  value: '{#PERFCHECK_STATION_320STREAMS_NET}'
-                  description: 'Station 320 streams network'
-                - macro: '{$PERFCHECK_STATION_320STREAMS_STA}'
-                  value: '{#PERFCHECK_STATION_320STREAMS_STA}'
-                  description: 'Station 320 streams station'
-                - macro: '{$PERFCHECK_STATION_320STREAMS_START}'
-                  value: '{#PERFCHECK_STATION_320STREAMS_START}'
-                  description: 'Station 320 streams start time'
-                - macro: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_CHA}'
-                  value: '{#PERFCHECK_WFCATALOG_1STREAM15DAYS_CHA}'
-                  description: 'WFCatalog 1 stream 15 days channel'
-                - macro: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_END}'
-                  value: '{#PERFCHECK_WFCATALOG_1STREAM15DAYS_END}'
-                  description: 'WFCatalog 1 stream 15 days end time'
-                - macro: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_LOC}'
-                  value: '{#PERFCHECK_WFCATALOG_1STREAM15DAYS_LOC}'
-                  description: 'WFCatalog 1 stream 15 days location'
-                - macro: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_NET}'
-                  value: '{#PERFCHECK_WFCATALOG_1STREAM15DAYS_NET}'
-                  description: 'WFCatalog 1 stream 15 days network'
-                - macro: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_STA}'
-                  value: '{#PERFCHECK_WFCATALOG_1STREAM15DAYS_STA}'
-                  description: 'WFCatalog 1 stream 15 days station'
-                - macro: '{$PERFCHECK_WFCATALOG_1STREAM15DAYS_START}'
-                  value: '{#PERFCHECK_WFCATALOG_1STREAM15DAYS_START}'
-                  description: 'WFCatalog 1 stream 15 days start time'
-                - macro: '{$PERFCHECK_WFCATALOG_9STREAMS_CHA}'
-                  value: '{#PERFCHECK_WFCATALOG_9STREAMS_CHA}'
-                  description: 'WFCatalog 9 streams channel'
-                - macro: '{$PERFCHECK_WFCATALOG_9STREAMS_END}'
-                  value: '{#PERFCHECK_WFCATALOG_9STREAMS_END}'
-                  description: 'WFCatalog 9 streams end time'
-                - macro: '{$PERFCHECK_WFCATALOG_9STREAMS_LOC}'
-                  value: '{#PERFCHECK_WFCATALOG_9STREAMS_LOC}'
-                  description: 'WFCatalog 9 streams location'
-                - macro: '{$PERFCHECK_WFCATALOG_9STREAMS_NET}'
-                  value: '{#PERFCHECK_WFCATALOG_9STREAMS_NET}'
-                  description: 'WFCatalog 9 streams network'
-                - macro: '{$PERFCHECK_WFCATALOG_9STREAMS_STA}'
-                  value: '{#PERFCHECK_WFCATALOG_9STREAMS_STA}'
-                  description: 'WFCatalog 9 streams station'
-                - macro: '{$PERFCHECK_WFCATALOG_9STREAMS_START}'
-                  value: '{#PERFCHECK_WFCATALOG_9STREAMS_START}'
-                  description: 'WFCatalog 9 streams start time'
-                - macro: '{$PERFCHECK_WFCATALOG_54STREAMS_CHA}'
-                  value: '{#PERFCHECK_WFCATALOG_54STREAMS_CHA}'
-                  description: 'WFCatalog 54 streams channel'
-                - macro: '{$PERFCHECK_WFCATALOG_54STREAMS_END}'
-                  value: '{#PERFCHECK_WFCATALOG_54STREAMS_END}'
-                  description: 'WFCatalog 54 streams end time'
-                - macro: '{$PERFCHECK_WFCATALOG_54STREAMS_LOC}'
-                  value: '{#PERFCHECK_WFCATALOG_54STREAMS_LOC}'
-                  description: 'WFCatalog 54 streams location'
-                - macro: '{$PERFCHECK_WFCATALOG_54STREAMS_NET}'
-                  value: '{#PERFCHECK_WFCATALOG_54STREAMS_NET}'
-                  description: 'WFCatalog 54 streams network'
-                - macro: '{$PERFCHECK_WFCATALOG_54STREAMS_STA}'
-                  value: '{#PERFCHECK_WFCATALOG_54STREAMS_STA}'
-                  description: 'WFCatalog 54 streams station'
-                - macro: '{$PERFCHECK_WFCATALOG_54STREAMS_START}'
-                  value: '{#PERFCHECK_WFCATALOG_54STREAMS_START}'
-                  description: 'WFCatalog 54 streams start time'
-                - macro: '{$PERFCHECK_WFCATALOG_320STREAMS_CHA}'
-                  value: '{#PERFCHECK_WFCATALOG_320STREAMS_CHA}'
-                  description: 'WFCatalog 320 streams channel'
-                - macro: '{$PERFCHECK_WFCATALOG_320STREAMS_END}'
-                  value: '{#PERFCHECK_WFCATALOG_320STREAMS_END}'
-                  description: 'WFCatalog 320 streams end time'
-                - macro: '{$PERFCHECK_WFCATALOG_320STREAMS_LOC}'
-                  value: '{#PERFCHECK_WFCATALOG_320STREAMS_LOC}'
-                  description: 'WFCatalog 320 streams location'
-                - macro: '{$PERFCHECK_WFCATALOG_320STREAMS_NET}'
-                  value: '{#PERFCHECK_WFCATALOG_320STREAMS_NET}'
-                  description: 'WFCatalog 320 streams network'
-                - macro: '{$PERFCHECK_WFCATALOG_320STREAMS_STA}'
-                  value: '{#PERFCHECK_WFCATALOG_320STREAMS_STA}'
-                  description: 'WFCatalog 320 streams station'
-                - macro: '{$PERFCHECK_WFCATALOG_320STREAMS_START}'
-                  value: '{#PERFCHECK_WFCATALOG_320STREAMS_START}'
-                  description: 'WFCatalog 320 streams start time'
-                - macro: '{$ROUTINGFILE}'
-                  value: '{#ROUTINGFILE}'
-                  description: 'Node routing file location'
     - uuid: d5f772753ba54fe89d1f9f8c69b05c11
       template: 'Template performance checks'
       name: 'Template performance checks'
@@ -1520,7 +1247,7 @@ zabbix_export:
         - name: Templates/EIDA
       items:
         - uuid: 801dc7c5ae3e446f91f9babff21c90a4
-          name: 'Routing central'
+          name: 'Routing central global config'
           type: HTTP_AGENT
           key: routing.central
           delay: 1d
@@ -1552,7 +1279,7 @@ zabbix_export:
           triggers:
             - uuid: 5a0bf9b2fcbc437eb399f0683dcfb95e
               expression: 'last(/Template routing/routing.central)="ERROR"'
-              name: 'EIDA central rouging node not present'
+              name: '{$NODE} disapeared from EIDA central routing service'
               priority: WARNING
               description: |
                 The node is not present in EIDA central routing here:
@@ -1584,20 +1311,78 @@ zabbix_export:
             - name: User-Agent
               value: oculus-monitor
           tags:
+            - tag: datasets
             - tag: format
               value: json
             - tag: routing
-              value: central_datasets
+              value: central
           triggers:
             - uuid: 535e10a824c849a8a4e6ae79c0066730
               expression: 'change(/Template routing/routing.central_datasets)<0'
               recovery_mode: RECOVERY_EXPRESSION
               recovery_expression: 'change(/Template routing/routing.central_datasets)>0'
-              name: 'EIDA central routing lost at least one network for node {$NODE}'
+              name: 'EIDA central routing service lost at least one network for node {$NODE}'
               priority: AVERAGE
               description: |
                 Central routing system advertises less networks than before (now : {ITEM.LASTVALUE}
                 check the full information : https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
+              manual_close: 'YES'
+        - uuid: 856a7898776a49afa4355aac03465147
+          name: 'Routing central information'
+          type: HTTP_AGENT
+          key: routing.central_station
+          delay: 60m
+          value_type: TEXT
+          trends: '0'
+          timeout: 15s
+          url: 'https://www.orfeus-eu.org/eidaws/routing/1/query'
+          query_fields:
+            - name: service
+              value: station
+            - name: network
+              value: '{$ONLINECHECK_NET}'
+          headers:
+            - name: User-Agent
+              value: oculus-monior
+          tags:
+            - tag: format
+              value: xml
+            - tag: routing
+              value: central
+          triggers:
+            - uuid: e2ca8a12a83a436b89c23515bddb571c
+              expression: 'nodata(/Template routing/routing.central_station,10m)=1'
+              name: 'Network code {$ONLINECHECK_NET} missing in central routing for webservice station'
+              priority: WARNING
+              description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
+              manual_close: 'YES'
+        - uuid: 22f1d0f0d02c4540bc59a21554235404
+          name: 'Routing information published at node'
+          type: HTTP_AGENT
+          key: routing.local
+          delay: 15m
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: XMLPATH
+              parameters:
+                - '//*[local-name()=''route''][@networkCode=''{$ONLINECHECK_NET}'']'
+          timeout: 15s
+          url: 'https://{$ENDPOINT}/{$ROUTINGFILE}'
+          headers:
+            - name: User-Agent
+              value: oculus-monior
+          tags:
+            - tag: format
+              value: xml
+            - tag: routing
+              value: local
+          triggers:
+            - uuid: d7e4ce5e501f4836805cd06ae940034b
+              expression: 'nodata(/Template routing/routing.local,15m)=1'
+              name: 'Local routing information not publish at node {$NODE}'
+              priority: WARNING
+              description: 'test request: https://{$ENDPOINT}/{$ROUTINGFILE}'
               manual_close: 'YES'
     - uuid: b192614a2cbc490eb3ca047e9eb36328
       template: 'Template webservices'
@@ -1815,77 +1600,6 @@ zabbix_export:
           tags:
             - tag: webservice
               value: dataselect
-        - uuid: 482c8b39cf3b4aca8dc9b7859373c210
-          name: 'present in central eida routing'
-          delay: 60m
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          steps:
-            - name: 'EIDA Routing infomation'
-              url: 'https://www.orfeus-eu.org/eidaws/routing/1/query'
-              query_fields:
-                - name: service
-                  value: station
-                - name: network
-                  value: '{$ONLINECHECK_NET}'
-              required: '{$ENDPOINT}'
-              status_codes: '200'
-          tags:
-            - tag: format
-              value: xml
-            - tag: routing
-              value: central
-        - uuid: d3a4a789f3ee42ec8418b6e5044c8804
-          name: 'routing information published at node'
-          delay: 15m
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          steps:
-            - name: 'eida routing XML file'
-              url: 'https://{$ENDPOINT}/{$ROUTINGFILE}'
-              follow_redirects: 'NO'
-              required: 'ns0:route networkCode="{$ONLINECHECK_NET}"'
-              status_codes: '200'
-          tags:
-            - tag: format
-              value: xml
-            - tag: routing
-              value: local
-        - uuid: 681a5d0e1bd24a37ac4ea729a58e376f
-          name: seedpsd
-          delay: 5m
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          status: DISABLED
-          steps:
-            - name: 'seedpsd accesible'
-              url: 'https://{$ENDPOINT}/eidaws/seedpsd/1/'
-              follow_redirects: 'NO'
-              retrieve_mode: HEADERS
-            - name: 'seedpsd short request'
-              url: 'https://{$ENDPOINT}/eidaws/seedpsd/1/'
-              query_fields:
-                - name: net
-                  value: '{$ONLINECHECK_NET}'
-                - name: sta
-                  value: '{$ONLINECHECK_STA}'
-                - name: loc
-                  value: '{$ONLINECHECK_LOC}'
-                - name: cha
-                  value: '{$ONLINECHECK_CHA}'
-                - name: start
-                  value: '{$ONLINECHECK_START}'
-                - name: end
-                  value: '{$ONLINECHECK_END}'
-              follow_redirects: 'NO'
-              retrieve_mode: HEADERS
-              status_codes: '200'
-          tags:
-            - tag: webservice
-              value: seedpsd
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
           delay: 15m
@@ -2023,40 +1737,6 @@ zabbix_export:
       tags:
         - tag: webservice
           value: dataselect
-    - uuid: d1da3fc8a92f4288bb0e533bfefdd3de
-      expression: 'last(/Template webservices/web.test.rspcode[present in central eida routing,EIDA Routing infomation])<>200'
-      name: 'EIDA Routing infomation'
-      event_name: 'Network code {$ONLINECHECK_NET} missing in central routing'
-      priority: HIGH
-      description: 'test request:  https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
-      manual_close: 'YES'
-      tags:
-        - tag: format
-          value: xml
-        - tag: routing
-          value: central
-    - uuid: ae1352b7f0644200b65fca44b93f9b44
-      expression: 'last(/Template webservices/web.test.rspcode[routing information published at node,eida routing XML file])<>200'
-      name: 'routing information published at node'
-      event_name: 'Routing file not found, return code {ITEM.VALUE}'
-      priority: WARNING
-      description: 'test request : https://{$ENDPOINT}/{$ROUTINGFILE}'
-      manual_close: 'YES'
-      tags:
-        - tag: format
-          value: xml
-        - tag: routing
-          value: local
-    - uuid: 7d9bfa2fdc1a4c94bcd9a4035ddcc157
-      expression: 'last(/Template webservices/web.test.fail[seedpsd])<>0 and last(/Template webservices/web.test.error[seedpsd])<>0'
-      name: 'seedpsd all steps'
-      event_name: SeedPSD
-      status: DISABLED
-      priority: WARNING
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: seedpsd
     - uuid: fea9c304508e4fa8816b0c7d688fe5fd
       expression: 'last(/Template webservices/web.test.rspcode[station,station application.wadl])<>200'
       name: 'station application.wadl'
