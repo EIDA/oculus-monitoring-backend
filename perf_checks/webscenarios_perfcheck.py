@@ -15,7 +15,7 @@ import shutil
 import logging
 from pathlib import Path
 from urllib.parse import urlencode
-from zabbix_utils import Sender, ItemValue 
+from zabbix_utils import Sender, ItemValue
 
 # config logging
 logging.basicConfig(
