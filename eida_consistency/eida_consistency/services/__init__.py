@@ -1,1 +1,0 @@
-"""Service-layer utilities for querying FDSN web services."""
