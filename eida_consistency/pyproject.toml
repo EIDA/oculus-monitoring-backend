@@ -1,0 +1,43 @@
+[project]
+name = "eida-consistency"
+version = "0.3.0"
+description = "EIDA consistency checker: compare availability vs dataselect services and generate reports."
+readme = "README.md"
+authors = [
+    { name = "Nikos Sokos", email = "nsokos@noa.gr" }
+]
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+
+dependencies = [
+    "appdirs>=1.4.4",
+    "boto3>=1.40.31",
+    "click>=8.2.1",
+    "obspy>=1.4.2",
+    "obstore>=0.8.2",
+    "python-dotenv>=1.1.1",
+    "requests>=2.32.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/EIDA/eida-consistency"
+Issues = "https://github.com/EIDA/eida-consistency/issues"
+Documentation = "https://github.com/EIDA/eida-consistency#readme"
+
+[project.scripts]
+eida-consistency = "eida_consistency.cli:cli"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+# include ensures README/LICENSE are shipped to PyPI
+include = ["README.md", "LICENSE"]
+packages = ["src/eida_consistency"]
