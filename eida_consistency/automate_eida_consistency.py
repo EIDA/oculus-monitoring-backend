@@ -83,7 +83,8 @@ def send_to_zabbix(hostname, json_file_path):
     """send JSON report to zbx"""
     try:
         # zbx srv config
-        ZABBIX_SERVER = os.getenv('ZABBIX_SERVER')
+        #ZABBIX_SERVER = os.getenv('ZABBIX_SERVER')
+        ZABBIX_SERVER = 'localhost'
         ZABBIX_PORT = 10051
 
         if not ZABBIX_SERVER:
@@ -122,7 +123,7 @@ def send_to_zabbix(hostname, json_file_path):
         return False
 
 def main():
-    node ='RESIF'
+    node ='ICGC'
     epochs = 10
     duration = 600
 
