@@ -5,4 +5,4 @@ perf_checks/performance_results/
 perf_checks/oculus-monitoring-backend
 perf_checks/webscenarios_perfcheck.log
 eida_consistency/automate_eida_consistency.log
-eida_consistency/reports/
+eida_consistency/reports/*
