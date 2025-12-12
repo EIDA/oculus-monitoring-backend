@@ -61,6 +61,33 @@ zabbix_export:
                 - macro: '{$ONLINECHECK_START}'
                   value: '{#ONLINECHECK_START}'
                   description: 'Node start time'
+    - uuid: a2974168aa6d40d0ba1bd70dbae9f629
+      template: 'Template eida consistency'
+      name: 'Template eida consistency'
+      groups:
+        - name: Templates/EIDA
+      items:
+        - uuid: c3c7b983bee243daa52b97ae753f4dbe
+          name: 'Report json'
+          type: TRAP
+          key: report.json
+          delay: '0'
+          value_type: TEXT
+          trends: '0'
+          description: 'entier report json of eida consistency test'
+          tags:
+            - tag: format
+              value: json
+        - uuid: 233416c295964e57a6b2a9fa7fedde54
+          name: 'Score global'
+          type: TRAP
+          key: score.eida_consistency
+          delay: '0'
+          value_type: TEXT
+          trends: '0'
+          tags:
+            - tag: consistency
+            - tag: score
     - uuid: d5f772753ba54fe89d1f9f8c69b05c11
       template: 'Template performance checks'
       name: 'Template performance checks'
@@ -1351,7 +1378,7 @@ zabbix_export:
               value: central
           triggers:
             - uuid: e2ca8a12a83a436b89c23515bddb571c
-              expression: 'nodata(/Template routing/routing.central_station,10m)=1'
+              expression: 'nodata(/Template routing/routing.central_station,65m)=1'
               name: 'Network code {$ONLINECHECK_NET} missing in central routing for webservice station'
               priority: WARNING
               description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
@@ -1380,7 +1407,7 @@ zabbix_export:
           triggers:
             - uuid: d7e4ce5e501f4836805cd06ae940034b
               expression: 'nodata(/Template routing/routing.local,15m)=1'
-              name: 'Local routing information not publish at node {$NODE}'
+              name: 'Local routing information not published at node {$NODE}'
               priority: WARNING
               description: 'test request: https://{$ENDPOINT}/{$ROUTINGFILE}'
               manual_close: 'YES'
