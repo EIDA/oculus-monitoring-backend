@@ -114,11 +114,11 @@ perfCheck:
   - webservice: availability
     scenario: 9streams
     net: NL
-    sta: BHAR,BING,BSTD
+    sta: BHAR,BWIR,BRSW
     loc: "*"
     cha: "*"
-    start: "2017-06-04T00:01:00"
-    end: "2017-06-04T00:02:00"
+    start: "2020-06-05T00:01:00"
+    end: "2020-06-05T00:02:00"
   - webservice: availability
     scenario: 54streams
     net: NL
