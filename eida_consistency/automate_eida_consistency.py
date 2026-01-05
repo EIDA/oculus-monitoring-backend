@@ -123,7 +123,7 @@ def send_to_zabbix(hostname, json_file_path):
         return False
 
 def main():
-    node ='ICGC'
+    node ='GEOFON'
     epochs = 10
     duration = 600
 
