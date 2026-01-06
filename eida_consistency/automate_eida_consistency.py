@@ -1,16 +1,26 @@
+# /// script
+# requires-python = "==3.14"
+# dependencies = [
+#     "eida-consistency==0.3.5",
+#     "zabbix-utils==2.0.4",
+#     "pyyaml",
+# ]
+# ///
 import os
-import subprocess
 import logging
 import json
+import yaml
 from pathlib import Path
+from current.futures import ThreadPoolExecutor, as_completed
 from zabbix_utils import Sender, ItemValue
+from eida_consistency.runner import run_consistency_check
 
 # config logging
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
+    level= logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
     handlers=[
-        logging.FileHandler('automate_eida_consistency.log'),
+        logging.FileHandler('automate_eida_consistency.log')
         logging.StreamHandler()
     ]
 )
@@ -21,93 +31,88 @@ def log_and_print(message, level=logging.INFO):
     print(message)
     logger.log(level, message)
 
-def run_eida_consistency(node, epochs=10, duration=600):
-    """run eida-consistency command"""
+def get_eida_nodes_directory():
+    """get the local eida_nodes directory path"""
+    nodes_dir = os.path.join(os.path.dirname(__file__), '..', 'eida_nodes')
+
+    if not os.path.exists(nodes_dir):
+        log_and_print(f"eida_nodes directory not found at {nodes_dir}", logging.ERROR)
+        return None
+    
+    log_and_print(f"using local eida_nodes directory: {nodes_dir}")
+    return nodes_dir
+
+def load_yaml_files(nodes_dir):
+    """load all EIDA nodes .yaml"""
+    yaml_files = {}
+    nodes_path = Path(nodes_dir)
+
+    for yaml_file in nodes_path.glob('*.yaml'):
+        with open(yaml_file, 'r') as f:
+            data = yaml.safe_load(f)
+            yaml_files[yaml_file.stem] = data
+    
+    return yaml_files
+
+def run_eida_consistency(node, epochs, duration):
+    """run eida-consistency unsing python API"""
     try:
-        cmd = [
-            'eida-consistency',
-            'consistency',
-            '--node', node,
-            '--epochs', str(epochs),
-            '--duration', str(duration)
-        ]
+        log_and_print(f"running consistency check for node: {node.upper()}")
+        log_and_print(f"parameters: epochs={epochs}, duration={duration}")
 
-        log_and_print(f"running command {' '.join(cmd)}")
-
-        result = subprocess.run(
-            cmd,
-            check=True,
-            capture_output=True,
-            text=True
+        # runcheck for a specific node and get the report path
+        report_path = run_consistency_check(
+            node=node,
+            epochs=epochs,
+            duration=duration
         )
 
-        log_and_print(f"command completed successfullt")
-        log_and_print(f"stdout: {result.stdout}")
+        log_and_print(f"consitency check completed successfully")
+        log_and_print(f"report generated at: {report_path}")
 
-        return True
-
-    except subprocess.CalledProcessError as e:
+        return report_path
+    
+    except Exception as e:
         log_and_print(f"error running eida-consistency: {e}", logging.ERROR)
-        log_and_print(f"stderr: {e.stderr}", logging.ERROR)
-        return False
-    except Exception as e:
-        log_and_print(f"unexpected error: {e}", logging.ERROR)
-        return False
-
-def get_latest_json_file(reports_dir='reports'):
-    """get the latest JSON file fromreports directory"""
-    try:
-        reports_path = Path(reports_dir)
-
-        if not reports_path.exists():
-            log_and_print(f"reports directory not found {reports_dir}", logging.ERROR)
-            return None
-
-        json_files = list(reports_path.glob('*.json'))
-
-        if not json_files:
-            log_and_print("no JSON files found in reports directory", logging.ERROR)
-            return None
-
-        # get the most recent file
-        latest_file = max(json_files, key=lambda f: f.stat().st_mtime)
-
-        log_and_print(f"latest JSON file: {latest_file}")
-        return latest_file
-
-    except Exception as e:
-        log_and_print(f"error finding latest JSON file: {e}", logging.ERROR)
         return None
 
 def send_to_zabbix(hostname, json_file_path):
-    """send JSON report to zbx"""
+    """send results to zbx"""
     try:
         # zbx srv config
-        #ZABBIX_SERVER = os.getenv('ZABBIX_SERVER')
         ZABBIX_SERVER = 'localhost'
         ZABBIX_PORT = 10051
 
         if not ZABBIX_SERVER:
-            log_and_print("ZABBIX_SERVER environement variable not set", logging.ERROR)
+            log_and_print("ZABBIX_SERVER environment variable not set", logging.ERROR)
             return False
-
+        
         # read JSON file
         with open(json_file_path, 'r') as f:
             json_content = json.load(f)
 
-        # convert  JSON to string for sending
+        # convert JSON to string for sending
         json_string = json.dumps(json_content)
 
-        # connect to zbx srv
+        # extract score for summary
+        score = json_content.get('summary', {}).get('score')
+
+        if score is None:
+            log_and_print("score not found in JSON summary", logging.WARNING)
+        
+        # connect to zbx srver
         sender = Sender(server=ZABBIX_SERVER, port=ZABBIX_PORT)
 
-        log_and_print(f"sending data to zabbix fot host: {hostname}")
+        log_and_print(f"sending data to zabbix for host: {hostname}")
 
-        # create item
-        item = ItemValue(hostname, 'report.json', json_string)
+        # create items
+        items = [
+            ItemValue(hostname, 'report.json', json_string),
+            ItemValue(hostname, 'score.eida_consistency', score)
+        ]
 
-        # send via zbx srv
-        response = sender.send([item])
+        # send via zbx server
+        response = sender.send(items)
 
         log_and_print(f"{hostname}: {response.processed}/{response.total} items sent successfully")
 
@@ -117,38 +122,33 @@ def send_to_zabbix(hostname, json_file_path):
         else:
             log_and_print("all items sent successfully")
             return True
-
     except Exception as e:
         log_and_print(f"error sending to zabbix:{e}", logging.ERROR)
+
+def process_node(node_name, node_data, epochs, duration):
+    """process one node cistency check"""
+    try:
+        # transform EPOSFR to RESIF for eida-consistency check
+        consistency_node_name = "RESIF" if node_name.upper() == "EPOSFR" else node_name
+
+        report_path = run_eida_consistency(consistency_node_name, epochs, duration)
+
+        if not report_path:
+            log_and_print(f"eida-consistency check failed for {consistency_node_name}", logging.ERROR)
+            return False
+        
+        json_file = Path(report_path)
+
+        if not json_file.exists():
+            log_and_print(f"Report file not found: {json_file}", logging.ERROR)
+            return False
+        
+        # send to zabbix with original node name (EPOSFR)
+        hostname = node_name.upper()
+        return send_to_zabbix(hostname, json_file)
+    
+    except Exception as e:
+        log_and_print(f"error processing node {node_name}: {e}", logging.ERROR)
         return False
-
-def main():
-    node ='GEOFON'
-    epochs = 10
-    duration = 600
-
-    log_and_print(f"{'='*50}")
-    log_and_print(f"starting EIDA consistency check for node: {node}")
-    log_and_print(f"{'='*50}")
-
-    # run eida-consistency
-    if not run_eida_consistency(node, epochs, duration):
-        log_and_print("eida-consistency command failed", logging.ERROR)
-        return
-
-    # get latest JSON file
-    json_file = get_latest_json_file()
-
-    if not json_file:
-        log_and_print("no JSON file to send", logging.ERROR)
-        return
-
-    # send to zabbix
-    hostname = node.upper()
-    if send_to_zabbix(hostname, json_file):
-        log_and_print(f"process completed successfully for {node}")
-    else:
-        log_and_print(f"failed to send report to zabbix for {node}", logging.ERROR)
-
-if __name__ == "__main__":
-    main()
+    
+def main()
