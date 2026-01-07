@@ -33,7 +33,7 @@ def log_and_print(message, level=logging.INFO):
 
 def get_eida_nodes_directory():
     """get the local eida_nodes directory path"""
-    nodes_dir = os.path.join(os.path.dirname(__file__), 'eida_nodes')
+    nodes_dir = os.path.join(os.path.dirname(__file__), '..' 'eida_nodes')
 
     if not os.path.exists(nodes_dir):
         log_and_print(f"eida_nodes directory not found at {nodes_dir}", logging.ERROR)
@@ -80,7 +80,7 @@ def send_to_zabbix(hostname, json_file_path):
     """send results to zbx"""
     try:
         # zbx srv config
-        ZABBIX_SERVER = os.getenv('ZABBIX_SERVER')
+        ZABBIX_SERVER = 'localhost'
         ZABBIX_PORT = 10051
 
         if not ZABBIX_SERVER:
