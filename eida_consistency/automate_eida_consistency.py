@@ -195,7 +195,7 @@ def main():
             try:
                 sucess = future.result()
                 if sucess:
-                    log_and_print(f"{node_name}: consitency check and zabbix sending completed successfullyu")
+                    log_and_print(f"{node_name}: consistency check and zabbix sending completed successfullyu")
                 else:
                     log_and_print(f"{node_name}: consitency check or zabbix sending failed", logging.ERROR)
                 completed += 1
