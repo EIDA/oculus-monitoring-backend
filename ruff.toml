@@ -1,0 +1,9 @@
+target-version = "py312"
+
+[lint]
+select = ["ALL"]
+ignore = [
+  "ANN",
+  "COM812",  # Missing-trailing-comma : As demanded by ruff format
+  "D",      # Do not impose docstrings
+]
