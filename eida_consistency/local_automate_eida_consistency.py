@@ -197,9 +197,7 @@ def main():
     # TODO: remplacer par process based
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {
-            executor.submit(
-                process_node, node_name, epochs, duration
-            ): node_name
+            executor.submit(process_node, node_name, epochs, duration): node_name
             for node_name, node_data in yaml_data.items()
             if node_name.lower() not in [n.lower() for n in skip_nodes]
         }

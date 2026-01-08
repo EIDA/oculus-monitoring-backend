@@ -33,7 +33,7 @@ def log_and_print(message, level=logging.INFO):
 
 def get_eida_nodes_directory():
     """get the local eida_nodes directory path"""
-    nodes_dir = Path(__file__).parent / "eida_nodes"
+    nodes_dir = Path(__file__).parent.parent / "eida_nodes"
 
     if not nodes_dir.exists():
         log_and_print(f"eida_nodes directory not found at {nodes_dir}", logging.ERROR)
@@ -168,7 +168,7 @@ def main():
     # TODO une variable d'environement pour le pourcentage d'époque
     duration = 600
     max_workers = 4  # number of nodes prallele
-    skip_nodes = ["icgc", "odc"]  # exclude nodes for tests
+    skip_nodes = ["icgc", "odc", "ign"]  # exclude nodes for tests
     # TODO récupérer une liste des noeux par variable d'environement
 
     log_and_print(f"{'=' * 50}")
@@ -197,21 +197,20 @@ def main():
     # TODO: remplacer par process based
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {
-            executor.submit(
-                process_node, node_name, node_data, epochs, duration
-            ): node_name
+            executor.submit(process_node, node_name, epochs, duration): node_name
             for node_name, node_data in yaml_data.items()
             if node_name.lower() not in [n.lower() for n in skip_nodes]
         }
 
         completed = 0
         for future in as_completed(futures):
-            node_name = future.result()
+            node_name = futures[future]
             try:
-                sucess = future.result()
-                if sucess:
+                success = future.result()
+                if success:
                     log_and_print(
-                        f"{node_name}: consistency check and zabbix sending completed successfully"
+                        f"{node_name}: consistency check and zabbix "
+                        "sending completed successfully"
                     )
                 else:
                     log_and_print(
