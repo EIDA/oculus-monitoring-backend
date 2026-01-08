@@ -1,5 +1,5 @@
 # /// script
-# requires-python = "==3.14"
+# requires-python = "==3.12"
 # dependencies = [
 #     "eida-consistency==0.3.5",
 #     "zabbix-utils==2.0.4",
@@ -16,13 +16,10 @@ from zabbix_utils import Sender, ItemValue
 from eida_consistency.runner import run_consistency_check
 
 # config logging
+# TODO remplacer par logger.ingo logger.level
 logging.basicConfig(
     level= logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('automate_eida_consistency.log'),
-        logging.StreamHandler()
-    ]
 )
 logger = logging.getLogger(__name__)
 
@@ -76,6 +73,7 @@ def run_eida_consistency(node, epochs, duration):
         log_and_print(f"error running eida-consistency: {e}", logging.ERROR)
         return None
 
+# TODO check env before launch of the check
 def send_to_zabbix(hostname, json_file_path):
     """send results to zbx"""
     try:
@@ -130,6 +128,7 @@ def process_node(node_name, node_data, epochs, duration):
     """process one node cistency check"""
     try:
         # transform EPOSFR to RESIF for eida-consistency check
+        # TODO remove when obspy 1.5 is released
         consistency_node_name = "RESIF" if node_name.upper() == "EPOSFR" else node_name
 
         report_path = run_eida_consistency(consistency_node_name, epochs, duration)
@@ -155,19 +154,23 @@ def process_node(node_name, node_data, epochs, duration):
 def main():
     # configuration
     epochs = 10
+    # TODO calculer nombre d'époque en % du nombre de cha publié par le ws station du node
+    # TODO faire une requete au format txt du ws station, level = channel, et prendre 2/%
+    # TODO une variable d'environement pour le pourcentage d'époque
     duration = 600
     max_workers = 4 # number of nodes prallele
     skip_nodes = ["icgc","odc"] # exclude nodes for tests
+    # TODO récupérer une liste des noeux par variable d'environement
 
     log_and_print(f"{'='*50}")
     log_and_print(f"starting EIDA consistency checks for all nodes (parallel mode)")
     log_and_print(f"{'='*50}")
 
-    # get local eida_nodes directoru
+    # get local eida_nodes directory
     nodes_dir = get_eida_nodes_directory()
 
     if not nodes_dir:
-        log_and_print("eida_nodes directoru not found", logging.ERROR)
+        log_and_print("eida_nodes directory not found", logging.ERROR)
         return
     
     yaml_data = load_yaml_files(nodes_dir)
@@ -182,6 +185,8 @@ def main():
         log_and_print(f"skipping nodes: {','.join([n.upper() for n in skip_nodes ])}")
     
     # process nodes in parallel
+    # TODO remplacer par process based
+    # TODO utiliser ruff
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {
             executor.submit(process_node, node_name, node_data, epochs, duration): node_name
@@ -195,9 +200,9 @@ def main():
             try:
                 sucess = future.result()
                 if sucess:
-                    log_and_print(f"{node_name}: consistency check and zabbix sending completed successfullyu")
+                    log_and_print(f"{node_name}: consistency check and zabbix sending completed successfully")
                 else:
-                    log_and_print(f"{node_name}: consitency check or zabbix sending failed", logging.ERROR)
+                    log_and_print(f"{node_name}: consistency check or zabbix sending failed", logging.ERROR)
                 completed += 1
             except Exception as e:
                 log_and_print(f"{node_name}: unexpected error: {e}", logging.ERROR)
