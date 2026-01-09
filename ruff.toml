@@ -3,6 +3,10 @@ target-version = "py312"
 [lint]
 select = ["ALL"]
 ignore = [
+  "TD003", # missing-todo-link
+  "TD002", # missing-todo_author
+  "TD004", # missing-todo-colon
+  "FIX002", # line-contains-todo
   "ANN",
   "COM812",  # Missing-trailing-comma : As demanded by ruff format
   "D",      # Do not impose docstrings
