@@ -4,6 +4,7 @@
 #     "eida-consistency==0.3.5",
 #     "zabbix-utils==2.0.4",
 #     "pyyaml",
+#     "dotenv>=0.9.9",
 # ]
 # ///
 import json
@@ -13,16 +14,27 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import yaml
+from dotenv import load_dotenv
 from eida_consistency.runner import run_consistency_check
 from zabbix_utils import ItemValue, Sender
 
+# load .env file
+load_dotenv()
+
 # config logging
-# TODO remplacer par logger.info logger.level
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(handler)
+
+# config by env variables
+DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
+EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "10"))
+MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
+SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc, odc, ign").split(",")
+ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
+ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
 
 def get_eida_nodes_directory():
@@ -73,11 +85,7 @@ def run_eida_consistency(node, epochs, duration):
 def send_to_zabbix(hostname, json_file_path):
     """send results to zbx"""
     try:
-        # zbx srv config
-        zabbix_server = "localhost"
-        zabbix_port = 10051
-
-        if not zabbix_server:
+        if not ZABBIX_SERVER:
             logger.error("ZABBIX_SERVER environment variable not set")
             return False
 
@@ -95,7 +103,7 @@ def send_to_zabbix(hostname, json_file_path):
             logger.warning("score not found in JSON summary")
 
         # connect to zbx srver
-        sender = Sender(server=zabbix_server, port=zabbix_port)
+        sender = Sender(server=ZABBIX_SERVER, port=ZABBIX_PORT)
 
         logger.info("sending data to zabbix for host: %s", hostname)
 
@@ -156,16 +164,13 @@ def process_node(node_name, epochs, duration):
 
 def main():
     # configuration
-    epochs = 10
     # TODO calculer nombre d'époque en % du nombre de cha publié par le ws station du node
     # TODO faire une requete au format txt du ws station, level = channel, et prendre 2/%
-    # TODO une variable d'environement pour le pourcentage d'époque
-    duration = 600
-    max_workers = 4  # number of nodes prallele
-    skip_nodes = ["icgc", "odc", "ign"]  # exclude nodes for tests
+    # TODO une variable d'environement pour la duration et le nombre d'epoche
     # TODO récupérer une liste des noeux par variable d'environement
 
     logger.info("=" * 50)
+    logger.info("configuration: epochs=%s, duration=%s, max_workers=%s", EPOCHS, DURATION, MAX_WORKERS)
     logger.info("starting EIDA consistency checks for all nodes (parallel mode)")
     logger.info("=" * 50)
 
@@ -184,16 +189,16 @@ def main():
 
     logger.info("found %s nodes to process", len(yaml_data))
 
-    if skip_nodes:
-        logger.info("skipping nodes: %s", ",".join([n.upper() for n in skip_nodes]))
+    if SKIP_NODES:
+        logger.info("skipping nodes: %s", ",".join([n.upper() for n in SKIP_NODES]))
 
     # process nodes in parallel
     # TODO: remplacer par process based
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = {
-            executor.submit(process_node, node_name, epochs, duration): node_name
+            executor.submit(process_node, node_name, EPOCHS, DURATION): node_name
             for node_name, node_data in yaml_data.items()
-            if node_name.lower() not in [n.lower() for n in skip_nodes]
+            if node_name.lower() not in [n.lower() for n in SKIP_NODES]
         }
 
         completed = 0
@@ -203,7 +208,7 @@ def main():
                 success = future.result()
                 if success:
                     logger.info(
-                        "%s: consistency check and zabbix sending completed successfully",
+                        "%s: consistency check and zabbix sending completed",
                         node_name,
                     )
                 else:
