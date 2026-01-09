@@ -7,6 +7,7 @@
 #     "dotenv>=0.9.9",
 # ]
 # ///
+import contextlib
 import json
 import logging
 import os
@@ -19,7 +20,8 @@ from eida_consistency.runner import run_consistency_check
 from zabbix_utils import ItemValue, Sender
 
 # load .env file
-load_dotenv()
+with contextlib.suppress(FileNotFoundError):
+    load_dotenv()
 
 # config logging
 logger = logging.getLogger(__name__)
