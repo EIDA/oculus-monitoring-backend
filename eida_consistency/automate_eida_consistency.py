@@ -4,6 +4,7 @@
 #     "eida-consistency==0.3.5",
 #     "zabbix-utils==2.0.4",
 #     "pyyaml",
+#     "dotenv>=0.9.9",
 # ]
 # ///
 import json
