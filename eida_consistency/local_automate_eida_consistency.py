@@ -11,6 +11,7 @@ import contextlib
 import json
 import logging
 import os
+import socket
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -34,22 +35,35 @@ logger.addHandler(handler)
 DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
 EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "10"))
 MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
-SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc, odc, ign").split(",")
+SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc,odc,ign").split(",")
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
+def check_zabbix_connection():
+    """check if zabbix server is reachable"""
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(5)
+        sock.connect((ZABBIX_SERVER, ZABBIX_PORT))
+    except OSError:
+        logger.exception(
+            "cannot connect to zabbix server %s:%s", ZABBIX_SERVER, ZABBIX_PORT
+        )
+        return False
+    else:
+        logger.info("zabbix server %s:%s is reachable", ZABBIX_SERVER, ZABBIX_PORT)
+        return True
 
 def get_eida_nodes_directory():
     """get the local eida_nodes directory path"""
     nodes_dir = Path(__file__).parent.parent / "eida_nodes"
 
     if not nodes_dir.exists():
-        logger.error("eida_nodes directory not found at {nodes_dir}")
+        logger.error("eida_nodes directory not found at %s", nodes_dir)
         return None
 
-    logger.info("using local eida_nodes directory: {nodes_dir}")
+    logger.info("using local eida_nodes directory: %s", nodes_dir)
     return nodes_dir
-
 
 def load_yaml_files(nodes_dir):
     """load all EIDA nodes .yaml"""
@@ -63,18 +77,17 @@ def load_yaml_files(nodes_dir):
 
     return yaml_files
 
-
 def run_eida_consistency(node, epochs, duration):
     """run eida-consistency unsing python API"""
     try:
-        logger.info("running consistency check for node: {node.upper()}")
-        logger.info("parameters: epochs={epochs}, duration={duration}")
+        logger.info("running consistency check for node: %s", node.upper())
+        logger.info("parameters: epochs=%s, duration=%s", epochs, duration)
 
         # runcheck for a specific node and get the report path
         report_path = run_consistency_check(node=node, epochs=epochs, duration=duration)
 
         logger.info("consitency check completed successfully")
-        logger.info("report generated at: {report_path}")
+        logger.info("report generated at: %s", report_path)
 
     except RuntimeError:
         logger.exception("error running eida-consistency")
@@ -82,15 +95,12 @@ def run_eida_consistency(node, epochs, duration):
     else:
         return report_path
 
-
-# TODO check env before launch of the check
 def send_to_zabbix(hostname, json_file_path):
     """send results to zbx"""
+    if not ZABBIX_SERVER:
+        logger.error("ZABBIX_SERVER environment variable not set")
+        return False
     try:
-        if not ZABBIX_SERVER:
-            logger.error("ZABBIX_SERVER environment variable not set")
-            return False
-
         # read JSON file
         with Path(json_file_path).open() as f:
             json_content = json.load(f)
@@ -98,49 +108,48 @@ def send_to_zabbix(hostname, json_file_path):
         # convert JSON to string for sending
         json_string = json.dumps(json_content)
 
-        # extract score for summary
+        # extract score for summùary
         score = json_content.get("summary", {}).get("score")
 
         if score is None:
-            logger.warning("score not found in JSON summary")
+            logger.warning("score not found i, JSOn summary")
 
-        # connect to zbx srver
+        # connecy too zabx server
         sender = Sender(server=ZABBIX_SERVER, port=ZABBIX_PORT)
 
-        logger.info("sending data to zabbix for host: %s", hostname)
+        logger.info("sending data ton zabbix for host: %s", hostname)
 
         # create items
         items = [
             ItemValue(hostname, "report.json", json_string),
-            ItemValue(hostname, "score.eida_consistency", score),
+            ItemValue(hostname, "score.eida_consistency", score)
         ]
 
-        # send via zbx server
+        # se,nd via zabbix server
         response = sender.send(items)
 
         logger.info(
-            "%s: %s/%s items sent successfully",
+            "%s: %s/%s items sent succesfully",
             hostname,
             response.processed,
-            response.total,
+            response.total
         )
 
         if response.failed > 0:
-            logger.error("failed: {response.failed} items")
+            logger.error("failed: %s items", response.failed)
             return False
-    except (FileNotFoundError, json.JSONDecodeError, ConnectionError, OSError):
+    except(FileNotFoundError, json.JSONDecodeError, ConnectionError, OSError):
         logger.exception("error sending to zabbix")
         return False
     else:
-        logger.info("all items sent successfully")
+        logger.info("all items sent succesfully")
         return True
-
 
 def process_node(node_name, epochs, duration):
     """process one node cistency check"""
     try:
-        # transform EPOSFR to RESIF for eida-consistency check
         # TODO: remove when obspy 1.5 is released
+        # transform EPOSFR to RESIF for eida-consistency check
         consistency_node_name = "RESIF" if node_name.upper() == "EPOSFR" else node_name
 
         report_path = run_eida_consistency(consistency_node_name, epochs, duration)
@@ -157,12 +166,16 @@ def process_node(node_name, epochs, duration):
 
         # send to zabbix with original node name (EPOSFR)
         hostname = node_name.upper()
-        return send_to_zabbix(hostname, json_file)
+        logger.info("sendinf report to zabbix for %s", hostname)
+        result = send_to_zabbix(hostname, json_file)
+        if not result:
+            logger.error("failed to send to zabbix for %s", hostname)
 
     except (FileNotFoundError, RuntimeError):
         logger.exception("error processing node %s", node_name)
         return False
-
+    else:
+        return result
 
 def main():
     # configuration
@@ -175,6 +188,11 @@ def main():
     logger.info("configuration: epochs=%s, duration=%s, max_workers=%s", EPOCHS, DURATION, MAX_WORKERS)
     logger.info("starting EIDA consistency checks for all nodes (parallel mode)")
     logger.info("=" * 50)
+
+    # checl is zabbix connection first
+    if not check_zabbix_connection():
+        logger.error("aborting: zabbix server if not reachable")
+        return
 
     # get local eida_nodes directory
     nodes_dir = get_eida_nodes_directory()
