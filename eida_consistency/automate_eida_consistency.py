@@ -39,6 +39,7 @@ SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc,odc,ign").split(",")
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
+
 def check_zabbix_connection():
     """check if zabbix server is reachable"""
     try:
@@ -54,6 +55,7 @@ def check_zabbix_connection():
         logger.info("zabbix server %s:%s is reachable", ZABBIX_SERVER, ZABBIX_PORT)
         return True
 
+
 def get_eida_nodes_directory():
     """get the local eida_nodes directory path"""
     nodes_dir = Path(__file__).parent.parent / "eida_nodes"
@@ -64,6 +66,7 @@ def get_eida_nodes_directory():
 
     logger.info("using local eida_nodes directory: %s", nodes_dir)
     return nodes_dir
+
 
 def load_yaml_files(nodes_dir):
     """load all EIDA nodes .yaml"""
@@ -76,6 +79,7 @@ def load_yaml_files(nodes_dir):
             yaml_files[yaml_file.stem] = data
 
     return yaml_files
+
 
 def run_eida_consistency(node, epochs, duration):
     """run eida-consistency unsing python API"""
@@ -94,6 +98,7 @@ def run_eida_consistency(node, epochs, duration):
         return None
     else:
         return report_path
+
 
 def send_to_zabbix(hostname, json_file_path):
     """send results to zbx"""
@@ -122,7 +127,7 @@ def send_to_zabbix(hostname, json_file_path):
         # create items
         items = [
             ItemValue(hostname, "report.json", json_string),
-            ItemValue(hostname, "score.eida_consistency", score)
+            ItemValue(hostname, "score.eida_consistency", score),
         ]
 
         # se,nd via zabbix server
@@ -132,18 +137,19 @@ def send_to_zabbix(hostname, json_file_path):
             "%s: %s/%s items sent succesfully",
             hostname,
             response.processed,
-            response.total
+            response.total,
         )
 
         if response.failed > 0:
             logger.error("failed: %s items", response.failed)
             return False
-    except(FileNotFoundError, json.JSONDecodeError, ConnectionError, OSError):
+    except (FileNotFoundError, json.JSONDecodeError, ConnectionError, OSError):
         logger.exception("error sending to zabbix")
         return False
     else:
         logger.info("all items sent succesfully")
         return True
+
 
 def process_node(node_name, epochs, duration):
     """process one node cistency check"""
@@ -177,6 +183,7 @@ def process_node(node_name, epochs, duration):
     else:
         return result
 
+
 def main():
     # configuration
     # TODO calculer nombre d'époque en % du nombre de cha publié par le ws station du node
@@ -185,7 +192,12 @@ def main():
     # TODO récupérer une liste des noeux par variable d'environement
 
     logger.info("=" * 50)
-    logger.info("configuration: epochs=%s, duration=%s, max_workers=%s", EPOCHS, DURATION, MAX_WORKERS)
+    logger.info(
+        "configuration: epochs=%s, duration=%s, max_workers=%s",
+        EPOCHS,
+        DURATION,
+        MAX_WORKERS,
+    )
     logger.info("starting EIDA consistency checks for all nodes (parallel mode)")
     logger.info("=" * 50)
 
