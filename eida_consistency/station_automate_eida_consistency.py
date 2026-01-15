@@ -69,7 +69,9 @@ def fetch_station_by_network(node_name, node_data, networks_file):
                 line = line.strip()
                 if len(line) >= 2:
                     network_code = line[:2]
-                    networks.add(network_code)
+                    # filter out invalid network fcode (only alpganuméric)
+                    if network_code.isalnum() and not network_code.startswith("#"):
+                        networks.add(network_code)
 
         if not networks:
             logger.warning("no networks found in %s", networks_file)
