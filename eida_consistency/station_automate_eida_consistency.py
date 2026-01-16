@@ -25,6 +25,15 @@ DEFAULT_STATIONS_DIR = Path(__file__).parent / "stations"
 DEFAULT_NETWORKS_DIR = Path(__file__).parent / "networks"
 MIN_NETWORK_CODE_LENGTH = 2
 
+# config by env variables
+DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
+EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "10"))
+MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
+SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc,odc,ign").split(",")
+REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "60"))
+ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
+ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
+
 def fetch_and_save_networks_for_node(node_name, node_data, outdir=DEFAULT_NETWORKS_DIR):
     """fetch ans save network list for a specific node"""
     out_path= Path(outdir)
@@ -42,7 +51,7 @@ def fetch_and_save_networks_for_node(node_name, node_data, outdir=DEFAULT_NETWOR
     headers = {"Accept": "text/plain"}
 
     try:
-        resp = requests.get(url, params=params, headers=headers, timeout=30)
+        resp = requests.get(url, params=params, headers=headers, timeout=REQUEST_TIMEOUT)
         resp.raise_for_status()
         out_file.write_text(resp.text, encoding="utf-8")
         logger.info("network list for %s saved to %s", node_name, out_file)
@@ -56,16 +65,22 @@ def fetch_and_save_networks_for_node(node_name, node_data, outdir=DEFAULT_NETWOR
 
 def parse_networks_from_file(networks_file):
     """parse and extract unique network codes from a network file"""
-    networks = set()
-    with Path(networks_file).open() as f:
-        for line in f:
-            stripped_line = line.strip()
-            if len(stripped_line) >= MIN_NETWORK_CODE_LENGTH:
-                network_code = stripped_line[:MIN_NETWORK_CODE_LENGTH]
-                # filter out invalid network code (only alpganuméric)
-                if network_code.isalnum() and not network_code.startswith("#"):
-                    networks.add(network_code)
-    return networks
+    netwoks = set()
+    try:
+        with Path(networks_file).open() as f:
+            # skip header line
+            next(f)
+            for line in f:
+                stripped_line = line.strip()
+                if len(stripped_line) >= MIN_NETWORK_CODE_LENGTH:
+                    netwok_code = stripped_line[:MIN_NETWORK_CODE_LENGTH]
+                    # filter out invalid network code (only alphanumeric)
+                    if netwok_code.isalnum() and not netwok_code.startswith("#"):
+                        netwoks.add(netwok_code)
+    except(FileNotFoundError, StopIteration):
+        logger.exception("error reading networks file %s", networks_file)
+        return set()
+    return netwoks
 
 def fetch_station_by_network(node_name, node_data, networks_file):
     """fetch stations list for each entwork from a network file"""
@@ -100,7 +115,7 @@ def fetch_station_by_network(node_name, node_data, networks_file):
             params = {"network": network_code, "level": "channel", "format": "text"}
 
             try:
-                resp = requests.get(url, params=params, headers=headers, timeout=30)
+                resp = requests.get(url, params=params, headers=headers, timeout=REQUEST_TIMEOUT)
                 resp.raise_for_status()
                 filtered_lines = [
                     line for line in resp.text.split("\n")
@@ -125,6 +140,26 @@ def fetch_station_by_network(node_name, node_data, networks_file):
     else:
         return True
 
+def calculate_epochs_from_stations(node_name):
+    """calculate 2% of total station line for a node"""
+    stations_file = DEFAULT_STATIONS_DIR / f"{node_name}_stations.txt"
+
+    if not stations_file.exists():
+        logger.warning("stations file not found for node %s", node_name)
+        return None
+
+    try:
+        with stations_file.open() as f:
+            total_lines = sum(1 for _ in f)
+
+        epochs = max(1, int(total_lines * 0.02))
+        logger.info("calculated epochs for %s: %s lines total, 2%% = %s epochs", node_name, total_lines, epochs)
+    except (FileNotFoundError, OSError):
+        logger.exception("error reading stations file: %s", stations_file)
+        return None
+    else:
+        return epochs
+
 def fetch_all_networks_and_stations(yaml_data):
     """fetch network lists and station lists for all networks of each node"""
     logger.info("fetching network and station lists for all nodes...")
@@ -136,10 +171,19 @@ def fetch_all_networks_and_stations(yaml_data):
             result = fetch_and_save_networks_for_node(node_name, node_data)
             networks_files[node_name] = result
 
-    # then fetch station for each netwoek
+    # then fetch station fpr each network
     for node_name, network_file in networks_files.items():
         if network_file and node_name in yaml_data:
             fetch_station_by_network(node_name, yaml_data[node_name], network_file)
+
+    # calculate epochs from station files
+    epochs_by_node = {}
+    for node_name in networks_files:
+        epochs = calculate_epochs_from_stations(node_name)
+        if epochs:
+            epochs_by_node[node_name] = epochs
+
+    return epochs_by_node
 
 # load .env file
 with contextlib.suppress(FileNotFoundError):
@@ -151,14 +195,6 @@ logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(handler)
-
-# config by env variables
-DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
-EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "10"))
-MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
-SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc,odc,ign").split(",")
-ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
-ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
 def check_zabbix_connection():
     """check if zabbix server is reachable"""
@@ -299,7 +335,6 @@ def process_node(node_name, epochs, duration):
         return result
 
 def main():
-
     nodes_dir = get_eida_nodes_directory()
 
     if not nodes_dir:
@@ -312,19 +347,18 @@ def main():
         logger.error("no yaml files found in %s", nodes_dir)
         return
 
-    fetch_all_networks_and_stations(yaml_data)
+    epochs_by_node = fetch_all_networks_and_stations(yaml_data)
 
-    logger.info("=" * 50)
     # configuration
     # TODO calculer nombre d'époque en % du nombre de cha publié par le ws station du node
     # TODO faire une requete au format txt du ws station, level = channel, et prendre 2/%
     # TODO une variable d'environement pour la duration et le nombre d'epoche
     # TODO récupérer une liste des noeux par variable d'environement
-
+    logger.info("=" * 50)
+    logger.info("calculated epochs by node: %s", epochs_by_node)
     logger.info("=" * 50)
     logger.info(
-        "configuration: epochs=%s, duration=%s, max_workers=%s",
-        EPOCHS,
+        "configuration: duration=%s, max_workers=%s",
         DURATION,
         MAX_WORKERS,
     )
@@ -336,21 +370,6 @@ def main():
         logger.error("aborting: zabbix server if not reachable")
         return
 
-    # get local eida_nodes directory
-    nodes_dir = get_eida_nodes_directory()
-
-    if not nodes_dir:
-        logger.error("eida_nodes directory not found")
-        return
-
-    yaml_data = load_yaml_files(nodes_dir)
-
-    if not yaml_data:
-        logger.error("no yaml files found in %s", nodes_dir)
-        return
-
-    logger.info("found %s nodes to process", len(yaml_data))
-
     if SKIP_NODES:
         logger.info("skipping nodes: %s", ",".join([n.upper() for n in SKIP_NODES]))
 
@@ -358,7 +377,12 @@ def main():
     # TODO: remplacer par process based
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = {
-            executor.submit(process_node, node_name, EPOCHS, DURATION): node_name
+            executor.submit(
+                process_node,
+                node_name,
+                epochs_by_node.get(node_name, EPOCHS), # use calculated epochs or default
+                DURATION
+            ): node_name
             for node_name, node_data in yaml_data.items()
             if node_name.lower() not in [n.lower() for n in SKIP_NODES]
         }
@@ -381,6 +405,7 @@ def main():
             except RuntimeError:
                 logger.exception("%s: unexpected error", node_name)
                 completed += 1
+
     logger.info("=" * 50)
     logger.info("all nodes processing completed (%s/%s)", completed, len(yaml_data))
     logger.info("=" * 50)
