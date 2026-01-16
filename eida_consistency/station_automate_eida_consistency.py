@@ -21,13 +21,9 @@ from dotenv import load_dotenv
 from eida_consistency.runner import run_consistency_check
 from zabbix_utils import ItemValue, Sender
 
-PARAMS = {
-    "level": "channel",
-    "format": "text"
-}
-
 DEFAULT_STATIONS_DIR = Path(__file__).parent / "stations"
 DEFAULT_NETWORKS_DIR = Path(__file__).parent / "networks"
+MIN_NETWORK_CODE_LENGTH = 2
 
 def fetch_and_save_networks_for_node(node_name, node_data, outdir=DEFAULT_NETWORKS_DIR):
     """fetch ans save network list for a specific node"""
@@ -49,11 +45,27 @@ def fetch_and_save_networks_for_node(node_name, node_data, outdir=DEFAULT_NETWOR
         resp = requests.get(url, params=params, headers=headers, timeout=30)
         resp.raise_for_status()
         out_file.write_text(resp.text, encoding="utf-8")
-        logger.info("network list for %s savec to %s", node_name, out_file)
+        logger.info("network list for %s saved to %s", node_name, out_file)
         return str(out_file)
     except requests.RequestException:
-        logger.exception("failed to fetch network list from %s for node %s", url, node_name)
+        logger.exception(
+            "failed to fetch network list from %s for node %s",
+            url,
+            node_name)
         return None
+
+def parse_networks_from_file(networks_file):
+    """parse and extract unique network codes from a network file"""
+    networks = set()
+    with Path(networks_file).open() as f:
+        for line in f:
+            stripped_line = line.strip()
+            if len(stripped_line) >= MIN_NETWORK_CODE_LENGTH:
+                network_code = stripped_line[:MIN_NETWORK_CODE_LENGTH]
+                # filter out invalid network code (only alpganuméric)
+                if network_code.isalnum() and not network_code.startswith("#"):
+                    networks.add(network_code)
+    return networks
 
 def fetch_station_by_network(node_name, node_data, networks_file):
     """fetch stations list for each entwork from a network file"""
@@ -63,39 +75,49 @@ def fetch_station_by_network(node_name, node_data, networks_file):
         return False
 
     try:
-        networks = set()
-        with Path(networks_file).open() as f:
-            for line in f:
-                line = line.strip()
-                if len(line) >= 2:
-                    network_code = line[:2]
-                    # filter out invalid network fcode (only alpganuméric)
-                    if network_code.isalnum() and not network_code.startswith("#"):
-                        networks.add(network_code)
+        networks = parse_networks_from_file(networks_file)
 
         if not networks:
             logger.warning("no networks found in %s", networks_file)
             return False
 
-        logger.info("found %s unique networks for %s: %s", len(networks), node_name, ",".join(sorted(networks)))
+        logger.info(
+            "found %s unique networks for %s: %s",
+            len(networks),
+            node_name,
+            ",".join(sorted(networks)))
 
         url = f"https://{base_endpoint}/fdsnws/station/1/query"
         headers = {"Accept": "text/plain"}
-        stations_dir = Path(__file__).parent / "stations" / node_name
-        stations_dir.mkdir(exist_ok=True, parents=True)
+
+        # single output file for all network oh this node
+        out_file = DEFAULT_STATIONS_DIR / f"{node_name}_stations.txt"
+        DEFAULT_STATIONS_DIR.mkdir(exist_ok=True, parents=True)
+
+        all_stations = []
 
         for network_code in sorted(networks):
             params = {"network": network_code, "level": "channel", "format": "text"}
-            out_file = stations_dir / f"{node_name}_{network_code}_stations.txt"
 
             try:
                 resp = requests.get(url, params=params, headers=headers, timeout=30)
                 resp.raise_for_status()
-                out_file.write_text(resp.text, encoding="utf-8")
-                logger.info("stationlist for %s|%s savec to %s", node_name, network_code, out_file)
+                filtered_lines = [
+                    line for line in resp.text.split("\n")
+                    if line.strip() and not line.strip().startswith("#")
+                ]
+                all_stations.append("\n".join(filtered_lines))
+                logger.info("stationlist for %s|%s saved", node_name, network_code)
             except requests.RequestException:
-                logger.exception("failled to fetch stations for %s|%s from %s", node_name, network_code, url)
+                logger.warning(
+                    "failled to fetch stations for %s|%s from %s",
+                    node_name,
+                    network_code, url)
                 continue
+        # write all stations to fingle file
+        if all_stations:
+            out_file.write_text("\n".join(all_stations), encoding="utf-8")
+            logger.info("marged stations list for %s savec to %s", node_name, out_file)
 
     except (FileNotFoundError, OSError):
         logger.exception("error reading networks file: %s", networks_file)
@@ -108,14 +130,14 @@ def fetch_all_networks_and_stations(yaml_data):
     logger.info("fetching network and station lists for all nodes...")
 
     # first, fetch all network lists
-    networks_file = {}
+    networks_files = {}
     for node_name, node_data in yaml_data.items():
         if node_name.lower() not in [n.lower() for n in SKIP_NODES]:
             result = fetch_and_save_networks_for_node(node_name, node_data)
-            networks_file[node_name] = result
+            networks_files[node_name] = result
 
     # then fetch station for each netwoek
-    for node_name, network_file in networks_file.items():
+    for node_name, network_file in networks_files.items():
         if network_file and node_name in yaml_data:
             fetch_station_by_network(node_name, yaml_data[node_name], network_file)
 
