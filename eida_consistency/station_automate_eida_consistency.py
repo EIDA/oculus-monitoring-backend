@@ -34,6 +34,9 @@ REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "60"))
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
+# TODO prendre toutes les stations au format xml et récupérer la somme des <TotalNumberChannels>
+# "https://ws.resif.fr/fdsnws/station/1/query?level=station&format=xml"
+
 def fetch_and_save_networks_for_node(node_name, node_data, outdir=DEFAULT_NETWORKS_DIR):
     """fetch ans save network list for a specific node"""
     out_path= Path(outdir)
@@ -171,7 +174,7 @@ def fetch_all_networks_and_stations(yaml_data):
             result = fetch_and_save_networks_for_node(node_name, node_data)
             networks_files[node_name] = result
 
-    # then fetch station fpr each network
+    # then fetch station for each network
     for node_name, network_file in networks_files.items():
         if network_file and node_name in yaml_data:
             fetch_station_by_network(node_name, yaml_data[node_name], network_file)
@@ -185,6 +188,7 @@ def fetch_all_networks_and_stations(yaml_data):
 
     return epochs_by_node
 
+# TODO remonter en haut du script
 # load .env file
 with contextlib.suppress(FileNotFoundError):
     load_dotenv()
@@ -211,6 +215,7 @@ def check_zabbix_connection():
         logger.info("zabbix server %s:%s is reachable", ZABBIX_SERVER, ZABBIX_PORT)
         return True
 
+# TODO ajouter emplacement dans .env
 def get_eida_nodes_directory():
     """get the local eida_nodes directory path"""
     nodes_dir = Path(__file__).parent.parent / "eida_nodes"
