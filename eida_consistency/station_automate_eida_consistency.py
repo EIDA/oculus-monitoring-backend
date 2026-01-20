@@ -11,29 +11,27 @@ import contextlib
 import json
 import logging
 import os
-import re
 import socket
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-import requests
 import yaml
 from dotenv import load_dotenv
 from eida_consistency.runner import run_consistency_check
 from zabbix_utils import ItemValue, Sender
 
+# load .env file
+with contextlib.suppress(FileNotFoundError):
+    load_dotenv()
+
 # config by env variables
 DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
-EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "10"))
+EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "200"))
 MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
 SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc,odc,ign").split(",")
 REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "60"))
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
-
-# load .env file
-with contextlib.suppress(FileNotFoundError):
-    load_dotenv()
 
 # config logging
 logger = logging.getLogger(__name__)
@@ -41,70 +39,6 @@ logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(handler)
-
-# TODO prendre toutes les stations au format xml et récupérer la somme des <TotalNumberChannels>
-
-def fetch_total_channels_for_node(node_name, node_data):
-    """fetch all station for a node and calculate total number of channels"""
-    base_endpoint = node_data.get("endpoint")
-    if not base_endpoint:
-        logger.warning("no station endpoint found for node %s", node_name)
-        return None
-
-    url = f"https://{base_endpoint}/fdsnws/station/1/query"
-    params = {"level": "station", "format": "xml"}
-
-    try:
-        resp = requests.get(url, params=params, timeout=REQUEST_TIMEOUT)
-        resp.raise_for_status()
-
-        # pase xml to extract ToralNumberChannels values
-        xml_content= resp.text
-        total_channels = sum(
-            int(match)
-            for match in re.findall(r"<TotalNumberChannels(\d+)</TotalNumberChannels",
-            xml_content)
-        )
-
-        logger.info(
-            "node %s: total channels= = %s",
-            node_name,
-            total_channels
-        )
-        return total_channels
-
-    except requests.RequestException:
-        logger.exception("failled to fetch stations from %s for node%s",
-        url,
-        node_name)
-        return None
-
-def calculate_epochs_from_channels(total_channels):
-    """calculate 2% of total channels as epochs"""
-    if not total_channels or total_channels <= 0:
-        return None
-    epochs = max(1, int(total_channels * 0.02))
-    return epochs
-
-def fetch_all_channels_for_nodes(yaml_data):
-    """fetch total channels for all nodes and calculate epochs."""
-    logger.info("fetching total channels for all nodes")
-
-    epochs_by_node = {}
-    for node_name, node_data in yaml_data.items():
-        if node_name.lower() not in [n.lower() for n in SKIP_NODES]:
-            total_channels = fetch_total_channels_for_node(node_name, node_data)
-            if total_channels:
-                epochs = calculate_epochs_from_channels(total_channels)
-                if epochs:
-                    epochs_by_node[node_name] = epochs
-                    logger.info(
-                        "node %s: %s channels -> %s epochs (2%%)",
-                        node_name,
-                        total_channels,
-                        epochs
-                    )
-    return epochs_by_node
 
 def check_zabbix_connection():
     """check if zabbix server is reachable"""
@@ -248,9 +182,6 @@ def process_node(node_name, epochs, duration):
 def main():
 
     # configuration
-    # TODO une variable d'environement pour la duration et le nombre d'epoche
-    # TODO récupérer une liste des noeux par variable d'environement
-
     nodes_dir = get_eida_nodes_directory()
 
     if not nodes_dir:
@@ -263,14 +194,10 @@ def main():
         logger.error("no yaml files found in %s", nodes_dir)
         return
 
-    # fetch total channels and calculate epochs for all nodes
-    epochs_by_node = fetch_all_channels_for_nodes(yaml_data)
-
-    logger.info("=" * 50)
-    logger.info("calculated epochs by node: %s", epochs_by_node)
     logger.info("=" * 50)
     logger.info(
-        "configuration: duration=%s, max_workers=%s",
+        "configuration: epochs=%s duration=%s, max_workers=%s",
+        EPOCHS,
         DURATION,
         MAX_WORKERS,
     )
@@ -289,12 +216,7 @@ def main():
     # TODO: remplacer par process based
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = {
-            executor.submit(
-                process_node,
-                node_name,
-                epochs_by_node.get(node_name, EPOCHS),# use calculated epochs or default
-                DURATION
-            ): node_name
+            executor.submit(process_node, node_name, EPOCHS, DURATION): node_name
             for node_name, node_data in yaml_data.items()
             if node_name.lower() not in [n.lower() for n in SKIP_NODES]
         }
