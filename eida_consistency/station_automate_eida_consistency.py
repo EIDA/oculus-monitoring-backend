@@ -29,7 +29,6 @@ DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
 EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "200"))
 MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
 SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc,odc,ign").split(",")
-REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "60"))
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
