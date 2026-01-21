@@ -26,7 +26,7 @@ with contextlib.suppress(FileNotFoundError):
 
 # config by env variables
 DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
-EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "200"))
+EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "10"))
 MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
 SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc,odc,ign").split(",")
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
@@ -167,7 +167,7 @@ def process_node(node_name, epochs, duration):
 
         # send to zabbix with original node name (EPOSFR)
         hostname = node_name.upper()
-        logger.info("sendinf report to zabbix for %s", hostname)
+        logger.info("sending report to zabbix for %s", hostname)
         result = send_to_zabbix(hostname, json_file)
         if not result:
             logger.error("failed to send to zabbix for %s", hostname)
