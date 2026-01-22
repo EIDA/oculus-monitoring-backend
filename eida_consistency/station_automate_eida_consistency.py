@@ -147,7 +147,7 @@ def send_to_zabbix(hostname, json_file_path):
         return True
 
 def process_node(node_name, epochs, duration):
-    """process one node cistency check"""
+    """process one node concistency check"""
     try:
         # TODO: remove when obspy 1.5 is released
         # transform EPOSFR to RESIF for eida-consistency check
