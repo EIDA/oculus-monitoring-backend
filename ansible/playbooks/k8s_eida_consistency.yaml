@@ -1,0 +1,22 @@
+---
+- name: Deploy eida consistency python scripts on k8s cluster
+  kubernetes.core.k8s:
+    state: present
+    namespace: eida-monitoring
+    definition:
+      apiVersion: batch/v1
+      kind: CronJob
+      metadata:
+        name: oculus-eida-consistency
+      spec:
+        suspend: false
+        schedule: "0 14 * * *" #  everyday at 2pm
+        jobTemplate:
+          spec:
+            template:
+              spec:
+                restartPolicy: OnFailure
+                containers:
+                  - name: oculus-eida-consistency
+                    image: ghcr.io/eida/oculus-eida-consistency
+                    imagePullPolicy: Always
