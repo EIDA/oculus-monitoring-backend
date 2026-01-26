@@ -1,7 +1,7 @@
 # /// script
 # requires-python = "==3.12"
 # dependencies = [
-#     "eida-consistency==0.3.5",
+#     "eida-consistency==0.3.7",
 #     "zabbix-utils==2.0.4",
 #     "pyyaml",
 #     "dotenv>=0.9.9",
@@ -26,9 +26,11 @@ with contextlib.suppress(FileNotFoundError):
 
 # config by env variables
 DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
+
+# parse EPOCHS as either a percentage o an integer
 EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "10"))
 MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
-SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "icgc,odc,ign").split(",")
+SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "").split(",")
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
@@ -66,22 +68,22 @@ def get_eida_nodes_directory():
     logger.info("using local eida_nodes directory: %s", nodes_dir)
     return nodes_dir
 
-def load_yaml_files(nodes_dir):
+def list_nodes():
     """load all EIDA nodes .yaml"""
-    yaml_files = {}
-    nodes_path = Path(nodes_dir)
+    nodes = []
+    nodes_path = Path(get_eida_nodes_directory())
 
     for yaml_file in nodes_path.glob("*.yaml"):
         with yaml_file.open() as f:
             data = yaml.safe_load(f)
-            yaml_files[yaml_file.stem] = data
+            nodes.append(data["node"])
 
-    return yaml_files
+    return nodes
 
 def run_eida_consistency(node, epochs, duration):
     """run eida-consistency unsing python API"""
     try:
-        logger.info("running consistency check for node: %s", node.upper())
+        logger.info("running consistency check for node: %s", node)
         logger.info("parameters: epochs=%s, duration=%s", epochs, duration)
 
         # runcheck for a specific node and get the report path
@@ -149,11 +151,16 @@ def send_to_zabbix(hostname, json_file_path):
 def process_node(node_name, epochs, duration):
     """process one node concistency check"""
     try:
+        epochs_value = epochs
         # TODO: remove when obspy 1.5 is released
         # transform EPOSFR to RESIF for eida-consistency check
-        consistency_node_name = "RESIF" if node_name.upper() == "EPOSFR" else node_name
+        consistency_node_name = "RESIF" if node_name == "EPOSFR" else node_name
 
-        report_path = run_eida_consistency(consistency_node_name, epochs, duration)
+        report_path = run_eida_consistency(
+            consistency_node_name,
+            epochs_value,
+            duration
+        )
 
         if not report_path:
             logger.error("eida-consistency check failed for %s", consistency_node_name)
@@ -166,7 +173,7 @@ def process_node(node_name, epochs, duration):
             return False
 
         # send to zabbix with original node name (EPOSFR)
-        hostname = node_name.upper()
+        hostname = node_name
         logger.info("sending report to zabbix for %s", hostname)
         result = send_to_zabbix(hostname, json_file)
         if not result:
@@ -187,12 +194,6 @@ def main():
         logger.error("eida_nodes directory not found")
         return
 
-    yaml_data = load_yaml_files(nodes_dir)
-
-    if not yaml_data:
-        logger.error("no yaml files found in %s", nodes_dir)
-        return
-
     logger.info("=" * 50)
     logger.info(
         "configuration: epochs=%s duration=%s, max_workers=%s",
@@ -208,16 +209,19 @@ def main():
         logger.error("aborting: zabbix server if not reachable")
         return
 
+    nodes = list_nodes()
+
     if SKIP_NODES:
-        logger.info("skipping nodes: %s", ",".join([n.upper() for n in SKIP_NODES]))
+        logger.info("skipping nodes: %s", ",".join(SKIP_NODES))
+
+    nodes = list(set(nodes) - set(SKIP_NODES))
+    logger.debug("new list of nodes %s", nodes)
 
     # process nodes in parallel
     # TODO: remplacer par process based
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = {
-            executor.submit(process_node, node_name, EPOCHS, DURATION): node_name
-            for node_name, node_data in yaml_data.items()
-            if node_name.lower() not in [n.lower() for n in SKIP_NODES]
+            executor.submit(process_node, n, EPOCHS, DURATION): n for n in nodes
         }
 
         completed = 0
@@ -240,7 +244,7 @@ def main():
                 completed += 1
 
     logger.info("=" * 50)
-    logger.info("all nodes processing completed (%s/%s)", completed, len(yaml_data))
+    logger.info("all nodes processing completed (%s/%s)", completed, len(nodes))
     logger.info("=" * 50)
 
 if __name__ == "__main__":
