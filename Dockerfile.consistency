@@ -4,7 +4,7 @@ FROM python:3.12-slim
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/ 
 
 WORKDIR /app
-ADD eida_consistency/automate_eida_consistency.py .
-RUN uv sync --script automate_eida_consistency.py
+ADD eida_consistency/eida_consistency_wrapper.py .
+RUN uv sync --script eida_consistency_wrapper.py
 ADD eida_nodes eida_nodes
-CMD uv run automate_eida_consistency.py
+CMD uv run eida_consistency_wrapper.py
