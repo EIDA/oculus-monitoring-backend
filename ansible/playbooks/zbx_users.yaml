@@ -59,8 +59,15 @@
         templategroup_rights:
           - template_group: Templates/EIDA
             permission: read-only
-        hostgroup_rights: "{{ [{'host_group': 'EIDA nodes', 'permission': 'read-only'}] + (eida_nodes | map('regex_replace', '^(.*)$', '{\"host_group\": \"\\1\", \"permission\": \"read-only\"}') | map('from_json') | list) }}"
-        tag_filters: "{{ [{'host_group': 'EIDA nodes'}] + (eida_nodes | map('community.general.dict_kv', 'host_group') | list) }}"
+        hostgroup_rights: >-
+          {{ [{'host_group': 'EIDA nodes', 'permission': 'read-only'}] +
+          (eida_nodes |
+          map('regex_replace', '^(.*)$',
+          '{\"host_group\": \"\\1\", \"permission\": \"read-only\"}') |
+          map('from_json') | list) }}
+        tag_filters: >-
+          {{ [{'host_group': 'EIDA nodes'}] +
+          (eida_nodes | map('community.general.dict_kv', 'host_group') | list) }}
 
     - name: Create grafana user
       delegate_to: localhost

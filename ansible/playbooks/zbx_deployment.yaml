@@ -19,7 +19,7 @@
     - name: Store environment for other playbooks
       ansible.builtin.set_fact:
         selected_environment: "{{ environment_input.user_input }}"
-        cacheable: True
+        cacheable: true
 
 - name: Import templates
   import_playbook: zbx_templates.yaml
