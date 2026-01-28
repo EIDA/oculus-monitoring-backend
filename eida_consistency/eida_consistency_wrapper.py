@@ -31,7 +31,7 @@ DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
 EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "10"))
 MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
 SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "").split(",")
-ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
+ZABBIX_SERVER = os.getenv("ZABBIX_SERVER")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
 # config logging
