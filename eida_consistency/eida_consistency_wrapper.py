@@ -16,23 +16,16 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import yaml
-from dotenv import load_dotenv
 from eida_consistency.runner import run_consistency_check
 from zabbix_utils import ItemValue, Sender
 
-# load .env file
-with contextlib.suppress(FileNotFoundError):
-    load_dotenv()
-
 # config by env variables
-DURATION = int(os.getenv("EIDA_CONSISTENCY_DURATION", "600"))
-
-# parse EPOCHS as either a percentage o an integer
-EPOCHS = int(os.getenv("EIDA_CONSISTENCY_EPOCHS", "10"))
-MAX_WORKERS = int(os.getenv("EIDA_CONSISTENCY_MAX_WORKERS", "4"))
-SKIP_NODES = os.getenv("EIDA_CONSISTENCY_SKIP_NODES", "").split(",")
+DURATION = 600
+EPOCHS = 10
+MAX_WORKERS = 4
+SKIP_NODES = ["IGN","BGR"]
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER")
-ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
+ZABBIX_PORT = 10051
 
 # config logging
 logger = logging.getLogger(__name__)
