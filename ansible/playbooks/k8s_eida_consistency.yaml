@@ -2,6 +2,8 @@
 - name: Deploy eida consistency python scripts on k8s cluster
   hosts: localhost
   gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python
   tasks:
     - name: Create CronJob for EIDA consistency checks
       kubernetes.core.k8s:
