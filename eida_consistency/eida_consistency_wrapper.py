@@ -4,10 +4,8 @@
 #     "eida-consistency==0.3.7",
 #     "zabbix-utils==2.0.4",
 #     "pyyaml",
-#     "dotenv>=0.9.9",
 # ]
 # ///
-import contextlib
 import json
 import logging
 import os
@@ -24,7 +22,7 @@ DURATION = 600
 EPOCHS = 10
 MAX_WORKERS = 4
 SKIP_NODES = ["IGN","BGR"]
-ZABBIX_SERVER = os.getenv("ZABBIX_SERVER")
+ZABBIX_SERVER = "oculus-zabbix-zabbix-server"
 ZABBIX_PORT = 10051
 
 # config logging
