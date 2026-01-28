@@ -59,7 +59,7 @@ def check_zabbix_connection():
 # TODO ajouter emplacement dans .env
 def get_eida_nodes_directory():
     """get the local eida_nodes directory path"""
-    nodes_dir = Path(__file__).parent.parent / "eida_nodes"
+    nodes_dir = Path(__file__).parent / "eida_nodes"
 
     if not nodes_dir.exists():
         logger.error("eida_nodes directory not found at %s", nodes_dir)
