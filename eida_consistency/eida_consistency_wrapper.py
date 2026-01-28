@@ -21,7 +21,7 @@ from zabbix_utils import ItemValue, Sender
 DURATION = 600
 EPOCHS = 10
 MAX_WORKERS = 4
-SKIP_NODES = ["IGN","BGR"]
+SKIP_NODES = ["IGN"]
 ZABBIX_SERVER = "oculus-zabbix-zabbix-server"
 ZABBIX_PORT = 10051
 
