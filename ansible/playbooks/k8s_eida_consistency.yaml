@@ -13,7 +13,7 @@
           apiVersion: batch/v1
           kind: CronJob
           metadata:
-            name: oculus-eida-consistency
+            name: oculus-consistency
           spec:
             suspend: false
             schedule: "0 14 * * *"  # everyday at 2pm
@@ -24,5 +24,5 @@
                     restartPolicy: OnFailure
                     containers:
                       - name: oculus-eida-consistency
-                        image: ghcr.io/eida/oculus-eida-consistency
+                        image: ghcr.io/eida/oculus-consistency:main
                         imagePullPolicy: Always
