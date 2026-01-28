@@ -9,7 +9,10 @@ on:
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
-    paths: [ "perf_checks/*" ]
+    paths:
+    - 'perf_checks/*'
+    - 'eida_nodes/**'
+
   pull_request:
     branches: [ "main" ]
 
