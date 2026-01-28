@@ -201,7 +201,7 @@ def main():
         DURATION,
         MAX_WORKERS,
     )
-    logger.info("starting EIDA consitency checks for all nodes(parallel mode)")
+    logger.info("starting EIDA consitency checks for all nodes (parallel mode)")
     logger.info("=" * 50)
 
     # checl is zabbix connection first
