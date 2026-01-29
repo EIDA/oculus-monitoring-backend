@@ -8,6 +8,7 @@
 # ///
 import json
 import logging
+import os
 import socket
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -17,12 +18,12 @@ from eida_consistency.runner import run_consistency_check
 from zabbix_utils import ItemValue, Sender
 
 # config by env variables
-DURATION = 600
-EPOCHS = 100
-MAX_WORKERS = 4
-SKIP_NODES = ["IGN"]
-ZABBIX_SERVER = "oculus-zabbix-zabbix-server"
-ZABBIX_PORT = 10051
+DURATION = int(os.getenv("DURATION", "600"))
+EPOCHS = int(os.getenv("EPOCHS", "100"))
+MAX_WORKERS = int(os.getenv("MAX_WORKER", "4"))
+SKIP_NODES = os.getenv("SKIP_NODES", "IGN").split(",")
+ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "oculus-zabbix-zabbix-server")
+ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
 # config logging
 logger = logging.getLogger(__name__)
