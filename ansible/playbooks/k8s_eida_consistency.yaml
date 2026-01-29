@@ -1,11 +1,28 @@
 ---
-- name: Deploy eida consistency python scripts on k8s cluster
+- name: Deploy eida consistencty python scripts on k8s cluster
   hosts: localhost
   gather_facts: false
   vars:
     ansible_python_interpreter: /usr/bin/python
   tasks:
-    - name: Create CronJob for EIDA consistency checks
+    - name: Create ConfigMap for EIDA consistencty env variables
+      kubernetes.core.k8s:
+        state: present
+        namespace: eida-monitoring
+        definition:
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: oculus-consistency-config
+          data:
+            DURATION: "600"
+            EPOCHS: "100"
+            MAX_WORKER: "4"
+            SKIP_NODES: "IGN"
+            ZABBIX_SERVER: "oculus-zabbix-zabbix-server"
+            ZABBIX_PORT: "10051"
+
+    - name: Create CronJob for EIDA consistencty checks
       kubernetes.core.k8s:
         state: present
         namespace: eida-monitoring
@@ -16,7 +33,7 @@
             name: oculus-consistency
           spec:
             suspend: false
-            schedule: "0 14 * * *"  # everyday at 2pm
+            schedule: "0 14 * * *" # everyday at 2pm
             jobTemplate:
               spec:
                 template:
@@ -26,3 +43,6 @@
                       - name: oculus-eida-consistency
                         image: ghcr.io/eida/oculus-consistency:main
                         imagePullPolicy: Always
+                        envFrom:
+                          - configMapRef:
+                              name: oculus-consistency-config
