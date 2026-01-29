@@ -1,7 +1,8 @@
 ---
 node: BGR
 endpoint: eida.bgr.de
-routingFile: eidaws/routing/routing.xml
+eidaRoutingFile: eidaws/routing/routing.xml
+fdsnRoutingFile: eidaws/routing/routing.json
 onlineCheck:
   net: GR
   sta: ASSE

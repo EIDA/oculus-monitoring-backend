@@ -1,7 +1,8 @@
 ---
 node: GEOFON
 endpoint: geofon.gfz.de
-routingFile: "eidaws/routing/1/query?service=dataselect&network=GE"
+eidaRoutingFile: "eidaws/routing/1/query?service=dataselect&network=GE"
+fdsnRoutingFile: "eidaws/routing/1/query?service=dataselect&network=GE"
 onlineCheck:
   net: GE
   sta: KBS
@@ -12,131 +13,131 @@ onlineCheck:
 requiremets:
   network: { biggest_network_code }
 perfCheck:
-  - webservice: dataselect
-    scenario: 9streams
-    net: GE
-    sta: ZKR
-    loc: "*"
-    cha: "B*,H*,L*"
-    start: "2025-04-04T00:01:00"
-    end: "2025-04-04T00:02:00"
-  - webservice: dataselect
-    scenario: 54streams # Actually 47
-    net: GE
-    sta: "*"
-    loc: "*"
-    cha: SHZ
-    start: "2025-04-05T00:01:00"
-    end: "2025-04-05T00:02:00"
-  - webservice: dataselect
-    scenario: 320streams # Actually 324
-    net: GE
-    sta: "*"
-    loc: "*"
-    cha: "B*,*1,*2"
-    start: "2025-06-03T00:01:00"
-    end: "2025-06-03T00:02:00"
-  - webservice: dataselect
-    scenario: 1stream15days
-    net: CZ
-    sta: VRAC
-    loc: --
-    cha: HHZ
-    start: "2025-06-08T00:00:00"
-    end: "2025-06-23T00:00:00"
-  - webservice: wfcatalog
-    scenario: 9streams
-    net: CX
-    sta: PB06,PB07,PB08
-    loc: "*"
-    cha: HH?
-    start: "2015-04-04T00:01:00"
-    end: "2015-04-04T00:02:00"
-  - webservice: wfcatalog
-    scenario: 54streams
-    net: CX,CZ,DK
-    sta: "*"
-    loc: "*"
-    cha: HHE
-    start: "2012-04-05T00:01:00"
-    end: "2012-04-05T00:02:00"
-  - webservice: wfcatalog
-    scenario: 320streams
-    net: GE
-    sta: "*"
-    loc: "*"
-    cha: HH*,SH*
-    start: "2011-06-03T00:01:00"
-    end: "2011-06-03T00:02:00"
-  - webservice: wfcatalog
-    scenario: 1stream15days
-    net: CZ
-    sta: VRAC
-    loc: --
-    cha: HH?
-    start: "2012-06-08T00:00:00"
-    end: "2012-06-23T00:00:00"
-  - webservice: availability
-    scenario: 9streams
-    net: CX
-    sta: PB06,PB07,PB08
-    loc: "*"
-    cha: HH?
-    start: "2015-04-04T00:01:00"
-    end: "2015-04-04T23:59:00"
-  - webservice: availability
-    scenario: 54streams
-    net: CX,CZ,DK
-    sta: "*"
-    loc: "*"
-    cha: HHE
-    start: "2012-04-05T00:01:00"
-    end: "2012-04-05T23:59:00"
-  - webservice: availability
-    scenario: 320streams
-    net: GE
-    sta: "*"
-    loc: "*"
-    cha: HH*,SH*
-    start: "2011-06-03T00:01:00"
-    end: "2011-06-03T23:59:00"
-  - webservice: availability
-    scenario: 1stream15days
-    net: GE
-    sta: IBBN
-    loc: "*"
-    cha: HH?
-    start: "2022-06-08T00:00:00"
-    end: "2022-06-23T00:00:00"
-  - webservice: station
-    scenario: 9streams
-    net: CX
-    sta: PB06,PB07,PB08
-    loc: "*"
-    cha: HH?
-    start: "2015-04-04T23:01:00"
-    end: "2015-04-04T23:02:00"
-  - webservice: station
-    scenario: 54streams
-    net: CX,CZ,DK
-    sta: "*"
-    loc: "*"
-    cha: HHE
-    start: "2012-04-05T23:01:00"
-    end: "2012-04-05T23:02:00"
-  - webservice: station
-    scenario: 320streams
-    net: GE
-    sta: "*"
-    loc: "*"
-    cha: HH*,SH*
-    start: "2011-06-03T00:01:00"
-    end: "2011-06-03T23:59:00"
-  - webservice: station
-    scenario: 1stream15days
-    net: GE
-    sta: IBBN
-    loc: "*"
-    cha: HH?
-    start: "2022-06-08T00:00:00"
-    end: "2022-06-23T00:00:00"
+- webservice: dataselect
+  scenario: 9streams
+  net: GE
+  sta: ZKR
+  loc: "*"
+  cha: "B*,H*,L*"
+  start: "2025-04-04T00:01:00"
+  end: "2025-04-04T00:02:00"
+- webservice: dataselect
+  scenario: 54streams # Actually 47
+  net: GE
+  sta: "*"
+  loc: "*"
+  cha: SHZ
+  start: "2025-04-05T00:01:00"
+  end: "2025-04-05T00:02:00"
+- webservice: dataselect
+  scenario: 320streams # Actually 324
+  net: GE
+  sta: "*"
+  loc: "*"
+  cha: "B*,*1,*2"
+  start: "2025-06-03T00:01:00"
+  end: "2025-06-03T00:02:00"
+- webservice: dataselect
+  scenario: 1stream15days
+  net: CZ
+  sta: VRAC
+  loc: --
+  cha: HHZ
+  start: "2025-06-08T00:00:00"
+  end: "2025-06-23T00:00:00"
+- webservice: wfcatalog
+  scenario: 9streams
+  net: CX
+  sta: PB06,PB07,PB08
+  loc: "*"
+  cha: HH?
+  start: "2015-04-04T00:01:00"
+  end: "2015-04-04T00:02:00"
+- webservice: wfcatalog
+  scenario: 54streams
+  net: CX,CZ,DK
+  sta: "*"
+  loc: "*"
+  cha: HHE
+  start: "2012-04-05T00:01:00"
+  end: "2012-04-05T00:02:00"
+- webservice: wfcatalog
+  scenario: 320streams
+  net: GE
+  sta: "*"
+  loc: "*"
+  cha: HH*,SH*
+  start: "2011-06-03T00:01:00"
+  end: "2011-06-03T00:02:00"
+- webservice: wfcatalog
+  scenario: 1stream15days
+  net: CZ
+  sta: VRAC
+  loc: --
+  cha: HH?
+  start: "2012-06-08T00:00:00"
+  end: "2012-06-23T00:00:00"
+- webservice: availability
+  scenario: 9streams
+  net: CX
+  sta: PB06,PB07,PB08
+  loc: "*"
+  cha: HH?
+  start: "2015-04-04T00:01:00"
+  end: "2015-04-04T23:59:00"
+- webservice: availability
+  scenario: 54streams
+  net: CX,CZ,DK
+  sta: "*"
+  loc: "*"
+  cha: HHE
+  start: "2012-04-05T00:01:00"
+  end: "2012-04-05T23:59:00"
+- webservice: availability
+  scenario: 320streams
+  net: GE
+  sta: "*"
+  loc: "*"
+  cha: HH*,SH*
+  start: "2011-06-03T00:01:00"
+  end: "2011-06-03T23:59:00"
+- webservice: availability
+  scenario: 1stream15days
+  net: GE
+  sta: IBBN
+  loc: "*"
+  cha: HH?
+  start: "2022-06-08T00:00:00"
+  end: "2022-06-23T00:00:00"
+- webservice: station
+  scenario: 9streams
+  net: CX
+  sta: PB06,PB07,PB08
+  loc: "*"
+  cha: HH?
+  start: "2015-04-04T23:01:00"
+  end: "2015-04-04T23:02:00"
+- webservice: station
+  scenario: 54streams
+  net: CX,CZ,DK
+  sta: "*"
+  loc: "*"
+  cha: HHE
+  start: "2012-04-05T23:01:00"
+  end: "2012-04-05T23:02:00"
+- webservice: station
+  scenario: 320streams
+  net: GE
+  sta: "*"
+  loc: "*"
+  cha: HH*,SH*
+  start: "2011-06-03T00:01:00"
+  end: "2011-06-03T23:59:00"
+- webservice: station
+  scenario: 1stream15days
+  net: GE
+  sta: IBBN
+  loc: "*"
+  cha: HH?
+  start: "2022-06-08T00:00:00"
+  end: "2022-06-23T00:00:00"

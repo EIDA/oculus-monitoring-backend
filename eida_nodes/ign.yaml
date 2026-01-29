@@ -1,7 +1,8 @@
 ---
 node: IGN
 endpoint: fdsnws.sismologia.ign.es
-routingFile:
+eidaRoutingFile:
+fdsnRoutingFile:
 onlineCheck:
   net: ES
   sta: EXVI3

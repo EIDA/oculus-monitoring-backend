@@ -1,7 +1,8 @@
 ---
 node: NIEP
 endpoint: eida-sc3.infp.ro
-routingFile: eidaws/routing/1/routing.xml
+eidaRoutingFile: eidaws/routing/1/routing.xml
+fdsnRoutingFile: eidaws/routing/1/routing.json
 onlineCheck:
   net: RO
   sta: LEOM
@@ -12,131 +13,131 @@ onlineCheck:
 requiremets:
   network: { biggest_network_code }
 perfCheck:
-  - webservice: dataselect
-    scenario: 9streams
-    net: RO
-    sta: PLOR1,PLOR2,PLOR3
-    loc: "*"
-    cha: HH?
-    start: "2017-05-20T00:01:00"
-    end: "2017-05-20T00:02:00"
-  - webservice: dataselect
-    scenario: 54streams # 62 streams
-    net: RO
-    sta: "*"
-    loc: "*"
-    cha: HHE,HHZ
-    start: "2021-12-01T00:01:00"
-    end: "2021-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 320streams
-    net: "*"
-    sta: "Z*,V*,T*,S*,P*,O*,M*"
-    loc: "*"
-    cha: "*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 1stream15days
-    net: RO
-    sta: GZR
-    loc: "*"
-    cha: HHZ
-    start: "2025-06-04T00:00:00"
-    end: "2025-06-19T00:00:00"
-  - webservice: station
-    scenario: 9streams
-    net: RO
-    sta: PLOR1,PLOR2,PLOR3
-    loc: "*"
-    cha: HH?
-    start: "2017-05-20T00:01:00"
-    end: "2017-05-20T00:02:00"
-  - webservice: station
-    scenario: 54streams # 62 streams
-    net: RO
-    sta: "*"
-    loc: "*"
-    cha: HHE,HHZ
-    start: "2021-12-01T00:01:00"
-    end: "2021-12-01T00:02:00"
-  - webservice: station
-    scenario: 320streams
-    net: "*"
-    sta: "Z*,V*,T*,S*,P*,O*,M*"
-    loc: "*"
-    cha: "*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: station
-    scenario: 1stream15days
-    net: RO
-    sta: GZR
-    loc: "*"
-    cha: HHZ
-    start: "2025-06-04T00:00:00"
-    end: "2025-06-19T00:00:00"
-  - webservice: availability
-    scenario: 9streams
-    net: RO
-    sta: PLOR1,PLOR2,PLOR3
-    loc: "*"
-    cha: HH?
-    start: "2017-05-20T00:01:00"
-    end: "2017-05-20T00:02:00"
-  - webservice: availability
-    scenario: 54streams # 62 streams
-    net: RO
-    sta: "*"
-    loc: "*"
-    cha: HHE,HHZ
-    start: "2021-12-01T00:01:00"
-    end: "2021-12-01T00:02:00"
-  - webservice: availability
-    scenario: 320streams
-    net: "*"
-    sta: "Z*,V*,T*,S*,P*,O*,M*"
-    loc: "*"
-    cha: "*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: availability
-    scenario: 1stream15days
-    net: RO
-    sta: GZR
-    loc: "*"
-    cha: HHZ
-    start: "2025-06-04T00:00:00"
-    end: "2025-06-19T00:00:00"
-  - webservice: wfcatalog
-    scenario: 9streams
-    net: RO
-    sta: PLOR1,PLOR2,PLOR3
-    loc: "*"
-    cha: HH?
-    start: "2017-05-20T00:01:00"
-    end: "2017-05-20T00:02:00"
-  - webservice: wfcatalog
-    scenario: 54streams # 62 streams
-    net: RO
-    sta: "*"
-    loc: "*"
-    cha: HHE,HHZ
-    start: "2021-12-01T00:01:00"
-    end: "2021-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 320streams
-    net: "*"
-    sta: "Z*,V*,T*,S*,P*,O*,M*"
-    loc: "*"
-    cha: "*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 1stream15days
-    net: RO
-    sta: GZR
-    loc: "*"
-    cha: HHZ
-    start: "2025-06-04T00:00:00"
-    end: "2025-06-19T00:00:00"
+- webservice: dataselect
+  scenario: 9streams
+  net: RO
+  sta: PLOR1,PLOR2,PLOR3
+  loc: "*"
+  cha: HH?
+  start: "2017-05-20T00:01:00"
+  end: "2017-05-20T00:02:00"
+- webservice: dataselect
+  scenario: 54streams # 62 streams
+  net: RO
+  sta: "*"
+  loc: "*"
+  cha: HHE,HHZ
+  start: "2021-12-01T00:01:00"
+  end: "2021-12-01T00:02:00"
+- webservice: dataselect
+  scenario: 320streams
+  net: "*"
+  sta: "Z*,V*,T*,S*,P*,O*,M*"
+  loc: "*"
+  cha: "*"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: dataselect
+  scenario: 1stream15days
+  net: RO
+  sta: GZR
+  loc: "*"
+  cha: HHZ
+  start: "2025-06-04T00:00:00"
+  end: "2025-06-19T00:00:00"
+- webservice: station
+  scenario: 9streams
+  net: RO
+  sta: PLOR1,PLOR2,PLOR3
+  loc: "*"
+  cha: HH?
+  start: "2017-05-20T00:01:00"
+  end: "2017-05-20T00:02:00"
+- webservice: station
+  scenario: 54streams # 62 streams
+  net: RO
+  sta: "*"
+  loc: "*"
+  cha: HHE,HHZ
+  start: "2021-12-01T00:01:00"
+  end: "2021-12-01T00:02:00"
+- webservice: station
+  scenario: 320streams
+  net: "*"
+  sta: "Z*,V*,T*,S*,P*,O*,M*"
+  loc: "*"
+  cha: "*"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: station
+  scenario: 1stream15days
+  net: RO
+  sta: GZR
+  loc: "*"
+  cha: HHZ
+  start: "2025-06-04T00:00:00"
+  end: "2025-06-19T00:00:00"
+- webservice: availability
+  scenario: 9streams
+  net: RO
+  sta: PLOR1,PLOR2,PLOR3
+  loc: "*"
+  cha: HH?
+  start: "2017-05-20T00:01:00"
+  end: "2017-05-20T00:02:00"
+- webservice: availability
+  scenario: 54streams # 62 streams
+  net: RO
+  sta: "*"
+  loc: "*"
+  cha: HHE,HHZ
+  start: "2021-12-01T00:01:00"
+  end: "2021-12-01T00:02:00"
+- webservice: availability
+  scenario: 320streams
+  net: "*"
+  sta: "Z*,V*,T*,S*,P*,O*,M*"
+  loc: "*"
+  cha: "*"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: availability
+  scenario: 1stream15days
+  net: RO
+  sta: GZR
+  loc: "*"
+  cha: HHZ
+  start: "2025-06-04T00:00:00"
+  end: "2025-06-19T00:00:00"
+- webservice: wfcatalog
+  scenario: 9streams
+  net: RO
+  sta: PLOR1,PLOR2,PLOR3
+  loc: "*"
+  cha: HH?
+  start: "2017-05-20T00:01:00"
+  end: "2017-05-20T00:02:00"
+- webservice: wfcatalog
+  scenario: 54streams # 62 streams
+  net: RO
+  sta: "*"
+  loc: "*"
+  cha: HHE,HHZ
+  start: "2021-12-01T00:01:00"
+  end: "2021-12-01T00:02:00"
+- webservice: wfcatalog
+  scenario: 320streams
+  net: "*"
+  sta: "Z*,V*,T*,S*,P*,O*,M*"
+  loc: "*"
+  cha: "*"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: wfcatalog
+  scenario: 1stream15days
+  net: RO
+  sta: GZR
+  loc: "*"
+  cha: HHZ
+  start: "2025-06-04T00:00:00"
+  end: "2025-06-19T00:00:00"

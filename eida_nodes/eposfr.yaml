@@ -1,7 +1,8 @@
 ---
 node: EPOSFR
 endpoint: ws.resif.fr
-routingFile: routing/eida/routing.xml
+eidaRoutingFile: routing/eida/routing.xml
+fdsnRoutingFile: routing/eida/routing.json
 onlineCheck:
   net: FR
   sta: CIEL
@@ -12,131 +13,131 @@ onlineCheck:
 requiremets:
   network: FR
 perfCheck:
-  - webservice: dataselect
-    scenario: 9streams
-    net: FR
-    sta: ATE,BANN,BLAF
-    loc: "*"
-    cha: HH?
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 54streams
-    net: FR
-    sta: "B*,D*"
-    loc: "*"
-    cha: "H*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 320streams
-    net: FR,RA
-    sta: "*"
-    loc: "*"
-    cha: "H?Z"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 1stream15days
-    net: FR
-    sta: CIEL
-    loc: "00"
-    cha: HHZ
-    start: "2025-11-01T00:00:00"
-    end: "2025-11-16T00:00:00"
-  - webservice: wfcatalog
-    scenario: 9streams
-    net: FR
-    sta: ATE,BANN,BLAF
-    loc: "*"
-    cha: HH?
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 54streams
-    net: FR
-    sta: "B*,D*"
-    loc: "*"
-    cha: "HH*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 320streams
-    net: FR,RA
-    sta: "*"
-    loc: "*"
-    cha: "H?Z"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 1stream15days
-    net: FR
-    sta: CIEL
-    loc: "00"
-    cha: HHZ
-    start: "2025-11-01T00:00:00"
-    end: "2025-11-16T00:00:00"
-  - webservice: availability
-    scenario: 9streams
-    net: FR
-    sta: ATE,BANN,BLAF
-    loc: "*"
-    cha: HH?
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: availability
-    scenario: 54streams
-    net: FR
-    sta: "B*,D*"
-    loc: "*"
-    cha: "HH*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: availability
-    scenario: 320streams
-    net: FR,RA
-    sta: "*"
-    loc: "*"
-    cha: "H?Z"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: availability
-    scenario: 1stream15days
-    net: FR
-    sta: CIEL
-    loc: "00"
-    cha: HHZ
-    start: "2025-11-01T00:00:00"
-    end: "2025-11-16T00:00:00"
-  - webservice: station
-    scenario: 9streams
-    net: FR
-    sta: ATE,BANN,BLAF
-    loc: "*"
-    cha: HH?
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: station
-    scenario: 54streams
-    net: FR
-    sta: "B*,D*"
-    loc: "*"
-    cha: "HH*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: station
-    scenario: 320streams
-    net: FR,RA
-    sta: "*"
-    loc: "*"
-    cha: "H?Z"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: station
-    scenario: 1stream15days
-    net: FR
-    sta: CIEL
-    loc: "00"
-    cha: HHZ
-    start: "2025-11-01T00:00:00"
-    end: "2025-11-16T00:00:00"
+- webservice: dataselect
+  scenario: 9streams
+  net: FR
+  sta: ATE,BANN,BLAF
+  loc: "*"
+  cha: HH?
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: dataselect
+  scenario: 54streams
+  net: FR
+  sta: "B*,D*"
+  loc: "*"
+  cha: "H*"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: dataselect
+  scenario: 320streams
+  net: FR,RA
+  sta: "*"
+  loc: "*"
+  cha: "H?Z"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: dataselect
+  scenario: 1stream15days
+  net: FR
+  sta: CIEL
+  loc: "00"
+  cha: HHZ
+  start: "2025-11-01T00:00:00"
+  end: "2025-11-16T00:00:00"
+- webservice: wfcatalog
+  scenario: 9streams
+  net: FR
+  sta: ATE,BANN,BLAF
+  loc: "*"
+  cha: HH?
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: wfcatalog
+  scenario: 54streams
+  net: FR
+  sta: "B*,D*"
+  loc: "*"
+  cha: "HH*"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: wfcatalog
+  scenario: 320streams
+  net: FR,RA
+  sta: "*"
+  loc: "*"
+  cha: "H?Z"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: wfcatalog
+  scenario: 1stream15days
+  net: FR
+  sta: CIEL
+  loc: "00"
+  cha: HHZ
+  start: "2025-11-01T00:00:00"
+  end: "2025-11-16T00:00:00"
+- webservice: availability
+  scenario: 9streams
+  net: FR
+  sta: ATE,BANN,BLAF
+  loc: "*"
+  cha: HH?
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: availability
+  scenario: 54streams
+  net: FR
+  sta: "B*,D*"
+  loc: "*"
+  cha: "HH*"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: availability
+  scenario: 320streams
+  net: FR,RA
+  sta: "*"
+  loc: "*"
+  cha: "H?Z"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: availability
+  scenario: 1stream15days
+  net: FR
+  sta: CIEL
+  loc: "00"
+  cha: HHZ
+  start: "2025-11-01T00:00:00"
+  end: "2025-11-16T00:00:00"
+- webservice: station
+  scenario: 9streams
+  net: FR
+  sta: ATE,BANN,BLAF
+  loc: "*"
+  cha: HH?
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: station
+  scenario: 54streams
+  net: FR
+  sta: "B*,D*"
+  loc: "*"
+  cha: "HH*"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: station
+  scenario: 320streams
+  net: FR,RA
+  sta: "*"
+  loc: "*"
+  cha: "H?Z"
+  start: "2025-12-01T00:01:00"
+  end: "2025-12-01T00:02:00"
+- webservice: station
+  scenario: 1stream15days
+  net: FR
+  sta: CIEL
+  loc: "00"
+  cha: HHZ
+  start: "2025-11-01T00:00:00"
+  end: "2025-11-16T00:00:00"
