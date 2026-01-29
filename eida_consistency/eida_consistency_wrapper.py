@@ -19,7 +19,7 @@ from zabbix_utils import ItemValue, Sender
 
 # config by env variables
 DURATION = 600
-EPOCHS = 10
+EPOCHS = 100
 MAX_WORKERS = 4
 SKIP_NODES = ["IGN"]
 ZABBIX_SERVER = "oculus-zabbix-zabbix-server"
