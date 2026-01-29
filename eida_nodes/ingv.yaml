@@ -15,25 +15,25 @@ perfCheck:
   - webservice: dataselect
     scenario: 9streams
     net: "IV"
-    sta: "AR*,Z*"
+    sta: "ARCI,ZCCA,ZEN8"
     loc: "*"
-    cha: "*"
+    cha: "HN*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: dataselect
     scenario: 54streams
     net: "IV"
-    sta: "A*,B*"
+    sta: "A*,BR*,BI*,BO*"
     loc: "*"
-    cha: "HH*"
+    cha: "HN*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: dataselect
     scenario: 320streams
-    net: "IV,MN,NI,GU"
+    net: "IV,XE,OX,IX"
     sta: "*"
     loc: "*"
-    cha: HHZ
+    cha: "HNZ"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: dataselect
@@ -41,63 +41,31 @@ perfCheck:
     net: IV
     sta: AMUR
     loc: "*"
-    cha: HH?
-    start: "2012-06-08T00:00:00"
-    end: "2012-06-23T00:00:00"
-  - webservice: wfcatalog
-    scenario: 9streams
-    net: "IV"
-    sta: "AR*,Z*"
-    loc: "*"
-    cha: "*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 54streams
-    net: "IV"
-    sta: "A*,B*"
-    loc: "*"
-    cha: "HH*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 320streams
-    net: "IV,MN,NI,GU"
-    sta: "*"
-    loc: "*"
     cha: HHZ
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 1stream15days
-    net: IV
-    sta: AMUR
-    loc: "*"
-    cha: HH?
     start: "2012-06-08T00:00:00"
     end: "2012-06-23T00:00:00"
   - webservice: availability
     scenario: 9streams
     net: "IV"
-    sta: "AR*,Z*"
+    sta: "ARCI,ZCCA,ZEN8"
     loc: "*"
-    cha: "*"
+    cha: "HN*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: availability
     scenario: 54streams
     net: "IV"
-    sta: "A*,B*"
+    sta: "A*,BR*,BI*,BO*"
     loc: "*"
-    cha: "HH*"
+    cha: "HN*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: availability
     scenario: 320streams
-    net: "IV,MN,NI,GU"
+    net: "IV,XE,OX,IX"
     sta: "*"
     loc: "*"
-    cha: HHZ
+    cha: "HNZ"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: availability
@@ -105,30 +73,62 @@ perfCheck:
     net: IV
     sta: AMUR
     loc: "*"
-    cha: HH?
+    cha: HHZ
+    start: "2012-06-08T00:00:00"
+    end: "2012-06-23T00:00:00"
+  - webservice: wfcatalog
+    scenario: 9streams
+    net: "IV"
+    sta: "ARCI,ZCCA,ZEN8"
+    loc: "*"
+    cha: "HN*"
+    start: "2025-12-01T00:01:00"
+    end: "2025-12-01T00:02:00"
+  - webservice: wfcatalog
+    scenario: 54streams
+    net: "IV"
+    sta: "A*,BR*,BI*,BO*"
+    loc: "*"
+    cha: "HN*"
+    start: "2025-12-01T00:01:00"
+    end: "2025-12-01T00:02:00"
+  - webservice: wfcatalog
+    scenario: 320streams
+    net: "IV,XE,OX,IX"
+    sta: "*"
+    loc: "*"
+    cha: "HNZ"
+    start: "2025-12-01T00:01:00"
+    end: "2025-12-01T00:02:00"
+  - webservice: wfcatalog
+    scenario: 1stream15days
+    net: IV
+    sta: AMUR
+    loc: "*"
+    cha: HHZ
     start: "2012-06-08T00:00:00"
     end: "2012-06-23T00:00:00"
   - webservice: station
     scenario: 9streams
     net: "IV"
-    sta: "AR*,Z*"
+    sta: "ARCI,ZCCA,ZEN8"
     loc: "*"
-    cha: "*"
+    cha: "HN*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: station
     scenario: 54streams
     net: "IV"
-    sta: "A*,B*"
+    sta: "A*,BR*,BI*,BO*"
     loc: "*"
-    cha: "HH*"
+    cha: "HN*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: station
     scenario: 320streams
-    net: "IV,MN,NI,GU"
+    net: "IV,XE,OX,IX"
     sta: "*"
     loc: "*"
-    cha: HHZ
+    cha: "HNZ"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
