@@ -19,15 +19,18 @@ zabbix_export:
           trends: '0'
           description: 'entier report json of eida consistency test'
           tags:
+            - tag: Application
+              value: consistency
             - tag: format
               value: json
         - uuid: 233416c295964e57a6b2a9fa7fedde54
-          name: 'Score global'
+          name: 'Global score'
           type: TRAP
           key: score.eida_consistency
           delay: '0'
-          value_type: TEXT
+          value_type: FLOAT
           trends: '0'
           tags:
-            - tag: consistency
+            - tag: Application
+              value: consistency
             - tag: score
