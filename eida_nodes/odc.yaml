@@ -39,12 +39,11 @@ perfCheck:
   - webservice: dataselect
     scenario: 1stream15days
     net: "NL"
-    sta: "BHAR"
+    sta: "BSTD"
     loc: "*"
-    cha: "HNZ"
-    start: "2025-10-01"
-    end: "2025-10-16"
-
+    cha: "HGZ"
+    start: "2017-06-04"
+    end: "2017-06-19"
   - webservice: wfcatalog
     scenario: 9streams
     net: NL
@@ -72,11 +71,11 @@ perfCheck:
   - webservice: wfcatalog
     scenario: 1stream15days
     net: "NL"
-    sta: "BHAR"
+    sta: "BSTD"
     loc: "*"
-    cha: "HNZ"
-    start: "2025-10-01"
-    end: "2025-10-16"
+    cha: "HGZ"
+    start: "2017-06-04"
+    end: "2017-06-19"
 
   - webservice: station
     scenario: 9streams
@@ -105,11 +104,11 @@ perfCheck:
   - webservice: station
     scenario: 1stream15days
     net: "NL"
-    sta: "BHAR"
+    sta: "BSTD"
     loc: "*"
-    cha: "HNZ"
-    start: "2025-10-01"
-    end: "2025-10-16"
+    cha: "HGZ"
+    start: "2017-06-04"
+    end: "2017-06-19"
 
   - webservice: availability
     scenario: 9streams
@@ -138,8 +137,8 @@ perfCheck:
   - webservice: availability
     scenario: 1stream15days
     net: "NL"
-    sta: "BHAR"
+    sta: "BSTD"
     loc: "*"
-    cha: "HNZ"
-    start: "2025-10-01"
-    end: "2025-10-16"
+    cha: "HGZ"
+    start: "2017-06-04"
+    end: "2017-06-19"
