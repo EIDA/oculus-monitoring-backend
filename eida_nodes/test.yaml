@@ -1,0 +1,107 @@
+---
+node: UIB-NORSAR
+endpoint: eida.geo.uib.no
+eidaRoutingFile: eidaws/routing.xml
+fdsnRoutingFile: eidaws/routing.json
+onlineCheck:
+  net: NS
+  sta: BER
+  loc: "00"
+  cha: HHZ
+  start: 2019-01-15T00:01:50
+  end: 2019-01-15T00:02:00
+requiremets:
+  network: { biggest_network_code }
+perfCheck:
+  scenario:
+    default: &default
+      net: NS
+      sta: B*
+      loc: "*"
+      cha: "*"
+      start: "2025-12-01T00:01:00"
+      end: "2025-12-01T00:02:00"
+    9streams: &scenar_9str
+      <<: *default
+    54streams: &scenar_54str
+      <<: *default
+    320streams: &scenar_320str
+      <<: *default
+    1stream15days: &scenar_1str15days
+      <<: *default
+# dataselect
+services:
+- name: fdsnws/dataselect
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/dataselect
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+    sta: "*"
+- name: fdsnws/dataselect
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+    net: "*"
+    cha: "H*"
+- name: fdsnws/dataselect
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+    sta: FAUS
+    cha: HHZ
+    start: "2018-06-07T00:01:00"
+    end: "2018-06-22T00:01:00"
+# availability
+- name: fdsnws/availability
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/availability
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/availability
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/availability
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# station
+- name: fdsnws/station
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/station
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/station
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/station
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# wfcatalog
+- name: eidaws/wfcatalog
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/wfcatalog
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: eidaws/wfcatalog
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: eidaws/wfcatalog
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
