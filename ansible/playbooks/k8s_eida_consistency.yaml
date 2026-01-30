@@ -33,7 +33,7 @@
             name: oculus-consistency
           spec:
             suspend: false
-            schedule: "0 14 * * *" # everyday at 2pm
+            schedule: "0 14 * * 0" # every sunday at 2pm
             jobTemplate:
               spec:
                 template:
