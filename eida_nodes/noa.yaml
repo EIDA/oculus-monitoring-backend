@@ -15,7 +15,7 @@ perfCheck:
   - webservice: dataselect
     scenario: 9streams
     net: HL
-    sta: "Y*,Z*"
+    sta: "ZARA,YDRA,VERA"
     loc: "*"
     cha: "*"
     start: "2025-12-01T00:01:00"
@@ -23,31 +23,31 @@ perfCheck:
   - webservice: dataselect
     scenario: 54streams
     net: HL
-    sta: "*"
+    sta: "A*"
     loc: "*"
-    cha: HNZ
+    cha: "*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: dataselect
-    scenario: 320streams
+    scenario: 320streams # 298 streams
     net: HL,HI,CQ
     sta: "*"
     loc: "*"
-    cha: "H*E,H*Z"
+    cha: "*Z"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: dataselect
     scenario: 1stream15days
     net: HL
-    sta: IDI
+    sta: ZARA
     loc: "*"
-    cha: HHZ
-    start: "2012-06-04T00:00:00"
-    end: "2012-06-19T00:00:00"
+    cha: HNZ
+    start: "2026-01-01T00:00:00"
+    end: "2012-01-16T00:00:00"
   - webservice: availability
     scenario: 9streams
     net: HL
-    sta: "Y*,Z*"
+    sta: "ZARA,YDRA,VERA"
     loc: "*"
     cha: "*"
     start: "2025-12-01T00:01:00"
@@ -55,31 +55,31 @@ perfCheck:
   - webservice: availability
     scenario: 54streams
     net: HL
-    sta: "*"
+    sta: "A*"
     loc: "*"
-    cha: HNZ
+    cha: "*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: availability
-    scenario: 320streams
+    scenario: 320streams # 298 streams
     net: HL,HI,CQ
     sta: "*"
     loc: "*"
-    cha: "H*E,H*Z"
+    cha: "*Z"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: availability
     scenario: 1stream15days
     net: HL
-    sta: IDI
+    sta: ZARA
     loc: "*"
-    cha: HHZ
-    start: "2012-06-04T00:00:00"
-    end: "2012-06-19T00:00:00"
+    cha: HNZ
+    start: "2026-01-01T00:00:00"
+    end: "2012-01-16T00:00:00"
   - webservice: wfcatalog
     scenario: 9streams
     net: HL
-    sta: "Y*,Z*"
+    sta: "ZARA,YDRA,VERA"
     loc: "*"
     cha: "*"
     start: "2025-12-01T00:01:00"
@@ -87,31 +87,31 @@ perfCheck:
   - webservice: wfcatalog
     scenario: 54streams
     net: HL
-    sta: "*"
+    sta: "A*"
     loc: "*"
-    cha: HNZ
+    cha: "*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: wfcatalog
-    scenario: 320streams
+    scenario: 320streams # 298 streams
     net: HL,HI,CQ
     sta: "*"
     loc: "*"
-    cha: "H*E,H*Z"
+    cha: "*Z"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: wfcatalog
     scenario: 1stream15days
     net: HL
-    sta: IDI
+    sta: ZARA
     loc: "*"
-    cha: HHZ
-    start: "2012-06-04T00:00:00"
-    end: "2012-06-19T00:00:00"
+    cha: HNZ
+    start: "2026-01-01T00:00:00"
+    end: "2012-01-16T00:00:00"
   - webservice: station
     scenario: 9streams
     net: HL
-    sta: "Y*,Z*"
+    sta: "ZARA,YDRA,VERA"
     loc: "*"
     cha: "*"
     start: "2025-12-01T00:01:00"
@@ -119,24 +119,24 @@ perfCheck:
   - webservice: station
     scenario: 54streams
     net: HL
-    sta: "*"
+    sta: "A*"
     loc: "*"
-    cha: HNZ
+    cha: "*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: station
-    scenario: 320streams
+    scenario: 320streams # 298 streams
     net: HL,HI,CQ
     sta: "*"
     loc: "*"
-    cha: "H*E,H*Z"
+    cha: "*Z"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: station
     scenario: 1stream15days
     net: HL
-    sta: IDI
+    sta: ZARA
     loc: "*"
-    cha: HHZ
-    start: "2012-06-04T00:00:00"
-    end: "2012-06-19T00:00:00"
+    cha: HNZ
+    start: "2026-01-01T00:00:00"
+    end: "2012-01-16T00:00:00"
