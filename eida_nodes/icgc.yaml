@@ -62,12 +62,12 @@ perfCheck:
     end: "2025-11-07T00:02:00"
   - webservice: wfcatalog
     scenario: 320streams
-    net: "*"
+    net: "CA,EB,ES"
     sta: "*"
     loc: "*"
     cha: "*"
-    start: "*"
-    end: "*"
+    start: "2025-01-31T00:01:00"
+    end: "2025-01-31T00:02:00"
   - webservice: wfcatalog
     scenario: 1stream15days
     net: CA
@@ -93,13 +93,13 @@ perfCheck:
     start: "2025-11-07T00:01:00"
     end: "2025-11-07T00:02:00"
   - webservice: availability
-    scenario: 320streams
-    net: "*"
+    scenario: 320streams # 194 channels
+    net: "CA,EB,ES"
     sta: "*"
     loc: "*"
     cha: "*"
-    start: "2020-08-05T00:01:00"
-    end: "2020-08-05T23:59:00"
+    start: "2025-01-31T00:01:00"
+    end: "2025-01-31T00:02:00"
   - webservice: availability
     scenario: 1stream15days
     net: CA
