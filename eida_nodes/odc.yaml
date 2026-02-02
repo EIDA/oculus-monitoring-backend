@@ -15,130 +15,130 @@ perfCheck:
   - webservice: dataselect
     scenario: 9streams
     net: NL
-    sta: BHAR,BING,BSTD
+    sta: VNDM1,VNDM2,VNDM3
     loc: "*"
-    cha: "*"
-    start: "2017-06-04T00:01:00"
-    end: "2017-06-04T00:02:00"
-  - webservice: dataselect
-    scenario: 54streams
-    net: NL
-    sta: "Z*,N*"
-    loc: "*"
-    cha: HNZ
+    cha: "HH*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: dataselect
-    scenario: 320streams #294
-    net: BE,CR
-    sta: "*"
+    scenario: 54streams
+    net: NL
+    sta: "V*"
     loc: "*"
-    cha: "*"
+    cha: "?H?"
+    start: "2025-12-01T00:01:00"
+    end: "2025-12-01T00:02:00"
+  - webservice: dataselect
+    scenario: 320streams #310
+    net: NL
+    sta: "Z*,T*,V*,W*"
+    loc: "*"
+    cha: "?H?"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: dataselect
     scenario: 1stream15days
     net: "NL"
-    sta: "BSTD"
+    sta: "VNDM1"
     loc: "*"
-    cha: "HGZ"
-    start: "2017-06-04"
-    end: "2017-06-19"
+    cha: "HHZ"
+    start: "2025-12-01"
+    end: "2025-12-16"
   - webservice: wfcatalog
     scenario: 9streams
     net: NL
-    sta: BHAR,BING,BSTD
+    sta: VNDM1,VNDM2,VNDM3
     loc: "*"
-    cha: "*"
-    start: "2017-06-04T00:01:00"
-    end: "2017-06-04T00:02:00"
-  - webservice: wfcatalog
-    scenario: 54streams
-    net: NL
-    sta: "Z*,N*"
-    loc: "*"
-    cha: HNZ
+    cha: "HH*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: wfcatalog
-    scenario: 320streams #294
-    net: BE,CR
-    sta: "*"
+    scenario: 54streams
+    net: NL
+    sta: "V*"
     loc: "*"
-    cha: "*"
+    cha: "?H?"
+    start: "2025-12-01T00:01:00"
+    end: "2025-12-01T00:02:00"
+  - webservice: wfcatalog
+    scenario: 320streams #310
+    net: NL
+    sta: "Z*,T*,V*,W*"
+    loc: "*"
+    cha: "?H?"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: wfcatalog
     scenario: 1stream15days
     net: "NL"
-    sta: "BSTD"
+    sta: "VNDM1"
     loc: "*"
-    cha: "HGZ"
-    start: "2017-06-04"
-    end: "2017-06-19"
+    cha: "HHZ"
+    start: "2025-12-01"
+    end: "2025-12-16"
 
   - webservice: station
     scenario: 9streams
     net: NL
-    sta: BHAR,BING,BSTD
+    sta: VNDM1,VNDM2,VNDM3
     loc: "*"
-    cha: "*"
-    start: "2017-06-04T00:01:00"
-    end: "2017-06-04T00:02:00"
-  - webservice: station
-    scenario: 54streams
-    net: NL
-    sta: "Z*,N*"
-    loc: "*"
-    cha: HNZ
+    cha: "HH*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: station
-    scenario: 320streams #294
-    net: BE,CR
-    sta: "*"
+    scenario: 54streams
+    net: NL
+    sta: "V*"
     loc: "*"
-    cha: "*"
+    cha: "?H?"
+    start: "2025-12-01T00:01:00"
+    end: "2025-12-01T00:02:00"
+  - webservice: station
+    scenario: 320streams #310
+    net: NL
+    sta: "Z*,T*,V*,W*"
+    loc: "*"
+    cha: "?H?"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: station
     scenario: 1stream15days
     net: "NL"
-    sta: "BSTD"
+    sta: "VNDM1"
     loc: "*"
-    cha: "HGZ"
-    start: "2017-06-04"
-    end: "2017-06-19"
+    cha: "HHZ"
+    start: "2025-12-01"
+    end: "2025-12-16"
 
   - webservice: availability
     scenario: 9streams
     net: NL
-    sta: BHAR,BING,BSTD
+    sta: VNDM1,VNDM2,VNDM3
     loc: "*"
-    cha: "*"
-    start: "2017-06-04T00:01:00"
-    end: "2017-06-04T00:02:00"
-  - webservice: availability
-    scenario: 54streams
-    net: NL
-    sta: "Z*,N*"
-    loc: "*"
-    cha: HNZ
+    cha: "HH*"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: availability
-    scenario: 320streams #294
-    net: BE,CR
-    sta: "*"
+    scenario: 54streams
+    net: NL
+    sta: "V*"
     loc: "*"
-    cha: "*"
+    cha: "?H?"
+    start: "2025-12-01T00:01:00"
+    end: "2025-12-01T00:02:00"
+  - webservice: availability
+    scenario: 320streams #310
+    net: NL
+    sta: "Z*,T*,V*,W*"
+    loc: "*"
+    cha: "?H?"
     start: "2025-12-01T00:01:00"
     end: "2025-12-01T00:02:00"
   - webservice: availability
     scenario: 1stream15days
     net: "NL"
-    sta: "BSTD"
+    sta: "VNDM1"
     loc: "*"
-    cha: "HGZ"
-    start: "2017-06-04"
-    end: "2017-06-19"
+    cha: "HHZ"
+    start: "2025-12-01"
+    end: "2025-12-16"
