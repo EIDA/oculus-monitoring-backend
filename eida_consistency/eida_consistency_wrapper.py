@@ -17,7 +17,7 @@ import yaml
 from eida_consistency.runner import run_consistency_check
 from zabbix_utils import ItemValue, Sender
 
-# config by env variables
+# config env variables
 DURATION = int(os.getenv("DURATION", "600"))
 EPOCHS = int(os.getenv("EPOCHS", "100"))
 MAX_WORKERS = int(os.getenv("MAX_WORKER", "4"))
