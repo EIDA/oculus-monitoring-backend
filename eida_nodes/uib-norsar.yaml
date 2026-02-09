@@ -13,131 +13,97 @@ onlineCheck:
 requiremets:
   network: { biggest_network_code }
 perfCheck:
-- webservice: dataselect
+  scenario:
+    default: &default
+      net: NS
+      loc: "*"
+      start: "2025-12-01T00:01:00"
+      end: "2025-12-01T00:02:00"
+    9streams: &scenar_9str
+      <<: *default
+      sta: B*
+      cha: "*"
+    54streams: &scenar_54str
+      <<: *default
+      sta: "*"
+      cha: "H*Z"
+    320streams: &scenar_320str
+      <<: *default
+      net: "*"
+      sta: "*"
+      cha: "H*"
+    1stream15days: &scenar_1str15days
+      <<: *default
+      sta: FAUS
+      CXHA: HHZ
+      start: "2018-06-07T00:01:00"
+      end: "2018-06-22T00:01:00"
+# dataselect
+services:
+- name: fdsnws/dataselect
   scenario: 9streams
-  net: NS
-  sta: B*
-  loc: "*"
-  cha: "*"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: dataselect
-  scenario: 54streams # 44 streams
-  net: NS
-  sta: "*"
-  loc: "*"
-  cha: "H*Z"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: dataselect
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/dataselect
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/dataselect
   scenario: 320streams
-  net: "*"
-  sta: "*"
-  loc: "*"
-  cha: "H*"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: dataselect
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/dataselect
   scenario: 1stream15days
-  net: NS
-  sta: FAUS
-  loc: "*"
-  cha: HHZ
-  start: "2018-06-07T00:01:00"
-  end: "2018-06-22T00:01:00"
-- webservice: availability
+  parameters:
+    <<: *scenar_1str15days
+# availability
+- name: fdsnws/availability
   scenario: 9streams
-  net: NS
-  sta: B*
-  loc: "*"
-  cha: "*"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: availability
-  scenario: 54streams # 44 streams
-  net: NS
-  sta: "*"
-  loc: "*"
-  cha: "H*Z"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: availability
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/availability
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/availability
   scenario: 320streams
-  net: "*"
-  sta: "*"
-  loc: "*"
-  cha: "H*"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: availability
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/availability
   scenario: 1stream15days
-  net: NS
-  sta: FAUS
-  loc: "*"
-  cha: HHZ
-  start: "2018-06-07T00:01:00"
-  end: "2018-06-22T00:01:00"
-- webservice: wfcatalog
+  parameters:
+    <<: *scenar_1str15days
+# station
+- name: fdsnws/station
   scenario: 9streams
-  net: NS
-  sta: B*
-  loc: "*"
-  cha: "*"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: wfcatalog
-  scenario: 54streams # 44 streams
-  net: NS
-  sta: "*"
-  loc: "*"
-  cha: "H*Z"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: wfcatalog
-  scenario: 320streams # 196 streams
-  net: "*"
-  sta: "*"
-  loc: "*"
-  cha: "H*"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: wfcatalog
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/station
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/station
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/station
   scenario: 1stream15days
-  net: NS
-  sta: FAUS
-  loc: "*"
-  cha: HHZ
-  start: "2018-06-07T00:01:00"
-  end: "2018-06-22T00:01:00"
-- webservice: station
+  parameters:
+    <<: *scenar_1str15days
+# wfcatalog
+- name: eidaws/wfcatalog
   scenario: 9streams
-  net: NS
-  sta: B*
-  loc: "*"
-  cha: "*"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: station
-  scenario: 54streams # 44 streams
-  net: NS
-  sta: "*"
-  loc: "*"
-  cha: "H*Z"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: station
-  scenario: 320streams # 196 streams
-  net: "*"
-  sta: "*"
-  loc: "*"
-  cha: "H*"
-  start: "2025-12-01T00:01:00"
-  end: "2025-12-01T00:02:00"
-- webservice: station
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/wfcatalog
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: eidaws/wfcatalog
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: eidaws/wfcatalog
   scenario: 1stream15days
-  net: NS
-  sta: FAUS
-  loc: "*"
-  cha: HHZ
-  start: "2018-06-07T00:01:00"
-  end: "2018-06-22T00:01:00"
+  parameters:
+    <<: *scenar_1str15days

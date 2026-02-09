@@ -13,123 +13,82 @@ onlineCheck:
 requiremets:
   network: { biggest_network_code }
 perfCheck:
-- webservice: dataselect
+  scenario:
+    default: &default 
+    9streams: &scenar_9str
+      <<: *default
+    54streams: &scenar_54str
+      <<: *default
+    320streams: &scenar_320str
+      <<: *default
+    1stream15days: &scenar_1str15days
+      <<: *default
+# dataselect
+services:
+- name: fdsnws/dataselect
   scenario: 9streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: dataselect
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/dataselect
   scenario: 54streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: dataselect
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/dataselect
   scenario: 320streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: dataselect
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/dataselect
   scenario: 1stream15days
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: wfcatalog
+  parameters:
+    <<: *scenar_1str15days
+# availability
+- name: fdsnws/availability
   scenario: 9streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: wfcatalog
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/availability
   scenario: 54streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: wfcatalog
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/availability
   scenario: 320streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: wfcatalog
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/availability
   scenario: 1stream15days
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: availability
+  parameters:
+    <<: *scenar_1str15days
+# station
+- name: fdsnws/station
   scenario: 9streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: availability
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/station
   scenario: 54streams
-  net:
-  sta:
-  loc:
-  cha:
-  star:
-  end:
-- webservice: availability
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/station
   scenario: 320streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: availability
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/station
   scenario: 1stream15days
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: station
+  parameters:
+    <<: *scenar_1str15days
+# wfcatalog
+- name: eidaws/wfcatalog
   scenario: 9streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: station
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/wfcatalog
   scenario: 54streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
-- webservice: station
+  parameters:
+    <<: *scenar_54str
+- name: eidaws/wfcatalog
   scenario: 320streams
-  net:
-  sta:
-  loc:
-  cha:
-  start:
-  end:
+  parameters:
+    <<: *scenar_320str
+- name: eidaws/wfcatalog
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
