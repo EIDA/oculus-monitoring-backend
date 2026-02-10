@@ -94,7 +94,7 @@ perfCheck:
     end: "2025-03-12T00:02:00"
   - webservice: availability
     scenario: 320streams # 255
-    net: "*"
+    net: "9U,BN,GB,UR"
     sta: "*"
     loc: "*"
     cha: "*"
