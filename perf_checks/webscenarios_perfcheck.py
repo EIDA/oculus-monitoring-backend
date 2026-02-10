@@ -21,6 +21,7 @@ from zabbix_utils import ItemValue, Sender
 # config env variables
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
+SKIP_NODES = os.getenv("SKIP_NODES", "IGN").split(",")
 HTTP_OK = 200
 SEPARATOR = "=" * 50
 
@@ -53,8 +54,16 @@ def load_yaml_files(nodes_dir):
     """load all  EIDA nodes .yaml from directory"""
     yaml_files = {}
     for yaml_file in Path(nodes_dir).glob("*.yaml"):
+        node_name = yaml_file.stem
+
+        # skip nodes in SKIP_NODES list
+        if node_name.upper() in [node.upper() for node in SKIP_NODES]:
+            logger.debug("skipping yaml file for node: %s", node_name)
+            continue
+
         with yaml_file.open() as f:
-            yaml_files[yaml_file.stem] = yaml.safe_load(f)
+            yaml_files[node_name] = yaml.safe_load(f)
+
     return yaml_files
 
 def build_url(endpoint, service_name, params):
@@ -237,6 +246,11 @@ def main():
     if not yaml_data:
         logger.error("no yaml files found in %s", nodes_dir)
         return
+
+    # filter out skipped nodes
+    if SKIP_NODES:
+        logger.info("skipping nodes: %s", ",".join(SKIP_NODES))
+        yaml_data = {k: v for k, v in yaml_data.items() if k not in SKIP_NODES}
 
     # process each node
     for node_name, node_data in yaml_data.items():
