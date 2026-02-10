@@ -22,7 +22,7 @@ DURATION = int(os.getenv("DURATION", "600"))
 EPOCHS = int(os.getenv("EPOCHS", "100"))
 MAX_WORKERS = int(os.getenv("MAX_WORKER", "4"))
 SKIP_NODES = os.getenv("SKIP_NODES", "IGN").split(",")
-ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "oculus-zabbix-zabbix-server")
+ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 
 # config logging
