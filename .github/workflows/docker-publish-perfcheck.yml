@@ -19,6 +19,7 @@ on:
   pull_request:
     branches:
     - main
+    - new_routing_env
 
 env:
   # Use docker.io for Docker Hub if empty
