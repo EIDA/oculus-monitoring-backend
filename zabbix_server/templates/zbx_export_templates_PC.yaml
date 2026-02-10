@@ -473,6 +473,50 @@ zabbix_export:
               value: 320streams
             - tag: webservice
               value: dataselect
+        - uuid: 391c1d6865f84717aa437a74eac0301c
+          name: 'perfCheck Station - 1stream15days - Content Size Bytes'
+          type: TRAP
+          key: station.1stream15days.content_size_bytes
+          delay: '0'
+          history: 365d
+          units: B
+          description: 'Content size in bytes for station 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: station
+        - uuid: 9e1ac343f7f048809bddb1b3e2547905
+          name: 'perfCheck Station - 1stream15days - Response Time Ms'
+          type: TRAP
+          key: station.1stream15days.response_time_ms
+          delay: '0'
+          history: 365d
+          value_type: FLOAT
+          units: ms
+          description: 'Response time in milliseconds for station 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: station
+        - uuid: f9d88f6495ca40e59109b8a03ebcda6f
+          name: 'perfCheck Station - 1stream15days - Status Code'
+          type: TRAP
+          key: station.1stream15days.status_code
+          delay: '0'
+          history: 365d
+          value_type: TEXT
+          trends: '0'
+          description: 'HTTP status code for station 1stream15days'
+          tags:
+            - tag: perfcheck
+            - tag: scenario
+              value: 1stream15days
+            - tag: webservice
+              value: station
         - uuid: 17d67084f7054df8bc02bde61da9ac2d
           name: 'perfCheck Station - 1stream15days - Transfer Rate'
           type: TRAP
