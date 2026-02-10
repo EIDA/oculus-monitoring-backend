@@ -9,3 +9,4 @@ eida_consistency/automate_eida_consistency.log
 eida_consistency/reports/*
 eida_consistency/stations/*
 eida_consistency/networks/*
+eida_consistency/eida_nodes
