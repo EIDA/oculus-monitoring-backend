@@ -68,6 +68,7 @@ services:
   scenario: 320streams
   parameters:
     <<: *scenar_320str
+    net: "9U,BN,GB,UR"
 - name: fdsnws/availability
   scenario: 1stream15days
   parameters:

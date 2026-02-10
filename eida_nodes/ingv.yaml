@@ -73,6 +73,8 @@ services:
   scenario: 1stream15days
   parameters:
     <<: *scenar_1str15days
+    start: "2025-06-08T00:00:00"
+    end: "2025-06-23T00:00:00"
 # station
 - name: fdsnws/station
   scenario: 9streams
@@ -107,3 +109,5 @@ services:
   scenario: 1stream15days
   parameters:
     <<: *scenar_1str15days
+    start: "2025-06-08T00:00:00"
+    end: "2025-06-23T00:00:00"

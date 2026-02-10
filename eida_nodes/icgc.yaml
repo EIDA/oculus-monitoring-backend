@@ -65,9 +65,11 @@ services:
   parameters:
     <<: *scenar_54str
 - name: fdsnws/availability
-  scenario: 320streams
+  scenario: 320streams # 194 channels
   parameters:
     <<: *scenar_320str
+    start: "2025-01-31T00:01:00"
+    end: "2025-01-31T00:02:00"
 - name: fdsnws/availability
   scenario: 1stream15days
   parameters:
@@ -103,8 +105,9 @@ services:
   scenario: 320streams
   parameters:
     <<: *scenar_320str
-    start: "*"
-    end: "*"
+    net: "CA,EB,ES"
+    start: "2025-01-31T00:01:00"
+    end: "2025-01-31T00:02:00"
 - name: eidaws/wfcatalog
   scenario: 1stream15days
   parameters:
