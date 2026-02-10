@@ -17,7 +17,7 @@ perfCheck:
     default: &default
       net: FR
       start: "2025-12-01T00:01:00"
-      end: "2025-12-01T00:02:01"
+      end: "2025-12-01T00:02:00"
     9streams: &scenar_9str
       <<: *default
       sta: ATE,BANN,BLAF
