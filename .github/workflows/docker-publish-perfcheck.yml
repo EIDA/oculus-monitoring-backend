@@ -9,15 +9,17 @@ on:
   push:
     branches:
     - main
+    - new_routing_env
     # Publish semver tags as releases.
     paths:
     - 'Dockerfile.perfcheck'
     - '.github/workflows/docker-publish-perfcheck.yml'
-    - 'perf_checks/*'
+    - 'perf_checks/**'
     - 'eida_nodes/**'
   pull_request:
     branches:
     - main
+    - new_routing_env
 
 env:
   # Use docker.io for Docker Hub if empty
