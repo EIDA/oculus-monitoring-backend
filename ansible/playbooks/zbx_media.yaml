@@ -30,7 +30,7 @@
         message_templates:
           - eventsource: triggers
             recovery: operations
-            subject: "Problem: {EVENT.NAME}"
+            subject: "OCULUS - Problem: {EVENT.NAME}"
             body: |
               <b>Problem started</b> at {EVENT.TIME} on {EVENT.DATE}<br>
               <b>Problem name:</b> {EVENT.NAME}<br>
@@ -41,7 +41,7 @@
               <b>Original problem ID:</b> {EVENT.ID}<br>
           - eventsource: triggers
             recovery: recovery_operations
-            subject: "Resolved in {EVENT.DURATION}: {EVENT.NAME}"
+            subject: "OCULUS - Resolved in {EVENT.DURATION}: {EVENT.NAME}"
             body: |
               <b>Problem has been resolved</b> at {EVENT.RECOVERY.TIME} on {EVENT.RECOVERY.DATE}<br>
               <b>Problem name:</b> {EVENT.NAME}<br>
@@ -51,7 +51,7 @@
               <b>Original problem ID:</b> {EVENT.ID}<br>
           - eventsource: triggers
             recovery: update_operations
-            subject: "Updated problem in {EVENT.AGE}: {EVENT.NAME}"
+            subject: "OCULUS - Updated problem in {EVENT.AGE}: {EVENT.NAME}"
             body: |
               <b>{USER.FULLNAME} {EVENT.UPDATE.ACTION} problem</b>
               at {EVENT.UPDATE.DATE} {EVENT.UPDATE.TIME}.<br>
