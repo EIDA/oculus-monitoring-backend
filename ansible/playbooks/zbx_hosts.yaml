@@ -43,6 +43,7 @@
       loop_control:
         label: "{{ item.path | basename }}"
       register: macros_generation
+      changed_when: false
 
     - name: Create Zabbix hosts groups
       community.zabbix.zabbix_group:
