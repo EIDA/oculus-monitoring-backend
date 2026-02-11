@@ -1,7 +1,8 @@
 ---
 node: NIEP
 endpoint: eida-sc3.infp.ro
-routingFile: eidaws/routing/1/routing.xml
+eidaRoutingFile: eidaws/routing/1/routing.xml
+fdsnRoutingFile: eidaws/routing/1/routing.json
 onlineCheck:
   net: RO
   sta: LEOM
@@ -12,130 +13,105 @@ onlineCheck:
 requiremets:
   network: { biggest_network_code }
 perfCheck:
-  - webservice: dataselect
-    scenario: 9streams
-    net: RO
-    sta: AMRR,ARCR,ARR
-    loc: "*"
-    cha: "HH*"
-    start: "2024-06-04T00:01:00"
-    end: "2024-06-04T00:02:00"
-  - webservice: dataselect
-    scenario: 54streams # 62 streams
-    net: RO
-    sta: "*"
-    loc: "*"
-    cha: HHE,HHZ
-    start: "2021-12-01T00:01:00"
-    end: "2021-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 320streams
-    net: "*"
-    sta: "Z*,V*,T*,S*,P*,O*,M*"
-    loc: "*"
-    cha: "*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 1stream15days
-    net: RO
-    sta: GZR
-    loc: "*"
-    cha: HHZ
-    start: "2025-06-04T00:00:00"
-    end: "2025-06-19T00:00:00"
-  - webservice: station
-    scenario: 9streams
-    net: RO
-    sta: AMRR,ARCR,ARR
-    loc: "*"
-    cha: "HH*"
-    start: "2024-06-04T00:01:00"
-    end: "2024-06-04T00:02:00"
-  - webservice: station
-    scenario: 54streams # 62 streams
-    net: RO
-    sta: "*"
-    loc: "*"
-    cha: HHE,HHZ
-    start: "2021-12-01T00:01:00"
-    end: "2021-12-01T00:02:00"
-  - webservice: station
-    scenario: 320streams
-    net: "*"
-    sta: "Z*,V*,T*,S*,P*,O*,M*"
-    loc: "*"
-    cha: "*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: station
-    scenario: 1stream15days
-    net: RO
-    sta: GZR
-    loc: "*"
-    cha: HHZ
-    start: "2025-06-04T00:00:00"
-    end: "2025-06-19T00:00:00"
-  - webservice: availability
-    scenario: 9streams
-    net: RO
-    sta: AMRR,ARCR,ARR
-    loc: "*"
-    cha: "HH*"
-    start: "2024-06-04T00:01:00"
-    end: "2024-06-04T00:02:00"
-  - webservice: availability
-    scenario: 54streams # 62 streams
-    net: RO
-    sta: "*"
-    loc: "*"
-    cha: HHE,HHZ
-    start: "2021-12-01T00:01:00"
-    end: "2021-12-01T00:02:00"
-  - webservice: availability
-    scenario: 320streams
-    net: "*"
-    sta: "Z*,V*,T*,S*,P*,O*,M*"
-    loc: "*"
-    cha: "*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: availability
-    scenario: 1stream15days
-    net: RO
-    sta: GZR
-    loc: "*"
-    cha: HHZ
+  scenario:
+    default: &default
+      net: RO
+      loc: "*"
+    9streams: &scenar_9str
+      <<: *default
+      sta: AMRR,ARCR,ARR
+      cha: "HH*"
+      start: "2024-06-04T00:01:00"
+      end: "2024-06-04T00:02:00"
+    54streams: &scenar_54str
+      <<: *default
+      sta: "*"
+      cha: HHE,HHZ
+      start: "2021-12-01T00:01:00"
+      end: "2021-12-01T00:02:00"
+    320streams: &scenar_320str
+      <<: *default
+      net: "*"
+      sta: "Z*,V*,T*,S*,P*,O*,M*"
+      cha: "*"
+      start: "2025-12-01T00:01:00"
+      end: "2025-12-01T00:02:00"
+    1stream15days: &scenar_1str15days
+      <<: *default
+      sta: GZR
+      cha: HHZ
+      start: "2025-06-04T00:00:00"
+      end: "2025-06-19T00:00:00"
+# dataselect
+services:
+- name: fdsnws/dataselect
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/dataselect
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/dataselect
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/dataselect
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# availability
+- name: fdsnws/availability
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/availability
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/availability
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/availability
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
     start: "2024-06-04T00:00:00"
     end: "2024-06-19T00:00:00"
-  - webservice: wfcatalog
-    scenario: 9streams
-    sta: AMRR,ARCR,ARR
-    loc: "*"
-    cha: "HH*"
-    start: "2024-06-04T00:01:00"
-    end: "2024-06-04T00:02:00"
-  - webservice: wfcatalog
-    scenario: 54streams # 62 streams
-    net: RO
-    sta: "*"
-    loc: "*"
-    cha: HHE,HHZ
-    start: "2021-12-01T00:01:00"
-    end: "2021-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 320streams
-    net: "*"
-    sta: "Z*,V*,T*,S*,P*,O*,M*"
-    loc: "*"
-    cha: "*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 1stream15days
-    net: RO
-    sta: GZR
-    loc: "*"
-    cha: HHZ
+# station
+- name: fdsnws/station
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/station
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/station
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/station
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# wfcatalog
+- name: eidaws/wfcatalog
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/wfcatalog
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: eidaws/wfcatalog
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: eidaws/wfcatalog
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
     start: "2024-06-04T00:00:00"
     end: "2024-06-19T00:00:00"

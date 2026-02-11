@@ -1,7 +1,8 @@
 ---
 node: ODC
 endpoint: orfeus-eu.org
-routingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
+eidaRoutingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
+fdsnRoutingFile: "eidaws/routing/1/query?service=dataselect&net=NL"
 onlineCheck:
   net: NL
   sta: BHAR
@@ -12,133 +13,97 @@ onlineCheck:
 requiremets:
   network: { biggest_network_code }
 perfCheck:
-  - webservice: dataselect
-    scenario: 9streams
-    net: NL
-    sta: VNDM1,VNDM2,VNDM3
-    loc: "*"
-    cha: "HH*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 54streams
-    net: NL
-    sta: "V*"
-    loc: "*"
-    cha: "?H?"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 320streams #310
-    net: NL
-    sta: "Z*,T*,V*,W*"
-    loc: "*"
-    cha: "?H?"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: dataselect
-    scenario: 1stream15days
-    net: "NL"
-    sta: "VNDM1"
-    loc: "*"
-    cha: "HHZ"
-    start: "2025-12-01"
-    end: "2025-12-16"
-  - webservice: wfcatalog
-    scenario: 9streams
-    net: NL
-    sta: VNDM1,VNDM2,VNDM3
-    loc: "*"
-    cha: "HH*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 54streams
-    net: NL
-    sta: "V*"
-    loc: "*"
-    cha: "?H?"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 320streams #310
-    net: NL
-    sta: "Z*,T*,V*,W*"
-    loc: "*"
-    cha: "?H?"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: wfcatalog
-    scenario: 1stream15days
-    net: "NL"
-    sta: "VNDM1"
-    loc: "*"
-    cha: "HHZ"
-    start: "2025-12-01"
-    end: "2025-12-16"
-
-  - webservice: station
-    scenario: 9streams
-    net: NL
-    sta: VNDM1,VNDM2,VNDM3
-    loc: "*"
-    cha: "HH*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: station
-    scenario: 54streams
-    net: NL
-    sta: "V*"
-    loc: "*"
-    cha: "?H?"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: station
-    scenario: 320streams #310
-    net: NL
-    sta: "Z*,T*,V*,W*"
-    loc: "*"
-    cha: "?H?"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: station
-    scenario: 1stream15days
-    net: "NL"
-    sta: "VNDM1"
-    loc: "*"
-    cha: "HHZ"
-    start: "2025-12-01"
-    end: "2025-12-16"
-
-  - webservice: availability
-    scenario: 9streams
-    net: NL
-    sta: VNDM1,VNDM2,VNDM3
-    loc: "*"
-    cha: "HH*"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: availability
-    scenario: 54streams
-    net: NL
-    sta: "V*"
-    loc: "*"
-    cha: "?H?"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: availability
-    scenario: 320streams #310
-    net: NL
-    sta: "Z*,T*,V*,W*"
-    loc: "*"
-    cha: "?H?"
-    start: "2025-12-01T00:01:00"
-    end: "2025-12-01T00:02:00"
-  - webservice: availability
-    scenario: 1stream15days
-    net: "NL"
-    sta: "VNDM1"
-    loc: "*"
-    cha: "HHZ"
-    start: "2025-12-01"
-    end: "2025-12-16"
+  scenario:
+    default: &default
+      net: NL
+      loc: "*"
+      start: "2025-12-01T00:01:00"
+      end: "2025-12-01T00:02:00"
+    9streams: &scenar_9str
+      <<: *default
+      sta: VNDM1,VNDM2,VNDM3
+      cha: "HH"
+    54streams: &scenar_54str
+      <<: *default
+      sta: "V"
+      cha: "?H?"
+    320streams: &scenar_320str
+      <<: *default
+      net: NL
+      sta: "Z*,T*,V*,W*"
+      cha: "?H?"
+    1stream15days: &scenar_1str15days
+      <<: *default
+      sta: "VNDM1"
+      cha: "HHZ"
+      start: "2025-12-01"
+      end: "2025-12-16"
+# dataselect
+services:
+- name: fdsnws/dataselect
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/dataselect
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/dataselect
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/dataselect
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# availability
+- name: fdsnws/availability
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/availability
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/availability
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/availability
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# station
+- name: fdsnws/station
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/station
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/station
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/station
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# wfcatalog
+- name: eidaws/wfcatalog
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/wfcatalog
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: eidaws/wfcatalog
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: eidaws/wfcatalog
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days

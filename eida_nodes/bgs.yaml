@@ -1,7 +1,8 @@
 ---
 node: BGS
 endpoint: eida.bgs.ac.uk
-routingFile: routing.xml
+eidaRoutingFile: routing.xml
+fdsnRoutingFile: routing.json
 onlineCheck:
   net: GB
   sta: TARL
@@ -12,131 +13,97 @@ onlineCheck:
 requiremets:
   network: { biggest_network_code }
 perfCheck:
-  - webservice: dataselect
-    scenario: 9streams
-    net: GB
-    sta: A*
-    loc: "*"
-    cha: "H*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: dataselect
-    scenario: 54streams
-    net: GB
-    sta: "E*,H*,W*"
-    loc: "*"
-    cha: "HH*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: dataselect
-    scenario: 320streams # 255
-    net: "*"
-    sta: "*"
-    loc: "*"
-    cha: "*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: dataselect
-    scenario: 1stream15days
-    net: GB
-    sta: LAWE
-    loc: "*"
-    cha: HHZ
-    start: "2025-03-01T00:01:00"
-    end: "2025-03-16T00:01:00"
-  - webservice: wfcatalog
-    scenario: 9streams
-    net: GB
-    sta: A*
-    loc: "*"
-    cha: "H*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: wfcatalog
-    scenario: 54streams
-    net: GB
-    sta: "E*,H*,W*"
-    loc: "*"
-    cha: "HH*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: wfcatalog
-    scenario: 320streams # 255
-    net: "*"
-    sta: "*"
-    loc: "*"
-    cha: "*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: wfcatalog
-    scenario: 1stream15days
-    net: GB
-    sta: LAWE
-    loc: "*"
-    cha: HHZ
-    start: "2025-03-01T00:01:00"
-    end: "2025-03-16T00:01:00"
-  - webservice: availability
-    scenario: 9streams
-    net: GB
-    sta: A*
-    loc: "*"
-    cha: "H*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: availability
-    scenario: 54streams
-    net: GB
-    sta: "E*,H*,W*"
-    loc: "*"
-    cha: "HH*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: availability
-    scenario: 320streams # 255
+  scenario:
+    default: &default
+      net: GB
+      loc: "*"
+      start: "2025-03-12T00:01:00"
+      end: "2025-03-12T00:02:00"
+    9streams: &scenar_9str
+      <<: *default
+      sta: A*
+      cha: "H*"
+    54streams: &scenar_54str
+      <<: *default
+      sta: "E*, H*, W*"
+      cha: "HH*"
+    320streams: &scenar_320str
+      <<: *default
+      sta: "*"
+      cha: "*"
+    1stream15days: &scenar_1str15days
+      <<: *default
+      sta: LAWE
+      cha: HHZ
+      start: "2025-03-01T00:01:00"
+      end: "2025-03-16T00:01:00"
+# dataselect
+services:
+- name: fdsnws/dataselect
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/dataselect
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/dataselect
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/dataselect
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# availability
+- name: fdsnws/availability
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/availability
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/availability
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
     net: "9U,BN,GB,UR"
-    sta: "*"
-    loc: "*"
-    cha: "*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: availability
-    scenario: 1stream15days
-    net: GB
-    sta: LAWE
-    loc: "*"
-    cha: HHZ
-    start: "2025-03-01T00:01:00"
-    end: "2025-03-16T00:01:00"
-  - webservice: station
-    scenario: 9streams
-    net: GB
-    sta: A*
-    loc: "*"
-    cha: "H*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: station
-    scenario: 54streams
-    net: GB
-    sta: "E*,H*,W*"
-    loc: "*"
-    cha: "HH*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: station
-    scenario: 320streams # 255
-    net: "*"
-    sta: "*"
-    loc: "*"
-    cha: "*"
-    start: "2025-03-12T00:01:00"
-    end: "2025-03-12T00:02:00"
-  - webservice: station
-    scenario: 1stream15days
-    net: GB
-    sta: LAWE
-    loc: "*"
-    cha: HHZ
-    start: "2025-03-01T00:01:00"
-    end: "2025-03-16T00:01:00"
+- name: fdsnws/availability
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# station
+- name: fdsnws/station
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/station
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: fdsnws/station
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: fdsnws/station
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days
+# wfcatalog
+- name: eidaws/wfcatalog
+  scenario: 9streams
+  parameters:
+    <<: *scenar_9str
+- name: fdsnws/wfcatalog
+  scenario: 54streams
+  parameters:
+    <<: *scenar_54str
+- name: eidaws/wfcatalog
+  scenario: 320streams
+  parameters:
+    <<: *scenar_320str
+- name: eidaws/wfcatalog
+  scenario: 1stream15days
+  parameters:
+    <<: *scenar_1str15days

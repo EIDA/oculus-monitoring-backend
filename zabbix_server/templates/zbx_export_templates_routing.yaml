@@ -95,7 +95,7 @@ zabbix_export:
           name: 'Routing central information'
           type: HTTP_AGENT
           key: routing.central_station
-          delay: 60m
+          delay: 2h
           value_type: TEXT
           trends: '0'
           timeout: 15s
@@ -115,7 +115,7 @@ zabbix_export:
               value: central
           triggers:
             - uuid: e2ca8a12a83a436b89c23515bddb571c
-              expression: 'nodata(/Template routing/routing.central_station,65m)=1'
+              expression: 'nodata(/Template routing/routing.central_station,125m)=1'
               name: 'Network code {$ONLINECHECK_NET} missing in central routing for webservice station'
               priority: WARNING
               description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
@@ -124,7 +124,7 @@ zabbix_export:
           name: 'Routing information published at node'
           type: HTTP_AGENT
           key: routing.local
-          delay: 15m
+          delay: 2h
           value_type: TEXT
           trends: '0'
           preprocessing:
@@ -143,7 +143,7 @@ zabbix_export:
               value: local
           triggers:
             - uuid: d7e4ce5e501f4836805cd06ae940034b
-              expression: 'nodata(/Template routing/routing.local,15m)=1'
+              expression: 'nodata(/Template routing/routing.local,125m)=1'
               name: 'Local routing information not published at node {$NODE}'
               priority: WARNING
               description: 'test request: https://{$ENDPOINT}/{$ROUTINGFILE}'
