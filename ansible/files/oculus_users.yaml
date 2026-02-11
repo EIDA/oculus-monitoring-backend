@@ -1,12 +1,8 @@
 oculus_users:
 - username: user-eposfr
-  name: Enzo Fogliano
+  name: EPOSFR
   usrgrp: EPOSFR
-  email: enzo.fogliano@univ-grenoble-alpes.fr
-- username: user-eposfr2
-  name: Jonathan Schaeffer
-  usrgrp: EPOSFR
-  email: jonathan.schaeffer@univ-grenoble-alpes.fr
+  email: sdc-admin@epos-france.fr
 - username: user-bgr
   name: Goebel Björn
   usrgrp: BGR
@@ -24,13 +20,9 @@ oculus_users:
   usrgrp: BGS
   email: tjos@bgs.ac.uk
 - username: user-geofon
-  name: Andres Heinloo
+  name: GEOFON
   usrgrp: GEOFON
-  email: andres@gfz-potsdam.de
-- username: user-geofon2
-  name: Javier Quinteros
-  usrgrp: GEOFON
-  email: javier@gfz-potsdam.de
+  email: geofon@gfz.fr
 - username: user-icgc
   name: Jara Jose Antonio
   usrgrp: ICGC
@@ -39,7 +31,7 @@ oculus_users:
   name: Ivano Carluccio
   usrgrp: INGV
   email: ivano.carluccio@ingv.it
-- username: user-icgc2
+- username: user-ingv2
   name: Massimo Fares
   usrgrp: INGV
   email: massimo.fares@ingv.it
