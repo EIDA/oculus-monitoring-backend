@@ -27,9 +27,9 @@
         esc_period: 1h
         eval_type: andor
         conditions:
-          - type: host_template
+          - type: host_group
             operator: equals
-            value: "Template webservices"
+            value: "EIDA nodes"
         operations:
           - type: send_message
             send_to_groups: "{{ eida_nodes }}"
