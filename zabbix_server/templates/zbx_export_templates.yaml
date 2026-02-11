@@ -1398,7 +1398,7 @@ zabbix_export:
               parameters:
                 - '//*[local-name()=''route''][@networkCode=''{$ONLINECHECK_NET}'']'
           timeout: 15s
-          url: 'https://{$ENDPOINT}/{$ROUTINGFILE}'
+          url: 'https://{$ENDPOINT}/{$EIDAROUTINGFILE}'
           headers:
             - name: User-Agent
               value: oculus-monior
