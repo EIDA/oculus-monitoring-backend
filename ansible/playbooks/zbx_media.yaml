@@ -39,6 +39,8 @@
               <b>Severity:</b> {EVENT.SEVERITY}<br>
               <b>Operational data:</b> {EVENT.OPDATA}<br>
               <b>Original problem ID:</b> {EVENT.ID}<br>
+              {TRIGGER.DESCRIPTION}<br>
+              {TRIGGER.URL}
           - eventsource: triggers
             recovery: recovery_operations
             subject: "OCULUS - Resolved in {EVENT.DURATION}: {EVENT.NAME}"
