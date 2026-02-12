@@ -1,0 +1,69 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 44950db14d8549c2a022ab3d5ba3ff96
+      name: Templates/EIDA
+  templates:
+    - uuid: 33db8cd5ca5149a6925642eed4624f60
+      template: 'Template static routing'
+      name: 'Template static routing'
+      description: |
+        Test the static routing information published by a node.
+        Apply to all EIDA Nodes except if they host the routing service
+      groups:
+        - name: Templates/EIDA
+      items:
+        - uuid: e863b48c5fa64581849a9c6d4068723d
+          name: 'FDSN datacenter registry published at node'
+          type: HTTP_AGENT
+          key: fdsn_dc_registry.json
+          delay: 2h
+          value_type: TEXT
+          trends: '0'
+          timeout: 15s
+          url: 'https://{$ENDPOINT}/{$FDSNROUTINGFILE}'
+          headers:
+            - name: User-Agent
+              value: oculus-monior
+          tags:
+            - tag: format
+              value: json
+            - tag: routing
+              value: local
+          triggers:
+            - uuid: fb168f56c305464c84823e866873ac27
+              expression: 'nodata(/Template static routing/fdsn_dc_registry.json,125m)=1'
+              name: 'Local datacenter registry information not published'
+              priority: WARNING
+              description: 'Unable to parse json data at https://{$ENDPOINT}/{$FDSNROUTINGFILE}'
+        - uuid: f207d11cc9b74a15837be7ea861c9f88
+          name: 'Routing information published at node'
+          type: HTTP_AGENT
+          key: routing.local
+          delay: 2h
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: XMLPATH
+              parameters:
+                - '//*[local-name()=''route''][@networkCode=''{$ONLINECHECK_NET}'']'
+          timeout: 15s
+          url: 'https://{$ENDPOINT}/{$EIDAROUTINGFILE}'
+          headers:
+            - name: User-Agent
+              value: oculus-monior
+          tags:
+            - tag: format
+              value: xml
+            - tag: routing
+              value: local
+          triggers:
+            - uuid: 03e7a243b7844fce896fc3201be12ea7
+              expression: 'nodata(/Template static routing/routing.local,125m)=1'
+              name: 'Local routing information not published'
+              priority: WARNING
+              description: 'Unable to find {$ONLINECHECK_NET} at https://{$ENDPOINT}/{$ROUTINGFILE}'
+              manual_close: 'YES'
+      tags:
+        - tag: Application
+          value: static_routing

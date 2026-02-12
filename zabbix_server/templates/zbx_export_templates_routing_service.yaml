@@ -5,8 +5,11 @@ zabbix_export:
       name: Templates/EIDA
   templates:
     - uuid: bd7e234e9843428694e3a69342571091
-      template: 'Template routing'
-      name: 'Template routing'
+      template: 'Template routing service'
+      name: 'Template routing service'
+      description: |
+        Test the presence of information from node at the central routing service.
+        Apply this template to all EIDA Nodes
       groups:
         - name: Templates/EIDA
       items:
@@ -42,7 +45,7 @@ zabbix_export:
               value: central
           triggers:
             - uuid: 5a0bf9b2fcbc437eb399f0683dcfb95e
-              expression: 'last(/Template routing/routing.central)="ERROR"'
+              expression: 'last(/Template routing service/routing.central)="ERROR"'
               name: '{$NODE} disapeared from EIDA central routing service'
               priority: WARNING
               description: |
@@ -82,9 +85,9 @@ zabbix_export:
               value: central
           triggers:
             - uuid: 535e10a824c849a8a4e6ae79c0066730
-              expression: 'change(/Template routing/routing.central_datasets)<0'
+              expression: 'change(/Template routing service/routing.central_datasets)<0'
               recovery_mode: RECOVERY_EXPRESSION
-              recovery_expression: 'change(/Template routing/routing.central_datasets)>0'
+              recovery_expression: 'change(/Template routing service/routing.central_datasets)>0'
               name: 'EIDA central routing service lost at least one network for node {$NODE}'
               priority: AVERAGE
               description: |
@@ -115,36 +118,11 @@ zabbix_export:
               value: central
           triggers:
             - uuid: e2ca8a12a83a436b89c23515bddb571c
-              expression: 'nodata(/Template routing/routing.central_station,125m)=1'
+              expression: 'nodata(/Template routing service/routing.central_station,125m)=1'
               name: 'Network code {$ONLINECHECK_NET} missing in central routing for webservice station'
               priority: WARNING
               description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
               manual_close: 'YES'
-        - uuid: 22f1d0f0d02c4540bc59a21554235404
-          name: 'Routing information published at node'
-          type: HTTP_AGENT
-          key: routing.local
-          delay: 2h
-          value_type: TEXT
-          trends: '0'
-          preprocessing:
-            - type: XMLPATH
-              parameters:
-                - '//*[local-name()=''route''][@networkCode=''{$ONLINECHECK_NET}'']'
-          timeout: 15s
-          url: 'https://{$ENDPOINT}/{$EIDAROUTINGFILE}'
-          headers:
-            - name: User-Agent
-              value: oculus-monior
-          tags:
-            - tag: format
-              value: xml
-            - tag: routing
-              value: local
-          triggers:
-            - uuid: d7e4ce5e501f4836805cd06ae940034b
-              expression: 'nodata(/Template routing/routing.local,125m)=1'
-              name: 'Local routing information not published at node {$NODE}'
-              priority: WARNING
-              description: 'test request: https://{$ENDPOINT}/{$ROUTINGFILE}'
-              manual_close: 'YES'
+      tags:
+        - tag: Application
+          value: routing_service

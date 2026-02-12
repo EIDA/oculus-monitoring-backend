@@ -1271,8 +1271,11 @@ zabbix_export:
             - tag: PC
               value: wfcatalog
     - uuid: bd7e234e9843428694e3a69342571091
-      template: 'Template routing'
-      name: 'Template routing'
+      template: 'Template routing service'
+      name: 'Template routing service'
+      description: |
+        Test the presence of information from node at the central routing service.
+        Apply this template to all EIDA Nodes
       groups:
         - name: Templates/EIDA
       items:
@@ -1308,7 +1311,7 @@ zabbix_export:
               value: central
           triggers:
             - uuid: 5a0bf9b2fcbc437eb399f0683dcfb95e
-              expression: 'last(/Template routing/routing.central)="ERROR"'
+              expression: 'last(/Template routing service/routing.central)="ERROR"'
               name: '{$NODE} disapeared from EIDA central routing service'
               priority: WARNING
               description: |
@@ -1348,9 +1351,9 @@ zabbix_export:
               value: central
           triggers:
             - uuid: 535e10a824c849a8a4e6ae79c0066730
-              expression: 'change(/Template routing/routing.central_datasets)<0'
+              expression: 'change(/Template routing service/routing.central_datasets)<0'
               recovery_mode: RECOVERY_EXPRESSION
-              recovery_expression: 'change(/Template routing/routing.central_datasets)>0'
+              recovery_expression: 'change(/Template routing service/routing.central_datasets)>0'
               name: 'EIDA central routing service lost at least one network for node {$NODE}'
               priority: AVERAGE
               description: |
@@ -1381,12 +1384,47 @@ zabbix_export:
               value: central
           triggers:
             - uuid: e2ca8a12a83a436b89c23515bddb571c
-              expression: 'nodata(/Template routing/routing.central_station,125m)=1'
+              expression: 'nodata(/Template routing service/routing.central_station,125m)=1'
               name: 'Network code {$ONLINECHECK_NET} missing in central routing for webservice station'
               priority: WARNING
               description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
               manual_close: 'YES'
-        - uuid: 22f1d0f0d02c4540bc59a21554235404
+      tags:
+        - tag: Application
+          value: routing_service
+    - uuid: 33db8cd5ca5149a6925642eed4624f60
+      template: 'Template static routing'
+      name: 'Template static routing'
+      description: |
+        Test the static routing information published by a node.
+        Apply to all EIDA Nodes except if they host the routing service
+      groups:
+        - name: Templates/EIDA
+      items:
+        - uuid: e863b48c5fa64581849a9c6d4068723d
+          name: 'FDSN datacenter registry published at node'
+          type: HTTP_AGENT
+          key: fdsn_dc_registry.json
+          delay: 2h
+          value_type: TEXT
+          trends: '0'
+          timeout: 15s
+          url: 'https://{$ENDPOINT}/{$FDSNROUTINGFILE}'
+          headers:
+            - name: User-Agent
+              value: oculus-monior
+          tags:
+            - tag: format
+              value: json
+            - tag: routing
+              value: local
+          triggers:
+            - uuid: fb168f56c305464c84823e866873ac27
+              expression: 'nodata(/Template static routing/fdsn_dc_registry.json,125m)=1'
+              name: 'Local datacenter registry information not published'
+              priority: WARNING
+              description: 'Unable to parse json data at https://{$ENDPOINT}/{$FDSNROUTINGFILE}'
+        - uuid: f207d11cc9b74a15837be7ea861c9f88
           name: 'Routing information published at node'
           type: HTTP_AGENT
           key: routing.local
@@ -1408,12 +1446,15 @@ zabbix_export:
             - tag: routing
               value: local
           triggers:
-            - uuid: d7e4ce5e501f4836805cd06ae940034b
-              expression: 'nodata(/Template routing/routing.local,125m)=1'
-              name: 'Local routing information not published at node {$NODE}'
+            - uuid: 03e7a243b7844fce896fc3201be12ea7
+              expression: 'nodata(/Template static routing/routing.local,125m)=1'
+              name: 'Local routing information not published'
               priority: WARNING
-              description: 'test request: https://{$ENDPOINT}/{$ROUTINGFILE}'
+              description: 'Unable to find {$ONLINECHECK_NET} at https://{$ENDPOINT}/{$ROUTINGFILE}'
               manual_close: 'YES'
+      tags:
+        - tag: Application
+          value: static_routing
     - uuid: b192614a2cbc490eb3ca047e9eb36328
       template: 'Template webservices'
       name: 'Template webservices'
@@ -1630,6 +1671,40 @@ zabbix_export:
           tags:
             - tag: webservice
               value: dataselect
+        - uuid: b48a6247f35c4a65860de1b4f4633c17
+          name: seedpsd
+          delay: 15m
+          status: DISABLED
+          steps:
+            - name: 'seedpsd accessible'
+              url: 'https://{$ENDPOINT}/eidaws/psd/1/'
+              retrieve_mode: HEADERS
+              status_codes: '200'
+            - name: 'seedpsd short request'
+              url: 'https://{$ENDPOINT}/eidaws/psd/1/value'
+              query_fields:
+                - name: net
+                  value: '{$ONLINECHECK_NET}'
+                - name: sta
+                  value: '{$ONLINECHECK_STA}'
+                - name: cha
+                  value: '{$ONLINECHECK_CHA}'
+                - name: loc
+                  value: '{$ONLINECHECK_LOC}'
+                - name: start
+                  value: '{$ONLINECHECK_START}'
+                - name: end
+                  value: '{$ONLINECHECK_END}'
+              retrieve_mode: HEADERS
+              status_codes: '200'
+            - name: 'seedpsd application.wadl'
+              url: 'https://{$ENDPOINT}/eidaws/psd/1/application.wadl'
+              follow_redirects: 'NO'
+              required: '<application'
+              status_codes: '200'
+          tags:
+            - tag: webservice
+              value: seedpsd
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
           delay: 15m
