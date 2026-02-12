@@ -1,9 +1,13 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#   "pyyaml",
+#       "datetime>=6.0",
+#       "logging>=0.4.9.6",
+#       "path>=17.1.1",
+#       "pyyaml",
 # ]
 # ///
+
 import datetime
 import json
 import logging
