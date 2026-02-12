@@ -59,11 +59,24 @@
         host_groups:
           - "EIDA nodes"
           - "{{ item.path | basename | regex_replace('\\.(yaml|yml)$', '') | upper }}"
-        link_templates:
-          - "Template performance checks"
-          - "Template webservices"
-          - "Template routing"
-          - "Website certificate by Zabbix agent 2"
+        link_templates: >-
+          {{
+            [
+              "Template performance checks",
+              "Template webservices",
+              "Website certificate by Zabbix agent 2"
+            ] +
+            (
+              ["Template static routing"]
+              if (item.path | basename | regex_replace("\.(yaml|yml)$", "") | upper) not in ["GEOFON", "ODC"]
+              else []
+            ) +
+            (
+              ["Template routing service"]
+              if (item.path | basename | regex_replace("\.(yaml|yml)$", "") | upper) in ["GEOFON", "ODC"]
+              else []
+            )
+          }}
         status: "enabled"
         state: "present"
         interfaces:
