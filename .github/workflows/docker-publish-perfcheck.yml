@@ -9,7 +9,6 @@ on:
   push:
     branches:
     - main
-    - new_routing_env
     # Publish semver tags as releases.
     paths:
     - 'Dockerfile.perfcheck'
@@ -19,7 +18,6 @@ on:
   pull_request:
     branches:
     - main
-    - new_routing_env
 
 env:
   # Use docker.io for Docker Hub if empty
