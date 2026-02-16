@@ -4,6 +4,7 @@
 #     "eida-consistency==0.3.7",
 #     "zabbix-utils==2.0.4",
 #     "pyyaml",
+#     "setuptools<82",
 # ]
 # ///
 import json
