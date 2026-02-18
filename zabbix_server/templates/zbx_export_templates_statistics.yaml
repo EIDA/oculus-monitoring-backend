@@ -42,9 +42,9 @@ zabbix_export:
               value: dataselect
           triggers:
             - uuid: 4c8e3eb74eae40d2ac319bc11403ed73
-              expression: 'change(/Template statistics/bytes_dataselect.stats)=0'
+              expression: 'last(/Template statistics/bytes_dataselect.stats)=last(/Template statistics/bytes_dataselect.stats,#1:now-7d)'
               recovery_mode: RECOVERY_EXPRESSION
-              recovery_expression: 'change(/Template statistics/bytes_dataselect.stats)<>0'
+              recovery_expression: 'last(/Template statistics/bytes_dataselect.stats)<>last(/Template statistics/bytes_dataselect.stats,#1:now-7d)'
               name: 'No new data usages statistics in central service'
               priority: WARNING
               description: |
