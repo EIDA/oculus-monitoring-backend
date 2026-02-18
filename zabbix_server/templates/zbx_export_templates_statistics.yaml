@@ -38,6 +38,7 @@ zabbix_export:
             - name: User-Agent
               value: oculus-monitor
           tags:
+            - tag: bytes
             - tag: statistics
               value: dataselect
           triggers:
@@ -52,6 +53,99 @@ zabbix_export:
                 Check that our aggregator script is running and sending the statistics.
                 URL: https://ws.resif.fr/eidaws/statistics/1/dataselect/public?start=2025-12&node={$NODE}&network={$ONLINECHECK_NET}&level=node&format=json
               manual_close: 'YES'
+        - uuid: 1505252ffad64ca898e73024419f4436
+          name: 'clients dataselect'
+          type: HTTP_AGENT
+          key: clients_dataselect.stats
+          delay: 1d
+          history: 365d
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.results[0].clients'
+          timeout: 10s
+          url: 'https://ws.resif.fr/eidaws/statistics/1/dataselect/public'
+          query_fields:
+            - name: start
+              value: '{$START_MONTH}'
+            - name: node
+              value: '{$NODE}'
+            - name: network
+              value: '{$ONLINECHECK_NET}'
+            - name: level
+              value: node
+            - name: format
+              value: json
+          headers:
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: clients
+            - tag: statistics
+              value: dataselect
+        - uuid: 0f129ee525e24016a1f929f7623d07c3
+          name: 'reqs dataselect'
+          type: HTTP_AGENT
+          key: reqs_dataselect.stats
+          delay: 1d
+          history: 365d
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.results[0].nb_reqs'
+          timeout: 10s
+          url: 'https://ws.resif.fr/eidaws/statistics/1/dataselect/public'
+          query_fields:
+            - name: start
+              value: '{$START_MONTH}'
+            - name: node
+              value: '{$NODE}'
+            - name: network
+              value: '{$ONLINECHECK_NET}'
+            - name: level
+              value: node
+            - name: format
+              value: json
+          headers:
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: nb_reqs
+            - tag: statistics
+              value: dataselect
+        - uuid: 1651297d64c94561b4fd4fa289b03cc0
+          name: 'reqs sucessful dataselect'
+          type: HTTP_AGENT
+          key: success_reqs_dataselect.stats
+          delay: 1d
+          history: 365d
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.results[0].nb_successful_reqs'
+          timeout: 10s
+          url: 'https://ws.resif.fr/eidaws/statistics/1/dataselect/public'
+          query_fields:
+            - name: start
+              value: '{$START_MONTH}'
+            - name: node
+              value: '{$NODE}'
+            - name: network
+              value: '{$ONLINECHECK_NET}'
+            - name: level
+              value: node
+            - name: format
+              value: json
+          headers:
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: nb_successful_reqs
+            - tag: statistics
+              value: dataselect
       macros:
         - macro: '{$START_MONTH}'
           value: 2026-02
