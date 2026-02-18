@@ -64,7 +64,8 @@
             [
               "Template performance checks",
               "Template webservices",
-              "Template eida consistency"
+              "Template eida consistency",
+              "Template statistics",
               "Website certificate by Zabbix agent 2"
             ] +
             (
