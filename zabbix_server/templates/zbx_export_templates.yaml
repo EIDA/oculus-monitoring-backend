@@ -1455,6 +1455,57 @@ zabbix_export:
       tags:
         - tag: Application
           value: static_routing
+    - uuid: 05b270f27a7b478d80bc89467b1037a5
+      template: 'Template statistics'
+      name: 'Template statistics'
+      groups:
+        - name: Templates/EIDA
+      items:
+        - uuid: 7a92895757fe4d0590a20c3b535bf16f
+          name: 'bytes dataselect'
+          type: HTTP_AGENT
+          key: bytes_dataselect.stats
+          delay: 1d
+          history: 365d
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.results[0].bytes'
+          timeout: 10s
+          url: 'https://ws.resif.fr/eidaws/statistics/1/dataselect/public'
+          query_fields:
+            - name: start
+              value: '{$START_MONTH}'
+            - name: node
+              value: '{$NODE}'
+            - name: network
+              value: '{$ONLINECHECK_NET}'
+            - name: level
+              value: node
+            - name: format
+              value: json
+          headers:
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: statistics
+              value: dataselect
+          triggers:
+            - uuid: 4c8e3eb74eae40d2ac319bc11403ed73
+              expression: 'change(/Template statistics/bytes_dataselect.stats)=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'change(/Template statistics/bytes_dataselect.stats)<>0'
+              name: 'No new data usages statistics in central service'
+              priority: WARNING
+              description: |
+                Number of bytes delivered is not increase in 7days.
+                Check that our aggregator script is running and sending the statistics.
+                URL: https://ws.resif.fr/eidaws/statistics/1/dataselect/public?start=2025-12&node={$NODE}&network={$ONLINECHECK_NET}&level=node&format=json
+              manual_close: 'YES'
+      macros:
+        - macro: '{$START_MONTH}'
+          value: 2026-02
     - uuid: b192614a2cbc490eb3ca047e9eb36328
       template: 'Template webservices'
       name: 'Template webservices'
@@ -1674,7 +1725,6 @@ zabbix_export:
         - uuid: b48a6247f35c4a65860de1b4f4633c17
           name: seedpsd
           delay: 15m
-          status: DISABLED
           steps:
             - name: 'seedpsd accessible'
               url: 'https://{$ENDPOINT}/eidaws/psd/1/'
