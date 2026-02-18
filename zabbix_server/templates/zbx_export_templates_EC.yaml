@@ -15,6 +15,7 @@ zabbix_export:
           type: TRAP
           key: report.json
           delay: '0'
+          history: 365d
           value_type: TEXT
           trends: '0'
           description: 'entier report json of eida consistency test'
@@ -28,8 +29,9 @@ zabbix_export:
           type: TRAP
           key: score.eida_consistency
           delay: '0'
+          history: 365d
           value_type: FLOAT
-          trends: '0'
+          trends: 3000d
           tags:
             - tag: Application
               value: consistency
