@@ -5,22 +5,22 @@
   vars:
     ansible_python_interpreter: /usr/bin/python
   tasks:
-    # - name: Create ConfigMap for EIDA consistencty env variables
-    #   kubernetes.core.k8s:
-    #     state: present
-    #     namespace: eida-monitoring
-    #     definition:
-    #       apiVersion: v1
-    #       kind: ConfigMap
-    #       metadata:
-    #         name: oculus-consistency-config
-    #       data:
-    #         DURATION: "600"
-    #         EPOCHS: "100"
-    #         MAX_WORKER: "4"
-    #         SKIP_NODES: "IGN"
-    #         ZABBIX_SERVER: "oculus-zabbix-zabbix-server"
-    #         ZABBIX_PORT: "10051"
+    - name: Create ConfigMap for EIDA consistencty env variables
+      kubernetes.core.k8s:
+        state: present
+        namespace: eida-monitoring
+        definition:
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: oculus-consistency-config
+          data:
+            DURATION: "600"
+            EPOCHS: "100"
+            MAX_WORKER: "4"
+            SKIP_NODES: "IGN"
+            ZABBIX_SERVER: "oculus-zabbix-zabbix-server"
+            ZABBIX_PORT: "10051"
 
     - name: Create PV for EIDA consistencty
       kubernetes.core.k8s:
@@ -57,27 +57,27 @@
               requests:
                 storage: 1Ti
 
-    # - name: Create CronJob for EIDA consistencty checks
-    #   kubernetes.core.k8s:
-    #     state: present
-    #     namespace: eida-monitoring
-    #     definition:
-    #       apiVersion: batch/v1
-    #       kind: CronJob
-    #       metadata:
-    #         name: oculus-consistency
-    #       spec:
-    #         suspend: false
-    #         schedule: "0 14 * * 0" # every sunday at 2pm
-    #         jobTemplate:
-    #           spec:
-    #             template:
-    #               spec:
-    #                 restartPolicy: OnFailure
-    #                 containers:
-    #                   - name: oculus-eida-consistency
-    #                     image: ghcr.io/eida/oculus-consistency:main
-    #                     imagePullPolicy: Always
-    #                     envFrom:
-    #                       - configMapRef:
-    #                           name: oculus-consistency-config
+    - name: Create CronJob for EIDA consistencty checks
+      kubernetes.core.k8s:
+        state: present
+        namespace: eida-monitoring
+        definition:
+          apiVersion: batch/v1
+          kind: CronJob
+          metadata:
+            name: oculus-consistency
+          spec:
+            suspend: false
+            schedule: "0 14 * * 0" # every sunday at 2pm
+            jobTemplate:
+              spec:
+                template:
+                  spec:
+                    restartPolicy: OnFailure
+                    containers:
+                      - name: oculus-eida-consistency
+                        image: ghcr.io/eida/oculus-consistency:main
+                        imagePullPolicy: Always
+                        envFrom:
+                          - configMapRef:
+                              name: oculus-consistency-config
