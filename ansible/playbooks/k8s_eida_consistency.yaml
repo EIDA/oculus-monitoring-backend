@@ -53,7 +53,7 @@
             volumeName: oculus-consistency
             accessModes:
               - ReadWriteMany
-            ressources:
+            resources:
               requests:
                 storage: 1Ti
 
