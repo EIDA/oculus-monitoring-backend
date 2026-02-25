@@ -1,3 +1,4 @@
+# pyright: reportMissingImports=false
 # /// script
 # requires-python = "==3.12"
 # dependencies = [
@@ -33,6 +34,7 @@ handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(handler)
 
+
 def check_zabbix_connection():
     """check if zabbix server is reachable"""
     try:
@@ -48,6 +50,7 @@ def check_zabbix_connection():
         logger.info("zabbix server %s:%s is reachable", ZABBIX_SERVER, ZABBIX_PORT)
         return True
 
+
 # TODO ajouter emplacement dans .env
 def get_eida_nodes_directory():
     """get the local eida_nodes directory path"""
@@ -60,10 +63,17 @@ def get_eida_nodes_directory():
     logger.info("using local eida_nodes directory: %s", nodes_dir)
     return nodes_dir
 
+
 def list_nodes():
     """load all EIDA nodes .yaml"""
     nodes = []
-    nodes_path = Path(get_eida_nodes_directory())
+    nodes_dir = get_eida_nodes_directory()
+
+    if nodes_dir is None:
+        logger.error("eida_nodes directory not found")
+        return nodes
+
+    nodes_path = Path(nodes_dir)
 
     for yaml_file in nodes_path.glob("*.yaml"):
         with yaml_file.open() as f:
@@ -71,6 +81,7 @@ def list_nodes():
             nodes.append(data["node"])
 
     return nodes
+
 
 def run_eida_consistency(node, epochs, duration):
     """run eida-consistency unsing python API"""
@@ -89,6 +100,7 @@ def run_eida_consistency(node, epochs, duration):
         return None
     else:
         return report_path
+
 
 def send_to_zabbix(hostname, json_file_path):
     """send results to zbx"""
@@ -140,6 +152,7 @@ def send_to_zabbix(hostname, json_file_path):
         logger.info("all items sent succesfully")
         return True
 
+
 def process_node(node_name, epochs, duration):
     """process one node concistency check"""
     try:
@@ -149,9 +162,7 @@ def process_node(node_name, epochs, duration):
         consistency_node_name = "RESIF" if node_name == "EPOSFR" else node_name
 
         report_path = run_eida_consistency(
-            consistency_node_name,
-            epochs_value,
-            duration
+            consistency_node_name, epochs_value, duration
         )
 
         if not report_path:
@@ -177,8 +188,8 @@ def process_node(node_name, epochs, duration):
     else:
         return result
 
-def main():
 
+def main():
     # configuration
     nodes_dir = get_eida_nodes_directory()
 
@@ -212,9 +223,7 @@ def main():
     # process nodes in parallel
     # TODO: remplacer par process based
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = {
-            executor.submit(process_node, n, EPOCHS, DURATION): n for n in nodes
-        }
+        futures = {executor.submit(process_node, n, EPOCHS, DURATION): n for n in nodes}
 
         completed = 0
         for future in as_completed(futures):
@@ -238,6 +247,7 @@ def main():
     logger.info("=" * 50)
     logger.info("all nodes processing completed (%s/%s)", completed, len(nodes))
     logger.info("=" * 50)
+
 
 if __name__ == "__main__":
     main()
