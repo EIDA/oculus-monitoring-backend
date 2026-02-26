@@ -11,6 +11,7 @@
 import json
 import logging
 import os
+import shutil
 import socket
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -64,6 +65,13 @@ def get_eida_nodes_directory():
     return nodes_dir
 
 
+def get_reports_directory(node_name):
+    """get or create the reports directory for a specific node"""
+    reports_dir = Path(__file__).parent / "reports" / node_name
+    reports_dir.mkdir(parents=True, exist_ok=True)
+    return reports_dir
+
+
 def list_nodes():
     """load all EIDA nodes .yaml"""
     nodes = []
@@ -102,18 +110,42 @@ def run_eida_consistency(node, epochs, duration):
         return report_path
 
 
-def send_to_zabbix(hostname, json_file_path):
+def store_reports(node_name, temp_report_path):
+    """store JSOn and MD reports in node-specific directory"""
+    try:
+        reports_dir = get_reports_directory(node_name)
+        temp_path = Path(temp_report_path)
+        json_file_path = None
+
+        # move JSON file
+        json_file = temp_path.with_suffix(".json")
+        if json_file.exists():
+            shutil.move(str(json_file), str(reports_dir / json_file.name))
+            logger.info("JSON report stored at: %s", reports_dir / json_file.name)
+
+        # movz MD file
+        md_file = temp_path.with_suffix(".md")
+        if md_file.exists():
+            shutil.move(str(md_file), str(reports_dir / md_file.name))
+            logger.info("MD report stored at: %s", reports_dir / md_file.name)
+
+    except (FileNotFoundError, OSError):
+        logger.exception("error storing reports for %s", node_name)
+        return None
+    else:
+        # return path to JSON for score extraction
+        return json_file_path
+
+
+def send_to_zabbix(hostname, report_path):
     """send results to zbx"""
     if not ZABBIX_SERVER:
         logger.error("ZABBIX_SERVER environment variable not set")
         return False
     try:
         # read JSON file
-        with Path(json_file_path).open() as f:
+        with Path(report_path).open() as f:
             json_content = json.load(f)
-
-        # convert JSON to string for sending
-        json_string = json.dumps(json_content)
 
         # extract score for summùary
         score = json_content.get("summary", {}).get("score")
@@ -128,7 +160,6 @@ def send_to_zabbix(hostname, json_file_path):
 
         # create items
         items = [
-            ItemValue(hostname, "report.json", json_string),
             ItemValue(hostname, "score.eida_consistency", score),
         ]
 
@@ -169,24 +200,22 @@ def process_node(node_name, epochs, duration):
             logger.error("eida-consistency check failed for %s", consistency_node_name)
             return False
 
-        json_file = Path(report_path)
-
-        if not json_file.exists():
-            logger.error("Report file not found: %s", json_file)
-            return False
-
         # send to zabbix with original node name (EPOSFR)
         hostname = node_name
         logger.info("sending report to zabbix for %s", hostname)
-        result = send_to_zabbix(hostname, json_file)
-        if not result:
+        zabbix_result = send_to_zabbix(hostname, report_path)
+
+        # store reports indepently
+        store_reports(node_name, report_path)
+
+        if not zabbix_result:
             logger.error("failed to send to zabbix for %s", hostname)
 
     except (FileNotFoundError, RuntimeError):
         logger.exception("error processing node %s", node_name)
         return False
     else:
-        return result
+        return zabbix_result
 
 
 def main():
