@@ -67,7 +67,7 @@ def get_eida_nodes_directory():
 
 def get_reports_directory(node_name):
     """get or create the reports directory for a specific node"""
-    reports_dir = Path(__file__).parent / "reports" / node_name
+    reports_dir = Path("/scratch") / "reports" / node_name
     reports_dir.mkdir(parents=True, exist_ok=True)
     return reports_dir
 
