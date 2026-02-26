@@ -1,11 +1,11 @@
 ---
-- name: Deploy eida consistencty python scripts on k8s cluster
+- name: Deploy eida consistency python scripts on k8s cluster
   hosts: localhost
   gather_facts: false
   vars:
     ansible_python_interpreter: /usr/bin/python
   tasks:
-    - name: Create ConfigMap for EIDA consistencty env variables
+    - name: Create ConfigMap for EIDA consistency env variables
       kubernetes.core.k8s:
         state: present
         namespace: eida-monitoring
@@ -22,7 +22,7 @@
             ZABBIX_SERVER: "oculus-zabbix-zabbix-server"
             ZABBIX_PORT: "10051"
 
-    - name: Create PV for EIDA consistencty
+    - name: Create PV for EIDA consistency
       kubernetes.core.k8s:
         state: present
         namespace: eida-monitoring
@@ -40,7 +40,7 @@
               server: sum-resif-nas.u-ga.fr
               path: /scratch/k8s-production/oculus/consistency
 
-    - name: Create PVC for EIDA consistencty
+    - name: Create PVC for EIDA consistency
       kubernetes.core.k8s:
         state: present
         namespace: eida-monitoring
@@ -57,7 +57,7 @@
               requests:
                 storage: 1Ti
 
-    - name: Create CronJob for EIDA consistencty checks
+    - name: Create CronJob for EIDA consistency checks
       kubernetes.core.k8s:
         state: present
         namespace: eida-monitoring
@@ -74,6 +74,10 @@
                 template:
                   spec:
                     restartPolicy: OnFailure
+                    volumes:
+                      - name: scratch
+                        persistentVolumeClaim:
+                          claimName: oculus-consistency
                     containers:
                       - name: oculus-eida-consistency
                         image: ghcr.io/eida/oculus-consistency:main
@@ -81,3 +85,6 @@
                         envFrom:
                           - configMapRef:
                               name: oculus-consistency-config
+                        volumeMounts:
+                          - name: scratch
+                            mountPath: /scratch
