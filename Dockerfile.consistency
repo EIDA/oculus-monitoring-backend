@@ -3,9 +3,13 @@ FROM python:3.12-slim
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/ 
 
-USER 1500
+RUN addgroup --system app --gid 1500 && \
+    adduser --system --group app --uid 1500 && \
+    mkdir -p /app/static && \
+    chown --recursive app:app app
 WORKDIR /app
 ADD eida_consistency/eida_consistency_wrapper.py .
+USER app
 RUN uv sync --script eida_consistency_wrapper.py
 ADD eida_nodes eida_nodes
 CMD uv run eida_consistency_wrapper.py
