@@ -73,6 +73,9 @@
               spec:
                 template:
                   spec:
+                    secutiryContext:
+                      runAsUser: 1500
+                      runAsGroup: 1500
                     restartPolicy: OnFailure
                     volumes:
                       - name: scratch
