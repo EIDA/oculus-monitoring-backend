@@ -73,7 +73,7 @@
               spec:
                 template:
                   spec:
-                    secutiryContext:
+                    securityContext:
                       runAsUser: 1500
                       runAsGroup: 1500
                     restartPolicy: OnFailure
