@@ -73,9 +73,6 @@
               spec:
                 template:
                   spec:
-                    securityContext:
-                      runAsUser: 1500
-                      runAsGroup: 1500
                     restartPolicy: OnFailure
                     volumes:
                       - name: scratch
@@ -85,6 +82,11 @@
                       - name: oculus-eida-consistency
                         image: ghcr.io/eida/oculus-consistency:main
                         imagePullPolicy: Always
+                        env:
+                          - name: HOME
+                            value: /tmp
+                          - name: UV_PYTHON_PREFERENCE
+                            value: "managed"
                         envFrom:
                           - configMapRef:
                               name: oculus-consistency-config

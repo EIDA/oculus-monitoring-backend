@@ -67,20 +67,6 @@ zabbix_export:
       groups:
         - name: Templates/EIDA
       items:
-        - uuid: c3c7b983bee243daa52b97ae753f4dbe
-          name: 'Report json'
-          type: TRAP
-          key: report.json
-          delay: '0'
-          history: 365d
-          value_type: TEXT
-          trends: '0'
-          description: 'entier report json of eida consistency test'
-          tags:
-            - tag: Application
-              value: consistency
-            - tag: format
-              value: json
         - uuid: 233416c295964e57a6b2a9fa7fedde54
           name: 'Global score'
           type: TRAP
