@@ -220,6 +220,39 @@ zabbix_export:
           tags:
             - tag: webservice
               value: dataselect
+        - uuid: b48a6247f35c4a65860de1b4f4633c17
+          name: seedpsd
+          delay: 15m
+          steps:
+            - name: 'seedpsd accessible'
+              url: 'https://{$ENDPOINT}/eidaws/psd/1/'
+              retrieve_mode: HEADERS
+              status_codes: '200'
+            - name: 'seedpsd short request'
+              url: 'https://{$ENDPOINT}/eidaws/psd/1/value'
+              query_fields:
+                - name: net
+                  value: '{$ONLINECHECK_NET}'
+                - name: sta
+                  value: '{$ONLINECHECK_STA}'
+                - name: cha
+                  value: '{$ONLINECHECK_CHA}'
+                - name: loc
+                  value: '{$ONLINECHECK_LOC}'
+                - name: start
+                  value: '{$ONLINECHECK_START}'
+                - name: end
+                  value: '{$ONLINECHECK_END}'
+              retrieve_mode: HEADERS
+              status_codes: '200'
+            - name: 'seedpsd application.wadl'
+              url: 'https://{$ENDPOINT}/eidaws/psd/1/application.wadl'
+              follow_redirects: 'NO'
+              required: '<application'
+              status_codes: '200'
+          tags:
+            - tag: webservice
+              value: seedpsd
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
           delay: 15m
