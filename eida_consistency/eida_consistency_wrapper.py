@@ -2,7 +2,7 @@
 # /// script
 # requires-python = "==3.12"
 # dependencies = [
-#     "eida-consistency==0.3.7",
+#     "eida-consistency==0.3.8",
 #     "zabbix-utils==2.0.4",
 #     "pyyaml",
 #     "setuptools<82",
@@ -22,7 +22,7 @@ from zabbix_utils import ItemValue, Sender
 
 # config env variables
 DURATION = int(os.getenv("DURATION", "600"))
-EPOCHS = int(os.getenv("EPOCHS", "100"))
+EPOCHS = os.getenv("EPOCHS", "2%")
 MAX_WORKERS = int(os.getenv("MAX_WORKER", "4"))
 SKIP_NODES = os.getenv("SKIP_NODES", "IGN").split(",")
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
