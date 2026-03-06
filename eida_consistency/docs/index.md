@@ -1,1 +1,0 @@
-# EIDA Consistency Documentation
