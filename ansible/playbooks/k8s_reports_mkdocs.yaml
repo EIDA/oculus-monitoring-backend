@@ -1,0 +1,19 @@
+---
+- name: Deploy mkdocs for reports eida-consistency
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+  tasks:
+    - name: Find all yaml manifests
+      ansible.builtin.find:
+        paths: "../k8s_manifests"
+        patterns: "*.yaml,*.yml"
+      register: k8s_manifests
+
+    - name: Deploy mkdocs to kubernetes
+      kubernetes.core.k8s:
+        state: present
+        namespace: eida-monitoring
+        src: "{{ item.path }}"
+      loop: "{{ k8s_manifests.files }}"
