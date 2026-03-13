@@ -271,7 +271,7 @@
         namespace: "{{ mkdocs_namespace }}"
         definition:
           apiVersion: batch/v1
-          kind: Cronjob
+          kind: CronJob
           metadata:
             name: "{{ mkdocs_app_name }}-rebuild"
             namespace: "{{ mkdocs_namespace }}"
@@ -307,7 +307,6 @@
                         configMap:
                           name: "{{ mkdocs_app_name }}-makeindex"
                       - name: scratch
-                        configMap:
                         persistentVolumeClaim:
                           claimName: oculus-consistency
                     restartPolicy: OnFailure
