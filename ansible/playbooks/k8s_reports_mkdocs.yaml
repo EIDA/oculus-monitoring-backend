@@ -106,7 +106,7 @@
 
               # generate index.md with tags
               cat > /scratch/reports/export/index.md << 'EOF'
-              # EIDA Consistency Reports
+              # Reports by nodes
 
               EOF
 
@@ -264,3 +264,50 @@
                       claimName: oculus-consistency
                   - name: site-volume
                     emptyDir: {}
+
+    - name: Create cronjob for weekly mkdocs rebuild
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: batch/v1
+          kind: Cronjob
+          metadata:
+            name: "{{ mkdocs_app_name }}-rebuild"
+            namespace: "{{ mkdocs_namespace }}"
+          spec:
+            schedule: "0 20 * * 0" # Sunday at 20h00
+            jobTemplate:
+              spec:
+                template:
+                  spec:
+                    serviceAccountName: default
+                    containers:
+                      - name: mkdocs-rebuild
+                        image: "{{ mkdocs_image }}"
+                        command:
+                          - sh
+                          - -c
+                          - |
+                            cp /makeindex-script/makeindex.sh /scratch/makeindex.sh
+                            chmod +x /scratch/makeindex.sh
+                            /scratch/makeindex.sh
+                        volumeMounts:
+                          - name: config-volume
+                            mountPath: /etc/mkdocs
+                          - name: scratch
+                            mountPath: /scratch
+                          - name: makeindex-script
+                            mountPath: /makeindex-script
+                    volumes:
+                      - name: config-volume
+                        configMap:
+                          name: "{{ mkdocs_app_name }}-config"
+                      - name: makeindex-script
+                        configMap:
+                          name: "{{ mkdocs_app_name }}-makeindex"
+                      - name: scratch
+                        configMap:
+                        persistentVolumeClaim:
+                          claimName: oculus-consistency
+                    restartPolicy: OnFailure
