@@ -12,6 +12,25 @@
     mkdocs_replica_count: 1
 
   tasks:
+    - name: Create service for mkdocs
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: "{{ mkdocs_app_name }}-service"
+            namespace: "{{ mkdocs_namespace }}"
+          spec:
+            selector:
+              app: "{{ mkdocs_app_name }}"
+            ports:
+              - protocol: TCP
+                port: 80
+                targetPort: "{{ mkdocs_port }}"
+            type: ClusterIP
+
     - name: Create ingress for mkdocs
       kubernetes.core.k8s:
         state: present
