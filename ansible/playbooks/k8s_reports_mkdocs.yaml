@@ -35,7 +35,7 @@
                           port:
                             number: 80
 
-    - name: Create configmap for nginx.conf
+    - name: Create configMap for nginx.conf
       kubernetes.core.k8s:
         state: present
         namespace: "{{ mkdocs_namespace }}"
@@ -60,7 +60,7 @@
                 error_page 404 /404.html;
               }
 
-    - name: Create configmap for mkdocs.yml
+    - name: Create configMap for mkdocs.yml
       kubernetes.core.k8s:
         state: present
         namespace: "{{ mkdocs_namespace }}"
@@ -89,7 +89,7 @@
                 - codehilite
                 - meta
 
-    - name: Create configmap for makeindex script
+    - name: Create configMap for makeindex script
       kubernetes.core.k8s:
         state: present
         namespace: "{{ mkdocs_namespace }}"
@@ -113,7 +113,7 @@
               # check nodes in /scratch/reports/
               for nodedir in /scratch/reports/*/; do
                 # ignore folder export
-                if [ "$(basename "$nodedir") != "export" ]; then
+                if [ "$(basename "$nodedir")" != "export" ]; then
                   nodename=$(basename "$nodedir")
 
                   # create folder for nodes in export folder
@@ -161,7 +161,7 @@
                       } > /tmp/temp_file
                       mv /tmp/temp_file "/scratch/reports/export/$nodename/$new_filename"
 
-                      # add tags to file
+                      # add tags to file if not exist
                       if ! grep -q "^---" "/scratch/reports/export/$nodename/$new_filename"; then
                         {
                           printf '---\ntags:\n  - %s\n---\n\n' "$nodename"
