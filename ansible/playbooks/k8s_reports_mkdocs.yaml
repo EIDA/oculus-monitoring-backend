@@ -1,19 +1,266 @@
 ---
-- name: Deploy mkdocs for reports eida-consistency
+- name: Deploy mkdocs in k8s for reports eida-consistency
   hosts: localhost
   gather_facts: false
   vars:
     ansible_python_interpreter: /usr/bin/python
-  tasks:
-    - name: Find all yaml manifests
-      ansible.builtin.find:
-        paths: "../k8s_manifests"
-        patterns: "*.yaml,*.yml"
-      register: k8s_manifests
+    mkdocs_namespace: eida-monitoring
+    mkdocs_app_name: oculus-eida-reports
+    mkdocs_image: squidfunk/mkdocs-material:latest # 9.7.5
+    nginx_image: nginx:latest
+    mkdocs_port: 80
+    mkdocs_replica_count: 1
 
-    - name: Deploy mkdocs to kubernetes
+  tasks:
+    - name: Create ingress for mkdocs
       kubernetes.core.k8s:
         state: present
-        namespace: eida-monitoring
-        src: "{{ item.path }}"
-      loop: "{{ k8s_manifests.files }}"
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: networking.k8s.io/v1
+          kind: Ingress
+          metadata:
+            name: "{{ mkdocs_app_name }}-ingress"
+            namespace: "{{ mkdocs_namespace }}"
+          spec:
+            rules:
+              - host: "eida-oculus.orfeus-eu.org"
+                http:
+                  paths:
+                    - path: /consistency
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: "{{ mkdocs_app_name }}-service"
+                          port:
+                            number: 80
+
+    - name: Create configmap for nginx.conf
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: "{{ mkdocs_app_name }}-nginx-config"
+            namespace: "{{ mkdocs_namespace }}"
+          data:
+            default.conf: |
+              server {
+                listen 80;
+                server_name _;
+                root /app/site;
+                index index.html;
+
+                location / {
+                  try_files $uri $uri/ $uri/index.html =404;
+                }
+
+                error_page 404 /404.html;
+              }
+
+    - name: Create configmap for mkdocs.yml
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: "{{ mkdocs_app_name }}-config"
+            namespace: "{{ mkdocs_namespace }}"
+          data:
+            mkdocs.yml: |
+              site_name: EIDA Consistency reports
+              docs_dir: /scratch/reports/export
+              site_dir: /app/site
+              theme:
+                name: material
+                features:
+                  - navigation.instant
+                  - content.tabs.link
+              plugins:
+                - search
+                - tags
+              markdown_extensions:
+                - toc
+                - tables
+                - codehilite
+                - meta
+
+    - name: Create configmap for makeindex script
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: "{{ mkdocs_app_name }}-makeindex"
+            namespace: "{{ mkdocs_namespace }}"
+          data:
+            makeindex.sh: |
+              #!/bin/sh
+              mkdir -p /scratch/reports/export
+
+              # generate index.md with tags
+              cat > /scratch/reports/export/index.md << 'EOF'
+              # EIDA Consistency Reports
+
+              EOF
+
+              # check nodes in /scratch/reports/
+              for nodedir in /scratch/reports/*/; do
+                # ignore folder export
+                if [ "$(basename "$nodedir") != "export" ]; then
+                  nodename=$(basename "$nodedir")
+
+                  # create folder for nodes in export folder
+                  mkdir -p "/scratch/reports/export/$nodename"
+
+                  # create index.md for node with tags
+                  cat > "/scratch/reports/export/$nodename/index.md" << EOF2
+              ---
+              tags:
+                - $nodename
+              ---
+
+              # $nodename Reports
+
+              EOF2
+
+                  # copy files .md in export folder
+                  for file in "$nodedir"*.md; do
+                    if [ -f "$file" ]; then
+                      filename=$(basename "$file")
+
+                      # extract date (format: nodename_YYYYMMDD_HHMMSS.md)
+                      datepart=$(echo "$filename" | sed 's/.*_\([0-9]\{8\}\)_.*/\1/')
+
+                      if [ "$datepart" != "$filename" ] && [ -n "$datepart" ]; then
+                        # convert YYYYMMDD to YYYY-MM-DD
+                        year=$(echo "$datepart" | cut -c1-4)
+                        month=$(echo "$datepart" | cut -c5-6)
+                        day=$(echo "$datepart" | cut -c7-8)
+                        date_formatted="$year-$month-$day"
+                        new_title="# $nodename: $date_formatted"
+                        new_filename="${nodename}_${date_formatted}.md"
+                      else
+                        new_title="# $nodename"
+                        new_filename="$filename"
+                      fi
+
+                      # copy file with new name
+                      cp "$file" "/scratch/reports/export/$nodename/$new_filename"
+
+                      # replace first ligne # with the new title {NODE}: {date} ex: BGR: 2026-03-08
+                      {
+                        echo "$new_title"
+                        tail -n +2 "/scratch/reports/export/$nodename/$new_filename"
+                      } > /tmp/temp_file
+                      mv /tmp/temp_file "/scratch/reports/export/$nodename/$new_filename"
+
+                      # add tags to file
+                      if ! grep -q "^---" "/scratch/reports/export/$nodename/$new_filename"; then
+                        {
+                          printf '---\ntags:\n  - %s\n---\n\n' "$nodename"
+                          cat "/scratch/reports/export/$nodename/$new_filename"
+                        } > /tmp/temp_file
+                        mv /tmp/temp_file "/scratch/reports/export/$nodename/$new_filename"
+                      fi
+
+                      # add link to file index node
+                      filenamenoext="${new_filename%.md}"
+                      echo "- [$filenamenoext]($new_filename)" >> "/scratch/reports/export/$nodename/index.md"
+                    fi
+                  done
+
+                  # add link to principal index
+                  echo "- [$nodename]($nodename/) {: data-tags=\"$nodename\" }" >> /scratch/reports/export/index.md
+                fi
+              done
+
+              # build mkdocs
+              mkdocs build -f /etc/mkdocs/mkdocs.yml
+
+    - name: Deploy mkdocs build and nginx
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: "{{ mkdocs_app_name }}"
+            namespace: "{{ mkdocs_namespace }}"
+            labels:
+              app: "{{ mkdocs_app_name }}"
+          spec:
+            replicas: "{{ mkdocs_replica_count }}"
+            selector:
+              matchLabels:
+                app: "{{ mkdocs_app_name }}"
+            template:
+              metadata:
+                labels:
+                  app: "{{ mkdocs_app_name }}"
+              spec:
+                initContainers:
+                  - name: mkdocs-build
+                    image: "{{ mkdocs_image }}"
+                    command:
+                      - sh
+                      - -c
+                      - |
+                        cp /makeindex-script/makeindex.sh /scratch/makeindex.sh
+                        chmod +x /scratch/makeindex.sh
+                        /scratch/makeindex.sh
+                    securityContext:
+                      runAsUser: 1500
+                    volumeMounts:
+                      - name: config-volume
+                        mountPath: /etc/mkdocs
+                      - name: scratch
+                        mountPath: /scratch
+                      - name: site-volume
+                        mountPath: /app
+                      - name: makeindex-script
+                        mountPath: /makeindex-script
+                containers:
+                  - name: nginx
+                    image: "{{ nginx_image }}"
+                    ports:
+                      - containerPort: "{{ mkdocs_port }}"
+                    volumeMounts:
+                      - name: nginx-config
+                        mountPath: /etc/nginx/conf.d
+                      - name: site-volume
+                        mountPath: /app
+                    livenessProbe:
+                      httpGet:
+                        path: /
+                        port: "{{ mkdocs_port }}"
+                      initialDelaySeconds: 10
+                      periodSeconds: 10
+                    readinessProbe:
+                      httpGet:
+                        path: /
+                        port: "{{ mkdocs_port }}"
+                      initialDelaySeconds: 5
+                      periodSeconds: 5
+                volumes:
+                  - name: config-volume
+                    configMap:
+                      name: "{{ mkdocs_app_name }}-config"
+                  - name: nginx-config
+                    configMap:
+                      name: "{{ mkdocs_app_name }}-nginx-config"
+                  - name: makeindex-script
+                    configMap:
+                      name: "{{ mkdocs_app_name }}-makeindex"
+                  - name: scratch
+                    persistentVolumeClaim:
+                      claimName: oculus-consistency
+                  - name: site-volume
+                    emptyDir: {}
