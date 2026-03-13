@@ -16,7 +16,7 @@
             name: oculus-consistency-config
           data:
             DURATION: "600"
-            EPOCHS: "100"
+            EPOCHS: "2%"
             MAX_WORKER: "4"
             SKIP_NODES: "IGN"
             ZABBIX_SERVER: "oculus-zabbix-zabbix-server"
