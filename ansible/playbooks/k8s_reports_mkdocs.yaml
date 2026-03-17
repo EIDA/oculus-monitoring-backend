@@ -125,7 +125,7 @@
               #!/bin/sh
               mkdir -p /scratch/reports/export
 
-              # generate index.md with tags
+              # generate indexmsd with tags
               cat > /scratch/reports/export/index.md << 'EOF'
               # Reports by nodes
 
@@ -151,12 +151,16 @@
 
               EOF2
 
+                  # create temp file for list of links
+                  temp_index="/tmp/index_links_$nodename.txt"
+                  > "$temp_index"
+
                   # copy files .md in export folder
                   for file in "$nodedir"*.md; do
                     if [ -f "$file" ]; then
                       filename=$(basename "$file")
 
-                      # extract date (format: nodename_YYYYMMDD_HHMMSS.md)
+                      # extract date from filename (format: nodename_YYYYMMDD_xxxxxx_xxxxxx.md)
                       datepart=$(echo "$filename" | sed 's/.*_\([0-9]\{8\}\)_.*/\1/')
 
                       if [ "$datepart" != "$filename" ] && [ -n "$datepart" ]; then
@@ -165,17 +169,17 @@
                         month=$(echo "$datepart" | cut -c5-6)
                         day=$(echo "$datepart" | cut -c7-8)
                         date_formatted="$year-$month-$day"
-                        new_title="# $nodename: $date_formatted"
                         new_filename="${nodename}_${date_formatted}.md"
+                        new_title="# $nodename: $date_formatted"
                       else
-                        new_title="# $nodename"
                         new_filename="$filename"
+                        new_title="# $nodename"
                       fi
 
                       # copy file with new name
                       cp "$file" "/scratch/reports/export/$nodename/$new_filename"
 
-                      # replace first ligne # with the new title {NODE}: {date} ex: BGR: 2026-03-08
+                      # replace first line # with the new new_title
                       {
                         echo "$new_title"
                         tail -n +2 "/scratch/reports/export/$nodename/$new_filename"
@@ -191,11 +195,15 @@
                         mv /tmp/temp_file "/scratch/reports/export/$nodename/$new_filename"
                       fi
 
-                      # add link to file index node
+                      # add link to temp file
                       filenamenoext="${new_filename%.md}"
-                      echo "- [$filenamenoext]($new_filename)" >> "/scratch/reports/export/$nodename/index.md"
+                      echo "- [$filenamenoext]($new_filename)" >> "$temp_index"
                     fi
                   done
+
+                  # sort links in reverse order (newest fisrt) and append to index
+                  sort -r "$temp_index" >> "/scratch/reports/export/$nodename/index.md"
+                  rm "$temp_index"
 
                   # add link to principal index
                   echo "- [$nodename]($nodename/) {: data-tags=\"$nodename\" }" >> /scratch/reports/export/index.md
