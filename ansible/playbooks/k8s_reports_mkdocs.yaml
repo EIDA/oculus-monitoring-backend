@@ -308,21 +308,24 @@
             schedule: "0 20 * * 0" # sunday at 20h00
             jobTemplate:
               spec:
-                serviceAccountName: "{{ mkdocs_app_name }}-sa"
-                containers:
-                  - name: mkdocs-rebuild
-                    image: bitnami/kubectl:latest
-                    command:
-                      - sh
-                      - -c
-                      - |
-                        # check if deployement exist
-                        if kubectl get deployment {{ mkdocs_app_name }} -n {{ mkdocs_namespace }} > /dev/null 2>&>; then
-                          echo rollout restart deployment/{{ mkdocs_app_name }} -n {{ mkdocs_namespace }}
-                        else
-                          echo "deployement not found, skiping restart"
-                        fi
-                restartPolicy: OnFailure
+                template:
+                  spec:
+                    serviceAccountName: "{{ mkdocs_app_name }}-sa"
+                    containers:
+                      - name: mkdocs-rebuild
+                        image: bitnami/kubectl:latest
+                        command:
+                          - sh
+                          - -c
+                          - |
+                            # check if deployement exist
+                            if kubectl get deployment {{ mkdocs_app_name }} -n {{ mkdocs_namespace }} > /dev/null 2>&1; then
+                              echo "deployement found, restarting..."
+                              kubectl rollout restart deployment/{{ mkdocs_app_name }} -n {{ mkdocs_namespace }}
+                            else
+                              echo "deployement not found, skiping restart"
+                            fi
+                    restartPolicy: OnFailure
 
     - name: Create ServiceAccount for CronJob
       kubernetes.core.k8s:
@@ -330,7 +333,7 @@
         namespace: "{{ mkdocs_namespace }}"
         definition:
           apiVersion: v1
-          kind: serviceAccount
+          kind: ServiceAccount
           metadata:
             name: "{{ mkdocs_app_name }}-sa"
             namespace: "{{ mkdocs_namespace }}"
@@ -350,7 +353,7 @@
               resources: ["deployments"]
               verbs: ["get", "list", "patch", "update"]
             - apiGroups: ["apps"]
-              resources: ["deployement/rollout"]
+              resources: ["deployments/rollout"]
               verbs: ["create"]
 
     - name: Create RoleBinding for CronJob
@@ -363,7 +366,7 @@
           metadata:
             name: "{{ mkdocs_app_name }}-rolebinding"
             namespace: "{{ mkdocs_namespace }}"
-          roleBef:
+          roleRef:
             apiGroup: rbac.authorization.k8s.io
             kind: Role
             name: "{{ mkdocs_app_name }}-role"
