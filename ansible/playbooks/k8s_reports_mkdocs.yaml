@@ -12,7 +12,7 @@
     mkdocs_replica_count: 1
 
   tasks:
-    - name: Create service for mkdocs
+    - name: Create Service for mkdocs
       kubernetes.core.k8s:
         state: present
         namespace: "{{ mkdocs_namespace }}"
@@ -31,7 +31,7 @@
                 targetPort: "{{ mkdocs_port }}"
             type: ClusterIP
 
-    - name: Create ingress for mkdocs
+    - name: Create Ingress for mkdocs
       kubernetes.core.k8s:
         state: present
         namespace: "{{ mkdocs_namespace }}"
@@ -54,7 +54,7 @@
                           port:
                             number: 80
 
-    - name: Create configMap for nginx.conf
+    - name: Create ConfigMap for nginx.conf
       kubernetes.core.k8s:
         state: present
         namespace: "{{ mkdocs_namespace }}"
@@ -80,7 +80,7 @@
                 error_page 404 /404.html;
               }
 
-    - name: Create configMap for mkdocs.yml
+    - name: Create ConfigMap for mkdocs.yml
       kubernetes.core.k8s:
         state: present
         namespace: "{{ mkdocs_namespace }}"
@@ -110,7 +110,7 @@
                 - codehilite
                 - meta
 
-    - name: Create configMap for makeindex script
+    - name: Create ConfigMap for makeindex script
       kubernetes.core.k8s:
         state: present
         namespace: "{{ mkdocs_namespace }}"
@@ -294,7 +294,7 @@
                   - name: site-volume
                     emptyDir: {}
 
-    - name: Create cronjob for weekly mkdocs rebuild
+    - name: Create CronJob for weekly mkdocs rebuild
       kubernetes.core.k8s:
         state: present
         namespace: "{{ mkdocs_namespace }}"
@@ -305,37 +305,69 @@
             name: "{{ mkdocs_app_name }}-rebuild"
             namespace: "{{ mkdocs_namespace }}"
           spec:
-            schedule: "0 20 * * 0" # Sunday at 20h00
+            schedule: "0 20 * * 0" # sunday at 20h00
             jobTemplate:
               spec:
-                template:
-                  spec:
-                    serviceAccountName: default
-                    containers:
-                      - name: mkdocs-rebuild
-                        image: "{{ mkdocs_image }}"
-                        command:
-                          - sh
-                          - -c
-                          - |
-                            cp /makeindex-script/makeindex.sh /scratch/makeindex.sh
-                            chmod +x /scratch/makeindex.sh
-                            /scratch/makeindex.sh
-                        volumeMounts:
-                          - name: config-volume
-                            mountPath: /etc/mkdocs
-                          - name: scratch
-                            mountPath: /scratch
-                          - name: makeindex-script
-                            mountPath: /makeindex-script
-                    volumes:
-                      - name: config-volume
-                        configMap:
-                          name: "{{ mkdocs_app_name }}-config"
-                      - name: makeindex-script
-                        configMap:
-                          name: "{{ mkdocs_app_name }}-makeindex"
-                      - name: scratch
-                        persistentVolumeClaim:
-                          claimName: oculus-consistency
-                    restartPolicy: OnFailure
+                serviceAccountName: "{{ mkdocs_app_name }}-sa"
+                containers:
+                  - name: mkdocs-rebuild
+                    image: bitnami/kubectl:latest
+                    command:
+                      - sh
+                      - -c
+                      - |
+                        # check if deployement exist
+                        if kubectl get deployment {{ mkdocs_app_name }} -n {{ mkdocs_namespace }} > /dev/null 2>&>; then
+                          echo rollout restart deployment/{{ mkdocs_app_name }} -n {{ mkdocs_namespace }}
+                        else
+                          echo "deployement not found, skiping restart"
+                        fi
+                restartPolicy: OnFailure
+
+    - name: Create ServiceAccount for CronJob
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: v1
+          kind: serviceAccount
+          metadata:
+            name: "{{ mkdocs_app_name }}-sa"
+            namespace: "{{ mkdocs_namespace }}"
+
+    - name: Create Role for CronJob
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: rbac.authorization.k8s.io/v1
+          kind: Role
+          metadata:
+            name: "{{ mkdocs_app_name }}-role"
+            namespace: "{{ mkdocs_namespace }}"
+          rules:
+            - apiGroups: ["apps"]
+              resources: ["deployments"]
+              verbs: ["get", "list", "patch", "update"]
+            - apiGroups: ["apps"]
+              resources: ["deployement/rollout"]
+              verbs: ["create"]
+
+    - name: Create RoleBinding for CronJob
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ mkdocs_namespace }}"
+        definition:
+          apiVersion: rbac.authorization.k8s.io/v1
+          kind: RoleBinding
+          metadata:
+            name: "{{ mkdocs_app_name }}-rolebinding"
+            namespace: "{{ mkdocs_namespace }}"
+          roleBef:
+            apiGroup: rbac.authorization.k8s.io
+            kind: Role
+            name: "{{ mkdocs_app_name }}-role"
+          subjects:
+            - kind: ServiceAccount
+              name: "{{ mkdocs_app_name }}-sa"
+              namespace: "{{ mkdocs_namespace }}"
