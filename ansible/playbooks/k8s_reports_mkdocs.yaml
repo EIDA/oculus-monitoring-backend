@@ -71,13 +71,17 @@
                 server_name _;
                 root /app/site;
                 index index.html;
+                error_page 404 /404.html
 
-                location /consistency {
-                  alias /app/site;
-                  try_files $uri $uri/ /index.html =404;
+                location / {
+                  root /app/site;
+                  try_files $uri $uri/ /index.html = 404;
                 }
 
-                error_page 404 /404.html;
+                location /consistency/ {
+                  alias /app/site/;
+                  index index.html;
+                }
               }
 
     - name: Create ConfigMap for mkdocs.yml
