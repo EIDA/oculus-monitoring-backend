@@ -71,7 +71,7 @@
                 server_name _;
                 root /app/site;
                 index index.html;
-                error_page 404 /404.html
+                error_page 404 /404.html;
 
                 location / {
                   root /app/site;
