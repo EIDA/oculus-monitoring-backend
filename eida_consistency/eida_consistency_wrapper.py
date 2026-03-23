@@ -188,7 +188,9 @@ def process_node(node_name, epochs, duration):
     """process one node concistency check"""
     try:
         epochs_value = epochs
-        consistency_node_name = node_name
+        # TODO: remove when obspy 1.5 is released
+        # transform EPOSFR to RESIF for eida-consistency check
+        consistency_node_name = "RESIF" if node_name == "EPOSFR" else node_name
 
         report_path = run_eida_consistency(
             consistency_node_name, epochs_value, duration
@@ -198,7 +200,7 @@ def process_node(node_name, epochs, duration):
             logger.error("eida-consistency check failed for %s", consistency_node_name)
             return False
 
-        # send to zabbix
+        # send to zabbix with original node name (EPOSFR)
         hostname = node_name
         logger.info("sending report to zabbix for %s", hostname)
         zabbix_result = send_to_zabbix(hostname, report_path)
