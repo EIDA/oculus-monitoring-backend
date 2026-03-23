@@ -73,7 +73,7 @@
               spec:
                 template:
                   spec:
-                    restartPolicy: OnFailure
+                    restartPolicy: Never
                     volumes:
                       - name: scratch
                         persistentVolumeClaim:
