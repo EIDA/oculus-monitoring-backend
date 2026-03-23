@@ -164,7 +164,7 @@
                     if [ -f "$file" ]; then
                       filename=$(basename "$file")
                       # extract date from filename (format: nodename_YYYYMMDD_xxxxxx_xxxxxx.md)
-                      datepart=$(echo "$filename" | sed 's/.*_\([0-9]\{8}\)_.*/\1/')
+                      datepart=$(echo "$filename" | sed 's/.*_\([0-9]\{8\}\)_.*/\1/')
 
                       if [ "$datepart" != "$filename" ] && [ -n "$datepart" ]; then
                         year=$(echo "$datepart" | cut -c1-4)
@@ -214,8 +214,9 @@
                             month=$(echo "$datepart" | cut -c5-6)
                             day=$(echo "$datepart" | cut -c7-8)
                             date_formatted="$year_check-$month-$day"
-                            new_filename="${nodename}_${date_formatted}.md"
-                            new_title="# $nodename: $date_formatted"
+                            suffix=$(echo "$filename" | sed 's/.*_[0-9]\{8\}_\(.*\).md$/\1/')
+                            new_filename="${nodename}_${date_formatted}_${suffix}.md"
+                            new_title="# $nodename: $date_formatted - $suffix"
                           else
                             continue
                           fi
@@ -252,6 +253,31 @@
                     sort -r "$temp_index" >> "/scratch/reports/export/$nodename/$year/index.md"
                     rm "$temp_index"
 
+                    # process JSON file for this year
+                    for file in "$nodedir"*.json; do
+                      if [ -f "$file" ]; then
+                        filename=$(basename "$file")
+                        # extract date from filename (format: nodename_YYYYMMDD_xxxxxx_xxxxxx.json)
+                        datepart=$(echo "$filename" | sed 's/.*_\([0-9]\{8\}\)_.*/\1/')
+
+                        if [ "$datepart" != "$filename" ] && [ -n "$datepart" ]; then
+                          year_check=$(echo "$datepart" | cut -c1-4)
+
+                          # only process files for this year
+                          if [ "$year_check" = "$year" ]; then
+                            month=$(echo "$datepart" | cut -c5-6)
+                            day=$(echo "$datepart" | cut -c7-8)
+                            date_formatted="$year_check-$month-$day"
+                            suffix=$(echo "$filename" | sed 's/.*_[0-9]\{8\}_\(.*\)\.json$/\1/')
+                            new_filename="${nodename}_${date_formatted}_${suffix}.json"
+
+                            # copy file to year folder
+                            cp "$file" "/scratch/reports/export/$nodename/$year/$new_filename"
+                          fi
+                        fi
+                      fi
+                    done
+
                     # add link to node index
                     echo "- [$year]($year/)" >> "/scratch/reports/export/$nodename/index.md"
                   done
@@ -264,7 +290,7 @@
               # generate nav for mkdocs
               cat > /tmp/nav.yaml << 'NAVEOF'
               nav:
-                - Home: index.md
+                - Reports by nodes: index.md
               NAVEOF
 
               for nodedir in /scratch/reports/export/*/; do
@@ -280,8 +306,12 @@
                         year=$(basename "$yeardir")
                         echo "    - $year:" >> /tmp/nav.yaml
 
-                        # add individual reports (exclude index md)
-                        for report in "$yeardir"/*.md; do
+                        # add year overview/index page first
+                        echo "      - Overview: $nodename/$year/index.md" >> /tmp/nav.yaml
+
+                        # add individual reports sorted by date descending (newest first)
+                        reports_list=$(printf '%s\n' "$yeardir"/*.md | sort -r)
+                        for report in $reports_list; do
                           if [ -f "$report" ] && [ "$(basename "$report")" != "index.md" ]; then
                             filename=$(basename "$report" .md)
                             relpath="$nodename/$year/$(basename "$report")"
@@ -294,8 +324,31 @@
                 fi
               done
 
-              # build mkdocs
-              mkdocs build -f /etc/mkdocs/mkdocs.yml
+              # create mkdocs.yml complet with generated nav
+              cat > /tmp/mkdocs_full.yml << 'EOF'
+              site_name: EIDA Consistency Reports
+              site_url: https://eida-oculus.orfeus-eu.org/consistency/
+              docs_dir: /scratch/reports/export
+              site_dir: /app/site
+              theme:
+                name: material
+                features:
+                  - navigation.instant
+                  - content.tabs.link
+              plugins:
+                - search
+                - tags
+              markdown_extensions:
+                - toc
+                - tables
+                - codehilite
+                - meta
+              EOF
+
+              cat /tmp/nav.yaml >> /tmp/mkdocs_full.yml
+
+              # build mkdocs with complated file
+              mkdocs build -f /tmp/mkdocs_full.yml
 
     - name: Deploy mkdocs build and nginx
       kubernetes.core.k8s:
