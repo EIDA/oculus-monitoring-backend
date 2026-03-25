@@ -1588,6 +1588,11 @@ zabbix_export:
       macros:
         - macro: '{$START_MONTH}'
           value: 2026-02
+    - uuid: 3b5c21be3513490cbd45af0ae6aab48a
+      template: 'Template virtual networks'
+      name: 'Template virtual networks'
+      groups:
+        - name: Templates/EIDA
     - uuid: b192614a2cbc490eb3ca047e9eb36328
       template: 'Template webservices'
       name: 'Template webservices'
