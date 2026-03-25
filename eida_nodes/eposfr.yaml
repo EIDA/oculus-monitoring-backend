@@ -1,6 +1,6 @@
 ---
 node: EPOSFR
-endpoint: ws.resif.fr
+endpoint: seisdata.epos-france.fr
 eidaRoutingFile: routing/eida/routing.xml
 fdsnRoutingFile: routing/eida/routing.json
 onlineCheck:
