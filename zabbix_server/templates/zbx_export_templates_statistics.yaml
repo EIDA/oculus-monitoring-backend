@@ -46,11 +46,11 @@ zabbix_export:
               expression: 'last(/Template statistics/bytes_dataselect.stats)=last(/Template statistics/bytes_dataselect.stats,#1:now-7d)'
               recovery_mode: RECOVERY_EXPRESSION
               recovery_expression: 'last(/Template statistics/bytes_dataselect.stats)<>last(/Template statistics/bytes_dataselect.stats,#1:now-7d)'
-              name: 'No new data usages statistics in central service'
+              name: 'No new data usage statistics in central service'
               priority: WARNING
               description: |
-                Number of bytes delivered is not increase in 7days.
-                Check that our aggregator script is running and sending the statistics.
+                Number of bytes delivered is not increasing in the past 7days.
+                Check that your aggregator script is running and sending the statistics without error.
                 URL: https://ws.resif.fr/eidaws/statistics/1/dataselect/public?start=2025-12&node={$NODE}&network={$ONLINECHECK_NET}&level=node&format=json
               manual_close: 'YES'
         - uuid: 1505252ffad64ca898e73024419f4436

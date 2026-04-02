@@ -9,3 +9,59 @@ zabbix_export:
       name: 'Template virtual networks'
       groups:
         - name: Templates/EIDA
+      items:
+        - uuid: 1d1bb2fb14e746f6afb0b7fdd95259aa
+          name: 'Local VN configuration'
+          type: HTTP_AGENT
+          key: local_vn.config
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: XMLPATH
+              parameters:
+                - '//*[local-name()=''vnetwork''][@networkCode=''_ADARRAY'']'
+          url: 'https://eida.gein.noa.gr/eidaws/routing/1/localconfig'
+          headers:
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: routing
+              value: local
+            - tag: routing
+              value: _ADARRAY
+          triggers:
+            - uuid: b082669352e841eeac34e84970a71459
+              expression: 'nodata(/Template virtual networks/local_vn.config,130m)=1'
+              name: 'Local Virtual Network configuration not present'
+              priority: AVERAGE
+              description: 'No routing information found for _ADARRAY locally'
+              manual_close: 'YES'
+        - uuid: 3c1d25ca4d274fac9d7e84015c3377ad
+          name: 'Routing VN information'
+          type: HTTP_AGENT
+          key: routing_vn.information
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          timeout: 10s
+          url: 'https://orfeus-eu.org/eidaws/routing/1/query'
+          query_fields:
+            - name: net
+              value: _ADARRAY
+          headers:
+            - name: User-Agent
+              value: oculus-monitor
+          retrieve_mode: BOTH
+          tags:
+            - tag: routing
+              value: central
+            - tag: routing
+              value: _ADARRAY
+          triggers:
+            - uuid: 2b29d45e64314d33bfa2e8a7de7f7f02
+              expression: 'nodata(/Template virtual networks/routing_vn.information,130m)=1'
+              name: 'Routing Virtual Network configuration not present'
+              priority: AVERAGE
+              description: 'The routing information or network _ADARRAY was not found in the central routing service'
+              manual_close: 'YES'

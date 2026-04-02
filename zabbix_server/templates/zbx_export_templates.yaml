@@ -1485,11 +1485,11 @@ zabbix_export:
               expression: 'last(/Template statistics/bytes_dataselect.stats)=last(/Template statistics/bytes_dataselect.stats,#1:now-7d)'
               recovery_mode: RECOVERY_EXPRESSION
               recovery_expression: 'last(/Template statistics/bytes_dataselect.stats)<>last(/Template statistics/bytes_dataselect.stats,#1:now-7d)'
-              name: 'No new data usages statistics in central service'
+              name: 'No new data usage statistics in central service'
               priority: WARNING
               description: |
-                Number of bytes delivered is not increase in 7days.
-                Check that our aggregator script is running and sending the statistics.
+                Number of bytes delivered is not increasing in the past 7days.
+                Check that your aggregator script is running and sending the statistics without error.
                 URL: https://ws.resif.fr/eidaws/statistics/1/dataselect/public?start=2025-12&node={$NODE}&network={$ONLINECHECK_NET}&level=node&format=json
               manual_close: 'YES'
         - uuid: 1505252ffad64ca898e73024419f4436
@@ -1593,6 +1593,62 @@ zabbix_export:
       name: 'Template virtual networks'
       groups:
         - name: Templates/EIDA
+      items:
+        - uuid: 1d1bb2fb14e746f6afb0b7fdd95259aa
+          name: 'Local VN configuration'
+          type: HTTP_AGENT
+          key: local_vn.config
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: XMLPATH
+              parameters:
+                - '//*[local-name()=''vnetwork''][@networkCode=''_ADARRAY'']'
+          url: 'https://eida.gein.noa.gr/eidaws/routing/1/localconfig'
+          headers:
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: routing
+              value: local
+            - tag: routing
+              value: _ADARRAY
+          triggers:
+            - uuid: b082669352e841eeac34e84970a71459
+              expression: 'nodata(/Template virtual networks/local_vn.config,130m)=1'
+              name: 'Local Virtual Network configuration not present'
+              priority: AVERAGE
+              description: 'No routing information found for _ADARRAY locally'
+              manual_close: 'YES'
+        - uuid: 3c1d25ca4d274fac9d7e84015c3377ad
+          name: 'Routing VN information'
+          type: HTTP_AGENT
+          key: routing_vn.information
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          timeout: 10s
+          url: 'https://orfeus-eu.org/eidaws/routing/1/query'
+          query_fields:
+            - name: net
+              value: _ADARRAY
+          headers:
+            - name: User-Agent
+              value: oculus-monitor
+          retrieve_mode: BOTH
+          tags:
+            - tag: routing
+              value: central
+            - tag: routing
+              value: _ADARRAY
+          triggers:
+            - uuid: 2b29d45e64314d33bfa2e8a7de7f7f02
+              expression: 'nodata(/Template virtual networks/routing_vn.information,130m)=1'
+              name: 'Routing Virtual Network configuration not present'
+              priority: AVERAGE
+              description: 'The routing information or network _ADARRAY was not found in the central routing service'
+              manual_close: 'YES'
     - uuid: b192614a2cbc490eb3ca047e9eb36328
       template: 'Template webservices'
       name: 'Template webservices'
