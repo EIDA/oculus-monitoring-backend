@@ -35,7 +35,7 @@ zabbix_export:
               expression: 'nodata(/Template virtual networks/local_vn.config,130m)=1'
               name: 'Local Virtual Network configuration not present'
               priority: AVERAGE
-              description: 'No routing information found for _ADARRAY locally'
+              description: 'No routing information found for _ADARRAY locally at https://eida.gein.noa.gr/eidaws/routing/1/localconfig'
               manual_close: 'YES'
         - uuid: 3c1d25ca4d274fac9d7e84015c3377ad
           name: 'Routing VN information'
@@ -63,5 +63,5 @@ zabbix_export:
               expression: 'nodata(/Template virtual networks/routing_vn.information,130m)=1'
               name: 'Routing Virtual Network configuration not present'
               priority: AVERAGE
-              description: 'The routing information or network _ADARRAY was not found in the central routing service'
+              description: 'The routing information or network _ADARRAY was not found in the central routing service at https://orfeus-eu.org/eidaws/routing/1/query?net=_ADARRAY'
               manual_close: 'YES'
