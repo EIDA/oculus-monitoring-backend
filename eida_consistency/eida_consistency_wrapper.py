@@ -188,9 +188,7 @@ def process_node(node_name, epochs, duration):
     """process one node concistency check"""
     try:
         epochs_value = epochs
-        # TODO: remove when obspy 1.5 is released
-        # transform EPOSFR to RESIF for eida-consistency check
-        consistency_node_name = "RESIF" if node_name == "EPOSFR" else node_name
+        consistency_node_name = node_name
 
         report_path = run_eida_consistency(
             consistency_node_name, epochs_value, duration
