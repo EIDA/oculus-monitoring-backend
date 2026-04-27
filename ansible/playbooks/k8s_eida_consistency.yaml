@@ -71,6 +71,7 @@
             schedule: "0 14 * * 0" # every sunday at 2pm
             jobTemplate:
               spec:
+                backoffLimit: 0
                 template:
                   spec:
                     restartPolicy: Never
