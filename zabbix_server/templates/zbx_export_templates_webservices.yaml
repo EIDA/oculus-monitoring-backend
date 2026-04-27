@@ -158,6 +158,7 @@ zabbix_export:
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'availability short request'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
@@ -175,10 +176,12 @@ zabbix_export:
                 - name: end
                   value: '{$ONLINECHECK_END}'
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'availability application.wadl'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/application.wadl'
               follow_redirects: 'NO'
+              timeout: 1m
               required: '<application'
               status_codes: '200'
           tags:
@@ -194,6 +197,7 @@ zabbix_export:
             - name: 'dataselect accessible'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/'
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'dataselect short request'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
@@ -211,10 +215,12 @@ zabbix_export:
                 - name: end
                   value: '{$ONLINECHECK_END}'
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'dataselect application.wadl'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/application.wadl'
               follow_redirects: 'NO'
+              timeout: 1m
               required: '<application'
               status_codes: '200'
           tags:
@@ -227,6 +233,7 @@ zabbix_export:
             - name: 'seedpsd accessible'
               url: 'https://{$ENDPOINT}/eidaws/psd/1/'
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'seedpsd short request'
               url: 'https://{$ENDPOINT}/eidaws/psd/1/value'
@@ -244,10 +251,12 @@ zabbix_export:
                 - name: end
                   value: '{$ONLINECHECK_END}'
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'seedpsd application.wadl'
               url: 'https://{$ENDPOINT}/eidaws/psd/1/application.wadl'
               follow_redirects: 'NO'
+              timeout: 1m
               required: '<application'
               status_codes: '200'
           tags:
@@ -264,6 +273,7 @@ zabbix_export:
               url: 'https://{$ENDPOINT}/fdsnws/station/1/'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'station short request'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
@@ -279,10 +289,12 @@ zabbix_export:
                 - name: level
                   value: response
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'station application.wadl'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/application.wadl'
               follow_redirects: 'NO'
+              timeout: 1m
               required: '<application'
               status_codes: '200'
           tags:
@@ -299,6 +311,7 @@ zabbix_export:
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
               follow_redirects: 'NO'
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'wfcatalog short request'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
@@ -316,10 +329,12 @@ zabbix_export:
                 - name: end
                   value: '{$ONLINECHECK_END}'
               retrieve_mode: HEADERS
+              timeout: 1m
               status_codes: '200'
             - name: 'wfcatalog application.wadl'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/application.wadl'
               follow_redirects: 'NO'
+              timeout: 1m
               required: '<application'
               status_codes: '200'
           tags:
