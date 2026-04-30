@@ -10,6 +10,40 @@ zabbix_export:
       groups:
         - name: Templates/EIDA
       items:
+        - uuid: d62af588b94942d38929e1b201b7ecba
+          name: 'availability accessible'
+          type: HTTP_AGENT
+          key: availability.accessible
+          delay: 15m
+          trends: '0'
+          preprocessing:
+            - type: REGEX
+              parameters:
+                - '^HTTP/[\d.]+ (\d+)'
+                - \1
+          timeout: 1m
+          url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
+          status_codes: ''
+          headers:
+            - name: User-agent
+              value: oculus-monitor
+          retrieve_mode: HEADERS
+          tags:
+            - tag: availability
+              value: accessible
+            - tag: webservice
+              value: availability
+          triggers:
+            - uuid: 5397d9f5f56b4574abfb297603b86186
+              expression: 'last(/Template webservices/availability.accessible)<>200'
+              name: 'availability accessible'
+              event_name: 'Availability is not accessible, return code {ITEM.VALUE}'
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/'
+              manual_close: 'YES'
+              tags:
+                - tag: webservice
+                  value: availability
         - uuid: e38a49ab9c0e442c9ea3a47f8869aaee
           name: 'CORS availability {$NODE}'
           type: HTTP_AGENT
@@ -146,20 +180,146 @@ zabbix_export:
               tags:
                 - tag: webservice
                   value: wfcatalog
+        - uuid: 4d2c06140e994c71b2bb96f7e9aa58ba
+          name: 'dataselect accessible'
+          type: HTTP_AGENT
+          key: dataselect.accessible
+          delay: 15m
+          preprocessing:
+            - type: REGEX
+              parameters:
+                - '^HTTP/[\d.]+ (\d+)'
+                - \1
+          timeout: 1m
+          url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/'
+          status_codes: ''
+          headers:
+            - name: User-agent
+              value: oculus-monitor
+          retrieve_mode: HEADERS
+          tags:
+            - tag: dataselect
+              value: accessible
+            - tag: webservice
+              value: dataselect
+          triggers:
+            - uuid: 41525921387c469b8d8e00328cde8d1e
+              expression: 'last(/Template webservices/dataselect.accessible)<>200'
+              name: 'dataselect accessible'
+              event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/fdsnws/dataselect/1/'
+              manual_close: 'YES'
+              tags:
+                - tag: webservice
+                  value: dataselect
+        - uuid: e79ed8a36d2249bda0444913e05721fb
+          name: 'seedpsd accessible'
+          type: HTTP_AGENT
+          key: seedpsd.accessible
+          delay: 15m
+          preprocessing:
+            - type: REGEX
+              parameters:
+                - '^HTTP/[\d.]+ (\d+)'
+                - \1
+          timeout: 1m
+          url: 'https://{$ENDPOINT}/eidaws/psd/1/'
+          status_codes: ''
+          headers:
+            - name: User-agent
+              value: oculus-monitor
+          retrieve_mode: HEADERS
+          tags:
+            - tag: seedpsd
+              value: accessible
+            - tag: webservice
+              value: seedpsd
+          triggers:
+            - uuid: 0d3df26afc9c4b57a9f1e27604580ee0
+              expression: 'last(/Template webservices/seedpsd.accessible)<>200'
+              name: 'seedpsd accessible'
+              event_name: 'SeedPSD is not accessible, return code {ITEM.VALUE}'
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/eidaws/psd/1/'
+              manual_close: 'YES'
+              tags:
+                - tag: webservice
+                  value: seedpsd
+        - uuid: 705a0eaf6e134511a1d211302f3def97
+          name: 'station accessible'
+          type: HTTP_AGENT
+          key: station.accessible
+          delay: 15m
+          preprocessing:
+            - type: REGEX
+              parameters:
+                - '^HTTP/[\d.]+ (\d+)'
+                - \1
+          timeout: 1m
+          url: 'https://{$ENDPOINT}/fdsnws/station/1/'
+          status_codes: ''
+          headers:
+            - name: User-agent
+              value: oculus-monitor
+          retrieve_mode: HEADERS
+          tags:
+            - tag: station
+              value: accessible
+            - tag: webservice
+              value: station
+          triggers:
+            - uuid: 30f8b3cc9dea424ab488bc7eaa56222c
+              expression: 'last(/Template webservices/station.accessible)<>200'
+              name: 'station accessible'
+              event_name: 'Station is not accessible, return code {ITEM.VALUE}'
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
+              manual_close: 'YES'
+              tags:
+                - tag: webservice
+                  value: station
+        - uuid: ad50cdc210ba42a3a14a0419b29c8344
+          name: 'wfcatalog accessible'
+          type: HTTP_AGENT
+          key: wfcatalog.accessible
+          delay: 15m
+          preprocessing:
+            - type: REGEX
+              parameters:
+                - '^HTTP/[\d.]+ (\d+)'
+                - \1
+          timeout: 1m
+          url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
+          status_codes: ''
+          headers:
+            - name: User-agent
+              value: oculus-monitor
+          retrieve_mode: HEADERS
+          tags:
+            - tag: webservice
+              value: wfcatalog
+            - tag: wfcatalog
+              value: accessible
+          triggers:
+            - uuid: e31b4eb2c621444aa03dd189311d89a5
+              expression: 'last(/Template webservices/wfcatalog.accessible)<>200'
+              name: 'wfcatalog accessible'
+              event_name: 'WFCatalog is not accessible, return code {ITEM.VALUE}'
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/'
+              manual_close: 'YES'
+              tags:
+                - tag: webservice
+                  value: wfcatalog
       httptests:
         - uuid: 32b3e3d018b2423c899d92878cbe3567
           name: availability
-          delay: 15m
+          delay: 1d
           headers:
             - name: User-agent
               value: oculus-monitor
           steps:
-            - name: 'availability accessible'
-              url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
-              follow_redirects: 'NO'
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
             - name: 'availability short request'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
               query_fields:
@@ -189,16 +349,11 @@ zabbix_export:
               value: availability
         - uuid: dfcb1e93f5c9489598c189e82f523833
           name: dataselect
-          delay: 15m
+          delay: 1d
           headers:
             - name: User-agent
               value: oculus-monitor
           steps:
-            - name: 'dataselect accessible'
-              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/'
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
             - name: 'dataselect short request'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
               query_fields:
@@ -228,13 +383,8 @@ zabbix_export:
               value: dataselect
         - uuid: b48a6247f35c4a65860de1b4f4633c17
           name: seedpsd
-          delay: 15m
+          delay: 1d
           steps:
-            - name: 'seedpsd accessible'
-              url: 'https://{$ENDPOINT}/eidaws/psd/1/'
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
             - name: 'seedpsd short request'
               url: 'https://{$ENDPOINT}/eidaws/psd/1/value'
               query_fields:
@@ -264,17 +414,11 @@ zabbix_export:
               value: seedpsd
         - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
           name: station
-          delay: 15m
+          delay: 1d
           headers:
             - name: User-agent
               value: oculus-monitor
           steps:
-            - name: 'station accessible'
-              url: 'https://{$ENDPOINT}/fdsnws/station/1/'
-              follow_redirects: 'NO'
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
             - name: 'station short request'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
               query_fields:
@@ -302,17 +446,11 @@ zabbix_export:
               value: station
         - uuid: a5d4964d6ad84e44829dbb8dddef25cc
           name: wfcatalog
-          delay: 15m
+          delay: 1d
           headers:
             - name: User-agent
               value: oculus-monitor
           steps:
-            - name: 'wfcatalog accessible'
-              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
-              follow_redirects: 'NO'
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
             - name: 'wfcatalog short request'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
               query_fields:
@@ -355,20 +493,11 @@ zabbix_export:
       tags:
         - tag: webservice
           value: availability
-    - uuid: 9ac0a5b01d6b4cbbb58d89eaac70a86b
-      expression: 'last(/Template webservices/web.test.rspcode[availability,availability accessible])<>200'
-      name: 'availability not accessible'
-      event_name: 'Availability is not accessible, return code {ITEM.VALUE}'
-      priority: AVERAGE
-      description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: availability
     - uuid: 5260891522f14c21a4f2361486453f4b
       expression: 'last(/Template webservices/web.test.rspcode[availability,availability short request])<>200'
       name: 'availability short request'
       event_name: 'Availability short request failed, return code {ITEM.VALUE}'
+      status: DISABLED
       priority: AVERAGE
       description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&start={$ONLINECHECK_START}&end={$ONLINECHECK_END}'
       manual_close: 'YES'
@@ -385,20 +514,11 @@ zabbix_export:
       tags:
         - tag: webservice
           value: dataselect
-    - uuid: 0848f9b91db2476a8f9b4394d895b944
-      expression: 'last(/Template webservices/web.test.rspcode[dataselect,dataselect accessible])<>200'
-      name: 'dataselect not accessible'
-      event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
-      priority: HIGH
-      description: 'test request : https://{$ENDPOINT}/fdsnws/dataselect/1/'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: dataselect
     - uuid: 6c4ce2937fd44a03af8020e6f3ca5b26
       expression: 'last(/Template webservices/web.test.rspcode[dataselect,dataselect short request])<>200'
       name: 'dataselect short request'
       event_name: 'Dataselect short request failed, return code {ITEM.VALUE}'
+      status: DISABLED
       priority: HIGH
       description: 'test request : https://{$ENDPOINT}/fdsnws/dataselect/1/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&start={$ONLINECHECK_START}&end={$ONLINECHECK_END}'
       manual_close: 'YES'
@@ -415,20 +535,11 @@ zabbix_export:
       tags:
         - tag: webservice
           value: station
-    - uuid: f048e2a4d53b46acbfebb77e7d4beb45
-      expression: 'last(/Template webservices/web.test.rspcode[station,station accessible])<>200'
-      name: 'station not accessible'
-      event_name: 'Station is not accessible, return code {ITEM.VALUE}'
-      priority: HIGH
-      description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: station
     - uuid: 696550710abc49418a5b546fd8db5955
       expression: 'last(/Template webservices/web.test.rspcode[station,station short request])<>200'
       name: 'station short request'
       event_name: 'Station short request failed, return code {ITEM.VALUE}'
+      status: DISABLED
       priority: HIGH
       description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&level=response'
       manual_close: 'YES'
@@ -445,20 +556,11 @@ zabbix_export:
       tags:
         - tag: webservice
           value: wfcatalog
-    - uuid: c129ba9cfde84b88836d45cf2ec265ce
-      expression: 'last(/Template webservices/web.test.rspcode[wfcatalog,wfcatalog accessible])<>200'
-      name: 'wfcatalog not accessible'
-      event_name: 'WFCatalog is not accessible, return code {ITEM.VALUE}'
-      priority: AVERAGE
-      description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: wfcatalog
     - uuid: a3a98c2e0c484de99d7175826f94be68
       expression: 'last(/Template webservices/web.test.rspcode[wfcatalog,wfcatalog short request])<>200'
       name: 'wfcatalog short request'
       event_name: 'WFCatalog short request failed, return code {ITEM.VALUE}'
+      status: DISABLED
       priority: AVERAGE
       description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&start={$ONLINECHECK_START}&end={$ONLINECHECK_END}'
       manual_close: 'YES'
