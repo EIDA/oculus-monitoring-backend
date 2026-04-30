@@ -24,7 +24,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -43,7 +43,6 @@
             "lineWidth": 0,
             "spanNulls": false
           },
-          "fieldMinMax": false,
           "mappings": [
             {
               "options": {
@@ -61,44 +60,55 @@
                   "index": 2,
                   "text": "No Content"
                 },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
                 "400": {
                   "color": "dark-orange",
-                  "index": 3,
+                  "index": 5,
                   "text": "Bad Request"
                 },
                 "401": {
                   "color": "dark-orange",
-                  "index": 4,
+                  "index": 6,
                   "text": "Unauthorized"
                 },
                 "403": {
                   "color": "dark-orange",
-                  "index": 5,
+                  "index": 7,
                   "text": "Forbidden"
                 },
                 "404": {
                   "color": "yellow",
-                  "index": 6,
+                  "index": 8,
                   "text": "Not Found"
                 },
                 "500": {
                   "color": "dark-red",
-                  "index": 7,
+                  "index": 9,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 8,
+                  "index": 10,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 9,
+                  "index": 11,
                   "text": "Service Unavailable"
                 },
                 "null": {
-                  "color": "transparent",
-                  "index": 10
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
                 }
               },
               "type": "value"
@@ -108,8 +118,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": 0
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -128,7 +141,7 @@
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "mergeValues": true,
         "rowHeight": 0.9,
@@ -139,7 +152,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -153,16 +166,16 @@
           "evaltype": "0",
           "functions": [],
           "group": {
-            "filter": "/.*/"
+            "filter": "EIDA nodes"
           },
           "host": {
             "filter": "/.*/"
           },
           "item": {
-            "filter": "Response code for step \"dataselect short request\" of scenario \"dataselect\"."
+            "filter": "dataselect accessible"
           },
           "itemTag": {
-            "filter": "webservice: dataselect"
+            "filter": "dataselect: accessible"
           },
           "macro": {
             "filter": ""
@@ -213,7 +226,7 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "GFZ"
+                "targetField": "GEOFON"
               },
               {
                 "destinationType": "string",
@@ -237,11 +250,11 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "SED"
+                "targetField": "ETH"
               },
               {
                 "destinationType": "string",
-                "targetField": "UIB"
+                "targetField": "UIB-NORSAR"
               },
               {
                 "destinationType": "string",
@@ -258,6 +271,10 @@
               {
                 "destinationType": "string",
                 "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
               }
             ],
             "fields": {}
@@ -296,7 +313,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -315,7 +332,6 @@
             "lineWidth": 0,
             "spanNulls": false
           },
-          "fieldMinMax": false,
           "mappings": [
             {
               "options": {
@@ -333,44 +349,55 @@
                   "index": 2,
                   "text": "No Content"
                 },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
                 "400": {
                   "color": "dark-orange",
-                  "index": 3,
+                  "index": 5,
                   "text": "Bad Request"
                 },
                 "401": {
                   "color": "dark-orange",
-                  "index": 4,
+                  "index": 6,
                   "text": "Unauthorized"
                 },
                 "403": {
                   "color": "dark-orange",
-                  "index": 5,
+                  "index": 7,
                   "text": "Forbidden"
                 },
                 "404": {
                   "color": "yellow",
-                  "index": 6,
+                  "index": 8,
                   "text": "Not Found"
                 },
                 "500": {
                   "color": "dark-red",
-                  "index": 7,
+                  "index": 9,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 8,
+                  "index": 10,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 9,
+                  "index": 11,
                   "text": "Service Unavailable"
                 },
                 "null": {
-                  "color": "transparent",
-                  "index": 10
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
                 }
               },
               "type": "value"
@@ -380,8 +407,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": 0
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -394,13 +424,13 @@
         "x": 0,
         "y": 17
       },
-      "id": 6,
+      "id": 3,
       "options": {
         "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "mergeValues": true,
         "rowHeight": 0.9,
@@ -411,7 +441,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -425,16 +455,16 @@
           "evaltype": "0",
           "functions": [],
           "group": {
-            "filter": "/.*/"
+            "filter": "EIDA nodes"
           },
           "host": {
             "filter": "/.*/"
           },
           "item": {
-            "filter": "Response code for step \"station accessible\" of scenario \"station\"."
+            "filter": "station accessible"
           },
           "itemTag": {
-            "filter": "webservice: station"
+            "filter": "station: accessible"
           },
           "macro": {
             "filter": ""
@@ -485,7 +515,7 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "GFZ"
+                "targetField": "GEOFON"
               },
               {
                 "destinationType": "string",
@@ -509,11 +539,11 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "SED"
+                "targetField": "ETH"
               },
               {
                 "destinationType": "string",
-                "targetField": "UIB"
+                "targetField": "UIB-NORSAR"
               },
               {
                 "destinationType": "string",
@@ -530,6 +560,10 @@
               {
                 "destinationType": "string",
                 "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
               }
             ],
             "fields": {}
@@ -568,7 +602,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -587,7 +621,6 @@
             "lineWidth": 0,
             "spanNulls": false
           },
-          "fieldMinMax": false,
           "mappings": [
             {
               "options": {
@@ -605,44 +638,55 @@
                   "index": 2,
                   "text": "No Content"
                 },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
                 "400": {
                   "color": "dark-orange",
-                  "index": 3,
+                  "index": 5,
                   "text": "Bad Request"
                 },
                 "401": {
                   "color": "dark-orange",
-                  "index": 4,
+                  "index": 6,
                   "text": "Unauthorized"
                 },
                 "403": {
                   "color": "dark-orange",
-                  "index": 5,
+                  "index": 7,
                   "text": "Forbidden"
                 },
                 "404": {
                   "color": "yellow",
-                  "index": 6,
+                  "index": 8,
                   "text": "Not Found"
                 },
                 "500": {
                   "color": "dark-red",
-                  "index": 7,
+                  "index": 9,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 8,
+                  "index": 10,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 9,
+                  "index": 11,
                   "text": "Service Unavailable"
                 },
                 "null": {
-                  "color": "transparent",
-                  "index": 10
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
                 }
               },
               "type": "value"
@@ -652,8 +696,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": 0
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -666,13 +713,13 @@
         "x": 0,
         "y": 34
       },
-      "id": 3,
+      "id": 4,
       "options": {
         "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "mergeValues": true,
         "rowHeight": 0.9,
@@ -683,7 +730,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -697,16 +744,16 @@
           "evaltype": "0",
           "functions": [],
           "group": {
-            "filter": "/.*/"
+            "filter": "EIDA nodes"
           },
           "host": {
             "filter": "/.*/"
           },
           "item": {
-            "filter": "Response code for step \"availability accessible\" of scenario \"availability\"."
+            "filter": "availability accessible"
           },
           "itemTag": {
-            "filter": "webservice: availability"
+            "filter": "availability: accessible"
           },
           "macro": {
             "filter": ""
@@ -757,7 +804,7 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "GFZ"
+                "targetField": "GEOFON"
               },
               {
                 "destinationType": "string",
@@ -781,11 +828,11 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "SED"
+                "targetField": "ETH"
               },
               {
                 "destinationType": "string",
-                "targetField": "UIB"
+                "targetField": "UIB-NORSAR"
               },
               {
                 "destinationType": "string",
@@ -802,6 +849,10 @@
               {
                 "destinationType": "string",
                 "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
               }
             ],
             "fields": {}
@@ -840,7 +891,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -859,7 +910,6 @@
             "lineWidth": 0,
             "spanNulls": false
           },
-          "fieldMinMax": false,
           "mappings": [
             {
               "options": {
@@ -877,44 +927,55 @@
                   "index": 2,
                   "text": "No Content"
                 },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
                 "400": {
                   "color": "dark-orange",
-                  "index": 3,
+                  "index": 5,
                   "text": "Bad Request"
                 },
                 "401": {
                   "color": "dark-orange",
-                  "index": 4,
+                  "index": 6,
                   "text": "Unauthorized"
                 },
                 "403": {
                   "color": "dark-orange",
-                  "index": 5,
+                  "index": 7,
                   "text": "Forbidden"
                 },
                 "404": {
                   "color": "yellow",
-                  "index": 6,
+                  "index": 8,
                   "text": "Not Found"
                 },
                 "500": {
                   "color": "dark-red",
-                  "index": 7,
+                  "index": 9,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 8,
+                  "index": 10,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 9,
+                  "index": 11,
                   "text": "Service Unavailable"
                 },
                 "null": {
-                  "color": "transparent",
-                  "index": 10
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
                 }
               },
               "type": "value"
@@ -924,8 +985,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": 0
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -938,13 +1002,13 @@
         "x": 0,
         "y": 51
       },
-      "id": 4,
+      "id": 5,
       "options": {
         "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "mergeValues": true,
         "rowHeight": 0.9,
@@ -955,7 +1019,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -969,16 +1033,16 @@
           "evaltype": "0",
           "functions": [],
           "group": {
-            "filter": "/.*/"
+            "filter": "EIDA nodes"
           },
           "host": {
             "filter": "/.*/"
           },
           "item": {
-            "filter": "Response code for step \"wfcatalog accessible\" of scenario \"wfcatalog\"."
+            "filter": "wfcatalog accessible"
           },
           "itemTag": {
-            "filter": "webservice: wfcatalog"
+            "filter": "wfcatalog: accessible"
           },
           "macro": {
             "filter": ""
@@ -1029,7 +1093,7 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "GFZ"
+                "targetField": "GEOFON"
               },
               {
                 "destinationType": "string",
@@ -1053,11 +1117,11 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "SED"
+                "targetField": "ETH"
               },
               {
                 "destinationType": "string",
-                "targetField": "UIB"
+                "targetField": "UIB-NORSAR"
               },
               {
                 "destinationType": "string",
@@ -1074,6 +1138,10 @@
               {
                 "destinationType": "string",
                 "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
               }
             ],
             "fields": {}
@@ -1112,7 +1180,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
+        "uid": "dest9vodnjv9cc"
       },
       "fieldConfig": {
         "defaults": {
@@ -1131,7 +1199,6 @@
             "lineWidth": 0,
             "spanNulls": false
           },
-          "fieldMinMax": false,
           "mappings": [
             {
               "options": {
@@ -1149,44 +1216,55 @@
                   "index": 2,
                   "text": "No Content"
                 },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
                 "400": {
                   "color": "dark-orange",
-                  "index": 3,
+                  "index": 5,
                   "text": "Bad Request"
                 },
                 "401": {
                   "color": "dark-orange",
-                  "index": 4,
+                  "index": 6,
                   "text": "Unauthorized"
                 },
                 "403": {
                   "color": "dark-orange",
-                  "index": 5,
+                  "index": 7,
                   "text": "Forbidden"
                 },
                 "404": {
                   "color": "yellow",
-                  "index": 6,
+                  "index": 8,
                   "text": "Not Found"
                 },
                 "500": {
                   "color": "dark-red",
-                  "index": 7,
+                  "index": 9,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 8,
+                  "index": 10,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 9,
+                  "index": 11,
                   "text": "Service Unavailable"
                 },
                 "null": {
-                  "color": "transparent",
-                  "index": 10
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
                 }
               },
               "type": "value"
@@ -1196,8 +1274,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": 0
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -1210,13 +1291,13 @@
         "x": 0,
         "y": 68
       },
-      "id": 5,
+      "id": 6,
       "options": {
         "alignValue": "left",
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "mergeValues": true,
         "rowHeight": 0.9,
@@ -1227,7 +1308,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.1",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "application": {
@@ -1241,16 +1322,16 @@
           "evaltype": "0",
           "functions": [],
           "group": {
-            "filter": "/.*/"
+            "filter": "EIDA nodes"
           },
           "host": {
             "filter": "/.*/"
           },
           "item": {
-            "filter": "Response code for step \"EIDA Routing infomation\" of scenario \"present in central eida routing\"."
+            "filter": "seedpsd accessible"
           },
           "itemTag": {
-            "filter": "webservice: routing_present"
+            "filter": "seedpsd: accessible"
           },
           "macro": {
             "filter": ""
@@ -1282,7 +1363,7 @@
           }
         }
       ],
-      "title": "routing central healthcheck",
+      "title": "seedpsd healthcheck",
       "transformations": [
         {
           "id": "renameByRegex",
@@ -1301,7 +1382,7 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "GFZ"
+                "targetField": "GEOFON"
               },
               {
                 "destinationType": "string",
@@ -1325,11 +1406,11 @@
               },
               {
                 "destinationType": "string",
-                "targetField": "SED"
+                "targetField": "ETH"
               },
               {
                 "destinationType": "string",
-                "targetField": "UIB"
+                "targetField": "UIB-NORSAR"
               },
               {
                 "destinationType": "string",
@@ -1346,6 +1427,10 @@
               {
                 "destinationType": "string",
                 "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
               }
             ],
             "fields": {}
@@ -1383,7 +1468,7 @@
     }
   ],
   "preload": false,
-  "refresh": "1m",
+  "refresh": "15m",
   "schemaVersion": 41,
   "tags": [
     "EIDA",
@@ -1393,13 +1478,13 @@
     "list": []
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "EIDA global WeatherMap",
   "uid": "cen19lnkzcsu8b",
-  "version": 3,
+  "version": 23,
   "weekStart": "monday"
 }
