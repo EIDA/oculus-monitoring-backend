@@ -1408,7 +1408,7 @@ zabbix_export:
               value: local
           triggers:
             - uuid: fb168f56c305464c84823e866873ac27
-              expression: 'nodata(/Template static routing/fdsn_dc_registry.json,125m)=1'
+              expression: 'nodata(/Template static routing/fdsn_dc_registry.json,245m)=1'
               name: 'Local datacenter registry information not published'
               priority: WARNING
               description: 'Unable to parse json data at https://{$ENDPOINT}/{$FDSNROUTINGFILE}'
@@ -1656,16 +1656,18 @@ zabbix_export:
         - name: Templates/EIDA
       items:
         - uuid: d62af588b94942d38929e1b201b7ecba
-          name: 'availability accessible'
+          name: 'availability healtcheck'
           type: HTTP_AGENT
-          key: availability.accessible
-          delay: 15m
+          key: availability.healtcheck
+          delay: 3m
           trends: '0'
           preprocessing:
             - type: REGEX
               parameters:
                 - '^HTTP/[\d.]+ (\d+)'
                 - \1
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '999'
           timeout: 1m
           url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
           status_codes: ''
@@ -1674,19 +1676,19 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: availability
-              value: accessible
+            - tag: healtcheck
             - tag: webservice
               value: availability
           triggers:
             - uuid: 5397d9f5f56b4574abfb297603b86186
-              expression: 'last(/Template webservices/availability.accessible)<>200'
-              name: 'availability accessible'
+              expression: 'min(/Template webservices/availability.healtcheck,15m)>200'
+              name: 'availability healtcheck'
               event_name: 'Availability is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/'
               manual_close: 'YES'
               tags:
+                - tag: healtcheck
                 - tag: webservice
                   value: availability
         - uuid: e38a49ab9c0e442c9ea3a47f8869aaee
@@ -1826,10 +1828,10 @@ zabbix_export:
                 - tag: webservice
                   value: wfcatalog
         - uuid: 4d2c06140e994c71b2bb96f7e9aa58ba
-          name: 'dataselect accessible'
+          name: 'dataselect healtcheck'
           type: HTTP_AGENT
-          key: dataselect.accessible
-          delay: 15m
+          key: dataselect.healtcheck
+          delay: 3m
           preprocessing:
             - type: REGEX
               parameters:
@@ -1843,26 +1845,26 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: dataselect
-              value: accessible
+            - tag: healtcheck
             - tag: webservice
               value: dataselect
           triggers:
             - uuid: 41525921387c469b8d8e00328cde8d1e
-              expression: 'last(/Template webservices/dataselect.accessible)<>200'
-              name: 'dataselect accessible'
+              expression: 'min(/Template webservices/dataselect.healtcheck,15m)>200'
+              name: 'dataselect healtcheck'
               event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/dataselect/1/'
               manual_close: 'YES'
               tags:
+                - tag: healtcheck
                 - tag: webservice
                   value: dataselect
         - uuid: e79ed8a36d2249bda0444913e05721fb
-          name: 'seedpsd accessible'
+          name: 'seedpsd healtcheck'
           type: HTTP_AGENT
-          key: seedpsd.accessible
-          delay: 15m
+          key: seedpsd.healtcheck
+          delay: 3m
           preprocessing:
             - type: REGEX
               parameters:
@@ -1876,26 +1878,26 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: seedpsd
-              value: accessible
+            - tag: healtcheck
             - tag: webservice
               value: seedpsd
           triggers:
             - uuid: 0d3df26afc9c4b57a9f1e27604580ee0
-              expression: 'last(/Template webservices/seedpsd.accessible)<>200'
-              name: 'seedpsd accessible'
+              expression: 'min(/Template webservices/seedpsd.healtcheck,15m)>200'
+              name: 'seedpsd healtcheck'
               event_name: 'SeedPSD is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/eidaws/psd/1/'
               manual_close: 'YES'
               tags:
+                - tag: healtcheck
                 - tag: webservice
                   value: seedpsd
         - uuid: 705a0eaf6e134511a1d211302f3def97
-          name: 'station accessible'
+          name: 'station healtcheck'
           type: HTTP_AGENT
-          key: station.accessible
-          delay: 15m
+          key: station.healtcheck
+          delay: 3m
           preprocessing:
             - type: REGEX
               parameters:
@@ -1909,26 +1911,26 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: station
-              value: accessible
+            - tag: healtcheck
             - tag: webservice
               value: station
           triggers:
             - uuid: 30f8b3cc9dea424ab488bc7eaa56222c
-              expression: 'last(/Template webservices/station.accessible)<>200'
-              name: 'station accessible'
+              expression: 'min(/Template webservices/station.healtcheck,15m)>200'
+              name: 'station healtcheck'
               event_name: 'Station is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
               manual_close: 'YES'
               tags:
+                - tag: healtcheck
                 - tag: webservice
                   value: station
         - uuid: ad50cdc210ba42a3a14a0419b29c8344
-          name: 'wfcatalog accessible'
+          name: 'wfcatalog healtcheck'
           type: HTTP_AGENT
-          key: wfcatalog.accessible
-          delay: 15m
+          key: wfcatalog.healtcheck
+          delay: 3m
           preprocessing:
             - type: REGEX
               parameters:
@@ -1942,19 +1944,19 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: webservice
-              value: wfcatalog
+            - tag: healtcheck
             - tag: wfcatalog
               value: accessible
           triggers:
             - uuid: e31b4eb2c621444aa03dd189311d89a5
-              expression: 'last(/Template webservices/wfcatalog.accessible)<>200'
-              name: 'wfcatalog accessible'
+              expression: 'min(/Template webservices/wfcatalog.healtcheck,15m)>200'
+              name: 'wfcatalog healtcheck'
               event_name: 'WFCatalog is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/'
               manual_close: 'YES'
               tags:
+                - tag: healtcheck
                 - tag: webservice
                   value: wfcatalog
       httptests:

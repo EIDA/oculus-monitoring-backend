@@ -32,7 +32,7 @@ zabbix_export:
               value: local
           triggers:
             - uuid: fb168f56c305464c84823e866873ac27
-              expression: 'nodata(/Template static routing/fdsn_dc_registry.json,125m)=1'
+              expression: 'nodata(/Template static routing/fdsn_dc_registry.json,245m)=1'
               name: 'Local datacenter registry information not published'
               priority: WARNING
               description: 'Unable to parse json data at https://{$ENDPOINT}/{$FDSNROUTINGFILE}'
