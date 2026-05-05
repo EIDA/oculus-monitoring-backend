@@ -25,4 +25,3 @@
         zabbix_password: "{{ zabbix_grafana_pass }}"
         trends: true
         state: present
-        
