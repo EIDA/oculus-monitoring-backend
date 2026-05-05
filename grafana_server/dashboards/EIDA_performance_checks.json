@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 10,
   "links": [],
   "panels": [
     {
@@ -37,7 +37,7 @@
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
+        "uid": "dest9vodnjv9cc"
       },
       "description": "",
       "fieldConfig": {
@@ -87,8 +87,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": 0
+                "color": "green"
               }
             ]
           },
@@ -118,7 +117,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.1",
+      "pluginVersion": "12.0.2",
       "repeat": "WS",
       "repeatDirection": "v",
       "targets": [
@@ -188,252 +187,252 @@
       "type": "timeseries"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 56
       },
       "id": 2,
-      "panels": [],
-      "title": "Transfer Rate",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [
-            {
-              "options": {
-                "200": {
-                  "color": "green",
-                  "index": 0,
-                  "text": "OK"
-                },
-                "201": {
-                  "color": "yellow",
-                  "index": 1
-                },
-                "204": {
-                  "color": "yellow",
-                  "index": 2,
-                  "text": "No Content"
-                },
-                "400": {
-                  "color": "dark-orange",
-                  "index": 3,
-                  "text": "Bad Request"
-                },
-                "401": {
-                  "color": "dark-orange",
-                  "index": 4,
-                  "text": "Unauthorized"
-                },
-                "403": {
-                  "color": "dark-orange",
-                  "index": 5,
-                  "text": "Forbidden"
-                },
-                "404": {
-                  "color": "yellow",
-                  "index": 6,
-                  "text": "Not Found"
-                },
-                "500": {
-                  "color": "dark-red",
-                  "index": 7,
-                  "text": "Internal Server Error"
-                },
-                "502": {
-                  "color": "dark-red",
-                  "index": 8,
-                  "text": "Bad Gateway"
-                },
-                "503": {
-                  "color": "dark-red",
-                  "index": 9,
-                  "text": "Service Unavailable"
-                },
-                "null": {
-                  "color": "transparent",
-                  "index": 10
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              }
-            ]
-          },
-          "unit": "binBps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 46
-      },
-      "id": 1,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "last",
-            "min",
-            "max"
-          ],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.1.1",
-      "repeat": "WS",
-      "repeatDirection": "v",
-      "targets": [
+      "panels": [
         {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
           "datasource": {
             "type": "alexanderzobnin-zabbix-datasource",
             "uid": "dest9vodnjv9cc"
           },
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": "$TRANSFER_RATE"
-          },
-          "itemTag": {
-            "filter": "$WS"
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "count": false,
-            "disableDataAlignment": true,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "0",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "$WS",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "^[^\"]*\"([^\"]*)\".*",
-            "renamePattern": "$1"
-          }
-        },
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "destinationType": "string",
-                "targetField": "9 streams"
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
               },
-              {
-                "destinationType": "string",
-                "targetField": "54 streams"
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
-              {
-                "destinationType": "string",
-                "targetField": "320 streams"
+              "mappings": [
+                {
+                  "options": {
+                    "200": {
+                      "color": "green",
+                      "index": 0,
+                      "text": "OK"
+                    },
+                    "201": {
+                      "color": "yellow",
+                      "index": 1
+                    },
+                    "204": {
+                      "color": "yellow",
+                      "index": 2,
+                      "text": "No Content"
+                    },
+                    "400": {
+                      "color": "dark-orange",
+                      "index": 3,
+                      "text": "Bad Request"
+                    },
+                    "401": {
+                      "color": "dark-orange",
+                      "index": 4,
+                      "text": "Unauthorized"
+                    },
+                    "403": {
+                      "color": "dark-orange",
+                      "index": 5,
+                      "text": "Forbidden"
+                    },
+                    "404": {
+                      "color": "yellow",
+                      "index": 6,
+                      "text": "Not Found"
+                    },
+                    "500": {
+                      "color": "dark-red",
+                      "index": 7,
+                      "text": "Internal Server Error"
+                    },
+                    "502": {
+                      "color": "dark-red",
+                      "index": 8,
+                      "text": "Bad Gateway"
+                    },
+                    "503": {
+                      "color": "dark-red",
+                      "index": 9,
+                      "text": "Service Unavailable"
+                    },
+                    "null": {
+                      "color": "transparent",
+                      "index": 10
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
               },
-              {
-                "destinationType": "string",
-                "targetField": "1 stream 15 days"
+              "unit": "binBps"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 24,
+            "x": 0,
+            "y": 46
+          },
+          "id": 1,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "last",
+                "min",
+                "max"
+              ],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.0.2",
+          "repeat": "WS",
+          "repeatDirection": "v",
+          "targets": [
+            {
+              "application": {
+                "filter": ""
+              },
+              "countTriggersBy": "",
+              "datasource": {
+                "type": "alexanderzobnin-zabbix-datasource",
+                "uid": "dest9vodnjv9cc"
+              },
+              "evaltype": "0",
+              "functions": [],
+              "group": {
+                "filter": "$EIDA_NODES"
+              },
+              "host": {
+                "filter": "$EIDA_NODES"
+              },
+              "item": {
+                "filter": "$TRANSFER_RATE"
+              },
+              "itemTag": {
+                "filter": "$WS"
+              },
+              "macro": {
+                "filter": ""
+              },
+              "options": {
+                "count": false,
+                "disableDataAlignment": true,
+                "showDisabledItems": false,
+                "skipEmptyValues": false,
+                "useTrends": "default",
+                "useZabbixValueMapping": false
+              },
+              "proxy": {
+                "filter": ""
+              },
+              "queryType": "0",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "schema": 12,
+              "table": {
+                "skipEmptyValues": false
+              },
+              "tags": {
+                "filter": ""
+              },
+              "textFilter": "",
+              "trigger": {
+                "filter": ""
               }
-            ],
-            "fields": {}
-          }
+            }
+          ],
+          "title": "$WS",
+          "transformations": [
+            {
+              "id": "renameByRegex",
+              "options": {
+                "regex": "^[^\"]*\"([^\"]*)\".*",
+                "renamePattern": "$1"
+              }
+            },
+            {
+              "id": "convertFieldType",
+              "options": {
+                "conversions": [
+                  {
+                    "destinationType": "string",
+                    "targetField": "9 streams"
+                  },
+                  {
+                    "destinationType": "string",
+                    "targetField": "54 streams"
+                  },
+                  {
+                    "destinationType": "string",
+                    "targetField": "320 streams"
+                  },
+                  {
+                    "destinationType": "string",
+                    "targetField": "1 stream 15 days"
+                  }
+                ],
+                "fields": {}
+              }
+            }
+          ],
+          "type": "timeseries"
         }
       ],
-      "type": "timeseries"
+      "title": "Transfer Rate",
+      "type": "row"
     }
   ],
   "preload": false,
@@ -448,12 +447,12 @@
       {
         "allowCustomValue": false,
         "current": {
-          "text": "EPOSFR",
-          "value": "EPOSFR"
+          "text": "ODC",
+          "value": "ODC"
         },
         "datasource": {
           "type": "alexanderzobnin-zabbix-datasource",
-          "uid": "ef0ms3r1nwoowb"
+          "uid": "dest9vodnjv9cc"
         },
         "definition": "",
         "description": "",
@@ -560,8 +559,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "EIDA PerfCheck",
+  "title": "EIDA performance checks",
   "uid": "eb676f02-3961-4251-8d28-6e3f0f20bf95",
-  "version": 9,
+  "version": 3,
   "weekStart": "monday"
 }
