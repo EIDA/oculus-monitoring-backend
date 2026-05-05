@@ -1,70 +1,70 @@
 zabbixImageTag: alpine-7.0.18
 zabbixProxy:
-  enabled: false
+    enabled: false
 # Désactive la création d'un container postgresql sur k8s
 postgresql:
-  enabled: false
+    enabled: false
 postgresAccess:
-  # Désactive l'utilisation des secrets Kubernetes
-  useUnifiedSecret: false
-  # Supprime les référence à un secret
-  unifiedSecretName: ""
-  unifiedSecretAutoCreate: false
-  host: resif-pgprod.u-ga.fr
-  port: "5432"
-  user: oculus
-  password: ENC[AES256_GCM,data:2aN4Ymwmzf8MU16hOhI3iiZoNlM=,iv:N4YUfesaC/rB2RvMVdumP7EwIoh1bazScQQyO5cnZZM=,tag:kKPrVZj0KUO2C2qCXV3ixA==,type:str]
-  database: oculus_zabbix
+    # Désactive l'utilisation des secrets Kubernetes
+    useUnifiedSecret: false
+    # Supprime les référence à un secret
+    unifiedSecretName: ""
+    unifiedSecretAutoCreate: false
+    host: resif-pgprod.u-ga.fr
+    port: "5432"
+    user: oculus
+    password: ENC[AES256_GCM,data:MQLhstftMrOCfxxlqi/xgXLxoew=,iv:mymmWoiK318XkDrHf4O+qJMAuE3uBOt2JM2hvIGdqAY=,tag:1uQcSm3w1wygl9rl1/HpUw==,type:str]
+    database: oculus_zabbix
 zabbixServer:
-  enabled: true
-  zabbixServerHA:
-    enable: false
-  service:
-    type: ClusterIP
-    port: 10051
+    enabled: true
+    zabbixServerHA:
+        enable: false
+    service:
+        type: ClusterIP
+        port: 10051
 zabbixWeb:
-  enabled: true
-  ZBX_SERVER_HOST: zabbix-server
-  ZBX_SERVER_PORT: 10051
-  service:
-    type: ClusterIP
-    port: 8888
+    enabled: true
+    ZBX_SERVER_HOST: zabbix-server
+    ZBX_SERVER_PORT: 10051
+    service:
+        type: ClusterIP
+        port: 8888
 ingress:
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-  enabled: true
-  hosts:
-  - host: ws.resif.fr
-    paths:
-    - path: /oculus-zbx/(.*)
-      pathType: ImplementationSpecific
-  ingressClassName: nginx
-  pathType: Prefix
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /$1
+    enabled: true
+    hosts:
+        - host: ws.resif.fr
+          paths:
+            - path: /oculus-zbx/(.*)
+              pathType: ImplementationSpecific
+    ingressClassName: nginx
+    pathType: Prefix
 # fullnameOverride: oculus
 sops:
-  kms: []
-  gcp_kms: []
-  azure_kv: []
-  hc_vault: []
-  age: []
-  lastmodified: "2025-02-14T11:07:42Z"
-  mac: ENC[AES256_GCM,data:fA++13nUzTeXfOPrjaIDi0WQDJZ5Lwb1+FXauimUc2o4a1i8Yly2HOmx7jM4iERRcP4UP/L3EhB457Fhl3IhqmyszHW5jn5im78BB5aG2/FeZL5/0R+Skefs6F8nIA2dDTB56Akfsf+VlPAIDDUSkhX2OqGOW8YB6/Tf8pLwAnQ=,iv:XEFbRXSFMOIyhPyF5BwRN4RZeU/pLXydjilLsvA5278=,tag:KF0uVNqqsjgTQBLLagn2gw==,type:str]
-  pgp:
-  - created_at: "2025-02-14T11:07:42Z"
-    enc: |-
-      -----BEGIN PGP MESSAGE-----
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2026-05-04T16:20:15Z"
+    mac: ENC[AES256_GCM,data:LUxetc1Cucj8k8hGUneG1BQK61uvb+VcjK8EapB9EgjHOw3m1spSn9TgpmQrjVQiXuUpcBgufGnKTAF7O5dlJGw+sfoiEgiB/NelgcIbJ0IuQSijCMsYvM7Vw0jYXxQLtqgxDq+sDoNHZBzy6UFEbJbmpA9xtslJC31IZ5sFUys=,iv:pcDn5TyHESFjMQ2haWltRsIZmaZL0o/Hy8IXuGnjQgs=,tag:IQt/pAQW3g5gk1TA8Yssng==,type:str]
+    pgp:
+        - created_at: "2026-05-04T16:20:15Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
 
-      hQEMA23uPS/3Y9M2AQf/SkfgSnnzD8aZ5ahoasog5EXjdiEuLvPyZlzARDmgcBIL
-      1GNWXicYP9Bvg8pjLBeKnuyupbDhAThhbb178rz6v3+UgtOqIqcO6XuIBk2LSGIU
-      TTahA3vf7nB2qiurIdeeFjtnppDy3dZvmx2ebvjQE6Zldp/+UCz8vA9uk/nDzH9y
-      ZI5UQ60PvIeNSc1ImWlN8SE7/fDjyx9qzgm4mZ+Cjc0Atgl2QPWkNJZqEH8pDLR3
-      6YpIajlpO9sJWoco19CzBYMer+bwysWFOQUuTcUUNRRgCFajNcR6qzKvWuljJ4KR
-      tl+LhcDdcm/oK77CSZwNzaJKtGYiKD1RogSstar0UdJeATJ0LIWUIjLGDmpD1UgL
-      LNm38YVKdyxL33ZdvgZ+g4jQv6j7e8g0yaaV/rER5IT67KTJMPRdFVLELz5l6OfB
-      YDgXRhpKYlYHuHMqw2iy9+KX1r0AnygHEoohayTyuA==
-      =FaIX
-      -----END PGP MESSAGE-----
-    fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
-  encrypted_regex: (password)
-  mac_only_encrypted: true
-  version: 3.9.1
+            hQEMA23uPS/3Y9M2AQf+LXlLh7l/45qYrDEw038p+gWmlXLtNHne+fhvUCxDsHXL
+            U9iOBCEZyf+CDzQ3lyPrVy+ld2HFA+kJRUE2ePO29c/MEDOr8o6Z+DV4xeuHXZ55
+            PNruYur4BcYEiuJJCUMvTVYKGuKnmWjVWETyqVqlfj6SPuW6Z+55FBYNtJYkxeF4
+            f1FqQzyQ1BMFFycA7vLI5e0bmmS02oT6kmTY+5AvVo35tuGWtn3YWhUXzSN+ZptO
+            imMHNSxll33hT2p4IdroKUA+paM3y3xTtjfD1v9WnGRF9pD8wgz61B4/EIuUpHRZ
+            M48nU0UOKaaIeZrP1rxO33Jc+St1uUpBdccVaY/q5dJeAR7PlzoOrz/z+PItE59y
+            LyR3pxH/YfZL9gVpJCGKKbOxkqCOMAQEDvMSHZm46thtB9RQ4Fezev1auteJEC/J
+            e1NLl51cqQkr5ZWO3nG6CAvthSEIm+WcFD4zYIappA==
+            =fTRp
+            -----END PGP MESSAGE-----
+          fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
+    encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|ansible_grafana_token|zabbix_grafana_token|zabbix_grafana_pass|zabbix_user_pass|adminPassword)
+    mac_only_encrypted: true
+    version: 3.9.2
