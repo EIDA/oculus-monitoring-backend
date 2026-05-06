@@ -1660,7 +1660,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: availability.healtcheck
           delay: 3m
-          trends: '0'
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
@@ -1832,6 +1833,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: dataselect.healtcheck
           delay: 3m
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
@@ -1865,6 +1868,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: seedpsd.healtcheck
           delay: 3m
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
@@ -1898,6 +1903,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: station.healtcheck
           delay: 3m
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
@@ -1931,6 +1938,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: wfcatalog.healtcheck
           delay: 3m
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
