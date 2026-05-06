@@ -190,8 +190,8 @@ def send_to_zabbix(hostname, results):
                             metrics["response_time_ms"]),
                     ItemValue(hostname, f"{key}.content_size_bytes",
                             metrics["content_size_bytes"]),
-                    ItemValue(hostname, f"{key}.transfer_rate",
-                            transfer_rate),
+                        ItemValue(hostname, f"{key}.transfer_rate",
+                            str(transfer_rate)),
                 ])
 
                 logger.info("   %s.response_time_ms = %s",

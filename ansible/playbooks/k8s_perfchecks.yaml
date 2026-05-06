@@ -24,5 +24,9 @@
                     restartPolicy: OnFailure
                     containers:
                       - name: oculus-perfchecks
-                        image: ghcr.io/eida/oculus-perfchecks
+                        image: ghcr.io/eida/oculus-perfchecks:main
                         imagePullPolicy: Always
+                        env:
+                        envFrom:
+                          - configMapRef:
+                              name: oculus-consistency-config
