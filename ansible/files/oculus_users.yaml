@@ -28,13 +28,9 @@ oculus_users:
   usrgrp: ICGC
   email: JoseAntonio.Jara@icgc.cat
 - username: user-ingv
-  name: Ivano Carluccio
+  name: INGV
   usrgrp: INGV
-  email: ivano.carluccio@ingv.it
-- username: user-ingv2
-  name: Massimo Fares
-  usrgrp: INGV
-  email: massimo.fares@ingv.it
+  email: notifications.eida@ingv.it
 - username: user-koeri
   name: Tuğçe Ergün
   usrgrp: KOERI
