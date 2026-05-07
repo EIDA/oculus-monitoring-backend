@@ -15,7 +15,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: availability.healtcheck
           delay: 3m
-          trends: '0'
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
@@ -187,6 +188,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: dataselect.healtcheck
           delay: 3m
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
@@ -220,6 +223,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: seedpsd.healtcheck
           delay: 3m
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
@@ -253,6 +258,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: station.healtcheck
           delay: 3m
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
@@ -286,6 +293,8 @@ zabbix_export:
           type: HTTP_AGENT
           key: wfcatalog.healtcheck
           delay: 3m
+          history: 50d
+          trends: 1000d
           preprocessing:
             - type: REGEX
               parameters:
@@ -564,7 +573,7 @@ zabbix_export:
       event_name: 'WFCatalog short request failed, return code {ITEM.VALUE}'
       status: DISABLED
       priority: AVERAGE
-      description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&start={$ONLINECHECK_START}&end={$ONLINECHECK_END}'
+      description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/query/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&start={$ONLINECHECK_START}&end={$ONLINECHECK_END}'
       manual_close: 'YES'
       tags:
         - tag: webservice
