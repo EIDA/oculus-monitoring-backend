@@ -32,6 +32,7 @@ handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(handler)
 
+
 def check_zabbix_connection():
     """check fi zabbix server is reachable"""
     try:
@@ -40,15 +41,14 @@ def check_zabbix_connection():
         sock.connect((ZABBIX_SERVER, ZABBIX_PORT))
         sock.close()
     except OSError:
-        logger.exception("cannot connect to zabbix server %s:%s",
-                        ZABBIX_SERVER,
-                        ZABBIX_PORT)
+        logger.exception(
+            "cannot connect to zabbix server %s:%s", ZABBIX_SERVER, ZABBIX_PORT
+        )
         return False
     else:
-        logger.info("zabbix server %s:%s is reachable",
-                    ZABBIX_SERVER,
-                    ZABBIX_PORT)
+        logger.info("zabbix server %s:%s is reachable", ZABBIX_SERVER, ZABBIX_PORT)
         return True
+
 
 def load_yaml_files(nodes_dir):
     """load all  EIDA nodes .yaml from directory"""
@@ -66,6 +66,7 @@ def load_yaml_files(nodes_dir):
 
     return yaml_files
 
+
 def build_url(endpoint, service_name, params):
     """build the URL for requests with query parameters"""
     base_url = f"https://{endpoint}/{service_name}/1/query"
@@ -79,6 +80,7 @@ def build_url(endpoint, service_name, params):
     query_string = urlencode(query_params, safe="*:-T")
     return f"{base_url}?{query_string}"
 
+
 def make_request(url):
     """make HTTP request and return metrics"""
     try:
@@ -87,7 +89,7 @@ def make_request(url):
             url,
             headers={"User-Agent": "oculus-monitor"},
             timeout=180,
-            allow_redirects=True
+            allow_redirects=True,
         )
         reponse_time = round((time.time() - start_time) * 1000, 2)
         return {
@@ -97,24 +99,29 @@ def make_request(url):
         }
     except requests.exceptions.Timeout:
         logger.exception("request timeout for %s", url)
-        return {"status_code": "TIMEOUT",
-                "response_time_ms": 180000,
-                "content_size_bytes": 0}
+        return {
+            "status_code": "TIMEOUT",
+            "response_time_ms": 180000,
+            "content_size_bytes": 0,
+        }
     except requests.exceptions.ConnectionError:
         logger.exception("connection error for %s", url)
-        return {"status_code": "CONNECTION_ERROR",
-                "response_time_ms": 0,
-                "content_size_bytes": 0}
+        return {
+            "status_code": "CONNECTION_ERROR",
+            "response_time_ms": 0,
+            "content_size_bytes": 0,
+        }
     except requests.exceptions.RequestException:
         logger.exception("request error for %s", url)
-        return {"status_code": "REQUEST_ERROR",
-                "response_time_ms": 0,
-                "content_size_bytes": 0}
-    except(OSError, ValueError):
+        return {
+            "status_code": "REQUEST_ERROR",
+            "response_time_ms": 0,
+            "content_size_bytes": 0,
+        }
+    except (OSError, ValueError):
         logger.exception("error for %s", url)
-        return {"status_code": "ERROR",
-                "response_time_ms": 0,
-                "content_size_bytes": 0}
+        return {"status_code": "ERROR", "response_time_ms": 0, "content_size_bytes": 0}
+
 
 def process_node(node_name, node_data):
     """process one node and return results"""
@@ -125,7 +132,7 @@ def process_node(node_name, node_data):
         logger.warning("no endpoint found for node %s", node_name)
         return results
 
-    #iterate through all services defined for this node
+    # iterate through all services defined for this node
     for service in node_data.get("services", []):
         service_name = service.get("name")
         scenario = service.get("scenario")
@@ -153,10 +160,11 @@ def process_node(node_name, node_data):
             "-> status: %s, time: %sms, size: %s bytes",
             result["status_code"],
             result.get("response_time_ms", "N/A"),
-            result.get("content_size_bytes", "N/A")
+            result.get("content_size_bytes", "N/A"),
         )
 
     return results
+
 
 def send_to_zabbix(hostname, results):
     """send results to zabbix server"""
@@ -171,7 +179,7 @@ def send_to_zabbix(hostname, results):
                 ItemValue(hostname, f"{key}.status_code", str(metrics["status_code"]))
             )
 
-            # sen,d response_time_ms and content_size_bytes only if they exist
+            # send response_time_ms and content_size_bytes only if they exist
             if "response_time_ms" in metrics and "content_size_bytes" in metrics:
                 # calculate transfer rate
                 transfer_rate = 0
@@ -181,28 +189,32 @@ def send_to_zabbix(hostname, results):
                 ):
                     response_time_sec = metrics["response_time_ms"] / 1000
                     transfer_rate = round(
-                        metrics["content_size_bytes"] / response_time_sec,
-                        2
+                        metrics["content_size_bytes"] / response_time_sec, 2
                     )
 
-                items.extend([
-                    ItemValue(hostname, f"{key}.response_time_ms",
-                            metrics["response_time_ms"]),
-                    ItemValue(hostname, f"{key}.content_size_bytes",
-                            metrics["content_size_bytes"]),
-                        ItemValue(hostname, f"{key}.transfer_rate",
-                            str(transfer_rate)),
-                ])
+                items.extend(
+                    [
+                        ItemValue(
+                            hostname,
+                            f"{key}.response_time_ms",
+                            metrics["response_time_ms"],
+                        ),
+                        ItemValue(
+                            hostname,
+                            f"{key}.content_size_bytes",
+                            metrics["content_size_bytes"],
+                        ),
+                        ItemValue(hostname, f"{key}.transfer_rate", str(transfer_rate)),
+                    ]
+                )
 
-                logger.info("   %s.response_time_ms = %s",
-                            key,
-                            metrics["response_time_ms"])
-                logger.info("   %s.content_size_bytes = %s",
-                            key,
-                            metrics["content_size_bytes"])
-                logger.info("   %s.transfer_rate = %s bytes/sec",
-                            key,
-                            transfer_rate)
+                logger.info(
+                    "   %s.response_time_ms = %s", key, metrics["response_time_ms"]
+                )
+                logger.info(
+                    "   %s.content_size_bytes = %s", key, metrics["content_size_bytes"]
+                )
+                logger.info("   %s.transfer_rate = %s bytes/sec", key, transfer_rate)
 
             logger.info("   %s.status_code = %s", key, metrics["status_code"])
 
@@ -212,7 +224,7 @@ def send_to_zabbix(hostname, results):
             "%s: %s/%s items, sent successfully",
             hostname,
             response.processed,
-            response.total
+            response.total,
         )
 
         if response.failed > 0:
@@ -223,6 +235,7 @@ def send_to_zabbix(hostname, results):
         return False
     else:
         return True
+
 
 def main():
     logger.info(SEPARATOR)
@@ -262,11 +275,11 @@ def main():
 
         if results:
             if send_to_zabbix(node_name.upper(), results):
-                logger.info("%s: perfCheck and zabbix sending completed",
-                            node_name)
+                logger.info("%s: perfCheck and zabbix sending completed", node_name)
             else:
-                logger.error("%s: perfCheck completed but zabbix sending failed",
-                            node_name)
+                logger.error(
+                    "%s: perfCheck completed but zabbix sending failed", node_name
+                )
         else:
             logger.warning("no results for node %s", node_name)
 
@@ -274,6 +287,6 @@ def main():
     logger.info("all nodes processing completed")
     logger.info(SEPARATOR)
 
+
 if __name__ == "__main__":
     main()
-
