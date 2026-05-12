@@ -18,13 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 13,
+  "id": 0,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "dest9vodnjv9cc"
+        "uid": "ffl2bgdtyqe4gf"
       },
       "fieldConfig": {
         "defaults": {
@@ -60,31 +60,28 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red"
+                "color": "red",
+                "value": 0
               },
               {
-                "color": "yellow",
+                "color": "dark-orange",
                 "value": 50
               },
               {
-                "color": "yellow",
+                "color": "orange",
                 "value": 60
               },
               {
-                "color": "orange",
+                "color": "dark-yellow",
                 "value": 70
               },
               {
-                "color": "orange",
+                "color": "yellow",
                 "value": 80
               },
               {
                 "color": "green",
                 "value": 90
-              },
-              {
-                "color": "green",
-                "value": 100
               }
             ]
           }
@@ -121,7 +118,7 @@
         "xTickLabelRotation": 0,
         "xTickLabelSpacing": 0
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.3.1",
       "targets": [
         {
           "application": {
@@ -151,7 +148,7 @@
           },
           "options": {
             "count": false,
-            "disableDataAlignment": false,
+            "disableDataAlignment": true,
             "showDisabledItems": false,
             "skipEmptyValues": false,
             "useTrends": "default",
@@ -178,11 +175,36 @@
       ],
       "title": "Score",
       "type": "barchart"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "go",
+          "showLineNumbers": true,
+          "showMiniMap": false
+        },
+        "content": "### For view all consistency reports:\n<a href=\"https://eida-oculus.orfeus-eu.org/consistency/\" target=\"_blank\">https://eida-oculus.orfeus-eu.org/consistency/</a>\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.3.1",
+      "title": "",
+      "type": "text"
     }
   ],
   "preload": false,
   "refresh": "1h",
-  "schemaVersion": 41,
+  "schemaVersion": 42,
   "tags": [
     "EIDA",
     "public"
@@ -215,12 +237,12 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-90d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "EIDA consistency",
   "uid": "378dc68a-bee4-448d-bb17-970783dade85",
-  "version": 17
+  "version": 11
 }

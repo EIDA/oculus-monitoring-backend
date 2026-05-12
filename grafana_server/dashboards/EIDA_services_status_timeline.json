@@ -32,56 +32,98 @@
             "mode": "thresholds"
           },
           "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
             "axisPlacement": "auto",
-            "axisSoftMax": 105,
-            "axisSoftMin": 0,
-            "fillOpacity": 80,
-            "gradientMode": "none",
+            "fillOpacity": 70,
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineWidth": 0,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "spanNulls": false
           },
-          "fieldMinMax": false,
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "200": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 6,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 7,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 8,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 10,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 11,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
+                }
+              },
+              "type": "value"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "green",
                 "value": 0
               },
               {
-                "color": "dark-orange",
-                "value": 50
-              },
-              {
-                "color": "orange",
-                "value": 60
-              },
-              {
-                "color": "dark-yellow",
-                "value": 70
-              },
-              {
-                "color": "yellow",
+                "color": "red",
                 "value": 80
-              },
-              {
-                "color": "green",
-                "value": 90
               }
             ]
           }
@@ -89,34 +131,27 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
+        "h": 17,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 1,
+      "id": 2,
       "options": {
-        "barRadius": 0,
-        "barWidth": 0.95,
-        "colorByField": "Value",
-        "fullHighlight": false,
-        "groupWidth": 0.7,
+        "alignValue": "left",
         "legend": {
-          "calcs": [],
           "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
+          "placement": "bottom",
+          "showLegend": false
         },
-        "orientation": "auto",
-        "showValue": "always",
-        "stacking": "none",
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
           "sort": "none"
-        },
-        "xTickLabelRotation": 0,
-        "xTickLabelSpacing": 0
+        }
       },
       "pluginVersion": "12.3.1",
       "targets": [
@@ -127,28 +162,28 @@
           "countTriggersBy": "",
           "datasource": {
             "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "dest9vodnjv9cc"
+            "uid": "cemk6kmr0s0zkb"
           },
           "evaltype": "0",
           "functions": [],
           "group": {
-            "filter": "$EIDA_NODES"
+            "filter": "EIDA nodes"
           },
           "host": {
-            "filter": "$EIDA_NODES"
+            "filter": "/.*/"
           },
           "item": {
-            "filter": "Global score"
+            "filter": "dataselect healtcheck"
           },
           "itemTag": {
-            "filter": "Application: consistency"
+            "filter": "healtcheck"
           },
           "macro": {
             "filter": ""
           },
           "options": {
             "count": false,
-            "disableDataAlignment": true,
+            "disableDataAlignment": false,
             "showDisabledItems": false,
             "skipEmptyValues": false,
             "useTrends": "default",
@@ -173,76 +208,1295 @@
           }
         }
       ],
-      "title": "Score",
-      "type": "barchart"
+      "title": "dataselect healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GEOFON"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ETH"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB-NORSAR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "ETH": 4,
+              "GEOFON": 5,
+              "ICGC": 6,
+              "IGN": 7,
+              "INGV": 8,
+              "KOERI": 9,
+              "LMU": 10,
+              "NIEP": 11,
+              "NOA": 12,
+              "ODC": 13,
+              "Time": 0,
+              "UIB-NORSAR": 14
+            },
+            "renameByName": {
+              "ETH": "",
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
     },
     {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "ffl2bgdtyqe4gf"
+      },
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "200": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 6,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 7,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 8,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 10,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 11,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 17,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 17
       },
-      "id": 2,
+      "id": 3,
       "options": {
-        "code": {
-          "language": "go",
-          "showLineNumbers": true,
-          "showMiniMap": false
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
-        "content": "### For view all consistency reports:\n<a href=\"https://eida-oculus.orfeus-eu.org/consistency/\" target=\"_blank\">https://eida-oculus.orfeus-eu.org/consistency/</a>\n",
-        "mode": "markdown"
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
       },
       "pluginVersion": "12.3.1",
-      "title": "",
-      "type": "text"
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "EIDA nodes"
+          },
+          "host": {
+            "filter": "/.*/"
+          },
+          "item": {
+            "filter": "station healtcheck"
+          },
+          "itemTag": {
+            "filter": "healtcheck"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "station healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GEOFON"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ETH"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB-NORSAR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "ETH": 4,
+              "GEOFON": 5,
+              "ICGC": 6,
+              "IGN": 7,
+              "INGV": 8,
+              "KOERI": 9,
+              "LMU": 10,
+              "NIEP": 11,
+              "NOA": 12,
+              "ODC": 13,
+              "Time": 0,
+              "UIB-NORSAR": 14
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "ffl2bgdtyqe4gf"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "200": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 6,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 7,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 8,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 10,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 11,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": 4,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "EIDA nodes"
+          },
+          "host": {
+            "filter": "/.*/"
+          },
+          "item": {
+            "filter": "availability healtcheck"
+          },
+          "itemTag": {
+            "filter": "healtcheck"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "availability healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GEOFON"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ETH"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB-NORSAR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "ETH": 4,
+              "GEOFON": 5,
+              "ICGC": 6,
+              "IGN": 7,
+              "INGV": 8,
+              "KOERI": 9,
+              "LMU": 10,
+              "NIEP": 11,
+              "NOA": 12,
+              "ODC": 13,
+              "Time": 0,
+              "UIB-NORSAR": 14
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "ffl2bgdtyqe4gf"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "200": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 6,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 7,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 8,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 10,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 11,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "noValue": "TIMEOUT",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 51
+      },
+      "id": 5,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "EIDA nodes"
+          },
+          "host": {
+            "filter": "/.*/"
+          },
+          "item": {
+            "filter": "wfcatalog healtcheck"
+          },
+          "itemTag": {
+            "filter": "healtcheck"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "wfcatalog healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GEOFON"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ETH"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB-NORSAR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "ETH": 4,
+              "GEOFON": 5,
+              "ICGC": 6,
+              "IGN": 7,
+              "INGV": 8,
+              "KOERI": 9,
+              "LMU": 10,
+              "NIEP": 11,
+              "NOA": 12,
+              "ODC": 13,
+              "Time": 0,
+              "UIB-NORSAR": 14
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "ffl2bgdtyqe4gf"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "200": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "OK"
+                },
+                "201": {
+                  "color": "yellow",
+                  "index": 1
+                },
+                "204": {
+                  "color": "yellow",
+                  "index": 2,
+                  "text": "No Content"
+                },
+                "301": {
+                  "color": "yellow",
+                  "index": 3,
+                  "text": "Moved Permanently"
+                },
+                "302": {
+                  "color": "dark-green",
+                  "index": 4,
+                  "text": "Found"
+                },
+                "400": {
+                  "color": "dark-orange",
+                  "index": 5,
+                  "text": "Bad Request"
+                },
+                "401": {
+                  "color": "dark-orange",
+                  "index": 6,
+                  "text": "Unauthorized"
+                },
+                "403": {
+                  "color": "dark-orange",
+                  "index": 7,
+                  "text": "Forbidden"
+                },
+                "404": {
+                  "color": "yellow",
+                  "index": 8,
+                  "text": "Not Found"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 9,
+                  "text": "Internal Server Error"
+                },
+                "502": {
+                  "color": "dark-red",
+                  "index": 10,
+                  "text": "Bad Gateway"
+                },
+                "503": {
+                  "color": "dark-red",
+                  "index": 11,
+                  "text": "Service Unavailable"
+                },
+                "null": {
+                  "color": "dark-red",
+                  "index": 12,
+                  "text": "Timeout"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 68
+      },
+      "id": 6,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "cemk6kmr0s0zkb"
+          },
+          "evaltype": "0",
+          "functions": [],
+          "group": {
+            "filter": "EIDA nodes"
+          },
+          "host": {
+            "filter": "/.*/"
+          },
+          "item": {
+            "filter": "seedpsd healtcheck"
+          },
+          "itemTag": {
+            "filter": "healtcheck"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "seedpsd healthcheck",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(.*):.*$",
+            "renamePattern": "$1"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "string",
+                "targetField": "ICGC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "GEOFON"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NIEP"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "NOA"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "LMU"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ODC"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "INGV"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "ETH"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "UIB-NORSAR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGS"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "BGR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "KOERI"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "EPOSFR"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "IGN"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "BGR": 1,
+              "BGS": 2,
+              "EPOSFR": 3,
+              "ETH": 4,
+              "GEOFON": 5,
+              "ICGC": 6,
+              "IGN": 7,
+              "INGV": 8,
+              "KOERI": 9,
+              "LMU": 10,
+              "NIEP": 11,
+              "NOA": 12,
+              "ODC": 13,
+              "Time": 0,
+              "UIB-NORSAR": 14
+            },
+            "renameByName": {
+              "Time": ""
+            }
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "state-timeline"
     }
   ],
   "preload": false,
-  "refresh": "1h",
+  "refresh": "5m",
   "schemaVersion": 42,
   "tags": [
     "EIDA",
     "public"
   ],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "text": "ETH",
-          "value": "ETH"
-        },
-        "definition": "",
-        "includeAll": false,
-        "label": "EIDA NODES",
-        "name": "EIDA_NODES",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "/^EIDA nodes$/",
-          "host": "/.*$/",
-          "item": "",
-          "itemTag": "",
-          "queryType": "host"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      }
-    ]
+    "list": []
   },
   "time": {
-    "from": "now-90d",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "EIDA consistency",
-  "uid": "378dc68a-bee4-448d-bb17-970783dade85",
-  "version": 11
+  "title": "EIDA services status timeline",
+  "uid": "cen19lnkzcsu8b2",
+  "version": 4,
+  "weekStart": "monday"
 }
