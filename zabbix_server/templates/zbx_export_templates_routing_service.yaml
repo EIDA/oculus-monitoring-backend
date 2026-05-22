@@ -52,6 +52,9 @@ zabbix_export:
                 The node is not present in EIDA central routing here:
                 https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
               manual_close: 'YES'
+              tags:
+                - tag: node
+                  value: odc
         - uuid: ec644c6f926642f8b2d76db892f33316
           name: 'Routing central count datasets'
           type: HTTP_AGENT
@@ -94,6 +97,9 @@ zabbix_export:
                 Central routing system advertises less networks than before (now : {ITEM.LASTVALUE}
                 check the full information : https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
               manual_close: 'YES'
+              tags:
+                - tag: node
+                  value: odc
         - uuid: 856a7898776a49afa4355aac03465147
           name: 'Routing central information'
           type: HTTP_AGENT
@@ -123,6 +129,9 @@ zabbix_export:
               priority: WARNING
               description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
               manual_close: 'YES'
+              tags:
+                - tag: node
+                  value: odc
       tags:
         - tag: Application
           value: routing_service

@@ -1306,6 +1306,9 @@ zabbix_export:
                 The node is not present in EIDA central routing here:
                 https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
               manual_close: 'YES'
+              tags:
+                - tag: node
+                  value: odc
         - uuid: ec644c6f926642f8b2d76db892f33316
           name: 'Routing central count datasets'
           type: HTTP_AGENT
@@ -1348,6 +1351,9 @@ zabbix_export:
                 Central routing system advertises less networks than before (now : {ITEM.LASTVALUE}
                 check the full information : https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
               manual_close: 'YES'
+              tags:
+                - tag: node
+                  value: odc
         - uuid: 856a7898776a49afa4355aac03465147
           name: 'Routing central information'
           type: HTTP_AGENT
@@ -1377,6 +1383,9 @@ zabbix_export:
               priority: WARNING
               description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
               manual_close: 'YES'
+              tags:
+                - tag: node
+                  value: odc
       tags:
         - tag: Application
           value: routing_service
@@ -1692,6 +1701,35 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: availability
+        - uuid: 077004dba85a450092570b3ef6d299b7
+          name: 'availability healtcheck v2'
+          type: SCRIPT
+          key: availability.healtcheck_v2
+          delay: 3m
+          history: 50d
+          value_type: TEXT
+          trends: '0'
+          params: |
+            var endpoint = '{$ENDPOINT}';
+            var url = 'https://' + endpoint + '/fdsnws/availability/1/';
+            
+            try {
+                var response = httpGet(url);
+                
+                if (response !== null) {
+                    return response.getResponseCode().toString();
+                } else {
+                    return '-1';
+                }
+            } catch(e) {
+                Zabbix.log(4, 'Error: ' + e.message);
+                return '-1';
+            }
+          timeout: 1m
+          tags:
+            - tag: healtcheck
+            - tag: webservice
+              value: availability_v2
         - uuid: e38a49ab9c0e442c9ea3a47f8869aaee
           name: 'CORS availability {$NODE}'
           type: HTTP_AGENT
