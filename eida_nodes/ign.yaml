@@ -1,8 +1,8 @@
 ---
 node: IGN
 endpoint: fdsnws.sismologia.ign.es
-eidaRoutingFile:
-fdsnRoutingFile:
+eidaRoutingFile: eidaws/routing/routing.xml
+fdsnRoutingFile: eidaws/routing/routing.json
 onlineCheck:
   net: ES
   sta: EXVI3
