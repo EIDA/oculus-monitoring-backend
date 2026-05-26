@@ -153,7 +153,7 @@ def send_to_zabbix(hostname, report_path):
         if score is None:
             logger.warning("score not found i, JSOn summary")
 
-        # connecy too zabx server
+        # connect to zbx server
         sender = Sender(server=ZABBIX_SERVER, port=ZABBIX_PORT)
 
         logger.info("sending data ton zabbix for host: %s", hostname)
@@ -163,7 +163,7 @@ def send_to_zabbix(hostname, report_path):
             ItemValue(hostname, "score.eida_consistency", score),
         ]
 
-        # se,nd via zabbix server
+        # send via zabbix server
         response = sender.send(items)
 
         logger.info(
