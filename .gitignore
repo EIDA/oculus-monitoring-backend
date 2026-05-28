@@ -10,3 +10,4 @@ eida_consistency/reports/*
 eida_consistency/stations/*
 eida_consistency/networks/*
 eida_consistency/eida_nodes
+scripts/zbx_problems_export.csv
