@@ -38,7 +38,7 @@
               - ReadWriteMany
             nfs:
               server: sum-resif-nas.u-ga.fr
-              path: /scratch/k8s-staging/oculus/consistency
+              path: /scratch/k8s-production/oculus/consistency
 
     - name: Create PVC for EIDA consistency
       kubernetes.core.k8s:
