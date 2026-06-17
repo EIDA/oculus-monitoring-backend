@@ -32,13 +32,15 @@
           metadata:
             name: oculus-consistency
           spec:
+            mountOptions:
+              - vers=3
             capacity:
               storage: 1Ti
             accessModes:
               - ReadWriteMany
             nfs:
               server: sum-resif-nas.u-ga.fr
-              path: /scratch/k8s-production/oculus/consistency
+              path: /scratch/k8s-production/oculus/consistency # or k8s_staging
 
     - name: Create PVC for EIDA consistency
       kubernetes.core.k8s:
