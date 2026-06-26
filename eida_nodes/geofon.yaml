@@ -1,8 +1,8 @@
 ---
 node: GEOFON
 endpoint: geofon.gfz.de
-eidaRoutingFile: "eidaws/routing/1/query?service=dataselect&network=GE"
-fdsnRoutingFile: "eidaws/routing/1/query?service=dataselect&network=GE"
+eidaRoutingFile: "eidaws/routing/1/localconfig"
+fdsnRoutingFile: "eidaws/routing/1/dc"
 onlineCheck:
   net: GE
   sta: KBS
