@@ -39,19 +39,11 @@ In order to edit Nodes values is in this [procedures](CONTRIBUTING.md)
 - Helm CLI (version 3 or later) installed https://helm.sh/docs/intro/install
 - Plugin Helm secret https://github.com/jkroepke/helm-secrets
 - Sops core https://github.com/getsops/sops
+- Private GPG key to decrypt the secret
+- Sops configured to use GPG key
 - Sufficient resources in the cluster to run Zabbix components
 
 ## Installation steps Zabbix
-### 1. Clone this repository
-  ```sh
-  git clone https://github.com/EIDA/oculus-monitoring-backend
-  ```
-
-### 2. Go to .yaml location
-  ```sh
-  cd zabbix_server/helm_values
-  ```
-
 ### 3. Add the Helm repository
   ```sh
   helm repo add zabbix-community https://zabbix-community.github.io/helm-zabbix
@@ -64,37 +56,32 @@ In order to edit Nodes values is in this [procedures](CONTRIBUTING.md)
   ```
 
 ### 5. Create DataBase postgresql
+connect to your postgresql instance and run the following command as postgres
   ```sql
   CREATE USER oculus WITH PASSWORD '{password}';
   CREATE DATABASE oculus_zabbix OWNER oculus;
   ```
 
-### 6. Connection to the DataBase
-  We recommend to use ```pgcli```
-
-  Usage :
-  ```
-  pgcli postgres://{user}@{netloc}/{dbname}
-  ```
-  Example:
-  ```
-  pgcli postgres://oculus@bdd-resif.fr/oculus_zabbix
+### 1. Clone this repository
+  ```sh
+  git clone https://github.com/EIDA/oculus-monitoring-backend
   ```
 
-### 7. decrypt password
+### 6. decrypt password
   ```sh
   cd oculus-monitoring-backend/zabbix_server/helm_values
   sops -d -i values.yaml
   ```
   /!\ TODO
 
-### 8. Install Zabbix
+### 7. Deploy Zabbix
   Apply Helm Chart
   ```sh
   helm secrets upgrade --install oculus-zabbix zabbix-community/zabbix \
   --dependency-update \
-  -f values.yaml -n eida-monitoring --debug
+  -f staging.yaml -n eida-monitoring
   ```
+  change staging for production to deploy in production
 
 ## Accessing the Zabbix Application (for development)
 - Port forward
