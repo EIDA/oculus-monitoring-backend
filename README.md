@@ -44,39 +44,33 @@ In order to edit Nodes values is in this [procedures](CONTRIBUTING.md)
 - Sufficient resources in the cluster to run Zabbix components
 
 ## Installation steps Zabbix
-### 3. Add the Helm repository
+### Add the Helm repository
   ```sh
   helm repo add zabbix-community https://zabbix-community.github.io/helm-zabbix
   helm repo update
   ```
 
-### 4. Create a Namespace for Zabbix
+### Create a Namespace for Zabbix
   ```sh
   kubectl create namespace eida-monitoring
   ```
 
-### 5. Create DataBase postgresql
+### Create DataBase postgresql
 connect to your postgresql instance and run the following command as postgres
   ```sql
   CREATE USER oculus WITH PASSWORD '{password}';
   CREATE DATABASE oculus_zabbix OWNER oculus;
   ```
 
-### 1. Clone this repository
+### Clone this repository
   ```sh
   git clone https://github.com/EIDA/oculus-monitoring-backend
   ```
 
-### 6. decrypt password
-  ```sh
-  cd oculus-monitoring-backend/zabbix_server/helm_values
-  sops -d -i values.yaml
-  ```
-  /!\ TODO
-
-### 7. Deploy Zabbix
+### Deploy Zabbix
   Apply Helm Chart
   ```sh
+  cd oculus-monitoring-backend/zabbix_server/helm_values
   helm secrets upgrade --install oculus-zabbix zabbix-community/zabbix \
   --dependency-update \
   -f staging.yaml -n eida-monitoring
@@ -166,16 +160,10 @@ ansible-playbook zbx_deployment.yaml
   helm repo update
   ```
 
-### 4. Decrypt password
-  ```sh
-  cd oculus-monitoring-backend/grafana_server/helm_values
-  sops decrypt values.yaml
-  ```
-
 ### 5. Install Grafana
   ```sh
   helm upgrade --install oculus-grafana grafana/grafana \
-  -f values.yaml -n eida-monitoring
+  -f staging.yaml -n eida-monitoring
   ```
 
 ## Accessing the Grafana Application (for development)
