@@ -1,31 +1,31 @@
-ansible_httpapi_pass: ENC[AES256_GCM,data:h0CnWwo9kRBNU0RQ,iv:GfiD0prJ8cIFHzqPy77gzAGjklKm62tdpD09Z6Ob5Is=,tag:z+4kfmWmR0OdU/UzXMCLPA==,type:str]
-ansible_zabbix_token: ENC[AES256_GCM,data:/QiOWeQeEAuax1NoOco9JGFrETPjheSBu2aJk6+B/dGReKRpV+ovAlNIFcrg6fRiwMbut49SBnLw28xO5aOJUw==,iv:t2HM6ge0w6JyGdgrz9VSmfGLEa1JElqFZ1bcGMIX+xk=,tag:ssziqMkVwQqtwY2wxnntLw==,type:str]
-ansible_grafana_token: ENC[AES256_GCM,data:BAHBjK1mdm96dEcCPPoooZBWZg6uTfcQSWheeD7+xm1xSF/sdu+mWhUogrPfPg==,iv:VGU8kndV9uLRyHhiKVovOtbsdb6xrgrNLBJKuBuUVlc=,tag:+PAfx/5Pcs+AzYihkN1z6w==,type:str]
-zabbix_grafana_token: ENC[AES256_GCM,data:y9Stn53hUR8vczHQytSnDVndM8RGWsM0uppxlQgfJyZ5USu0i5QHds7QPLT7aNVPCTwHbBnV3X12ulv4qXCsPA==,iv:8PZ5H/81e/17ZZErUMEOnWK7tyfwbTV3VrH7bfA/ygk=,tag:0eXV/wQwFl466n/ie9hsHw==,type:str]
-zabbix_grafana_pass: ENC[AES256_GCM,data:C36242fKVuNr/mmQ,iv:pZmUxkDjjmHp//+xLhAF8Zei0ErvLAhYsqKth+IWgKA=,tag:nL0fhU/nA+sL8gd2LO6M8Q==,type:str]
-zabbix_user_pass: ENC[AES256_GCM,data:fK7EdgY7+9jX9woh,iv:AGmfRoAcT7ZoxiXZTA/EGmWJkeSE/hdVOd2tXgSrcoQ=,tag:Ed+L+SrDj1ICC/CL7H9rAQ==,type:str]
+ansible_httpapi_pass: ENC[AES256_GCM,data:a1+bZS5CNfIz1RXg,iv:H7RddWZYNm9U2THuymJa7LEmevC3ZX8bLxvu/yB8yLs=,tag:IA8Hc9vKyJ6Q4f9qPUvRhQ==,type:str]
+ansible_zabbix_token: ENC[AES256_GCM,data:JTo3j8p0csw27oRBc9Di0EE8zacgzNjJUmW5dUNOfPajKO3oquDhqIslAinY/iDbv63/MwGQbfFOa/W4GDy0EQ==,iv:UZsWRuG4wulGaSVC8gs59F6JTFTBuyKsedLXzFx7TaY=,tag:VCWnb1jyOZ/sjX/2FKTrTw==,type:str]
+ansible_grafana_token: ENC[AES256_GCM,data:JmbiYgrWHlP772yJ6NXOTHMKJxbu1oW9+/6EsRDbTbJvI+2KzXP+70xrddRChA==,iv:QQlb9qCL6oVa4hWP005OVMR+FSJxH2HhY1LtVJEbZ2Q=,tag:Jg5GUln/cqdFY/aNbAGtSw==,type:str]
+zabbix_grafana_token: ENC[AES256_GCM,data:R//TvMel9aSOTk9WQZf0toKoFsLx95cPVkLQtj8XjoA6JRMIvZ9dHnZxYBfBdcXdhu84AkmdIZ6YbMgw2cCMCg==,iv:/dYq8eyDJCgyPD3AnGd2qnt75QcJPXpKesv4OAC61Qo=,tag:4uMlYQ/RekUv8NiK8FG+2Q==,type:str]
+zabbix_grafana_pass: ENC[AES256_GCM,data:1cv/Iol7qQqnQcQY,iv:36ITStDjGcGN+0bZSfKS6uEO4T3/SbQ6dO7L07/Vs+o=,tag:g/e3v2Hk9j5ot/Bo4TS0Iw==,type:str]
+zabbix_user_pass: ENC[AES256_GCM,data:wFSZ4xAxP7ljWumR,iv:L5Tq7l4aN5v8eGuVSfb8xFT9x45JjZslfHAny1PC+mE=,tag:NtlgmZFNo6MoojYbjOXPXQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2025-12-01T16:26:35Z"
-    mac: ENC[AES256_GCM,data:5LJ3ggv1zx3dZj7hB02QO0CsAPMgmC1UB2PeO+w2uNRpo+yzWubF6eT2yZtWEEvROv5hGlHsPkdymF40bpN/EUsKIJyOo60qbzkXkFembEE8Zb7NLi5dWnJYwl7Ya9FvuKLfmQkFGbUJkw9e2fH8hU85911aa5PaDJxRtPoJDaY=,iv:7xWtO0Vuz2LWUClwD0p3rHcaD4SEDlTxXBtL6BLuruQ=,tag:0gulh+I/EvFzFuFgwOC3Mw==,type:str]
+    lastmodified: "2026-06-30T15:06:22Z"
+    mac: ENC[AES256_GCM,data:zDlsa6eqT50OGjGQex7xIK383xQuzoCTb7mWt7QiSkxBnlQ6yHp9XkrbxFJlUUOTT5KF7XL/NagzOGUCs7KQkf4YnasYQ6FFLKPqAzB2/Wputlh+5lrrhVr3cdy9rLGZaA6Q79Kg1peb6DYVK8LAmyQ+k1fXwyiU69LogROJ31o=,iv:xbcorH5EcIIs20/OFGErvO7vtMQTqhX0TgMXq80VjB8=,tag:0qkgRTQOSnAMsvTiVmPXNw==,type:str]
     pgp:
-        - created_at: "2025-12-01T16:26:35Z"
+        - created_at: "2026-06-30T15:06:22Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQEMA23uPS/3Y9M2AQgAsFwTqb4vbHfCYnlujYTC6sHmBFX5jeXTFbZYTjmuA5Xn
-            aJTuUFIHzfKt+pU5SZ2RtB2NupxOeuScAzZVKVhgT7ESsEb3v9EYGatQ0+4/yiq9
-            jh2o1hNS2PM/omSk3Cr3diFFnF3+a23IZgDkTQSH0xJDlOy60qLFkSclann4XBc+
-            rgGOlq79N2LvXxCvI6Xzzyll8yeTMMxiA058sPEq7F1iV9K4pJ/bHxxZ1DDwVq5u
-            4vjEcMApdG1mM4snBPW2mM4noDVizRB+xr0/+P5dcWFOU4MBo/M7P9QfhP635fxo
-            kk3n7+y9131HWGIeSCU+nvid8n38MB4xhL+4VCl6KNJeAfM/Csy1+N/xylQ+2BJa
-            tzICHybo/vcC6yMxXyjUd1jZiY4KScV9DvZuuWYbHva1ZZl1l3fzJybXst9eQIEY
-            gyu0RpEvkDQgGcH2YxMnjut9WqIBsiMXovvn/442cA==
-            =9SEt
+            hQEMA23uPS/3Y9M2AQf+LhEsoSCbeHkVxao4t1fLiVcSLpgUIRCOYW3jxLWN6dvh
+            hbvew5gofzir9VTDbQadFTX49+fytH/bDj9oyazpUC7HzDu/34LHN5AWRWVDhWNQ
+            dcdCpsQ2XbkUjacWWSG21F3heKZPZiTETaCxBTecydi9tm1KBzQQaC0EZozEojHR
+            syZ5FwFMqZBzbqdqLXS6ZSNgb6t8Yq472fkYu24gM4aI63d8DSnR+ueWcIL2EV98
+            OXN8RkQ1U89Bs4H08GUGtIAhaAI3eWOt7hNlVc5MCXR4/BETqVz0frHhP86azLaT
+            pCIQZ3dVsK/jArl9DzyW3beZ343rvF1mTz8/0Yom4tJeAVLKLCtXe3F/2ydnyP8o
+            ku0jVlu3kbkF8Q4NB5f+TFY/6moBCohiTbtfGcD/Qh72MdmFsDMgPQGXvfK2OUsL
+            1MrUj7ju6i5RdNwWZv+/xVbGkY4NE+SkHdUniFQ2DA==
+            =PUK0
             -----END PGP MESSAGE-----
           fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
     encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|ansible_grafana_token|zabbix_grafana_token|zabbix_grafana_pass|zabbix_user_pass|adminPassword)

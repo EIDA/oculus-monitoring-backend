@@ -13,7 +13,7 @@ postgresAccess:
     host: resif-pgprod.u-ga.fr
     port: "5432"
     user: oculus
-    password: ENC[AES256_GCM,data:MQLhstftMrOCfxxlqi/xgXLxoew=,iv:mymmWoiK318XkDrHf4O+qJMAuE3uBOt2JM2hvIGdqAY=,tag:1uQcSm3w1wygl9rl1/HpUw==,type:str]
+    password: ENC[AES256_GCM,data:NdeQTSp7YwI17iWK4sHWyNrIc/w=,iv:of883Zs74SzTT83lNiOHVblP/XFSc//3outQQt8ov3U=,tag:dRLFJY1aB8eKvF9G48HYLg==,type:str]
     database: oculus_zabbix
 zabbixServer:
     enabled: true
@@ -47,22 +47,22 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2026-05-04T16:20:15Z"
-    mac: ENC[AES256_GCM,data:LUxetc1Cucj8k8hGUneG1BQK61uvb+VcjK8EapB9EgjHOw3m1spSn9TgpmQrjVQiXuUpcBgufGnKTAF7O5dlJGw+sfoiEgiB/NelgcIbJ0IuQSijCMsYvM7Vw0jYXxQLtqgxDq+sDoNHZBzy6UFEbJbmpA9xtslJC31IZ5sFUys=,iv:pcDn5TyHESFjMQ2haWltRsIZmaZL0o/Hy8IXuGnjQgs=,tag:IQt/pAQW3g5gk1TA8Yssng==,type:str]
+    lastmodified: "2026-06-30T13:13:06Z"
+    mac: ENC[AES256_GCM,data:DvPGjCfqLHbE7CzdZ9v3PZaAoqaRkO8kJh5uWdTWqU2F3zoWsLYhuGfNM6RT/hskgFu604P6EYVgiAaN/PUmnBBTc+8G6iJnqQBZsMvs9TwqUAo6XTWLWq0nvvyiyqws79pCM5meYiIz93/WiRcBKrXag4fVk7TU0Sdm7nX4uwA=,iv:+yW4Qm59gLigJzu6Rt2YmB615cDb/ZhLgh9lZEX1ipI=,tag:tnC6bhGzg8Z/YY45GIXeKg==,type:str]
     pgp:
-        - created_at: "2026-05-04T16:20:15Z"
+        - created_at: "2026-06-30T13:13:06Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQEMA23uPS/3Y9M2AQf+LXlLh7l/45qYrDEw038p+gWmlXLtNHne+fhvUCxDsHXL
-            U9iOBCEZyf+CDzQ3lyPrVy+ld2HFA+kJRUE2ePO29c/MEDOr8o6Z+DV4xeuHXZ55
-            PNruYur4BcYEiuJJCUMvTVYKGuKnmWjVWETyqVqlfj6SPuW6Z+55FBYNtJYkxeF4
-            f1FqQzyQ1BMFFycA7vLI5e0bmmS02oT6kmTY+5AvVo35tuGWtn3YWhUXzSN+ZptO
-            imMHNSxll33hT2p4IdroKUA+paM3y3xTtjfD1v9WnGRF9pD8wgz61B4/EIuUpHRZ
-            M48nU0UOKaaIeZrP1rxO33Jc+St1uUpBdccVaY/q5dJeAR7PlzoOrz/z+PItE59y
-            LyR3pxH/YfZL9gVpJCGKKbOxkqCOMAQEDvMSHZm46thtB9RQ4Fezev1auteJEC/J
-            e1NLl51cqQkr5ZWO3nG6CAvthSEIm+WcFD4zYIappA==
-            =fTRp
+            hQEMA23uPS/3Y9M2AQgAhBMhRYNx2GxfEHtSMP4SntvbihBxDQVycSXhc8RDRHoH
+            YJ43jgTkyrj+JzBK9nvfG7Ji88ArupuSEM+5aESGA4jQ588DzByDozza5VRsLmPK
+            zAg+BScNsMMnPb9QRalpIDfFac4r7m5tmdHXoT3Lk9CroFFBo+mchWg/G3e474Wy
+            bqn/qvnTnmUyQ5D/RGGIjqaAqnBVNTW+W3w66oe+hqqgd833ev/BhWVAVd6ZENKV
+            QiGrIOjNISUhScOhIODWDWKyn0ZnD/JsAQDbNWmna8cRBHTz/JXeowxV7LBzoZ+q
+            CBdEG0riAS6kL8JnEKXvijB6W6MBtdsFRcWtJcYObtJeAYMXhZ8lF974tqwYM1DO
+            KcEgHze7dUhkroWQ7tUa+CWalh2tXhOjqGPe57LQjGFMj8qgrk52VEyjoWJG8SGI
+            pU/ofyHeW3doqUuvtEpx4EwVS8ZgxIZdBMfXYQQN7w==
+            =KVSl
             -----END PGP MESSAGE-----
           fp: C83ECA1E0B9D719C7FA2470F18E4F5A58801E669
     encrypted_regex: (password|ansible_httpapi_pass|ansible_zabbix_token|ansible_grafana_token|zabbix_grafana_token|zabbix_grafana_pass|zabbix_user_pass|adminPassword)
