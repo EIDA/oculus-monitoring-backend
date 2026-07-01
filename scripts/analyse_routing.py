@@ -1,3 +1,13 @@
+# /// script
+# requires-python = ">=3.14"
+# dependencies = [
+#     "argparse>=1.4.0",
+#     "counter>=1.0.0",
+#     "logging>=0.4.9.6",
+#     "path>=17.1.1",
+# ]
+# ///
+
 import argparse
 import csv
 import logging
