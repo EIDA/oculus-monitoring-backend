@@ -1,0 +1,48 @@
+---
+- name: Deploy Zabbix WebDriver Firefox
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+
+  tasks:
+    - name: Create WebDriver service
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: oculus-zabbix-chrome
+            namespace: eida-monitoring
+          spec:
+            selector:
+              app: oculus-zabbix-chrome
+            ports:
+              - port: 4444
+                targetPort: 4444
+
+    - name: Create WebDriver Firefox deployment
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: oculus-zabbix-chrome
+            namespace: eida-monitoring
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: oculus-zabbix-chrome
+            template:
+              metadata:
+                labels:
+                  app: oculus-zabbix-chrome
+              spec:
+                containers:
+                  - name: firefox
+                    image: selenium/standalone-firefox:latest
+                    ports:
+                      - containerPort: 4444
