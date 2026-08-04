@@ -1,12 +1,12 @@
-var browser = new Browser(Browser.firefoxOptions())
-var url = 'https://{$ENDPOINT}/fdsnws/availability/1/'
+var browser = new Browser(Browser.firefoxOptions());
+var url = 'https://{$ENDPOINT}/fdsnws/availability/1/';
 
 try {
     Zabbix.log(3, 'Browser item: using HttpRequest fallback for ' + url);
 
     var request = new HttpRequest();
     request.addHeader('User-Agent', 'oculus-monitor/1.0');
-    request.addHeader('Accept', 'application/json,text/plain,*.*');
+    request.addHeader('Accept', 'application/json,text/plain,*/*');
     request.get(url);
 
     var status = request.getStatus();
