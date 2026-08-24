@@ -147,7 +147,7 @@ def send_to_zabbix(hostname, report_path):
         with Path(report_path).open() as f:
             json_content = json.load(f)
 
-        # extract score for summùary
+        # extract score for summary
         score = json_content.get("summary", {}).get("score")
 
         if score is None:
