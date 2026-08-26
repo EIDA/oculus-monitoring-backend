@@ -194,7 +194,7 @@
           "showLineNumbers": true,
           "showMiniMap": false
         },
-        "content": "### For view all consistency reports:\n<a href=\"https://eida-oculus.orfeus-eu.org/consistency/\" target=\"_blank\">https://eida-oculus.orfeus-eu.org/consistency/</a>\n",
+        "content": "### For view all consistency reports:\n<a href=\"https://eida-oculus.orfeus-eu.org/consistency/${EIDA_NODES}\" target=\"_blank\">https://eida-oculus.orfeus-eu.org/consistency/${EIDA_NODES}</a>\n",
         "mode": "markdown"
       },
       "pluginVersion": "12.3.1",
