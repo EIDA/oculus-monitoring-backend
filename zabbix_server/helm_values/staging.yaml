@@ -1,4 +1,4 @@
-zabbixImageTag: alpine-7.0.18
+zabbixImageTag: alpine-7.0.30
 zabbixProxy:
   enabled: false
 # Désactive la création d'un container postgresql sur k8s
