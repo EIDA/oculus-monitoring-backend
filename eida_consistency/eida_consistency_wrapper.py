@@ -1,4 +1,3 @@
-# pyright: reportMissingImports=false
 # /// script
 # requires-python = "==3.12"
 # dependencies = [
@@ -8,6 +7,7 @@
 #     "setuptools<82",
 # ]
 # ///
+# pyright: reportMissingImports=false, reportMissingModuleSource=false
 import json
 import logging
 import os
