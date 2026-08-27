@@ -7,7 +7,6 @@
 #     "zabbix-utils>=2.0.4",
 # ]
 # ///
-# pyright: reportMissingImports=false, reportMissingModuleSource=false
 import logging
 import os
 import socket

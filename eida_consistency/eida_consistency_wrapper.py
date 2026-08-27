@@ -7,7 +7,6 @@
 #     "setuptools<82",
 # ]
 # ///
-# pyright: reportMissingImports=false, reportMissingModuleSource=false
 import json
 import logging
 import os
