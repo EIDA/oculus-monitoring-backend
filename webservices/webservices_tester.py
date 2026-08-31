@@ -184,7 +184,7 @@ def main():
         else:
             status_text = "OK" if res["ok"] else "FAIL"
             logger.info(
-                "[%s] %s -> (status=%s, %.2fs)",
+                "[%s] %s -> %s (status=%s, %.2fs)",
                 fname,
                 res["url"],
                 status_text,
