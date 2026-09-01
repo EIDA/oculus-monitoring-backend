@@ -1,0 +1,47 @@
+---
+- name: Deploy webservices tests python script on k8s cluster
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+  tasks:
+    - name: Create ConfigMap for webservice env variables
+      kubernetes.core.k8s:
+        state: present
+        namespace: eida-monitoring
+        definition:
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: oculus-webservices-tester-config
+          data:
+            SKIP_NODES: "NONE"
+            ZABBIX_SERVER: "oculus-zabbix-zabbix-server"
+            ZABBIX_PORT: "10051"
+            TIMEOUT: "10.0"
+
+    - name: Deploy script for webservices
+      kubernetes.core.k8s:
+        state: present
+        namespace: eida-monitoring
+        definition:
+          apiVersion: batch/v1
+          kind: CronJob
+          metadata:
+            name: oculus-webservices-tester
+          spec:
+            suspend: false
+            schedule: "*/5 * * * *"  # every 3 minutes
+            jobTemplate:
+              spec:
+                template:
+                  spec:
+                    restartPolicy: OnFailure
+                    containers:
+                      - name: oculus-webservices
+                        image: ghcr.io/eida/oculus-webservices:main
+                        imagePullPolicy: Always
+                        env:
+                        envFrom:
+                          - configMapRef:
+                              name: oculus-webservices-tester-config
