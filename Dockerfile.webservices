@@ -1,0 +1,20 @@
+FROM python:3.14-slim
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/ 
+
+RUN addgroup --system app --gid 1500 && \
+    adduser --system --group app --uid 1500 && \
+    mkdir -p /app/static && \
+    mkdir -p /app/.cache/uv && \
+    mkdir -p /app/.local/share/uv/python && \
+    chown --recursive app:app /app
+
+WORKDIR /app
+ENV UV_CACHE_DIR=/app/.cache/uv
+ENV UV_PYTHON_CACHE_DIR=/app/.local/share/uv/python
+ADD webservices/webservices_tester.py .
+RUN uv sync --script webservices_tester.py
+RUN chown --recursive app:app /app
+USER app
+ADD eida_nodes eida_nodes
+CMD uv run webservices_tester.py
