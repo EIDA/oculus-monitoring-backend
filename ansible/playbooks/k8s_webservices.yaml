@@ -31,7 +31,7 @@
             name: oculus-webservices-tester
           spec:
             suspend: false
-            schedule: "*/5 * * * *"  # every 3 minutes
+            schedule: "*/5 * * * *"  # every 5 minutes
             jobTemplate:
               spec:
                 template:
