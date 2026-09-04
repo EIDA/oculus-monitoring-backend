@@ -7,6 +7,127 @@ zabbix_export:
     - uuid: 538a19975c7a43cf8a349b953d587723
       name: 'EIDA nodes'
   templates:
+    - uuid: bd7e234e9843428694e3a69342571091
+      template: 'Template central routing information'
+      name: 'Template central routing information'
+      description: 'This templates checks the central routing service for information about a specific EIDA node (number of datasets for this node, presence of the node, presence of the main network code)'
+      groups:
+        - name: Templates/EIDA
+      items:
+        - uuid: ec644c6f926642f8b2d76db892f33316
+          name: 'dataset count'
+          type: HTTP_AGENT
+          key: routing.central.datasets
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.datacenters[?(@.name == ''{$NODE}'')].repositories[?(@.name == ''archive'')].datasets.first().length()'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '0'
+          timeout: 1m
+          url: 'https://{$ENDPOINT}/eidaws/routing/1/globalconfig'
+          query_fields:
+            - name: format
+              value: fdsn
+          headers:
+            - name: Accept
+              value: application/json
+            - name: Content-Type
+              value: application/json
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: datasets
+            - tag: format
+              value: json
+            - tag: routing
+              value: central
+          triggers:
+            - uuid: 535e10a824c849a8a4e6ae79c0066730
+              expression: 'change(/Template central routing information/routing.central.datasets)<0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'change(/Template central routing information/routing.central.datasets)>0'
+              name: 'EIDA central routing service lost at least one network for node {$NODE}'
+              priority: AVERAGE
+              description: |
+                Central routing system advertises less networks than before (now : {ITEM.LASTVALUE}
+                check the full information : https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
+              manual_close: 'YES'
+        - uuid: 801dc7c5ae3e446f91f9babff21c90a4
+          name: 'EIDA nodr'
+          type: HTTP_AGENT
+          key: routing.central.node
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.datacenters[?(@.name==''{$NODE}'')].name'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: ERROR
+          timeout: 30s
+          url: 'https://{$ENDPOINT}/eidaws/routing/1/globalconfig'
+          query_fields:
+            - name: format
+              value: fdsn
+          headers:
+            - name: Accept
+              value: application/json
+            - name: Content-Type
+              value: application/json
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: format
+              value: json
+            - tag: routing
+              value: central
+          triggers:
+            - uuid: 5a0bf9b2fcbc437eb399f0683dcfb95e
+              expression: 'last(/Template central routing information/routing.central.node)="ERROR"'
+              name: '{$NODE} disapeared from EIDA central routing service'
+              priority: WARNING
+              description: |
+                The node is not present in EIDA central routing here:
+                https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
+              manual_close: 'YES'
+        - uuid: 856a7898776a49afa4355aac03465147
+          name: 'route network for fdsnws-station'
+          type: HTTP_AGENT
+          key: routing.central.station
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          status: DISABLED
+          timeout: 15s
+          url: 'https://{$ENDPOINT}//eidaws/routing/1/query'
+          query_fields:
+            - name: service
+              value: station
+            - name: network
+              value: '{$ONLINECHECK_NET}'
+          headers:
+            - name: User-Agent
+              value: oculus-monior
+          tags:
+            - tag: format
+              value: xml
+            - tag: routing
+              value: central
+          triggers:
+            - uuid: e2ca8a12a83a436b89c23515bddb571c
+              expression: 'nodata(/Template central routing information/routing.central.station,125m)=1'
+              name: 'Network code {$ONLINECHECK_NET} missing in central routing for webservice station'
+              priority: WARNING
+              description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
+              manual_close: 'YES'
+      tags:
+        - tag: Application
+          value: routing_central
     - uuid: 74f0d2bd954841d39f19a0c7d06549ee
       template: 'Template discovery'
       name: 'Template discovery'
@@ -1258,137 +1379,12 @@ zabbix_export:
           tags:
             - tag: PC
               value: wfcatalog
-    - uuid: bd7e234e9843428694e3a69342571091
+    - uuid: 836b383ada354ac1b4c13e280f3d684c
       template: 'Template routing service'
       name: 'Template routing service'
-      description: |
-        Test the presence of information from node at the central routing service.
-        Apply this template to all EIDA Nodes
+      description: 'Test the availability of the routing service hosted at node.'
       groups:
         - name: Templates/EIDA
-      items:
-        - uuid: 801dc7c5ae3e446f91f9babff21c90a4
-          name: 'Routing central global config'
-          type: HTTP_AGENT
-          key: routing.central
-          delay: 1d
-          value_type: TEXT
-          trends: '0'
-          preprocessing:
-            - type: JSONPATH
-              parameters:
-                - '$.datacenters[?(@.name==''{$NODE}'')].name'
-              error_handler: CUSTOM_VALUE
-              error_handler_params: ERROR
-          timeout: 30s
-          url: 'https://www.orfeus-eu.org/eidaws/routing/1/globalconfig'
-          query_fields:
-            - name: format
-              value: fdsn
-          headers:
-            - name: Accept
-              value: application/json
-            - name: Content-Type
-              value: application/json
-            - name: User-Agent
-              value: oculus-monitor
-          tags:
-            - tag: format
-              value: json
-            - tag: routing
-              value: central
-          triggers:
-            - uuid: 5a0bf9b2fcbc437eb399f0683dcfb95e
-              expression: 'last(/Template routing service/routing.central)="ERROR"'
-              name: '{$NODE} disapeared from EIDA central routing service'
-              priority: WARNING
-              description: |
-                The node is not present in EIDA central routing here:
-                https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
-              manual_close: 'YES'
-              tags:
-                - tag: node
-                  value: odc
-        - uuid: ec644c6f926642f8b2d76db892f33316
-          name: 'Routing central count datasets'
-          type: HTTP_AGENT
-          key: routing.central_datasets
-          delay: 1d
-          value_type: TEXT
-          trends: '0'
-          preprocessing:
-            - type: JSONPATH
-              parameters:
-                - '$.datacenters[?(@.name == ''{$NODE}'')].repositories[?(@.name == ''archive'')].datasets.first().length()'
-              error_handler: CUSTOM_VALUE
-              error_handler_params: '0'
-          timeout: 1m
-          url: 'https://www.orfeus-eu.org/eidaws/routing/1/globalconfig'
-          query_fields:
-            - name: format
-              value: fdsn
-          headers:
-            - name: Accept
-              value: application/json
-            - name: Content-Type
-              value: application/json
-            - name: User-Agent
-              value: oculus-monitor
-          tags:
-            - tag: datasets
-            - tag: format
-              value: json
-            - tag: routing
-              value: central
-          triggers:
-            - uuid: 535e10a824c849a8a4e6ae79c0066730
-              expression: 'change(/Template routing service/routing.central_datasets)<0'
-              recovery_mode: RECOVERY_EXPRESSION
-              recovery_expression: 'change(/Template routing service/routing.central_datasets)>0'
-              name: 'EIDA central routing service lost at least one network for node {$NODE}'
-              priority: AVERAGE
-              description: |
-                Central routing system advertises less networks than before (now : {ITEM.LASTVALUE}
-                check the full information : https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
-              manual_close: 'YES'
-              tags:
-                - tag: node
-                  value: odc
-        - uuid: 856a7898776a49afa4355aac03465147
-          name: 'Routing central information'
-          type: HTTP_AGENT
-          key: routing.central_station
-          delay: 2h
-          value_type: TEXT
-          trends: '0'
-          timeout: 15s
-          url: 'https://www.orfeus-eu.org/eidaws/routing/1/query'
-          query_fields:
-            - name: service
-              value: station
-            - name: network
-              value: '{$ONLINECHECK_NET}'
-          headers:
-            - name: User-Agent
-              value: oculus-monior
-          tags:
-            - tag: format
-              value: xml
-            - tag: routing
-              value: central
-          triggers:
-            - uuid: e2ca8a12a83a436b89c23515bddb571c
-              expression: 'nodata(/Template routing service/routing.central_station,125m)=1'
-              name: 'Network code {$ONLINECHECK_NET} missing in central routing for webservice station'
-              priority: WARNING
-              description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
-              manual_close: 'YES'
-              tags:
-                - tag: node
-                  value: odc
-      tags:
-        - tag: Application
-          value: routing_service
     - uuid: 33db8cd5ca5149a6925642eed4624f60
       template: 'Template static routing'
       name: 'Template static routing'
@@ -1668,7 +1664,7 @@ zabbix_export:
           name: 'availability healtcheck'
           type: HTTP_AGENT
           key: availability.healtcheck
-          delay: 3m
+          delay: 5m
           history: 50d
           trends: 1000d
           preprocessing:
@@ -1707,29 +1703,91 @@ zabbix_export:
           key: availability.healtcheck_v2
           delay: 3m
           history: 50d
-          value_type: TEXT
-          trends: '0'
+          trends: 1000d
+          status: DISABLED
           params: |
-            var endpoint = '{$ENDPOINT}';
-            var url = 'https://' + endpoint + '/fdsnws/availability/1/';
+            var url = 'https://{$ENDPOINT}/fdsnws/availability/1/';
             
             try {
-                var response = httpGet(url);
-                
-                if (response !== null) {
-                    return response.getResponseCode().toString();
-                } else {
-                    return '-1';
-                }
-            } catch(e) {
-                Zabbix.log(4, 'Error: ' + e.message);
-                return '-1';
+                var request = new HttpRequest();
+            
+                request.addHeader('User-Agent', 'oculus-monitor/3.0');
+                request.addHeader('Accept', '*/*');
+                request.addHeader('Accept-Language', 'en-US,en;q=0.9');
+            
+                request.get(url);
+            
+                var status = request.getStatus();
+                Zabbix.log(3, 'HTTP status for ' + url + ': ' + status);
+                return status;
+            
+            } catch (e) {
+                Zabbix.log(2, 'HTTP request failed: ' + (e.message || e));
+                return 504;
             }
-          timeout: 1m
+          timeout: 3m
+          parameters:
+            - name: '{$WS_PATH}'
+              value: fdsnws/availability/1/
           tags:
             - tag: healtcheck
             - tag: webservice
               value: availability_v2
+        - uuid: fbb0220329ba4177ae78db66a7ff6a5d
+          name: 'availability healtcheck v3'
+          type: BROWSER
+          key: availability.healtcheck_v3
+          delay: 3m
+          history: 50d
+          trends: 1000d
+          status: DISABLED
+          params: |
+            var browser = new Browser(Browser.firefoxOptions());
+            var url = 'https://{$ENDPOINT}/fdsnws/availability/1/';
+            
+            try {
+                Zabbix.log(3, 'Browser item: testing with browser for ' + url);
+                
+                // Utilisation d'une approche différente avec des en-têtes spécifiques
+                var response = browser.get(url);
+                var status = response.status();
+                
+                Zabbix.log(3, 'Browser item status: ' + status);
+                return status;
+            } catch (e) {
+                Zabbix.log(2, 'Browser item error: ' + (e.message || e));
+                // Fallback complet avec tous les en-têtes nécessaires
+                try {
+                    Zabbix.log(3, 'Fallback to HttpRequest for ' + url);
+                    var request = new HttpRequest();
+                    request.addHeader('User-Agent', 'oculus-monitor/3.0');
+                    request.get(url);
+                    var status = request.getStatus();
+                    Zabbix.log(3, 'HttpRequest status: ' + status);
+                    return status;
+                } catch (e2) {
+                    Zabbix.log(2, 'HttpRequest also failed: ' + (e2.message || e2));
+                    return 504;
+                }
+            }
+          timeout: 3m
+          parameters:
+            - name: '{$WS_PATH}'
+              value: fdsnws/availability/1/
+          tags:
+            - tag: healtcheck
+            - tag: webservice
+              value: availability_v3
+        - uuid: b8ab7d56771f4a0f93ac60bd653b8433
+          name: 'availability healtcheck v4'
+          type: TRAP
+          key: availability.healtcheck_v4
+          delay: '0'
+          trends: '0'
+          tags:
+            - tag: healtcheck
+            - tag: webservice
+              value: availability_v4
         - uuid: e38a49ab9c0e442c9ea3a47f8869aaee
           name: 'CORS availability {$NODE}'
           type: HTTP_AGENT
@@ -1798,6 +1856,40 @@ zabbix_export:
               tags:
                 - tag: webservice
                   value: dataselect
+        - uuid: 59576250f8084da487237c6c0075239c
+          name: 'CORS seedpsd {$NODE}'
+          type: HTTP_AGENT
+          key: cors.check.seedpsd
+          delay: 1d
+          value_type: TEXT
+          trends: '0'
+          url: 'https://{$ENDPOINT}/eidaws/psd/1/'
+          status_codes: ''
+          headers:
+            - name: Origin
+              value: orfeus-eu.org
+            - name: User-agent
+              value: oculus-monitor
+          retrieve_mode: HEADERS
+          request_method: HEAD
+          tags:
+            - tag: cors
+            - tag: webservice
+              value: seedpsd
+          triggers:
+            - uuid: dbef1f0e86b143ad8c892572d51c0a0a
+              expression: 'find(/Template webservices/cors.check.seedpsd,,"iregexp","Access-Control-Allow-Origin:\\s\\*")=0'
+              name: 'CORS seedpsd'
+              event_name: '{$NODE}: CORS not present for webservice seedpsd'
+              priority: WARNING
+              description: |
+                test request: https://{$ENDPOINT}/eidaws/psd/1/
+                Headers: Origin: orfeus-eu.org
+                User-agent: oculus-monitor
+              manual_close: 'YES'
+              tags:
+                - tag: webservice
+                  value: seedpsd
         - uuid: 502d846dbd514c108ff43ebfd7e5f1ca
           name: 'CORS station {$NODE}'
           type: HTTP_AGENT
@@ -1901,6 +1993,16 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: dataselect
+        - uuid: f8d7e3df720943f78c5bed56f0a1a879
+          name: 'dataselect healtcheck v4'
+          type: TRAP
+          key: dataselect.healtcheck_v4
+          delay: '0'
+          trends: '0'
+          tags:
+            - tag: healtcheck
+            - tag: webservice
+              value: dataselect_v4
         - uuid: e79ed8a36d2249bda0444913e05721fb
           name: 'seedpsd healtcheck'
           type: HTTP_AGENT
@@ -1971,6 +2073,16 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: station
+        - uuid: 085151732e2640a682ef23ff8e07a94c
+          name: 'station healtcheck v4'
+          type: TRAP
+          key: station.healtcheck_v4
+          delay: '0'
+          trends: '0'
+          tags:
+            - tag: healtcheck
+            - tag: webservice
+              value: station_v4
         - uuid: ad50cdc210ba42a3a14a0419b29c8344
           name: 'wfcatalog healtcheck'
           type: HTTP_AGENT
@@ -2006,6 +2118,16 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: wfcatalog
+        - uuid: 3f5ee7b7cebb4ffca48e884c378fc1fb
+          name: 'wfcatalog healtcheck v4'
+          type: TRAP
+          key: wfcatalog.healtcheck_v4
+          delay: '0'
+          trends: '0'
+          tags:
+            - tag: healtcheck
+            - tag: webservice
+              value: wfcatalog_v4
       httptests:
         - uuid: 32b3e3d018b2423c899d92878cbe3567
           name: availability
@@ -2013,6 +2135,7 @@ zabbix_export:
           headers:
             - name: User-agent
               value: oculus-monitor
+          status: DISABLED
           steps:
             - name: 'availability short request'
               url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
@@ -2047,6 +2170,7 @@ zabbix_export:
           headers:
             - name: User-agent
               value: oculus-monitor
+          status: DISABLED
           steps:
             - name: 'dataselect short request'
               url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
@@ -2078,6 +2202,7 @@ zabbix_export:
         - uuid: b48a6247f35c4a65860de1b4f4633c17
           name: seedpsd
           delay: 1d
+          status: DISABLED
           steps:
             - name: 'seedpsd short request'
               url: 'https://{$ENDPOINT}/eidaws/psd/1/value'
@@ -2112,6 +2237,7 @@ zabbix_export:
           headers:
             - name: User-agent
               value: oculus-monitor
+          status: DISABLED
           steps:
             - name: 'station short request'
               url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
@@ -2144,6 +2270,7 @@ zabbix_export:
           headers:
             - name: User-agent
               value: oculus-monitor
+          status: DISABLED
           steps:
             - name: 'wfcatalog short request'
               url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
@@ -2176,6 +2303,9 @@ zabbix_export:
         - macro: '{$EIDA_WS_ENDPOINT}'
           value: '{#EIDA_WS_ENDPOINT}'
           description: 'EIDA node endpoint'
+        - macro: '{$WS_PATH}'
+          value: '{#WS_PATH}'
+          description: 'EIDA webservice path'
   triggers:
     - uuid: 570403a76d444c6983c35d8afd22f776
       expression: 'last(/Template webservices/web.test.rspcode[availability,availability application.wadl])<>200'
