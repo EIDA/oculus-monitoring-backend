@@ -70,7 +70,7 @@ def check_zabbix_connection():
         return True
 
 
-def send_to_zabbix(hostname, result, item_key, service_name) -> bool:
+def send_to_zabbix(hostname, result, ws, service_name) -> bool:
     """
     send a single HTTP code to zbx
     - if result["status"] present -> send this code (init)
@@ -97,7 +97,7 @@ def send_to_zabbix(hostname, result, item_key, service_name) -> bool:
             value = 500
 
         host_up = hostname.upper()
-        items = [ItemValue(host_up, item_key, value)]
+        items = [ItemValue(host_up, ws, value)]
 
         logger.info(
             "sending %s  to zabbix for host: %s (value=%s)",
@@ -214,7 +214,7 @@ def main():
     results = []
 
     for fname, node, endpoint in tasks:
-        for service_name, (service_path, item_key) in WEBSERVICES.items():
+        for service_name, (service_path, ws) in WEBSERVICES.items():
             try:
                 result = check_webservice(
                     endpoint,
@@ -264,7 +264,7 @@ def main():
                 send_to_zabbix(
                     node,
                     result,
-                    item_key,
+                    ws,
                     service_name,
                 )
             except Exception:
