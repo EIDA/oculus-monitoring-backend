@@ -1,7 +1,7 @@
 # /// script
 # requires-python = "==3.12"
 # dependencies = [
-#     "eida-consistency==0.6.0",
+#     "eida-consistency==0.7.0",
 #     "zabbix-utils==2.0.4",
 #     "pyyaml",
 #     "setuptools<82",
