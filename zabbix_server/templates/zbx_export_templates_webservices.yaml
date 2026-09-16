@@ -47,93 +47,12 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: availability
-        - uuid: 077004dba85a450092570b3ef6d299b7
-          name: 'availability healtcheck v2'
-          type: SCRIPT
-          key: availability.healtcheck_v2
-          delay: 3m
-          history: 50d
-          trends: 1000d
-          status: DISABLED
-          params: |
-            var url = 'https://{$ENDPOINT}/fdsnws/availability/1/';
-            
-            try {
-                var request = new HttpRequest();
-            
-                request.addHeader('User-Agent', 'oculus-monitor/3.0');
-                request.addHeader('Accept', '*/*');
-                request.addHeader('Accept-Language', 'en-US,en;q=0.9');
-            
-                request.get(url);
-            
-                var status = request.getStatus();
-                Zabbix.log(3, 'HTTP status for ' + url + ': ' + status);
-                return status;
-            
-            } catch (e) {
-                Zabbix.log(2, 'HTTP request failed: ' + (e.message || e));
-                return 504;
-            }
-          timeout: 3m
-          parameters:
-            - name: '{$WS_PATH}'
-              value: fdsnws/availability/1/
-          tags:
-            - tag: healtcheck
-            - tag: webservice
-              value: availability_v2
-        - uuid: fbb0220329ba4177ae78db66a7ff6a5d
-          name: 'availability healtcheck v3'
-          type: BROWSER
-          key: availability.healtcheck_v3
-          delay: 3m
-          history: 50d
-          trends: 1000d
-          status: DISABLED
-          params: |
-            var browser = new Browser(Browser.firefoxOptions());
-            var url = 'https://{$ENDPOINT}/fdsnws/availability/1/';
-            
-            try {
-                Zabbix.log(3, 'Browser item: testing with browser for ' + url);
-                
-                // Utilisation d'une approche différente avec des en-têtes spécifiques
-                var response = browser.get(url);
-                var status = response.status();
-                
-                Zabbix.log(3, 'Browser item status: ' + status);
-                return status;
-            } catch (e) {
-                Zabbix.log(2, 'Browser item error: ' + (e.message || e));
-                // Fallback complet avec tous les en-têtes nécessaires
-                try {
-                    Zabbix.log(3, 'Fallback to HttpRequest for ' + url);
-                    var request = new HttpRequest();
-                    request.addHeader('User-Agent', 'oculus-monitor/3.0');
-                    request.get(url);
-                    var status = request.getStatus();
-                    Zabbix.log(3, 'HttpRequest status: ' + status);
-                    return status;
-                } catch (e2) {
-                    Zabbix.log(2, 'HttpRequest also failed: ' + (e2.message || e2));
-                    return 504;
-                }
-            }
-          timeout: 3m
-          parameters:
-            - name: '{$WS_PATH}'
-              value: fdsnws/availability/1/
-          tags:
-            - tag: healtcheck
-            - tag: webservice
-              value: availability_v3
         - uuid: b8ab7d56771f4a0f93ac60bd653b8433
           name: 'availability healtcheck v4'
           type: TRAP
           key: availability.healtcheck_v4
           delay: '0'
-          trends: '0'
+          trends: 1000d
           tags:
             - tag: healtcheck
             - tag: webservice
@@ -348,7 +267,7 @@ zabbix_export:
           type: TRAP
           key: dataselect.healtcheck_v4
           delay: '0'
-          trends: '0'
+          trends: 1000d
           tags:
             - tag: healtcheck
             - tag: webservice
@@ -428,7 +347,7 @@ zabbix_export:
           type: TRAP
           key: station.healtcheck_v4
           delay: '0'
-          trends: '0'
+          trends: 1000d
           tags:
             - tag: healtcheck
             - tag: webservice
@@ -473,7 +392,7 @@ zabbix_export:
           type: TRAP
           key: wfcatalog.healtcheck_v4
           delay: '0'
-          trends: '0'
+          trends: 1000d
           tags:
             - tag: healtcheck
             - tag: webservice
