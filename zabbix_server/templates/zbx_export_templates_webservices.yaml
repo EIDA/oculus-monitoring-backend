@@ -52,6 +52,7 @@ zabbix_export:
           type: TRAP
           key: availability.healtcheck_v4
           delay: '0'
+          history: 62d
           trends: 1000d
           tags:
             - tag: healtcheck
@@ -267,6 +268,7 @@ zabbix_export:
           type: TRAP
           key: dataselect.healtcheck_v4
           delay: '0'
+          history: 62d
           trends: 1000d
           tags:
             - tag: healtcheck
@@ -347,6 +349,7 @@ zabbix_export:
           type: TRAP
           key: station.healtcheck_v4
           delay: '0'
+          history: 62d
           trends: 1000d
           tags:
             - tag: healtcheck
@@ -392,6 +395,7 @@ zabbix_export:
           type: TRAP
           key: wfcatalog.healtcheck_v4
           delay: '0'
+          history: 62d
           trends: 1000d
           tags:
             - tag: healtcheck
