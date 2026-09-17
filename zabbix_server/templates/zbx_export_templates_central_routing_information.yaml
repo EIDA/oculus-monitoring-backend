@@ -1,0 +1,127 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 44950db14d8549c2a022ab3d5ba3ff96
+      name: Templates/EIDA
+  templates:
+    - uuid: bd7e234e9843428694e3a69342571091
+      template: 'Template central routing information'
+      name: 'Template central routing information'
+      description: 'This templates checks the central routing service for information about a specific EIDA node (number of datasets for this node, presence of the node, presence of the main network code)'
+      groups:
+        - name: Templates/EIDA
+      items:
+        - uuid: ec644c6f926642f8b2d76db892f33316
+          name: 'dataset count'
+          type: HTTP_AGENT
+          key: routing.central.datasets
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.datacenters[?(@.name == ''{$NODE}'')].repositories[?(@.name == ''archive'')].datasets.first().length()'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '0'
+          timeout: 1m
+          url: 'https://{$ENDPOINT}/eidaws/routing/1/globalconfig'
+          query_fields:
+            - name: format
+              value: fdsn
+          headers:
+            - name: Accept
+              value: application/json
+            - name: Content-Type
+              value: application/json
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: datasets
+            - tag: format
+              value: json
+            - tag: routing
+              value: central
+          triggers:
+            - uuid: 535e10a824c849a8a4e6ae79c0066730
+              expression: 'change(/Template central routing information/routing.central.datasets)<0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'change(/Template central routing information/routing.central.datasets)>0'
+              name: 'EIDA central routing service lost at least one network for node {$NODE}'
+              priority: AVERAGE
+              description: |
+                Central routing system advertises less networks than before (now : {ITEM.LASTVALUE}
+                check the full information : https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
+              manual_close: 'YES'
+        - uuid: 801dc7c5ae3e446f91f9babff21c90a4
+          name: 'EIDA nodr'
+          type: HTTP_AGENT
+          key: routing.central.node
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.datacenters[?(@.name==''{$NODE}'')].name'
+              error_handler: CUSTOM_VALUE
+              error_handler_params: ERROR
+          timeout: 30s
+          url: 'https://{$ENDPOINT}/eidaws/routing/1/globalconfig'
+          query_fields:
+            - name: format
+              value: fdsn
+          headers:
+            - name: Accept
+              value: application/json
+            - name: Content-Type
+              value: application/json
+            - name: User-Agent
+              value: oculus-monitor
+          tags:
+            - tag: format
+              value: json
+            - tag: routing
+              value: central
+          triggers:
+            - uuid: 5a0bf9b2fcbc437eb399f0683dcfb95e
+              expression: 'last(/Template central routing information/routing.central.node)="ERROR"'
+              name: '{$NODE} disapeared from EIDA central routing service'
+              priority: WARNING
+              description: |
+                The node is not present in EIDA central routing here:
+                https://www.orfeus-eu.org/eidaws/routing/1/globalconfig?format=fdsn
+              manual_close: 'YES'
+        - uuid: 856a7898776a49afa4355aac03465147
+          name: 'route network for fdsnws-station'
+          type: HTTP_AGENT
+          key: routing.central.station
+          delay: 1h
+          value_type: TEXT
+          trends: '0'
+          status: DISABLED
+          timeout: 15s
+          url: 'https://{$ENDPOINT}//eidaws/routing/1/query'
+          query_fields:
+            - name: service
+              value: station
+            - name: network
+              value: '{$ONLINECHECK_NET}'
+          headers:
+            - name: User-Agent
+              value: oculus-monior
+          tags:
+            - tag: format
+              value: xml
+            - tag: routing
+              value: central
+          triggers:
+            - uuid: e2ca8a12a83a436b89c23515bddb571c
+              expression: 'nodata(/Template central routing information/routing.central.station,125m)=1'
+              name: 'Network code {$ONLINECHECK_NET} missing in central routing for webservice station'
+              priority: WARNING
+              description: 'test request: https://www.orfeus-eu.org/eidaws/routing/1/query?service=station&network={$ONLINECHECK_NET}'
+              manual_close: 'YES'
+      tags:
+        - tag: Application
+          value: routing_central
