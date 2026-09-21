@@ -23,7 +23,7 @@ from zabbix_utils import ItemValue, Sender
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
 SKIP_NODES = os.getenv("SKIP_NODES", "").split(",")
-TIMEOUT = float(os.getenv("TIMEOUT", "10.0"))
+TIMEOUT = float(os.getenv("TIMEOUT", "30.0"))
 SEPARATOR = "=" * 50
 
 WEBSERVICES = {
