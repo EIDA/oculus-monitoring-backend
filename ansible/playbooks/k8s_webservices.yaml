@@ -18,7 +18,7 @@
             SKIP_NODES: "NONE"
             ZABBIX_SERVER: "oculus-zabbix-zabbix-server"
             ZABBIX_PORT: "10051"
-            TIMEOUT: "10.0"
+            TIMEOUT: "30.0"
 
     - name: Deploy script for webservices
       kubernetes.core.k8s:
