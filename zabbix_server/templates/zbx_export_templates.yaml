@@ -1684,6 +1684,7 @@ zabbix_export:
               expression: 'min(/Template webservices/availability.healtcheck,15m)>200'
               name: 'availability healtcheck'
               event_name: 'Availability is not accessible, return code {ITEM.VALUE}'
+              status: DISABLED
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/'
               manual_close: 'YES'
@@ -1702,6 +1703,21 @@ zabbix_export:
             - tag: healtcheck
             - tag: webservice
               value: availability_v4
+          triggers:
+            - uuid: 07facaceb3dd47cf9f2ecb59d3610a4b
+              expression: |
+                last(/Template webservices/availability.healtcheck_v4)<>200
+                and
+                last(/Template webservices/availability.healtcheck_v4,#2)<>200
+              name: 'availability healtcheck v4'
+              event_name: 'Availability is not accessible, return code {ITEM.VALUE}'
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/'
+              manual_close: 'YES'
+              tags:
+                - tag: healtcheck
+                - tag: webservice
+                  value: availability_v4
         - uuid: e38a49ab9c0e442c9ea3a47f8869aaee
           name: 'CORS availability {$NODE}'
           type: HTTP_AGENT
@@ -1900,6 +1916,7 @@ zabbix_export:
               expression: 'min(/Template webservices/dataselect.healtcheck,15m)>200'
               name: 'dataselect healtcheck'
               event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
+              status: DISABLED
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/dataselect/1/'
               manual_close: 'YES'
@@ -1918,6 +1935,22 @@ zabbix_export:
             - tag: healtcheck
             - tag: webservice
               value: dataselect_v4
+          triggers:
+            - uuid: bb34c24937a84c48be994d6226208cfc
+              expression: |
+                last(/Template webservices/dataselect.healtcheck_v4)<>200
+                and
+                last(/Template webservices/dataselect.healtcheck_v4,#2)<>200
+              name: 'dataselect healtcheck v4'
+              event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
+              status: DISABLED
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/fdsnws/dataselect/1/'
+              manual_close: 'YES'
+              tags:
+                - tag: healtcheck
+                - tag: webservice
+                  value: dataselect_v4
         - uuid: e79ed8a36d2249bda0444913e05721fb
           name: 'seedpsd healtcheck'
           type: HTTP_AGENT
@@ -1981,6 +2014,7 @@ zabbix_export:
               expression: 'min(/Template webservices/station.healtcheck,15m)>200'
               name: 'station healtcheck'
               event_name: 'Station is not accessible, return code {ITEM.VALUE}'
+              status: DISABLED
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
               manual_close: 'YES'
@@ -1999,6 +2033,20 @@ zabbix_export:
             - tag: healtcheck
             - tag: webservice
               value: station_v4
+          triggers:
+            - uuid: ee29b3c3de954fc18208c035ec16bdaf
+              expression: |
+                last(/Template webservices/station.healtcheck_v4)<>200
+                and
+                last(/Template webservices/station.healtcheck_v4,#2)<>200
+              name: 'station healtcheck v4'
+              event_name: 'Station is not accessible, return code {ITEM.VALUE}'
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
+              tags:
+                - tag: healtcheck
+                - tag: webservice
+                  value: station_v4
         - uuid: ad50cdc210ba42a3a14a0419b29c8344
           name: 'wfcatalog healtcheck'
           type: HTTP_AGENT
@@ -2027,6 +2075,7 @@ zabbix_export:
               expression: 'min(/Template webservices/wfcatalog.healtcheck,15m)>200'
               name: 'wfcatalog healtcheck'
               event_name: 'WFCatalog is not accessible, return code {ITEM.VALUE}'
+              status: DISABLED
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/'
               manual_close: 'YES'
@@ -2045,6 +2094,21 @@ zabbix_export:
             - tag: healtcheck
             - tag: webservice
               value: wfcatalog_v4
+          triggers:
+            - uuid: 73cf91765e9e463b929a731ff833d69f
+              expression: |
+                last(/Template webservices/wfcatalog.healtcheck_v4)<>200
+                and
+                last(/Template webservices/wfcatalog.healtcheck_v4,#2)<>200
+              name: 'wfcatalog healtcheck v4'
+              event_name: 'WFcatalog is not accessible, return code {ITEM.VALUE}'
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/'
+              manual_close: 'YES'
+              tags:
+                - tag: healtcheck
+                - tag: webservice
+                  value: wfcatalog_v4
       httptests:
         - uuid: 32b3e3d018b2423c899d92878cbe3567
           name: availability
@@ -2228,6 +2292,7 @@ zabbix_export:
       expression: 'last(/Template webservices/web.test.rspcode[availability,availability application.wadl])<>200'
       name: 'availability application.wadl'
       event_name: 'Availability application.wadl not found, return code {ITEM.VALUE}'
+      status: DISABLED
       priority: AVERAGE
       description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/application.wadl'
       manual_close: 'YES'
@@ -2249,6 +2314,7 @@ zabbix_export:
       expression: 'last(/Template webservices/web.test.rspcode[dataselect,dataselect application.wadl])<>200'
       name: 'dataselect application.wadl'
       event_name: 'Dataselect application.wadl not found, return code {ITEM.VALUE}'
+      status: DISABLED
       priority: HIGH
       description: 'test request : https://{$ENDPOINT}/fdsnws/dataselect/1/application.wadl'
       manual_close: 'YES'
@@ -2270,6 +2336,7 @@ zabbix_export:
       expression: 'last(/Template webservices/web.test.rspcode[station,station application.wadl])<>200'
       name: 'station application.wadl'
       event_name: 'Station application.wadl not found, return code {ITEM.VALUE}'
+      status: DISABLED
       priority: HIGH
       description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/application.wadl'
       manual_close: 'YES'
@@ -2291,6 +2358,7 @@ zabbix_export:
       expression: 'last(/Template webservices/web.test.rspcode[wfcatalog,wfcatalog application.wadl])<>200'
       name: 'wfcatalog application.wadl'
       event_name: 'WFCatalog application.wadl not found, return code {ITEM.VALUE}'
+      status: DISABLED
       priority: AVERAGE
       description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/application.wadl'
       manual_close: 'YES'
