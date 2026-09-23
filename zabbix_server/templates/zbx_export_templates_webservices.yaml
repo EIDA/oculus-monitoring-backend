@@ -60,7 +60,7 @@ zabbix_export:
             - tag: webservice
               value: availability_v4
           triggers:
-            - uuid: 07facaceb3dd47cf9f2ecb59d3610a4b
+            - uuid: ddeb655f762a440c8632a3ce909dfc01
               expression: |
                 last(/Template webservices/availability.healtcheck_v4)<>200
                 and
@@ -74,6 +74,17 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: availability_v4
+        - uuid: 9638ce7206dd432da9a3580498ecdb63
+          name: 'availability short request v4'
+          type: TRAP
+          key: availability.short_request
+          delay: '0'
+          history: 62d
+          trends: 1000d
+          tags:
+            - tag: short_request
+            - tag: webservice
+              value: availability_v4
         - uuid: e38a49ab9c0e442c9ea3a47f8869aaee
           name: 'CORS availability {$NODE}'
           type: HTTP_AGENT
@@ -292,14 +303,13 @@ zabbix_export:
             - tag: webservice
               value: dataselect_v4
           triggers:
-            - uuid: bb34c24937a84c48be994d6226208cfc
+            - uuid: bc84680f83d14b67b219647a9cd161ba
               expression: |
                 last(/Template webservices/dataselect.healtcheck_v4)<>200
                 and
                 last(/Template webservices/dataselect.healtcheck_v4,#2)<>200
               name: 'dataselect healtcheck v4'
               event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
-              status: DISABLED
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/dataselect/1/'
               manual_close: 'YES'
@@ -307,6 +317,17 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: dataselect_v4
+        - uuid: f644f6105b074366a2b407bddf65a28d
+          name: 'dataselect short request v4'
+          type: TRAP
+          key: dataselect.short_request
+          delay: '0'
+          history: 62d
+          trends: 1000d
+          tags:
+            - tag: short_request
+            - tag: webservice
+              value: dataselect_v4
         - uuid: e79ed8a36d2249bda0444913e05721fb
           name: 'seedpsd healtcheck'
           type: HTTP_AGENT
@@ -390,7 +411,7 @@ zabbix_export:
             - tag: webservice
               value: station_v4
           triggers:
-            - uuid: ee29b3c3de954fc18208c035ec16bdaf
+            - uuid: df43548414fa4ea1bff15c881fc69e92
               expression: |
                 last(/Template webservices/station.healtcheck_v4)<>200
                 and
@@ -399,10 +420,22 @@ zabbix_export:
               event_name: 'Station is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
+              manual_close: 'YES'
               tags:
                 - tag: healtcheck
                 - tag: webservice
                   value: station_v4
+        - uuid: be427995642946748a4ccb535edb6519
+          name: 'station short request v4'
+          type: TRAP
+          key: station.short_request
+          delay: '0'
+          history: 62d
+          trends: 1000d
+          tags:
+            - tag: short_request
+            - tag: webservice
+              value: station_v4
         - uuid: ad50cdc210ba42a3a14a0419b29c8344
           name: 'wfcatalog healtcheck'
           type: HTTP_AGENT
@@ -451,7 +484,7 @@ zabbix_export:
             - tag: webservice
               value: wfcatalog_v4
           triggers:
-            - uuid: 73cf91765e9e463b929a731ff833d69f
+            - uuid: 2070efdabfed47ad88a45a63d44cb3d1
               expression: |
                 last(/Template webservices/wfcatalog.healtcheck_v4)<>200
                 and
@@ -465,6 +498,17 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: wfcatalog_v4
+        - uuid: 6fcaab56c1e14a4c917a503b481018c6
+          name: 'wfcatalog short request v4'
+          type: TRAP
+          key: wfcatalog.short_request
+          delay: '0'
+          history: 62d
+          trends: 1000d
+          tags:
+            - tag: short_request
+            - tag: webservice
+              value: wfcatalog_v4
       httptests:
         - uuid: 32b3e3d018b2423c899d92878cbe3567
           name: availability
