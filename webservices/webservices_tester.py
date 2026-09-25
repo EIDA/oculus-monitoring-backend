@@ -32,21 +32,25 @@ WEBSERVICES = {
         "fdsnws/availability/1/",
         "availability.healtcheck_v4",
         "availability.short_request",
+        "availability.application.wadl",
     ),
     "dataselect": (
         "fdsnws/dataselect/1/",
         "dataselect.healtcheck_v4",
         "dataselect.short_request",
+        "dataselect.application.wadl",
     ),
     "station": (
         "fdsnws/station/1/",
         "station.healtcheck_v4",
         "station.short_request",
+        "station.application.wadl",
     ),
     "wfcatalog": (
         "eidaws/wfcatalog/1/",
         "wfcatalog.healtcheck_v4",
         "wfcatalog.short_request",
+        "wfcatalog.application.wadl",
     ),
 }
 
@@ -260,15 +264,34 @@ def run_task(fname, node, endpoint, online_check):
     results = []
 
     for service_name, service_config in WEBSERVICES.items():
-        service_path, healthcheck_ws, short_request_ws = service_config
-        for ws, is_short_request in ((healthcheck_ws, False), (short_request_ws, True)):
-            test_name = (
-                f"{service_name} short request" if is_short_request else service_name
-            )
+        (
+            service_path,
+            healthcheck_ws,
+            short_request_ws,
+            wadl_ws,
+        ) = service_config
+
+        checks = (
+            (healthcheck_ws, service_path, service_name, False),
+            (
+                short_request_ws,
+                service_path,
+                f"{service_name} short request",
+                True,
+            ),
+            (
+                wadl_ws,
+                f"{service_path}application.wadl",
+                f"{service_name} application.wadl",
+                False,
+            ),
+        )
+
+        for ws, request_path, test_name, is_short_request in checks:
             try:
                 result = check_webservice(
                     endpoint,
-                    service_path,
+                    request_path,
                     TIMEOUT,
                     online_check,
                     short_request=is_short_request,
@@ -276,7 +299,9 @@ def run_task(fname, node, endpoint, online_check):
             except Exception as exc:
                 logger.exception("[%s] %s/%s -> EXCEPTION", fname, test_name, endpoint)
                 result = {
-                    "url": f"https://{endpoint.rstrip('/')}/{service_path.lstrip('/')}",
+                    "url": (
+                        f"https://{endpoint.rstrip('/')}/{request_path.lstrip('/')}"
+                    ),
                     "status": None,
                     "ok": False,
                     "elapsed": None,
@@ -284,14 +309,17 @@ def run_task(fname, node, endpoint, online_check):
                 }
 
             log_result(test_name, result)
+
             try:
                 send_to_zabbix(node, result, ws, test_name)
             except Exception:
                 logger.exception(
-                    "failed sending %s status to zabbix for %s", test_name, node
+                    "failed sending %s status to zabbix fos %s",
+                    test_name,
+                    node,
                 )
-            results.append((fname, node, endpoint, test_name, result))
 
+            results.append((fname, node, endpoint, test_name, result))
     return results
 
 
