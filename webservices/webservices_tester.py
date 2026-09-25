@@ -14,6 +14,7 @@ import os
 import socket
 import time
 from pathlib import Path
+from urllib.parse import urlencode
 
 import requests
 import yaml
@@ -30,18 +31,22 @@ WEBSERVICES = {
     "availability": (
         "fdsnws/availability/1/",
         "availability.healtcheck_v4",
+        "availability.short_request",
     ),
     "dataselect": (
         "fdsnws/dataselect/1/",
         "dataselect.healtcheck_v4",
+        "dataselect.short_request",
     ),
     "station": (
         "fdsnws/station/1/",
         "station.healtcheck_v4",
+        "station.short_request",
     ),
     "wfcatalog": (
         "eidaws/wfcatalog/1/",
         "wfcatalog.healtcheck_v4",
+        "wfcatalog.short_request",
     ),
 }
 
@@ -148,9 +153,35 @@ def check_webservice(
     endpoint: str,
     service_path: str,
     timeout: float = TIMEOUT,
+    online_check: dict | None = None,
+    *,
+    short_request: bool = False,
 ) -> dict:
+    """check a webservice and run its HTTP status code"""
     url = f"https://{endpoint.rstrip('/')}/{service_path.lstrip('/')}"
-    start = time.monotonic()
+
+    if short_request:
+        if not online_check:
+            return {
+                "url": f"{url.rstrip('/')}/query",
+                "status": None,
+                "ok": False,
+                "elapsed": 0,
+                "error": "missing onlineCheck configuration",
+            }
+
+        url = f"{url.rstrip('/')}/query"
+
+        params = {
+            "net": online_check["net"],
+            "sta": online_check["sta"],
+            "loc": online_check["loc"],
+            "cha": online_check["cha"],
+            "start": online_check["start"],
+            "end": online_check["end"],
+        }
+
+        url = f"{url}?{urlencode(params, safe=':')}"
 
     result = {
         "url": url,
@@ -160,13 +191,13 @@ def check_webservice(
         "error": None,
     }
 
-    headers = {"User-Agent": "oculus-monitor/4.0"}
+    start = time.monotonic()
 
     try:
         response = requests.get(
             url,
             timeout=timeout,
-            headers=headers,
+            headers={"User-Agent": "oculus-monitor/4.0"},
         )
         result["status"] = response.status_code
         result["ok"] = response.ok
@@ -180,130 +211,123 @@ def check_webservice(
     return result
 
 
-def main():
-    # default values
-    nodes_dir = Path(__file__).parent / "eida_nodes"
+def log_result(service_name, result):
+    """log result of webservice check"""
+    if result.get("error"):
+        logger.error(
+            "[%s] %s -> ERROR: %s(%.2fs)",
+            service_name,
+            result["url"],
+            result["error"],
+            result["elapsed"],
+        )
+    else:
+        status_text = "OK" if result["ok"] else "FAIL"
 
-    logger.info(SEPARATOR)
-    logger.info("starting checks")
-    logger.info(SEPARATOR)
+        logger.info(
+            "[%s] %s -> %s (status=%s, %.2fs)",
+            service_name,
+            result["url"],
+            status_text,
+            result["status"],
+            result["elapsed"],
+        )
 
-    # check zabbix connection
-    if not check_zabbix_connection():
-        logger.error("aborting: zabbix server is not reachable")
-        return
 
-    yaml_files = load_yaml_files(nodes_dir)
+def build_tasks(yaml_files):
+    """build check for nodes with required config"""
     tasks = []
 
-    for (
-        node_name,
-        node_data,
-    ) in yaml_files.items():
+    for node_name, node_data in yaml_files.items():
         endpoint = node_data.get("endpoint")
+        online_check = node_data.get("onlineCheck")
 
         if not endpoint:
             logger.warning("no 'endpoint' in %s", node_name)
             continue
 
-        tasks.append((node_name.upper(), node_name, endpoint))
+        if not online_check:
+            logger.warning("no 'onlineCheck' in %s", node_name)
+            continue
 
-    if not tasks:
-        logger.warning("no endpoint to test")
+        tasks.append((node_name.upper(), node_name, endpoint, online_check))
 
+    return tasks
+
+
+def run_task(fname, node, endpoint, online_check):
+    """run all configured webservices check for one node"""
     results = []
 
-    for fname, node, endpoint in tasks:
-        for service_name, (service_path, ws) in WEBSERVICES.items():
+    for service_name, service_config in WEBSERVICES.items():
+        service_path, healthcheck_ws, short_request_ws = service_config
+        for ws, is_short_request in ((healthcheck_ws, False), (short_request_ws, True)):
+            test_name = (
+                f"{service_name} short request" if is_short_request else service_name
+            )
             try:
                 result = check_webservice(
                     endpoint,
                     service_path,
                     TIMEOUT,
+                    online_check,
+                    short_request=is_short_request,
                 )
-
             except Exception as exc:
-                logger.exception(
-                    "[%s] %s/%s -> EXCEPTION",
-                    fname,
-                    service_name,
-                    endpoint,
-                )
-
+                logger.exception("[%s] %s/%s -> EXCEPTION", fname, test_name, endpoint)
                 result = {
-                    "url": (
-                        f"https://{endpoint.rstrip('/') / {service_path.lstrip('/')}}"
-                    ),
+                    "url": f"https://{endpoint.rstrip('/')}/{service_path.lstrip('/')}",
                     "status": None,
                     "ok": False,
                     "elapsed": None,
                     "error": str(exc),
                 }
 
-            if result.get("error"):
-                logger.error(
-                    "[%s] %s -> ERROR: %s (%.2fs)",
-                    service_name,
-                    result["url"],
-                    result["error"],
-                    result["elapsed"],
-                )
-            else:
-                status_text = "OK" if result["ok"] else "FAIL"
-
-                logger.info(
-                    "[%s] %s -> %s (status=%s, %.2fs)",
-                    service_name,
-                    result["url"],
-                    status_text,
-                    result["status"],
-                    result["elapsed"],
-                )
-
+            log_result(test_name, result)
             try:
-                send_to_zabbix(
-                    node,
-                    result,
-                    ws,
-                    service_name,
-                )
+                send_to_zabbix(node, result, ws, test_name)
             except Exception:
                 logger.exception(
-                    "failed sending %s status to zabbix for %s",
-                    service_name,
-                    node,
+                    "failed sending %s status to zabbix for %s", test_name, node
                 )
+            results.append((fname, node, endpoint, test_name, result))
 
-            results.append((fname, node, endpoint, service_name, result))
+    return results
 
-    # resume
+
+def log_summary(results):
+    """log aggreagate results for all checks"""
     total = len(results)
-
-    oks = sum(
-        1 for _fname, _node, _endpoint, _service, result in results if result.get("ok")
-    )
-
+    oks = sum(1 for *_, result in results if result.get("ok"))
     fails = sum(
-        1
-        for _fname, _node, _endpoint, _service, result in results
-        if result.get("status") and not result.get("ok")
+        1 for *_, result in results if result.get("status") and not result.get("ok")
     )
-
-    errors = sum(
-        1
-        for _fname, _node, _endpoint, _service, result in results
-        if result.get("error")
-    )
+    errors = sum(1 for *_, result in results if result.get("error"))
 
     logger.info(SEPARATOR)
-    logger.info(
-        "resume: rotal=%s OK=%s FAIL=%s ERROR=%s",
-        total,
-        oks,
-        fails,
-        errors,
-    )
+    logger.info("summary: total=%s OK=%s FAIL=%s ERROR=%s", total, oks, fails, errors)
     logger.info(SEPARATOR)
+
+
+def main():
+    nodes_dir = Path(__file__).parent / "eida_nodes"
+
+    logger.info(SEPARATOR)
+    logger.info("starting checks")
+    logger.info(SEPARATOR)
+
+    if not check_zabbix_connection():
+        logger.error("aborting: zabbix server is not reachable")
+        return
+
+    yaml_files = load_yaml_files(nodes_dir)
+    tasks = build_tasks(yaml_files)
+
+    if not tasks:
+        logger.warning("no endpoint to test")
+
+    results = [result for task in tasks for result in [run_task(*task)]]
+    log_summary([item for task_results in results for item in task_results])
 
 
 if __name__ == "__main__":
