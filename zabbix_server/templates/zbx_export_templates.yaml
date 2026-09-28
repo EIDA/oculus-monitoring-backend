@@ -1654,6 +1654,17 @@ zabbix_export:
       groups:
         - name: Templates/EIDA
       items:
+        - uuid: 414d50dabee0429285a65c27fe127056
+          name: 'availability application.wadl v4'
+          type: TRAP
+          key: availability.application.wadl
+          delay: '0'
+          history: 62d
+          trends: 1000d
+          tags:
+            - tag: application.wadl
+            - tag: webservice
+              value: availability_v4
         - uuid: d62af588b94942d38929e1b201b7ecba
           name: 'availability healtcheck'
           type: HTTP_AGENT
@@ -1899,6 +1910,17 @@ zabbix_export:
               tags:
                 - tag: webservice
                   value: wfcatalog
+        - uuid: 7b919dbec8af47faa153546b7ad3130d
+          name: 'dataselect application.wadl v4'
+          type: TRAP
+          key: dataselect.application.wadl
+          delay: '0'
+          history: 62d
+          trends: 1000d
+          tags:
+            - tag: application.wadl
+            - tag: webservice
+              value: dataselect_v4
         - uuid: 4d2c06140e994c71b2bb96f7e9aa58ba
           name: 'dataselect healtcheck'
           type: HTTP_AGENT
@@ -2007,6 +2029,32 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: seedpsd
+        - uuid: 085151732e2640a682ef23ff8e07a94c
+          name: 'station application.wadl v4'
+          type: TRAP
+          key: station.application.wadl
+          delay: '0'
+          history: 62d
+          trends: 1000d
+          tags:
+            - tag: application.wadl
+            - tag: webservice
+              value: station_v4
+          triggers:
+            - uuid: df43548414fa4ea1bff15c881fc69e92
+              expression: |
+                last(/Template webservices/station.application.wadl)<>200
+                and
+                last(/Template webservices/station.application.wadl,#2)<>200
+              name: 'station healtcheck v4'
+              event_name: 'Station is not accessible, return code {ITEM.VALUE}'
+              priority: AVERAGE
+              description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
+              manual_close: 'YES'
+              tags:
+                - tag: healtcheck
+                - tag: webservice
+                  value: station_v4
         - uuid: 705a0eaf6e134511a1d211302f3def97
           name: 'station healtcheck'
           type: HTTP_AGENT
@@ -2043,32 +2091,6 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: station
-        - uuid: 085151732e2640a682ef23ff8e07a94c
-          name: 'station healtcheck v4'
-          type: TRAP
-          key: station.healtcheck_v4
-          delay: '0'
-          history: 62d
-          trends: 1000d
-          tags:
-            - tag: healtcheck
-            - tag: webservice
-              value: station_v4
-          triggers:
-            - uuid: df43548414fa4ea1bff15c881fc69e92
-              expression: |
-                last(/Template webservices/station.healtcheck_v4)<>200
-                and
-                last(/Template webservices/station.healtcheck_v4,#2)<>200
-              name: 'station healtcheck v4'
-              event_name: 'Station is not accessible, return code {ITEM.VALUE}'
-              priority: AVERAGE
-              description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
-              manual_close: 'YES'
-              tags:
-                - tag: healtcheck
-                - tag: webservice
-                  value: station_v4
         - uuid: be427995642946748a4ccb535edb6519
           name: 'station short request v4'
           type: TRAP
@@ -2080,6 +2102,17 @@ zabbix_export:
             - tag: short_request
             - tag: webservice
               value: station_v4
+        - uuid: b5e8d4d740864e2b9fb05413ade41c45
+          name: 'wfcatalog application.wadl v4'
+          type: TRAP
+          key: wfcatalog.application.wadl
+          delay: '0'
+          history: 62d
+          trends: 1000d
+          tags:
+            - tag: application.wadl
+            - tag: webservice
+              value: wfcatalog_v4
         - uuid: ad50cdc210ba42a3a14a0419b29c8344
           name: 'wfcatalog healtcheck'
           type: HTTP_AGENT
