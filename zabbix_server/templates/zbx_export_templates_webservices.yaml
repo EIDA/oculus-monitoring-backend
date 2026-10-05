@@ -447,6 +447,17 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: station
+        - uuid: 712bbb97d0c447c2a868f276ccc28bc8
+          name: 'station healtcheck v4'
+          type: TRAP
+          key: station.healtcheck_v4
+          delay: '0'
+          history: 62d
+          trends: 1000d
+          tags:
+            - tag: healtcheck
+            - tag: webservice
+              value: station_v4
         - uuid: be427995642946748a4ccb535edb6519
           name: 'station short request v4'
           type: TRAP
