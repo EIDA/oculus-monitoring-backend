@@ -194,7 +194,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 56
       },
       "id": 2,
       "panels": [],
@@ -323,7 +323,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 57
       },
       "id": 1,
       "options": {
@@ -482,11 +482,9 @@
       },
       {
         "current": {
-          "text": [
-            "webservice: dataselect"
-          ],
+          "text": "All",
           "value": [
-            "webservice: dataselect"
+            "$__all"
           ]
         },
         "definition": "",
@@ -502,10 +500,11 @@
           "host": "$EIDA_NODES",
           "item": "",
           "itemTag": "/.*webservice.*/",
-          "queryType": "itemTag"
+          "queryType": "itemTag",
+          "showDisabledItems": false
         },
         "refresh": 1,
-        "regex": "^(?!.*routing_present|.*routing_information).*$",
+        "regex": "^(?!.*routing_present|.*routing_information|.*_v4).*$",
         "type": "query"
       },
       {
@@ -570,6 +569,6 @@
   "timezone": "browser",
   "title": "EIDA PerfCheck",
   "uid": "eb676f02-3961-4251-8d28-6e3f0f20bf95",
-  "version": 7,
+  "version": 8,
   "weekStart": "monday"
 }
