@@ -23,15 +23,15 @@
       delegate_to: localhost
       loop: "{{ oculus_users }}"
       community.zabbix.zabbix_usergroup:
-        name: "{{ item.usergrp }}"
+        name: "{{ item.usrgrps }}"
         templategroup_rights:
           - template_group: Templates/EIDA
             permission: read-only
         hostgroup_rights:
-          - host_group: "{{ item.usergrp }}"
+          - host_group: "{{ item.usrgrps }}"
             permission: read-only
         tag_filters:
-          - host_group: "{{ item.usergrp }}"
+          - host_group: "{{ item.usrgrps }}"
 
     - name: Create users
       delegate_to: localhost
@@ -39,9 +39,9 @@
       community.zabbix.zabbix_user:
         username: "{{ item.username }}"
         name: "{{ item.name }}"
-        usergrps:
+        usrgrps:
           - Internal
-          - "{{ item.usergrp }}"
+          - "{{ item.usrgrps }}"
         passwd: "{{ zabbix_user_pass }}"
         lang: en_GB
         autologin: false
@@ -61,10 +61,10 @@
             permission: read-only
         hostgroup_rights: >-
           {{ [{'host_group': 'EIDA nodes', 'permission': 'read-only'}] +
-          (eida_nodes |
-          map('regex_replace', '^(.*)$',
-          '{\"host_group\": \"\\1\", \"permission\": \"read-only\"}') |
-          map('from_json') | list) }}
+          (eida_nodes
+          | map('community.general.dict_kv', 'host_group')
+          | map('combine', {'permission': 'read-only'})
+          | list) }}
         tag_filters: >-
           {{ [{'host_group': 'EIDA nodes'}] +
           (eida_nodes | map('community.general.dict_kv', 'host_group') | list) }}
@@ -72,8 +72,9 @@
     - name: Create grafana user
       delegate_to: localhost
       community.zabbix.zabbix_user:
+        state: present
         username: grafana
-        usergrps:
+        usrgrps:
           - API-RO
           - "No access to the frontend"
         passwd: "{{ zabbix_grafana_pass }}"
