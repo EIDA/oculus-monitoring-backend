@@ -1,15 +1,16 @@
 eida_nodes:
-- BGR
-- BGS
-- EPOSFR
-- GEOFON
-- ICGC
-- IGN
-- INGV
-- KOERI
-- LMU
-- NIEP
-- NOA
-- ODC
-- ETH
-- UIB-NORSAR
+  - AFAD
+  - BGR
+  - BGS
+  - EPOSFR
+  - GEOFON
+  - ICGC
+  - IGN
+  - INGV
+  - KOERI
+  - LMU
+  - NIEP
+  - NOA
+  - ODC
+  - ETH
+  - UIB-NORSAR
