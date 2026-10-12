@@ -23,15 +23,15 @@
       delegate_to: localhost
       loop: "{{ oculus_users }}"
       community.zabbix.zabbix_usergroup:
-        name: "{{ item.usrgrp }}"
+        name: "{{ item.usergrp }}"
         templategroup_rights:
           - template_group: Templates/EIDA
             permission: read-only
         hostgroup_rights:
-          - host_group: "{{ item.usrgrp }}"
+          - host_group: "{{ item.usergrp }}"
             permission: read-only
         tag_filters:
-          - host_group: "{{ item.usrgrp }}"
+          - host_group: "{{ item.usergrp }}"
 
     - name: Create users
       delegate_to: localhost
@@ -39,9 +39,9 @@
       community.zabbix.zabbix_user:
         username: "{{ item.username }}"
         name: "{{ item.name }}"
-        usrgrps:
+        usergrps:
           - Internal
-          - "{{ item.usrgrp }}"
+          - "{{ item.usergrp }}"
         passwd: "{{ zabbix_user_pass }}"
         lang: en_GB
         autologin: false
@@ -73,7 +73,7 @@
       delegate_to: localhost
       community.zabbix.zabbix_user:
         username: grafana
-        usrgrps:
+        usergrps:
           - API-RO
           - "No access to the frontend"
         passwd: "{{ zabbix_grafana_pass }}"

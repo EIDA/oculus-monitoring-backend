@@ -1,97 +1,97 @@
 oculus_users:
 - username: user-afad
   name: Engin Coruh
-  usergrp: AFAD
+  usrgrps: AFAD
   email: engin.coruh@afad.gov.tr
 - username: user-afad2
   name: Murat Doruk
-  usergrp: AFAD
+  usrgrps: AFAD
   email: mdoruk.senturk@afad.gov.tr
 - username: user-afad3
   name: Engin Coruh
-  usergrp: AFAD
+  usrgrps: AFAD
   email: engin.coruh@afad.gov.tr
 - username: user-eposfr
   name: EPOSFR
-  usergrp: EPOSFR
+  usrgrps: EPOSFR
   email: sdc-admin@epos-france.fr
 - username: user-bgr
   name: Goebel Björn
-  usergrp: BGR
+  usrgrps: BGR
   email: Bjoern.Goebel@bgr.de
 - username: user-bgr2
   name: Mathias Hoffmann
-  usergrp: BGR
+  usrgrps: BGR
   email: Mathias.Hoffmann@bgr.de
 - username: user-bgs
   name: John Stevenson
-  usergrp: BGS
+  usrgrps: BGS
   email: jostev@bgs.ac.uk
 - username: user-bgs2
   name: Tarun Joseph
-  usergrp: BGS
+  usrgrps: BGS
   email: tjos@bgs.ac.uk
 - username: user-geofon
   name: GEOFON
-  usergrp: GEOFON
+  usrgrps: GEOFON
   email: geofon@gfz.fr
 - username: user-icgc
   name: Jara Jose Antonio
-  usergrp: ICGC
+  usrgrps: ICGC
   email: JoseAntonio.Jara@icgc.cat
 - username: user-ingv
   name: INGV
-  usergrp: INGV
+  usrgrps: INGV
   email: notifications.eida@ingv.it
 - username: user-koeri
   name: Tuğçe Ergün
-  usergrp: KOERI
+  usrgrps: KOERI
   email: afacan@bogazici.edu.tr
 - username: user-koeri2
   name: Fatih Turhan
-  usergrp: KOERI
+  usrgrps: KOERI
   email: fatih.turhan@bogazici.edu.tr
 - username: user-lmu
   name: Tobias Megies
-  usergrp: LMU
+  usrgrps: LMU
   email: tobias.megies@lmu.de
 - username: user-lmu2
   name: Joachim Wassermann
-  usergrp: LMU
+  usrgrps: LMU
   email: j.wassermann@lmu.de
 - username: user-niep
   name: Cristian Neagoe
-  usergrp: NIEP
+  usrgrps: NIEP
   email: cristian.neagoe@infp.ro
 - username: user-noa
   name: Κωνσταντίνος Μπούκουρας
-  usergrp: NOA
+  usrgrps: NOA
   email: kbouk@noa.gr
 - username: user-odc
   name: RDSA AGILE
-  usergrp: ODC
+  usrgrps: ODC
   email: rdsa-agile@knmi.nl
 - username: user-eth
   name: Stefan Heimers
-  usergrp: ETH
+  usrgrps: ETH
   email: stefan.heimers@sed.ethz.ch
 - username: user-eth2
   name: Kästli Philipp
-  usergrp: ETH
+  usrgrps: ETH
   email: kaestli@sed.ethz.ch
 - username: user-eth3
   name: Roman Racine
-  usergrp: ETH
+  usrgrps: ETH
   email: racine@sed.ethz.ch
 - username: user-uib-norsar
   name: Øyvind Natvik
-  usergrp: UIB-NORSAR
+  usrgrps: UIB-NORSAR
   email: Oyvind.Natvik@uib.no
 - username: user-ign
   name: Barco De La Torre Jaime
-  usergrp: IGN
+  usrgrps: IGN
   email: jbarco@transportes.gob.es
 - username: user-ign2
   name: Nuño Esteban Félix
-  usergrp: IGN
+  usrgrps: IGN
   email: fnuno@transportes.gob.es

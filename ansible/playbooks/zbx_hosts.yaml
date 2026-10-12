@@ -69,14 +69,9 @@
               "Website certificate by Zabbix agent 2"
             ] +
             (
-              ["Template static routing"]
-              if (item.path | basename | regex_replace("\.(yaml|yml)$", "") | upper) not in ["GEOFON", "ODC"]
-              else []
-            ) +
-            (
-              ["Template routing service"]
+              ["Template central routing information"]
               if (item.path | basename | regex_replace("\.(yaml|yml)$", "") | upper) in ["GEOFON", "ODC"]
-              else []
+              else ["Template static routing"]
             )
           }}
         status: "enabled"
