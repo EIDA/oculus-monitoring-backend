@@ -1,6 +1,6 @@
 ---
 node: AFAD
-endpoint: deprem.afad.gov.tr
+endpoint: eida-deprem.afad.gov.tr
 eidaRoutingFile: routing/routing.xml
 fdsnRoutingFile: routing/routing.json
 onlineCheck:
