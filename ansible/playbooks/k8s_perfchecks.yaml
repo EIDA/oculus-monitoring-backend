@@ -5,6 +5,21 @@
   vars:
     ansible_python_interpreter: /usr/bin/python
   tasks:
+    - name: Create ConfigMap for perfchecks env variables
+      kubernetes.core.k8s:
+        state: present
+        namespace: eida-monitoring
+        definition:
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: oculus-perfchecks-config
+          data:
+            SKIP_NODE: ""
+            ZABBIX_SERVER: "oculus-zabbix-zabbix-server"
+            ZABBIX_PORT: "10051"
+            HTTP_OK: 200
+
     - name: Deploy script for perfchheck
       kubernetes.core.k8s:
         state: present
