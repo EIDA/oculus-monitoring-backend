@@ -21,7 +21,7 @@ from zabbix_utils import ItemValue, Sender
 # config env variables
 ZABBIX_SERVER = os.getenv("ZABBIX_SERVER", "localhost")
 ZABBIX_PORT = int(os.getenv("ZABBIX_PORT", "10051"))
-SKIP_NODES = os.getenv("SKIP_NODES", "IGN").split(",")
+SKIP_NODES = os.getenv("SKIP_NODES", "").split(",")
 HTTP_OK = 200
 SEPARATOR = "=" * 50
 
