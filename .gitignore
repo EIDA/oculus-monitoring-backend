@@ -12,3 +12,5 @@ eida_consistency/networks/*
 eida_consistency/eida_nodes
 scripts/zbx_problems_export.csv
 webservices/eida_nodes
+active_checks/eida_nodes
+active_checks/reports
