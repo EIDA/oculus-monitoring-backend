@@ -7,7 +7,7 @@ on:
     paths:
     - 'Dockerfile.webservices'
     - '.github/workflows/docker-publish-webservices.yml'
-    - 'webservices/**'
+    - 'active_checks/webservices_tester.py'
     - 'eida_nodes/**'
   pull_request:
     branches:

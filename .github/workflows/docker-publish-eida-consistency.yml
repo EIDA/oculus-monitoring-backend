@@ -7,7 +7,7 @@ on:
     paths:
     - 'Dockerfile.consistency'
     - '.github/workflows/docker-publish-eida-consistency.yml'
-    - 'eida_consistency/**'
+    - 'active_checks/eida_consistency_wrapper.py'
     - 'eida_nodes/**'
   pull_request:
     branches:

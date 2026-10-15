@@ -13,7 +13,7 @@ on:
     paths:
     - 'Dockerfile.perfcheck'
     - '.github/workflows/docker-publish-perfcheck.yml'
-    - 'perf_checks/**'
+    - 'active_checks/webscenarios_perfcheck.py'
     - 'eida_nodes/**'
   pull_request:
     branches:
