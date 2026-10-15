@@ -1,8 +1,6 @@
 # /// script
 # requires-python = ">=3.14"
 # dependencies = [
-#     "argparse>=1.4.0",
-#     "logging>=0.4.9.6",
 #     "pathlib>=1.0.1",
 #     "pyyaml>=6.0.3",
 #     "requests>=2.34.2",
@@ -27,32 +25,11 @@ SKIP_NODES = os.getenv("SKIP_NODES", "").split(",")
 TIMEOUT = float(os.getenv("TIMEOUT", "30.0"))
 SEPARATOR = "=" * 50
 
-WEBSERVICES = {
-    "availability": (
-        "fdsnws/availability/1/",
-        "availability.healtcheck_v4",
-        "availability.short_request",
-        "availability.application.wadl",
-    ),
-    "dataselect": (
-        "fdsnws/dataselect/1/",
-        "dataselect.healtcheck_v4",
-        "dataselect.short_request",
-        "dataselect.application.wadl",
-    ),
-    "station": (
-        "fdsnws/station/1/",
-        "station.healtcheck_v4",
-        "station.short_request",
-        "station.application.wadl",
-    ),
-    "wfcatalog": (
-        "eidaws/wfcatalog/1/",
-        "wfcatalog.healtcheck_v4",
-        "wfcatalog.short_request",
-        "wfcatalog.application.wadl",
-    ),
-}
+SERVICES = os.getenv(
+    "SERVICES",
+    "fdsnws/availability/1,fdsnws/dataselect/1,fdsnws/station/1,eidaws/wfcatalog/1",
+).split(",")
+
 
 # config logging
 logger = logging.getLogger(__name__)
@@ -60,6 +37,20 @@ logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(handler)
+
+
+def service_to_zbx(service):
+    """
+    from a service name, generate a zabbix key prefix
+    params:
+    - service: the path of one service ex: fdsnws/station/1/
+    return: zabbix key prefix
+    """
+    parts = service.lstrip("/").split("/")
+    if len(parts) >= 2:
+        return parts[1]
+    else:
+        return ""
 
 
 def check_zabbix_connection():
@@ -79,7 +70,7 @@ def check_zabbix_connection():
         return True
 
 
-def send_to_zabbix(hostname, result, ws, service_name) -> bool:
+def send_to_zabbix(result) -> bool:
     """
     send a single HTTP code to zbx
     - if result["status"] present -> send this code (init)
@@ -105,21 +96,19 @@ def send_to_zabbix(hostname, result, ws, service_name) -> bool:
         else:
             value = 500
 
-        host_up = hostname.upper()
-        items = [ItemValue(host_up, ws, value)]
+        items = [ItemValue(result.get("node"), result.get("test"), value)]
 
         logger.info(
-            "sending %s  to zabbix for host: %s (value=%s)",
-            service_name,
-            host_up,
+            "sending %s to zabbix for host: %s (value=%s)",
+            result.get("test"),
+            result.get("node"),
             value,
         )
 
         response = sender.send(items)
 
         logger.info(
-            "%s: %s/%s items sent successfully",
-            host_up,
+            "%s/%s items sent successfully",
             getattr(response, "processed", "?"),
             getattr(response, "total", "?"),
         )
@@ -154,26 +143,13 @@ def load_yaml_files(nodes_dir):
 
 
 def check_webservice(
-    endpoint: str,
-    service_path: str,
-    timeout: float = TIMEOUT,
+    url: str,
     online_check: dict | None = None,
-    *,
-    short_request: bool = False,
+    timeout: float = TIMEOUT,
 ) -> dict:
     """check a webservice and run its HTTP status code"""
-    url = f"https://{endpoint.rstrip('/')}/{service_path.lstrip('/')}"
-
-    if short_request:
-        if not online_check:
-            return {
-                "url": f"{url.rstrip('/')}/query",
-                "status": None,
-                "ok": False,
-                "elapsed": 0,
-                "error": "missing onlineCheck configuration",
-            }
-
+    result = {"url": url, "test": "", "status": None, "error": None, "elapsed": 0}
+    if online_check:
         url = f"{url.rstrip('/')}/query"
 
         params = {
@@ -186,14 +162,6 @@ def check_webservice(
         }
 
         url = f"{url}?{urlencode(params, safe=':')}"
-
-    result = {
-        "url": url,
-        "status": None,
-        "ok": False,
-        "elapsed": None,
-        "error": None,
-    }
 
     start = time.monotonic()
 
@@ -215,12 +183,11 @@ def check_webservice(
     return result
 
 
-def log_result(service_name, result):
+def log_result(result):
     """log result of webservice check"""
     if result.get("error"):
         logger.error(
-            "[%s] %s -> ERROR: %s(%.2fs)",
-            service_name,
+            "%s -> ERROR: %s(%.2fs)",
             result["url"],
             result["error"],
             result["elapsed"],
@@ -229,8 +196,7 @@ def log_result(service_name, result):
         status_text = "OK" if result["ok"] else "FAIL"
 
         logger.info(
-            "[%s] %s -> %s (status=%s, %.2fs)",
-            service_name,
+            "%s -> %s (status=%s, %.2fs)",
             result["url"],
             status_text,
             result["status"],
@@ -238,99 +204,52 @@ def log_result(service_name, result):
         )
 
 
-def build_tasks(yaml_files):
-    """build check for nodes with required config"""
-    tasks = []
-
-    for node_name, node_data in yaml_files.items():
-        endpoint = node_data.get("endpoint")
-        online_check = node_data.get("onlineCheck")
-
-        if not endpoint:
-            logger.warning("no 'endpoint' in %s", node_name)
-            continue
-
-        if not online_check:
-            logger.warning("no 'onlineCheck' in %s", node_name)
-            continue
-
-        tasks.append((node_name.upper(), node_name, endpoint, online_check))
-
-    return tasks
+def after_task(result):
+    log_result(result)
+    try:
+        send_to_zabbix(result)
+    except Exception:
+        logger.exception(
+            "failed sending %s status to zabbix fos %s", result["test"], result["node"]
+        )
 
 
-def run_task(fname, node, endpoint, online_check):
+def run_task(node, endpoint, online_check):
     """run all configured webservices check for one node"""
     results = []
 
-    for service_name, service_config in WEBSERVICES.items():
-        (
-            service_path,
-            healthcheck_ws,
-            short_request_ws,
-            wadl_ws,
-        ) = service_config
+    for service in SERVICES:
+        url = f"https://{endpoint.rstrip('/')}/{service}/"
 
-        checks = (
-            (healthcheck_ws, service_path, service_name, False),
-            (
-                short_request_ws,
-                service_path,
-                f"{service_name} short request",
-                True,
-            ),
-            (
-                wadl_ws,
-                f"{service_path}application.wadl",
-                f"{service_name} application.wadl",
-                False,
-            ),
-        )
+        result1 = check_webservice(url)
+        result1["node"] = node
+        result1["test"] = service_to_zbx(service) + ".healthcheck_v4"
+        after_task(result1)
 
-        for ws, request_path, test_name, is_short_request in checks:
-            try:
-                result = check_webservice(
-                    endpoint,
-                    request_path,
-                    TIMEOUT,
-                    online_check,
-                    short_request=is_short_request,
-                )
-            except Exception as exc:
-                logger.exception("[%s] %s/%s -> EXCEPTION", fname, test_name, endpoint)
-                result = {
-                    "url": (
-                        f"https://{endpoint.rstrip('/')}/{request_path.lstrip('/')}"
-                    ),
-                    "status": None,
-                    "ok": False,
-                    "elapsed": None,
-                    "error": str(exc),
-                }
+        result2 = check_webservice(url, online_check)
+        result2["node"] = node
+        result2["test"] = service_to_zbx(service) + ".short_request"
+        after_task(result2)
 
-            log_result(test_name, result)
+        result3 = check_webservice(url + "application.wadl")
+        result3["node"] = node
+        result3["test"] = service_to_zbx(service) + ".application.wadl"
+        after_task(result3)
 
-            try:
-                send_to_zabbix(node, result, ws, test_name)
-            except Exception:
-                logger.exception(
-                    "failed sending %s status to zabbix fos %s",
-                    test_name,
-                    node,
-                )
-
-            results.append((fname, node, endpoint, test_name, result))
+        results += [result1, result2, result3]
     return results
 
 
 def log_summary(results):
     """log aggreagate results for all checks"""
     total = len(results)
-    oks = sum(1 for *_, result in results if result.get("ok"))
+    oks = sum(1 for result in results if result.get("ok"))
     fails = sum(
-        1 for *_, result in results if result.get("status") and not result.get("ok")
+        1
+        for result in results
+        if result.get("status") is not None and not result.get("ok")
     )
-    errors = sum(1 for *_, result in results if result.get("error"))
+    errors = sum(1 for result in results if result.get("error"))
 
     logger.info(SEPARATOR)
     logger.info("summary: total=%s OK=%s FAIL=%s ERROR=%s", total, oks, fails, errors)
@@ -347,15 +266,14 @@ def main():
     if not check_zabbix_connection():
         logger.error("aborting: zabbix server is not reachable")
         return
+    results = []
+    nodes = load_yaml_files(nodes_dir)
+    for node in nodes.values():
+        results += run_task(
+            node.get("node"), node.get("endpoint"), node.get("onlineCheck")
+        )
 
-    yaml_files = load_yaml_files(nodes_dir)
-    tasks = build_tasks(yaml_files)
-
-    if not tasks:
-        logger.warning("no endpoint to test")
-
-    results = [result for task in tasks for result in [run_task(*task)]]
-    log_summary([item for task_results in results for item in task_results])
+    log_summary(results)
 
 
 if __name__ == "__main__":
