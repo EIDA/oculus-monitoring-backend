@@ -12,7 +12,7 @@ RUN addgroup --system app --gid 1500 && \
 WORKDIR /app
 ENV UV_CACHE_DIR=/app/.cache/uv
 ENV UV_PYTHON_CACHE_DIR=/app/.local/share/uv/python
-ADD eida_consistency/eida_consistency_wrapper.py .
+ADD active_checks/eida_consistency_wrapper.py .
 RUN uv sync --script eida_consistency_wrapper.py
 RUN chown --recursive app:app /app
 USER app
