@@ -9,13 +9,13 @@
 # ///
 import logging
 import os
-import socket
 import time
 from pathlib import Path
 from urllib.parse import urlencode
 
 import requests
 import yaml
+import zabbix
 from zabbix_utils import ItemValue, Sender
 
 # config env variables
@@ -31,23 +31,6 @@ logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(handler)
-
-
-def check_zabbix_connection():
-    """check fi zabbix server is reachable"""
-    try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(5)
-        sock.connect((ZABBIX_SERVER, ZABBIX_PORT))
-        sock.close()
-    except OSError:
-        logger.exception(
-            "cannot connect to zabbix server %s:%s", ZABBIX_SERVER, ZABBIX_PORT
-        )
-        return False
-    else:
-        logger.info("zabbix server %s:%s is reachable", ZABBIX_SERVER, ZABBIX_PORT)
-        return True
 
 
 def load_yaml_files(nodes_dir):
@@ -243,7 +226,7 @@ def main():
     logger.info(SEPARATOR)
 
     # check zabbix connection
-    if not check_zabbix_connection():
+    if not zabbix.check_zabbix_connection():
         logger.error("aborting: zabbix server is not reachable")
         return
 

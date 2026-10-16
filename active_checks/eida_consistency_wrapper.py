@@ -16,6 +16,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import yaml
+import zabbix
 from eida_consistency.runner import run_consistency_check
 from zabbix_utils import ItemValue, Sender
 
@@ -33,22 +34,6 @@ logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(handler)
-
-
-def check_zabbix_connection():
-    """check if zabbix server is reachable"""
-    try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(5)
-        sock.connect((ZABBIX_SERVER, ZABBIX_PORT))
-    except OSError:
-        logger.exception(
-            "cannot connect to zabbix server %s:%s", ZABBIX_SERVER, ZABBIX_PORT
-        )
-        return False
-    else:
-        logger.info("zabbix server %s:%s is reachable", ZABBIX_SERVER, ZABBIX_PORT)
-        return True
 
 
 # TODO ajouter emplacement dans .env
@@ -234,7 +219,7 @@ def main():
     logger.info("=" * 50)
 
     # checl is zabbix connection first
-    if not check_zabbix_connection():
+    if not zabbix.check_zabbix_connection():
         logger.error("aborting: zabbix server if not reachable")
         return
 
