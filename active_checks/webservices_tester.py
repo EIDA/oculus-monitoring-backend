@@ -8,7 +8,6 @@
 # ///
 import logging
 import os
-import socket
 import time
 from pathlib import Path
 from urllib.parse import urlencode
