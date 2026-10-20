@@ -1,0 +1,16 @@
+---
+- name: Deploy consistency-viewer on k8s cluster
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+  tasks:
+    - name : Create init-container and generate index.json
+      kubernetes.core.k8s:
+        state: present
+        namespace: eida-monitoring
+        definition:
+          apiVersion: v1
+          kind: init-container
+          metadata:
+            name: init-consistency-viewer
