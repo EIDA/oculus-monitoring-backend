@@ -4,6 +4,7 @@
 #     "pathlib>=1.0.1",
 #     "pyyaml>=6.0.3",
 #     "requests>=2.34.2",
+#     "zabbix-utils>=2.0.4",
 # ]
 # ///
 import logging
