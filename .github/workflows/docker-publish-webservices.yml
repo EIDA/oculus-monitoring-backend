@@ -1,4 +1,4 @@
-name: Docker Publish EIDA Consistency
+name: Docker Publish EIDA webservice checks
 
 on:
   push:
