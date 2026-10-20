@@ -14,6 +14,7 @@ on:
     - 'Dockerfile.perfcheck'
     - '.github/workflows/docker-publish-perfcheck.yml'
     - 'active_checks/webscenarios_perfcheck.py'
+    - 'active_checks/zabbix.py'
     - 'eida_nodes/**'
   pull_request:
     branches:

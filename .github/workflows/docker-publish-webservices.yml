@@ -8,6 +8,7 @@ on:
     - 'Dockerfile.webservices'
     - '.github/workflows/docker-publish-webservices.yml'
     - 'active_checks/webservices_tester.py'
+    - 'active_checks/zabbix.py'
     - 'eida_nodes/**'
   pull_request:
     branches:

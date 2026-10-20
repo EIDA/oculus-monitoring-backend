@@ -8,6 +8,7 @@ on:
     - 'Dockerfile.consistency'
     - '.github/workflows/docker-publish-eida-consistency.yml'
     - 'active_checks/eida_consistency_wrapper.py'
+    - 'active_checks/zabbix.py'
     - 'eida_nodes/**'
   pull_request:
     branches:
