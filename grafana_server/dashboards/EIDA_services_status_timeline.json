@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 9,
+  "id": 0,
   "links": [],
   "panels": [
     {
@@ -90,24 +90,29 @@
                   "index": 8,
                   "text": "Not Found"
                 },
-                "500": {
+                "408": {
                   "color": "dark-red",
                   "index": 9,
+                  "text": "Request Timeout"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 10,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 10,
+                  "index": 11,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 11,
+                  "index": 12,
                   "text": "Service Unavailable"
                 },
                 "null": {
                   "color": "dark-red",
-                  "index": 12,
+                  "index": 13,
                   "text": "Timeout"
                 }
               },
@@ -137,6 +142,7 @@
         "y": 0
       },
       "id": 2,
+      "maxDataPoints": 100000,
       "options": {
         "alignValue": "left",
         "legend": {
@@ -173,7 +179,7 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "dataselect healtcheck"
+            "filter": "dataselect healtcheck v4"
           },
           "itemTag": {
             "filter": "healtcheck"
@@ -186,7 +192,7 @@
             "disableDataAlignment": true,
             "showDisabledItems": false,
             "skipEmptyValues": false,
-            "useTrends": "default",
+            "useTrends": "false",
             "useZabbixValueMapping": false
           },
           "proxy": {
@@ -386,24 +392,28 @@
                   "index": 8,
                   "text": "Not Found"
                 },
+                "408": {
+                  "index": 9,
+                  "text": "Request Timeout"
+                },
                 "500": {
                   "color": "dark-red",
-                  "index": 9,
+                  "index": 10,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 10,
+                  "index": 11,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 11,
+                  "index": 12,
                   "text": "Service Unavailable"
                 },
                 "null": {
                   "color": "dark-red",
-                  "index": 12,
+                  "index": 13,
                   "text": "Timeout"
                 }
               },
@@ -433,6 +443,7 @@
         "y": 17
       },
       "id": 3,
+      "maxDataPoints": 100000,
       "options": {
         "alignValue": "left",
         "legend": {
@@ -469,7 +480,7 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "station healtcheck"
+            "filter": "station healtcheck v4"
           },
           "itemTag": {
             "filter": "healtcheck"
@@ -482,7 +493,7 @@
             "disableDataAlignment": true,
             "showDisabledItems": false,
             "skipEmptyValues": false,
-            "useTrends": "default",
+            "useTrends": "false",
             "useZabbixValueMapping": false
           },
           "proxy": {
@@ -681,24 +692,29 @@
                   "index": 8,
                   "text": "Not Found"
                 },
-                "500": {
+                "408": {
                   "color": "dark-red",
                   "index": 9,
+                  "text": "Request Timeout"
+                },
+                "500": {
+                  "color": "dark-red",
+                  "index": 10,
                   "text": "Internal Server Error"
                 },
                 "502": {
                   "color": "dark-red",
-                  "index": 10,
+                  "index": 11,
                   "text": "Bad Gateway"
                 },
                 "503": {
                   "color": "dark-red",
-                  "index": 11,
+                  "index": 12,
                   "text": "Service Unavailable"
                 },
                 "null": {
                   "color": "dark-red",
-                  "index": 12,
+                  "index": 13,
                   "text": "Timeout"
                 }
               },
@@ -728,6 +744,7 @@
         "y": 34
       },
       "id": 4,
+      "maxDataPoints": 100000,
       "options": {
         "alignValue": "left",
         "legend": {
@@ -764,7 +781,7 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "availability healtcheck"
+            "filter": "availability healtcheck v4"
           },
           "itemTag": {
             "filter": "healtcheck"
@@ -777,7 +794,7 @@
             "disableDataAlignment": true,
             "showDisabledItems": false,
             "skipEmptyValues": false,
-            "useTrends": "default",
+            "useTrends": "false",
             "useZabbixValueMapping": false
           },
           "proxy": {
@@ -1024,6 +1041,7 @@
         "y": 51
       },
       "id": 5,
+      "maxDataPoints": 100000,
       "options": {
         "alignValue": "left",
         "legend": {
@@ -1060,7 +1078,7 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "wfcatalog healtcheck"
+            "filter": "wfcatalog healtcheck v4"
           },
           "itemTag": {
             "filter": "healtcheck"
@@ -1073,7 +1091,7 @@
             "disableDataAlignment": true,
             "showDisabledItems": false,
             "skipEmptyValues": false,
-            "useTrends": "default",
+            "useTrends": "false",
             "useZabbixValueMapping": false
           },
           "proxy": {
@@ -1319,6 +1337,7 @@
         "y": 68
       },
       "id": 6,
+      "maxDataPoints": 100000,
       "options": {
         "alignValue": "left",
         "legend": {
@@ -1368,7 +1387,7 @@
             "disableDataAlignment": true,
             "showDisabledItems": false,
             "skipEmptyValues": false,
-            "useTrends": "default",
+            "useTrends": "false",
             "useZabbixValueMapping": false
           },
           "proxy": {
@@ -1517,6 +1536,6 @@
   "timezone": "browser",
   "title": "EIDA services status timeline",
   "uid": "cen19lnkzcsu8b2",
-  "version": 18,
+  "version": 21,
   "weekStart": "monday"
 }
