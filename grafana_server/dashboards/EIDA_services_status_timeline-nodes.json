@@ -174,10 +174,10 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "dataselect healtcheck v4"
+            "filter": "dataselect healthcheck v4"
           },
           "itemTag": {
-            "filter": "healtcheck"
+            "filter": "healthcheck"
           },
           "macro": {
             "filter": ""
@@ -403,10 +403,10 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "station healtcheck v4"
+            "filter": "station healthcheck v4"
           },
           "itemTag": {
-            "filter": "healtcheck"
+            "filter": "healthcheck"
           },
           "macro": {
             "filter": ""
@@ -632,10 +632,10 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "availability healtcheck v4"
+            "filter": "availability healthcheck v4"
           },
           "itemTag": {
-            "filter": "healtcheck"
+            "filter": "healthcheck"
           },
           "macro": {
             "filter": ""
@@ -861,10 +861,10 @@
             "filter": "/.*/"
           },
           "item": {
-            "filter": "wfcatalog healtcheck v4"
+            "filter": "wfcatalog healthcheck v4"
           },
           "itemTag": {
-            "filter": "healtcheck"
+            "filter": "healthcheck"
           },
           "macro": {
             "filter": ""
@@ -981,5 +981,5 @@
   "timezone": "browser",
   "title": "EIDA services status timeline - nodes",
   "uid": "fo9qtqh",
-  "version": 14
+  "version": 15
 }
