@@ -15,4 +15,3 @@ webservices/eida_nodes
 active_checks/eida_nodes
 active_checks/reports
 active_checks/__pycache__
-active_checks/viewer
