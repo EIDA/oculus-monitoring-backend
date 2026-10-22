@@ -4,13 +4,35 @@
   gather_facts: false
   vars:
     ansible_python_interpreter: /usr/bin/python
+    oculus_namespace: eida-monitoring
+    cv_app_name: oculus-consistency-viewer
+    image: ghcr.io/eida/oculus-viewer-test:main
+    replica_count: 1
+    container_port: 8080
+    service_port: 80
+
   tasks:
-    - name : Create init-container and generate index.json
+    - name: Create deployement for consitency-viewer
       kubernetes.core.k8s:
-        state: present
-        namespace: eida-monitoring
+        namespace: "{{ oculus_namespace }}"
         definition:
-          apiVersion: v1
-          kind: init-container
+          apiVersion: apps/v1
+          kind: Deployment
           metadata:
-            name: init-consistency-viewer
+            name: "{{ cv_app_name }}"
+            namespace: "{{ oculus_namespace }}"
+          spec:
+            replicas: "{{ replica_count }}"
+            selector:
+              matchLabels:
+                app: "{{ cv_app_name }}"
+            template:
+              metadata:
+                labels:
+                  app: "{{ cv_app_name }}"
+              spec:
+                containers:
+                  - name: "{{ cv_app_name }}"
+                    image: "{{ image }}"
+                    ports:
+                      - containerPort: "{{ container_port }}"
