@@ -22,9 +22,9 @@ zabbix_export:
             - tag: webservice
               value: availability_v4
         - uuid: d62af588b94942d38929e1b201b7ecba
-          name: 'availability healtcheck'
+          name: 'availability healthcheck'
           type: HTTP_AGENT
-          key: availability.healtcheck
+          key: availability.healthcheck
           delay: 5m
           history: 50d
           trends: 1000d
@@ -43,12 +43,12 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: healtcheck
+            - tag: healthcheck
             - tag: webservice
               value: availability
           triggers:
             - uuid: 5397d9f5f56b4574abfb297603b86186
-              expression: 'min(/Template webservices/availability.healtcheck,15m)>200'
+              expression: 'min(/Template webservices/availability.healthcheck,15m)>200'
               name: 'availability healtcheck'
               event_name: 'Availability is not accessible, return code {ITEM.VALUE}'
               status: DISABLED
@@ -60,22 +60,22 @@ zabbix_export:
                 - tag: webservice
                   value: availability
         - uuid: b8ab7d56771f4a0f93ac60bd653b8433
-          name: 'availability healtcheck v4'
+          name: 'availability healthcheck v4'
           type: TRAP
-          key: availability.healtcheck_v4
+          key: availability.healthcheck_v4
           delay: '0'
           history: 62d
           trends: 1000d
           tags:
-            - tag: healtcheck
+            - tag: healthcheck
             - tag: webservice
               value: availability_v4
           triggers:
             - uuid: ddeb655f762a440c8632a3ce909dfc01
               expression: |
-                last(/Template webservices/availability.healtcheck_v4)<>200
+                last(/Template webservices/availability.healthcheck_v4)<>200
                 and
-                last(/Template webservices/availability.healtcheck_v4,#2)<>200
+                last(/Template webservices/availability.healthcheck_v4,#2)<>200
               name: 'availability healtcheck v4'
               event_name: 'Availability is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
@@ -278,9 +278,9 @@ zabbix_export:
             - tag: webservice
               value: dataselect_v4
         - uuid: 4d2c06140e994c71b2bb96f7e9aa58ba
-          name: 'dataselect healtcheck'
+          name: 'dataselect healthcheck'
           type: HTTP_AGENT
-          key: dataselect.healtcheck
+          key: dataselect.healthcheck
           delay: 3m
           history: 50d
           trends: 1000d
@@ -297,12 +297,12 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: healtcheck
+            - tag: healthcheck
             - tag: webservice
               value: dataselect
           triggers:
             - uuid: 41525921387c469b8d8e00328cde8d1e
-              expression: 'min(/Template webservices/dataselect.healtcheck,15m)>200'
+              expression: 'min(/Template webservices/dataselect.healthcheck,15m)>200'
               name: 'dataselect healtcheck'
               event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
               status: DISABLED
@@ -314,22 +314,22 @@ zabbix_export:
                 - tag: webservice
                   value: dataselect
         - uuid: f8d7e3df720943f78c5bed56f0a1a879
-          name: 'dataselect healtcheck v4'
+          name: 'dataselect healthcheck v4'
           type: TRAP
-          key: dataselect.healtcheck_v4
+          key: dataselect.healthcheck_v4
           delay: '0'
           history: 62d
           trends: 1000d
           tags:
-            - tag: healtcheck
+            - tag: healthcheck
             - tag: webservice
               value: dataselect_v4
           triggers:
             - uuid: bc84680f83d14b67b219647a9cd161ba
               expression: |
-                last(/Template webservices/dataselect.healtcheck_v4)<>200
+                last(/Template webservices/dataselect.healthcheck_v4)<>200
                 and
-                last(/Template webservices/dataselect.healtcheck_v4,#2)<>200
+                last(/Template webservices/dataselect.healthcheck_v4,#2)<>200
               name: 'dataselect healtcheck v4'
               event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
@@ -351,9 +351,9 @@ zabbix_export:
             - tag: webservice
               value: dataselect_v4
         - uuid: e79ed8a36d2249bda0444913e05721fb
-          name: 'seedpsd healtcheck'
+          name: 'seedpsd healthcheck'
           type: HTTP_AGENT
-          key: seedpsd.healtcheck
+          key: seedpsd.healthcheck
           delay: 3m
           history: 50d
           trends: 1000d
@@ -370,12 +370,12 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: healtcheck
+            - tag: healthcheck
             - tag: webservice
               value: seedpsd
           triggers:
             - uuid: 0d3df26afc9c4b57a9f1e27604580ee0
-              expression: 'min(/Template webservices/seedpsd.healtcheck,15m)>200'
+              expression: 'min(/Template webservices/seedpsd.healthcheck,15m)>200'
               name: 'seedpsd healtcheck'
               event_name: 'SeedPSD is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
@@ -412,9 +412,9 @@ zabbix_export:
                 - tag: webservice
                   value: station_v4
         - uuid: 705a0eaf6e134511a1d211302f3def97
-          name: 'station healtcheck'
+          name: 'station healthcheck'
           type: HTTP_AGENT
-          key: station.healtcheck
+          key: station.healthcheck
           delay: 3m
           history: 50d
           trends: 1000d
@@ -431,12 +431,12 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: healtcheck
+            - tag: healthcheck
             - tag: webservice
               value: station
           triggers:
             - uuid: 30f8b3cc9dea424ab488bc7eaa56222c
-              expression: 'min(/Template webservices/station.healtcheck,15m)>200'
+              expression: 'min(/Template webservices/station.healthcheck,15m)>200'
               name: 'station healtcheck'
               event_name: 'Station is not accessible, return code {ITEM.VALUE}'
               status: DISABLED
@@ -448,14 +448,14 @@ zabbix_export:
                 - tag: webservice
                   value: station
         - uuid: 712bbb97d0c447c2a868f276ccc28bc8
-          name: 'station healtcheck v4'
+          name: 'station healthcheck v4'
           type: TRAP
-          key: station.healtcheck_v4
+          key: station.healthcheck_v4
           delay: '0'
           history: 62d
           trends: 1000d
           tags:
-            - tag: healtcheck
+            - tag: healthcheck
             - tag: webservice
               value: station_v4
         - uuid: be427995642946748a4ccb535edb6519
@@ -481,9 +481,9 @@ zabbix_export:
             - tag: webservice
               value: wfcatalog_v4
         - uuid: ad50cdc210ba42a3a14a0419b29c8344
-          name: 'wfcatalog healtcheck'
+          name: 'wfcatalog healthcheck'
           type: HTTP_AGENT
-          key: wfcatalog.healtcheck
+          key: wfcatalog.healthcheck
           delay: 3m
           history: 50d
           trends: 1000d
@@ -500,12 +500,12 @@ zabbix_export:
               value: oculus-monitor
           retrieve_mode: HEADERS
           tags:
-            - tag: healtcheck
+            - tag: healthcheck
             - tag: wfcatalog
               value: accessible
           triggers:
             - uuid: e31b4eb2c621444aa03dd189311d89a5
-              expression: 'min(/Template webservices/wfcatalog.healtcheck,15m)>200'
+              expression: 'min(/Template webservices/wfcatalog.healthcheck,15m)>200'
               name: 'wfcatalog healtcheck'
               event_name: 'WFCatalog is not accessible, return code {ITEM.VALUE}'
               status: DISABLED
@@ -517,22 +517,22 @@ zabbix_export:
                 - tag: webservice
                   value: wfcatalog
         - uuid: 3f5ee7b7cebb4ffca48e884c378fc1fb
-          name: 'wfcatalog healtcheck v4'
+          name: 'wfcatalog healthcheck v4'
           type: TRAP
-          key: wfcatalog.healtcheck_v4
+          key: wfcatalog.healthcheck_v4
           delay: '0'
           history: 62d
           trends: 1000d
           tags:
-            - tag: healtcheck
+            - tag: healthcheck
             - tag: webservice
               value: wfcatalog_v4
           triggers:
             - uuid: 2070efdabfed47ad88a45a63d44cb3d1
               expression: |
-                last(/Template webservices/wfcatalog.healtcheck_v4)<>200
+                last(/Template webservices/wfcatalog.healthcheck_v4)<>200
                 and
-                last(/Template webservices/wfcatalog.healtcheck_v4,#2)<>200
+                last(/Template webservices/wfcatalog.healthcheck_v4,#2)<>200
               name: 'wfcatalog healtcheck v4'
               event_name: 'WFcatalog is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
