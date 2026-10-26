@@ -8,10 +8,77 @@
     cv_app_name: oculus-consistency-viewer
     image: ghcr.io/eida/oculus-viewer-test:main
     replica_count: 1
-    container_port: 8080
-    service_port: 80
+    container_port: 80
 
   tasks:
+    - name: Create Service for consistency-viewer
+      kubernetes.core.k8s:
+        namespace: "{{ oculus_namespace }}"
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: "{{ cv_app_name }}-service"
+            namespace: "{{ oculus_namespace }}"
+          spec:
+            selector:
+              app: "{{ cv_app_name }}"
+            ports:
+              - protocol: TCP
+                port: 80
+                targetPort: "{{ container_port }}"
+            type: ClusterIP
+    - name: Create Ingress for consistency-viewer
+      kubernetes.core.k8s:
+        namespace: "{{ oculus_namespace }}"
+        definition:
+          apiVersion: networking.k8s.io/v1
+          kind: Ingress
+          metadata:
+            name: "{{ cv_app_name }}-ingress"
+            namespace: "{{ oculus_namespace }}"
+          spec:
+            rules:
+              - host: "eida-oculus.orfeus-eu.org"
+                http:
+                  paths:
+                    - path: /consistency-viewer
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: "{{ cv_app_name }}-service"
+                          port:
+                            number: 80
+
+    - name: Create COnfigMap for nginx.conf
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ oculus_namespace }}"
+        definition:
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: "{{ cv_app_name }}-nginx-config"
+            namespace: "{{ oculus_namespace }}"
+          data:
+            default.conf: |
+              server {
+                listen 80;
+                server_name _;
+
+                location = /consistency-viewer {
+                  return 301 /consistency-viewer/;
+                }
+
+                location = /consistency-viewer/ {
+                  return 302 /consistency-viewer/viewer.html;
+                }
+
+                location ^~ /consistency-viewer/ {
+                  alias /usr/share/nginx/html/;
+                }
+              }
+
     - name: Create deployement for consitency-viewer
       kubernetes.core.k8s:
         namespace: "{{ oculus_namespace }}"
@@ -31,8 +98,25 @@
                 labels:
                   app: "{{ cv_app_name }}"
               spec:
+                volumes:
+                  - name: nginx-config
+                    configMap:
+                      name: "{{ cv_app_name }}-nginx-config"
                 containers:
                   - name: "{{ cv_app_name }}"
                     image: "{{ image }}"
+                    imagePullPolicy: Always
                     ports:
                       - containerPort: "{{ container_port }}"
+                    volumeMounts:
+                      - name: nginx-config
+                        mountPath: /etc/nginx/conf.d/default.conf
+                        subPath: default.conf
+                    readinessProbe:
+                      httpGet:
+                        path: /consistency-viewer/viewer.html
+                        port: "{{ container_port }}"
+                    livenessProbe:
+                      httpGet:
+                        path: /consistency-viewer/viewer.html
+                        port: "{{ container_port }}"
