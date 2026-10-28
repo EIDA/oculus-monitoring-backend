@@ -28,6 +28,7 @@
                 port: 80
                 targetPort: "{{ container_port }}"
             type: ClusterIP
+
     - name: Create Ingress for consistency-viewer
       kubernetes.core.k8s:
         namespace: "{{ oculus_namespace }}"
@@ -79,6 +80,41 @@
                 }
               }
 
+    - name: Create CronJob for copy reports
+      kubernetes.core.k8s:
+        state: present
+        namespace: "{{ oculus_namespace }}"
+        definition:
+          apiVersion: batch/v1
+          kind: CronJob
+          metadata:
+            name: "{{ cv_app_name }}-copy-reports"
+            namespace: "{{ oculus_namespace }}"
+          spec:
+            schedule: "0 20 * * 0" # every sundy at 20h (8pm)
+            jobTemplate:
+              spec:
+                template:
+                  spec:
+                    restartPolicy: OnFailure
+                    containers:
+                      - name: copy-reports
+                        image: alpine:latest
+                        command:
+                          - /bin/sh
+                          - -c
+                          - cp -a /data/reports/. /usr/share/nginx/html/
+                        volumeMounts:
+                          - name: scratch
+                            mountPath: /data
+                          - name: scratch
+                            mountPath: /usr/share/nginx/html
+                            subPath: viewer-html
+                    volumes:
+                      - name: scratch
+                        persistentVolumeClaim:
+                          claimName: oculus-consistency
+
     - name: Create deployement for consitency-viewer
       kubernetes.core.k8s:
         namespace: "{{ oculus_namespace }}"
@@ -102,6 +138,27 @@
                   - name: nginx-config
                     configMap:
                       name: "{{ cv_app_name }}-nginx-config"
+                  - name: scratch
+                    persistentVolumeClaim:
+                      claimName: oculus-consistency
+                initContainers:
+                  - name: initialize-viewer-html
+                    image: "{{ image }}"
+                    imagePullPolicy: Always
+                    command:
+                      - /bin/sh
+                      - -c
+                      - |
+                        set -eux
+                        ls -la /usr/share/nginx/html
+                        find /usr/share/nginx/html -maxdepth 2 -type f -print
+                        test -f /usr/share/nginx/html/viewer.html
+                        mkdir -p /shared/viewer-html
+                        cp -a /usr/share/nginx/html/. /shared/viewer-html/
+                        ls -la /shared/viewer-html
+                    volumeMounts:
+                      - name: scratch
+                        mountPath: /shared
                 containers:
                   - name: "{{ cv_app_name }}"
                     image: "{{ image }}"
@@ -109,6 +166,10 @@
                     ports:
                       - containerPort: "{{ container_port }}"
                     volumeMounts:
+                      - name: scratch
+                        mountPath: /usr/share/nginx/html
+                        subPath: viewer-html
+                        readOnly: true
                       - name: nginx-config
                         mountPath: /etc/nginx/conf.d/default.conf
                         subPath: default.conf
