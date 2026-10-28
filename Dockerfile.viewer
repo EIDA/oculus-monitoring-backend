@@ -1,2 +1,0 @@
-FROM docker.io/nginx:latest
-COPY active_checks/viewer/ /usr/share/nginx/html/
