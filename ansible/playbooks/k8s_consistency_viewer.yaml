@@ -155,15 +155,11 @@
                           - -c
                           - |
                             set -eu
-                            cp -R /data/reports/export/. /data/viewer-html/
                             kubectl rollout restart deployment/{{ cv_app_name }} \
                               -n {{ oculus_namespace }}
                         volumeMounts:
                           - name: scratch
                             mountPath: /data
-                          - name: scratch
-                            mountPath: /usr/share/nginx/html
-                            subPath: viewer-html
                     volumes:
                       - name: scratch
                         persistentVolumeClaim:
@@ -192,6 +188,8 @@
                   - name: nginx-config
                     configMap:
                       name: "{{ cv_app_name }}-nginx-config"
+                  - name: html
+                    emptyDir: {}
                   - name: scratch
                     persistentVolumeClaim:
                       claimName: oculus-consistency
@@ -203,14 +201,23 @@
                       - /bin/sh
                       - -c
                       - |
-                        set -eux
+                        set -eu
                         ls -la /usr/share/nginx/html
                         test -f /usr/share/nginx/html/viewer.html
-                        cp -a /usr/share/nginx/html/. /shared/
-                        ls -la /shared
+                        cp -a /usr/share/nginx/html/. /html/
+                        cd /shared/reports/export
+                        find . -type f -name '*.json' -exec sh -c '
+                          for file do
+                            mkdir -p "/html/$(dirname "$file")"
+                            cp "$file" "/html/$file"
+                          done
+                        ' sh {} +
                     volumeMounts:
+                      - name: html
+                        mountPath: /html
                       - name: scratch
                         mountPath: /shared
+                        readOnly: true
                 containers:
                   - name: "{{ cv_app_name }}"
                     image: "{{ image }}"
@@ -218,7 +225,7 @@
                     ports:
                       - containerPort: "{{ container_port }}"
                     volumeMounts:
-                      - name: scratch
+                      - name: html
                         mountPath: /usr/share/nginx/html
                         readOnly: true
                       - name: nginx-config
