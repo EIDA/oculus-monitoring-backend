@@ -205,13 +205,45 @@
                         ls -la /usr/share/nginx/html
                         test -f /usr/share/nginx/html/viewer.html
                         cp -a /usr/share/nginx/html/. /html/
-                        cd /shared/reports/export
-                        find . -type f -name '*.json' -exec sh -c '
-                          for file do
-                            mkdir -p "/html/$(dirname "$file")"
-                            cp "$file" "/html/$file"
-                          done
-                        ' sh {} +
+                    volumeMounts:
+                      - name: html
+                        mountPath: /html
+                      - name: scratch
+                        mountPath: /shared
+                        readOnly: true
+                  - name: build-reports-index-json
+                    image: python:3.14-alpine
+                    command:
+                      - python
+                      - -c
+                      - |
+                        import json
+                        import shutil
+                        from pathlib import Path
+
+                        source = Path("/shared/reports/export")
+                        target = Path("/html")
+                        reports = []
+
+                        for report_file in sorted(source.rglob("*.json")):
+                            relative_path = report_file.relative_to(source)
+                            destination = target / relative_path
+                            destination.parent.mkdir(parents=True, exist_ok=True)
+                            shutil.copy2(report_file, destination)
+
+                            summary = json.loads(report_file.read_text())["summary"]
+                            reports.append({
+                                "name": report_file.stem,
+                                "url": relative_path.as_posix(),
+                                "node": summary["node"],
+                                "score": summary["score"],
+                                "timestamp": summary["timestamp"],
+                                "inconsistent": summary["total_inconsistent"],
+                            })
+
+                        (target / "index.json").write_text(
+                            json.dumps({"reports": reports}, indent=2) + "\n"
+                        )
                     volumeMounts:
                       - name: html
                         mountPath: /html
