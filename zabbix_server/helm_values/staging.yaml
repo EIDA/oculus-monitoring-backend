@@ -1,4 +1,4 @@
-zabbixImageTag: ubuntu-8.0.0
+zabbixImageTag: ubuntu-8.0-latest
 zabbixProxy:
   enabled: false
 # Désactive la création d'un container postgresql sur k8s
@@ -29,6 +29,12 @@ zabbixWeb:
   service:
     type: ClusterIP
     port: 8888
+  livenessProbe:
+    httpGet:
+      path: /
+  readinessProbe:
+    httpGet:
+      path: /
 ingress:
   enabled: true
   hosts:
