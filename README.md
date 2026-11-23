@@ -7,14 +7,28 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
 - [How to monitor a new thing](#how-to-monitor-a-new-thing)
 - [Deploying Oculus Zabbix and Grafana on Kubernetes using Helm](#deploying-oculus-zabbix-and-grafana-on-kubernetes-using-helm)
   - [Prerequisites](#prerequisites)
+  - [Installation steps Zabbix](#installation-steps-zabbix)
+    - [Add the Helm repository](#add-the-helm-repository)
+    - [Create a Namespace for Zabbix](#create-a-namespace-for-zabbix)
+    - [Create DataBase postgresql](#create-database-postgresql)
+    - [Clone this repository](#clone-this-repository)
+    - [Deploy Zabbix](#deploy-zabbix)
   - [Accessing the Zabbix Application (for development)](#accessing-the-zabbix-application-for-development)
 - [Zabbix configuration](#zabbix-configuration)
   - [Deploy Zabbix configuration with Ansible](#deploy-zabbix-configuration-with-ansible)
     - [Zabbix Ansible deployment descriptions](#zabbix-ansible-deployment-descriptions)
     - [Create Ansible user](#create-ansible-user)
+    - [Create Ansible API token](#create-ansible-api-token)
     - [Zabbix configuration deployment](#zabbix-configuration-deployment)
+      - [1. Go to .yaml location](#1-go-to-yaml-location)
+      - [2. Run playbook Ansible](#2-run-playbook-ansible)
 - [Deploying Oculus Grafana](#deploying-oculus-grafana)
   - [Prerequisites](#prerequisites-1)
+  - [Installation steps Grafana](#installation-steps-grafana)
+    - [1. Clone this repository](#1-clone-this-repository)
+    - [2. Go to .yaml location](#2-go-to-yaml-location)
+    - [3. Add the Helm repository](#3-add-the-helm-repository)
+    - [5. Install Grafana](#5-install-grafana)
   - [Accessing the Grafana Application (for development)](#accessing-the-grafana-application-for-development)
   - [Add Zabbix datasources](#add-zabbix-datasources)
     - [Accessing the Zabbix Application](#accessing-the-zabbix-application)
@@ -23,7 +37,11 @@ For the EIDA Technical Committee and EIDA Management Board that need to improve 
     - [Grafana Ansible deployment descriptions](#grafana-ansible-deployment-descriptions)
     - [Create Ansible user and service accounts](#create-ansible-user-and-service-accounts)
     - [Configure Ansible Grafana auth](#configure-ansible-grafana-auth)
+      - [1. Go to config auth location](#1-go-to-config-auth-location)
+      - [2. Decrypt file](#2-decrypt-file)
     - [Launch Ansible](#launch-ansible)
+      - [1. Go to .yaml location](#1-go-to-yaml-location-1)
+      - [2. Run playbook Ansible](#2-run-playbook-ansible-1)
 # How to monitor a new thing
 So you woud like to monitor something related to EIDA federation ?
 
@@ -156,13 +174,13 @@ ansible-playbook zbx_deployment.yaml
 
 ### 3. Add the Helm repository
   ```sh
-  helm repo add grafana https://grafana.github.io/helm-charts
+  helm repo add grafana-community https://grafana-community.github.io/helm-charts
   helm repo update
   ```
 
 ### 5. Install Grafana
   ```sh
-  helm upgrade --install oculus-grafana grafana/grafana \
+  helm upgrade --install oculus-grafana grafana-community/grafana \
   -f staging.yaml -n eida-monitoring
   ```
 
