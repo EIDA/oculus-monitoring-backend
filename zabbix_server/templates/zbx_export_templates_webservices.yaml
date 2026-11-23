@@ -17,6 +17,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: application.wadl
             - tag: webservice
@@ -28,6 +29,7 @@ zabbix_export:
           delay: 5m
           history: 50d
           trends: 1000d
+          status: DISABLED
           preprocessing:
             - type: REGEX
               parameters:
@@ -66,6 +68,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: healthcheck
             - tag: webservice
@@ -92,6 +95,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: short_request
             - tag: webservice
@@ -273,6 +277,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: application.wadl
             - tag: webservice
@@ -284,6 +289,7 @@ zabbix_export:
           delay: 3m
           history: 50d
           trends: 1000d
+          status: DISABLED
           preprocessing:
             - type: REGEX
               parameters:
@@ -320,6 +326,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: healthcheck
             - tag: webservice
@@ -346,6 +353,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: short_request
             - tag: webservice
@@ -357,6 +365,7 @@ zabbix_export:
           delay: 3m
           history: 50d
           trends: 1000d
+          status: DISABLED
           preprocessing:
             - type: REGEX
               parameters:
@@ -392,6 +401,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: application.wadl
             - tag: webservice
@@ -418,6 +428,7 @@ zabbix_export:
           delay: 3m
           history: 50d
           trends: 1000d
+          status: DISABLED
           preprocessing:
             - type: REGEX
               parameters:
@@ -454,6 +465,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: healthcheck
             - tag: webservice
@@ -465,6 +477,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: short_request
             - tag: webservice
@@ -476,6 +489,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: application.wadl
             - tag: webservice
@@ -487,6 +501,7 @@ zabbix_export:
           delay: 3m
           history: 50d
           trends: 1000d
+          status: DISABLED
           preprocessing:
             - type: REGEX
               parameters:
@@ -523,6 +538,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: healthcheck
             - tag: webservice
@@ -549,6 +565,7 @@ zabbix_export:
           delay: '0'
           history: 62d
           trends: 1000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: short_request
             - tag: webservice
