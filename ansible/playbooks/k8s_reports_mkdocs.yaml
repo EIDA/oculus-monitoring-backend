@@ -6,7 +6,7 @@
     ansible_python_interpreter: /usr/bin/python
     mkdocs_namespace: eida-monitoring
     mkdocs_app_name: oculus-eida-reports
-    mkdocs_image: squidfunk/mkdocs-material:latest # 9.7.5
+    mkdocs_image: squidfunk/mkdocs-material:latest
     nginx_image: nginx:latest
     mkdocs_port: 80
     mkdocs_replica_count: 1
