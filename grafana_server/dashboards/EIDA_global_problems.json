@@ -1,739 +1,901 @@
 {
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
-        },
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
-  },
-  "editable": true,
-  "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "id": 9,
-  "links": [],
-  "panels": [
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "Null": {
-                  "index": 0,
-                  "text": "N/A"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "dark-red",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 5,
-        "x": 0,
-        "y": 0
-      },
-      "id": 2,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.1",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": ""
-          },
-          "itemTag": {
-            "filter": ""
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "acknowledged": 2,
-            "count": true,
-            "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 2,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "4",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "showProblems": "problems",
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "Number of problems",
-      "type": "stat"
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "ben4yqwkoldkwc",
+    "namespace": "default",
+    "uid": "d6def5e1-5bef-4dc0-b191-b74357f40434",
+    "resourceVersion": "1795613691547000",
+    "generation": 2,
+    "creationTimestamp": "2026-11-25T13:29:34Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "4387243530129408"
     },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Disaster"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "none"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "custom.align",
-                "value": "auto"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "dark-red",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "High"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "dark-orange",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Average"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "semi-dark-orange",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Warning"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Information"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "blue",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Not classified"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "green",
-                      "value": 0
-                    },
-                    {
-                      "color": "#b0b0b0",
-                      "value": 1
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 15,
-        "w": 19,
-        "x": 5,
-        "y": 0
-      },
-      "id": 3,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "12.1.1",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": ""
-          },
-          "itemTag": {
-            "filter": ""
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "acknowledged": 2,
-            "count": false,
-            "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 2,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "4",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "showProblems": "problems",
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "Problems severity",
-      "transformations": [
-        {
-          "id": "filterFieldsByName",
-          "options": {
-            "include": {
-              "names": [
-                "Host group",
-                "Disaster",
-                "High",
-                "Average",
-                "Warning"
-              ]
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
-      },
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 17,
-        "w": 24,
-        "x": 0,
-        "y": 15
-      },
-      "id": 1,
-      "options": {
-        "ackEventColor": "rgb(56, 219, 156)",
-        "ackField": false,
-        "ageField": true,
-        "allowDangerousHTML": false,
-        "customLastChangeFormat": false,
-        "descriptionAtNewLine": false,
-        "descriptionField": true,
-        "fontSize": "100%",
-        "highlightBackground": false,
-        "highlightNewEvents": false,
-        "highlightNewerThan": "1h",
-        "hostField": true,
-        "hostGroups": false,
-        "hostProxy": false,
-        "hostTechNameField": false,
-        "lastChangeFormat": "",
-        "layout": "table",
-        "markAckEvents": false,
-        "okEventColor": "rgb(56, 189, 113)",
-        "opdataField": false,
-        "pageSize": 100,
-        "problemTimeline": true,
-        "resizedColumns": [
-          {
-            "id": "host",
-            "value": 116.75
-          },
-          {
-            "id": "lastchange",
-            "value": 169
-          },
-          {
-            "id": "age",
-            "value": 81
-          },
-          {
-            "id": "ack",
-            "value": 56
-          },
-          {
-            "id": "tags",
-            "value": 211.75
-          },
-          {
-            "id": "name",
-            "value": 766.5999755859375
-          }
-        ],
-        "severityField": true,
-        "showDatasourceName": false,
-        "showTags": true,
-        "sortProblems": "lastchange",
-        "statusField": true,
-        "statusIcon": false,
-        "triggerSeverity": [
-          {
-            "color": "rgb(108, 108, 108)",
-            "priority": 0,
-            "severity": "Not classified",
-            "show": true
-          },
-          {
-            "color": "rgb(120, 158, 183)",
-            "priority": 1,
-            "severity": "Information",
-            "show": true
-          },
-          {
-            "color": "rgb(175, 180, 36)",
-            "priority": 2,
-            "severity": "Warning",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 137, 30)",
-            "priority": 3,
-            "severity": "Average",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 101, 72)",
-            "priority": 4,
-            "severity": "High",
-            "show": true
-          },
-          {
-            "color": "rgb(215, 0, 0)",
-            "priority": 5,
-            "severity": "Disaster",
-            "show": true
-          }
-        ]
-      },
-      "pluginVersion": "6.0.2",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
-          "datasource": {
-            "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "cemk6kmr0s0zkb"
-          },
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": ""
-          },
-          "itemTag": {
-            "filter": ""
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "acknowledged": 2,
-            "count": false,
-            "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 0,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "5",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "showProblems": "problems",
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "Events",
-      "type": "alexanderzobnin-zabbix-triggers-panel"
+    "annotations": {
+      "grafana.app/createdBy": "user:fg5dc0zqazzeoa",
+      "grafana.app/saved-from-ui": "Grafana v13.3.1 (da3aa3ff57)",
+      "grafana.app/updatedBy": "user:cg5dbty3zn3eob",
+      "grafana.app/updatedTimestamp": "2026-11-25T13:34:51Z"
     }
-  ],
-  "preload": false,
-  "refresh": "1m",
-  "schemaVersion": 41,
-  "tags": [
-    "EIDA",
-    "public"
-  ],
-  "templating": {
-    "list": [
+  },
+  "spec": {
+    "annotations": [
       {
-        "current": {
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
-        },
-        "definition": "",
-        "includeAll": true,
-        "label": "EIDA NODES",
-        "multi": true,
-        "name": "EIDA_NODES",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "/^EIDA nodes$/",
-          "host": "/.*$/",
-          "item": "",
-          "itemTag": "",
-          "queryType": "host"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "spec": {}
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
       }
-    ]
-  },
-  "time": {
-    "from": "now-6h",
-    "to": "now"
-  },
-  "timepicker": {
-    "hidden": true
-  },
-  "timezone": "browser",
-  "title": "EIDA global problems",
-  "uid": "ben4yqwkoldkwc",
-  "version": 4,
-  "weekStart": "monday"
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "id": 1,
+          "title": "Events",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "ag5dc60t4iha8f"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "host": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "acknowledged": 2,
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "hostProxy": false,
+                          "hostsInMaintenance": false,
+                          "limit": 1001,
+                          "minSeverity": 0,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "sortProblems": "default",
+                          "useTimeRange": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "5",
+                        "resultFormat": "time_series",
+                        "schema": 13,
+                        "showProblems": "problems",
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "alexanderzobnin-zabbix-triggers-panel",
+            "version": "6.12.0",
+            "spec": {
+              "options": {
+                "ackEventColor": "rgb(56, 219, 156)",
+                "ackField": false,
+                "ageField": true,
+                "allowDangerousHTML": false,
+                "customLastChangeFormat": false,
+                "customTagColumns": "",
+                "dataLinks": [],
+                "descriptionAtNewLine": false,
+                "descriptionField": true,
+                "fontSize": "100%",
+                "highlightBackground": false,
+                "highlightNewEvents": false,
+                "highlightNewerThan": "1h",
+                "hostField": true,
+                "hostGroups": false,
+                "hostIpField": false,
+                "hostProxy": false,
+                "hostTechNameField": false,
+                "lastChangeFormat": "",
+                "layout": "table",
+                "markAckEvents": false,
+                "okEventColor": "rgb(56, 189, 113)",
+                "opdataField": false,
+                "pageSize": 100,
+                "problemTimeline": true,
+                "resizedColumns": [
+                  {
+                    "id": "host",
+                    "value": 116.75
+                  },
+                  {
+                    "id": "lastchange",
+                    "value": 169
+                  },
+                  {
+                    "id": "age",
+                    "value": 81
+                  },
+                  {
+                    "id": "ack",
+                    "value": 56
+                  },
+                  {
+                    "id": "tags",
+                    "value": 211.75
+                  },
+                  {
+                    "id": "name",
+                    "value": 766.5999755859375
+                  }
+                ],
+                "severityField": true,
+                "showDatasourceName": false,
+                "showSearchFilter": false,
+                "showTags": true,
+                "sortProblems": "lastchange",
+                "soundAlerts": false,
+                "soundCustomUrl": "",
+                "soundMinSeverity": 4,
+                "soundRepeat": false,
+                "soundTone": "beep",
+                "soundVolume": 80,
+                "statusField": true,
+                "statusIcon": false,
+                "triggerSeverity": [
+                  {
+                    "color": "rgb(108, 108, 108)",
+                    "priority": 0,
+                    "severity": "Not classified",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(120, 158, 183)",
+                    "priority": 1,
+                    "severity": "Information",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(175, 180, 36)",
+                    "priority": 2,
+                    "severity": "Warning",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(255, 137, 30)",
+                    "priority": 3,
+                    "severity": "Average",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(255, 101, 72)",
+                    "priority": 4,
+                    "severity": "High",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(215, 0, 0)",
+                    "priority": 5,
+                    "severity": "Disaster",
+                    "show": true
+                  }
+                ]
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "id": 2,
+          "title": "Number of problems",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "ag5dc60t4iha8f"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "host": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "acknowledged": 2,
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "hostProxy": false,
+                          "hostsInMaintenance": false,
+                          "limit": 1001,
+                          "minSeverity": 2,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "sortProblems": "default",
+                          "useTimeRange": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "4",
+                        "resultFormat": "time_series",
+                        "schema": 13,
+                        "showProblems": "problems",
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.3.1",
+            "spec": {
+              "options": {
+                "colorMode": "background",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "none",
+                  "mappings": [
+                    {
+                      "type": "value",
+                      "options": {
+                        "Null": {
+                          "text": "N/A",
+                          "index": 0
+                        }
+                      }
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 1,
+                        "color": "dark-red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "id": 3,
+          "title": "Problems severity",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "ag5dc60t4iha8f"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "host": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "acknowledged": 2,
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "hostProxy": false,
+                          "hostsInMaintenance": false,
+                          "limit": 1001,
+                          "minSeverity": 2,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "sortProblems": "default",
+                          "useTimeRange": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "4",
+                        "resultFormat": "time_series",
+                        "schema": 13,
+                        "showProblems": "problems",
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "filterFieldsByName",
+                  "spec": {
+                    "options": {
+                      "include": {
+                        "names": [
+                          "Host group",
+                          "Disaster",
+                          "High",
+                          "Average",
+                          "Warning"
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.3.1",
+            "spec": {
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "zebraStriping": false
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "none",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Disaster"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "none"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "color-background"
+                        }
+                      },
+                      {
+                        "id": "custom.align",
+                        "value": "auto"
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "dark-red",
+                              "value": 1
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "High"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "short"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "color-background"
+                        }
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "dark-orange",
+                              "value": 1
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Average"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "short"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "color-background"
+                        }
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "semi-dark-orange",
+                              "value": 1
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Warning"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "short"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "color-background"
+                        }
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "yellow",
+                              "value": 1
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Information"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "short"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "color-background"
+                        }
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "blue",
+                              "value": 1
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Not classified"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "short"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "color-background"
+                        }
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "green",
+                              "value": 0
+                            },
+                            {
+                              "color": "#b0b0b0",
+                              "value": 1
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 0,
+              "width": 5,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 5,
+              "y": 0,
+              "width": 19,
+              "height": 17,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-3"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 17,
+              "width": 24,
+              "height": 17,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-1"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [
+      "EIDA",
+      "public"
+    ],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-6h",
+      "to": "now",
+      "autoRefresh": "1m",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": true,
+      "weekStart": "monday",
+      "fiscalYearStartMonth": 0
+    },
+    "title": "EIDA global problems",
+    "variables": [
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "EIDA_NODES",
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "label": "EIDA NODES",
+          "hide": "dontHide",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "",
+              "group": "/^EIDA nodes$/",
+              "host": "/.*$/",
+              "item": "",
+              "itemTag": "",
+              "queryType": "host"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "alphabeticalAsc",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": true,
+          "allowCustomValue": true
+        }
+      }
+    ],
+    "preferences": {
+      "layout": {
+        "kind": "GridLayout",
+        "spec": {
+          "items": []
+        }
+      }
+    }
+  }
 }

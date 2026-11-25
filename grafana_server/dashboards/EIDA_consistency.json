@@ -1,248 +1,362 @@
 {
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
-        },
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "378dc68a-bee4-448d-bb17-970783dade85",
+    "namespace": "default",
+    "uid": "9c4d42e8-5a5f-4fe4-bdd8-a4ebab65fa95",
+    "resourceVersion": "1795613975171010",
+    "generation": 3,
+    "creationTimestamp": "2026-11-25T13:29:33Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "4387241302953984"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:fg5dc0zqazzeoa",
+      "grafana.app/saved-from-ui": "Grafana v13.3.1 (da3aa3ff57)",
+      "grafana.app/updatedBy": "user:cg5dbty3zn3eob",
+      "grafana.app/updatedTimestamp": "2026-11-25T13:39:35Z"
+    }
   },
-  "editable": true,
-  "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "id": 0,
-  "links": [],
-  "panels": [
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ffl2bgdtyqe4gf"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "spec": {}
           },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "axisSoftMax": 105,
-            "axisSoftMin": 0,
-            "fillOpacity": 80,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineWidth": 0,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "id": 1,
+          "title": "Score",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "ag5dc60t4iha8f"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "host": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "item": {
+                          "filter": "Global score"
+                        },
+                        "itemTag": {
+                          "filter": "Application: consistency"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": true,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 13,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
             }
           },
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": 0
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "barchart",
+            "version": "13.3.1",
+            "spec": {
+              "options": {
+                "barRadius": 0,
+                "barWidth": 0.95,
+                "colorByField": "Value",
+                "fullHighlight": false,
+                "groupWidth": 0.7,
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "right",
+                  "showLegend": true
+                },
+                "orientation": "auto",
+                "showValue": "always",
+                "stacking": "none",
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                },
+                "xTickLabelRotation": 0,
+                "xTickLabelSpacing": 0
               },
-              {
-                "color": "dark-orange",
-                "value": 50
-              },
-              {
-                "color": "orange",
-                "value": 60
-              },
-              {
-                "color": "dark-yellow",
-                "value": 70
-              },
-              {
-                "color": "yellow",
-                "value": 80
-              },
-              {
-                "color": "green",
-                "value": 90
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "red"
+                      },
+                      {
+                        "value": 50,
+                        "color": "dark-orange"
+                      },
+                      {
+                        "value": 60,
+                        "color": "orange"
+                      },
+                      {
+                        "value": 70,
+                        "color": "dark-yellow"
+                      },
+                      {
+                        "value": 80,
+                        "color": "yellow"
+                      },
+                      {
+                        "value": 90,
+                        "color": "green"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "axisSoftMax": 105,
+                    "axisSoftMin": 0,
+                    "fillOpacity": 80,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "lineWidth": 0,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "fieldMinMax": false
+                },
+                "overrides": []
               }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 14,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 1,
-      "options": {
-        "barRadius": 0,
-        "barWidth": 0.95,
-        "colorByField": "Value",
-        "fullHighlight": false,
-        "groupWidth": 0.7,
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
-        },
-        "orientation": "auto",
-        "showValue": "always",
-        "stacking": "none",
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        },
-        "xTickLabelRotation": 0,
-        "xTickLabelSpacing": 0
-      },
-      "pluginVersion": "12.3.1",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "",
-          "datasource": {
-            "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "dest9vodnjv9cc"
-          },
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": "Global score"
-          },
-          "itemTag": {
-            "filter": "Application: consistency"
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "count": false,
-            "disableDataAlignment": true,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "0",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
+            }
           }
         }
-      ],
-      "title": "Score",
-      "type": "barchart"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
       },
-      "gridPos": {
-        "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 14
-      },
-      "id": 2,
-      "options": {
-        "code": {
-          "language": "go",
-          "showLineNumbers": true,
-          "showMiniMap": false
-        },
-        "content": "### For view all consistency reports:\n<a href=\"https://eida-oculus.orfeus-eu.org/consistency/${EIDA_NODES}\" target=\"_blank\">https://eida-oculus.orfeus-eu.org/consistency/${EIDA_NODES}</a>\n",
-        "mode": "markdown"
-      },
-      "pluginVersion": "12.3.1",
-      "title": "",
-      "type": "text"
-    }
-  ],
-  "preload": false,
-  "refresh": "1h",
-  "schemaVersion": 42,
-  "tags": [
-    "EIDA",
-    "public"
-  ],
-  "templating": {
-    "list": [
-      {
-        "current": {
-          "text": "ETH",
-          "value": "ETH"
-        },
-        "definition": "",
-        "includeAll": false,
-        "label": "EIDA NODES",
-        "name": "EIDA_NODES",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "/^EIDA nodes$/",
-          "host": "/.*$/",
-          "item": "",
-          "itemTag": "",
-          "queryType": "host"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "id": 2,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.3.1",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "go",
+                  "showLineNumbers": true,
+                  "showMiniMap": false
+                },
+                "content": "### For view all consistency reports:\n<a href=\"https://eida-oculus.orfeus-eu.org/consistency/${EIDA_NODES}\" target=\"_blank\">https://eida-oculus.orfeus-eu.org/consistency/${EIDA_NODES}</a>\n",
+                "mode": "markdown"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
       }
-    ]
-  },
-  "time": {
-    "from": "now-90d",
-    "to": "now"
-  },
-  "timepicker": {},
-  "timezone": "browser",
-  "title": "EIDA consistency",
-  "uid": "378dc68a-bee4-448d-bb17-970783dade85",
-  "version": 11
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 14,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-1"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 14,
+              "width": 24,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [
+      "EIDA",
+      "public"
+    ],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-90d",
+      "to": "now",
+      "autoRefresh": "1h",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "EIDA consistency",
+    "variables": [
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "EIDA_NODES",
+          "current": {
+            "text": "ETH",
+            "value": "ETH"
+          },
+          "label": "EIDA NODES",
+          "hide": "dontHide",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "",
+              "group": "/^EIDA nodes$/",
+              "host": "/.*$/",
+              "item": "",
+              "itemTag": "",
+              "queryType": "host"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "text",
+          "sort": "alphabeticalAsc",
+          "definition": "",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      }
+    ],
+    "preferences": {
+      "layout": {
+        "kind": "GridLayout",
+        "spec": {
+          "items": []
+        }
+      }
+    }
+  }
 }

@@ -1,366 +1,508 @@
 {
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
-        },
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
-  },
-  "editable": true,
-  "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "id": 5,
-  "links": [],
-  "panels": [
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 3,
-      "panels": [],
-      "title": "Response time",
-      "type": "row"
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "1a7598eb-5c4e-41c9-a596-70f9ee92eb7f",
+    "namespace": "default",
+    "uid": "0edd8e1d-c481-4e4d-9657-3ee8153b29c5",
+    "resourceVersion": "1795613906169010",
+    "generation": 3,
+    "creationTimestamp": "2026-11-25T13:29:34Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "4387245719556096"
     },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
+    "annotations": {
+      "grafana.app/createdBy": "user:fg5dc0zqazzeoa",
+      "grafana.app/saved-from-ui": "Grafana v13.3.1 (da3aa3ff57)",
+      "grafana.app/updatedBy": "user:cg5dbty3zn3eob",
+      "grafana.app/updatedTimestamp": "2026-11-25T13:38:26Z"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "spec": {}
           },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 6,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-4": {
+        "kind": "Panel",
+        "spec": {
+          "id": 4,
+          "title": "$WS : $SCENARIO",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "ag5dc60t4iha8f"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "host": {
+                          "filter": "$EIDA_NODES"
+                        },
+                        "item": {
+                          "filter": "$SERVICE_SCENARIO_TIME"
+                        },
+                        "itemTag": {
+                          "filter": "scenario: $SCENARIO"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": true,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 13,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "renameByRegex",
+                  "spec": {
+                    "options": {
+                      "regex": "(.*):.*",
+                      "renamePattern": "$1"
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
             }
           },
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.3.1",
+            "spec": {
+              "options": {
+                "legend": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "displayMode": "table",
+                  "placement": "right",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "s",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineStyle": {
+                      "fill": "solid"
+                    },
+                    "lineWidth": 1,
+                    "pointSize": 6,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "fieldMinMax": false
+                },
+                "overrides": []
               }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "RowsLayout",
+      "spec": {
+        "rows": [
+          {
+            "kind": "RowsLayoutRow",
+            "spec": {
+              "title": "Response time",
+              "collapse": false,
+              "layout": {
+                "kind": "GridLayout",
+                "spec": {
+                  "items": [
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 24,
+                        "height": 11,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-4"
+                        },
+                        "repeat": {
+                          "mode": "variable",
+                          "value": "SCENARIO",
+                          "direction": "v"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [
+      "EIDA"
+    ],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-2d",
+      "to": "now",
+      "autoRefresh": "15m",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": false,
+      "weekStart": "monday",
+      "fiscalYearStartMonth": 0
+    },
+    "title": "EIDA PerfCheck inter - nodes",
+    "variables": [
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "EIDA_NODES",
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
             ]
           },
-          "unit": "s"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 1
-      },
-      "id": 4,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean"
-          ],
-          "displayMode": "table",
-          "placement": "right",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
+          "label": "EIDA NODES",
+          "hide": "dontHide",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "ag5dc60t4iha8f"
+            },
+            "spec": {
+              "application": "PC",
+              "group": "/^EIDA nodes$/",
+              "host": "/.*/",
+              "item": "/.*/",
+              "itemTag": "",
+              "queryType": "host"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "alphabeticalAsc",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": true,
+          "allowCustomValue": false
         }
       },
-      "pluginVersion": "12.1.1",
-      "repeat": "SCENARIO",
-      "repeatDirection": "v",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "WS",
+          "current": {
+            "text": "webservice: availability",
+            "value": "webservice: availability"
           },
-          "countTriggersBy": "",
-          "datasource": {
-            "type": "alexanderzobnin-zabbix-datasource",
-            "uid": "dest9vodnjv9cc"
+          "label": "WEB SERVICES",
+          "hide": "dontHide",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "",
+              "group": "$EIDA_NODES",
+              "host": "$EIDA_NODES",
+              "item": "",
+              "itemTag": "/.*webservice.*/",
+              "queryType": "itemTag"
+            }
           },
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODES"
-          },
-          "host": {
-            "filter": "$EIDA_NODES"
-          },
-          "item": {
-            "filter": "$SERVICE_SCENARIO_TIME"
-          },
-          "itemTag": {
-            "filter": "scenario: $SCENARIO"
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "count": false,
-            "disableDataAlignment": true,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "0",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
+          "regex": "^(?!.*routing_present|.*routing_information).*$",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": false,
+          "includeAll": true,
+          "allowCustomValue": false
         }
-      ],
-      "title": "$WS : $SCENARIO",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "(.*):.*",
-            "renamePattern": "$1"
-          }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "TRANSFER_RATE",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "label": "TRANSFER RATE",
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "PC",
+              "group": "$EIDA_NODES",
+              "host": "$EIDA_NODES",
+              "item": "/.*Transfer Rate$/",
+              "itemTag": "$WS",
+              "queryType": "item"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "alphabeticalAsc",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": true,
+          "allowCustomValue": true
         }
-      ],
-      "type": "timeseries"
-    }
-  ],
-  "preload": false,
-  "refresh": "15m",
-  "schemaVersion": 41,
-  "tags": [
-    "EIDA"
-  ],
-  "templating": {
-    "list": [
-      {
-        "allowCustomValue": false,
-        "current": {
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": {
-          "type": "alexanderzobnin-zabbix-datasource",
-          "uid": "ef0ms3r1nwoowb"
-        },
-        "definition": "",
-        "description": "",
-        "includeAll": true,
-        "label": "EIDA NODES",
-        "multi": true,
-        "name": "EIDA_NODES",
-        "options": [],
-        "query": {
-          "application": "PC",
-          "group": "/^EIDA nodes$/",
-          "host": "/.*/",
-          "item": "/.*/",
-          "itemTag": "",
-          "queryType": "host"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
       },
       {
-        "allowCustomValue": false,
-        "current": {
-          "text": "webservice: availability",
-          "value": "webservice: availability"
-        },
-        "definition": "",
-        "description": "",
-        "includeAll": true,
-        "label": "WEB SERVICES",
-        "name": "WS",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "$EIDA_NODES",
-          "host": "$EIDA_NODES",
-          "item": "",
-          "itemTag": "/.*webservice.*/",
-          "queryType": "itemTag"
-        },
-        "refresh": 1,
-        "regex": "^(?!.*routing_present|.*routing_information).*$",
-        "type": "query"
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "STREAMS_TIME",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "label": "SCENARIO TIME",
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "",
+              "group": "$EIDA_NODES",
+              "host": "$EIDA_NODES",
+              "item": "/.*Response Time Ms$/",
+              "itemTag": "$WS",
+              "queryType": "item"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "alphabeticalAsc",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": true,
+          "allowCustomValue": true
+        }
       },
       {
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "definition": "",
-        "hide": 2,
-        "includeAll": true,
-        "label": "TRANSFER RATE",
-        "multi": true,
-        "name": "TRANSFER_RATE",
-        "options": [],
-        "query": {
-          "application": "PC",
-          "group": "$EIDA_NODES",
-          "host": "$EIDA_NODES",
-          "item": "/.*Transfer Rate$/",
-          "itemTag": "$WS",
-          "queryType": "item"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "SERVICE_SCENARIO_TIME",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "label": "SCENARIO TIME",
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "",
+              "group": "$EIDA_NODES",
+              "host": "$EIDA_NODES",
+              "item": "/.*$SCENARIO - Response Time Ms$/",
+              "itemTag": "$WS",
+              "queryType": "item"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "alphabeticalAsc",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": true,
+          "allowCustomValue": true
+        }
       },
       {
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "definition": "",
-        "hide": 2,
-        "includeAll": true,
-        "label": "SCENARIO TIME",
-        "multi": true,
-        "name": "STREAMS_TIME",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "$EIDA_NODES",
-          "host": "$EIDA_NODES",
-          "item": "/.*Response Time Ms$/",
-          "itemTag": "$WS",
-          "queryType": "item"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "definition": "",
-        "hide": 2,
-        "includeAll": true,
-        "label": "SCENARIO TIME",
-        "multi": true,
-        "name": "SERVICE_SCENARIO_TIME",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "$EIDA_NODES",
-          "host": "$EIDA_NODES",
-          "item": "/.*$SCENARIO - Response Time Ms$/",
-          "itemTag": "$WS",
-          "queryType": "item"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "allowCustomValue": false,
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "definition": "",
-        "description": "",
-        "hide": 2,
-        "includeAll": true,
-        "name": "SCENARIO",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "/.*/",
-          "host": "/.*/",
-          "item": "",
-          "itemTag": "/scenario:.*/",
-          "queryType": "itemTag"
-        },
-        "refresh": 1,
-        "regex": "/scenario: (.*)/",
-        "type": "query"
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "SCENARIO",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "",
+              "group": "/.*/",
+              "host": "/.*/",
+              "item": "",
+              "itemTag": "/scenario:.*/",
+              "queryType": "itemTag"
+            }
+          },
+          "regex": "/scenario: (.*)/",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": false,
+          "includeAll": true,
+          "allowCustomValue": false
+        }
       }
-    ]
-  },
-  "time": {
-    "from": "now-2d",
-    "to": "now"
-  },
-  "timepicker": {},
-  "timezone": "browser",
-  "title": "EIDA PerfCheck inter - nodes",
-  "uid": "1a7598eb-5c4e-41c9-a596-70f9ee92eb7f",
-  "version": 7,
-  "weekStart": "monday"
+    ],
+    "preferences": {
+      "layout": {
+        "kind": "GridLayout",
+        "spec": {
+          "items": []
+        }
+      }
+    }
+  }
 }

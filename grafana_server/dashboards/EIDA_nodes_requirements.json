@@ -1,535 +1,708 @@
 {
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
-        },
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "eeq7mizn2y8zkb",
+    "namespace": "default",
+    "uid": "5b2a5b6a-1b88-4ae2-976b-3f681fd86479",
+    "resourceVersion": "1795614713321985",
+    "generation": 2,
+    "creationTimestamp": "2026-11-25T13:29:32Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "4387236911517696"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:fg5dc0zqazzeoa",
+      "grafana.app/saved-from-ui": "Grafana v13.3.1 (da3aa3ff57)",
+      "grafana.app/updatedBy": "user:cg5dbty3zn3eob",
+      "grafana.app/updatedTimestamp": "2026-11-25T13:51:53Z"
+    }
   },
-  "editable": true,
-  "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "id": 1,
-  "links": [],
-  "panels": [
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 6,
-      "panels": [],
-      "repeat": "EIDA_NODE",
-      "title": "CORS problems at $EIDA_NODE",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
-      },
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 1
-      },
-      "id": 2,
-      "options": {
-        "ackEventColor": "rgb(56, 219, 156)",
-        "ackField": true,
-        "ageField": true,
-        "allowDangerousHTML": false,
-        "customLastChangeFormat": false,
-        "descriptionAtNewLine": false,
-        "descriptionField": true,
-        "fontSize": "100%",
-        "highlightBackground": false,
-        "highlightNewEvents": false,
-        "highlightNewerThan": "1h",
-        "hostField": true,
-        "hostGroups": false,
-        "hostProxy": false,
-        "hostTechNameField": false,
-        "lastChangeFormat": "",
-        "layout": "table",
-        "markAckEvents": false,
-        "okEventColor": "rgb(56, 189, 113)",
-        "opdataField": false,
-        "pageSize": 1000,
-        "problemTimeline": true,
-        "resizedColumns": [
-          {
-            "id": "name",
-            "value": 414.29998779296875
-          },
-          {
-            "id": "host",
-            "value": 105.14999389648438
-          },
-          {
-            "id": "lastchange",
-            "value": 316
-          },
-          {
-            "id": "ack",
-            "value": 186.40000915527344
-          },
-          {
-            "id": "tags",
-            "value": 402.1500244140625
-          }
-        ],
-        "severityField": true,
-        "showDatasourceName": false,
-        "showTags": true,
-        "sortProblems": "lastchange",
-        "statusField": true,
-        "statusIcon": false,
-        "triggerSeverity": [
-          {
-            "color": "rgb(108, 108, 108)",
-            "priority": 0,
-            "severity": "Not classified",
-            "show": true
-          },
-          {
-            "color": "rgb(120, 158, 183)",
-            "priority": 1,
-            "severity": "Information",
-            "show": true
-          },
-          {
-            "color": "rgb(175, 180, 36)",
-            "priority": 2,
-            "severity": "Warning",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 137, 30)",
-            "priority": 3,
-            "severity": "Average",
-            "show": true
-          },
-          {
-            "color": "rgb(255, 101, 72)",
-            "priority": 4,
-            "severity": "High",
-            "show": true
-          },
-          {
-            "color": "rgb(215, 0, 0)",
-            "priority": 5,
-            "severity": "Disaster",
-            "show": true
-          }
-        ]
-      },
-      "pluginVersion": "6.0.2",
-      "repeat": "WS",
-      "repeatDirection": "h",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
-          },
-          "countTriggersBy": "problems",
-          "evaltype": "0",
-          "functions": [],
-          "group": {
-            "filter": "$EIDA_NODE"
-          },
-          "host": {
-            "filter": "$EIDA_NODE"
-          },
-          "item": {
-            "filter": ""
-          },
-          "itemTag": {
-            "filter": ""
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "acknowledged": 2,
-            "count": true,
-            "disableDataAlignment": false,
-            "hostProxy": false,
-            "hostsInMaintenance": false,
-            "limit": 1001,
-            "minSeverity": 0,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "sortProblems": "default",
-            "useTimeRange": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "5",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "showProblems": "problems",
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": "Test:cors, Application:availability"
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "CORS availability",
-      "type": "alexanderzobnin-zabbix-triggers-panel"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 12
-      },
-      "id": 7,
-      "panels": [],
-      "repeat": "EIDA_NODE",
-      "title": "WADL at $EIDA_NODE",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "alexanderzobnin-zabbix-datasource",
-        "uid": "ef0ms3r1nwoowb"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "axisPlacement": "auto",
-            "fillOpacity": 70,
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "-- Grafana --"
             },
-            "insertNulls": false,
-            "lineWidth": 0,
-            "spanNulls": false
+            "spec": {}
           },
-          "mappings": [
-            {
-              "options": {
-                "200": {
-                  "color": "green",
-                  "index": 0,
-                  "text": "OK"
-                },
-                "201": {
-                  "color": "yellow",
-                  "index": 1
-                },
-                "204": {
-                  "color": "yellow",
-                  "index": 2,
-                  "text": "No Content"
-                },
-                "400": {
-                  "color": "dark-orange",
-                  "index": 3,
-                  "text": "Bad Request"
-                },
-                "401": {
-                  "color": "dark-orange",
-                  "index": 4,
-                  "text": "Unauthorized"
-                },
-                "403": {
-                  "color": "dark-orange",
-                  "index": 5,
-                  "text": "Forbidden"
-                },
-                "404": {
-                  "color": "yellow",
-                  "index": 6,
-                  "text": "Not Found"
-                },
-                "500": {
-                  "color": "dark-red",
-                  "index": 7,
-                  "text": "Internal Server Error"
-                },
-                "502": {
-                  "color": "dark-red",
-                  "index": 8,
-                  "text": "Bad Gateway"
-                },
-                "503": {
-                  "color": "dark-red",
-                  "index": 9,
-                  "text": "Service Unavailable"
-                },
-                "null": {
-                  "color": "transparent",
-                  "index": 10
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 24,
-        "x": 0,
-        "y": 13
-      },
-      "id": 9,
-      "options": {
-        "alignValue": "left",
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "mergeValues": true,
-        "rowHeight": 0.9,
-        "showValue": "auto",
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
         }
-      },
-      "pluginVersion": "12.1.1",
-      "targets": [
-        {
-          "application": {
-            "filter": ""
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "id": 2,
+          "title": "CORS availability",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "ag5dc60t4iha8f"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "problems",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$EIDA_NODE"
+                        },
+                        "host": {
+                          "filter": "$EIDA_NODE"
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "acknowledged": 2,
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "hostProxy": false,
+                          "hostsInMaintenance": false,
+                          "limit": 1001,
+                          "minSeverity": 0,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "sortProblems": "default",
+                          "useTimeRange": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "problemTags": [
+                          {
+                            "operator": "1",
+                            "tag": "Test",
+                            "value": "cors"
+                          },
+                          {
+                            "operator": "1",
+                            "tag": "Application",
+                            "value": "availability"
+                          }
+                        ],
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "5",
+                        "resultFormat": "time_series",
+                        "schema": 13,
+                        "showProblems": "problems",
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
           },
-          "countTriggersBy": "",
-          "evaltype": "0",
-          "functions": [
-            {
-              "added": true,
-              "def": {
-                "category": "Alias",
-                "defaultParams": [
-                  "/(.*)/",
-                  "$1"
-                ],
-                "name": "replaceAlias",
-                "params": [
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "alexanderzobnin-zabbix-triggers-panel",
+            "version": "6.12.0",
+            "spec": {
+              "options": {
+                "ackEventColor": "rgb(56, 219, 156)",
+                "ackField": true,
+                "ageField": true,
+                "allowDangerousHTML": false,
+                "customLastChangeFormat": false,
+                "customTagColumns": "",
+                "dataLinks": [],
+                "descriptionAtNewLine": false,
+                "descriptionField": true,
+                "fontSize": "100%",
+                "highlightBackground": false,
+                "highlightNewEvents": false,
+                "highlightNewerThan": "1h",
+                "hostField": true,
+                "hostGroups": false,
+                "hostIpField": false,
+                "hostProxy": false,
+                "hostTechNameField": false,
+                "lastChangeFormat": "",
+                "layout": "table",
+                "markAckEvents": false,
+                "okEventColor": "rgb(56, 189, 113)",
+                "opdataField": false,
+                "pageSize": 1000,
+                "problemTimeline": true,
+                "resizedColumns": [
                   {
-                    "name": "regexp",
-                    "type": "string"
+                    "id": "name",
+                    "value": 414.29998779296875
                   },
                   {
-                    "name": "newAlias",
-                    "type": "string"
+                    "id": "host",
+                    "value": 105.14999389648438
+                  },
+                  {
+                    "id": "lastchange",
+                    "value": 316
+                  },
+                  {
+                    "id": "ack",
+                    "value": 186.40000915527344
+                  },
+                  {
+                    "id": "tags",
+                    "value": 402.1500244140625
+                  }
+                ],
+                "severityField": true,
+                "showDatasourceName": false,
+                "showSearchFilter": false,
+                "showTags": true,
+                "sortProblems": "lastchange",
+                "soundAlerts": false,
+                "soundCustomUrl": "",
+                "soundMinSeverity": 4,
+                "soundRepeat": false,
+                "soundTone": "beep",
+                "soundVolume": 80,
+                "statusField": true,
+                "statusIcon": false,
+                "triggerSeverity": [
+                  {
+                    "color": "rgb(108, 108, 108)",
+                    "priority": 0,
+                    "severity": "Not classified",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(120, 158, 183)",
+                    "priority": 1,
+                    "severity": "Information",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(175, 180, 36)",
+                    "priority": 2,
+                    "severity": "Warning",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(255, 137, 30)",
+                    "priority": 3,
+                    "severity": "Average",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(255, 101, 72)",
+                    "priority": 4,
+                    "severity": "High",
+                    "show": true
+                  },
+                  {
+                    "color": "rgb(215, 0, 0)",
+                    "priority": 5,
+                    "severity": "Disaster",
+                    "show": true
                   }
                 ]
               },
-              "params": [
-                "/.*scenario \"(.*)\"./",
-                "$1"
-              ],
-              "text": "replaceAlias(/(.*)/, $1)"
-            }
-          ],
-          "group": {
-            "filter": "$EIDA_NODE"
-          },
-          "host": {
-            "filter": "$EIDA_NODE"
-          },
-          "item": {
-            "filter": "Response code for step \".* application.wadl\" of scenario \"$WS\".*"
-          },
-          "itemTag": {
-            "filter": "webservice: $WS"
-          },
-          "macro": {
-            "filter": ""
-          },
-          "options": {
-            "count": false,
-            "disableDataAlignment": true,
-            "showDisabledItems": false,
-            "skipEmptyValues": false,
-            "useTrends": "default",
-            "useZabbixValueMapping": false
-          },
-          "proxy": {
-            "filter": ""
-          },
-          "queryType": "0",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "schema": 12,
-          "table": {
-            "skipEmptyValues": false
-          },
-          "tags": {
-            "filter": ""
-          },
-          "textFilter": "",
-          "trigger": {
-            "filter": ""
-          }
-        }
-      ],
-      "title": "WADL files accessible",
-      "transformations": [
-        {
-          "id": "renameByRegex",
-          "options": {
-            "regex": "^(.*):.*$",
-            "renamePattern": "$1"
-          }
-        },
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "destinationType": "string",
-                "targetField": "availability"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "dataselect"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "station"
-              },
-              {
-                "destinationType": "string",
-                "targetField": "wfcatalog"
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
               }
-            ],
-            "fields": {}
+            }
           }
         }
+      },
+      "panel-9": {
+        "kind": "Panel",
+        "spec": {
+          "id": 9,
+          "title": "WADL files accessible",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "ag5dc60t4iha8f"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "/.*scenario \"(.*)\"./",
+                              "$1"
+                            ],
+                            "text": "replaceAlias(/(.*)/, $1)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$EIDA_NODE"
+                        },
+                        "host": {
+                          "filter": "$EIDA_NODE"
+                        },
+                        "item": {
+                          "filter": "Response code for step \".* application.wadl\" of scenario \"$WS\".*"
+                        },
+                        "itemTag": {
+                          "filter": "webservice: $WS"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": true,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 13,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "renameByRegex",
+                  "spec": {
+                    "options": {
+                      "regex": "^(.*):.*$",
+                      "renamePattern": "$1"
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "convertFieldType",
+                  "spec": {
+                    "options": {
+                      "conversions": [
+                        {
+                          "destinationType": "string",
+                          "targetField": "availability"
+                        },
+                        {
+                          "destinationType": "string",
+                          "targetField": "dataselect"
+                        },
+                        {
+                          "destinationType": "string",
+                          "targetField": "station"
+                        },
+                        {
+                          "destinationType": "string",
+                          "targetField": "wfcatalog"
+                        }
+                      ],
+                      "fields": {}
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "state-timeline",
+            "version": "13.3.1",
+            "spec": {
+              "options": {
+                "alignValue": "left",
+                "legend": {
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": false
+                },
+                "mergeValues": true,
+                "rowHeight": 0.9,
+                "showValue": "auto",
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "mappings": [
+                    {
+                      "type": "value",
+                      "options": {
+                        "200": {
+                          "text": "OK",
+                          "color": "green",
+                          "index": 0
+                        },
+                        "201": {
+                          "color": "yellow",
+                          "index": 1
+                        },
+                        "204": {
+                          "text": "No Content",
+                          "color": "yellow",
+                          "index": 2
+                        },
+                        "400": {
+                          "text": "Bad Request",
+                          "color": "dark-orange",
+                          "index": 3
+                        },
+                        "401": {
+                          "text": "Unauthorized",
+                          "color": "dark-orange",
+                          "index": 4
+                        },
+                        "403": {
+                          "text": "Forbidden",
+                          "color": "dark-orange",
+                          "index": 5
+                        },
+                        "404": {
+                          "text": "Not Found",
+                          "color": "yellow",
+                          "index": 6
+                        },
+                        "500": {
+                          "text": "Internal Server Error",
+                          "color": "dark-red",
+                          "index": 7
+                        },
+                        "502": {
+                          "text": "Bad Gateway",
+                          "color": "dark-red",
+                          "index": 8
+                        },
+                        "503": {
+                          "text": "Service Unavailable",
+                          "color": "dark-red",
+                          "index": 9
+                        },
+                        "null": {
+                          "color": "transparent",
+                          "index": 10
+                        }
+                      }
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "axisPlacement": "auto",
+                    "fillOpacity": 70,
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineWidth": 0,
+                    "spanNulls": false
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "RowsLayout",
+      "spec": {
+        "rows": [
+          {
+            "kind": "RowsLayoutRow",
+            "spec": {
+              "title": "CORS problems at $EIDA_NODE",
+              "collapse": false,
+              "repeat": {
+                "mode": "variable",
+                "value": "EIDA_NODE"
+              },
+              "layout": {
+                "kind": "GridLayout",
+                "spec": {
+                  "items": [
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 24,
+                        "height": 11,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-2"
+                        },
+                        "repeat": {
+                          "mode": "variable",
+                          "value": "WS",
+                          "direction": "h"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "kind": "RowsLayoutRow",
+            "spec": {
+              "title": "WADL at $EIDA_NODE",
+              "collapse": false,
+              "repeat": {
+                "mode": "variable",
+                "value": "EIDA_NODE"
+              },
+              "layout": {
+                "kind": "GridLayout",
+                "spec": {
+                  "items": [
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 24,
+                        "height": 13,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-9"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [
+      "EIDA"
+    ],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-2d",
+      "to": "now",
+      "autoRefresh": "1m",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
       ],
-      "type": "state-timeline"
-    }
-  ],
-  "preload": false,
-  "refresh": "1m",
-  "schemaVersion": 41,
-  "tags": [
-    "EIDA"
-  ],
-  "templating": {
-    "list": [
+      "hideTimepicker": true,
+      "fiscalYearStartMonth": 0,
+      "nowDelay": "1m"
+    },
+    "title": "EIDA Nodes requirements",
+    "variables": [
       {
-        "allowCustomValue": false,
-        "current": {
-          "text": "BGS",
-          "value": "BGS"
-        },
-        "definition": "",
-        "includeAll": false,
-        "label": "EIDA NODE",
-        "name": "EIDA_NODE",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "/^EIDA nodes$/",
-          "host": "/.*/",
-          "item": "",
-          "itemTag": "",
-          "queryType": "host"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "EIDA_NODE",
+          "current": {
+            "text": "BGS",
+            "value": "BGS"
+          },
+          "label": "EIDA NODE",
+          "hide": "dontHide",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "",
+              "group": "/^EIDA nodes$/",
+              "host": "/.*/",
+              "item": "",
+              "itemTag": "",
+              "queryType": "host"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "alphabeticalAsc",
+          "definition": "",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": false
+        }
       },
       {
-        "allowCustomValue": false,
-        "current": {
-          "text": [
-            "dataselect",
-            "availability",
-            "station",
-            "wfcatalog"
-          ],
-          "value": [
-            "dataselect",
-            "availability",
-            "station",
-            "wfcatalog"
-          ]
-        },
-        "definition": "",
-        "hide": 2,
-        "includeAll": true,
-        "label": "webservice",
-        "multi": true,
-        "name": "WS",
-        "options": [],
-        "query": {
-          "application": "",
-          "group": "/.*/",
-          "host": "/.*/",
-          "item": "",
-          "itemTag": "/webservice: [^(routing.*)]/",
-          "queryType": "itemTag"
-        },
-        "refresh": 1,
-        "regex": "/webservice: (.*)/",
-        "type": "query"
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "WS",
+          "current": {
+            "text": [
+              "dataselect",
+              "availability",
+              "station",
+              "wfcatalog"
+            ],
+            "value": [
+              "dataselect",
+              "availability",
+              "station",
+              "wfcatalog"
+            ]
+          },
+          "label": "webservice",
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "",
+              "group": "/.*/",
+              "host": "/.*/",
+              "item": "",
+              "itemTag": "/webservice: [^(routing.*)]/",
+              "queryType": "itemTag"
+            }
+          },
+          "regex": "/webservice: (.*)/",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": true,
+          "allowCustomValue": false
+        }
       }
-    ]
-  },
-  "time": {
-    "from": "now-2d",
-    "to": "now"
-  },
-  "timepicker": {
-    "hidden": true,
-    "nowDelay": "1m"
-  },
-  "timezone": "browser",
-  "title": "EIDA Nodes requirements",
-  "uid": "eeq7mizn2y8zkb",
-  "version": 10
+    ],
+    "preferences": {
+      "layout": {
+        "kind": "GridLayout",
+        "spec": {
+          "items": []
+        }
+      }
+    }
+  }
 }
