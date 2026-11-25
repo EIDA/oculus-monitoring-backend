@@ -1,5 +1,5 @@
 zabbix_export:
-  version: '7.0'
+  version: '8.0'
   template_groups:
     - uuid: 44950db14d8549c2a022ab3d5ba3ff96
       name: Templates/EIDA
@@ -14,8 +14,8 @@ zabbix_export:
           name: 'perfCheck Availability - 1stream15days - Content Size Bytes'
           type: TRAP
           key: availability.1stream15days.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for availability 1stream15days'
           tags:
@@ -28,9 +28,9 @@ zabbix_export:
           name: 'perfCheck Availability - 1stream15days - Response Time Ms'
           type: TRAP
           key: availability.1stream15days.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for availability 1stream15days'
           tags:
@@ -43,10 +43,9 @@ zabbix_export:
           name: 'perfCheck Availability - 1stream15days - Status Code'
           type: TRAP
           key: availability.1stream15days.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for availability 1stream15days'
           tags:
             - tag: perfcheck
@@ -58,8 +57,8 @@ zabbix_export:
           name: 'perfCheck Availability - 1stream15days - Transfer Rate'
           type: TRAP
           key: availability.1stream15days.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           tags:
             - tag: perfcheck
@@ -71,8 +70,8 @@ zabbix_export:
           name: 'perfCheck Availability - 9streams - Content Size Bytes'
           type: TRAP
           key: availability.9streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for availability 9streams'
           tags:
@@ -85,9 +84,9 @@ zabbix_export:
           name: 'perfCheck Availability - 9streams - Response Time Ms'
           type: TRAP
           key: availability.9streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for availability 9streams'
           tags:
@@ -100,10 +99,9 @@ zabbix_export:
           name: 'perfCheck Availability - 9streams - Status Code'
           type: TRAP
           key: availability.9streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for availability 9streams'
           tags:
             - tag: perfcheck
@@ -115,8 +113,8 @@ zabbix_export:
           name: 'perfCheck Availability - 9streams - Transfer Rate'
           type: TRAP
           key: availability.9streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for availability 9streams'
           tags:
@@ -129,8 +127,8 @@ zabbix_export:
           name: 'perfCheck Availability - 54streams - Content Size Bytes'
           type: TRAP
           key: availability.54streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for availability 54streams'
           tags:
@@ -143,9 +141,9 @@ zabbix_export:
           name: 'perfCheck Availability - 54streams - Response Time Ms'
           type: TRAP
           key: availability.54streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for availability 54streams'
           tags:
@@ -158,10 +156,9 @@ zabbix_export:
           name: 'perfCheck Availability - 54streams - Status Code'
           type: TRAP
           key: availability.54streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for availability 54streams'
           tags:
             - tag: perfcheck
@@ -173,8 +170,8 @@ zabbix_export:
           name: 'perfCheck Availability - 54streams - Transfer Rate'
           type: TRAP
           key: availability.54streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for availability 54streams'
           tags:
@@ -187,8 +184,8 @@ zabbix_export:
           name: 'perfCheck Availability - 320streams - Content Size Bytes'
           type: TRAP
           key: availability.320streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for availability 320streams'
           tags:
@@ -201,9 +198,9 @@ zabbix_export:
           name: 'perfCheck Availability - 320streams - Response Time Ms'
           type: TRAP
           key: availability.320streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for availability 320streams'
           tags:
@@ -216,10 +213,9 @@ zabbix_export:
           name: 'perfCheck Availability - 320streams - Status Code'
           type: TRAP
           key: availability.320streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for availability 320streams'
           tags:
             - tag: perfcheck
@@ -231,8 +227,8 @@ zabbix_export:
           name: 'perfCheck Availability - 320streams - Transfer Rate'
           type: TRAP
           key: availability.320streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for availability 320streams'
           tags:
@@ -245,8 +241,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 1stream15days - Content Size Bytes'
           type: TRAP
           key: dataselect.1stream15days.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for dataselect 1stream15days'
           tags:
@@ -259,9 +255,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 1stream15days - Response Time Ms'
           type: TRAP
           key: dataselect.1stream15days.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for dataselect 1stream15days'
           tags:
@@ -274,10 +270,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 1stream15days - Status Code'
           type: TRAP
           key: dataselect.1stream15days.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for dataselect 1stream15days'
           tags:
             - tag: perfcheck
@@ -289,8 +284,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 1stream15days - Transfer Rate'
           type: TRAP
           key: dataselect.1stream15days.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for dataselect 1stream15days'
           tags:
@@ -303,8 +298,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 9streams - Content Size Bytes'
           type: TRAP
           key: dataselect.9streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for dataselect 9streams'
           tags:
@@ -317,9 +312,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 9streams - Response Time Ms'
           type: TRAP
           key: dataselect.9streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for dataselect 9streams'
           tags:
@@ -332,10 +327,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 9streams - Status Code'
           type: TRAP
           key: dataselect.9streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for dataselect 9streams'
           tags:
             - tag: perfcheck
@@ -347,8 +341,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 9streams - Transfer Rate'
           type: TRAP
           key: dataselect.9streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for dataselect 9streams'
           tags:
@@ -361,8 +355,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 54streams - Content Size Bytes'
           type: TRAP
           key: dataselect.54streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for dataselect 54streams'
           tags:
@@ -375,9 +369,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 54streams - Response Time Ms'
           type: TRAP
           key: dataselect.54streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for dataselect 54streams'
           tags:
@@ -390,10 +384,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 54streams - Status Code'
           type: TRAP
           key: dataselect.54streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for dataselect 54streams'
           tags:
             - tag: perfcheck
@@ -405,8 +398,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 54streams - Transfer Rate'
           type: TRAP
           key: dataselect.54streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for dataselect 54streams'
           tags:
@@ -419,8 +412,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 320streams - Content Size Bytes'
           type: TRAP
           key: dataselect.320streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for dataselect 320streams'
           tags:
@@ -433,9 +426,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 320streams - Response Time Ms'
           type: TRAP
           key: dataselect.320streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for dataselect 320streams'
           tags:
@@ -448,10 +441,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 320streams - Status Code'
           type: TRAP
           key: dataselect.320streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for dataselect 320streams'
           tags:
             - tag: perfcheck
@@ -463,8 +455,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 320streams - Transfer Rate'
           type: TRAP
           key: dataselect.320streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for dataselect 320streams'
           tags:
@@ -477,8 +469,8 @@ zabbix_export:
           name: 'perfCheck Station - 1stream15days - Transfer Rate'
           type: TRAP
           key: station.1stream15days.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for station 1stream15days'
           tags:
@@ -491,8 +483,8 @@ zabbix_export:
           name: 'perfCheck Station - 9streams - Content Size Bytes'
           type: TRAP
           key: station.9streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for station 9streams'
           tags:
@@ -505,9 +497,9 @@ zabbix_export:
           name: 'perfCheck Station - 9streams - Response Time Ms'
           type: TRAP
           key: station.9streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for station 9streams'
           tags:
@@ -520,10 +512,9 @@ zabbix_export:
           name: 'perfCheck Station - 9streams - Status Code'
           type: TRAP
           key: station.9streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for station 9streams'
           tags:
             - tag: perfcheck
@@ -535,8 +526,8 @@ zabbix_export:
           name: 'perfCheck Station - 9streams - Transfer Rate'
           type: TRAP
           key: station.9streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for station 9streams'
           tags:
@@ -549,8 +540,8 @@ zabbix_export:
           name: 'perfCheck Station - 54streams - Content Size Bytes'
           type: TRAP
           key: station.54streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for station 54streams'
           tags:
@@ -563,9 +554,9 @@ zabbix_export:
           name: 'perfCheck Station - 54streams - Response Time Ms'
           type: TRAP
           key: station.54streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for station 54streams'
           tags:
@@ -578,10 +569,9 @@ zabbix_export:
           name: 'perfCheck Station - 54streams - Status Code'
           type: TRAP
           key: station.54streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for station 54streams'
           tags:
             - tag: perfcheck
@@ -593,8 +583,8 @@ zabbix_export:
           name: 'perfCheck Station - 54streams - Transfer Rate'
           type: TRAP
           key: station.54streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for station 54streams'
           tags:
@@ -607,8 +597,8 @@ zabbix_export:
           name: 'perfCheck Station - 320streams - Content Size Bytes'
           type: TRAP
           key: station.320streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for station 320streams'
           tags:
@@ -621,9 +611,9 @@ zabbix_export:
           name: 'perfCheck Station - 320streams - Response Time Ms'
           type: TRAP
           key: station.320streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for station 320streams'
           tags:
@@ -636,10 +626,9 @@ zabbix_export:
           name: 'perfCheck Station - 320streams - Status Code'
           type: TRAP
           key: station.320streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for station 320streams'
           tags:
             - tag: perfcheck
@@ -651,8 +640,8 @@ zabbix_export:
           name: 'perfCheck Station - 320streams - Transfer Rate'
           type: TRAP
           key: station.320streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for station 320streams'
           tags:
@@ -665,8 +654,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 1stream15days - Content Size Bytes'
           type: TRAP
           key: wfcatalog.1stream15days.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for wfcatalog 1stream15days'
           tags:
@@ -679,9 +668,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 1stream15days - Response Time Ms'
           type: TRAP
           key: wfcatalog.1stream15days.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for wfcatalog 1stream15days'
           tags:
@@ -694,10 +683,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 1stream15days - Status Code'
           type: TRAP
           key: wfcatalog.1stream15days.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for wfcatalog 1stream15days'
           tags:
             - tag: perfcheck
@@ -709,8 +697,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 1stream15days - Transfer Rate'
           type: TRAP
           key: wfcatalog.1stream15days.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for wfcatalog 1stream15days'
           tags:
@@ -723,8 +711,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 9streams - Content Size Bytes'
           type: TRAP
           key: wfcatalog.9streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for wfcatalog 9streams'
           tags:
@@ -737,9 +725,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 9streams - Response Time Ms'
           type: TRAP
           key: wfcatalog.9streams.response_time_ms
-          delay: '0'
           history: 30d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for wfcatalog 9streams'
           tags:
@@ -752,10 +740,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 9streams - Status Code'
           type: TRAP
           key: wfcatalog.9streams.status_code
-          delay: '0'
           history: 30d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for wfcatalog 9streams'
           tags:
             - tag: perfcheck
@@ -767,8 +754,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 9streams - Transfer Rate'
           type: TRAP
           key: wfcatalog.9streams.transfer_rate
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for wfcatalog 9streams'
           tags:
@@ -781,8 +768,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 54streams - Content Size Bytes'
           type: TRAP
           key: wfcatalog.54streams.content_size_bytes
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for wfcatalog 54streams'
           tags:
@@ -795,9 +782,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 54streams - Response Time Ms'
           type: TRAP
           key: wfcatalog.54streams.response_time_ms
-          delay: '0'
           history: 30d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for wfcatalog 54streams'
           tags:
@@ -810,10 +797,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 54streams - Status Code'
           type: TRAP
           key: wfcatalog.54streams.status_code
-          delay: '0'
           history: 30d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for wfcatalog 54streams'
           tags:
             - tag: perfcheck
@@ -825,8 +811,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 54streams - Transfer Rate'
           type: TRAP
           key: wfcatalog.54streams.transfer_rate
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for wfcatalog 54streams'
           tags:
@@ -839,8 +825,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 320streams - Content Size Bytes'
           type: TRAP
           key: wfcatalog.320streams.content_size_bytes
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for wfcatalog 320streams'
           tags:
@@ -853,9 +839,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 320streams - Response Time Ms'
           type: TRAP
           key: wfcatalog.320streams.response_time_ms
-          delay: '0'
           history: 30d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for wfcatalog 320streams'
           tags:
@@ -868,10 +854,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 320streams - Status Code'
           type: TRAP
           key: wfcatalog.320streams.status_code
-          delay: '0'
           history: 30d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for wfcatalog 320streams'
           tags:
             - tag: perfcheck
@@ -883,8 +868,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 320streams - Transfer Rate'
           type: TRAP
           key: wfcatalog.320streams.transfer_rate
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for wfcatalog 320streams'
           tags:

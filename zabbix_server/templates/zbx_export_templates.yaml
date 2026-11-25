@@ -1,5 +1,5 @@
 zabbix_export:
-  version: '7.0'
+  version: '8.0'
   template_groups:
     - uuid: 44950db14d8549c2a022ab3d5ba3ff96
       name: Templates/EIDA
@@ -20,7 +20,6 @@ zabbix_export:
           key: routing.central.datasets
           delay: 1h
           value_type: TEXT
-          trends: '0'
           preprocessing:
             - type: JSONPATH
               parameters:
@@ -62,7 +61,6 @@ zabbix_export:
           key: routing.central.node
           delay: 1h
           value_type: TEXT
-          trends: '0'
           preprocessing:
             - type: JSONPATH
               parameters:
@@ -101,7 +99,6 @@ zabbix_export:
           key: routing.central.station
           delay: 1h
           value_type: TEXT
-          trends: '0'
           status: DISABLED
           timeout: 15s
           url: 'https://{$ENDPOINT}//eidaws/routing/1/query'
@@ -192,10 +189,10 @@ zabbix_export:
           name: 'Global score'
           type: TRAP
           key: score.eida_consistency
-          delay: '0'
           history: 365d
           value_type: FLOAT
           trends: 3000d
+          allowed_hosts: 0.0.0.0/0
           tags:
             - tag: Application
               value: consistency
@@ -210,8 +207,8 @@ zabbix_export:
           name: 'perfCheck Availability - 1stream15days - Content Size Bytes'
           type: TRAP
           key: availability.1stream15days.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for availability 1stream15days'
           tags:
@@ -224,9 +221,9 @@ zabbix_export:
           name: 'perfCheck Availability - 1stream15days - Response Time Ms'
           type: TRAP
           key: availability.1stream15days.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for availability 1stream15days'
           tags:
@@ -239,10 +236,9 @@ zabbix_export:
           name: 'perfCheck Availability - 1stream15days - Status Code'
           type: TRAP
           key: availability.1stream15days.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for availability 1stream15days'
           tags:
             - tag: perfcheck
@@ -254,8 +250,8 @@ zabbix_export:
           name: 'perfCheck Availability - 1stream15days - Transfer Rate'
           type: TRAP
           key: availability.1stream15days.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           tags:
             - tag: perfcheck
@@ -267,8 +263,8 @@ zabbix_export:
           name: 'perfCheck Availability - 9streams - Content Size Bytes'
           type: TRAP
           key: availability.9streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for availability 9streams'
           tags:
@@ -281,9 +277,9 @@ zabbix_export:
           name: 'perfCheck Availability - 9streams - Response Time Ms'
           type: TRAP
           key: availability.9streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for availability 9streams'
           tags:
@@ -296,10 +292,9 @@ zabbix_export:
           name: 'perfCheck Availability - 9streams - Status Code'
           type: TRAP
           key: availability.9streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for availability 9streams'
           tags:
             - tag: perfcheck
@@ -311,8 +306,8 @@ zabbix_export:
           name: 'perfCheck Availability - 9streams - Transfer Rate'
           type: TRAP
           key: availability.9streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for availability 9streams'
           tags:
@@ -325,8 +320,8 @@ zabbix_export:
           name: 'perfCheck Availability - 54streams - Content Size Bytes'
           type: TRAP
           key: availability.54streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for availability 54streams'
           tags:
@@ -339,9 +334,9 @@ zabbix_export:
           name: 'perfCheck Availability - 54streams - Response Time Ms'
           type: TRAP
           key: availability.54streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for availability 54streams'
           tags:
@@ -354,10 +349,9 @@ zabbix_export:
           name: 'perfCheck Availability - 54streams - Status Code'
           type: TRAP
           key: availability.54streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for availability 54streams'
           tags:
             - tag: perfcheck
@@ -369,8 +363,8 @@ zabbix_export:
           name: 'perfCheck Availability - 54streams - Transfer Rate'
           type: TRAP
           key: availability.54streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for availability 54streams'
           tags:
@@ -383,8 +377,8 @@ zabbix_export:
           name: 'perfCheck Availability - 320streams - Content Size Bytes'
           type: TRAP
           key: availability.320streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for availability 320streams'
           tags:
@@ -397,9 +391,9 @@ zabbix_export:
           name: 'perfCheck Availability - 320streams - Response Time Ms'
           type: TRAP
           key: availability.320streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for availability 320streams'
           tags:
@@ -412,10 +406,9 @@ zabbix_export:
           name: 'perfCheck Availability - 320streams - Status Code'
           type: TRAP
           key: availability.320streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for availability 320streams'
           tags:
             - tag: perfcheck
@@ -427,8 +420,8 @@ zabbix_export:
           name: 'perfCheck Availability - 320streams - Transfer Rate'
           type: TRAP
           key: availability.320streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for availability 320streams'
           tags:
@@ -441,8 +434,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 1stream15days - Content Size Bytes'
           type: TRAP
           key: dataselect.1stream15days.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for dataselect 1stream15days'
           tags:
@@ -455,9 +448,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 1stream15days - Response Time Ms'
           type: TRAP
           key: dataselect.1stream15days.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for dataselect 1stream15days'
           tags:
@@ -470,10 +463,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 1stream15days - Status Code'
           type: TRAP
           key: dataselect.1stream15days.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for dataselect 1stream15days'
           tags:
             - tag: perfcheck
@@ -485,8 +477,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 1stream15days - Transfer Rate'
           type: TRAP
           key: dataselect.1stream15days.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for dataselect 1stream15days'
           tags:
@@ -499,8 +491,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 9streams - Content Size Bytes'
           type: TRAP
           key: dataselect.9streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for dataselect 9streams'
           tags:
@@ -513,9 +505,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 9streams - Response Time Ms'
           type: TRAP
           key: dataselect.9streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for dataselect 9streams'
           tags:
@@ -528,10 +520,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 9streams - Status Code'
           type: TRAP
           key: dataselect.9streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for dataselect 9streams'
           tags:
             - tag: perfcheck
@@ -543,8 +534,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 9streams - Transfer Rate'
           type: TRAP
           key: dataselect.9streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for dataselect 9streams'
           tags:
@@ -557,8 +548,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 54streams - Content Size Bytes'
           type: TRAP
           key: dataselect.54streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for dataselect 54streams'
           tags:
@@ -571,9 +562,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 54streams - Response Time Ms'
           type: TRAP
           key: dataselect.54streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for dataselect 54streams'
           tags:
@@ -586,10 +577,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 54streams - Status Code'
           type: TRAP
           key: dataselect.54streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for dataselect 54streams'
           tags:
             - tag: perfcheck
@@ -601,8 +591,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 54streams - Transfer Rate'
           type: TRAP
           key: dataselect.54streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for dataselect 54streams'
           tags:
@@ -615,8 +605,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 320streams - Content Size Bytes'
           type: TRAP
           key: dataselect.320streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for dataselect 320streams'
           tags:
@@ -629,9 +619,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 320streams - Response Time Ms'
           type: TRAP
           key: dataselect.320streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for dataselect 320streams'
           tags:
@@ -644,10 +634,9 @@ zabbix_export:
           name: 'perfCheck Dataselect - 320streams - Status Code'
           type: TRAP
           key: dataselect.320streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for dataselect 320streams'
           tags:
             - tag: perfcheck
@@ -659,8 +648,8 @@ zabbix_export:
           name: 'perfCheck Dataselect - 320streams - Transfer Rate'
           type: TRAP
           key: dataselect.320streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for dataselect 320streams'
           tags:
@@ -673,8 +662,8 @@ zabbix_export:
           name: 'perfCheck Station - 1stream15days - Transfer Rate'
           type: TRAP
           key: station.1stream15days.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for station 1stream15days'
           tags:
@@ -687,8 +676,8 @@ zabbix_export:
           name: 'perfCheck Station - 9streams - Content Size Bytes'
           type: TRAP
           key: station.9streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for station 9streams'
           tags:
@@ -701,9 +690,9 @@ zabbix_export:
           name: 'perfCheck Station - 9streams - Response Time Ms'
           type: TRAP
           key: station.9streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for station 9streams'
           tags:
@@ -716,10 +705,9 @@ zabbix_export:
           name: 'perfCheck Station - 9streams - Status Code'
           type: TRAP
           key: station.9streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for station 9streams'
           tags:
             - tag: perfcheck
@@ -731,8 +719,8 @@ zabbix_export:
           name: 'perfCheck Station - 9streams - Transfer Rate'
           type: TRAP
           key: station.9streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for station 9streams'
           tags:
@@ -745,8 +733,8 @@ zabbix_export:
           name: 'perfCheck Station - 54streams - Content Size Bytes'
           type: TRAP
           key: station.54streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for station 54streams'
           tags:
@@ -759,9 +747,9 @@ zabbix_export:
           name: 'perfCheck Station - 54streams - Response Time Ms'
           type: TRAP
           key: station.54streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for station 54streams'
           tags:
@@ -774,10 +762,9 @@ zabbix_export:
           name: 'perfCheck Station - 54streams - Status Code'
           type: TRAP
           key: station.54streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for station 54streams'
           tags:
             - tag: perfcheck
@@ -789,8 +776,8 @@ zabbix_export:
           name: 'perfCheck Station - 54streams - Transfer Rate'
           type: TRAP
           key: station.54streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for station 54streams'
           tags:
@@ -803,8 +790,8 @@ zabbix_export:
           name: 'perfCheck Station - 320streams - Content Size Bytes'
           type: TRAP
           key: station.320streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for station 320streams'
           tags:
@@ -817,9 +804,9 @@ zabbix_export:
           name: 'perfCheck Station - 320streams - Response Time Ms'
           type: TRAP
           key: station.320streams.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for station 320streams'
           tags:
@@ -832,10 +819,9 @@ zabbix_export:
           name: 'perfCheck Station - 320streams - Status Code'
           type: TRAP
           key: station.320streams.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for station 320streams'
           tags:
             - tag: perfcheck
@@ -847,8 +833,8 @@ zabbix_export:
           name: 'perfCheck Station - 320streams - Transfer Rate'
           type: TRAP
           key: station.320streams.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for station 320streams'
           tags:
@@ -861,8 +847,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 1stream15days - Content Size Bytes'
           type: TRAP
           key: wfcatalog.1stream15days.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for wfcatalog 1stream15days'
           tags:
@@ -875,9 +861,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 1stream15days - Response Time Ms'
           type: TRAP
           key: wfcatalog.1stream15days.response_time_ms
-          delay: '0'
           history: 365d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for wfcatalog 1stream15days'
           tags:
@@ -890,10 +876,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 1stream15days - Status Code'
           type: TRAP
           key: wfcatalog.1stream15days.status_code
-          delay: '0'
           history: 365d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for wfcatalog 1stream15days'
           tags:
             - tag: perfcheck
@@ -905,8 +890,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 1stream15days - Transfer Rate'
           type: TRAP
           key: wfcatalog.1stream15days.transfer_rate
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for wfcatalog 1stream15days'
           tags:
@@ -919,8 +904,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 9streams - Content Size Bytes'
           type: TRAP
           key: wfcatalog.9streams.content_size_bytes
-          delay: '0'
           history: 365d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for wfcatalog 9streams'
           tags:
@@ -933,9 +918,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 9streams - Response Time Ms'
           type: TRAP
           key: wfcatalog.9streams.response_time_ms
-          delay: '0'
           history: 30d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for wfcatalog 9streams'
           tags:
@@ -948,10 +933,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 9streams - Status Code'
           type: TRAP
           key: wfcatalog.9streams.status_code
-          delay: '0'
           history: 30d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for wfcatalog 9streams'
           tags:
             - tag: perfcheck
@@ -963,8 +947,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 9streams - Transfer Rate'
           type: TRAP
           key: wfcatalog.9streams.transfer_rate
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for wfcatalog 9streams'
           tags:
@@ -977,8 +961,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 54streams - Content Size Bytes'
           type: TRAP
           key: wfcatalog.54streams.content_size_bytes
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for wfcatalog 54streams'
           tags:
@@ -991,9 +975,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 54streams - Response Time Ms'
           type: TRAP
           key: wfcatalog.54streams.response_time_ms
-          delay: '0'
           history: 30d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for wfcatalog 54streams'
           tags:
@@ -1006,10 +990,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 54streams - Status Code'
           type: TRAP
           key: wfcatalog.54streams.status_code
-          delay: '0'
           history: 30d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for wfcatalog 54streams'
           tags:
             - tag: perfcheck
@@ -1021,8 +1004,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 54streams - Transfer Rate'
           type: TRAP
           key: wfcatalog.54streams.transfer_rate
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for wfcatalog 54streams'
           tags:
@@ -1035,8 +1018,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 320streams - Content Size Bytes'
           type: TRAP
           key: wfcatalog.320streams.content_size_bytes
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: B
           description: 'Content size in bytes for wfcatalog 320streams'
           tags:
@@ -1049,9 +1032,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 320streams - Response Time Ms'
           type: TRAP
           key: wfcatalog.320streams.response_time_ms
-          delay: '0'
           history: 30d
           value_type: FLOAT
+          allowed_hosts: 0.0.0.0/0
           units: ms
           description: 'Response time in milliseconds for wfcatalog 320streams'
           tags:
@@ -1064,10 +1047,9 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 320streams - Status Code'
           type: TRAP
           key: wfcatalog.320streams.status_code
-          delay: '0'
           history: 30d
           value_type: TEXT
-          trends: '0'
+          allowed_hosts: 0.0.0.0/0
           description: 'HTTP status code for wfcatalog 320streams'
           tags:
             - tag: perfcheck
@@ -1079,8 +1061,8 @@ zabbix_export:
           name: 'perfCheck Wfcatalog - 320streams - Transfer Rate'
           type: TRAP
           key: wfcatalog.320streams.transfer_rate
-          delay: '0'
           history: 30d
+          allowed_hosts: 0.0.0.0/0
           units: bytes/s
           description: 'Data transfer rate in bytes per second for wfcatalog 320streams'
           tags:
@@ -1394,7 +1376,6 @@ zabbix_export:
           key: fdsn_dc_registry.json
           delay: 2h
           value_type: TEXT
-          trends: '0'
           timeout: 15s
           url: 'https://{$ENDPOINT}/{$FDSNROUTINGFILE}'
           headers:
@@ -1417,7 +1398,6 @@ zabbix_export:
           key: routing.local
           delay: 2h
           value_type: TEXT
-          trends: '0'
           preprocessing:
             - type: XMLPATH
               parameters:
@@ -1599,7 +1579,6 @@ zabbix_export:
           key: local_vn.config
           delay: 1h
           value_type: TEXT
-          trends: '0'
           preprocessing:
             - type: XMLPATH
               parameters:
@@ -1626,7 +1605,6 @@ zabbix_export:
           key: routing_vn.information
           delay: 1h
           value_type: TEXT
-          trends: '0'
           timeout: 10s
           url: 'https://orfeus-eu.org/eidaws/routing/1/query'
           query_fields:
@@ -1655,75 +1633,34 @@ zabbix_export:
         - name: Templates/EIDA
       items:
         - uuid: 414d50dabee0429285a65c27fe127056
-          name: 'availability application.wadl v4'
+          name: 'availability application.wadl'
           type: TRAP
           key: availability.application.wadl
-          delay: '0'
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: application.wadl
             - tag: webservice
-              value: availability_v4
-        - uuid: d62af588b94942d38929e1b201b7ecba
-          name: 'availability healthcheck'
-          type: HTTP_AGENT
-          key: availability.healthcheck
-          delay: 5m
-          history: 50d
-          trends: 1000d
-          status: DISABLED
-          preprocessing:
-            - type: REGEX
-              parameters:
-                - '^HTTP/[\d.]+ (\d+)'
-                - \1
-              error_handler: CUSTOM_VALUE
-              error_handler_params: '999'
-          timeout: 1m
-          url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
-          status_codes: ''
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          retrieve_mode: HEADERS
-          tags:
-            - tag: healthcheck
-            - tag: webservice
               value: availability
-          triggers:
-            - uuid: 5397d9f5f56b4574abfb297603b86186
-              expression: 'min(/Template webservices/availability.healthcheck,15m)>200'
-              name: 'availability healtcheck'
-              event_name: 'Availability is not accessible, return code {ITEM.VALUE}'
-              status: DISABLED
-              priority: AVERAGE
-              description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/'
-              manual_close: 'YES'
-              tags:
-                - tag: healtcheck
-                - tag: webservice
-                  value: availability
         - uuid: b8ab7d56771f4a0f93ac60bd653b8433
-          name: 'availability healthcheck v4'
+          name: 'availability healthcheck'
           type: TRAP
-          key: availability.healthcheck_v4
-          delay: '0'
+          key: availability.healthcheck
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: healthcheck
             - tag: webservice
-              value: availability_v4
+              value: availability
           triggers:
             - uuid: ddeb655f762a440c8632a3ce909dfc01
               expression: |
-                last(/Template webservices/availability.healthcheck_v4)<>200
+                last(/Template webservices/availability.healthcheck)<>200
                 and
-                last(/Template webservices/availability.healthcheck_v4,#2)<>200
-              name: 'availability healtcheck v4'
+                last(/Template webservices/availability.healthcheck,#2)<>200
+              name: 'availability healtcheck'
               event_name: 'Availability is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/'
@@ -1733,24 +1670,22 @@ zabbix_export:
                 - tag: webservice
                   value: availability_v4
         - uuid: 9638ce7206dd432da9a3580498ecdb63
-          name: 'availability short request v4'
+          name: 'availability short request'
           type: TRAP
           key: availability.short_request
-          delay: '0'
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: short_request
             - tag: webservice
-              value: availability_v4
+              value: availability
         - uuid: e38a49ab9c0e442c9ea3a47f8869aaee
           name: 'CORS availability {$NODE}'
           type: HTTP_AGENT
           key: cors.check.availability
           delay: 1d
           value_type: TEXT
-          trends: '0'
           url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
           status_codes: ''
           headers:
@@ -1784,7 +1719,6 @@ zabbix_export:
           key: cors.check.dataselect
           delay: 1d
           value_type: TEXT
-          trends: '0'
           url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/'
           status_codes: ''
           headers:
@@ -1818,7 +1752,6 @@ zabbix_export:
           key: cors.check.seedpsd
           delay: 1d
           value_type: TEXT
-          trends: '0'
           url: 'https://{$ENDPOINT}/eidaws/psd/1/'
           status_codes: ''
           headers:
@@ -1852,7 +1785,6 @@ zabbix_export:
           key: cors.check.station
           delay: 1d
           value_type: TEXT
-          trends: '0'
           url: 'https://{$ENDPOINT}/fdsnws/station/1/'
           status_codes: ''
           headers:
@@ -1886,7 +1818,6 @@ zabbix_export:
           key: cors.check.wfcatalog
           delay: 1d
           value_type: TEXT
-          trends: '0'
           url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
           status_codes: ''
           headers:
@@ -1915,73 +1846,34 @@ zabbix_export:
                 - tag: webservice
                   value: wfcatalog
         - uuid: 7b919dbec8af47faa153546b7ad3130d
-          name: 'dataselect application.wadl v4'
+          name: 'dataselect application.wadl'
           type: TRAP
           key: dataselect.application.wadl
-          delay: '0'
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: application.wadl
             - tag: webservice
-              value: dataselect_v4
-        - uuid: 4d2c06140e994c71b2bb96f7e9aa58ba
-          name: 'dataselect healthcheck'
-          type: HTTP_AGENT
-          key: dataselect.healthcheck
-          delay: 3m
-          history: 50d
-          trends: 1000d
-          status: DISABLED
-          preprocessing:
-            - type: REGEX
-              parameters:
-                - '^HTTP/[\d.]+ (\d+)'
-                - \1
-          timeout: 1m
-          url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/'
-          status_codes: ''
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          retrieve_mode: HEADERS
-          tags:
-            - tag: healthcheck
-            - tag: webservice
               value: dataselect
-          triggers:
-            - uuid: 41525921387c469b8d8e00328cde8d1e
-              expression: 'min(/Template webservices/dataselect.healthcheck,15m)>200'
-              name: 'dataselect healtcheck'
-              event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
-              status: DISABLED
-              priority: AVERAGE
-              description: 'test request: https://{$ENDPOINT}/fdsnws/dataselect/1/'
-              manual_close: 'YES'
-              tags:
-                - tag: healtcheck
-                - tag: webservice
-                  value: dataselect
         - uuid: f8d7e3df720943f78c5bed56f0a1a879
-          name: 'dataselect healthcheck v4'
+          name: 'dataselect healthcheck'
           type: TRAP
-          key: dataselect.healthcheck_v4
-          delay: '0'
+          key: dataselect.healthcheck
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: healthcheck
             - tag: webservice
-              value: dataselect_v4
+              value: dataselect
           triggers:
             - uuid: bc84680f83d14b67b219647a9cd161ba
               expression: |
-                last(/Template webservices/dataselect.healthcheck_v4)<>200
+                last(/Template webservices/dataselect.healthcheck)<>200
                 and
-                last(/Template webservices/dataselect.healthcheck_v4,#2)<>200
-              name: 'dataselect healtcheck v4'
+                last(/Template webservices/dataselect.healthcheck,#2)<>200
+              name: 'dataselect healtcheck'
               event_name: 'Dataselect is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/dataselect/1/'
@@ -1991,72 +1883,34 @@ zabbix_export:
                 - tag: webservice
                   value: dataselect_v4
         - uuid: f644f6105b074366a2b407bddf65a28d
-          name: 'dataselect short request v4'
+          name: 'dataselect short request'
           type: TRAP
           key: dataselect.short_request
-          delay: '0'
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: short_request
             - tag: webservice
-              value: dataselect_v4
-        - uuid: e79ed8a36d2249bda0444913e05721fb
-          name: 'seedpsd healthcheck'
-          type: HTTP_AGENT
-          key: seedpsd.healthcheck
-          delay: 3m
-          history: 50d
-          trends: 1000d
-          status: DISABLED
-          preprocessing:
-            - type: REGEX
-              parameters:
-                - '^HTTP/[\d.]+ (\d+)'
-                - \1
-          timeout: 1m
-          url: 'https://{$ENDPOINT}/eidaws/psd/1/'
-          status_codes: ''
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          retrieve_mode: HEADERS
-          tags:
-            - tag: healthcheck
-            - tag: webservice
-              value: seedpsd
-          triggers:
-            - uuid: 0d3df26afc9c4b57a9f1e27604580ee0
-              expression: 'min(/Template webservices/seedpsd.healthcheck,15m)>200'
-              name: 'seedpsd healtcheck'
-              event_name: 'SeedPSD is not accessible, return code {ITEM.VALUE}'
-              priority: AVERAGE
-              description: 'test request: https://{$ENDPOINT}/eidaws/psd/1/'
-              manual_close: 'YES'
-              tags:
-                - tag: healtcheck
-                - tag: webservice
-                  value: seedpsd
+              value: dataselect
         - uuid: 085151732e2640a682ef23ff8e07a94c
-          name: 'station application.wadl v4'
+          name: 'station application.wadl'
           type: TRAP
           key: station.application.wadl
-          delay: '0'
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: application.wadl
             - tag: webservice
-              value: station_v4
+              value: station
           triggers:
             - uuid: df43548414fa4ea1bff15c881fc69e92
               expression: |
                 last(/Template webservices/station.application.wadl)<>200
                 and
                 last(/Template webservices/station.application.wadl,#2)<>200
-              name: 'station healtcheck v4'
+              name: 'station healtcheck'
               event_name: 'Station is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
@@ -2065,135 +1919,57 @@ zabbix_export:
                 - tag: healtcheck
                 - tag: webservice
                   value: station_v4
-        - uuid: 705a0eaf6e134511a1d211302f3def97
-          name: 'station healthcheck'
-          type: HTTP_AGENT
-          key: station.healthcheck
-          delay: 3m
-          history: 50d
-          trends: 1000d
-          status: DISABLED
-          preprocessing:
-            - type: REGEX
-              parameters:
-                - '^HTTP/[\d.]+ (\d+)'
-                - \1
-          timeout: 1m
-          url: 'https://{$ENDPOINT}/fdsnws/station/1/'
-          status_codes: ''
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          retrieve_mode: HEADERS
-          tags:
-            - tag: healthcheck
-            - tag: webservice
-              value: station
-          triggers:
-            - uuid: 30f8b3cc9dea424ab488bc7eaa56222c
-              expression: 'min(/Template webservices/station.healthcheck,15m)>200'
-              name: 'station healtcheck'
-              event_name: 'Station is not accessible, return code {ITEM.VALUE}'
-              status: DISABLED
-              priority: AVERAGE
-              description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/'
-              manual_close: 'YES'
-              tags:
-                - tag: healtcheck
-                - tag: webservice
-                  value: station
         - uuid: 712bbb97d0c447c2a868f276ccc28bc8
-          name: 'station healthcheck v4'
+          name: 'station healthcheck'
           type: TRAP
-          key: station.healthcheck_v4
-          delay: '0'
+          key: station.healthcheck
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: healthcheck
             - tag: webservice
-              value: station_v4
+              value: station
         - uuid: be427995642946748a4ccb535edb6519
-          name: 'station short request v4'
+          name: 'station short request'
           type: TRAP
           key: station.short_request
-          delay: '0'
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: short_request
             - tag: webservice
-              value: station_v4
+              value: station
         - uuid: b5e8d4d740864e2b9fb05413ade41c45
-          name: 'wfcatalog application.wadl v4'
+          name: 'wfcatalog application.wadl'
           type: TRAP
           key: wfcatalog.application.wadl
-          delay: '0'
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: application.wadl
             - tag: webservice
-              value: wfcatalog_v4
-        - uuid: ad50cdc210ba42a3a14a0419b29c8344
-          name: 'wfcatalog healthcheck'
-          type: HTTP_AGENT
-          key: wfcatalog.healthcheck
-          delay: 3m
-          history: 50d
-          trends: 1000d
-          status: DISABLED
-          preprocessing:
-            - type: REGEX
-              parameters:
-                - '^HTTP/[\d.]+ (\d+)'
-                - \1
-          timeout: 1m
-          url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/'
-          status_codes: ''
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          retrieve_mode: HEADERS
-          tags:
-            - tag: healthcheck
-            - tag: wfcatalog
-              value: accessible
-          triggers:
-            - uuid: e31b4eb2c621444aa03dd189311d89a5
-              expression: 'min(/Template webservices/wfcatalog.healthcheck,15m)>200'
-              name: 'wfcatalog healtcheck'
-              event_name: 'WFCatalog is not accessible, return code {ITEM.VALUE}'
-              status: DISABLED
-              priority: AVERAGE
-              description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/'
-              manual_close: 'YES'
-              tags:
-                - tag: healtcheck
-                - tag: webservice
-                  value: wfcatalog
+              value: wfcatalog
         - uuid: 3f5ee7b7cebb4ffca48e884c378fc1fb
-          name: 'wfcatalog healthcheck v4'
+          name: 'wfcatalog healthcheck'
           type: TRAP
-          key: wfcatalog.healthcheck_v4
-          delay: '0'
+          key: wfcatalog.healthcheck
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: healthcheck
             - tag: webservice
-              value: wfcatalog_v4
+              value: wfcatalog
           triggers:
             - uuid: 2070efdabfed47ad88a45a63d44cb3d1
               expression: |
-                last(/Template webservices/wfcatalog.healthcheck_v4)<>200
+                last(/Template webservices/wfcatalog.healthcheck)<>200
                 and
-                last(/Template webservices/wfcatalog.healthcheck_v4,#2)<>200
-              name: 'wfcatalog healtcheck v4'
+                last(/Template webservices/wfcatalog.healthcheck,#2)<>200
+              name: 'wfcatalog healtcheck'
               event_name: 'WFcatalog is not accessible, return code {ITEM.VALUE}'
               priority: AVERAGE
               description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/'
@@ -2203,186 +1979,14 @@ zabbix_export:
                 - tag: webservice
                   value: wfcatalog_v4
         - uuid: 6fcaab56c1e14a4c917a503b481018c6
-          name: 'wfcatalog short request v4'
+          name: 'wfcatalog short request'
           type: TRAP
           key: wfcatalog.short_request
-          delay: '0'
           history: 62d
           trends: 1000d
           allowed_hosts: 0.0.0.0/0
           tags:
             - tag: short_request
-            - tag: webservice
-              value: wfcatalog_v4
-      httptests:
-        - uuid: 32b3e3d018b2423c899d92878cbe3567
-          name: availability
-          delay: 1d
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          status: DISABLED
-          steps:
-            - name: 'availability short request'
-              url: 'https://{$ENDPOINT}/fdsnws/availability/1/'
-              query_fields:
-                - name: net
-                  value: '{$ONLINECHECK_NET}'
-                - name: sta
-                  value: '{$ONLINECHECK_STA}'
-                - name: loc
-                  value: '{$ONLINECHECK_LOC}'
-                - name: cha
-                  value: '{$ONLINECHECK_CHA}'
-                - name: start
-                  value: '{$ONLINECHECK_START}'
-                - name: end
-                  value: '{$ONLINECHECK_END}'
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
-            - name: 'availability application.wadl'
-              url: 'https://{$ENDPOINT}/fdsnws/availability/1/application.wadl'
-              follow_redirects: 'NO'
-              timeout: 1m
-              required: '<application'
-              status_codes: '200'
-          tags:
-            - tag: webservice
-              value: availability
-        - uuid: dfcb1e93f5c9489598c189e82f523833
-          name: dataselect
-          delay: 1d
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          status: DISABLED
-          steps:
-            - name: 'dataselect short request'
-              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/query'
-              query_fields:
-                - name: net
-                  value: '{$ONLINECHECK_NET}'
-                - name: sta
-                  value: '{$ONLINECHECK_STA}'
-                - name: cha
-                  value: '{$ONLINECHECK_CHA}'
-                - name: loc
-                  value: '{$ONLINECHECK_LOC}'
-                - name: start
-                  value: '{$ONLINECHECK_START}'
-                - name: end
-                  value: '{$ONLINECHECK_END}'
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
-            - name: 'dataselect application.wadl'
-              url: 'https://{$ENDPOINT}/fdsnws/dataselect/1/application.wadl'
-              follow_redirects: 'NO'
-              timeout: 1m
-              required: '<application'
-              status_codes: '200'
-          tags:
-            - tag: webservice
-              value: dataselect
-        - uuid: b48a6247f35c4a65860de1b4f4633c17
-          name: seedpsd
-          delay: 1d
-          status: DISABLED
-          steps:
-            - name: 'seedpsd short request'
-              url: 'https://{$ENDPOINT}/eidaws/psd/1/value'
-              query_fields:
-                - name: net
-                  value: '{$ONLINECHECK_NET}'
-                - name: sta
-                  value: '{$ONLINECHECK_STA}'
-                - name: cha
-                  value: '{$ONLINECHECK_CHA}'
-                - name: loc
-                  value: '{$ONLINECHECK_LOC}'
-                - name: start
-                  value: '{$ONLINECHECK_START}'
-                - name: end
-                  value: '{$ONLINECHECK_END}'
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
-            - name: 'seedpsd application.wadl'
-              url: 'https://{$ENDPOINT}/eidaws/psd/1/application.wadl'
-              follow_redirects: 'NO'
-              timeout: 1m
-              required: '<application'
-              status_codes: '200'
-          tags:
-            - tag: webservice
-              value: seedpsd
-        - uuid: 81e6f10b63214e2cba9dbe5fabd2626e
-          name: station
-          delay: 1d
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          status: DISABLED
-          steps:
-            - name: 'station short request'
-              url: 'https://{$ENDPOINT}/fdsnws/station/1/query'
-              query_fields:
-                - name: net
-                  value: '{$ONLINECHECK_NET}'
-                - name: sta
-                  value: '{$ONLINECHECK_STA}'
-                - name: loc
-                  value: '{$ONLINECHECK_LOC}'
-                - name: cha
-                  value: '{$ONLINECHECK_CHA}'
-                - name: level
-                  value: response
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
-            - name: 'station application.wadl'
-              url: 'https://{$ENDPOINT}/fdsnws/station/1/application.wadl'
-              follow_redirects: 'NO'
-              timeout: 1m
-              required: '<application'
-              status_codes: '200'
-          tags:
-            - tag: webservice
-              value: station
-        - uuid: a5d4964d6ad84e44829dbb8dddef25cc
-          name: wfcatalog
-          delay: 1d
-          headers:
-            - name: User-agent
-              value: oculus-monitor
-          status: DISABLED
-          steps:
-            - name: 'wfcatalog short request'
-              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/query'
-              query_fields:
-                - name: net
-                  value: '{$ONLINECHECK_NET}'
-                - name: sta
-                  value: '{$ONLINECHECK_STA}'
-                - name: loc
-                  value: '{$ONLINECHECK_LOC}'
-                - name: cha
-                  value: '{$ONLINECHECK_CHA}'
-                - name: start
-                  value: '{$ONLINECHECK_START}'
-                - name: end
-                  value: '{$ONLINECHECK_END}'
-              retrieve_mode: HEADERS
-              timeout: 1m
-              status_codes: '200'
-            - name: 'wfcatalog application.wadl'
-              url: 'https://{$ENDPOINT}/eidaws/wfcatalog/1/application.wadl'
-              follow_redirects: 'NO'
-              timeout: 1m
-              required: '<application'
-              status_codes: '200'
-          tags:
             - tag: webservice
               value: wfcatalog
       macros:
@@ -2392,92 +1996,3 @@ zabbix_export:
         - macro: '{$WS_PATH}'
           value: '{#WS_PATH}'
           description: 'EIDA webservice path'
-  triggers:
-    - uuid: 570403a76d444c6983c35d8afd22f776
-      expression: 'last(/Template webservices/web.test.rspcode[availability,availability application.wadl])<>200'
-      name: 'availability application.wadl'
-      event_name: 'Availability application.wadl not found, return code {ITEM.VALUE}'
-      status: DISABLED
-      priority: AVERAGE
-      description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/application.wadl'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: availability
-    - uuid: 5260891522f14c21a4f2361486453f4b
-      expression: 'last(/Template webservices/web.test.rspcode[availability,availability short request])<>200'
-      name: 'availability short request'
-      event_name: 'Availability short request failed, return code {ITEM.VALUE}'
-      status: DISABLED
-      priority: AVERAGE
-      description: 'test request: https://{$ENDPOINT}/fdsnws/availability/1/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&start={$ONLINECHECK_START}&end={$ONLINECHECK_END}'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: availability
-    - uuid: a82e3657e1a74b10967bfd7944c3c45a
-      expression: 'last(/Template webservices/web.test.rspcode[dataselect,dataselect application.wadl])<>200'
-      name: 'dataselect application.wadl'
-      event_name: 'Dataselect application.wadl not found, return code {ITEM.VALUE}'
-      status: DISABLED
-      priority: HIGH
-      description: 'test request : https://{$ENDPOINT}/fdsnws/dataselect/1/application.wadl'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: dataselect
-    - uuid: 6c4ce2937fd44a03af8020e6f3ca5b26
-      expression: 'last(/Template webservices/web.test.rspcode[dataselect,dataselect short request])<>200'
-      name: 'dataselect short request'
-      event_name: 'Dataselect short request failed, return code {ITEM.VALUE}'
-      status: DISABLED
-      priority: HIGH
-      description: 'test request : https://{$ENDPOINT}/fdsnws/dataselect/1/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&start={$ONLINECHECK_START}&end={$ONLINECHECK_END}'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: dataselect
-    - uuid: fea9c304508e4fa8816b0c7d688fe5fd
-      expression: 'last(/Template webservices/web.test.rspcode[station,station application.wadl])<>200'
-      name: 'station application.wadl'
-      event_name: 'Station application.wadl not found, return code {ITEM.VALUE}'
-      status: DISABLED
-      priority: HIGH
-      description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/application.wadl'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: station
-    - uuid: 696550710abc49418a5b546fd8db5955
-      expression: 'last(/Template webservices/web.test.rspcode[station,station short request])<>200'
-      name: 'station short request'
-      event_name: 'Station short request failed, return code {ITEM.VALUE}'
-      status: DISABLED
-      priority: HIGH
-      description: 'test request: https://{$ENDPOINT}/fdsnws/station/1/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&level=response'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: station
-    - uuid: 76a137445eef404d8bbc5f59283db5b8
-      expression: 'last(/Template webservices/web.test.rspcode[wfcatalog,wfcatalog application.wadl])<>200'
-      name: 'wfcatalog application.wadl'
-      event_name: 'WFCatalog application.wadl not found, return code {ITEM.VALUE}'
-      status: DISABLED
-      priority: AVERAGE
-      description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/application.wadl'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: wfcatalog
-    - uuid: a3a98c2e0c484de99d7175826f94be68
-      expression: 'last(/Template webservices/web.test.rspcode[wfcatalog,wfcatalog short request])<>200'
-      name: 'wfcatalog short request'
-      event_name: 'WFCatalog short request failed, return code {ITEM.VALUE}'
-      status: DISABLED
-      priority: AVERAGE
-      description: 'test request: https://{$ENDPOINT}/eidaws/wfcatalog/1/query/net={$ONLINECHECK_NET}&sta={$ONLINECHECK_STA}&loc={$ONLINECHECK_LOC}&cha={$ONLINECHECK_CHA}&start={$ONLINECHECK_START}&end={$ONLINECHECK_END}'
-      manual_close: 'YES'
-      tags:
-        - tag: webservice
-          value: wfcatalog
